@@ -19,13 +19,6 @@ public abstract class DevelopmentCard extends Card {
         this.cost = cost;
     }
 
-    public DevelopmentCard(){
-        super();
-        this.cardColor=null;
-        this.period=null;
-        this.cost=null;
-    }
-
 
     public String toString() {
         return "["+this.getName()+"]";
@@ -37,8 +30,8 @@ public abstract class DevelopmentCard extends Card {
     public Period getPeriod(){
         return this.period;
     }
-    public List<Resource> getCost(){
-        return this.cost;
+    public List<Resource> getCost(){   //ritorno una copia al riferimento alla lista per non farla modificare
+        return new ArrayList(cost);
     }
 
 

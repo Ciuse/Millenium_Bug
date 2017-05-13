@@ -15,12 +15,12 @@ public class JsonTypeObject {
         this.costlist = costlist;
     }
 
-    public List<DevelopmentCard> getCardList(){
+    public List<DevelopmentCard> getCardList(){  //ritorno la lista stessa, non mi interessa se la possono modificare
 
         return this.developementCard;
     }
 
-    public List<Resource> getCostlist(){
+    public List<Resource> getCostlist(){   //ritorno la lista stessa, non mi interessa se la possono modificare
 
         return this.costlist;
     }

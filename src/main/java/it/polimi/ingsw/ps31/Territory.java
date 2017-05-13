@@ -18,12 +18,6 @@ public final class Territory extends DevelopmentCard {
         this.immediateEffect = immediateEffect;
         this.permanentEffect = permanentEffect;
     }
-
-    public Territory(){
-        this.immediateEffect=null;
-        this.permanentEffect=null;
-    }
-
     public GetResourceAction getImmediateEffect() {
         return this.immediateEffect;
     }

@@ -10,10 +10,6 @@ public abstract class Card {
         this.name = name;
     }
 
-    public Card() {
-        this.name=null;
-    }
-
     public String getName (){
         return this.name;
     }

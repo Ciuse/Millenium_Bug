@@ -18,11 +18,6 @@ public final class Building extends DevelopmentCard{
         this.permanentEffect = permanentEffect;
     }
 
-    public Building(){
-        this.immediateEffect=null;
-        this.permanentEffect=null;
-    }
-
     public String toString() {
         return "["+this.getName()+"]";
     }
