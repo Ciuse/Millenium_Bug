@@ -1,4 +1,8 @@
-package it.polimi.ingsw.ps31;
+package it.polimi.ingsw.ps31.Card;
+
+import it.polimi.ingsw.ps31.Constants.CardColor;
+import it.polimi.ingsw.ps31.Constants.Period;
+import it.polimi.ingsw.ps31.GameThings.Resource;
 
 import java.util.ArrayList;
 import java.util.List;

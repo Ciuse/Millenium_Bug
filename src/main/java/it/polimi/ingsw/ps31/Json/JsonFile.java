@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31;
+package it.polimi.ingsw.ps31.Json;
 
 import java.io.*;
 import java.nio.charset.Charset;

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31;
+package it.polimi.ingsw.ps31.Card;
 
 /**
  * Created by Giuseppe on 09/05/2017.
