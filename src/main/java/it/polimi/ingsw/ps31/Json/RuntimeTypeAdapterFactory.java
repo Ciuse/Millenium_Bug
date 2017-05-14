@@ -119,7 +119,10 @@ import com.google.gson.stream.JsonWriter;
      *       .registerSubtype(Diamond.class);
      * }</pre>
      */
-    public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
+
+    public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {  // classe della libreria Gson che abbiamo dovuto aggiungere manualmente per poter leggere
+                                                                                    // i runtime type per gli oggetti polimorfi
+
         private final Class<?> baseType;
         private final String typeFieldName;
         private final Map<String, Class<?>> labelToSubtype = new LinkedHashMap<String, Class<?>>();

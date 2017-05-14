@@ -12,13 +12,8 @@ import java.util.List;
 public final class Character extends DevelopmentCard{
 
 
-    private final ActionExample immediateEffect;
-    private final ActionExample permanentEffect;
-
-    public Character(String name, Period period, List<Resource> cost, ActionExample immediateEffect, ActionExample permanentEffect) {
-        super(name, CardColor.BLUE, period, cost);
-        this.immediateEffect = immediateEffect;
-        this.permanentEffect = permanentEffect;
+    public Character(String name, Period period, List<Resource> cost, Effect immediateEffect, Effect permanentEffect) {
+        super(name, CardColor.BLUE, period, cost, immediateEffect, permanentEffect);
     }
 
     public String toString() {

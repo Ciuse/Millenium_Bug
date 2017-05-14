@@ -12,12 +12,13 @@ import java.nio.file.Paths;
  */
 public class JsonFile {
 
-    public static String FilePath(String nomeFile) {
+
+    public static String FilePath(String nomeFile) { //ottengo il patch della cartella in cui si trova l oggetto che chiama il metodo
         String path;
         return path = Paths.get(".").toAbsolutePath().normalize().toString() + "\\" + nomeFile;
     }
 
-    public static void newFile(String nomeFile) {
+    public static void newFile(String nomeFile) { //creazione file nella cartella / controllo se esiste già
         String path = FilePath(nomeFile);
         System.out.println(path);
         try {
@@ -35,7 +36,7 @@ public class JsonFile {
         }
     }
 
-    public static void saveJsonFile(String jsonText, String name) {
+    public static void saveJsonFile(String jsonText, String name) { // metodo per scrivere una stringa nel file
         Path file = Paths.get(name);
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream(name), StandardCharsets.UTF_8))) {
@@ -49,7 +50,7 @@ public class JsonFile {
         }
     }
 
-    public static String readJsonFile(String name) {
+    public static String readJsonFile(String name) { //metodo per leggere una stringa
         Path file = Paths.get(name);
         String jsonText=null;
         try {

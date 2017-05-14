@@ -11,21 +11,8 @@ import java.util.List;
  */
 public final class Territory extends DevelopmentCard {
 
-    private final ActionExample immediateEffect;
-    private final ActionExample permanentEffect;
-
-    public Territory(String name, Period period, List<Resource> cost, ActionExample immediateEffect, ActionExample permanentEffect) {
-        super(name, CardColor.GREEN, period, cost);
-        this.immediateEffect = immediateEffect;
-        this.permanentEffect = permanentEffect;
-    }
-    public ActionExample getImmediateEffect() {
-        return this.immediateEffect;
-    }
-
-    public ActionExample getPermanentEffect() {
-        return this.permanentEffect;
-
+    public Territory(String name, Period period, List<Resource> cost, Effect immediateEffect, Effect permanentEffect) {
+        super(name, CardColor.GREEN, period, cost, immediateEffect, permanentEffect);
     }
 
     public String toString() {

@@ -37,6 +37,7 @@ public class JsonGameObject {
         developementCardAdapterFactory.registerSubtype(Character.class, "Character");
         developementCardAdapterFactory.registerSubtype(Venture.class, "Venture");
 
+//Creazione del builder adatto a riconoscere tutti gli oggetti polimorfi
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting().serializeNulls().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).registerTypeAdapterFactory(resourceAdapterFactory).registerTypeAdapterFactory(developementCardAdapterFactory);
         Gson gson = builder.create();
