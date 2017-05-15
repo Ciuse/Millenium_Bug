@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.Board;
 
+import it.polimi.ingsw.ps31.Constants.PlayerColor;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
