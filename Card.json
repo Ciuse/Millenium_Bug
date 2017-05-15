@@ -1,0 +1,62 @@
+{
+  "DevelopementCard": [
+    {
+      "CardType": "Territory",
+      "ImmediateEffect": null,
+      "PermanentEffect": null,
+      "CardColor": "GREEN",
+      "Period": "First",
+      "Cost": [
+        {
+          "ResourceType": "Wood",
+          "Value": 8
+        },
+        {
+          "ResourceType": "Stone",
+          "Value": 11
+        },
+        {
+          "ResourceType": "Wood",
+          "Value": 8
+        }
+      ],
+      "Name": "Prova1"
+    },
+    {
+      "CardType": "Building",
+      "ImmediateEffect": null,
+      "PermanentEffect": null,
+      "CardColor": "YELLOW",
+      "Period": "First",
+      "Cost": [
+        {
+          "ResourceType": "Wood",
+          "Value": 8
+        },
+        {
+          "ResourceType": "Stone",
+          "Value": 11
+        },
+        {
+          "ResourceType": "Wood",
+          "Value": 8
+        }
+      ],
+      "Name": "Prova2"
+    }
+  ],
+  "Costlist": [
+    {
+      "ResourceType": "Wood",
+      "Value": 8
+    },
+    {
+      "ResourceType": "Stone",
+      "Value": 11
+    },
+    {
+      "ResourceType": "Wood",
+      "Value": 8
+    }
+  ]
+}
