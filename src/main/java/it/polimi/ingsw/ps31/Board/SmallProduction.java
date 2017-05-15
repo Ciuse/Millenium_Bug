@@ -8,6 +8,6 @@ public class SmallProduction extends Production {
     /* Constructor */
     public SmallProduction(int familyMemberLimit)
     {
-        super(familyMemberLimit);
+        super(1, familyMemberLimit);
     }
 }

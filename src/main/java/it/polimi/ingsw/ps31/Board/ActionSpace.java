@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.Board;
 
 import it.polimi.ingsw.ps31.Card.Effect;
+import it.polimi.ingsw.ps31.Player.FamilyMember;
 
 /**
  * Created by Francesco on 12/05/2017.

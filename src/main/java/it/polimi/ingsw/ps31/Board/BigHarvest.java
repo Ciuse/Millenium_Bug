@@ -8,6 +8,6 @@ public class BigHarvest extends Harvest {
     /* Constructor */
     public BigHarvest(int familyMemberLimit)
     {
-        super(familyMemberLimit);
+        super(1, familyMemberLimit);
     }
 }
