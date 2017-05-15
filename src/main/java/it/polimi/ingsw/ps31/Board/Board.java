@@ -5,5 +5,5 @@ package it.polimi.ingsw.ps31.Board;
  */
 public abstract class Board {
 
-    /* Qui verranno inseriti i metodi per la visualizzazione grafica delle varie board nella GUI*/
+    /* Qui verranno inseriti i metodi per la visualizzazione grafica delle varie board nella GUI */
 }
