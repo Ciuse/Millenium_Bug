@@ -15,8 +15,4 @@ public final class Building extends DevelopmentCard{
     public Building(String name, Period period, List<Resource> cost, Effect immediateEffect, Effect permanentEffect) {
         super(name, CardColor.YELLOW, period, cost, immediateEffect, permanentEffect);
     }
-
-    public String toString() {
-        return "["+this.getName()+"]";
-    }
 }

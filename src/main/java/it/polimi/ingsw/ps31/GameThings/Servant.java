@@ -8,9 +8,4 @@ public class Servant extends PhysicalResource {
     public Servant(int value) {
         super(value);
     }
-
-    public String toString() {
-        return "["+this.getValue()+"]";
-    }
-
 }

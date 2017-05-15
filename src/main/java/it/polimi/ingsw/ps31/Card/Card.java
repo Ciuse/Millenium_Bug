@@ -14,5 +14,10 @@ public abstract class Card {
         return this.name;
     }
 
+    public String toString(){
+
+        return this.getClass().getSimpleName()+"["+this.getName()+"]";
+    }
+
 
 }

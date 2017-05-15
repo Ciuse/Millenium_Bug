@@ -15,8 +15,6 @@ public final class Territory extends DevelopmentCard {
         super(name, CardColor.GREEN, period, cost, immediateEffect, permanentEffect);
     }
 
-    public String toString() {
-        return "["+this.getName()+"]";
-    }
+
 
 }

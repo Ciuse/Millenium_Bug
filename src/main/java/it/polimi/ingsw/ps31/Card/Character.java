@@ -15,8 +15,4 @@ public final class Character extends DevelopmentCard{
     public Character(String name, Period period, List<Resource> cost, Effect immediateEffect, Effect permanentEffect) {
         super(name, CardColor.BLUE, period, cost, immediateEffect, permanentEffect);
     }
-
-    public String toString() {
-        return "["+this.getName()+"]";
-    }
 }

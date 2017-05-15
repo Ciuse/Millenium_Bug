@@ -27,11 +27,6 @@ public abstract class DevelopmentCard extends Card {
         this.permanentEffect = permanentEffect;
     }
 
-
-    public String toString() {
-        return "["+this.getName()+"]";
-    }
-
     public CardColor getCardColor(){
         return this.cardColor;
     }
@@ -39,7 +34,7 @@ public abstract class DevelopmentCard extends Card {
         return this.period;
     }
     public List<Resource> getCost(){   //ritorno una copia al riferimento alla lista per non farla modificare
-        return new ArrayList(cost);
+        return new ArrayList<>(this.cost);
     }
     public Effect getImmediateEffect(){
         return this.immediateEffect;
@@ -47,6 +42,4 @@ public abstract class DevelopmentCard extends Card {
     public Effect getPermanentEffect(){
         return this.permanentEffect;
     }
-
-
 }

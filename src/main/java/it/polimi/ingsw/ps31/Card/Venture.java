@@ -15,8 +15,4 @@ public final class Venture extends DevelopmentCard{
     public Venture(String name, Period period, List<Resource> cost, Effect immediateEffect, Effect permanentEffect) {
         super(name, CardColor.PURPLE, period, cost, immediateEffect, permanentEffect);
     }
-
-    public String toString() {
-        return "["+this.getName()+"]";
-    }
 }

@@ -21,6 +21,9 @@ public abstract class Resource {
         return this.value;
     }
 
+    public final String toString() {
+        return this.getClass().getSimpleName()+"["+this.getValue()+"]";
+    }
 
 
 }

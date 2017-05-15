@@ -9,8 +9,6 @@ public class Coin extends PhysicalResource {
         super(value);
     }
 
-    public String toString() {
-        return "["+this.getValue()+"]";
-    }
+
 
 }
