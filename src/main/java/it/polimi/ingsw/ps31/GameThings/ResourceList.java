@@ -11,9 +11,6 @@ import java.util.List;
 public class ResourceList {
     private List<Resource> resource;
 
-    public ResourceList() {
-    }
-
     public void setCoin(Coin coin) {
         System.out.println("Inserisci il valore delle monete");
         if (coin.getValue()!=0) {

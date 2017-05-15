@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps31.Card;
 import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Constants.Period;
 import it.polimi.ingsw.ps31.GameThings.Resource;
+import it.polimi.ingsw.ps31.GameThings.ResourceList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +15,11 @@ public abstract class DevelopmentCard extends Card {
 
     private final CardColor cardColor;
     private final Period period;
-    private final List<Resource> cost;  // il costo viene visto come una lista di risorse
+    private final List<ResourceList> cost;  // il costo viene visto come una lista di risorse
     private final Effect immediateEffect;
     private final Effect permanentEffect;
 
-    public DevelopmentCard(String name, CardColor cardColor, Period period, List<Resource> cost, Effect immediateEffect, Effect permanentEffect) {
+    public DevelopmentCard(String name, CardColor cardColor, Period period, List<ResourceList> cost, Effect immediateEffect, Effect permanentEffect) {
         super(name);
         this.cardColor = cardColor;
         this.period = period;
@@ -33,7 +34,7 @@ public abstract class DevelopmentCard extends Card {
     public Period getPeriod(){
         return this.period;
     }
-    public List<Resource> getCost(){   //ritorno una copia al riferimento alla lista per non farla modificare
+    public List<ResourceList> getCost(){   //ritorno una copia al riferimento alla lista per non farla modificare
         return new ArrayList<>(this.cost);
     }
     public Effect getImmediateEffect(){
