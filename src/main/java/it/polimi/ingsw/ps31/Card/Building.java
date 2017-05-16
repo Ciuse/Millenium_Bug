@@ -1,8 +1,7 @@
 package it.polimi.ingsw.ps31.Card;
 
 import it.polimi.ingsw.ps31.Constants.CardColor;
-import it.polimi.ingsw.ps31.Constants.Period;
-import it.polimi.ingsw.ps31.GameThings.Resource;
+import it.polimi.ingsw.ps31.GameThings.ResourceList;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
 public final class Building extends DevelopmentCard{
 
 
-    public Building(String name, Period period, List<Resource> cost, Effect immediateEffect, Effect permanentEffect) {
+    public Building(String name, int period, List<ResourceList> cost, Effect immediateEffect, Effect permanentEffect) {
         super(name, CardColor.YELLOW, period, cost, immediateEffect, permanentEffect);
     }
 }

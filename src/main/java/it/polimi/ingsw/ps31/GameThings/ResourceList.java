@@ -2,8 +2,11 @@ package it.polimi.ingsw.ps31.GameThings;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by Giuseppe on 10/05/2017.
@@ -51,15 +54,34 @@ public class ResourceList {
             this.resource.add(faithPoint);
         }
     }
-    public void setVictoryPoint(VictoryPoint victoryPoint) {
+    public void setVictoryPoint( VictoryPoint victoryPoint) {
         System.out.println("Inserisci il valore dei punti vittoria");
         if (victoryPoint.getValue()!=0) {
             this.resource.add(victoryPoint);
         }
     }
-    public void createList(){
+
+    public void setGenericResource(Resource resource){
+        if (resource.getValue()!=0) {
+            this.resource.add(resource);
+        }
+    }
+    public void createList() throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchMethodException, InvocationTargetException {
+        String typeRead;
+        int i=0;
         System.out.println("inserisci il tipo di risorsa da aggiungere alla lista");
-        BufferedReader textRead = new BufferedReader(new InputStreamReader(System.in));
+        Scanner in = new Scanner(System.in);
+        typeRead=in.next();
+        if(typeRead!=Resource.class.getSimpleName()){
+            System.out.println("inserisci val-ore risorsa");
+            Object resource= Class.forName(typeRead).newInstance();
+            int resourceRead = in.nextByte();
+            Class risorsa = Class.forName(typeRead);
+            Constructor con = risorsa.getConstructor(int.class);
+            Object obj = con.newInstance(resourceRead);
+            this.setGenericResource((Resource) obj);
+            //TODO PROVARLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        }
     }
 
     public List<Resource> getResourceList(){
