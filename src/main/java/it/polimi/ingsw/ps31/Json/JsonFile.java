@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.Json;
 
 import java.io.*;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,13 +12,13 @@ import java.nio.file.Paths;
 public class JsonFile {
 
 
-    public static String FilePath(String nomeFile) { //ottengo il patch della cartella in cui si trova l oggetto che chiama il metodo
+    public static String FilePath(String fileName) { //ottengo il patch della cartella in cui si trova l oggetto che chiama il metodo
         String path;
-        return path = Paths.get(".").toAbsolutePath().normalize().toString() + "\\" + nomeFile;
+        return path = Paths.get(".").toAbsolutePath().normalize().toString() + "\\" + fileName;
     }
 
-    public static void newFile(String nomeFile) { //creazione file nella cartella / controllo se esiste già
-        String path = FilePath(nomeFile);
+    public static void newFile(String fileName) { //creazione file nella cartella / controllo se esiste già
+        String path = FilePath(fileName);
         System.out.println(path);
         try {
             File file = new File(path);
@@ -36,10 +35,10 @@ public class JsonFile {
         }
     }
 
-    public static void saveJsonFile(String jsonText, String name) { // metodo per scrivere una stringa nel file
-        Path file = Paths.get(name);
+    public static void saveJsonToFile(String jsonText, String fileName) { // metodo per scrivere una stringa nel file
+        Path file = Paths.get(fileName);
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream(name), StandardCharsets.UTF_8))) {
+                new FileOutputStream(fileName), StandardCharsets.UTF_8))) {
             writer.write(jsonText);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -50,8 +49,8 @@ public class JsonFile {
         }
     }
 
-    public static String readJsonFile(String name) { //metodo per leggere una stringa
-        Path file = Paths.get(name);
+    public static String readJsonFromFile(String fileName) { //metodo per leggere una stringa
+        Path file = Paths.get(fileName);
         String jsonText=null;
         try {
             jsonText = new String(Files.readAllBytes(file), StandardCharsets.UTF_8);

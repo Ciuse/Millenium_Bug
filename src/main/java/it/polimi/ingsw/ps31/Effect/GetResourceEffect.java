@@ -1,6 +1,6 @@
-package it.polimi.ingsw.ps31;
+package it.polimi.ingsw.ps31.Effect;
 
-import it.polimi.ingsw.ps31.Card.Effect;
+import it.polimi.ingsw.ps31.Effect.Effect;
 import it.polimi.ingsw.ps31.Player.Player;
 
 /**
@@ -10,7 +10,7 @@ public class GetResourceEffect extends Effect {
 
 
     @Override
-    public void action(Player player) {
+    public void activate(Player player) {
 
     }
 }

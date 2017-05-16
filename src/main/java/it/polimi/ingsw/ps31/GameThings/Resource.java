@@ -16,10 +16,9 @@ public abstract class Resource {
     }
 
     public void addValue(int value){
-
         this.value=this.value+value;
-
     }
+
     public static int insertValue() {
         System.out.println("Inserisci il valore della risorsa:");
         Scanner scanner =new Scanner(System.in);
@@ -34,15 +33,14 @@ public abstract class Resource {
         stone.addValue(value);
         return value;
     }
-    public void controlValueInsert(int value){
-        if(value<0);
-    }
+
+//TODO    public void controlValueInsert(int value){
+//        if(value<0);
+//    }
 
     public int getValue(){
         return this.value;
     }
-
-
 
     public final String toString() {
         return this.getClass().getSimpleName()+"["+this.getValue()+"]";

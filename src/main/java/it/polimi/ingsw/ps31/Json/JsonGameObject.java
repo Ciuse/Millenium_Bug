@@ -13,13 +13,11 @@ import java.util.List;
  * Created by Giuseppe on 11/05/2017.
  */
 public class JsonGameObject {
-    private List<DevelopmentCard> developementCard;
-    private List<Resource> costlist;
+    private List<DevelopmentCard> developementCardList;
 
 
-    public JsonGameObject(List<DevelopmentCard> developementCard, List<Resource> costlist) {
-        this.developementCard = developementCard;
-        this.costlist = costlist;
+    public JsonGameObject(List<DevelopmentCard> developementCardList, List<Resource> costlist) {
+        this.developementCardList = developementCardList;
     }
 
     public static Gson gsonGameBuilder(){
@@ -49,12 +47,7 @@ public class JsonGameObject {
 
     public List<DevelopmentCard> getCardList(){  //ritorno la lista stessa, non mi interessa se la possono modificare
 
-        return this.developementCard;
-    }
-
-    public List<Resource> getCostlist(){   //ritorno la lista stessa, non mi interessa se la possono modificare
-
-        return this.costlist;
+        return this.developementCardList;
     }
 
 }

@@ -12,7 +12,7 @@ public class Market {
 
     public Market()
     {
-        //Aggiungo i primi due action box del mercato (che sono sempre disponibili)
+        //Aggiungo i primi due activate box del mercato (che sono sempre disponibili)
         this.actionBox.add(new ActionSpace(1, 1, null));    //TODO: specificare effetto immediato
         this.actionBox.add(new ActionSpace(1, 1, null));    //TODO: specificare effetto immediato
 

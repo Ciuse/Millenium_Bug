@@ -2,8 +2,6 @@ package it.polimi.ingsw.ps31.Player;
 
 import it.polimi.ingsw.ps31.Board.PersonalBoard;
 import it.polimi.ingsw.ps31.Constants.PlayerColor;
-import it.polimi.ingsw.ps31.Excommunication;
-import it.polimi.ingsw.ps31.GameThings.Resource;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
 
 import java.util.ArrayList;
