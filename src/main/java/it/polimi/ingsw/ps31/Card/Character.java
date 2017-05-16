@@ -11,7 +11,7 @@ import java.util.List;
 public final class Character extends DevelopmentCard{
 
 
-    public Character(String name, int period, List<ResourceList> cost, Effect immediateEffect, Effect permanentEffect) {
-        super(name, CardColor.BLUE, period, cost, immediateEffect, permanentEffect);
+    public Character(int id,String name, int period, List<ResourceList> cost, Effect immediateEffect, Effect permanentEffect) {
+        super(id, name, CardColor.BLUE, period, cost, immediateEffect, permanentEffect);
     }
 }

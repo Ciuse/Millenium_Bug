@@ -10,15 +10,16 @@ import java.util.List;
  * Created by Giuseppe on 09/05/2017.
  */
 public abstract class DevelopmentCard extends Card {
-
+    private final int cardId;
     private final CardColor cardColor;
     private final int period;
     private final List<ResourceList> cost;  // il costo viene visto come una lista di risorse
     private final Effect immediateEffect;
     private final Effect permanentEffect;
 
-    public DevelopmentCard(String name, CardColor cardColor, int period, List<ResourceList> cost, Effect immediateEffect, Effect permanentEffect) {
+    public DevelopmentCard(int cardId, String name, CardColor cardColor, int period, List<ResourceList> cost, Effect immediateEffect, Effect permanentEffect) {
         super(name);
+        this.cardId = cardId;
         this.cardColor = cardColor;
         this.period = period;
         this.cost = cost;
@@ -26,6 +27,9 @@ public abstract class DevelopmentCard extends Card {
         this.permanentEffect = permanentEffect;
     }
 
+    public int getCardId() {
+        return this.cardId;
+    }
     public CardColor getCardColor(){
         return this.cardColor;
     }

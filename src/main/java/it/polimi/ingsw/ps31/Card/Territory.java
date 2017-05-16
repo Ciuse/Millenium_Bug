@@ -10,8 +10,8 @@ import java.util.List;
  */
 public final class Territory extends DevelopmentCard {
 
-    public Territory(String name, int period, List<ResourceList> cost, Effect immediateEffect, Effect permanentEffect) {
-        super(name, CardColor.GREEN, period, cost, immediateEffect, permanentEffect);
+    public Territory(int id, String name, int period, List<ResourceList> cost, Effect immediateEffect, Effect permanentEffect) {
+        super(id, name, CardColor.GREEN, period, cost, immediateEffect, permanentEffect);
     }
 
 

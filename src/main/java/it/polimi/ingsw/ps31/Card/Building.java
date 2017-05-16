@@ -11,7 +11,7 @@ import java.util.List;
 public final class Building extends DevelopmentCard{
 
 
-    public Building(String name, int period, List<ResourceList> cost, Effect immediateEffect, Effect permanentEffect) {
-        super(name, CardColor.YELLOW, period, cost, immediateEffect, permanentEffect);
+    public Building(int id,String name, int period, List<ResourceList> cost, Effect immediateEffect, Effect permanentEffect) {
+        super(id, name, CardColor.YELLOW, period, cost, immediateEffect, permanentEffect);
     }
 }
