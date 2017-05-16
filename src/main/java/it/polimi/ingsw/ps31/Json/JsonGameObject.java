@@ -16,7 +16,7 @@ public class JsonGameObject {
     private List<DevelopmentCard> developementCardList;
 
 
-    public JsonGameObject(List<DevelopmentCard> developementCardList, List<Resource> costlist) {
+    public JsonGameObject(List<DevelopmentCard> developementCardList) {
         this.developementCardList = developementCardList;
     }
 

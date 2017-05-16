@@ -10,7 +10,7 @@ import java.util.Scanner;
  * Created by Giuseppe on 10/05/2017.
  */
 public class ResourceList {
-    private List<Resource> resource;
+    private List<Resource> resource = new ArrayList<>();
 
     public ResourceList() {
     }
