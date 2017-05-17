@@ -86,6 +86,16 @@ public class ResourceList {
             this.resource.add(victoryPoint);
         }
     }
+    public void setCouncilPrivilege() {
+        System.out.println("Inserisci il valore dei punti privilegio consiglio: ");
+        Scanner scanner =new Scanner(System.in);
+        int value= scanner.nextByte();
+        Resource councilPrivilege= new CouncilPrivilege(0);
+        councilPrivilege.addValue(value);
+        if (councilPrivilege.getValue()!=0) {
+            this.resource.add(councilPrivilege);
+        }
+    }
 
 
     public List<Resource> getResourceList(){
