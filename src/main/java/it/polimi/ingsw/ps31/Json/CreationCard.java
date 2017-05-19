@@ -22,7 +22,7 @@ public abstract class CreationCard {
          int contatore=0;
          String[] greenCardName = {"Avamposto Commerciale","Bosco","Borgo","Cava di Ghiaia","Foresta","Monastero","Rocca","Città","Eremo","Cava di Pietra",
                  "Villaggio Minerario","Possedimento","Ducato","Villaggio Montanaro","Maniero","Miniera d'Oro","Città Mercantile","Tenuta","Colonia","Cava di Marmo","Provincia",
-         "Santuario","Castello","Città Fortificata",};
+                 "Santuario","Castello","Città Fortificata",};
          String[] yellowCardName = { "Zecca","Esattoria","arco di Trionfo","Teatro","Falegnameria","Tagliapietre","Cappella","Residenza",
                 "Mercato","Tesoreria","Gilda dei Pittori","Gilda degli Scultori","Gilda dei Costruttori","Battistero","Caserma","Fortezza",
                 "Banca","Fiera","Giardino","Castelletto","Palazzo","Basilica","Accademia Militare","Cattedrale",};

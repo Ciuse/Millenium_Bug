@@ -38,6 +38,7 @@ public abstract class Resource {
 //        if(value<0);
 //    }
 
+/*Getters*/
     public int getValue(){
         return this.value;
     }

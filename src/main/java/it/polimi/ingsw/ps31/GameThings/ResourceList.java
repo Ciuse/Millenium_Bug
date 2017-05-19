@@ -15,6 +15,7 @@ public class ResourceList {
     public ResourceList() {
     }
 
+    /*Getters & Setters*/
     public void setCoin() {
         System.out.println("Inserisci il valore delle monete: ");
         Scanner scanner =new Scanner(System.in);
@@ -35,7 +36,7 @@ public class ResourceList {
             this.resource.add(wood);
         }
     }
-    public void setstone() {
+    public void setStone() {
         System.out.println("Inserisci il valore delle pietre: ");
         Scanner scanner =new Scanner(System.in);
         int value= scanner.nextByte();

@@ -11,7 +11,7 @@ import java.util.List;
  */
 public final class Territory extends DevelopmentCard {
 
-    public Territory(int id, String name, int period, List<ResourceList> cost, Effect immediateEffect, Effect permanentEffect) {
+    public Territory(int id, String name, int period, List<ResourceList> cost, List<Effect> immediateEffect, List<Effect> permanentEffect) {
         super(id, name, CardColor.GREEN, period, cost, immediateEffect, permanentEffect);
     }
 

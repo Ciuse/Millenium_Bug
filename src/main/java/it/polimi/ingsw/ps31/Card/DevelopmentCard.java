@@ -15,10 +15,10 @@ public abstract class DevelopmentCard extends Card {
     private final CardColor cardColor;
     private final int period;
     private final List<ResourceList> costList;  // il costo viene visto come una lista di risorse
-    private final Effect immediateEffect;
-    private final Effect permanentEffect;
+    private final List<Effect> immediateEffect;
+    private final List<Effect> permanentEffect;
 
-    public DevelopmentCard(int cardId, String name, CardColor cardColor, int period, List<ResourceList> costList, Effect immediateEffect, Effect permanentEffect) {
+    public DevelopmentCard(int cardId, String name, CardColor cardColor, int period, List<ResourceList> costList, List<Effect> immediateEffect, List<Effect> permanentEffect) {
         super(name);
         this.cardId = cardId;
         this.cardColor = cardColor;
@@ -27,7 +27,7 @@ public abstract class DevelopmentCard extends Card {
         this.immediateEffect = immediateEffect;
         this.permanentEffect = permanentEffect;
     }
-
+    /*Getters*/
     public int getCardId() {
         return this.cardId;
     }
@@ -40,10 +40,10 @@ public abstract class DevelopmentCard extends Card {
     public List<ResourceList> getCostList(){   //ritorno una copia al riferimento alla lista per non farla modificare
         return new ArrayList<>(this.costList);
     }
-    public Effect getImmediateEffect(){
-        return this.immediateEffect;
+    public List<Effect> getImmediateEffectList(){
+        return new ArrayList<>(this.immediateEffect);
     }
-    public Effect getPermanentEffect(){
-        return this.permanentEffect;
+    public List<Effect> getPermanentEffectList(){
+        return new ArrayList<>(this.permanentEffect);
     }
 }

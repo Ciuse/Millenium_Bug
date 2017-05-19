@@ -12,7 +12,7 @@ import java.util.List;
 public final class Venture extends DevelopmentCard{
 
 
-    public Venture(int id, String name, int period, List<ResourceList> cost, Effect immediateEffect, Effect permanentEffect) {
+    public Venture(int id, String name, int period, List<ResourceList> cost, List<Effect> immediateEffect, List<Effect> permanentEffect) {
         super(id, name, CardColor.PURPLE, period, cost, immediateEffect, permanentEffect);
     }
 }

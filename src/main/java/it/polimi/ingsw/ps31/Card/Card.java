@@ -10,6 +10,7 @@ public abstract class Card {
         this.name = name;
     }
 
+    /*Getters*/
     public String getName (){
         return this.name;
     }

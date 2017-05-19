@@ -43,7 +43,7 @@ public class JsonGameObject {
         return gson;
     }
 
-
+/*Getters & Setters*/
 
     public List<DevelopmentCard> getCardList(){  //ritorno la lista stessa, non mi interessa se la possono modificare
 
