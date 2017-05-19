@@ -9,13 +9,11 @@ import it.polimi.ingsw.ps31.GameThings.ResourceList;
 public class PlayerResources {
 
     private ResourceList currentResources = new ResourceList();
-    private ResourceList discountResources = new ResourceList();
 
     /* Constructor */
-    public PlayerResources(ResourceList initialResources, ResourceList discountResources)
+    public PlayerResources(ResourceList initialResources)
     {
         this.currentResources = initialResources;
-        this.discountResources = discountResources;
     }
 
     /* Setters & Getters */

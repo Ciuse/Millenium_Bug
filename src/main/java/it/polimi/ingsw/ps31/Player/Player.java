@@ -22,7 +22,7 @@ public class Player {
     public Player(PlayerColor color, ResourceList initialResources, String nickname)
     {
         this.color = color;
-        this.resources = new PlayerResources(initialResources, null);
+        this.resources = new PlayerResources(initialResources);
         this.playerBoard = new PersonalBoard(this);
         this.nickname = nickname;
         this.permanentBonus = new PermanentBonus();
@@ -70,7 +70,7 @@ public class Player {
         return excommunications;
     }
 
-    public void addExcommunications(Excommunication excommunication)
+    public void addExcommunication(Excommunication excommunication)
     {
         this.excommunications.add(excommunication);
     }
