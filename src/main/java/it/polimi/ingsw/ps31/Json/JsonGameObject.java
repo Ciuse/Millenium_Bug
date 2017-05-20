@@ -27,7 +27,10 @@ public class JsonGameObject {
         resourceAdapterFactory.registerSubtype(Coin.class, "Coin");
         resourceAdapterFactory.registerSubtype(Wood.class, "Wood");
         resourceAdapterFactory.registerSubtype(Stone.class, "Stone");
-        resourceAdapterFactory.registerSubtype(Servant.class, "Servant");
+        resourceAdapterFactory.registerSubtype(FaithPoint.class, "FaithPoint");
+        resourceAdapterFactory.registerSubtype(MilitaryStrength.class, "MilitaryStrength");
+        resourceAdapterFactory.registerSubtype(VictoryPoint.class, "VictoryPoint");
+        resourceAdapterFactory.registerSubtype(CouncilPrivilege.class, "CouncilPrivilege");
 
         RuntimeTypeAdapterFactory<DevelopmentCard> developementCardAdapterFactory = RuntimeTypeAdapterFactory.of(DevelopmentCard.class, "CardType");
         developementCardAdapterFactory.registerSubtype(Territory.class, "Territory");

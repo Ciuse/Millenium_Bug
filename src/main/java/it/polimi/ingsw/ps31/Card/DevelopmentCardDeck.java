@@ -10,11 +10,13 @@ import java.util.List;
  */
 public class DevelopmentCardDeck extends Deck {
         private final CardColor cardColor;
+        private final int Period;
         private int maxNumber =8;
         private final List<DevelopmentCard> cardList = new ArrayList<>();
 
-    public DevelopmentCardDeck(CardColor cardColor, List<Card> cardList) {
+    public DevelopmentCardDeck(CardColor cardColor, int period) {
             this.cardColor = cardColor;
+            this.Period = period;
         }
 
     public void setCard(DevelopmentCard card){

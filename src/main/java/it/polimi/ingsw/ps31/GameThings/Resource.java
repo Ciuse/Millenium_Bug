@@ -19,20 +19,20 @@ public abstract class Resource {
         this.value=this.value+value;
     }
 
-    public static int insertValue() {
-        System.out.println("Inserisci il valore della risorsa:");
-        Scanner scanner =new Scanner(System.in);
-        int value= 0;
-        try {
-            value = scanner.nextByte();
-        } catch (InputMismatchException e) {
-            System.out.println("Eccezione catturata (valore non numerico)");
-            insertValue();
-        }
-        Resource stone= new Stone(0);
-        stone.addValue(value);
-        return value;
-    }
+//    public static int insertValue() {       //solo una prova
+//        System.out.println("Inserisci il valore della risorsa:");
+//        Scanner scanner =new Scanner(System.in);
+//        int value= 0;
+//        try {
+//            value = scanner.nextByte();
+//        } catch (InputMismatchException e) {
+//            System.out.println("Eccezione catturata (valore non numerico)");
+//            insertValue();
+//        }
+//        Resource stone= new Stone(0);
+//        stone.addValue(value);
+//        return value;
+//    }
 
 //TODO    public void controlValueInsert(int value){
 //        if(value<0);

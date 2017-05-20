@@ -22,6 +22,10 @@ public class CouncilPalace extends ActionSpace {
     {
         this.order.add(member);
     }
+    public void removeAllMember()
+    {
+        this.order.clear();
+    }
 
     public ArrayList<PlayerColor> getColorOrder()
     {

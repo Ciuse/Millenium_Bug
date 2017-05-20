@@ -18,7 +18,6 @@ public class ActionSpace extends PhysicalActionBox {
         this.diceCost = diceCost;
         this.familyMemberLimit = familyMemberLimit;
         this.immediateEffect = immediateEffect;
-
         this.familyMember = null;
     }
 
