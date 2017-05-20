@@ -10,8 +10,10 @@ import java.util.Scanner;
 public class ResourceList {
     private List<Resource> resourceList = new ArrayList<>();
 
-    public ResourceList() {
+    public ResourceList(List<Resource> resourceList) {
+        this.resourceList = resourceList;
     }
+    public ResourceList(){}
 
     /*Getters & Setters*/
     public void setCoin() {
@@ -55,11 +57,15 @@ public class ResourceList {
         }
     }
     public void setMilitaryStrength() {
-        System.out.println("Inserisci il valore dei punti militari: ");
+        System.out.println("Inserisci il valore normale dei punti militari: ");
         Scanner scanner =new Scanner(System.in);
         int value= scanner.nextByte();
-        MilitaryStrength militaryStrength= new MilitaryStrength(0);
+        System.out.println("Inserisci il valore minimo di punti militari richiesti : ");
+        Scanner scanner1 = new Scanner(System.in);
+        int valueRequest = scanner1.nextByte();
+        MilitaryStrength militaryStrength= new MilitaryStrength(0,0);
         militaryStrength.addValue(value);
+        militaryStrength.setValueRequest(valueRequest);
         if (militaryStrength.getValue()!=0) {
             this.resourceList.add(militaryStrength);
         }

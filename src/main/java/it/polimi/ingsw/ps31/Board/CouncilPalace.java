@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.Board;
 
 import it.polimi.ingsw.ps31.Constants.PlayerColor;
+import it.polimi.ingsw.ps31.Effect.Effect;
 import it.polimi.ingsw.ps31.Player.FamilyMember;
 
 import java.util.ArrayList;
@@ -14,8 +15,9 @@ public class CouncilPalace extends ActionSpace {
 
     private List<FamilyMember> order = new ArrayList<FamilyMember>();
 
-    public CouncilPalace(){
-        super(1, -1, null);
+    public CouncilPalace(Effect immediateEffect ){
+
+        super(1, -1, immediateEffect);
     }
 
     public void addMember(FamilyMember member)
