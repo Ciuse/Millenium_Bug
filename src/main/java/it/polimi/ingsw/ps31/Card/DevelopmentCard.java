@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.Card;
 
 import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Effect.Effect;
+import it.polimi.ingsw.ps31.Effect.EffectList;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
 
 import java.util.ArrayList;
@@ -15,17 +16,17 @@ public abstract class DevelopmentCard extends Card {
     private final CardColor cardColor;
     private final int period;
     private final List<ResourceList> costList;  // il costo viene visto come una lista di risorse
-    private final List<Effect> immediateEffect;
-    private final List<Effect> permanentEffect;
+    private final EffectList immediateEffectList;
+    private final EffectList permanentEffectList;
 
-    public DevelopmentCard(int cardId, String name, CardColor cardColor, int period, List<ResourceList> costList, List<Effect> immediateEffect, List<Effect> permanentEffect) {
+    public DevelopmentCard(int cardId, String name, CardColor cardColor, int period, List<ResourceList> costList, EffectList immediateEffectList, EffectList permanentEffectList) {
         super(name);
         this.cardId = cardId;
         this.cardColor = cardColor;
         this.period = period;
         this.costList = costList;
-        this.immediateEffect = immediateEffect;
-        this.permanentEffect = permanentEffect;
+        this.immediateEffectList = immediateEffectList;
+        this.permanentEffectList = permanentEffectList;
     }
     /*Getters*/
     public int getCardId() {
@@ -40,10 +41,10 @@ public abstract class DevelopmentCard extends Card {
     public List<ResourceList> getCostList(){   //ritorno una copia al riferimento alla lista per non farla modificare
         return new ArrayList<>(this.costList);
     }
-    public List<Effect> getImmediateEffectList(){
-        return new ArrayList<>(this.immediateEffect);
+    public EffectList getImmediateEffectList(){
+        return this.immediateEffectList;
     }
-    public List<Effect> getPermanentEffectList(){
-        return new ArrayList<>(this.permanentEffect);
+    public EffectList getPermanentEffectList(){
+        return this.permanentEffectList;
     }
 }

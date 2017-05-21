@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.Board;
 
-import it.polimi.ingsw.ps31.Effect.Effect;
+import it.polimi.ingsw.ps31.Effect.EffectList;
 import it.polimi.ingsw.ps31.Player.FamilyMember;
 
 /**
@@ -11,13 +11,13 @@ public class ActionSpace extends PhysicalActionBox {
     private final int diceCost;
     private final int familyMemberLimit; //Limite massimo di familiari nello spazio azione. -1 indica l'assenza di limite
     private FamilyMember familyMember;
-    private final Effect immediateEffect;
+    private final EffectList immediateEffectList;
 
     /* Constructor */
-    public ActionSpace(int diceCost, int familyMemberLimit, Effect immediateEffect) {
+    public ActionSpace(int diceCost, int familyMemberLimit, EffectList immediateEffectList) {
         this.diceCost = diceCost;
         this.familyMemberLimit = familyMemberLimit;
-        this.immediateEffect = immediateEffect;
+        this.immediateEffectList = immediateEffectList;
         this.familyMember = null;
     }
 
@@ -37,9 +37,9 @@ public class ActionSpace extends PhysicalActionBox {
         return this.familyMember;
     }
 
-    public Effect getImmediateEffect()
+    public EffectList getImmediateEffectList()
     {
-        return this.immediateEffect;
+        return this.immediateEffectList;
     }
 
     public void setFamilyMember(FamilyMember familyMember)

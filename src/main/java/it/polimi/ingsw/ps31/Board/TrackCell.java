@@ -1,12 +1,12 @@
 package it.polimi.ingsw.ps31.Board;
 
-import it.polimi.ingsw.ps31.GameThings.Resource;
+import it.polimi.ingsw.ps31.GameThings.PointResource;
 import it.polimi.ingsw.ps31.Player.Player;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+        import java.util.Collection;
+        import java.util.Iterator;
+        import java.util.List;
 
 /**
  * Created by Giuseppe on 18/05/2017.
@@ -14,15 +14,15 @@ import java.util.List;
 public class TrackCell {
     private List<MarkerDisc> markerDiscList= new ArrayList<>();
     private final int value;
-    private Resource resourceValue;
+    private PointResource resourceValue;
 
-      public TrackCell(int value) {
+    public TrackCell(int value) {
         this.value = value;
     }
 
     /*Getters & Setters*/
     public void setMarkerDisc(MarkerDisc markerDisc){
-            this.markerDiscList.add(markerDisc);
+        this.markerDiscList.add(markerDisc);
     }
     public MarkerDisc unSetMarkerDisc(Player player){       //toglie il pezzo del colore del player che invoca il metodo e restituisce il pezzo che andrà risettato
         Iterator<MarkerDisc> iterator = markerDiscList.iterator();
@@ -36,7 +36,7 @@ public class TrackCell {
         }
         return null;
     }
-    public void setExtraValue(Resource resourceValue){
+    public void setExtraValue(PointResource resourceValue){
         this.resourceValue=resourceValue;
     }
     public int getValue(){
@@ -45,7 +45,7 @@ public class TrackCell {
     public List<MarkerDisc> getMarkerDisc(){
         return this.markerDiscList;
     }
-    public Resource getResourceValue(){
+    public PointResource getPointResourceValue(){
         return this.resourceValue;
     }
 }

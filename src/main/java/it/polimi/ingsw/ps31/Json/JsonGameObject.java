@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.ps31.Card.*;
 import it.polimi.ingsw.ps31.Card.Character;
+import it.polimi.ingsw.ps31.Effect.*;
 import it.polimi.ingsw.ps31.GameThings.*;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public class JsonGameObject {
     private List<DevelopmentCard> developementCardList;
+    private List<EffectList> ActionSpaceEffectList;
 
 
     public JsonGameObject(List<DevelopmentCard> developementCardList) {
@@ -38,9 +40,26 @@ public class JsonGameObject {
         developementCardAdapterFactory.registerSubtype(Character.class, "Character");
         developementCardAdapterFactory.registerSubtype(Venture.class, "Venture");
 
+        RuntimeTypeAdapterFactory<Effect> effectAdapterFactory = RuntimeTypeAdapterFactory.of(Effect.class, "EffectType");
+        effectAdapterFactory.registerSubtype(HarvestEffect.class, "HarvestEffect");
+        effectAdapterFactory.registerSubtype(ProductionEffect.class, "ProductionEffect");
+        effectAdapterFactory.registerSubtype(HarvestActivation.class, "HarvestActivation");
+        effectAdapterFactory.registerSubtype(ProductionActivation.class, "ProductionActivation");
+        effectAdapterFactory.registerSubtype(CardCostDiscount.class, "CardCostDiscount");
+        effectAdapterFactory.registerSubtype(ActionDiscount.class, "ActionDiscount");
+        effectAdapterFactory.registerSubtype(NoImmediateEffect.class, "NoImmediateEffect");
+        effectAdapterFactory.registerSubtype(GetResource.class, "GetResource");
+        effectAdapterFactory.registerSubtype(ChangeResource.class, "ChangeResource");
+        effectAdapterFactory.registerSubtype(GetCard.class, "GetCard");
+        effectAdapterFactory.registerSubtype(GetCardWithDiscount.class, "GetCardWithDiscount");
+
+        //TODO MANCANO I LEADER EFFECT
+
+
+
 //Creazione del builder adatto a riconoscere tutti gli oggetti polimorfi
         GsonBuilder builder = new GsonBuilder();
-        builder.setPrettyPrinting().serializeNulls().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).registerTypeAdapterFactory(resourceAdapterFactory).registerTypeAdapterFactory(developementCardAdapterFactory);
+        builder.setPrettyPrinting().serializeNulls().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).registerTypeAdapterFactory(resourceAdapterFactory).registerTypeAdapterFactory(developementCardAdapterFactory).registerTypeAdapterFactory(effectAdapterFactory);
         Gson gson = builder.create();
 
         return gson;
@@ -52,5 +71,10 @@ public class JsonGameObject {
 
         return this.developementCardList;
     }
+    public List<EffectList> getEffectList(){  //ritorno la lista stessa, non mi interessa se la possono modificare
+
+        return this.ActionSpaceEffectList;
+    }
+
 
 }

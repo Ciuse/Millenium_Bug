@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class ResourceList {
     private List<Resource> resourceList = new ArrayList<>(7);           //TODO da provare/verificare come funziona
 
+    /* Constructor */
     public ResourceList(List<Resource> resourceList) {
         this.resourceList = resourceList;
     }
@@ -70,7 +71,6 @@ public class ResourceList {
             this.resourceList.add(militaryStrength);
         }
     }
-
     public void setFaithPoint() {
         System.out.println("Inserisci il valore dei punti fede: ");
         Scanner scanner =new Scanner(System.in);

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.Board;
 
 import it.polimi.ingsw.ps31.Effect.Effect;
+import it.polimi.ingsw.ps31.Effect.EffectList;
 import it.polimi.ingsw.ps31.Effect.GetResource;
 import it.polimi.ingsw.ps31.GameThings.*;
 
@@ -27,40 +28,28 @@ public class Market {
         this.actionBox = actionSpaceList;
         numberOfActionSpace=actionSpaceList.size();
     }
-//    public void add2PlayerMarketSpace(ActionSpace actionSpace){     // TODO fare tutto ciò nella creazione del file aggiunge i primi 2 spazi del mercato
-//        if(numberOfActionSpace==0) {
-//            ResourceList resourceList = new ResourceList();
-//            resourceList.addSpecificResource(new Coin(5));
-//            GetResource effect = new GetResource(resourceList);
-//            this.actionBox.add(numberOfActionSpace,new ActionSpace(1, 1, effect ));
-//            numberOfActionSpace++;
-//        }
-//        if(numberOfActionSpace==1) {
-//            ResourceList resourceList = new ResourceList();
-//            resourceList.addSpecificResource(new Servant(5));
-//            GetResource effect = new GetResource(resourceList);
-//            this.actionBox.add(numberOfActionSpace,new ActionSpace(1, 1, effect ));
-//            numberOfActionSpace++;
-//        }
-//
-//    }
-//    public void add4PlayerMarketSpace(ActionSpace actionSpace){    //aggiunge gli spazi 3 e 4 del mercato
-//        if(numberOfActionSpace==2) {
-//            ResourceList resourceList = new ResourceList();
-//            resourceList.addSpecificResource(new MilitaryStrength(3));
-//            resourceList.addSpecificResource(new Coin(2));
-//            GetResource effect = new GetResource(resourceList);
-//            this.actionBox.add(numberOfActionSpace,new ActionSpace(1, 1, effect ));
-//            numberOfActionSpace++;
-//        }
-//        if(numberOfActionSpace==3) {
-//            ResourceList resourceList = new ResourceList();
-//            resourceList.addSpecificResource(new CouncilPrivilege(2, true));
-//            GetResource effect = new GetResource(resourceList);
-//            this.actionBox.add(numberOfActionSpace,new ActionSpace(1, 1, effect ));
-//            numberOfActionSpace++;
-//        }
-//    }
+    public void add2PlayerMarketSpace(EffectList effectList1, EffectList effectList2){     // TODO fare tutto ciò nella creazione del file aggiunge i primi 2 spazi del mercato
+        if(numberOfActionSpace==0) {
+
+            this.actionBox.add(numberOfActionSpace,new ActionSpace(1, 1, effectList1 ));
+            numberOfActionSpace++;
+        }
+        if(numberOfActionSpace==1) {
+            this.actionBox.add(numberOfActionSpace,new ActionSpace(1, 1, effectList2 ));
+            numberOfActionSpace++;
+        }
+
+    }
+    public void add4PlayerMarketSpace(EffectList effectList3, EffectList effectList4){    //aggiunge gli spazi 3 e 4 del mercato
+        if(numberOfActionSpace==2) {
+            this.actionBox.add(numberOfActionSpace,new ActionSpace(1, 1, effectList3 ));
+            numberOfActionSpace++;
+        }
+        if(numberOfActionSpace==3) {
+            this.actionBox.add(numberOfActionSpace,new ActionSpace(1, 1, effectList4 ));
+            numberOfActionSpace++;
+        }
+    }
     public void remove4PlayerActionSpace(){                     //rimuove gli ultimi 2 spazi del mercato
         if(numberOfActionSpace==4) {
             this.actionBox.remove(numberOfActionSpace);
