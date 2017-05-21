@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps31.Board;
 import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Constants.DiceColor;
 import it.polimi.ingsw.ps31.Effect.EffectList;
-
 import java.util.List;
 
 /**
@@ -21,6 +20,9 @@ public class GameBoard {
     private BigHarvest bigHarvest;
     private BigProduction bigProduction;
     private Dice[] dice;
+    private MilitaryPointTrack militaryPointTrack;
+    private FaithPointTrack faithPointTrack;
+    private VictoryPointTrack victoryPointTrack;
     private static GameBoard ourInstance;
 
     public static GameBoard getInstance( ) {
@@ -46,6 +48,9 @@ public class GameBoard {
         this.bigProduction = new BigProduction(-1, otherEffectList.get(4));
         this.market = new Market();
         this.market.add2PlayerMarketSpace(otherEffectList.get(5),otherEffectList.get(6));
+        this.militaryPointTrack=MilitaryPointTrack.getInstance();
+        this.faithPointTrack = FaithPointTrack.getInstance();
+        this.victoryPointTrack = VictoryPointTrack.getInstance();
     }
 
     public void add4PlayerMarketSpace(List<EffectList> otherEffectList){
