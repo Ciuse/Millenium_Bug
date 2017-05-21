@@ -12,7 +12,7 @@ public class DevelopmentCardDeck extends Deck {
         private final CardColor cardColor;
         private final int Period;
         private int maxNumber =8;
-        private final List<DevelopmentCard> cardList = new ArrayList<>();
+        private final List<DevelopmentCard> cardList = new ArrayList<>(maxNumber);
 
     public DevelopmentCardDeck(CardColor cardColor, int period) {
             this.cardColor = cardColor;

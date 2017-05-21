@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Created by Giuseppe on 10/05/2017.
  */
 public class ResourceList {
-    private List<Resource> resourceList = new ArrayList<>();
+    private List<Resource> resourceList = new ArrayList<>(7);           //TODO da provare/verificare come funziona
 
     public ResourceList(List<Resource> resourceList) {
         this.resourceList = resourceList;

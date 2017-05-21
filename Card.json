@@ -1,62 +1,74 @@
 {
-  "DevelopementCard": [
+  "DevelopementCardList": [
     {
       "CardType": "Territory",
-      "ImmediateEffect": null,
-      "PermanentEffect": null,
+      "CardId": 1,
       "CardColor": "GREEN",
-      "Period": "First",
-      "Cost": [
+      "Period": 1,
+      "CostList": [
         {
-          "ResourceType": "Wood",
-          "Value": 8
+          "Resource": [
+            {
+              "ResourceType": "Wood",
+              "Value": 4
+            },
+            {
+              "ResourceType": "Coin",
+              "Value": 6
+            }
+          ]
         },
         {
-          "ResourceType": "Stone",
-          "Value": 11
-        },
-        {
-          "ResourceType": "Wood",
-          "Value": 8
+          "Resource": [
+            {
+              "ResourceType": "Wood",
+              "Value": 4
+            },
+            {
+              "ResourceType": "Coin",
+              "Value": 6
+            }
+          ]
         }
       ],
+      "ImmediateEffect": null,
+      "PermanentEffect": null,
       "Name": "Prova1"
     },
     {
       "CardType": "Building",
-      "ImmediateEffect": null,
-      "PermanentEffect": null,
+      "CardId": 1,
       "CardColor": "YELLOW",
-      "Period": "First",
-      "Cost": [
+      "Period": 2,
+      "CostList": [
         {
-          "ResourceType": "Wood",
-          "Value": 8
+          "Resource": [
+            {
+              "ResourceType": "Wood",
+              "Value": 4
+            },
+            {
+              "ResourceType": "Coin",
+              "Value": 6
+            }
+          ]
         },
         {
-          "ResourceType": "Stone",
-          "Value": 11
-        },
-        {
-          "ResourceType": "Wood",
-          "Value": 8
+          "Resource": [
+            {
+              "ResourceType": "Wood",
+              "Value": 4
+            },
+            {
+              "ResourceType": "Coin",
+              "Value": 6
+            }
+          ]
         }
       ],
+      "ImmediateEffect": null,
+      "PermanentEffect": null,
       "Name": "Prova2"
-    }
-  ],
-  "Costlist": [
-    {
-      "ResourceType": "Wood",
-      "Value": 8
-    },
-    {
-      "ResourceType": "Stone",
-      "Value": 11
-    },
-    {
-      "ResourceType": "Wood",
-      "Value": 8
     }
   ]
 }

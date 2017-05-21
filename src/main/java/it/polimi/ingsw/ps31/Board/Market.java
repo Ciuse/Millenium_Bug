@@ -70,4 +70,7 @@ public class Market {
         }
     }
 
+    public List<ActionSpace> getActionBox (){
+        return new ArrayList<>(actionBox);
+    }
 }
