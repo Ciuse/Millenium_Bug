@@ -12,7 +12,7 @@ public class ActionSpace extends PhysicalActionBox {
 
     private final int diceCost;
     private final int familyMemberLimit; //Limite massimo di familiari nello spazio azione. -1 indica l'assenza di limite
-    private ArrayList<FamilyMember> familyMember;
+    private ArrayList<FamilyMember> familyMembers;
     private final EffectList immediateEffectList;
 
     /* Constructor */
@@ -20,7 +20,7 @@ public class ActionSpace extends PhysicalActionBox {
         this.diceCost = diceCost;
         this.familyMemberLimit = familyMemberLimit;
         this.immediateEffectList = immediateEffectList;
-        this.familyMember = null;
+        this.familyMembers = null;
     }
 
     /* Getters & Setters */
