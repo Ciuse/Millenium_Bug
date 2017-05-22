@@ -3,20 +3,15 @@ package it.polimi.ingsw.ps31.Board;
 import it.polimi.ingsw.ps31.GameThings.PointResource;
 import it.polimi.ingsw.ps31.Player.Player;
 
-import java.awt.*;
-
 /**
  * Created by Giuseppe on 18/05/2017.
  */
 public class MarkerDisc {
-    private PointResource resourceType;
+    private final Class<? extends PointResource> resourceType;
     private final Player player;
+    private TrackCell trackCell;
 
-    public MarkerDisc(Player player) {
-        this.player = player;
-    }
-
-    public MarkerDisc(PointResource resourceType, Player player) {
+    public MarkerDisc(Class<? extends PointResource> resourceType, Player player) {
         this.resourceType = resourceType;
         this.player = player;
     }
@@ -25,7 +20,12 @@ public class MarkerDisc {
     public Player getPlayer(){
         return this.player;
     }
-    public PointResource getResourceType(){
+    public Class<? extends PointResource> getResourceType(){
         return resourceType;
     }
+    public void setTrackCell(){
+        if(trackCell.getResourceType().equals(this.getResourceType()))
+        trackCell.setMarkerDisc(this);
+    }
+    //TODO FINIRE ANCORA LA CLASSE CON I SET PER LE TRACK CELL
 }

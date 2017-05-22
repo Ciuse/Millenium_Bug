@@ -4,8 +4,7 @@ import it.polimi.ingsw.ps31.GameThings.PointResource;
 import it.polimi.ingsw.ps31.Player.Player;
 
 import java.util.ArrayList;
-        import java.util.Collection;
-        import java.util.Iterator;
+import java.util.Iterator;
         import java.util.List;
 
 /**
@@ -13,10 +12,12 @@ import java.util.ArrayList;
  */
 public class TrackCell {
     private List<MarkerDisc> markerDiscList= new ArrayList<>();
+    private final Class<? extends PointResource> resourceType;
     private final int value;
     private PointResource resourceValue;
 
-    public TrackCell(int value) {
+    public TrackCell(Class<? extends PointResource> resourceType, int value) {
+        this.resourceType = resourceType;
         this.value = value;
     }
 
@@ -47,5 +48,8 @@ public class TrackCell {
     }
     public PointResource getPointResourceValue(){
         return this.resourceValue;
+    }
+    public Class<? extends PointResource> getResourceType(){
+        return this.resourceType;
     }
 }

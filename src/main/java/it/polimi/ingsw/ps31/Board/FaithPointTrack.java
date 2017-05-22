@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.Board;
 
+import it.polimi.ingsw.ps31.GameThings.FaithPoint;
+
 /**
  * Created by Giuseppe on 19/05/2017.
  */
@@ -13,6 +15,6 @@ public class FaithPointTrack extends Track{
     }
 
     private FaithPointTrack() {
-        super(MAXNUMBER);
+        super(MAXNUMBER, FaithPoint.class);
     }
 }
