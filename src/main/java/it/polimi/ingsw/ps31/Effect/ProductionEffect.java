@@ -10,10 +10,10 @@ import java.util.List;
 // generico effetto produzione
 public class ProductionEffect extends Effect {
     private final int productionActionValue; // è il valore del dado che serve per attivare la produzione
-    private final List<GetResource> getResourceList; // ogni produzione può avere una lista di effetti ottieni risorsa
-    public ProductionEffect(int productionActionValue, List<GetResource> productionEffectList) {
+    private final GetResource getResource; // ogni produzione ha un effetto ottieni risorsa
+    public ProductionEffect(int productionActionValue, GetResource productionEffect) {
         this.productionActionValue = productionActionValue;
-        this.getResourceList = productionEffectList;
+        this.getResource = productionEffect;
     }
 
 

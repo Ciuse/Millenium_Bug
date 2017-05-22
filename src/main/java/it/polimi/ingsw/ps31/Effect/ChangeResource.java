@@ -2,16 +2,18 @@ package it.polimi.ingsw.ps31.Effect;
 
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
 
+import java.util.List;
+
 /**
  * Created by giulia on 17/05/2017.
  */
 public class ChangeResource extends GetResource {
-    private final ResourceList resourceToPay; // la carta ha delle risorse da pagare per poter ottenere nuove risorse
-    private final ResourceList resourceToPay2; //alcune carte hanno una doppia scelta sulle risorse da pagare per ottenere nuove risorse
+    private final List<ResourceList> resourceToPayList; // la carta ha delle risorse da pagare per poter ottenere nuove risorse
+     //alcune carte hanno una doppia scelta sulle risorse da pagare per ottenere nuove risorse
 
-    public ChangeResource(ResourceList resourceToPay,ResourceList resourceToPay2, ResourceList resourceGained) {
+    public ChangeResource(List<ResourceList> resourceToPayList,ResourceList resourceGained) {
         super(resourceGained);
-        this.resourceToPay = resourceToPay;
-        this.resourceToPay2 = resourceToPay2;
+        this.resourceToPayList = resourceToPayList;
     }
+    //TODO implementare un metodo che una volta che riceve dall'utente una scelta l'elemento della lista da pagare sarà l'elemento da lui scelto
 }
