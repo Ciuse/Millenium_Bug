@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.Effect;
 
+import it.polimi.ingsw.ps31.Actions.*;
 import it.polimi.ingsw.ps31.Player.Player;
 
 /**
@@ -8,7 +9,7 @@ import it.polimi.ingsw.ps31.Player.Player;
 public class ActionDiscount extends Effect {
     private final Actions actionToDiscount;
     private final int discountValue;
-    public ActionDiscount(Actions actionToDiscount,int discountValue){
+    public ActionDiscount(Actions actionToDiscount, int discountValue){
         this.actionToDiscount = actionToDiscount;
         this.discountValue = discountValue;
     }

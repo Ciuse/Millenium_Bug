@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps31.Player.Player;
  */
 public class PersonalBoard {
     private final Player player;
-    private final PersonalBoardCardSpace[] cardSpace = new PersonalBoardCardSpace[6];
+    private final PersonalBoardCardSpace[] cardSpace = new PersonalBoardCardSpace[6];   //TODO: è una lista e sono 4
 
     /* Constructor */
     public PersonalBoard(Player player)

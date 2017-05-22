@@ -1,30 +1,70 @@
 package it.polimi.ingsw.ps31.Player;
 
-import it.polimi.ingsw.ps31.GameThings.Resource;
-import it.polimi.ingsw.ps31.GameThings.ResourceList;
+import com.sun.org.apache.regexp.internal.RE;
+import it.polimi.ingsw.ps31.GameThings.*;
+
+import java.util.HashMap;
 
 /**
  * Created by Francesco on 15/05/2017.
  */
 public class PlayerResources {
 
-    private ResourceList currentResources = new ResourceList();
+    private HashMap<String, Resource> currentResources = new HashMap<>();
 
     /* Constructor */
-    public PlayerResources(ResourceList initialResources)
+    public PlayerResources(int woodAmt, int stoneAmt, int coinAmt, int servantAmt)
     {
-        this.currentResources = initialResources;
+        //Inizializzo le risorse del giocatore con i valori iniziali
+
+        this.currentResources.put("Wood", new Wood(woodAmt));
+        this.currentResources.put("Stone", new Stone(stoneAmt)) ;
+        this.currentResources.put("Coin", new Coin(coinAmt));
+        this.currentResources.put("Servant", new Servant(servantAmt));
+
+        this.currentResources.put("MilitaryStrength", new MilitaryStrength(0));
+        this.currentResources.put("FaithPoints", new FaithPoint(0));
+        this.currentResources.put("VictoryPoints", new VictoryPoint(0));
     }
 
     /* Setters & Getters */
-    public void setResources()
+    public void addResources(Resource resourceToAdd)
     {
-        //TODO: implementare
+        String resourceName = new String(resourceToAdd.toStringName());
+
+        if ( this.currentResources.containsKey(resourceName) )
+            this.currentResources.get(resourceName).addValue(resourceToAdd.getValue());
+        else
+        {
+            //TODO: gestire (eccezione?)
+        }
     }
 
-    public ResourceList getResources()
+    public void subResources(Resource resourceToSub)
     {
-        //TODO: implementare
-        return new ResourceList(); //Istruzione inutile, scritta solo per consentire la compilazione
+        String resourceName = new String(resourceToSub.toStringName());
+
+        if ( this.currentResources.containsKey(resourceName) )
+            this.currentResources.get(resourceName).subValue(resourceToSub.getValue());
+        else
+        {
+            //TODO: gestire (eccezione?)
+        }
+    }
+
+    public Resource getResource(String resourceName)
+    {
+        if ( this.currentResources.containsKey(resourceName) )
+            return this.currentResources.get(resourceName);
+        else
+        {
+            //TODO: gestire (eccezione?)
+            return null; //Istruzione messa solo per avere un return
+        }
+    }
+
+    public HashMap getResourcesMap()
+    {
+        return new HashMap<>(this.currentResources);
     }
 }

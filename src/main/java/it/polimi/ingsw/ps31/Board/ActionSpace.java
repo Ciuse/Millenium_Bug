@@ -3,6 +3,8 @@ package it.polimi.ingsw.ps31.Board;
 import it.polimi.ingsw.ps31.Effect.Effect;
 import it.polimi.ingsw.ps31.Player.FamilyMember;
 
+import java.util.ArrayList;
+
 /**
  * Created by Francesco on 12/05/2017.
  */
@@ -10,7 +12,7 @@ public class ActionSpace extends PhysicalActionBox {
 
     private final int diceCost;
     private final int familyMemberLimit; //Limite massimo di familiari nello spazio azione. -1 indica l'assenza di limite
-    private FamilyMember familyMember;
+    private ArrayList<FamilyMember> familyMembers;
     private final Effect immediateEffect;
 
     /* Constructor */
@@ -19,7 +21,7 @@ public class ActionSpace extends PhysicalActionBox {
         this.familyMemberLimit = familyMemberLimit;
         this.immediateEffect = immediateEffect;
 
-        this.familyMember = null;
+        this.familyMembers = null;
     }
 
     /* Getters & Setters */
@@ -33,9 +35,17 @@ public class ActionSpace extends PhysicalActionBox {
         return this.familyMemberLimit;
     }
 
-    public FamilyMember getFamilyMember()
+    public ArrayList<FamilyMember> getFamilyMemberList()
     {
-        return this.familyMember;
+        return this.familyMembers;
+    }
+
+    public FamilyMember getFamilyMemberIndex(int index)
+    {
+        if ( index >= this.familyMembers.size())
+            return null; //Indice maggiore della dimensione della lista
+        else
+            return this.familyMembers.get(index);
     }
 
     public Effect getImmediateEffect()
@@ -43,9 +53,9 @@ public class ActionSpace extends PhysicalActionBox {
         return this.immediateEffect;
     }
 
-    public void setFamilyMember(FamilyMember familyMember)
+    public void addFamilyMember(FamilyMember familyMember)
     {
-        this.familyMember=familyMember;
+        this.familyMembers.add(familyMember);
     }
 
 

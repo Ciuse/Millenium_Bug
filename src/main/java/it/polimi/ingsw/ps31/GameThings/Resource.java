@@ -16,7 +16,16 @@ public abstract class Resource {
     }
 
     public void addValue(int value){
-        this.value=this.value+value;
+        this.value = this.value+value;
+    }
+    public void subValue(int value)
+    {
+        if ( this.value >= value)
+            this.value = this.value-value;
+        else
+        {
+            //TODO: gestire (eccezione?)
+        }
     }
 
     public static int insertValue() {
@@ -45,6 +54,10 @@ public abstract class Resource {
     public final String toString() {
         return this.getClass().getSimpleName()+"["+this.getValue()+"]";
     }
+    public final String toStringName() {
+        return this.getClass().getSimpleName();
+    }
+
 
 
 }
