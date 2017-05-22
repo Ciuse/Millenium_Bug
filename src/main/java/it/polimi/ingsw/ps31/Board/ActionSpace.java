@@ -1,6 +1,9 @@
 package it.polimi.ingsw.ps31.Board;
 
-import it.polimi.ingsw.ps31.Card.Effect;
+import it.polimi.ingsw.ps31.Effect.EffectList;
+import it.polimi.ingsw.ps31.Player.FamilyMember;
+
+import java.util.ArrayList;
 
 /**
  * Created by Francesco on 12/05/2017.
@@ -9,15 +12,14 @@ public class ActionSpace extends PhysicalActionBox {
 
     private final int diceCost;
     private final int familyMemberLimit; //Limite massimo di familiari nello spazio azione. -1 indica l'assenza di limite
-    private FamilyMember familyMember;
-    private final Effect immediateEffect;
+    private ArrayList<FamilyMember> familyMember;
+    private final EffectList immediateEffectList;
 
     /* Constructor */
-    public ActionSpace(int diceCost, int familyMemberLimit, Effect immediateEffect) {
+    public ActionSpace(int diceCost, int familyMemberLimit, EffectList immediateEffectList) {
         this.diceCost = diceCost;
         this.familyMemberLimit = familyMemberLimit;
-        this.immediateEffect = immediateEffect;
-
+        this.immediateEffectList = immediateEffectList;
         this.familyMember = null;
     }
 
@@ -32,19 +34,27 @@ public class ActionSpace extends PhysicalActionBox {
         return this.familyMemberLimit;
     }
 
-    public FamilyMember getFamilyMember()
+    public ArrayList<FamilyMember> getFamilyMemberList()
     {
-        return this.familyMember;
+        return this.familyMembers;
     }
 
-    public Effect getImmediateEffect()
+    public FamilyMember getFamilyMemberIndex(int index)
     {
-        return this.immediateEffect;
+        if ( index >= this.familyMembers.size())
+            return null; //Indice maggiore della dimensione della lista
+        else
+            return this.familyMembers.get(index);
     }
 
-    public void setFamilyMember(FamilyMember familyMember)
+    public EffectList getImmediateEffectList()
     {
-        this.familyMember=familyMember;
+        return this.immediateEffectList;
+    }
+
+    public void addFamilyMember(FamilyMember familyMember)
+    {
+        this.familyMembers.add(familyMember);
     }
 
 

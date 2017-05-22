@@ -1,8 +1,9 @@
 package it.polimi.ingsw.ps31.Card;
 
 import it.polimi.ingsw.ps31.Constants.CardColor;
-import it.polimi.ingsw.ps31.Constants.Period;
-import it.polimi.ingsw.ps31.GameThings.Resource;
+import it.polimi.ingsw.ps31.Effect.Effect;
+import it.polimi.ingsw.ps31.Effect.EffectList;
+import it.polimi.ingsw.ps31.GameThings.ResourceList;
 
 import java.util.List;
 
@@ -11,8 +12,8 @@ import java.util.List;
  */
 public final class Territory extends DevelopmentCard {
 
-    public Territory(String name, Period period, List<Resource> cost, Effect immediateEffect, Effect permanentEffect) {
-        super(name, CardColor.GREEN, period, cost, immediateEffect, permanentEffect);
+    public Territory(int id, String name, int period, List<ResourceList> cost, EffectList immediateEffect, EffectList permanentEffect) {
+        super(id, name, CardColor.GREEN, period, cost, immediateEffect, permanentEffect);
     }
 
 

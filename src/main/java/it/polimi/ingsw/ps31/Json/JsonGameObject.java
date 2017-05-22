@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.ps31.Card.*;
 import it.polimi.ingsw.ps31.Card.Character;
+import it.polimi.ingsw.ps31.Effect.*;
 import it.polimi.ingsw.ps31.GameThings.*;
 
 import java.util.List;
@@ -13,13 +14,12 @@ import java.util.List;
  * Created by Giuseppe on 11/05/2017.
  */
 public class JsonGameObject {
-    private List<DevelopmentCard> developementCard;
-    private List<Resource> costlist;
+    private List<DevelopmentCard> developementCardList;
+    private List<EffectList> ActionSpaceEffectList;
 
 
-    public JsonGameObject(List<DevelopmentCard> developementCard, List<Resource> costlist) {
-        this.developementCard = developementCard;
-        this.costlist = costlist;
+    public JsonGameObject(List<DevelopmentCard> developementCardList) {
+        this.developementCardList = developementCardList;
     }
 
     public static Gson gsonGameBuilder(){
@@ -30,6 +30,10 @@ public class JsonGameObject {
         resourceAdapterFactory.registerSubtype(Wood.class, "Wood");
         resourceAdapterFactory.registerSubtype(Stone.class, "Stone");
         resourceAdapterFactory.registerSubtype(Servant.class, "Servant");
+        resourceAdapterFactory.registerSubtype(FaithPoint.class, "FaithPoint");
+        resourceAdapterFactory.registerSubtype(MilitaryStrength.class, "MilitaryStrength");
+        resourceAdapterFactory.registerSubtype(VictoryPoint.class, "VictoryPoint");
+        resourceAdapterFactory.registerSubtype(CouncilPrivilege.class, "CouncilPrivilege");
 
         RuntimeTypeAdapterFactory<DevelopmentCard> developementCardAdapterFactory = RuntimeTypeAdapterFactory.of(DevelopmentCard.class, "CardType");
         developementCardAdapterFactory.registerSubtype(Territory.class, "Territory");
@@ -37,24 +41,41 @@ public class JsonGameObject {
         developementCardAdapterFactory.registerSubtype(Character.class, "Character");
         developementCardAdapterFactory.registerSubtype(Venture.class, "Venture");
 
+        RuntimeTypeAdapterFactory<Effect> effectAdapterFactory = RuntimeTypeAdapterFactory.of(Effect.class, "EffectType");
+        effectAdapterFactory.registerSubtype(HarvestEffect.class, "HarvestEffect");
+        effectAdapterFactory.registerSubtype(ProductionEffect.class, "ProductionEffect");
+        effectAdapterFactory.registerSubtype(HarvestActivation.class, "HarvestActivation");
+        effectAdapterFactory.registerSubtype(ProductionActivation.class, "ProductionActivation");
+        effectAdapterFactory.registerSubtype(CardCostDiscount.class, "CardCostDiscount");
+        effectAdapterFactory.registerSubtype(ActionDiscount.class, "ActionDiscount");
+        effectAdapterFactory.registerSubtype(NoImmediateEffect.class, "NoImmediateEffect");
+        effectAdapterFactory.registerSubtype(GetResource.class, "GetResource");
+        effectAdapterFactory.registerSubtype(ChangeResource.class, "ChangeResource");
+        effectAdapterFactory.registerSubtype(GetCard.class, "GetCard");
+        effectAdapterFactory.registerSubtype(GetCardWithDiscount.class, "GetCardWithDiscount");
+
+        //TODO MANCANO I LEADER EFFECT
+
+
+
 //Creazione del builder adatto a riconoscere tutti gli oggetti polimorfi
         GsonBuilder builder = new GsonBuilder();
-        builder.setPrettyPrinting().serializeNulls().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).registerTypeAdapterFactory(resourceAdapterFactory).registerTypeAdapterFactory(developementCardAdapterFactory);
+        builder.setPrettyPrinting().serializeNulls().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).registerTypeAdapterFactory(resourceAdapterFactory).registerTypeAdapterFactory(developementCardAdapterFactory).registerTypeAdapterFactory(effectAdapterFactory);
         Gson gson = builder.create();
 
         return gson;
     }
 
-
+/*Getters & Setters*/
 
     public List<DevelopmentCard> getCardList(){  //ritorno la lista stessa, non mi interessa se la possono modificare
 
-        return this.developementCard;
+        return this.developementCardList;
+    }
+    public List<EffectList> getEffectList(){  //ritorno la lista stessa, non mi interessa se la possono modificare
+
+        return this.ActionSpaceEffectList;
     }
 
-    public List<Resource> getCostlist(){   //ritorno la lista stessa, non mi interessa se la possono modificare
-
-        return this.costlist;
-    }
 
 }

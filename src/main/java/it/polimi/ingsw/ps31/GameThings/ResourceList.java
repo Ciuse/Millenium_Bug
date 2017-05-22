@@ -1,69 +1,120 @@
 package it.polimi.ingsw.ps31.GameThings;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by Giuseppe on 10/05/2017.
  */
 public class ResourceList {
-    private List<Resource> resource;
+    private List<Resource> resourceList = new ArrayList<>(7);           //TODO da provare/verificare come funziona
 
-    public ResourceList() {
+    /* Constructor */
+    public ResourceList(List<Resource> resourceList) {
+        this.resourceList = resourceList;
     }
+    public ResourceList(){}
 
-    public void setCoin(Coin coin) {
-        System.out.println("Inserisci il valore delle monete");
+    /*Getters & Setters*/
+    public void setCoin() {
+        System.out.println("Inserisci il valore delle monete: ");
+        Scanner scanner =new Scanner(System.in);
+        int value= scanner.nextInt();
+        Coin coin= new Coin(0);
+        coin.addValue(value);
         if (coin.getValue()!=0) {
-            this.resource.add(coin);
+            this.resourceList.add(coin);
         }
     }
-    public void setWood(Wood wood) {
-        System.out.println("Inserisci il valore delle monete del legno");
+    public void setWood() {
+        System.out.println("Inserisci il valore dei legni: ");
+        Scanner scanner =new Scanner(System.in);
+        int value= scanner.nextInt();
+        Wood wood= new Wood(0);
+        wood.addValue(value);
         if (wood.getValue()!=0) {
-            this.resource.add(wood);
+            this.resourceList.add(wood);
         }
     }
-    public void setstone(Stone stone) {
-        System.out.println("Inserisci il valore delle pietre");
+    public void setStone() {
+        System.out.println("Inserisci il valore delle pietre: ");
+        Scanner scanner =new Scanner(System.in);
+        int value= scanner.nextInt();
+        Stone stone= new Stone(0);
+        stone.addValue(value);
         if (stone.getValue()!=0) {
-            this.resource.add(stone);
+            this.resourceList.add(stone);
         }
     }
-    public void setServant(Servant servant) {
-        System.out.println("Inserisci il valore dei servitori");
+    public void setServant() {
+        System.out.println("Inserisci il valore dei servitori: ");
+        Scanner scanner =new Scanner(System.in);
+        int value= scanner.nextInt();
+        Servant servant= new Servant(0);
+        servant.addValue(value);
         if (servant.getValue()!=0) {
-            this.resource.add(servant);
+            this.resourceList.add(servant);
         }
     }
-    public void setMilitaryStrength(MilitaryStrength militaryStrength) {
-        System.out.println("Inserisci il valore dei punti militari");
+    public void setMilitaryStrength() {
+        System.out.println("Inserisci il valore normale dei punti militari: ");
+        Scanner scanner =new Scanner(System.in);
+        int value= scanner.nextInt();
+        System.out.println("Inserisci il valore minimo di punti militari richiesti : ");
+        Scanner scanner1 = new Scanner(System.in);
+        int valueRequest = scanner1.nextInt();
+        MilitaryStrength militaryStrength= new MilitaryStrength(0,0);
+        militaryStrength.addValue(value);
+        militaryStrength.setValueRequest(valueRequest);
         if (militaryStrength.getValue()!=0) {
-            this.resource.add(militaryStrength);
+            this.resourceList.add(militaryStrength);
+        }
+    }
+    public void setFaithPoint() {
+        System.out.println("Inserisci il valore dei punti fede: ");
+        Scanner scanner =new Scanner(System.in);
+        int value= scanner.nextInt();
+        FaithPoint faithPoint= new FaithPoint(0);
+        faithPoint.addValue(value);
+        if (faithPoint.getValue()!=0) {
+            this.resourceList.add(faithPoint);
+        }
+    }
+    public void setVictoryPoint() {
+        System.out.println("Inserisci il valore dei punti vittoria: ");
+        Scanner scanner =new Scanner(System.in);
+        int value= scanner.nextInt();
+        VictoryPoint victoryPoint= new VictoryPoint(0);
+        victoryPoint.addValue(value);
+        if (victoryPoint.getValue()!=0) {
+            this.resourceList.add(victoryPoint);
+        }
+    }
+    public void setCouncilPrivilege() {
+        System.out.println("Inserisci il numero dei privilegi del consiglio: ");
+        Scanner scanner =new Scanner(System.in);
+        int value= scanner.nextInt();
+        System.out.println("sono diversi?: ");
+        boolean different= scanner.nextBoolean();
+        CouncilPrivilege councilPrivilege= new CouncilPrivilege(0, false);
+        councilPrivilege.addValue(value);
+        councilPrivilege.setDifferent(different);
+        if (councilPrivilege.getValue()!=0) {
+            this.resourceList.add(councilPrivilege);
         }
     }
 
-    public void setFaithPoint(FaithPoint faithPoint) {
-        System.out.println("Inserisci il valore dei punti fede");
-        if (faithPoint.getValue()!=0) {
-            this.resource.add(faithPoint);
-        }
+    public void addSpecificResource(Resource resource){
+        this.resourceList.add(resource);
     }
-    public void setVictoryPoint(VictoryPoint victoryPoint) {
-        System.out.println("Inserisci il valore dei punti vittoria");
-        if (victoryPoint.getValue()!=0) {
-            this.resource.add(victoryPoint);
-        }
-    }
-    public void createList(){
-        System.out.println("inserisci il tipo di risorsa da aggiungere alla lista");
-        BufferedReader textRead = new BufferedReader(new InputStreamReader(System.in));
+
+    public void clearResourceList(){
+        this.resourceList.clear();
     }
 
     public List<Resource> getResourceList(){
-        return new ArrayList<>(this.resource);
+        return new ArrayList<>(this.resourceList);
     }
 
 }

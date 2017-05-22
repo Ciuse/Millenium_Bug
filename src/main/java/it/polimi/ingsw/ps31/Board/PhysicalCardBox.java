@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.Board;
 
 import it.polimi.ingsw.ps31.Card.Card;
+import it.polimi.ingsw.ps31.Card.DevelopmentCard;
 
 /**
  * Created by Francesco on 12/05/2017.
@@ -8,7 +9,7 @@ import it.polimi.ingsw.ps31.Card.Card;
 public abstract class PhysicalCardBox implements PhysicalSpaceBehavior
 {
 
-    private Card card;
+    private DevelopmentCard card;
 
     /* Constructor */
     public PhysicalCardBox()
@@ -17,12 +18,12 @@ public abstract class PhysicalCardBox implements PhysicalSpaceBehavior
     }
 
     /* Getters & Setters */
-    public void setCard(Card card)
+    public void setCard(DevelopmentCard card)
     {
         this.card = card;
     }
 
-    public Card getCard()
+    public DevelopmentCard getCard()
     {
         return this.card;
     }

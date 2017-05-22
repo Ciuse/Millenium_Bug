@@ -1,9 +1,13 @@
 package it.polimi.ingsw.ps31.Board;
 
 import it.polimi.ingsw.ps31.Constants.PlayerColor;
+import it.polimi.ingsw.ps31.Effect.Effect;
+import it.polimi.ingsw.ps31.Effect.EffectList;
+import it.polimi.ingsw.ps31.Player.FamilyMember;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Francesco on 12/05/2017.
@@ -12,13 +16,18 @@ public class CouncilPalace extends ActionSpace {
 
     private List<FamilyMember> order = new ArrayList<FamilyMember>();
 
-    public CouncilPalace(){
-        super(1, -1, null);
+    public CouncilPalace(EffectList immediateEffect ){
+
+        super(1, -1, immediateEffect);
     }
 
     public void addMember(FamilyMember member)
     {
         this.order.add(member);
+    }
+    public void removeAllMember()
+    {
+        this.order.clear();
     }
 
     public ArrayList<PlayerColor> getColorOrder()
@@ -32,5 +41,7 @@ public class CouncilPalace extends ActionSpace {
             if(!toReturn.contains(currentColor))
                 toReturn.add(currentColor);
         }
+
+        return toReturn;
     }
 }

@@ -2,6 +2,10 @@ package it.polimi.ingsw.ps31.Board;
 
 import it.polimi.ingsw.ps31.*;
 import it.polimi.ingsw.ps31.Constants.CardColor;
+import it.polimi.ingsw.ps31.Effect.Effect;
+import it.polimi.ingsw.ps31.Effect.EffectList;
+
+import java.util.List;
 
 /**
  * Created by Francesco on 12/05/2017.
@@ -12,21 +16,21 @@ public class Tower {
 
     private final CardColor color;
     private boolean isOccupied = false;
-    private final TowerCardSpace[] cardBox;
-    private final ActionSpace[] actionBox;
+    private final TowerCardSpace[] cardBoxList;
+    private final ActionSpace[] actionBoxList;
 
     /* Constructor */
-    public Tower(int towerDimension, CardColor color)
+    public Tower(int towerDimension, CardColor color, List<EffectList> effectList)
     {
         this.TOWERDIMENSION = towerDimension;
-        this.cardBox = new TowerCardSpace[TOWERDIMENSION];
-        this.actionBox = new ActionSpace[TOWERDIMENSION];
+        this.cardBoxList = new TowerCardSpace[TOWERDIMENSION];
+        this.actionBoxList = new ActionSpace[TOWERDIMENSION];
         for (int i = 0; i<TOWERDIMENSION; i++)
         {
-            cardBox[i] = new TowerCardSpace(color);
-            actionBox[i] = new ActionSpace(0,1,null); //TODO: leggere parametri da file
+            int[] diceCostList= {1,3,5,7};
+            cardBoxList[i] = new TowerCardSpace(color);
+            actionBoxList[i] = new ActionSpace(diceCostList[i],1,effectList.get(i));
         }
-
         this.color = color;
     }
 
@@ -46,24 +50,24 @@ public class Tower {
         isOccupied = occupied;
     }
 
-    public TowerCardSpace[] getCardBox()
+    public TowerCardSpace[] getCardBoxList()
     {
-        return cardBox;
+        return cardBoxList;
     }
 
-    public ActionSpace[] getActionBox()
+    public ActionSpace[] getActionBoxList()
     {
-        return actionBox;
+        return actionBoxList;
     }
 
-    public TowerCardSpace getCardBoxAt(int i)
+    public TowerCardSpace getCardBoxListAt(int i)
     {
-        return cardBox[i];
+        return cardBoxList[i];
     }
 
-    public ActionSpace getActionBoxAt(int i)
+    public ActionSpace getActionBoxListAt(int i)
     {
-        return actionBox[i];
+        return actionBoxList[i];
     }
 
 
