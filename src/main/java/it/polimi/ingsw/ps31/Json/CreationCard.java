@@ -37,8 +37,8 @@ public abstract class CreationCard {
                 "Costruire le Torri","Commissionare Arte Sacra","Conquista Militare","Migliorare le Strade","Guerra Santa","Sostegno al Papa",};
         //creazione degli effetti di tutte le carte
         int contatore2=0;
-        
-        //creazione effetti immediati carte verdi 
+
+        //creazione effetti immediati carte verdi
         List<EffectList> immediateEffectGreenList = new ArrayList<>();  //Creazione lista principale
         //effetto immediato prima carta
         EffectList immediateEffectGreen1 = new EffectList();           //creazione effetto
@@ -185,7 +185,7 @@ public abstract class CreationCard {
         immediateEffectGreen24.addSpecificEffect(new GetResource(resourceList24));
         immediateEffectGreenList.add(23, immediateEffectGreen24);      //aggiunta  effetto alla lista principale
 
-        //creazione effetti permanenti carte verdi 
+        //creazione effetti permanenti carte verdi
         List<EffectList> permanentEffectGreenList = new ArrayList<>();  //Creazione lista principale
 
         //creazione effetto permanente prima carta
@@ -348,10 +348,10 @@ public abstract class CreationCard {
         resourceList24.addSpecificResource(new Servant(2));
         permanentEffectGreen24.addSpecificEffect(new HarvestEffect(2,new GetResource(resourceList24)));
         permanentEffectGreenList.add(23,permanentEffectGreen24);      //aggiunta  effetto alla lista principale
-        
-        //creazione effetti immediati carte gialle 
+
+        //creazione effetti immediati carte gialle
         List<EffectList> immediateEffectYellowList = new ArrayList<>();  //Creazione lista principale
-        
+
         //effetto immediato prima carta
         EffectList immediateEffectYellow1 = new EffectList();//creazione  effetto
         resourceList1.clearResourceList();
@@ -596,8 +596,8 @@ public abstract class CreationCard {
         permanentEffectYellow9.addSpecificEffect(new ProductionEffect(3,effetto9));
         permanentEffectYellowList.add(8,permanentEffectYellow9);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente nona carta
-        
-        
+
+
 
 
 
