@@ -109,6 +109,9 @@ public class ResourceList {
         this.resourceList.add(resource);
     }
 
+    public void clearResourceList(){
+        this.resourceList.clear();
+    }
 
     public List<Resource> getResourceList(){
         return new ArrayList<>(this.resourceList);
