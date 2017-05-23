@@ -595,7 +595,177 @@ public abstract class CreationCard {
         ChangeResource effetto9 = new ChangeResource(resourceListToChooose9,resourceListToTake9);
         permanentEffectYellow9.addSpecificEffect(new ProductionEffect(3,effetto9));
         permanentEffectYellowList.add(8,permanentEffectYellow9);      //aggiunta  effetto alla lista principale
-        //creazione effetto permanente nona carta
+        //creazione effetto permanente decima carta
+        EffectList permanentEffectYellow10= new EffectList();         //creazione  effetto
+        List<ResourceList> resourceListToChooose10 = new ArrayList<>();
+        ResourceList resourceListToTake10 = new ResourceList();
+        ResourceList resourceList10a = new ResourceList();
+        ResourceList resourceList10b = new ResourceList();
+        resourceList10a.addSpecificResource(new Coin(1));
+        resourceList10b.addSpecificResource(new Coin(2));
+        resourceListToChooose10.add(resourceList10a);
+        resourceListToChooose10.add(resourceList10b);
+        resourceListToTake10.addSpecificResource(new VictoryPoint(3));
+        resourceListToTake10.addSpecificResource(new VictoryPoint(5));
+        ChangeResource effetto10 = new ChangeResource(resourceListToChooose10,resourceListToTake10);
+        permanentEffectYellow10.addSpecificEffect(new ProductionEffect(3,effetto10));
+        permanentEffectYellowList.add(9,permanentEffectYellow10);      //aggiunta  effetto alla lista principale
+        //creazione effetto permanente undicesima carta
+        EffectList permanentEffectYellow11= new EffectList();         //creazione  effetto
+        List<ResourceList> resourceListToChooose11 = new ArrayList<>();
+        ResourceList resourceListToTake11 = new ResourceList();
+        ResourceList resourceList11a = new ResourceList();
+        ResourceList resourceList11b = new ResourceList();
+        resourceList11a.addSpecificResource(new Wood(1));
+        resourceList11b.addSpecificResource(new Wood(3));
+        resourceListToChooose11.add(resourceList10a);
+        resourceListToChooose11.add(resourceList10b);
+        resourceListToTake11.addSpecificResource(new VictoryPoint(3));
+        resourceListToTake11.addSpecificResource(new VictoryPoint(7));
+        ChangeResource effetto11 = new ChangeResource(resourceListToChooose11,resourceListToTake11);
+        permanentEffectYellow11.addSpecificEffect(new ProductionEffect(4,effetto11));
+        permanentEffectYellowList.add(10,permanentEffectYellow11);      //aggiunta  effetto alla lista principale
+        //creazione effetto permanente dodicesima carta
+        EffectList permanentEffectYellow12= new EffectList();         //creazione  effetto
+        List<ResourceList> resourceListToChooose12 = new ArrayList<>();
+        ResourceList resourceListToTake12 = new ResourceList();
+        ResourceList resourceList12a = new ResourceList();
+        ResourceList resourceList12b = new ResourceList();
+        resourceList12a.addSpecificResource(new Stone(1));
+        resourceList12b.addSpecificResource(new Stone(3));
+        resourceListToChooose12.add(resourceList10a);
+        resourceListToChooose12.add(resourceList10b);
+        resourceListToTake12.addSpecificResource(new VictoryPoint(3));
+        resourceListToTake12.addSpecificResource(new VictoryPoint(7));
+        ChangeResource effetto12 = new ChangeResource(resourceListToChooose12,resourceListToTake12);
+        permanentEffectYellow12.addSpecificEffect(new ProductionEffect(5,effetto12));
+        permanentEffectYellowList.add(11,permanentEffectYellow12);      //aggiunta  effetto alla lista principale
+        //creazione effetto permanente tredicesima carta
+        EffectList permanentEffectYellow13= new EffectList();         //creazione  effetto
+        List<ResourceList> resourceListToChooose13 = new ArrayList<>();
+        ResourceList resourceListToTake13 = new ResourceList();
+        ResourceList resourceList13a = new ResourceList();
+        resourceList13a.addSpecificResource(new Servant(1));
+        resourceList13a.addSpecificResource(new Wood(1));
+        resourceList13a.addSpecificResource(new Stone(1));
+        resourceListToChooose13.add(resourceList13a);
+        resourceListToTake13.addSpecificResource(new VictoryPoint(6));
+        ChangeResource effetto13 = new ChangeResource(resourceListToChooose13,resourceListToTake13);
+        permanentEffectYellow13.addSpecificEffect(new ProductionEffect(4,effetto13));
+        permanentEffectYellowList.add(12,permanentEffectYellow13);      //aggiunta  effetto alla lista principale
+        //creazione effetto permanente quattordicesima carta
+        EffectList permanentEffectYellow14= new EffectList();         //creazione  effetto
+        List<ResourceList> resourceListToChooose14 = new ArrayList<>();
+        ResourceList resourceListToTake14 = new ResourceList();
+        ResourceList resourceList14a = new ResourceList();
+        resourceList14a.addSpecificResource(new FaithPoint(1));
+        resourceListToChooose14.add(resourceList14a);
+        resourceListToTake14.addSpecificResource(new Coin(2));
+        resourceListToTake14.addSpecificResource(new VictoryPoint(2));
+        ChangeResource effetto14 = new ChangeResource(resourceListToChooose14,resourceListToTake14);
+        permanentEffectYellow14.addSpecificEffect(new ProductionEffect(2,effetto14));
+        permanentEffectYellowList.add(13,permanentEffectYellow14);      //aggiunta  effetto alla lista principale
+        //creazione effetto permanente quindicesima carta
+        EffectList permanentEffectYellow15= new EffectList();         //creazione  effetto
+        List<ResourceList> resourceListToChooose15 = new ArrayList<>();
+        ResourceList resourceListToTake15 = new ResourceList();
+        ResourceList resourceList15a = new ResourceList();
+        resourceList15a.addSpecificResource(new Servant(1));
+        resourceListToChooose15.add(resourceList15a);
+        resourceListToTake15.addSpecificResource(new MilitaryStrength(3));
+        ChangeResource effetto15 = new ChangeResource(resourceListToChooose15,resourceListToTake15);
+        permanentEffectYellow15.addSpecificEffect(new ProductionEffect(1,effetto15));
+        permanentEffectYellowList.add(14,permanentEffectYellow15);      //aggiunta  effetto alla lista principale
+        //creazione effetto permanente sedicesima carta
+        EffectList permanentEffectYellow16 = new EffectList();//creazione effetto
+        resourceList16.clearResourceList();
+        resourceList16.addSpecificResource(new VictoryPoint(2));
+        resourceList16.addSpecificResource(new MilitaryStrength(2));
+        GetResource effetto16 = new GetResource(resourceList16);
+        permanentEffectYellow16.addSpecificEffect(new ProductionEffect(6,effetto16) );
+        permanentEffectYellowList.add(15, permanentEffectYellow16);  //aggiunta effetto alla lista principale
+        //creazione effetto permanente diciassettesima carta
+        EffectList permanentEffectYellow17 = new EffectList();//creazione effetto
+        resourceList17.clearResourceList();
+        resourceList17.addSpecificResource(new Coin(5));
+        GetResource effetto17 = new GetResource(resourceList17);
+        permanentEffectYellow17.addSpecificEffect(new ProductionEffect(2,effetto17) );
+        permanentEffectYellowList.add(16, permanentEffectYellow17);  //aggiunta effetto alla lista principale
+        //creazione effetto permanente diciottesima carta
+        EffectList permanentEffectYellow18= new EffectList();         //creazione  effetto
+        List<ResourceList> resourceListToChooose18 = new ArrayList<>();
+        ResourceList resourceListToTake18 = new ResourceList();
+        ResourceList resourceList18a = new ResourceList();
+        resourceList18a.addSpecificResource(new Coin(4));
+        resourceListToChooose18.add(resourceList18a);
+        resourceListToTake18.addSpecificResource(new Wood(3));
+        resourceListToTake18.addSpecificResource(new Stone(3));
+        ChangeResource effetto18 = new ChangeResource(resourceListToChooose18,resourceListToTake18);
+        permanentEffectYellow18.addSpecificEffect(new ProductionEffect(4,effetto18));
+        permanentEffectYellowList.add(17,permanentEffectYellow18);      //aggiunta  effetto alla lista principale
+        //creazione effetto permanente diciannovesima carta
+        EffectList permanentEffectYellow19 = new EffectList();//creazione effetto
+        resourceList19.clearResourceList();
+        resourceList19.addSpecificResource(new VictoryPoint(3));
+        GetResource effetto19 = new GetResource(resourceList19);
+        permanentEffectYellow19.addSpecificEffect(new ProductionEffect(1,effetto19) );
+        permanentEffectYellowList.add(18, permanentEffectYellow19);  //aggiunta effetto alla lista principale
+        //creazione effetto permanente ventesima carta
+        EffectList permanentEffectYellow20 = new EffectList();//creazione effetto
+        resourceList20.clearResourceList();
+        resourceList20.addSpecificResource(new VictoryPoint(2));
+        resourceList20.addSpecificResource(new CouncilPrivilege(1,false));
+        GetResource effetto20 = new GetResource(resourceList20);
+        permanentEffectYellow20.addSpecificEffect(new ProductionEffect(5,effetto20) );
+        permanentEffectYellowList.add(19, permanentEffectYellow20);  //aggiunta effetto alla lista principale
+        //creazione effetto permanente ventunesima carta
+        EffectList permanentEffectYellow21= new EffectList();         //creazione  effetto
+        List<ResourceList> resourceListToChooose21 = new ArrayList<>();
+        ResourceList resourceListToTake21 = new ResourceList();
+        ResourceList resourceList21a = new ResourceList();
+        resourceList21a.addSpecificResource(new Coin(1));
+        resourceListToChooose21.add(resourceList21a);
+        resourceListToTake21.addSpecificResource(new Servant(2));
+        resourceListToTake21.addSpecificResource(new VictoryPoint(4));
+        ChangeResource effetto21 = new ChangeResource(resourceListToChooose21,resourceListToTake21);
+        permanentEffectYellow21.addSpecificEffect(new ProductionEffect(6,effetto21));
+        permanentEffectYellowList.add(20,permanentEffectYellow21);      //aggiunta  effetto alla lista principale
+        //creazione effetto permanente ventiduesima carta
+        EffectList permanentEffectYellow22= new EffectList();         //creazione  effetto
+        List<ResourceList> resourceListToChooose22 = new ArrayList<>();
+        ResourceList resourceListToTake22 = new ResourceList();
+        ResourceList resourceList22a = new ResourceList();
+        ResourceList resourceList22b = new ResourceList();
+        resourceList22a.addSpecificResource(new Wood(1));
+        resourceList22b.addSpecificResource(new Stone(1));
+        resourceListToChooose22.add(resourceList22a);
+        resourceListToChooose22.add(resourceList22b);
+        resourceListToTake22.addSpecificResource(new FaithPoint(2));
+        resourceListToTake22.addSpecificResource(new FaithPoint(2));
+        ChangeResource effetto22 = new ChangeResource(resourceListToChooose22,resourceListToTake22);
+        permanentEffectYellow22.addSpecificEffect(new ProductionEffect(1,effetto22));
+        permanentEffectYellowList.add(21,permanentEffectYellow22);      //aggiunta  effetto alla lista principale
+        //creazione effetto permanente ventitrresima carta
+        EffectList permanentEffectYellow23= new EffectList();         //creazione  effetto
+        List<ResourceList> resourceListToChooose23 = new ArrayList<>();
+        ResourceList resourceListToTake23 = new ResourceList();
+        ResourceList resourceList23a = new ResourceList();
+        resourceList23a.addSpecificResource(new Servant(1));
+        resourceListToChooose23.add(resourceList23a);
+        resourceListToTake23.addSpecificResource(new MilitaryStrength(3));
+        resourceListToTake23.addSpecificResource(new VictoryPoint(1));
+        ChangeResource effetto23 = new ChangeResource(resourceListToChooose23,resourceListToTake23);
+        permanentEffectYellow23.addSpecificEffect(new ProductionEffect(3,effetto23));
+        permanentEffectYellowList.add(22,permanentEffectYellow23);      //aggiunta  effetto alla lista principale
+        //creazione effetto permanente ventiquattresima carta
+        EffectList permanentEffectYellow24 = new EffectList();//creazione effetto
+        resourceList24.clearResourceList();
+        resourceList24.addSpecificResource(new VictoryPoint(1));
+        GetResource effetto24 = new GetResource(resourceList24);
+        permanentEffectYellow24.addSpecificEffect(new ProductionEffect(2,effetto24) );
+        permanentEffectYellowList.add(23, permanentEffectYellow24);  //aggiunta effetto alla lista principale
+
+
 
 
 
