@@ -27,6 +27,7 @@ public class GetResources extends Actions{
         return this.resourcesToGet;
     }
 
+
     @Override
     public void activate() {
         if (resourcesToGet == null)
