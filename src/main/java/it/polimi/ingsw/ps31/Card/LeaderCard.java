@@ -1,7 +1,4 @@
 package it.polimi.ingsw.ps31.Card;
-
-import it.polimi.ingsw.ps31.Card.Card;
-import it.polimi.ingsw.ps31.Card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.Effect.Effect;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
 
@@ -16,6 +13,7 @@ public class LeaderCard extends Card {
     private final DevelopmentCardList developmentCardRequest;
     private final Effect abilityOneTimeForTurn;
     private final Effect permanentAbility;
+    private Boolean activated = false;
 
     public LeaderCard(String name, ResourceList resourceRequest, DevelopmentCardList developmentCardRequest, Effect abilityOneTimeForTurn, Effect permanentAbility) {
         super(name);
@@ -38,6 +36,10 @@ public class LeaderCard extends Card {
 
     public Effect getPermanentAbility(){
         return this.permanentAbility;
+    }
+
+    public void ActiveLeaderCard(){
+        this.activated=true;
     }
 
 }

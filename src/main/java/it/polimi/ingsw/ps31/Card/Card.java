@@ -15,6 +15,7 @@ public abstract class Card {
         return this.name;
     }
 
+    @Override
     public String toString(){
 
         return this.getClass().getSimpleName()+"["+this.getName()+"]";

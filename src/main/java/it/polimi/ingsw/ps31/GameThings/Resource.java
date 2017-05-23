@@ -28,6 +28,12 @@ public abstract class Resource {
         }
     }
 
+
+    public void multvalue(int factor){
+
+        this.value=this.value*factor;
+    }
+
 //    public static int insertValue() {       //solo una prova
 //        System.out.println("Inserisci il valore della risorsa:");
 //        Scanner scanner =new Scanner(System.in);
@@ -52,13 +58,32 @@ public abstract class Resource {
         return this.value;
     }
 
+    @Override
     public final String toString() {
         return this.getClass().getSimpleName()+"["+this.getValue()+"]";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Resource resource = (Resource) o;
+
+        return value == resource.value;
+    }
+
+    public boolean minusOrEquals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Resource resource = (Resource) o;
+
+        return value <= resource.value;
+    }
+
     public final String toStringName() {
         return this.getClass().getSimpleName();
     }
-
-
 
 }
