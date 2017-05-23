@@ -5,9 +5,9 @@ import it.polimi.ingsw.ps31.Player.Player;
 /**
  * Created by Francesco on 18/05/2017.
  */
-public class ActivateHarvest extends Actions{
+public class ActionActivateProduction extends Action {
 
-    public ActivateHarvest(Player player) {
+    public ActionActivateProduction(Player player) {
         super(player);
     }
 

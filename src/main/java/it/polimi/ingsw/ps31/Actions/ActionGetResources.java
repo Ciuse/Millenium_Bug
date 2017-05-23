@@ -6,13 +6,10 @@ import it.polimi.ingsw.ps31.Player.Player;
 /**
  * Created by Francesco on 18/05/2017.
  */
-public class GetResources extends Actions{
-
-
-
+public class ActionGetResources extends Action {
     private ResourceList resourcesToGet = null;
 
-    public GetResources(Player player)
+    public ActionGetResources(Player player)
     {
         super(player);
     }

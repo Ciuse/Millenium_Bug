@@ -7,12 +7,11 @@ import it.polimi.ingsw.ps31.Player.Player;
 /**
  * Created by Francesco on 18/05/2017.
  */
-public class PlaceFamilyMember extends Actions{
-
+public class ActionPlaceFamilyMember extends Action {
     private ActionSpace actionSpace = null;
     private FamilyMember familyMember = null;
 
-    public PlaceFamilyMember(Player player)
+    public ActionPlaceFamilyMember(Player player)
     {
         super(player);
     }

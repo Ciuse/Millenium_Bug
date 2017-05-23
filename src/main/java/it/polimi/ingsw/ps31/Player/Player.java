@@ -2,9 +2,9 @@ package it.polimi.ingsw.ps31.Player;
 
 import it.polimi.ingsw.ps31.Board.Dice;
 import it.polimi.ingsw.ps31.Board.PersonalBoard;
-import it.polimi.ingsw.ps31.Card.Building;
-import it.polimi.ingsw.ps31.Card.Territory;
-import it.polimi.ingsw.ps31.Card.Venture;
+import it.polimi.ingsw.ps31.Card.*;
+import it.polimi.ingsw.ps31.Card.Character;
+import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Constants.DiceColor;
 import it.polimi.ingsw.ps31.Constants.PlayerColor;
 import it.polimi.ingsw.ps31.GameThings.Resource;
@@ -18,7 +18,6 @@ import java.util.Iterator;
  * Created by giulia on 15/05/2017.
  */
 public class Player {
-
     private static final int MAXCARDLISTSIZE = 6;    //Massimo numero di carte dello stesso colore che si possono avere contemporaneamente
 
     private final PlayerColor color;
@@ -29,10 +28,7 @@ public class Player {
     private ArrayList<Excommunication> excommunications;
     private ArrayList<FamilyMember> familyMembers;
 
-    private ArrayList<Building> yellowCardList;
-    private ArrayList<Character> blueCardList;
-    private ArrayList<Territory> greenCardList;
-    private ArrayList<Venture> purpleCardList;
+    private DevelopmentCardList playerCardList;
 
     /* Constructor */
     public Player(PlayerColor color, HashMap<String, Integer> initialResources, String nickname)
@@ -62,10 +58,7 @@ public class Player {
 
         //Inizializzazione liste di carte
         //TODO: usare classe CardList di Giuse
-        this.yellowCardList = new ArrayList<>();
-        this.blueCardList   = new ArrayList<>();
-        this.greenCardList  = new ArrayList<>();
-        this.purpleCardList = new ArrayList<>();
+        this.playerCardList = new DevelopmentCardList(null);
     }
 
     /* Setters & Getters */
@@ -74,9 +67,9 @@ public class Player {
         return this.color;
     }
 
-    public HashMap<String, Resource> getResources()
+    public PlayerResources getResources()
     {
-        return this.resources.getResourcesMap();
+        return this.resources;
     }
 
     public void addResources(Resource resourcesToAdd)
@@ -85,6 +78,14 @@ public class Player {
             this.resources.addResources(resourcesToAdd);
         else
             this.resources.subResources(resourcesToAdd);
+    }
+
+    public void subResources (Resource resourcesToSub)
+    {
+        if (resourcesToSub.getValue() >= 0)
+            this.resources.subResources(resourcesToSub);
+        else
+            this.resources.addResources(resourcesToSub);
     }
 
     public PersonalBoard getPlayerBoard()
@@ -128,55 +129,37 @@ public class Player {
         }while (itrMember.getDice().getColor() != color);
 
         return itrMember;
-
     }
 
-    public ArrayList<Building> getYellowCardList ()
+    public DevelopmentCardList getColorCardList (CardColor cardColor)
     {
-        return this.yellowCardList;
+        return this.playerCardList.getSpecificCardList(cardColor);
     }
 
-    public ArrayList<Character> getBlueCardList()
+    public DevelopmentCardList getPlayerCardList()
     {
-        return this.blueCardList;
+        return this.playerCardList;
     }
-
-    public ArrayList<Territory> getGreenCardList()
-    {
-        return this.greenCardList;
-    }
-
-    public ArrayList<Venture> getPurpleCardList()
-    {
-        return this.purpleCardList;
-    }
-
-    //TODO: si può riutilizzare il codice dei prossimi 4 metodo?
-    public void addDevelopmentCard(Building card)
-    {
-        if ( this.yellowCardList.size() < MAXCARDLISTSIZE)
-            this.yellowCardList.add(card);
-    }
-
-    public void addDevelopmentCard(Character card)
-    {
-        if ( this.blueCardList.size() < MAXCARDLISTSIZE)
-            this.blueCardList.add(card);
-    }
-
-    public void addDevelopmentCard(Territory card)
-    {
-        if ( this.greenCardList.size() < MAXCARDLISTSIZE)
-            this.greenCardList.add(card);
-    }
-
-    public void addDevelopmentCard(Venture card)
-    {
-        if ( this.purpleCardList.size() < MAXCARDLISTSIZE)
-            this.purpleCardList.add(card);
-    }
-
 
     /* Class Methods */
+    public void addDevelopmentCard(DevelopmentCard card)
+    {
+        if ( this.playerCardList.getSpecificCardList(card.getCardColor()).size() < MAXCARDLISTSIZE)
+            this.playerCardList.addDevelopmentCard(card);
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Player player = (Player) o;
+
+        if (!resources.equals(player.resources)) return false;
+        if (permanentBonus != null ? !permanentBonus.equals(player.permanentBonus) : player.permanentBonus != null)
+            return false;
+        if (excommunications != null ? !excommunications.equals(player.excommunications) : player.excommunications != null)
+            return false;
+        return playerCardList != null ? playerCardList.equals(player.playerCardList) : player.playerCardList == null;
+    }
 }

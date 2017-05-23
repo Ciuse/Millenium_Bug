@@ -8,12 +8,14 @@ import it.polimi.ingsw.ps31.Constants.CardColor;
  * Created by Francesco on 12/05/2017.
  */
 public class TowerCardSpace extends PhysicalCardBox {
-
+    private final ActionSpace actionSpace;
     private final CardColor color;
     private DevelopmentCard card;
 
-    public TowerCardSpace(CardColor color) {
+    /* Constructor */
+    public TowerCardSpace(CardColor color, ActionSpace actionSpace) {
         this.color = color;
+        this.actionSpace = actionSpace;
         this.card = null;
     }
 
@@ -28,6 +30,10 @@ public class TowerCardSpace extends PhysicalCardBox {
         return this.card;
     }
 
+    public ActionSpace getActionSpace()
+    {
+        return actionSpace;
+    }
     public void setCard(DevelopmentCard card)
     {
         if (card.getCardColor() != this.color)
@@ -37,4 +43,5 @@ public class TowerCardSpace extends PhysicalCardBox {
         else
             this.card = card;
     }
+
 }

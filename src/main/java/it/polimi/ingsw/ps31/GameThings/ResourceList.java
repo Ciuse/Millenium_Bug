@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.GameThings;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,7 +9,7 @@ import java.util.Scanner;
  * Created by Giuseppe on 10/05/2017.
  */
 public class ResourceList {
-    private List<Resource> resourceList = new ArrayList<>(7);           //TODO da provare/verificare come funziona
+    private List<Resource> resourceList = new ArrayList<>();           //TODO da provare/verificare come funziona
 
     /* Constructor */
     public ResourceList(List<Resource> resourceList) {
@@ -17,7 +18,7 @@ public class ResourceList {
     public ResourceList(){}
 
     /*Getters & Setters*/
-    public void setCoin() {
+    public void setCoin() {                                                 //METODI PER INSERIRE LE RISORSE NELLA CREAZIONE DELLE CARTE (NON SARANNO USATI NEl GIOCO)
         System.out.println("Inserisci il valore delle monete: ");
         Scanner scanner =new Scanner(System.in);
         int value= scanner.nextInt();
@@ -27,7 +28,7 @@ public class ResourceList {
             this.resourceList.add(coin);
         }
     }
-    public void setWood() {
+    public void setWood() {                                                 //METODI PER INSERIRE LE RISORSE NELLA CREAZIONE DELLE CARTE (NON SARANNO USATI NEl GIOCO)
         System.out.println("Inserisci il valore dei legni: ");
         Scanner scanner =new Scanner(System.in);
         int value= scanner.nextInt();
@@ -37,7 +38,7 @@ public class ResourceList {
             this.resourceList.add(wood);
         }
     }
-    public void setStone() {
+    public void setStone() {                                                 //METODI PER INSERIRE LE RISORSE NELLA CREAZIONE DELLE CARTE (NON SARANNO USATI NEl GIOCO)
         System.out.println("Inserisci il valore delle pietre: ");
         Scanner scanner =new Scanner(System.in);
         int value= scanner.nextInt();
@@ -47,7 +48,7 @@ public class ResourceList {
             this.resourceList.add(stone);
         }
     }
-    public void setServant() {
+    public void setServant() {                                                 //METODI PER INSERIRE LE RISORSE NELLA CREAZIONE DELLE CARTE (NON SARANNO USATI NEl GIOCO)
         System.out.println("Inserisci il valore dei servitori: ");
         Scanner scanner =new Scanner(System.in);
         int value= scanner.nextInt();
@@ -57,7 +58,7 @@ public class ResourceList {
             this.resourceList.add(servant);
         }
     }
-    public void setMilitaryStrength() {
+    public void setMilitaryStrength() {                                                 //METODI PER INSERIRE LE RISORSE NELLA CREAZIONE DELLE CARTE (NON SARANNO USATI NEl GIOCO)
         System.out.println("Inserisci il valore normale dei punti militari: ");
         Scanner scanner =new Scanner(System.in);
         int value= scanner.nextInt();
@@ -71,7 +72,7 @@ public class ResourceList {
             this.resourceList.add(militaryStrength);
         }
     }
-    public void setFaithPoint() {
+    public void setFaithPoint() {                                                 //METODI PER INSERIRE LE RISORSE NELLA CREAZIONE DELLE CARTE (NON SARANNO USATI NEl GIOCO)
         System.out.println("Inserisci il valore dei punti fede: ");
         Scanner scanner =new Scanner(System.in);
         int value= scanner.nextInt();
@@ -81,7 +82,7 @@ public class ResourceList {
             this.resourceList.add(faithPoint);
         }
     }
-    public void setVictoryPoint() {
+    public void setVictoryPoint() {                                                 //METODI PER INSERIRE LE RISORSE NELLA CREAZIONE DELLE CARTE (NON SARANNO USATI NEl GIOCO)
         System.out.println("Inserisci il valore dei punti vittoria: ");
         Scanner scanner =new Scanner(System.in);
         int value= scanner.nextInt();
@@ -91,7 +92,7 @@ public class ResourceList {
             this.resourceList.add(victoryPoint);
         }
     }
-    public void setCouncilPrivilege() {
+    public void setCouncilPrivilege() {                                                 //METODI PER INSERIRE LE RISORSE NELLA CREAZIONE DELLE CARTE (NON SARANNO USATI NEl GIOCO)
         System.out.println("Inserisci il numero dei privilegi del consiglio: ");
         Scanner scanner =new Scanner(System.in);
         int value= scanner.nextInt();
@@ -106,7 +107,27 @@ public class ResourceList {
     }
 
     public void addSpecificResource(Resource resource){
-        this.resourceList.add(resource);
+        boolean found=false;
+
+        for(int i=0; i<this.resourceList.size(); i++) {
+
+            if (this.resourceList.get(i).getClass().equals(resource.getClass()) && found == false) {
+                this.resourceList.get(i).toString();
+                this.resourceList.get(i).addValue(resource.getValue());
+                found = true;
+            }
+        }
+        if(found==false){
+            this.resourceList.add(resource);
+        }
+
+    }
+
+    public void multiplyResourceList(int factor){
+
+        for(int i=0; i<this.resourceList.size(); i++) {
+            this.resourceList.get(i).multvalue(factor);
+        }
     }
 
     public void clearResourceList(){
@@ -117,8 +138,15 @@ public class ResourceList {
         return new ArrayList<>(this.resourceList);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        ResourceList that = (ResourceList) o;
 
+        return resourceList != null ? resourceList.equals(that.resourceList) : that.resourceList == null;
+    }
 
-
+    //TODO FARE IL MINORE SFRUTTANDO LA ROBA NEL FIGLIO
 }

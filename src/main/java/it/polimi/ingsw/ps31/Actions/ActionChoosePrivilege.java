@@ -5,9 +5,9 @@ import it.polimi.ingsw.ps31.Player.Player;
 /**
  * Created by Francesco on 18/05/2017.
  */
-public class ActivateProduction extends Actions{
+public class ActionChoosePrivilege extends Action {
 
-    public ActivateProduction(Player player) {
+    public ActionChoosePrivilege(Player player) {
         super(player);
     }
 

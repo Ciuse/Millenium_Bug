@@ -10,8 +10,14 @@ import java.util.List;
  * Created by Giuseppe on 22/05/2017.
  */
 public class DevelopmentCardList {
+    //TODO------------------------------------------------------
+    //TODO:Tutta la classe è sbagliata, serve solo per essere compilata => usare quella che scriverà giuse
+    //TODO------------------------------------------------------
+
     private List<DevelopmentCard> developmentCardList = new ArrayList<>();
     private final CardColor cardColor;
+    private int size = 0;
+
     public DevelopmentCardList(CardColor cardColor){
 
         this.cardColor = cardColor;
@@ -25,4 +31,13 @@ public class DevelopmentCardList {
         return new ArrayList<>(this.developmentCardList);
     }
 
+    public DevelopmentCardList getSpecificCardList(CardColor cardColor)
+    {
+        return this;
+    }
+
+    public int size()
+    {
+        return this.size;
+    }
 }
