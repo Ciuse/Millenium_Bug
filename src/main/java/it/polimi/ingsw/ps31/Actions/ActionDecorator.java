@@ -7,5 +7,5 @@ import java.util.List;
  */
 public abstract class ActionDecorator implements PlayerActions{
 
-    private List<Actions> decorable;
+    private List<Action> decorable;
 }

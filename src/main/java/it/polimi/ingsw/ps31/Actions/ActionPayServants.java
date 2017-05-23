@@ -7,12 +7,11 @@ import it.polimi.ingsw.ps31.Player.Player;
 /**
  * Created by Francesco on 18/05/2017.
  */
-public class PayServants extends Actions{
-
+public class ActionPayServants extends Action {
     private DiceColor diceColor = null;
     private int servantsAmount = 0;
 
-    public PayServants(Player player) {
+    public ActionPayServants(Player player) {
         super(player);
     }
 
@@ -25,7 +24,7 @@ public class PayServants extends Actions{
     public void setServantsAmount(int servantsAmount)
     {
         //Controllo che ci siano abbastanza servitori
-        if(this.player.getResources().get("Servant").getValue() < servantsAmount)
+        if(this.player.getResources().getResource("Servant").getValue() < servantsAmount)
         {
             //TODO: eccezione?
         }

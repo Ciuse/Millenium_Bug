@@ -5,11 +5,10 @@ import it.polimi.ingsw.ps31.Player.Player;
 /**
  * Created by Francesco on 18/05/2017.
  */
-public abstract class Actions implements PlayerActions{
-
+public abstract class Action implements PlayerActions{
     protected static Player player;
 
-    public Actions(Player player)
+    public Action(Player player)
     {
         if(player == null)
         {

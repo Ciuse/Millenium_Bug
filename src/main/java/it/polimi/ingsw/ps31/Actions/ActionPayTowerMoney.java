@@ -6,12 +6,11 @@ import it.polimi.ingsw.ps31.Player.Player;
 /**
  * Created by Francesco on 22/05/2017.
  */
-public class PayTowerMoney extends Actions {
-
+public class ActionPayTowerMoney extends Action {
     private static final int COINTOPAY = 3; //Valore di default delle monete da pagare
     private int coinToPay;
 
-    public PayTowerMoney(Player player) {
+    public ActionPayTowerMoney(Player player) {
         super(player);
         this.coinToPay = COINTOPAY;
     }

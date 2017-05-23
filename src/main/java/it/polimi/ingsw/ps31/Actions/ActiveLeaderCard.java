@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps31.Player.Player;
 /**
  * Created by Giuseppe on 23/05/2017.
  */
-public class ActiveLeaderCard extends Actions {
+public class ActiveLeaderCard extends Action {
     private LeaderCard leaderCard= null;
 
     public ActiveLeaderCard(Player player) {

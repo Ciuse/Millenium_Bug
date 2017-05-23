@@ -28,7 +28,7 @@ public class Tower {
         for (int i = 0; i<TOWERDIMENSION; i++)
         {
             int[] diceCostList= {1,3,5,7};
-            cardBoxList[i] = new TowerCardSpace(color);
+            cardBoxList[i] = new TowerCardSpace(color, null);   //TODO: inserire parametro dell'action space
             actionBoxList[i] = new ActionSpace(diceCostList[i],1,effectList.get(i));
         }
         this.color = color;

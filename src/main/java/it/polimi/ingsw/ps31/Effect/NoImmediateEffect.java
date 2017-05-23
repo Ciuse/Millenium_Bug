@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.Effect;
 
-import it.polimi.ingsw.ps31.Actions.Actions;
+import it.polimi.ingsw.ps31.Actions.Action;
 import it.polimi.ingsw.ps31.Player.Player;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 public class NoImmediateEffect extends BonusAndMalus {
     private final List<Integer> actionSpaceValue; //è il valore dello spazio azione a cui verrà negato l'effetto immediato
 
-    public NoImmediateEffect(Actions actionToDiscount, List<Integer> actionSpaceValue) {
+    public NoImmediateEffect(Action actionToDiscount, List<Integer> actionSpaceValue) {
         super(actionToDiscount);
         this.actionSpaceValue = actionSpaceValue;
     }
