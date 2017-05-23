@@ -741,6 +741,7 @@ public abstract class CreationCard {
         resourceListToChooose22.add(resourceList22a);
         resourceListToChooose22.add(resourceList22b);
         resourceListToTake22.addSpecificResource(new FaithPoint(2));
+        resourceListToTake22.addSpecificResource(new FaithPoint(2));
         ChangeResource effetto22 = new ChangeResource(resourceListToChooose22,resourceListToTake22);
         permanentEffectYellow22.addSpecificEffect(new ProductionEffect(1,effetto22));
         permanentEffectYellowList.add(21,permanentEffectYellow22);      //aggiunta  effetto alla lista principale
