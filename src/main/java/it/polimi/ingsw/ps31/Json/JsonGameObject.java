@@ -51,8 +51,8 @@ public class JsonGameObject {
         effectAdapterFactory.registerSubtype(NoImmediateEffect.class, "NoImmediateEffect");
         effectAdapterFactory.registerSubtype(GetResource.class, "GetResource");
         effectAdapterFactory.registerSubtype(ChangeResource.class, "ChangeResource");
-        effectAdapterFactory.registerSubtype(GetCard.class, "GetCard");
-        effectAdapterFactory.registerSubtype(GetCardWithDiscount.class, "GetCardWithDiscount");
+        effectAdapterFactory.registerSubtype(ChooseCard.class, "ChooseCard");
+        effectAdapterFactory.registerSubtype(ChooseCardWithDiscount.class, "ChooseCardWithDiscount");
 
         //TODO MANCANO I LEADER EFFECT
 

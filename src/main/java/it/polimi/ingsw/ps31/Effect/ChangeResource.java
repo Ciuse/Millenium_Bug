@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.Effect;
 
-import it.polimi.ingsw.ps31.Actions.GetResources;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
 import it.polimi.ingsw.ps31.Player.Player;
 
@@ -25,22 +24,22 @@ public class ChangeResource extends Effect {
         System.out.println("Giocatore scegli quale risorsa vuoi cambiare: ");
         Scanner scanner =new Scanner(System.in);
         int listChoose= scanner.nextInt();
-        if (listChoose==0){
-            GetResources getResourcesToPay = new GetResources(player);
-            getResourcesToPay.setResourcesToGet(resourceToPayList.get(0));
-            getResourcesToPay.activate();
-            GetResources getResourcesToGained = new GetResources(player);
-            getResourcesToGained.setResourcesToGet(resourceToGainList.get(0));
-            getResourcesToGained.activate();
-        }
-        if (listChoose==1){
-            GetResources getResourcesToPay = new GetResources(player);
-            getResourcesToPay.setResourcesToGet(resourceToPayList.get(1));
-            getResourcesToPay.activate();
-            GetResources getResourcesToGained = new GetResources(player);
-            getResourcesToGained.setResourcesToGet(resourceToGainList.get(1));
-            getResourcesToGained.activate();
-        }
-
+//        if (listChoose==0){
+//            GetResources getResourcesToPay = new GetResources(player);
+//            getResourcesToPay.setResourcesToGet(resourceToPayList.get(0));
+//            getResourcesToPay.activate();
+//            GetResources getResourcesToGained = new GetResources(player);
+//            getResourcesToGained.setResourcesToGet(resourceToGainList.get(0));
+//            getResourcesToGained.activate();
+//        }
+//        if (listChoose==1){
+//            GetResources getResourcesToPay = new GetResources(player);
+//            getResourcesToPay.setResourcesToGet(resourceToPayList.get(1));
+//            getResourcesToPay.activate();
+//            GetResources getResourcesToGained = new GetResources(player);
+//            getResourcesToGained.setResourcesToGet(resourceToGainList.get(1));
+//            getResourcesToGained.activate();
+//        }
+//TODO CAMBIARE IL NOME DI GET RESOURSE
     }
 }

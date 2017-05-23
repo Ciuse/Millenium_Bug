@@ -21,5 +21,15 @@ public abstract class Card {
         return this.getClass().getSimpleName()+"["+this.getName()+"]";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Card card = (Card) o;
+
+        return name != null ? name.equals(card.name) : card.name == null;
+    }
+
 
 }

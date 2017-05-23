@@ -133,7 +133,7 @@ public class Player {
 
     public DevelopmentCardList getColorCardList (CardColor cardColor)
     {
-        return this.playerCardList.getSpecificCardList(cardColor);
+        return new DevelopmentCardList(this.playerCardList.getSpecificCardList(cardColor));
     }
 
     public DevelopmentCardList getPlayerCardList()

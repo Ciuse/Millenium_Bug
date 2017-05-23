@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.Effect;
 
-import it.polimi.ingsw.ps31.Actions.GetResources;
 import it.polimi.ingsw.ps31.Effect.Effect;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
 import it.polimi.ingsw.ps31.Player.Player;
@@ -23,9 +22,9 @@ public class GetResource extends Effect {
 
     @Override
     public void activate(Player player) {
-        GetResources getResources = new GetResources(player);
-        getResources.setResourcesToGet(resources);
-        getResources.activate();
-
+//        GetResources getResources = new GetResources(player);
+//        getResources.setResourcesToGet(resources);
+//        getResources.activate();
+//TODO CAMBIARE IL NOME
     }
 }

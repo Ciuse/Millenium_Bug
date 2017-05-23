@@ -24,4 +24,15 @@ public class EffectList {
         return new ArrayList<>(this.effectList);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        EffectList that = (EffectList) o;
+
+        return effectList != null ? effectList.equals(that.effectList) : that.effectList == null;
+    }
+
+
 }

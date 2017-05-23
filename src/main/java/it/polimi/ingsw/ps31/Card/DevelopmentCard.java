@@ -47,4 +47,22 @@ public abstract class DevelopmentCard extends Card {
     public EffectList getPermanentEffectList(){
         return this.permanentEffectList;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        DevelopmentCard that = (DevelopmentCard) o;
+
+        if (cardId != that.cardId) return false;
+        if (period != that.period) return false;
+        if (cardColor != that.cardColor) return false;
+        if (costList != null ? !costList.equals(that.costList) : that.costList != null) return false;
+        if (immediateEffectList != null ? !immediateEffectList.equals(that.immediateEffectList) : that.immediateEffectList != null)
+            return false;
+        return permanentEffectList != null ? permanentEffectList.equals(that.permanentEffectList) : that.permanentEffectList == null;
+    }
+
 }
