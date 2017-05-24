@@ -1,8 +1,7 @@
 package it.polimi.ingsw.ps31.Board;
 
-import it.polimi.ingsw.ps31.*;
+import it.polimi.ingsw.ps31.Card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.Constants.CardColor;
-import it.polimi.ingsw.ps31.Effect.Effect;
 import it.polimi.ingsw.ps31.Effect.EffectList;
 
 import java.util.List;
@@ -16,20 +15,21 @@ public class Tower {
 
     private final CardColor color;
     private boolean isOccupied = false;
-    private final TowerCardSpace[] cardBoxList;
-    private final ActionSpace[] actionBoxList;
+    private final TowerCardSpace[] towerCardSpaceList;
+    private final ActionSpace[] actionSpaceList;
+    private DevelopmentCardDeck deck;
 
     /* Constructor */
     public Tower(int towerDimension, CardColor color, List<EffectList> effectList)
     {
         this.TOWERDIMENSION = towerDimension;
-        this.cardBoxList = new TowerCardSpace[TOWERDIMENSION];
-        this.actionBoxList = new ActionSpace[TOWERDIMENSION];
+        this.towerCardSpaceList = new TowerCardSpace[TOWERDIMENSION];
+        this.actionSpaceList = new ActionSpace[TOWERDIMENSION];
         for (int i = 0; i<TOWERDIMENSION; i++)
         {
             int[] diceCostList= {1,3,5,7};
-            cardBoxList[i] = new TowerCardSpace(color, null);   //TODO: inserire parametro dell'action space
-            actionBoxList[i] = new ActionSpace(diceCostList[i],1,effectList.get(i));
+            towerCardSpaceList[i] = new TowerCardSpace(color, null);   //TODO: inserire parametro dell'action space
+            actionSpaceList[i] = new ActionSpace(diceCostList[i],1,effectList.get(i));
         }
         this.color = color;
     }
@@ -50,25 +50,44 @@ public class Tower {
         isOccupied = occupied;
     }
 
-    public TowerCardSpace[] getCardBoxList()
+    public TowerCardSpace[] getTowerCardSpaceList()
     {
-        return cardBoxList;
+        return towerCardSpaceList;
     }
 
-    public ActionSpace[] getActionBoxList()
+    public ActionSpace[] getActionSpaceList()
     {
-        return actionBoxList;
+        return actionSpaceList;
     }
 
     public TowerCardSpace getCardBoxListAt(int i)
     {
-        return cardBoxList[i];
+        return towerCardSpaceList[i];
     }
 
     public ActionSpace getActionBoxListAt(int i)
     {
-        return actionBoxList[i];
+        return actionSpaceList[i];
     }
+
+    public void setDeck(List<DevelopmentCardDeck> deckList, int period) {
+        for(int i=0; i<deckList.size();i++){
+            if(deckList.get(i).getPeriod()==period&&deckList.get(i).getColor().equals(this.color))
+                this.deck=deckList.get(i);
+        }
+    }
+
+    public void drawCardFromDeck(){
+        for(int cardSpaceNum=0;cardSpaceNum<=TOWERDIMENSION;cardSpaceNum++) {
+            this.towerCardSpaceList[cardSpaceNum].setCard(deck.draw());
+        }
+
+    }
+
+    public void drawFromDeck(int period){
+
+    }
+
 
 
 }

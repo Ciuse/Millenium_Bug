@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by Francesco on 12/05/2017.
  */
-public class ActionSpace extends PhysicalActionBox {
+public class ActionSpace implements PhysicalSpaceBehavior {
 
     private final int diceCost;
     private final int familyMemberLimit; //Limite massimo di familiari nello spazio azione. -1 indica l'assenza di limite

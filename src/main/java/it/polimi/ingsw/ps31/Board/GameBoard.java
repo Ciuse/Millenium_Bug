@@ -16,6 +16,7 @@ public class GameBoard {
     private Market market;
     private CouncilPalace councilPalace;
     private SmallHarvest smallHarvest;
+
     private SmallProduction smallProduction;
     private BigHarvest bigHarvest;
     private BigProduction bigProduction;
@@ -68,4 +69,54 @@ public class GameBoard {
             this.dice[i].setValue(randomValue);
         }
     }
+
+
+    public static int getTOWERNUMBER() {
+        return TOWERNUMBER;
+    }
+
+    public Tower[] getTowers() {
+        return towers;
+    }
+
+    public Market getMarket() {
+        return market;
+    }
+
+    public CouncilPalace getCouncilPalace() {
+        return councilPalace;
+    }
+
+    public SmallHarvest getSmallHarvest() {
+        return smallHarvest;
+    }
+
+    public SmallProduction getSmallProduction() {
+        return smallProduction;
+    }
+
+    public BigHarvest getBigHarvest() {
+        return bigHarvest;
+    }
+
+    public BigProduction getBigProduction() {
+        return bigProduction;
+    }
+
+    public Dice[] getDice() {
+        return dice;
+    }
+
+    public MilitaryPointTrack getMilitaryPointTrack() {
+        return militaryPointTrack;
+    }
+
+    public FaithPointTrack getFaithPointTrack() {
+        return faithPointTrack;
+    }
+
+    public VictoryPointTrack getVictoryPointTrack() {
+        return victoryPointTrack;
+    }
+
 }
