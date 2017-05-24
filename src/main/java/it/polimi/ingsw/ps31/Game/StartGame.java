@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps31.Card.DevelopmentCard;
 import it.polimi.ingsw.ps31.Card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.Card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.Constants.CardColor;
+import it.polimi.ingsw.ps31.Constants.PlayerColor;
 import it.polimi.ingsw.ps31.Json.CreationCard;
 import it.polimi.ingsw.ps31.Json.JsonFile;
 import it.polimi.ingsw.ps31.Json.JsonGameObject;
@@ -144,7 +145,26 @@ public class StartGame {
                     }
                 }
                 //fine di ogni turno
-                List colorOrder = new ArrayList(gameBoard.getCouncilPalace().getColorOrder());
+                List colorOrder = new ArrayList(gameBoard.getCouncilPalace().getColorOrder()); //ho ottenuto la lista dei colori in ordine di arrivo nel palazzo del concilio
+                List<PlayerColor> colorsOfAllPlayers = new ArrayList<>();        //lista di tutti i colori dei giocatori in gioco
+                List<PlayerColor> newOrderOfColors = new ArrayList<>();
+                List<Player> newPlayerList = new ArrayList<>();
+                for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
+                    colorsOfAllPlayers.add(playerNumber,playerList.get(playerNumber).getColor());
+                }
+                for(int i=0;i<colorOrder.size();i++){
+                    for(int j=0;j<colorsOfAllPlayers.size();j++){
+                        if(colorOrder.get(i).equals(colorsOfAllPlayers.get(j))){
+                            int k=0;
+                            newOrderOfColors.add(k,colorsOfAllPlayers.get(j));
+                            k++;
+                            int n=k; //una volta che ho aggiunto alla nuova lista di colori i colori presenti nel palazzo del concilio in ordine, devo aggiungere quelli in più
+                        }
+
+                    }
+
+                }
+
 
 
 
