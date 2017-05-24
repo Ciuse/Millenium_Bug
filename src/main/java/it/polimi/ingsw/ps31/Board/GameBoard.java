@@ -3,6 +3,9 @@ package it.polimi.ingsw.ps31.Board;
 import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Constants.DiceColor;
 import it.polimi.ingsw.ps31.Effect.EffectList;
+import it.polimi.ingsw.ps31.Player.Excommunication;
+import it.polimi.ingsw.ps31.Player.Player;
+
 import java.util.List;
 
 /**
@@ -24,6 +27,8 @@ public class GameBoard {
     private MilitaryPointTrack militaryPointTrack;
     private FaithPointTrack faithPointTrack;
     private VictoryPointTrack victoryPointTrack;
+    private EndActionButton endActionButton;
+    private List<Excommunication> excommunicationList;
     private static GameBoard ourInstance;
 
     public static GameBoard getInstance() {
@@ -119,5 +124,25 @@ public class GameBoard {
     public VictoryPointTrack getVictoryPointTrack() {
         return victoryPointTrack;
     }
+
+    public List<Excommunication> getExcommunicationList() {
+        return excommunicationList;
+    }
+
+    public void setExcommunicationList(List<Excommunication> excommunicationList) {
+        this.excommunicationList = excommunicationList;
+    }
+
+    public EndActionButton getEndActionButton() {
+        return endActionButton;
+    }
+
+    public void startActionTurn(Player player){
+
+    }
+    public void endActionTurn(Player player){
+
+    }
+
 
 }

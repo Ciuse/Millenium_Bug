@@ -28,4 +28,5 @@ public class MarkerDisc {
         trackCell.setMarkerDisc(this);
     }
     //TODO FINIRE ANCORA LA CLASSE CON I SET PER LE TRACK CELL
+
 }

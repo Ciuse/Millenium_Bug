@@ -46,7 +46,7 @@ public class TrackCell {
     public List<MarkerDisc> getMarkerDisc(){
         return this.markerDiscList;
     }
-    public PointResource getPointResourceValue(){
+    public PointResource getExtraValue(){
         return this.resourceValue;
     }
     public Class<? extends PointResource> getResourceType(){

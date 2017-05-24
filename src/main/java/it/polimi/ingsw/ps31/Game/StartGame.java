@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.Game;
 
 import com.google.gson.Gson;
+import it.polimi.ingsw.ps31.Board.FaithPointTrack;
 import it.polimi.ingsw.ps31.Board.GameBoard;
 import it.polimi.ingsw.ps31.Card.DevelopmentCard;
 import it.polimi.ingsw.ps31.Card.DevelopmentCardDeck;
@@ -12,14 +13,17 @@ import it.polimi.ingsw.ps31.Json.JsonGameObject;
 import it.polimi.ingsw.ps31.Player.Player;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.List;
-
 /**
  * Created by giulia on 24/05/2017.
  */
 public class StartGame {
     private static GameBoard gameBoard;
     private final static int PERIODMAXNUMBER = 3;
+    private final static int ROUNDMAXNUMBER = 2;
+    private final static int ACTIONMAXNUMBER = 4;
     private int period;
     private int round;
     private List<Player> playerList;
@@ -58,16 +62,93 @@ public class StartGame {
         for(int j=0;j<deckList.size();j++){
             System.out.println(deckList.get(j).getCardListSize());
         }
+        long delayAction=120000;
+
+        Timer timer1 = new Timer();
+        TimerTask task1 = new TimerTask() {
+            @Override
+            public void run() {
+
+                System.out.println("tempo scaduto per la tua azione ");
+            }
+        };
+        TimerTask task2 = new TimerTask() {
+            @Override
+            public void run() {
+
+                System.out.println("tempo scaduto");
+            }
+        };
 
 
+        timer1.schedule(task2,120000);
+
+
+
+        //viene invocato dopo lo scadere del tempo dopo che si sono connessi i primi 2 giocatori
+        int playerMaxNumber= playerList.size();
 
         for (int period=1;period<=PERIODMAXNUMBER;period++){
 
             for(int towerNum=0;towerNum<gameBoard.getTOWERNUMBER();towerNum++){
+                gameBoard.getTowers()[towerNum].setDeck(deckList,period);
                 }
-            for(int round=1;round<=2;round++){
+            for(int round=1;round<=ROUNDMAXNUMBER;round++){
+                for(int towerNum=0;towerNum<gameBoard.getTOWERNUMBER();towerNum++){
+                    gameBoard.getTowers()[towerNum].drawCardFromDeck();
+                }
+                gameBoard.rollTheDice();
+                for(int action=1;action<=ACTIONMAXNUMBER;action++){
+                    for(int playerNumber=0;playerNumber<playerMaxNumber;playerNumber++){
+                        gameBoard.startActionTurn(playerList.get(playerMaxNumber));
+                        //RICEVO CONFERMA RISPOSTA -> INIZIO TIMER
+                        timer1.schedule(task1,delayAction);
+                        if(action==1&&playerList.get(playerMaxNumber).getFlagExcommunication()==1){
+                            task1.cancel();
+                            timer1.purge();
+                            gameBoard.endActionTurn(playerList.get(playerMaxNumber));
+                        }
+                        if(playerList.get(playerNumber).checkIfOnlyNEUTRALRemained()==true){
+                            gameBoard.getEndActionButton().setActive(true);
+                        }
+                        //FASE AZIONE DEL GIOCATORE
+
+
+                    }
+                }
+                //sono finite le 16 azioni possibili del turno (caso massimo)
+                for(int playerNumber=0;playerNumber<playerMaxNumber;playerNumber++){
+                    if(playerList.get(playerMaxNumber).getFlagExcommunication()==1){
+                        gameBoard.startActionTurn(playerList.get(playerMaxNumber));
+                        //RICEVO CONFERMA RISPOSTA -> INIZIO TIMER
+                        timer1.schedule(task1,delayAction);
+                    }
+                }
+                //SOLITE COSE DA FARE DOPO LA FINE DELLA FASE AZIONI
+                if(round==2) {
+                    for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
+                        if (playerList.get(playerNumber).getResources().getResource("FaithPoints").getValue() < gameBoard.getFaithPointTrack().getTrackCell()[2 + period].getValue()) {
+                            gameBoard.getExcommunicationList().get(period).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
+                            //regola dell'ultimo turno del terzo periodo (tutti ricevono i punti vittoria )
+                            if (period == 3) {
+                                int faithPointPlayer = playerList.get(playerNumber).getResources().getResource("FaithPoints").getValue();
+                                playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell()[faithPointPlayer].getExtraValue());
+                                playerList.get(playerNumber).subResources(playerList.get(playerNumber).getResources().getResource("FaithPoints"));
+                            }
+                        } else {
+                            //chiedo l'intervento della view e una volta ricevuto il messaggio di risposta true (il giocatore vuole spendere i suoi punti fede per evitare la scomunica)
+                            int faithPointPlayer = playerList.get(playerNumber).getResources().getResource("FaithPoints").getValue();
+                            playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell()[faithPointPlayer].getExtraValue());
+                            playerList.get(playerNumber).subResources(playerList.get(playerNumber).getResources().getResource("FaithPoints"));
+                        }
+                    }
+                }
+                //fine di ogni turno
+                List colorOrder = new ArrayList(gameBoard.getCouncilPalace().getColorOrder());
+
+
 
             }
-        }
+       }
     }
 }

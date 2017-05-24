@@ -26,7 +26,8 @@ public class Player {
     private final String nickname;
     private PermanentBonus permanentBonus;
     private ArrayList<Excommunication> excommunications;
-    private ArrayList<FamilyMember> familyMembers;
+    private final ArrayList<FamilyMember> familyMembers;
+    private int flagExcommunication;
 
     private DevelopmentCardList playerCardList;
 
@@ -146,6 +147,28 @@ public class Player {
     {
         if ( this.playerCardList.getSpecificCardList(card.getCardColor()).size() < MAXCARDLISTSIZE)
             this.playerCardList.addDevelopmentCard(card);
+    }
+    public boolean checkIfOnlyNEUTRALRemained(){
+        if(this.getFamilyMember(DiceColor.NEUTRAL).isPlaced()==true){
+            return false;
+        }
+        else{
+            if(this.getFamilyMember(DiceColor.BLACK).isPlaced()==true
+                    &&this.getFamilyMember(DiceColor.ORANGE).isPlaced()==true
+                    &&this.getFamilyMember(DiceColor.WHITE).isPlaced()==true){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getFlagExcommunication() {
+
+        return flagExcommunication;
+    }
+
+    public void setFlagExcommunication(int flagExcommunication) {
+        this.flagExcommunication = flagExcommunication;
     }
 
     @Override

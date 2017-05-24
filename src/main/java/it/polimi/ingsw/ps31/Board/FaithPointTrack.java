@@ -17,4 +17,7 @@ public class FaithPointTrack extends Track{
     private FaithPointTrack() {
         super(MAXNUMBER, FaithPoint.class);
     }
+
+
+
 }
