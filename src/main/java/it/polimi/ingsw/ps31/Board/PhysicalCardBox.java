@@ -9,7 +9,7 @@ import it.polimi.ingsw.ps31.Card.DevelopmentCard;
 public abstract class PhysicalCardBox implements PhysicalSpaceBehavior
 {
 
-    private DevelopmentCard card;
+    protected DevelopmentCard card;
 
     /* Constructor */
     public PhysicalCardBox()

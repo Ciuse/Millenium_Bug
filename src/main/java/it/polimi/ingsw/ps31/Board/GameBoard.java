@@ -26,11 +26,12 @@ public class GameBoard {
     private VictoryPointTrack victoryPointTrack;
     private static GameBoard ourInstance;
 
-    public static GameBoard getInstance( ) {
+    public static GameBoard getInstance() {
         return ourInstance;
     }
     private GameBoard(List<EffectList> towerEffectList[], List<EffectList> otherEffectList)
     {
+
         CardColor[] towerColor= {CardColor.GREEN,CardColor.BLUE,CardColor.YELLOW,CardColor.PURPLE};
         for(int i=0; i<TOWERNUMBER; i++) {
             this.towers[i] = new Tower(towerEffectList[i].size(), towerColor[i], towerEffectList[i]);

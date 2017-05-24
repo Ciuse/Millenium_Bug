@@ -39,4 +39,12 @@ public class DevelopmentCardDeck extends Deck {
     public CardColor getColor(){
         return this.cardColor;
     }
+
+    public int getMaxNumber() {
+        return maxNumber;
+    }
+
+    public int getCardListSize(){
+        return this.cardList.size();
+    }
 }
