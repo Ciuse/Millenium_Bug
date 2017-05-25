@@ -3,11 +3,13 @@ package it.polimi.ingsw.ps31.Game;
 import com.google.gson.Gson;
 import it.polimi.ingsw.ps31.Board.FaithPointTrack;
 import it.polimi.ingsw.ps31.Board.GameBoard;
+import it.polimi.ingsw.ps31.Board.MilitaryPointTrack;
 import it.polimi.ingsw.ps31.Card.DevelopmentCard;
 import it.polimi.ingsw.ps31.Card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.Card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Constants.PlayerColor;
+import it.polimi.ingsw.ps31.GameThings.MilitaryStrength;
 import it.polimi.ingsw.ps31.GameThings.VictoryPoint;
 import it.polimi.ingsw.ps31.Json.CreationCard;
 import it.polimi.ingsw.ps31.Json.JsonFile;
@@ -153,7 +155,7 @@ public class StartGame {
                         colorOrder.add(playerList.get(i).getColor());
                     }
                 }
-                this.orderPlayersList(colorOrder);
+                this.orderPlayersListWithColors(colorOrder);
             }//fine ciclo turno
         }//fine ciclo periodo
         //gioco finito ,calcolo punteggio finale
@@ -178,19 +180,50 @@ public class StartGame {
             }
         }
     }
-//    public void finalExtraVictoryPoints3(){
-//        for(int i=0;i<playerList.size();i++){
-//            playerList.get(i).getPlayerCardList().getDevelopmentCardList().
-//        }
-//
-//    }
+    //aggiungo punti vittoria in base ai punti militari ottenuti a fine partita
+    public void finalExtraVictoryPoints3(){
+        this.orderMilitaryStrength();
+        if(playerList.get(0).getResources().getResource("MilitaryStrength").getValue()!=playerList.get(1).getResources().getResource("MilitaryStrength").getValue()){
+        VictoryPoint victoryPointToAdd1 = new VictoryPoint(5);
+        VictoryPoint victoryPointToAdd2 = new VictoryPoint(2);
+        playerList.get(0).addResources(victoryPointToAdd1);
+        playerList.get(1).addResources(victoryPointToAdd2);
+        }else {
+            VictoryPoint victoryPointToAdd1 = new VictoryPoint(5);
+            VictoryPoint victoryPointToAdd2 = new VictoryPoint(5);
+            playerList.get(0).addResources(victoryPointToAdd1);
+            playerList.get(1).addResources(victoryPointToAdd2);
+        }
+
+    }
+    //TODO un metodo che sommi i punti vittoria delle carte viola alla fine del gioco
+    public void finalExtraVictoryPoints4(){
+        for(int i=0;i<playerList.size();i++){
+            for(int k=0; k<playerList.get(i).getPlayerCardList().getSpecificCardList(CardColor.PURPLE).size();k++){
+               // VictoryPoint(playerList.get(i).getPlayerCardList().getSpecificCardList(CardColor.PURPLE).get(k).getPermanentEffectList().getEffectList().get(0).activate(playerList.get(i)));
+            }
+        }
+
+    }
+
 
 
     // riordina i giocatori in base all'ordine dei colori nel palazzo del concilio
-    public void orderPlayersList (List<PlayerColor> colorList){
+    public void orderPlayersListWithColors (List<PlayerColor> colorList){
         for (int i=0;i<colorList.size();i++){
-            for (int j=0;j<playerList.size();j++){
+            for (int j=0;j<playerList.size();j++){ //il for con la j serve solo per fare 4 cicli massimi
                 if(!colorList.get(i).equals(playerList.get(i).getColor())){
+                    Player removedPlayer = playerList.remove(i);   //il remove mi fa scalare automaticamente tutti i giocatori verso sinistra
+                    playerList.add(removedPlayer);
+                }
+            }
+        }
+    }
+    //riordino la lista dei giocatori in base a chi ha preso più punti militari
+    public void orderMilitaryStrength(){
+        for(int i=0;i<playerList.size();i++){
+            for(int j=0;j<playerList.size();j++){
+                if(playerList.get(i).getResources().getResource("MilitaryStrength").getValue()!=playerList.get(i).getResources().getResource("MilitaryStrength").getValue()){
                     Player removedPlayer = playerList.remove(i);
                     playerList.add(removedPlayer);
                 }
