@@ -21,7 +21,7 @@ public class Player {
     private static final int MAXCARDLISTSIZE = 6;    //Massimo numero di carte dello stesso colore che si possono avere contemporaneamente
 
     private final PlayerColor color;
-    private PlayerResources resources;      //No getter e setter -->add e sub
+    private PlayerResources resources;      //setter -->add e sub
     private final PersonalBoard playerBoard;
     private final String nickname;
     private PermanentBonus permanentBonus;
@@ -170,6 +170,8 @@ public class Player {
     public void setFlagExcommunication(int flagExcommunication) {
         this.flagExcommunication = flagExcommunication;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

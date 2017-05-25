@@ -4,6 +4,7 @@ import it.polimi.ingsw.ps31.Effect.EffectList;
 import it.polimi.ingsw.ps31.Player.FamilyMember;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Francesco on 12/05/2017.
@@ -12,7 +13,7 @@ public class ActionSpace implements PhysicalSpaceBehavior {
 
     private final int diceCost;
     private final int familyMemberLimit; //Limite massimo di familiari nello spazio azione. -1 indica l'assenza di limite
-    private ArrayList<FamilyMember> familyMembers;
+    private List<FamilyMember> familyMembers;
     private final EffectList immediateEffectList;
 
     /* Constructor */
@@ -34,7 +35,7 @@ public class ActionSpace implements PhysicalSpaceBehavior {
         return this.familyMemberLimit;
     }
 
-    public ArrayList<FamilyMember> getFamilyMemberList()
+    public List<FamilyMember> getFamilyMemberList()
     {
         return this.familyMembers;
     }
