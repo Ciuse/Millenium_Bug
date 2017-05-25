@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.Card;
 
 
 import it.polimi.ingsw.ps31.Constants.CardColor;
+import it.polimi.ingsw.ps31.Constants.PlayerColor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class DevelopmentCardList {
     }
 
 
-        public void addDevelopmentCard(DevelopmentCard cardToAdd) {
+    public void addDevelopmentCard(DevelopmentCard cardToAdd) {
         this.developmentCardList.add(cardToAdd);
     }
 
@@ -72,9 +73,13 @@ public class DevelopmentCardList {
 
     public List<DevelopmentCard> getSpecificCardList(CardColor cardColor){
 
-        //TODO FARE IL CODICE CHE CREA LA LISTA DI CARTE DI SOLO UN COLORE E LA PASSA A CHI LO CHIAMA
-        return this.developmentCardList;
-
+        List<DevelopmentCard> specificCardList = new ArrayList<>();
+        for(int i=0; i<this.developmentCardList.size();i++){
+            if(this.developmentCardList.get(i).getCardColor().equals(cardColor)){
+                specificCardList.add(this.developmentCardList.get(i));
+            }
+        }
+        return specificCardList;
     }
 
     @Override
@@ -85,6 +90,34 @@ public class DevelopmentCardList {
         DevelopmentCardList that = (DevelopmentCardList) o;
 
         return developmentCardList != null ? developmentCardList.equals(that.developmentCardList) : that.developmentCardList == null;
+    }
+
+    public boolean lessOrEquals(Object o){
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DevelopmentCardList that = (DevelopmentCardList) o;
+        int contatore=0;
+
+        if (this.getSpecificCardList(CardColor.GREEN).size()<=that.getSpecificCardList((CardColor.GREEN)).size()){
+            contatore++;
+        }
+
+        if (this.getSpecificCardList(CardColor.PURPLE).size()<=that.getSpecificCardList((CardColor.PURPLE)).size()){
+            contatore++;
+        }
+
+        if (this.getSpecificCardList(CardColor.YELLOW).size()<=that.getSpecificCardList((CardColor.YELLOW)).size()){
+            contatore++;
+        }
+
+        if (this.getSpecificCardList(CardColor.BLUE).size()<=that.getSpecificCardList((CardColor.BLUE)).size()){
+            contatore++;
+        }
+
+        if(contatore>=0);
+
+        return false;
     }
 
 

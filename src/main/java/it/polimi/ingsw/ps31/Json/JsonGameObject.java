@@ -15,8 +15,11 @@ import java.util.List;
  */
 public class JsonGameObject {
     private List<DevelopmentCard> developementCardList;
-    private List<EffectList> ActionSpaceEffectList;
-
+    private List<EffectList> actionSpaceEffectList;
+    private int[] faithTrackExtraValue;
+    private int[] bonusVictoryPointFromCharacterCard;
+    private int[] bonusVictoryPointFromPlayerResources;
+    private int[] bonusVictoryPointFromTerritory;
 
     public JsonGameObject(List<DevelopmentCard> developementCardList) {
         this.developementCardList = developementCardList;
@@ -74,7 +77,7 @@ public class JsonGameObject {
     }
     public List<EffectList> getEffectList(){  //ritorno la lista stessa, non mi interessa se la possono modificare
 
-        return this.ActionSpaceEffectList;
+        return this.actionSpaceEffectList;
     }
 
 

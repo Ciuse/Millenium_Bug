@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.GameThings;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -147,6 +146,27 @@ public class ResourceList {
 
         return resourceList != null ? resourceList.equals(that.resourceList) : that.resourceList == null;
     }
+    public boolean lessOrEquals(Object o){     //confronto tra due liste di risorse per sapere se una è minore o uguale dell altra
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-    //TODO FARE IL MINORE SFRUTTANDO LA ROBA NEL FIGLIO
+        ResourceList that = (ResourceList) o;
+
+        if(that.getResourceList().size()<this.getResourceList().size()){            //se la mia lista ha più elemnti non sarà mai minore
+            return false;
+        }
+        int contatore=0;
+        for(int i=0; i<that.resourceList.size();i++){
+            for(int j=0; j<this.getResourceList().size();j++){
+                if(this.resourceList.get(j).lessOrEquals(that.getResourceList().get(i))){// confronto i vari elementi della lista con il metodo che ho implementato nel confronto tra risorse
+                    contatore++;
+                }
+            }
+        }
+        if(contatore==this.getResourceList().size()){          // se tutte le mie risorse erano minore delle altre allora la mia lista è confrontabile ed è minore dell altra
+            return true;
+        }
+
+        return false;
+    }
 }
