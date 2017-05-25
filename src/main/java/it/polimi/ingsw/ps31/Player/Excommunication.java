@@ -8,6 +8,5 @@ public class Excommunication {
 
     public void setExcommunicationToPlayer(Player player){
         player.addExcommunication(this);        //TODO: VERIFICARE
-
     }
 }

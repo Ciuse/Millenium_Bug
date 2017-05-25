@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.Card;
 import it.polimi.ingsw.ps31.Effect.Effect;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
+import it.polimi.ingsw.ps31.Player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +39,17 @@ public class LeaderCard extends Card {
         return this.permanentAbility;
     }
 
-    public void ActiveLeaderCard(){
-        this.activated=true;
+    public Boolean getActivated() {
+        return activated;
+    }
+
+    public void activeLeaderCard(Player player){
+        if(developmentCardRequest.lessOrEquals(player.getPlayerCardList())
+                &&resourceRequest.lessOrEquals(player.getResources().getPlayerResourceAsResourceList())){
+            this.activated=true;
+        }
+        else {//TODO "NON HAI ABBASTANZA RISORSE"
+        }
     }
 
 }

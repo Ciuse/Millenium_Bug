@@ -7,14 +7,20 @@ import it.polimi.ingsw.ps31.GameThings.PointResource;
  */
 public abstract class Track {
    private TrackCell[]  trackCell;
+   private final int maxNumber;
 
-   public Track(int MAXNUMBER, Class<? extends PointResource> resourceType){
-       for(int i=0; i<MAXNUMBER; i++){
+   public Track(int maxNumber, Class<? extends PointResource> resourceType){
+       this.maxNumber=maxNumber;
+       for(int i=0; i<maxNumber; i++){
            this.trackCell[i]=new TrackCell(resourceType,i);
        }
    }
 
    public TrackCell[] getTrackCell(){
        return this.trackCell;
+   }
+
+   public int getMaxNumber() {
+       return maxNumber;
    }
 }

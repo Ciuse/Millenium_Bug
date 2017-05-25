@@ -8,7 +8,6 @@ import java.awt.*;
  * Created by Giuseppe on 19/05/2017.
  */
 public class VictoryPointTrack extends Track {
-    private final static int MAXNUMBER = 100;
 
     private static VictoryPointTrack ourInstance = new VictoryPointTrack();
 
@@ -17,6 +16,6 @@ public class VictoryPointTrack extends Track {
     }
 
     private VictoryPointTrack() {
-        super(MAXNUMBER,VictoryPoint.class);
+        super(100,VictoryPoint.class);
     }
 }

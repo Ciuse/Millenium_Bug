@@ -15,8 +15,6 @@ public class ActiveLeaderCard extends Action {
 
     @Override
     public void activate() {
-
-       // if(leaderCard.get)
-
-    }
+        //leaderCard.activeLeaderCard(player); TODO FARE ALTRO?
+     }
 }

@@ -137,6 +137,15 @@ public class ResourceList {
         return new ArrayList<>(this.resourceList);
     }
 
+    public Resource getSpecificResource(Class<? extends Resource> resourceClass) throws NullPointerException{
+        for(int i=0; i<this.resourceList.size();i++){
+            if(resourceClass.equals(resourceList.get(i).getClass())){
+                return resourceList.get(i);
+            }
+        }
+        return null; //non trovato
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
