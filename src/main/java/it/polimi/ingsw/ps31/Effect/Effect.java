@@ -19,5 +19,8 @@ public abstract class Effect implements GenericEffect {
         return player != null ? player.equals(effect.player) : effect.player == null;
     }
 
-
+    @Override
+    public int hashCode() {
+        return player.hashCode();
+    }
 }

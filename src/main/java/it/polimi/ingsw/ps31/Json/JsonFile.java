@@ -9,12 +9,12 @@ import java.nio.file.Paths;
 /**
  * Created by Giuseppe on 11/05/2017.
  */
-public class JsonFile {
+public abstract class JsonFile {
 
 
     public static String filePath(String fileName) { //ottengo il patch della cartella in cui si trova l oggetto che chiama il metodo
-        String path;
-        return path = Paths.get(".").toAbsolutePath().normalize().toString() + "\\" + fileName;
+        String path = Paths.get(".").toAbsolutePath().normalize().toString() + "\\" + fileName;
+        return path;
     }
 
     public static void newFile(String fileName) { //creazione file nella cartella / controllo se esiste già

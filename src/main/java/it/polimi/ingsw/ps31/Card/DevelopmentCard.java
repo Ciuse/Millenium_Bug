@@ -65,4 +65,15 @@ public abstract class DevelopmentCard extends Card {
         return permanentEffectList != null ? permanentEffectList.equals(that.permanentEffectList) : that.permanentEffectList == null;
     }
 
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + cardId;
+        result = 31 * result + cardColor.hashCode();
+        result = 31 * result + period;
+        result = 31 * result + (costList != null ? costList.hashCode() : 0);
+        result = 31 * result + (immediateEffectList != null ? immediateEffectList.hashCode() : 0);
+        result = 31 * result + (permanentEffectList != null ? permanentEffectList.hashCode() : 0);
+        return result;
+    }
 }

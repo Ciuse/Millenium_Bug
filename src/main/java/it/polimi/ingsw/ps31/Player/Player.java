@@ -187,4 +187,18 @@ public class Player {
             return false;
         return playerCardList != null ? playerCardList.equals(player.playerCardList) : player.playerCardList == null;
     }
+
+    @Override
+    public int hashCode() {
+        int result = color.hashCode();
+        result = 31 * result + (resources != null ? resources.hashCode() : 0);
+        result = 31 * result + (playerBoard != null ? playerBoard.hashCode() : 0);
+        result = 31 * result + (nickname != null ? nickname.hashCode() : 0);
+        result = 31 * result + (permanentBonus != null ? permanentBonus.hashCode() : 0);
+        result = 31 * result + (excommunications != null ? excommunications.hashCode() : 0);
+        result = 31 * result + (familyMembers != null ? familyMembers.hashCode() : 0);
+        result = 31 * result + flagExcommunication;
+        result = 31 * result + (playerCardList != null ? playerCardList.hashCode() : 0);
+        return result;
+    }
 }

@@ -80,5 +80,19 @@ public class JsonGameObject {
         return this.actionSpaceEffectList;
     }
 
+    public int[] getFaithTrackExtraValue() {
+        return faithTrackExtraValue;
+    }
 
+    public int[] getBonusVictoryPointFromCharacterCard() {
+        return bonusVictoryPointFromCharacterCard;
+    }
+
+    public int[] getBonusVictoryPointFromPlayerResources() {
+        return bonusVictoryPointFromPlayerResources;
+    }
+
+    public int[] getBonusVictoryPointFromTerritory() {
+        return bonusVictoryPointFromTerritory;
+    }
 }

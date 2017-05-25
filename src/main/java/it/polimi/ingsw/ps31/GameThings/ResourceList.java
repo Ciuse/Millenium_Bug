@@ -155,6 +155,12 @@ public class ResourceList {
 
         return resourceList != null ? resourceList.equals(that.resourceList) : that.resourceList == null;
     }
+
+    @Override
+    public int hashCode() {
+        return resourceList != null ? resourceList.hashCode() : 0;
+    }
+
     public boolean lessOrEquals(Object o){     //confronto tra due liste di risorse per sapere se una è minore o uguale dell altra
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

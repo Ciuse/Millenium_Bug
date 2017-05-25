@@ -34,5 +34,8 @@ public class EffectList {
         return effectList != null ? effectList.equals(that.effectList) : that.effectList == null;
     }
 
-
+    @Override
+    public int hashCode() {
+        return effectList != null ? effectList.hashCode() : 0;
+    }
 }

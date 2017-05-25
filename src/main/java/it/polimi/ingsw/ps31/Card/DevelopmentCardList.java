@@ -91,6 +91,11 @@ public class DevelopmentCardList {
         return developmentCardList != null ? developmentCardList.equals(that.developmentCardList) : that.developmentCardList == null;
     }
 
+    @Override
+    public int hashCode() {
+        return developmentCardList != null ? developmentCardList.hashCode() : 0;
+    }
+
     public boolean lessOrEquals(Object o){
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -115,4 +120,6 @@ public class DevelopmentCardList {
         }
         return false;
     }
+
+
 }
