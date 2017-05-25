@@ -44,4 +44,12 @@ public class CouncilPalace extends ActionSpace {
 
         return toReturn;
     }
+    public boolean checkIfPresentColor (PlayerColor playerColor){
+        for(int i=0;i<getColorOrder().size();i++){
+            if(playerColor.equals(getColorOrder().get(i))){
+                return true;
+            }
+        }
+        return false;
+    }
 }

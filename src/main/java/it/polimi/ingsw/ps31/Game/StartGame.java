@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps31.Card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.Card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Constants.PlayerColor;
+import it.polimi.ingsw.ps31.GameThings.VictoryPoint;
 import it.polimi.ingsw.ps31.Json.CreationCard;
 import it.polimi.ingsw.ps31.Json.JsonFile;
 import it.polimi.ingsw.ps31.Json.JsonGameObject;
@@ -30,7 +31,8 @@ public class StartGame {
     private List<Player> playerList;
 
     public void playGame(){
-
+        int[] bonusVictoryPointFromTerritory= {0,0,1,4,10,20};
+        int[] bonusVictoryPointFromCharacter= {1,3,6,10,15,21};
         CreationCard.createCardList();
 
         Gson gson = JsonGameObject.gsonGameBuilder();
@@ -144,31 +146,57 @@ public class StartGame {
                         }
                     }
                 }
-                //fine di ogni turno
-                List colorOrder = new ArrayList(gameBoard.getCouncilPalace().getColorOrder()); //ho ottenuto la lista dei colori in ordine di arrivo nel palazzo del concilio
-                List<PlayerColor> colorsOfAllPlayers = new ArrayList<>();        //lista di tutti i colori dei giocatori in gioco
-                List<PlayerColor> newOrderOfColors = new ArrayList<>();
-                List<Player> newPlayerList = new ArrayList<>();
-                for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
-                    colorsOfAllPlayers.add(playerNumber,playerList.get(playerNumber).getColor());
-                }
-                for(int i=0;i<colorOrder.size();i++){
-                    for(int j=0;j<colorsOfAllPlayers.size();j++){
-                        if(colorOrder.get(i).equals(colorsOfAllPlayers.get(j))){
-                            int k=0;
-                            newOrderOfColors.add(k,colorsOfAllPlayers.get(j));
-                            k++;
-                            int n=k; //una volta che ho aggiunto alla nuova lista di colori i colori presenti nel palazzo del concilio in ordine, devo aggiungere quelli in più
-                        }
-
+                //aggiungo alla lista dei colori del palazzo del consiglio gli eventuali giocatori che non si sono posizionati in questo spazio azione e poi riordino la lista giocatori
+                List<PlayerColor> colorOrder = new ArrayList(gameBoard.getCouncilPalace().getColorOrder());
+                for(int i=0;i<playerList.size();i++){
+                    if(gameBoard.getCouncilPalace().checkIfPresentColor(playerList.get(i).getColor())==false){
+                        colorOrder.add(playerList.get(i).getColor());
                     }
-
                 }
+                this.orderPlayersList(colorOrder);
+            }//fine ciclo turno
+        }//fine ciclo periodo
+        //gioco finito ,calcolo punteggio finale
 
 
-
-
-            }
-       }
     }
+    public void finalExtraVictoryPoints1 (int[] bonusVictoryPointFromTerritory){
+        for (int i=0;i<playerList.size();i++){
+            if(playerList.get(i).getPlayerCardList().countCardGreen()>1) {
+                int value = bonusVictoryPointFromTerritory[playerList.get(i).getPlayerCardList().countCardGreen()-1];
+                VictoryPoint victoryPointToAdd = new VictoryPoint(value);
+                playerList.get(i).addResources(victoryPointToAdd);
+            }
+        }
+    }
+    public void finalExtraVictoryPoints2 (int[] bonusVictoryPointFromCharacter){
+        for (int i=0;i<playerList.size();i++){
+            if(playerList.get(i).getPlayerCardList().countCardBlue()>1) {
+                int value = bonusVictoryPointFromCharacter[playerList.get(i).getPlayerCardList().countCardBlue() - 1];
+                VictoryPoint victoryPointToAdd = new VictoryPoint(value);
+                playerList.get(i).addResources(victoryPointToAdd);
+            }
+        }
+    }
+//    public void finalExtraVictoryPoints3(){
+//        for(int i=0;i<playerList.size();i++){
+//            playerList.get(i).getPlayerCardList().getDevelopmentCardList().
+//        }
+//
+//    }
+
+
+    // riordina i giocatori in base all'ordine dei colori nel palazzo del concilio
+    public void orderPlayersList (List<PlayerColor> colorList){
+        for (int i=0;i<colorList.size();i++){
+            for (int j=0;j<playerList.size();j++){
+                if(!colorList.get(i).equals(playerList.get(i).getColor())){
+                    Player removedPlayer = playerList.remove(i);
+                    playerList.add(removedPlayer);
+                }
+            }
+        }
+    }
+
+
 }

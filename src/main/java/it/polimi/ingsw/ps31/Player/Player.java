@@ -32,7 +32,7 @@ public class Player {
     private DevelopmentCardList playerCardList;
 
     /* Constructor */
-    public Player(PlayerColor color, HashMap<String, Integer> initialResources, String nickname)
+    public Player(PlayerColor color, ResourceList initialResources, String nickname)
     {
         //Attributi base
         this.color            = color;
@@ -43,11 +43,11 @@ public class Player {
 
         //Risorse iniziali
         //TODO: il nome delle risorse deve essere preso da un enumeratore
-        int woodAmt    = initialResources.get("Wood");
-        int stoneAmt   = initialResources.get("Stone");
-        int coinAmt    = initialResources.get("Coin");
-        int servantAmt = initialResources.get("Servant");
-        this.resources = new PlayerResources(woodAmt, stoneAmt, coinAmt, servantAmt);
+//        int woodAmt    = initialResources.get("Wood");
+//        int stoneAmt   = initialResources.get("Stone");
+//        int coinAmt    = initialResources.get("Coin");
+//        int servantAmt = initialResources.get("Servant");
+//        this.resources = new PlayerResources(woodAmt, stoneAmt, coinAmt, servantAmt);
 
         //Creazione familiari
         this.familyMembers = new ArrayList<FamilyMember>();
