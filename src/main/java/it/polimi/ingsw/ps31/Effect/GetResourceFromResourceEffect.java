@@ -5,9 +5,9 @@ import it.polimi.ingsw.ps31.GameThings.ResourceList;
 /**
  * Created by giulia on 18/05/2017.
  */
-public class GetResourceFromResource extends GetResource {
+public class GetResourceFromResourceEffect extends GetResourceEffect {
     private final ResourceList requiredResource;
-    public GetResourceFromResource(ResourceList resourceGained, ResourceList requiredResource) {
+    public GetResourceFromResourceEffect(ResourceList resourceGained, ResourceList requiredResource) {
         super(resourceGained);
         this.requiredResource = requiredResource;
     }

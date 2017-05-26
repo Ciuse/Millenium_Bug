@@ -1,17 +1,14 @@
 package it.polimi.ingsw.ps31.Game;
 
 import com.google.gson.Gson;
-import it.polimi.ingsw.ps31.Board.FaithPointTrack;
 import it.polimi.ingsw.ps31.Board.GameBoard;
-import it.polimi.ingsw.ps31.Board.MilitaryPointTrack;
-import it.polimi.ingsw.ps31.Card.DevelopmentCard;
 import it.polimi.ingsw.ps31.Card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.Card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Constants.PlayerColor;
-import it.polimi.ingsw.ps31.GameThings.MilitaryStrength;
+import it.polimi.ingsw.ps31.Effect.EffectList;
 import it.polimi.ingsw.ps31.GameThings.VictoryPoint;
-import it.polimi.ingsw.ps31.Json.CreationCard;
+import it.polimi.ingsw.ps31.Json.CreationJson;
 import it.polimi.ingsw.ps31.Json.JsonFile;
 import it.polimi.ingsw.ps31.Json.JsonGameObject;
 import it.polimi.ingsw.ps31.Player.Player;
@@ -33,14 +30,23 @@ public class StartGame {
     private List<Player> playerList;
 
     public void playGame(){
-        int[] bonusVictoryPointFromTerritory= {0,0,1,4,10,20};
-        int[] bonusVictoryPointFromCharacter= {1,3,6,10,15,21};
-        CreationCard.createCardList();
-
+        CreationJson creationJson =new CreationJson();
+        creationJson.createJsonFile();          //Creazione file json se non è già presente
         Gson gson = JsonGameObject.gsonGameBuilder();
-        String jsonStringReadFromFile = JsonFile.readJsonFromFile("Card.json");
-        JsonGameObject jsonObjectReadFromFile = gson.fromJson(jsonStringReadFromFile, JsonGameObject.class);
-        List<DevelopmentCard> developmentCardList=jsonObjectReadFromFile.getCardList();
+        String jsonStringReadFromFile = JsonFile.readJsonFromFile("Card.json");         //lettura file json
+        JsonGameObject jsonObjectReadFromFile = gson.fromJson(jsonStringReadFromFile, JsonGameObject.class);        //salvataggio stringa json letta
+
+        //salvo tutti gli oggetti letti dal file json
+        DevelopmentCardList developmentCardList=jsonObjectReadFromFile.getCardList();
+        EffectList[] towerActionSpaceEffecArray= jsonObjectReadFromFile.getTowerActionSpaceEffecArray();
+        List<EffectList> actionSpaceEffectList = jsonObjectReadFromFile.getActionSpaceEffectList();
+        int[] faithTrackExtraValue=jsonObjectReadFromFile.getFaithTrackExtraValue();
+        int[] bonusVictoryPointFromCharacterCard=jsonObjectReadFromFile.getBonusVictoryPointFromCharacterCard();
+        int[] bonusVictoryPointFromTerritory=jsonObjectReadFromFile.getBonusVictoryPointFromTerritory();
+        int[] requiredMilitaryStrengthForTerritory=jsonObjectReadFromFile.getRequiredMilitaryStrengthForTerritory();
+        int bonusVictoryPointFromPlayerResources=jsonObjectReadFromFile.getBonusVictoryPointFromPlayerResources();
+
+        //creazione deck vuoti
         List<DevelopmentCardDeck> deckList = new ArrayList<>();
         CardColor[] cardColors= {CardColor.GREEN,CardColor.YELLOW,CardColor.PURPLE,CardColor.BLUE};
         for(int i=0;i<cardColors.length;i++) {
@@ -49,10 +55,7 @@ public class StartGame {
             }
         }
 
-        for(int j=0;j<deckList.size();j++){
-            System.out.println(deckList.get(j).getCardListSize());
-        }
-
+        //riempimento dei deck in base al periodo e al colore delle carte
         for(int i=0;i<developmentCardList.size();i++){
             for(int j=0;j<deckList.size();j++){
                 if(deckList.get(j).getCardListSize()<deckList.get(j).getMaxNumber()
@@ -64,9 +67,6 @@ public class StartGame {
             }
         }
 
-        for(int j=0;j<deckList.size();j++){
-            System.out.println(deckList.get(j).getCardListSize());
-        }
         long delayAction=120000;
 
         Timer timer1 = new Timer();
@@ -85,20 +85,17 @@ public class StartGame {
             }
         };
 
-
         timer1.schedule(task2,120000);
-
-
 
         //viene invocato dopo lo scadere del tempo dopo che si sono connessi i primi 2 giocatori
         int playerMaxNumber= playerList.size();
 
-        for (int period=1;period<=PERIODMAXNUMBER;period++){
+        for (this.period=1;period<=PERIODMAXNUMBER;period++){
 
             for(int towerNum=0;towerNum<gameBoard.getTOWERNUMBER();towerNum++){
                 gameBoard.getTowers()[towerNum].setDeck(deckList,period);
                 }
-            for(int round=1;round<=ROUNDMAXNUMBER;round++){
+            for(this.round=1;round<=ROUNDMAXNUMBER;round++){
                 for(int towerNum=0;towerNum<gameBoard.getTOWERNUMBER();towerNum++){
                     gameBoard.getTowers()[towerNum].drawCardFromDeck();
                 }
@@ -200,7 +197,7 @@ public class StartGame {
     public void finalExtraVictoryPoints4(){
         for(int i=0;i<playerList.size();i++){
             for(int k=0; k<playerList.get(i).getPlayerCardList().getSpecificCardList(CardColor.PURPLE).size();k++){
-               // VictoryPoint(playerList.get(i).getPlayerCardList().getSpecificCardList(CardColor.PURPLE).get(k).getPermanentEffectList().getEffectList().get(0).activate(playerList.get(i)));
+               // VictoryPoint(playerList.get(i).getPlayerCardList().getSpecificCardList(CardColor.PURPLE).get(k).getPermanentEffectList().getActionSpaceEffectList().get(0).activate(playerList.get(i)));
             }
         }
 

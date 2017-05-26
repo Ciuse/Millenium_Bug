@@ -9,12 +9,12 @@ import java.util.List;
 /**
  * Created by giulia on 17/05/2017.
  */
-public class CardCostDiscount extends BonusAndMalus{
+public class CardCostDiscountEffect extends BonusAndMalusEffect {
     private final int discountValue;
     private final List<ResourceList> resourceDiscount;
 
-    public CardCostDiscount(Action actionToDiscount, int discountValue, List<ResourceList> resourceDiscount) {
-        super(actionToDiscount);
+    public CardCostDiscountEffect(BonusAndMalusEffect bonusAndMalusEffect, int discountValue, List<ResourceList> resourceDiscount) {
+        super(bonusAndMalusEffect);
         this.discountValue = discountValue;
         this.resourceDiscount = resourceDiscount;
     }

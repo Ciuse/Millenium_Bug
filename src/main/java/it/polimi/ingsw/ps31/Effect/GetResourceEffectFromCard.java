@@ -7,9 +7,9 @@ import it.polimi.ingsw.ps31.Player.Player;
 /**
  * Created by giulia on 17/05/2017.
  */
-public class GetResourceFromCard extends GetResource {
+public class GetResourceEffectFromCard extends GetResourceEffect {
     private final CardColor cardColor; // per ogni carte del colore specificato nella carta , ottengo le risorse corrispondenti
-    public GetResourceFromCard(ResourceList resources, CardColor cardColor) {
+    public GetResourceEffectFromCard(ResourceList resources, CardColor cardColor) {
         super(resources);
         this.cardColor = cardColor;
     }

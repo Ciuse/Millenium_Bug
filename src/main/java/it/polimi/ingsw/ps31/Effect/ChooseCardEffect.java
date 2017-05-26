@@ -8,11 +8,11 @@ import java.util.List;
 /**
  * Created by giulia on 17/05/2017.
  */
-public class ChooseCard extends Effect{
+public class ChooseCardEffect extends Effect{
     private final List<CardColor> cardColors;
     private final int diceValue;
 
-    public ChooseCard(List<CardColor> cardColors, int diceValue) {
+    public ChooseCardEffect(List<CardColor> cardColors, int diceValue) {
         this.cardColors = cardColors;
         this.diceValue = diceValue;
     }
@@ -21,7 +21,7 @@ public class ChooseCard extends Effect{
     @Override
     public void activate(Player player) {
 
-//        ChooseCardAction chooseCardAction = new ChooseCard();
+//        ChooseCardAction chooseCardAction = new ChooseCardEffect();
 //        chooseCardAction.setDiceCost(diceValue);
 //        chooseCardAction.setCardColor(cardColors);
 //        chooseCardAction.activate();

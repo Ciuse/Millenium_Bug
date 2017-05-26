@@ -7,11 +7,11 @@ import it.polimi.ingsw.ps31.Player.Player;
 /**
  * Created by giulia on 15/05/2017.
  */
-public class GetResource extends Effect {
+public class GetResourceEffect extends Effect {
 
     private final ResourceList resources;
 
-    public GetResource(ResourceList resources){
+    public GetResourceEffect(ResourceList resources){
         this.resources=resources;
     }
 

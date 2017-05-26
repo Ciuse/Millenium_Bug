@@ -19,15 +19,26 @@ public class DevelopmentCardList {
         this.developmentCardList=developmentCardList;
     }
 
-
-    public void addDevelopmentCard(DevelopmentCard cardToAdd) {
+    //metodi tipici delle liste
+    public void add(DevelopmentCard cardToAdd) {
         this.developmentCardList.add(cardToAdd);
+    }
+    public DevelopmentCard remove(int index){
+        return this.developmentCardList.remove(index);
+    }
+    public int size(){
+        return this.developmentCardList.size();
+    }
+    public DevelopmentCard get(int index){
+        return this.developmentCardList.get(index);
+    }
+    public void clear(){
+        this.developmentCardList.clear();
     }
 
     public List<DevelopmentCard> getDevelopmentCardList() {
         return new ArrayList<>(this.developmentCardList);
     }
-
 
     public int countCardGreen() {
         int contatore = 0;

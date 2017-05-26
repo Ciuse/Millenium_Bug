@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps31.Player.FamilyMember;
  */
 public abstract class Production extends ActionSpace {
 
-    public Production(int diceCost, int familyMemberLimit, EffectList effectList)
+    public Production( int diceCost, int familyMemberLimit, EffectList effectList)
     {
         super(diceCost, familyMemberLimit, effectList);    //TODO: specificare l'effetto immediato
     }

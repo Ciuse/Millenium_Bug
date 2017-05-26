@@ -5,12 +5,14 @@ import it.polimi.ingsw.ps31.Player.Player;
 /**
  * Created by giulia on 17/05/2017.
  */
-public class HarvestActivation extends Effect {
+public class HarvestActivationFromCard extends GenericHarvestActivation {
     private final int harvestValue; // rappresenta il valore con cui viene creato l'effetto raccolto
 
-    public HarvestActivation(int harvestValue) {
+    public HarvestActivationFromCard(int harvestValue)
+    {super(0);
         this.harvestValue = harvestValue;
     }
+
 
     @Override
     public void activate(Player player) {

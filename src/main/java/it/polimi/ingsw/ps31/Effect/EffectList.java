@@ -15,14 +15,29 @@ public class EffectList {
     }
     public EffectList(){}
 
-    /*Getters & Setters*/
-    public void addSpecificEffect(Effect effect){
+
+    //metodi tipici delle liste
+    public void add(Effect effect){
         this.effectList.add(effect);
     }
-
+    public Effect remove(int index){
+        return this.effectList.remove(index);
+    }
+    public int size(){
+        return this.effectList.size();
+    }
+    public Effect get(int index){
+        return this.effectList.get(index);
+    }
+    public void clear(){
+        this.effectList.clear();
+    }
+    /*Getters & Setters*/
     public List<Effect> getEffectList(){
         return new ArrayList<>(this.effectList);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -14,15 +14,16 @@ import java.util.List;
  * Created by Giuseppe on 11/05/2017.
  */
 public class JsonGameObject {
-    private List<DevelopmentCard> developementCardList;
+    private DevelopmentCardList developementCardList;
+    private EffectList[] towerActionSpaceEffecArray;
     private List<EffectList> actionSpaceEffectList;
     private int[] faithTrackExtraValue;
     private int[] bonusVictoryPointFromCharacterCard;
-    private int[] bonusVictoryPointFromPlayerResources;
     private int[] bonusVictoryPointFromTerritory;
+    private int[] requiredMilitaryStrengthForTerritory;
+    private int bonusVictoryPointFromPlayerResources;
 
-    public JsonGameObject(List<DevelopmentCard> developementCardList) {
-        this.developementCardList = developementCardList;
+    public JsonGameObject() {
     }
 
     public static Gson gsonGameBuilder(){
@@ -45,17 +46,23 @@ public class JsonGameObject {
         developementCardAdapterFactory.registerSubtype(Venture.class, "Venture");
 
         RuntimeTypeAdapterFactory<Effect> effectAdapterFactory = RuntimeTypeAdapterFactory.of(Effect.class, "EffectType");
+        effectAdapterFactory.registerSubtype(ActionDiscountEffect.class, "ActionDiscountEffect");
+        effectAdapterFactory.registerSubtype(BonusAndMalusEffect.class, "BonusAndMalusEffect");
+        effectAdapterFactory.registerSubtype(CardCostDiscountEffect.class, "CardCostDiscountEffect");
+        effectAdapterFactory.registerSubtype(ChangeResourceEffect.class, "ChangeResourceEffect");
+        effectAdapterFactory.registerSubtype(ChooseCardEffect.class, "ChooseCardEffect");
+        effectAdapterFactory.registerSubtype(ChooseCardEffectWithDiscount.class, "ChooseCardEffectWithDiscount");
+        effectAdapterFactory.registerSubtype(GenericHarvestActivation.class, "GenericHarvestActivation");
+        effectAdapterFactory.registerSubtype(GenericProductionActivation.class, "GenericProductionActivation");
+        effectAdapterFactory.registerSubtype(GetResourceEffect.class, "GetResourceEffect");
+        effectAdapterFactory.registerSubtype(GetResourceEffectFromCard.class, "GetResourceEffectFromCard");
+        effectAdapterFactory.registerSubtype(GetResourceFromResourceEffect.class, "GetResourceFromResourceEffect");
+        effectAdapterFactory.registerSubtype(HarvestActivationFromCard.class, "HarvestActivationFromCard");
         effectAdapterFactory.registerSubtype(HarvestEffect.class, "HarvestEffect");
-        effectAdapterFactory.registerSubtype(ProductionEffect.class, "ProductionEffect");
-        effectAdapterFactory.registerSubtype(HarvestActivation.class, "HarvestActivation");
-        effectAdapterFactory.registerSubtype(ProductionActivation.class, "ProductionActivation");
-        effectAdapterFactory.registerSubtype(CardCostDiscount.class, "CardCostDiscount");
-        effectAdapterFactory.registerSubtype(ActionDiscount.class, "ActionDiscount");
+        effectAdapterFactory.registerSubtype(LeaderEffect.class, "LeaderEffect");
         effectAdapterFactory.registerSubtype(NoImmediateEffect.class, "NoImmediateEffect");
-        effectAdapterFactory.registerSubtype(GetResource.class, "GetResource");
-        effectAdapterFactory.registerSubtype(ChangeResource.class, "ChangeResource");
-        effectAdapterFactory.registerSubtype(ChooseCard.class, "ChooseCard");
-        effectAdapterFactory.registerSubtype(ChooseCardWithDiscount.class, "ChooseCardWithDiscount");
+        effectAdapterFactory.registerSubtype(ProductionActivationFromCard.class, "ProductionActivationFromCard");
+        effectAdapterFactory.registerSubtype(ProductionEffect.class, "ProductionEffect");
 
         //TODO MANCANO I LEADER EFFECT
 
@@ -71,11 +78,11 @@ public class JsonGameObject {
 
 /*Getters & Setters*/
 
-    public List<DevelopmentCard> getCardList(){  //ritorno la lista stessa, non mi interessa se la possono modificare
+    public DevelopmentCardList getCardList(){  //ritorno la lista stessa, non mi interessa se la possono modificare
 
         return this.developementCardList;
     }
-    public List<EffectList> getEffectList(){  //ritorno la lista stessa, non mi interessa se la possono modificare
+    public List<EffectList> getActionSpaceEffectList(){  //ritorno la lista stessa, non mi interessa se la possono modificare
 
         return this.actionSpaceEffectList;
     }
@@ -88,11 +95,52 @@ public class JsonGameObject {
         return bonusVictoryPointFromCharacterCard;
     }
 
-    public int[] getBonusVictoryPointFromPlayerResources() {
+    public int getBonusVictoryPointFromPlayerResources() {
         return bonusVictoryPointFromPlayerResources;
     }
 
     public int[] getBonusVictoryPointFromTerritory() {
         return bonusVictoryPointFromTerritory;
+    }
+
+    public int[] getRequiredMilitaryStrengthForTerritory() {
+        return requiredMilitaryStrengthForTerritory;
+    }
+
+    public EffectList[] getTowerActionSpaceEffecArray() {
+        return towerActionSpaceEffecArray;
+    }
+
+    public void setDevelopementCardList(DevelopmentCardList developementCardList) {
+        this.developementCardList = developementCardList;
+    }
+
+    public void setActionSpaceEffectList(List<EffectList> actionSpaceEffectList) {
+        this.actionSpaceEffectList = actionSpaceEffectList;
+    }
+
+    public void setFaithTrackExtraValue(int[] faithTrackExtraValue) {
+        this.faithTrackExtraValue = faithTrackExtraValue;
+    }
+
+    public void setBonusVictoryPointFromCharacterCard(int[] bonusVictoryPointFromCharacterCard) {
+        this.bonusVictoryPointFromCharacterCard = bonusVictoryPointFromCharacterCard;
+    }
+
+    public void setBonusVictoryPointFromPlayerResources(int bonusVictoryPointFromPlayerResources) {
+        this.bonusVictoryPointFromPlayerResources = bonusVictoryPointFromPlayerResources;
+    }
+
+    public void setBonusVictoryPointFromTerritory(int[] bonusVictoryPointFromTerritory) {
+        this.bonusVictoryPointFromTerritory = bonusVictoryPointFromTerritory;
+    }
+
+    public void setTowerActionSpaceEffecArray(EffectList[] towerActionSpaceEffecArray) {
+        this.towerActionSpaceEffecArray = towerActionSpaceEffecArray;
+    }
+
+
+    public void setRequiredMilitaryStrengthForTerritory(int[] requiredMilitaryStrengthForTerritory) {
+        this.requiredMilitaryStrengthForTerritory = requiredMilitaryStrengthForTerritory;
     }
 }

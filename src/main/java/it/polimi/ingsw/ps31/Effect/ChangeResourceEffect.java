@@ -9,11 +9,11 @@ import java.util.Scanner;
 /**
  * Created by giulia on 17/05/2017.
  */
-public class ChangeResource extends Effect {
+public class ChangeResourceEffect extends Effect {
     private final List<ResourceList> resourceToPayList; // la carta ha delle risorse da pagare per poter ottenere nuove risorse
     private final List<ResourceList> resourceToGainList; // alcune carte hanno una doppia scelta sulle risorse da pagare per ottenere nuove risorse
 
-    public ChangeResource(List<ResourceList> resourceToPayList, List<ResourceList> resourceToGainList) {
+    public ChangeResourceEffect(List<ResourceList> resourceToPayList, List<ResourceList> resourceToGainList) {
 
         this.resourceToPayList = resourceToPayList;
         this.resourceToGainList = resourceToGainList;

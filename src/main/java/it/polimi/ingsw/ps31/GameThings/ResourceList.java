@@ -16,6 +16,36 @@ public class ResourceList {
     }
     public ResourceList(){}
 
+    //metodi tipici delle liste
+    public void addSpecificResource(Resource resource){
+        boolean found=false;
+
+        for(int i=0; i<this.resourceList.size(); i++) {
+
+            if (this.resourceList.get(i).getClass().equals(resource.getClass()) && found == false) {
+                this.resourceList.get(i).toString();
+                this.resourceList.get(i).addValue(resource.getValue());
+                found = true;
+            }
+        }
+        if(found==false){
+            this.resourceList.add(resource);
+        }
+
+    }
+    public Resource remove(int index){
+        return this.resourceList.remove(index);
+    }
+    public Resource get(int index){
+        return this.resourceList.get(index);
+    }
+    public void clear(){
+        this.resourceList.clear();
+    }
+    public int size(){
+        return this.resourceList.size();
+    }
+
     /*Getters & Setters*/
     public void setCoin() {                                                 //METODI PER INSERIRE LE RISORSE NELLA CREAZIONE DELLE CARTE (NON SARANNO USATI NEl GIOCO)
         System.out.println("Inserisci il valore delle monete: ");
@@ -104,22 +134,8 @@ public class ResourceList {
             this.resourceList.add(councilPrivilege);
         }
     }
-
-    public void addSpecificResource(Resource resource){
-        boolean found=false;
-
-        for(int i=0; i<this.resourceList.size(); i++) {
-
-            if (this.resourceList.get(i).getClass().equals(resource.getClass()) && found == false) {
-                this.resourceList.get(i).toString();
-                this.resourceList.get(i).addValue(resource.getValue());
-                found = true;
-            }
-        }
-        if(found==false){
-            this.resourceList.add(resource);
-        }
-
+    public List<Resource> getResourceList(){
+        return new ArrayList<>(this.resourceList);
     }
 
     public void multiplyResourceList(int factor){
@@ -128,15 +144,6 @@ public class ResourceList {
             this.resourceList.get(i).multvalue(factor);
         }
     }
-
-    public void clearResourceList(){
-        this.resourceList.clear();
-    }
-
-    public List<Resource> getResourceList(){
-        return new ArrayList<>(this.resourceList);
-    }
-
     public Resource getSpecificResource(Class<? extends Resource> resourceClass) throws NullPointerException{
         for(int i=0; i<this.resourceList.size();i++){
             if(resourceClass.equals(resourceList.get(i).getClass())){

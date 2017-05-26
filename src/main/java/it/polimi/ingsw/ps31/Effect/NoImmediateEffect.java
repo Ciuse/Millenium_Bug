@@ -9,11 +9,11 @@ import java.util.List;
  * Created by giulia on 18/05/2017.
  */
 // vengono vietati gli effetti immediati degli spazi azioni sul tabellone nel piano specificato dall'effetto in questione
-public class NoImmediateEffect extends BonusAndMalus {
+public class NoImmediateEffect extends BonusAndMalusEffect {
     private final List<Integer> actionSpaceValue; //è il valore dello spazio azione a cui verrà negato l'effetto immediato
 
-    public NoImmediateEffect(Action actionToDiscount, List<Integer> actionSpaceValue) {
-        super(actionToDiscount);
+    public NoImmediateEffect( BonusAndMalusEffect bonusAndMalusEffect, List<Integer> actionSpaceValue) {
+        super(bonusAndMalusEffect);
         this.actionSpaceValue = actionSpaceValue;
     }
 

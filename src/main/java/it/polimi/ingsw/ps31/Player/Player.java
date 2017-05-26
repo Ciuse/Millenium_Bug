@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps31.Player;
 import it.polimi.ingsw.ps31.Board.Dice;
 import it.polimi.ingsw.ps31.Board.PersonalBoard;
 import it.polimi.ingsw.ps31.Card.*;
-import it.polimi.ingsw.ps31.Card.Character;
 import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Constants.DiceColor;
 import it.polimi.ingsw.ps31.Constants.PlayerColor;
@@ -11,8 +10,8 @@ import it.polimi.ingsw.ps31.GameThings.Resource;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by giulia on 15/05/2017.
@@ -25,7 +24,7 @@ public class Player {
     private final PersonalBoard playerBoard;
     private final String nickname;
     private PermanentBonus permanentBonus;
-    private ArrayList<Excommunication> excommunications;
+    private List<Excommunication> excommunications;
     private final ArrayList<FamilyMember> familyMembers;
     private int flagExcommunication;
 
@@ -109,7 +108,7 @@ public class Player {
         this.permanentBonus = permanentBonus;   //TODO: non modificare così ma con metodi add() e sub()
     }
 
-    public ArrayList<Excommunication> getExcommunications()
+    public List<Excommunication> getExcommunications()
     {
         return excommunications;
     }
@@ -146,7 +145,7 @@ public class Player {
     public void addDevelopmentCard(DevelopmentCard card)
     {
         if ( this.playerCardList.getSpecificCardList(card.getCardColor()).size() < MAXCARDLISTSIZE)
-            this.playerCardList.addDevelopmentCard(card);
+            this.playerCardList.add(card);
     }
     public boolean checkIfOnlyNEUTRALRemained(){
         if(this.getFamilyMember(DiceColor.NEUTRAL).isPlaced()==true){

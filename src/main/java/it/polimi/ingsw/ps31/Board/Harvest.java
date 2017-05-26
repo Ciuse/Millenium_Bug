@@ -10,6 +10,6 @@ public abstract class Harvest extends ActionSpace {
     public Harvest(int diceCost, int familyMemberLimit, EffectList effectList)
     {
         super(diceCost, familyMemberLimit, effectList);    //TODO: l'effetto immediato è l'attivazione del raccolto
-    }
+}
 
 }

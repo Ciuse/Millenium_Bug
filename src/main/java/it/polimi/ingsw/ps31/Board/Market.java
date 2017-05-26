@@ -1,9 +1,6 @@
 package it.polimi.ingsw.ps31.Board;
 
-import it.polimi.ingsw.ps31.Effect.Effect;
 import it.polimi.ingsw.ps31.Effect.EffectList;
-import it.polimi.ingsw.ps31.Effect.GetResource;
-import it.polimi.ingsw.ps31.GameThings.*;
 
 import java.util.ArrayList;
 import java.util.List;
