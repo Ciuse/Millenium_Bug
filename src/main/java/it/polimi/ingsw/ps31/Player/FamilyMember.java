@@ -47,7 +47,7 @@ public class FamilyMember {
         this.additionalValue = 0;
     }
 
-    public int totalValue()
+    public int getTotalValue()
     {
         return this.dice.getValue() + this.additionalValue;
     }

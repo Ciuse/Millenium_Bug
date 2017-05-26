@@ -27,6 +27,7 @@ public class OccupiedActionSpaceControl extends Control {
         this.actionSpace = null;
     }
 
+    /* Class Methods */
     @Override
     public boolean execute() {
         if ( this.actionSpace == null )

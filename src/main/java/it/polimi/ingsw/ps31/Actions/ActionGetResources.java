@@ -9,11 +9,13 @@ import it.polimi.ingsw.ps31.Player.Player;
 public class ActionGetResources extends Action {
     private ResourceList resourcesToGet = null;
 
-    public ActionGetResources(Player player)
+    /* Constructor */
+    public ActionGetResources(Player player, ActionControlSet actionControlSet)
     {
-        super(player);
+        super(player, actionControlSet);
     }
 
+    /* Setters & Getters */
     public void setResourcesToGet (ResourceList resourcesToGet)
     {
         this.resourcesToGet = resourcesToGet;
@@ -24,15 +26,27 @@ public class ActionGetResources extends Action {
         return this.resourcesToGet;
     }
 
+    public void resetResourcesToGet()
+    {
+        this.resourcesToGet = null;
+    }
 
+    /* Class Methods */
     @Override
-    public void activate() {
+    public void activate()
+    {
+        //Controllo che i parametri siano settati
         if (resourcesToGet == null)
         {
             //TODO: fare qualcosa (eccezione?)
-        }
+        } else
+        {
 
-        //player.addResources(this.resourcesToGet);
-        //this.resourcesToGet = null;
+            //Eseguo l'azione
+            //TODO: mi serve l'iteratore per ResourceList
+            //player.addResources(this.resourcesToGet);
+
+            this.resetResourcesToGet();
+        }
     }
 }

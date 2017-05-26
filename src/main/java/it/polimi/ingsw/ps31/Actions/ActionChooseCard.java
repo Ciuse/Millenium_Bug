@@ -12,9 +12,9 @@ public class ActionChooseCard extends Action {
     private CardColor cardColor = null;
 
     /* Constructor */
-    public ActionChooseCard(Player player)
+    public ActionChooseCard(Player player, ActionControlSet actionControlSet)
     {
-        super(player);
+        super(player, actionControlSet);
     }
 
     /* Getters & Setters*/
@@ -74,6 +74,7 @@ public class ActionChooseCard extends Action {
     public void activate()
     {
         //Controllare che campi obbligatori siano settati
+
         //Trovare carte selezionabili in base ai paametri
         //Fare richiesta alla view per scegliere la carta
         //Aggiungere la carta al player

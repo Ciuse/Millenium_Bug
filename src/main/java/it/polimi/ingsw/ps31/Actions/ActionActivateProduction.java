@@ -7,8 +7,8 @@ import it.polimi.ingsw.ps31.Player.Player;
  */
 public class ActionActivateProduction extends Action {
 
-    public ActionActivateProduction(Player player) {
-        super(player);
+    public ActionActivateProduction(Player player, ActionControlSet actionControlSet) {
+        super(player, actionControlSet);
     }
 
     @Override

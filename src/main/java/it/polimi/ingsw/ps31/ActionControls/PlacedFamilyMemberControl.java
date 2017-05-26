@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.ActionControls;
 
+import it.polimi.ingsw.ps31.Constants.DiceColor;
 import it.polimi.ingsw.ps31.Player.FamilyMember;
 import it.polimi.ingsw.ps31.Player.Player;
 
@@ -27,7 +28,7 @@ public class PlacedFamilyMemberControl extends Control {
         this.familyMember = null;
     }
 
-
+    /* Class Methods */
     @Override
     public boolean execute() {
         if ( this.familyMember == null )

@@ -73,7 +73,12 @@ public abstract class Resource {
         return value == resource.value;
     }
 
-    public boolean minusOrEquals(Object o) {
+    @Override
+    public int hashCode() {
+        return value;
+    }
+
+    public boolean lessOrEquals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 

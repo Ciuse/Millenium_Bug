@@ -1,8 +1,13 @@
 package it.polimi.ingsw.ps31.Actions;
 
 import it.polimi.ingsw.ps31.Constants.DiceColor;
+import it.polimi.ingsw.ps31.GameThings.Resource;
+import it.polimi.ingsw.ps31.GameThings.ResourceList;
 import it.polimi.ingsw.ps31.GameThings.Servant;
 import it.polimi.ingsw.ps31.Player.Player;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Francesco on 18/05/2017.
@@ -10,9 +15,10 @@ import it.polimi.ingsw.ps31.Player.Player;
 public class ActionPayServants extends Action {
     private DiceColor diceColor = null;
     private int servantsAmount = 0;
+    private int diceRisePerServant = 1;
 
-    public ActionPayServants(Player player) {
-        super(player);
+    public ActionPayServants(Player player, ActionControlSet actionControlSet) {
+        super(player, actionControlSet);
     }
 
     public void setDiceColor(DiceColor diceColor)
@@ -23,33 +29,38 @@ public class ActionPayServants extends Action {
 
     public void setServantsAmount(int servantsAmount)
     {
-        //Controllo che ci siano abbastanza servitori
-        if(this.player.getResources().getResource("Servant").getValue() < servantsAmount)
-        {
-            //TODO: eccezione?
-        }
-
         this.servantsAmount = servantsAmount;
     }
 
     @Override
     public void activate()
     {
-        //TODO: controllare che i parametri siano validi
-        //Controllo che il familiare per cui si sta pagando non sia già stato piazzato
-        if ( player.getFamilyMember(this.diceColor).isPlaced() )
+        //Controllo che i parametri siano settati;
+        if ( this.servantsAmount == 0 || this.diceColor == null )
         {
-            //TODO: throw new Exception();
-        }
-
-        //Controllo che si abbiano abbastanza servitori
-        if ( player.getResources().getResource("Servants").getValue() < this.servantsAmount)
+            //TODO: eccezione
+        } else
         {
-            //TODO: throw new Exception();
-        }
+            //Controllo che il familiare per cui si sta pagando non sia già stato piazzato
+            boolean condition1 = this.actionControlSet.placedFamilyMemberControl(player.getFamilyMember(this.diceColor));
 
-        //Eseguo l'azione
-        player.subResources(new Servant(servantsAmount));
-        player.getFamilyMember(this.diceColor).addAdditionalValue(servantsAmount);
+            //Controllo sul numero di servitori
+            List<Resource> servantsAsList = new ArrayList<Resource>();
+            Resource servantsAsResource = new Servant(servantsAmount);
+            servantsAsList.add(servantsAsResource);
+            ResourceList servantsAsResourceList = new ResourceList(servantsAsList);
+
+            boolean condition2 = this.actionControlSet.payResourceControl(servantsAsResourceList);
+
+            if (condition1 && condition2)
+            {
+                //Eseguo fisicamente l'azione
+                player.subResources(servantsAsResource);
+                player.getFamilyMember(this.diceColor).addAdditionalValue(servantsAmount * diceRisePerServant);
+            } else
+            {
+                //TODO: eccezione?
+            }
+        }
     }
 }

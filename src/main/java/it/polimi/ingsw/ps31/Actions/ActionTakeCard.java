@@ -11,9 +11,9 @@ public class ActionTakeCard extends Action {
     private TowerCardSpace towerCardSpace = null;
     private CardColor cardColor = null;
 
-    public ActionTakeCard(Player player)
+    public ActionTakeCard(Player player, ActionControlSet actionControlSet)
     {
-        super(player);
+        super(player, actionControlSet);
     }
 
     public void setCardSpace(TowerCardSpace towerCardSpace)

@@ -10,8 +10,8 @@ public class ActionPayTowerMoney extends Action {
     private static final int COINTOPAY = 3; //Valore di default delle monete da pagare
     private int coinToPay;
 
-    public ActionPayTowerMoney(Player player) {
-        super(player);
+    public ActionPayTowerMoney(Player player, ActionControlSet actionControlSet) {
+        super(player, actionControlSet);
         this.coinToPay = COINTOPAY;
     }
 

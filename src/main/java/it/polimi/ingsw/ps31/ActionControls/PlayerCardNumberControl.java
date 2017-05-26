@@ -28,6 +28,7 @@ public class PlayerCardNumberControl extends Control {
         this.cardColor = null;
     }
 
+    /* Class Methods */
     @Override
     public boolean execute() {
         if (this.cardColor == null)

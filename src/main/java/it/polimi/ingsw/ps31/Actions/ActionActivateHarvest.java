@@ -7,8 +7,8 @@ import it.polimi.ingsw.ps31.Player.Player;
  */
 public class ActionActivateHarvest extends Action {
 
-    public ActionActivateHarvest(Player player) {
-        super(player);
+    public ActionActivateHarvest(Player player, ActionControlSet actionControlSet) {
+        super(player, actionControlSet);
     }
 
     @Override

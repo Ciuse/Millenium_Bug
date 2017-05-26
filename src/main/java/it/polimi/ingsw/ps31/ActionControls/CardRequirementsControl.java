@@ -10,6 +10,11 @@ import it.polimi.ingsw.ps31.Player.Player;
 public class CardRequirementsControl extends Control {
     private ResourceList requirement = null;
 
+    /* Constructor */
+    public CardRequirementsControl(Player player) {
+        super(player);
+    }
+
     /* Setters & Getters */
     public void setRequirements(ResourceList requirement)
     {
@@ -26,6 +31,7 @@ public class CardRequirementsControl extends Control {
         this.requirement = null;
     }
 
+    /* Class Methods */
     public boolean execute()
     {
         if ( this.requirement == null )
@@ -40,10 +46,5 @@ public class CardRequirementsControl extends Control {
             return result;
         }
 
-    }
-
-    /* Constructor */
-    public CardRequirementsControl(Player player) {
-        super(player);
     }
 }

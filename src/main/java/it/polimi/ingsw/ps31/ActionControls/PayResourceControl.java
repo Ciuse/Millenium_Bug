@@ -28,6 +28,7 @@ public class PayResourceControl extends Control {
         this.resourceList = null;
     }
 
+    /* Class Methods */
     @Override
     public boolean execute() {
         if(this.resourceList == null)

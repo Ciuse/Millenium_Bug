@@ -28,20 +28,21 @@ public class PlayerActionSet {
     /* Constructor */
     public PlayerActionSet(Player player) {
         this.player = player;
-
-        this.activateHarvest = new ActionActivateHarvest(player);
-        this.activateProduction = new ActionActivateProduction(player);
-        this.chooseCard = new ActionChooseCard(player);
-        this.choosePrivilege = new ActionChoosePrivilege(player);
-        this.getResources = new ActionGetResources(player);
-        this.payResources = new ActionPayResources(player);
-        this.payServants = new ActionPayServants(player);
-        this.payTowerMoney = new ActionPayTowerMoney(player);
-        this.placeFamilyMember = new ActionPlaceFamilyMember(player);
-        this.takeCard = new ActionTakeCard(player);
-        this.activeLeaderCard = new ActiveLeaderCard(player);
-
         this.actionControlSet = new ActionControlSet(player);
+
+        this.activateHarvest = new ActionActivateHarvest(player, actionControlSet);
+        this.activateProduction = new ActionActivateProduction(player, actionControlSet);
+        this.chooseCard = new ActionChooseCard(player, actionControlSet);
+        this.choosePrivilege = new ActionChoosePrivilege(player, actionControlSet);
+        this.getResources = new ActionGetResources(player, actionControlSet);
+        this.payResources = new ActionPayResources(player, actionControlSet);
+        this.payServants = new ActionPayServants(player, actionControlSet);
+        this.payTowerMoney = new ActionPayTowerMoney(player, actionControlSet);
+        this.placeFamilyMember = new ActionPlaceFamilyMember(player, actionControlSet);
+        this.takeCard = new ActionTakeCard(player, actionControlSet);
+        this.activeLeaderCard = new ActiveLeaderCard(player, actionControlSet);
+
+
     }
 
     /* Setters & Getters */

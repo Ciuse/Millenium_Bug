@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.Player;
 
-import com.sun.org.apache.regexp.internal.RE;
 import it.polimi.ingsw.ps31.GameThings.*;
 
 import java.util.HashMap;
@@ -61,6 +60,18 @@ public class PlayerResources {
             //TODO: gestire (eccezione?)
             return null; //Istruzione messa solo per avere un return
         }
+    }
+
+    public ResourceList getPlayerResourceAsResourceList(){
+        ResourceList resourceListToReturn = new ResourceList();
+        resourceListToReturn.addSpecificResource(this.getResource("Wood"));
+        resourceListToReturn.addSpecificResource(this.getResource("Stone"));
+        resourceListToReturn.addSpecificResource(this.getResource("Coin"));
+        resourceListToReturn.addSpecificResource(this.getResource("Servant"));
+        resourceListToReturn.addSpecificResource(this.getResource("MilitaryStrength"));
+        resourceListToReturn.addSpecificResource(this.getResource("FaithPoint"));
+        resourceListToReturn.addSpecificResource(this.getResource("VictoryPoint"));
+        return resourceListToReturn;
     }
 
     public HashMap getResourcesMap()

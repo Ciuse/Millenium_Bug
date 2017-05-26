@@ -10,13 +10,15 @@ import it.polimi.ingsw.ps31.Constants.CardColor;
 public class TowerCardSpace extends PhysicalCardBox {
     private final ActionSpace actionSpace;
     private final CardColor color;
+    private final Tower tower;
     private DevelopmentCard card;
 
     /* Constructor */
-    public TowerCardSpace(CardColor color, ActionSpace actionSpace) {
+    public TowerCardSpace(CardColor color, ActionSpace actionSpace, Tower tower) {
         this.color = color;
         this.actionSpace = actionSpace;
         this.card = null;
+        this.tower = tower;
     }
 
     /*Getters & Setters*/
@@ -33,6 +35,11 @@ public class TowerCardSpace extends PhysicalCardBox {
     public ActionSpace getActionSpace()
     {
         return actionSpace;
+    }
+
+    public Tower getTower()
+    {
+        return this.tower;
     }
     public void setCard(DevelopmentCard card)
     {

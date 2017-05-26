@@ -7,8 +7,8 @@ import it.polimi.ingsw.ps31.Player.Player;
  */
 public class ActionChoosePrivilege extends Action {
 
-    public ActionChoosePrivilege(Player player) {
-        super(player);
+    public ActionChoosePrivilege(Player player, ActionControlSet actionControlSet) {
+        super(player, actionControlSet);
     }
 
     @Override

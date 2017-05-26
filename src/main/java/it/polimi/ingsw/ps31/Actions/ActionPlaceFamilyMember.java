@@ -11,9 +11,9 @@ public class ActionPlaceFamilyMember extends Action {
     private ActionSpace actionSpace = null;
     private FamilyMember familyMember = null;
 
-    public ActionPlaceFamilyMember(Player player)
+    public ActionPlaceFamilyMember(Player player, ActionControlSet actionControlSet)
     {
-        super(player);
+        super(player, actionControlSet);
     }
 
     public void setActionSpace(ActionSpace actionSpace)
