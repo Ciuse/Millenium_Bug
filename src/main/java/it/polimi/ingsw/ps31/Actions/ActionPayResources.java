@@ -42,6 +42,10 @@ public class ActionPayResources extends Action{
             //TODO: mi serve l'iteratore per ResourceList
             //player.subResources(this.resourcesToGet);
             //this.resourcesToGet = null;
+
+            //Inizializzo il controllo
+           // player.getPlayerActionSet().getActionControlSet().
+
         }
 
 

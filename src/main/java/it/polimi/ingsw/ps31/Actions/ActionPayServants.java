@@ -36,7 +36,20 @@ public class ActionPayServants extends Action {
     public void activate()
     {
         //TODO: controllare che i parametri siano validi
-        player.addResources(new Servant(0-servantsAmount));
+        //Controllo che il familiare per cui si sta pagando non sia già stato piazzato
+        if ( player.getFamilyMember(this.diceColor).isPlaced() )
+        {
+            //TODO: throw new Exception();
+        }
+
+        //Controllo che si abbiano abbastanza servitori
+        if ( player.getResources().getResource("Servants").getValue() < this.servantsAmount)
+        {
+            //TODO: throw new Exception();
+        }
+
+        //Eseguo l'azione
+        player.subResources(new Servant(servantsAmount));
         player.getFamilyMember(this.diceColor).addAdditionalValue(servantsAmount);
     }
 }

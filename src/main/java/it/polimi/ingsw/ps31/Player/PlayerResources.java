@@ -23,8 +23,8 @@ public class PlayerResources {
         this.currentResources.put("Servant", new Servant(servantAmt));
 
         this.currentResources.put("MilitaryStrength", new MilitaryStrength(0));
-        this.currentResources.put("FaithPoints", new FaithPoint(0));
-        this.currentResources.put("VictoryPoints", new VictoryPoint(0));
+        this.currentResources.put("FaithPoint", new FaithPoint(0));
+        this.currentResources.put("VictoryPoint", new VictoryPoint(0));
     }
 
     /* Setters & Getters */
@@ -66,5 +66,11 @@ public class PlayerResources {
     public HashMap getResourcesMap()
     {
         return new HashMap<>(this.currentResources);
+    }
+
+    public boolean greaterThan(ResourceList resourceList)
+    {
+        //TODO: implementare
+        return true;
     }
 }

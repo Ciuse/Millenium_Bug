@@ -26,27 +26,32 @@ public class Player {
     private final String nickname;
     private PermanentBonus permanentBonus;
     private ArrayList<Excommunication> excommunications;
-    private ArrayList<FamilyMember> familyMembers;
-
+    private final ArrayList<FamilyMember> familyMembers;
+    private final PlayerActionSet playerActionSet;
     private DevelopmentCardList playerCardList;
 
     /* Constructor */
-    public Player(PlayerColor color, HashMap<String, Integer> initialResources, String nickname)
+    public Player(PlayerColor color, ResourceList initialResources, String nickname)
     {
         //Attributi base
         this.color            = color;
         this.playerBoard      = new PersonalBoard(this);
         this.nickname         = nickname;
         this.permanentBonus   = new PermanentBonus();
-        this.excommunications = new ArrayList<Excommunication>();
+        this.excommunications = new ArrayList<Excommunication>(); //TODO: serve davvero??
 
         //Risorse iniziali
         //TODO: il nome delle risorse deve essere preso da un enumeratore
-        int woodAmt    = initialResources.get("Wood");
+        //TODO: aspettare che giuse faccia i metodi per leggere le risorse da ResourceList
+        /*
+        int woodAmt    = initialResources.getResourceList().getClass().get;
         int stoneAmt   = initialResources.get("Stone");
         int coinAmt    = initialResources.get("Coin");
         int servantAmt = initialResources.get("Servant");
         this.resources = new PlayerResources(woodAmt, stoneAmt, coinAmt, servantAmt);
+        */
+        this.resources = new PlayerResources(0,0,0,0); //Messa altrimenti non compila
+
 
         //Creazione familiari
         this.familyMembers = new ArrayList<FamilyMember>();
@@ -59,6 +64,9 @@ public class Player {
         //Inizializzazione liste di carte
         //TODO: usare classe CardList di Giuse
         this.playerCardList = new DevelopmentCardList(null);
+
+        //Instanzio un PlayerActionSet
+        playerActionSet = new PlayerActionSet(this);
     }
 
     /* Setters & Getters */
@@ -70,22 +78,6 @@ public class Player {
     public PlayerResources getResources()
     {
         return this.resources;
-    }
-
-    public void addResources(Resource resourcesToAdd)
-    {
-        if (resourcesToAdd.getValue() >= 0)
-            this.resources.addResources(resourcesToAdd);
-        else
-            this.resources.subResources(resourcesToAdd);
-    }
-
-    public void subResources (Resource resourcesToSub)
-    {
-        if (resourcesToSub.getValue() >= 0)
-            this.resources.subResources(resourcesToSub);
-        else
-            this.resources.addResources(resourcesToSub);
     }
 
     public PersonalBoard getPlayerBoard()
@@ -141,11 +133,32 @@ public class Player {
         return this.playerCardList;
     }
 
+    public PlayerActionSet getPlayerActionSet()
+    {
+        return this.playerActionSet;
+    }
+
     /* Class Methods */
     public void addDevelopmentCard(DevelopmentCard card)
     {
         if ( this.playerCardList.getSpecificCardList(card.getCardColor()).size() < MAXCARDLISTSIZE)
             this.playerCardList.addDevelopmentCard(card);
+    }
+
+    public void addResources(Resource resourcesToAdd)
+    {
+        if (resourcesToAdd.getValue() >= 0)
+            this.resources.addResources(resourcesToAdd);
+        else
+            this.resources.subResources(resourcesToAdd);
+    }
+
+    public void subResources (Resource resourcesToSub)
+    {
+        if (resourcesToSub.getValue() >= 0)
+            this.resources.subResources(resourcesToSub);
+        else
+            this.resources.addResources(resourcesToSub);
     }
 
     @Override

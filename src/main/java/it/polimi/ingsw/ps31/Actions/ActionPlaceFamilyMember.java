@@ -23,7 +23,7 @@ public class ActionPlaceFamilyMember extends Action {
 
     public void setFamilyMember(FamilyMember familyMember)
     {
-        if( !familyMember.isPlaced() )
+        if( familyMember.isPlaced() )
         {
             //TODO: gestire (eccezione?)
         }

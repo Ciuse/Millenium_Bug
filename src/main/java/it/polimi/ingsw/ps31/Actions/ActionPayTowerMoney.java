@@ -33,7 +33,7 @@ public class ActionPayTowerMoney extends Action {
     @Override
     public void activate()
     {
-        Coin payment = new Coin(0-this.coinToPay);
-        player.addResources(payment);
+        Coin payment = new Coin(this.coinToPay);
+        player.subResources(payment);
     }
 }
