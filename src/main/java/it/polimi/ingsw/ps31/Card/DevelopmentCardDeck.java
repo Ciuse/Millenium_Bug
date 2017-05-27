@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Giuseppe on 13/05/2017.
  */
-public class DevelopmentCardDeck extends Deck {
+public class DevelopmentCardDeck {
     private final CardColor cardColor;
     private final int period;
     private int maxNumber =8;

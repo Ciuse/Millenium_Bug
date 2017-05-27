@@ -1,9 +1,10 @@
 package it.polimi.ingsw.ps31.Card;
 
 import it.polimi.ingsw.ps31.Constants.CardColor;
-import it.polimi.ingsw.ps31.Effect.Effect;
+import it.polimi.ingsw.ps31.Effect.ActiveEffect;
 import it.polimi.ingsw.ps31.Effect.EffectList;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
+import it.polimi.ingsw.ps31.Player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  * Created by Giuseppe on 09/05/2017.
  */
-public abstract class DevelopmentCard extends Card {
+public abstract class DevelopmentCard extends Card implements ActiveEffect {
     private final int cardId;
     private final CardColor cardColor;
     private final int period;
@@ -75,5 +76,19 @@ public abstract class DevelopmentCard extends Card {
         result = 31 * result + (immediateEffectList != null ? immediateEffectList.hashCode() : 0);
         result = 31 * result + (permanentEffectList != null ? permanentEffectList.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public void activeEffectList(Player player) {
+        if(this.immediateEffectList!=null) {
+            for (int i = 0; i < this.immediateEffectList.size(); i++) {
+                this.immediateEffectList.get(i).activate(player);
+            }
+        }
+        if(this.permanentEffectList!=null){
+            for(int i=0; i<this.permanentEffectList.size();i++){        //TODO VERIFICARE SE SI ATTIVANO IN MODO DIVERSO
+                this.permanentEffectList.get(i).activate(player);
+            }
+        }
     }
 }

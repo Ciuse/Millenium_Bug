@@ -1,11 +1,7 @@
 package it.polimi.ingsw.ps31.Actions;
 
-import it.polimi.ingsw.ps31.GameThings.Resource;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
 import it.polimi.ingsw.ps31.Player.Player;
-
-import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Created by Francesco on 23/05/2017.

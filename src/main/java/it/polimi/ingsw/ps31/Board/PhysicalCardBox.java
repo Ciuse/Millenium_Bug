@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.Board;
 
-import it.polimi.ingsw.ps31.Card.Card;
 import it.polimi.ingsw.ps31.Card.DevelopmentCard;
 
 /**

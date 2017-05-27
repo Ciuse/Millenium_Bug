@@ -2,7 +2,8 @@ package it.polimi.ingsw.ps31.Player;
 
 import it.polimi.ingsw.ps31.Board.Dice;
 import it.polimi.ingsw.ps31.Board.PersonalBoard;
-import it.polimi.ingsw.ps31.Card.*;
+import it.polimi.ingsw.ps31.Card.DevelopmentCard;
+import it.polimi.ingsw.ps31.Card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Constants.DiceColor;
 import it.polimi.ingsw.ps31.Constants.PlayerColor;

@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.Effect;
 
-import it.polimi.ingsw.ps31.Effect.Effect;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
 import it.polimi.ingsw.ps31.Player.Player;
 

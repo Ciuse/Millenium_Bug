@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps31.Card;
 
 
 import it.polimi.ingsw.ps31.Constants.CardColor;
-import it.polimi.ingsw.ps31.Constants.PlayerColor;
 
 import java.util.ArrayList;
 import java.util.List;

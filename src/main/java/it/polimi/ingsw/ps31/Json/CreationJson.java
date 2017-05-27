@@ -894,8 +894,12 @@ public class CreationJson {
         DevelopmentCardList developmentCardListToReturn = new DevelopmentCardList(cardList);
 
         return developmentCardListToReturn;
-    }
-
+    }           //TODO FINIRE DI SCRIVERE LE CARTE
+    public List<LeaderCard> createLeaderCardList(){
+        List<LeaderCard> leaderCardList = new ArrayList<>();
+        return leaderCardList;
+    }          //TODO SCRIVERE LE CARTE LEADER
+    //TODO INSERIRE ANCHE LE TESSERE SCOMUNICA
     public EffectList[] createTowerEffectArray(){       //EFFETTI SPAZZI AZIONE TORRE 1
         EffectList[] towerEffectList= new EffectList[4];
         EffectList effectListTower1 = new EffectList();
@@ -945,7 +949,6 @@ public class CreationJson {
         return towerEffectList;
 
     }
-
     public List<EffectList> createActionSpaceEffectList(){
         List<EffectList> effectListToReturn = new ArrayList<>();
         EffectList effectList1 = new EffectList();
@@ -1008,7 +1011,6 @@ public class CreationJson {
 
         return effectListToReturn;
     }
-
     public int[] createFaithTrackExtraValue(){
         int[] extraValue={0,1,2,3,4,5,7,9,11,13,15,17,19,22,25,30};
         return extraValue;
@@ -1033,7 +1035,6 @@ public class CreationJson {
     public JsonGameObject getJsonGameObject() {
         return jsonGameObject;
     }
-
     public void setJsonGameObject(JsonGameObject jsonGameObject) {
         this.jsonGameObject = jsonGameObject;
     }

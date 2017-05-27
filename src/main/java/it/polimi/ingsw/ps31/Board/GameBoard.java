@@ -34,20 +34,20 @@ public class GameBoard {
     public static GameBoard getInstance() {
         return ourInstance;
     }
-    private GameBoard(List<EffectList> towerEffectList[], List<EffectList> otherEffectList)
+    private GameBoard(List<EffectList> towerEffectList[], List<EffectList> otherEffectList) 
     {
-
+        //creazione torri
         CardColor[] towerColor= {CardColor.GREEN,CardColor.BLUE,CardColor.YELLOW,CardColor.PURPLE};
         for(int i=0; i<TOWERNUMBER; i++) {
             this.towers[i] = new Tower(towerEffectList[i].size(), towerColor[i], towerEffectList[i]);
         }
-
+        //creazione dadi
         DiceColor[] diceColor={DiceColor.WHITE, DiceColor.ORANGE, DiceColor.BLACK, DiceColor.NEUTRAL};
         for(int i=0; i<4; i++) {
             this.dice[i]= new Dice(diceColor[i]);
             this.dice[i].setValue(0);
         }
-
+        //creazione del resto
         this.councilPalace = new CouncilPalace(otherEffectList.get(0));
         this.smallHarvest = new SmallHarvest(1, otherEffectList.get(1));
         this.bigHarvest = new BigHarvest(-1, otherEffectList.get(2));
@@ -69,10 +69,11 @@ public class GameBoard {
     }
 
     public void rollTheDice(){
-        for(int i=0; i<3; i++)
-        {
-            int randomValue= (int)(Math.random()*6 + 1);
-            this.dice[i].setValue(randomValue);
+        for(int i=0; i<dice.length; i++){
+            if(!dice[i].getColor().equals(DiceColor.NEUTRAL)){
+                int randomValue= (int)(Math.random()*6 + 1);
+                this.dice[i].setValue(randomValue);   
+            }
         }
     }
 
@@ -137,10 +138,10 @@ public class GameBoard {
         return endActionButton;
     }
 
-    public void startActionTurn(Player player){
+    public void startActionTurn(Player player){//TODO IMPLEMENTARLO
 
     }
-    public void endActionTurn(Player player){
+    public void endActionTurn(Player player){//TODO IMPLEMENTARLO
 
     }
 

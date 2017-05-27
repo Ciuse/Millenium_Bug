@@ -2,8 +2,6 @@ package it.polimi.ingsw.ps31.Board;
 
 import it.polimi.ingsw.ps31.GameThings.VictoryPoint;
 
-import java.awt.*;
-
 /**
  * Created by Giuseppe on 19/05/2017.
  */

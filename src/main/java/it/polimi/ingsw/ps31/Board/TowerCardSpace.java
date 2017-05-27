@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.Board;
 
 
-import it.polimi.ingsw.ps31.Card.DevelopmentCard;
 import it.polimi.ingsw.ps31.Constants.CardColor;
 
 /**

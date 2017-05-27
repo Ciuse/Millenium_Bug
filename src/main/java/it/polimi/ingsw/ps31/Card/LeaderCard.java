@@ -1,4 +1,5 @@
 package it.polimi.ingsw.ps31.Card;
+import it.polimi.ingsw.ps31.Effect.ActiveEffect;
 import it.polimi.ingsw.ps31.Effect.Effect;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
 import it.polimi.ingsw.ps31.Player.Player;
@@ -9,7 +10,7 @@ import java.util.List;
 /**
  * Created by Giuseppe on 22/05/2017.
  */
-public class LeaderCard extends Card {
+public class LeaderCard extends Card implements ActiveEffect {
     private final ResourceList resourceRequest;
     private final DevelopmentCardList developmentCardRequest;
     private final Effect abilityOneTimeForTurn;
@@ -52,4 +53,16 @@ public class LeaderCard extends Card {
         }
     }
 
+    @Override
+    public void activeEffectList(Player player) {
+        if(this.activated==true){
+            if(this.abilityOneTimeForTurn!=null){
+                this.abilityOneTimeForTurn.activate(player);
+            }
+            if(this.abilityOneTimeForTurn!=null){
+                this.permanentAbility.activate(player);
+
+            }
+        }
+    }
 }

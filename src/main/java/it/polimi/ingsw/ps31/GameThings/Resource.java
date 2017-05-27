@@ -1,9 +1,5 @@
 package it.polimi.ingsw.ps31.GameThings;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
-
 /**
  * Created by Giuseppe on 09/05/2017.
  */
@@ -27,7 +23,6 @@ public abstract class Resource {
             //TODO: gestire (eccezione?)
         }
     }
-
 
     public void multvalue(int factor){
 

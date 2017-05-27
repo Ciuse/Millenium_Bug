@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps31.Player.Player;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-        import java.util.List;
+import java.util.List;
 
 /**
  * Created by Giuseppe on 18/05/2017.

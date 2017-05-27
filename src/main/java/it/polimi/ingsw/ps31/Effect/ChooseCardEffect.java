@@ -1,8 +1,8 @@
 package it.polimi.ingsw.ps31.Effect;
+
 import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Player.Player;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

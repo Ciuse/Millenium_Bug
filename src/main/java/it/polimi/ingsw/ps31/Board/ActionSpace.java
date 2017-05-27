@@ -1,15 +1,17 @@
 package it.polimi.ingsw.ps31.Board;
 
+import it.polimi.ingsw.ps31.Effect.ActiveEffect;
+import it.polimi.ingsw.ps31.Effect.Effect;
 import it.polimi.ingsw.ps31.Effect.EffectList;
 import it.polimi.ingsw.ps31.Player.FamilyMember;
+import it.polimi.ingsw.ps31.Player.Player;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Francesco on 12/05/2017.
  */
-public class ActionSpace implements PhysicalSpaceBehavior {
+public class ActionSpace implements PhysicalSpaceBehavior, ActiveEffect {
 
     private final int diceCost;
     private final int familyMemberLimit; //Limite massimo di familiari nello spazio azione. -1 indica l'assenza di limite
@@ -59,4 +61,12 @@ public class ActionSpace implements PhysicalSpaceBehavior {
     }
 
 
+    @Override
+    public void activeEffectList(Player player) {
+        if(this.immediateEffectList!=null){
+            for(int i=0; i<this.immediateEffectList.size();i++){
+                this.immediateEffectList.get(i).activate(player);
+            }
+        }
+    }
 }

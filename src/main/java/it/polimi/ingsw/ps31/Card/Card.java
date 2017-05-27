@@ -17,10 +17,8 @@ public abstract class Card {
 
     @Override
     public String toString(){
-
         return this.getClass().getSimpleName()+"["+this.getName()+"]";
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -30,7 +28,6 @@ public abstract class Card {
 
         return name != null ? name.equals(card.name) : card.name == null;
     }
-
     @Override
     public int hashCode() {
         return name != null ? name.hashCode() : 0;

@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.Card;
 
 import it.polimi.ingsw.ps31.Constants.CardColor;
-import it.polimi.ingsw.ps31.Effect.Effect;
 import it.polimi.ingsw.ps31.Effect.EffectList;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
 
