@@ -10,22 +10,36 @@ import java.util.Scanner;
 public abstract class Resource {
     private int value;
 
-    public Resource(int value){
-        this.value=value;
-
-    }
-
-    public void addValue(int value){
-        this.value = this.value+value;
-    }
-    public void subValue(int value)
-    {
-        if ( this.value >= value)
-            this.value = this.value-value;
+    public Resource(int value) {
+        if(value > 0)
+            this.value=value;
         else
         {
-            //TODO: gestire (eccezione?)
+            //TODO: eccezione
+            //this.value = Math.abs(value);
         }
+
+    }
+
+    public void addValue(int value)
+    {
+        if (value >= 0)
+            this.value = this.value+value;
+        else
+            this.subValue(Math.abs(value));
+    }
+
+    public void subValue(int value)
+    {
+        if(value >= 0 )
+            if ( this.value >= value)
+                this.value = this.value-value;
+            else
+            {
+                //TODO: gestire (eccezione?)
+            }
+        else
+            this.addValue(Math.abs(value));
     }
 
 
@@ -33,25 +47,6 @@ public abstract class Resource {
 
         this.value=this.value*factor;
     }
-
-//    public static int insertValue() {       //solo una prova
-//        System.out.println("Inserisci il valore della risorsa:");
-//        Scanner scanner =new Scanner(System.in);
-//        int value= 0;
-//        try {
-//            value = scanner.nextByte();
-//        } catch (InputMismatchException e) {
-//            System.out.println("Eccezione catturata (valore non numerico)");
-//            insertValue();
-//        }
-//        Resource stone= new Stone(0);
-//        stone.addValue(value);
-//        return value;
-//    }
-
-//TODO    public void controlValueInsert(int value){
-//        if(value<0);
-//    }
 
 /*Getters*/
     public int getValue(){

@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.Card;
 
+import it.polimi.ingsw.ps31.Constants.CardColor;
+
 /**
  * Created by Giuseppe on 09/05/2017.
  */

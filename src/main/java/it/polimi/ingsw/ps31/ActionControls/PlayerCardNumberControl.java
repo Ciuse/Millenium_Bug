@@ -15,15 +15,16 @@ public class PlayerCardNumberControl extends Control {
         super(player);
     }
 
-    /*Getters & Setters */
-    public CardColor getCardColor() {
-        return cardColor;
-    }
-
+    /* Setters & Getters */
     public void setCardColor(CardColor cardColor) {
         this.cardColor = cardColor;
     }
 
+    public CardColor getCardColor() {
+        return cardColor;
+    }
+
+    /* Resetters */
     public void resetCardColor() {
         this.cardColor = null;
     }

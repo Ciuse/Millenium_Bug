@@ -6,6 +6,7 @@ import it.polimi.ingsw.ps31.Player.Player;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Francesco on 23/05/2017.
@@ -41,18 +42,16 @@ public class ActionPayResources extends Action{
             //Eseguo il controllo
             if ( this.actionControlSet.payResourceControl(this.resourceToPay) )
             {
-                //Eseguo fisicamente l'azione
-                    //TODO: mi serve l'iteratore per ResourceList
-                    //player.subResources(this.resourcesToGet);
+                //Eseguo l'azione
+                List<Resource> resourcesToGetList = this.resourceToPay.getResourceList();
+                for(Resource currentResource : resourcesToGetList)
+                    player.subResources(currentResource);
 
                 resetResourceToPay();
             } else
             {
                 //TODO: lanciare eccezione
             }
-
         }
-
-
     }
 }

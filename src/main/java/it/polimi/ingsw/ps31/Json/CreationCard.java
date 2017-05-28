@@ -817,7 +817,7 @@ public abstract class CreationCard {
                 int cardNumber1 = i*8+j;
                 //inserimento costi nulli alle carti verdi
                 List<ResourceList> costListGreen= new ArrayList<>();
-                ResourceList costGreen = new ResourceList(null);
+                ResourceList costGreen = new ResourceList(); //usare il parametro null nel costruttore crea problemi
                 costListGreen.add(costGreen);
                 //inserimento altri parametri
                 int period = i+1;

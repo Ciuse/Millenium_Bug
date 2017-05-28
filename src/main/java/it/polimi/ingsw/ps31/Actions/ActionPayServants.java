@@ -45,7 +45,7 @@ public class ActionPayServants extends Action {
             boolean condition1 = this.actionControlSet.placedFamilyMemberControl(player.getFamilyMember(this.diceColor));
 
             //Controllo sul numero di servitori
-            List<Resource> servantsAsList = new ArrayList<Resource>();
+            List<Resource> servantsAsList = new ArrayList<>();
             Resource servantsAsResource = new Servant(servantsAmount);
             servantsAsList.add(servantsAsResource);
             ResourceList servantsAsResourceList = new ResourceList(servantsAsList);

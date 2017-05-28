@@ -16,14 +16,15 @@ public class PlacedFamilyMemberControl extends Control {
     }
 
     /* Getters & Setters */
-    public FamilyMember getFamilyMember() {
-        return familyMember;
-    }
-
     public void setFamilyMember(FamilyMember familyMember) {
         this.familyMember = familyMember;
     }
 
+    public FamilyMember getFamilyMember() {
+        return familyMember;
+    }
+
+    /* Resetters */
     public void resetFamilyMember() {
         this.familyMember = null;
     }

@@ -6,12 +6,12 @@ import it.polimi.ingsw.ps31.Player.Player;
 /**
  * Created by Francesco on 24/05/2017.
  */
-public class DiceValueControl extends Control {
+public class DiceValueVsDiceColorControl extends Control {
     private Integer diceValue = null;
     private DiceColor diceColor = null;
 
     /* Constructor */
-    public DiceValueControl(Player player) {
+    public DiceValueVsDiceColorControl(Player player) {
         super(player);
     }
 
@@ -20,7 +20,6 @@ public class DiceValueControl extends Control {
     {
         this.diceValue = diceValue;
     }
-
     public void setDiceColor(DiceColor diceColor)
     {
         this.diceColor = diceColor;
@@ -30,20 +29,19 @@ public class DiceValueControl extends Control {
     {
         return this.diceValue;
     }
-
     public DiceColor getDiceColor()
     {
         return this.diceColor;
     }
 
-    public void resetDiceColor()
-    {
-        this.diceColor = null;
-    }
-
+    /* Resetters */
     public void resetDiceValue()
     {
         this.diceValue = null;
+    }
+    public void resetDiceColor()
+    {
+        this.diceColor = null;
     }
 
     /* Class Methods */

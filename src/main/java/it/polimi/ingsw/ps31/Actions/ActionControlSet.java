@@ -6,21 +6,23 @@ import it.polimi.ingsw.ps31.Board.Tower;
 import it.polimi.ingsw.ps31.Board.TowerCardSpace;
 import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Constants.DiceColor;
-import it.polimi.ingsw.ps31.GameThings.Resource;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
 import it.polimi.ingsw.ps31.Player.FamilyMember;
 import it.polimi.ingsw.ps31.Player.Player;
-import it.polimi.ingsw.ps31.Player.PlayerActionSet;
-import javafx.scene.input.TouchEvent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Francesco on 25/05/2017.
  */
 public class ActionControlSet {
     private final CardRequirementsControl cardRequirementsControl;
-    private final DiceValueControl diceValueControl;
+    private final DiceValueVsDiceColorControl diceValueVsDiceColorControl;
+    private final DiceValueVsCardSpaceControl diceValueVsCardSpaceControl;
     private final OccupiedActionSpaceControl occupiedActionSpaceControl;
     private final PayResourceControl payResourceControl;
+    private final PayResourceListControl payResourceListControl;
     private final PlacedFamilyMemberControl placedFamilyMemberControl;
     private final PlayerCardNumberControl playerCardNumberControl;
     private final TowerPlacementControl towerPlacementControl;
@@ -30,14 +32,15 @@ public class ActionControlSet {
     public ActionControlSet(Player player)
     {
         this.cardRequirementsControl = new CardRequirementsControl(player);
-        this.diceValueControl = new DiceValueControl(player);
+        this.diceValueVsDiceColorControl = new DiceValueVsDiceColorControl(player);
+        this.diceValueVsCardSpaceControl = new DiceValueVsCardSpaceControl(player);
         this.occupiedActionSpaceControl = new OccupiedActionSpaceControl(player);
         this.payResourceControl = new PayResourceControl(player);
+        this.payResourceListControl = new PayResourceListControl(player);
         this.placedFamilyMemberControl = new PlacedFamilyMemberControl(player);
         this.playerCardNumberControl = new PlayerCardNumberControl(player);
         this.towerPlacementControl = new TowerPlacementControl(player);
         this.selfOccupiedTowerControl= new SelfOccupiedTowerControl(player);
-
     }
 
     /* Class Methods */
@@ -47,12 +50,20 @@ public class ActionControlSet {
         return (this.cardRequirementsControl.execute());
     }
 
-    public boolean diceValueControl(Integer diceValue, DiceColor diceColor)
+    public boolean diceValueVsDiceColorControl(Integer diceValue, DiceColor diceColor)
     {
-        this.diceValueControl.setDiceValue(diceValue);
-        this.diceValueControl.setDiceColor(diceColor);
-        return (this.diceValueControl.execute());
+        this.diceValueVsDiceColorControl.setDiceValue(diceValue);
+        this.diceValueVsDiceColorControl.setDiceColor(diceColor);
+        return (this.diceValueVsDiceColorControl.execute());
     }
+
+    public boolean diceValueVsCardSpaceControl (Integer diceValue, TowerCardSpace towerCardSpace)
+    {
+        this.diceValueVsCardSpaceControl.setDiceValue(diceValue);
+        this.diceValueVsCardSpaceControl.setTowerCardSpace(towerCardSpace);
+        return (this.diceValueVsCardSpaceControl.execute());
+    }
+
     public boolean occupiedActionSpaceControl(ActionSpace actionSpace)
     {
         this.occupiedActionSpaceControl.setActionSpace(actionSpace);
@@ -65,11 +76,18 @@ public class ActionControlSet {
         return (this.payResourceControl.execute());
     }
 
+    public boolean payResourceListControl(List<ResourceList> resourceLists)
+    {
+        this.payResourceListControl.setResourceLists(resourceLists);
+        return (this.payResourceControl.execute());
+    }
+
     public boolean placedFamilyMemberControl(FamilyMember familyMember)
     {
         this.placedFamilyMemberControl.setFamilyMember(familyMember);
         return (this.placedFamilyMemberControl.execute());
     }
+
     public boolean playerCardNumberControl(CardColor cardColor)
     {
         this.playerCardNumberControl.setCardColor(cardColor);
@@ -82,6 +100,7 @@ public class ActionControlSet {
         this.towerPlacementControl.setTowerCardSpace(towerCardSpace);
         return (this.towerPlacementControl.execute());
     }
+
     public boolean selfOccupiedTowerControl(FamilyMember familyMember, Tower tower)
     {
         this.selfOccupiedTowerControl.setFamilyMember(familyMember);

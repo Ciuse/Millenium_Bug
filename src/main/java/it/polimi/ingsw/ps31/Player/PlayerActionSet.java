@@ -1,11 +1,14 @@
 package it.polimi.ingsw.ps31.Player;
 
-import it.polimi.ingsw.ps31.ActionControls.*;
 import it.polimi.ingsw.ps31.Actions.*;
 import it.polimi.ingsw.ps31.Board.ActionSpace;
 import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Constants.DiceColor;
+import it.polimi.ingsw.ps31.GameThings.Resource;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Francesco on 24/05/2017.
@@ -14,31 +17,34 @@ public class PlayerActionSet {
     private final ActionActivateHarvest activateHarvest;
     private final ActionActivateProduction activateProduction;
     private final ActionChooseCard chooseCard;
-    private final ActionChoosePrivilege choosePrivilege;
+    private final ActionChooseDifferentPrivilege chooseDifferentPrivilege;
     private final ActionGetResources getResources;
     private final ActionPayResources payResources;
     private final ActionPayServants payServants;
     private final ActionPayTowerMoney payTowerMoney;
-    private final ActionPlaceFamilyMember placeFamilyMember;
+    private final ActionPlaceFamilyMemberInTower placeFamilyMemberInTower;
+    private final ActionPlaceFamilyMemberInBoard placeFamilyMemberInBoard;
     private final ActionTakeCard takeCard;
     private final ActiveLeaderCard activeLeaderCard;
-    private final Player player;
     private final ActionControlSet actionControlSet;
+    private final Player player;
 
     /* Constructor */
     public PlayerActionSet(Player player) {
         this.player = player;
+
         this.actionControlSet = new ActionControlSet(player);
 
         this.activateHarvest = new ActionActivateHarvest(player, actionControlSet);
         this.activateProduction = new ActionActivateProduction(player, actionControlSet);
         this.chooseCard = new ActionChooseCard(player, actionControlSet);
-        this.choosePrivilege = new ActionChoosePrivilege(player, actionControlSet);
+        this.chooseDifferentPrivilege = new ActionChooseDifferentPrivilege(player, actionControlSet);
         this.getResources = new ActionGetResources(player, actionControlSet);
         this.payResources = new ActionPayResources(player, actionControlSet);
         this.payServants = new ActionPayServants(player, actionControlSet);
         this.payTowerMoney = new ActionPayTowerMoney(player, actionControlSet);
-        this.placeFamilyMember = new ActionPlaceFamilyMember(player, actionControlSet);
+        this.placeFamilyMemberInTower = new ActionPlaceFamilyMemberInTower(player, actionControlSet);
+        this.placeFamilyMemberInBoard = new ActionPlaceFamilyMemberInBoard(player, actionControlSet);
         this.takeCard = new ActionTakeCard(player, actionControlSet);
         this.activeLeaderCard = new ActiveLeaderCard(player, actionControlSet);
 
@@ -50,7 +56,6 @@ public class PlayerActionSet {
     {
         return this.player;
     }
-
     public ActionControlSet getActionControlSet()
     {
         return this.actionControlSet;
@@ -77,7 +82,7 @@ public class PlayerActionSet {
         this.chooseCard.activate();
     }
 
-    public void setChoosePrivilege(int numOfPrivileges)
+    public void setChooseDifferentPrivilege(int numOfPrivileges)
     {
         //TODO: implementare
     }
@@ -91,6 +96,15 @@ public class PlayerActionSet {
     public void payResources(ResourceList resourcesToPay)
     {
         this.payResources.setResourceToPay(resourcesToPay);
+        this.payResources.activate();
+    }
+
+    public void payResources(Resource resourceToPay)
+    {
+        List<Resource> paymentAsList = new ArrayList<>();
+        paymentAsList.add(resourceToPay);
+
+        this.payResources.setResourceToPay(new ResourceList(paymentAsList));
         this.payResources.activate();
     }
 
@@ -112,11 +126,18 @@ public class PlayerActionSet {
         this.payTowerMoney.activate();
     }
 
-    public void placeFamilyMember(FamilyMember familyMember, ActionSpace actionSpace)
+    public void placeFamilyMemberInTower(FamilyMember familyMember, ActionSpace actionSpace)
     {
-        this.placeFamilyMember.setFamilyMember(familyMember);
-        this.placeFamilyMember.setActionSpace(actionSpace);
-        this.placeFamilyMember.activate();
+        this.placeFamilyMemberInTower.setFamilyMember(familyMember);
+        this.placeFamilyMemberInTower.setTowerActionSpace(actionSpace);
+        this.placeFamilyMemberInTower.activate();
+    }
+
+    public void placeFamilyMemberInBoard(FamilyMember familyMember, ActionSpace actionSpace)
+    {
+        this.placeFamilyMemberInBoard.setFamilyMember(familyMember);
+        this.placeFamilyMemberInBoard.setTowerActionSpace(actionSpace);
+        this.placeFamilyMemberInBoard.activate();
     }
 
     public void takeCard()

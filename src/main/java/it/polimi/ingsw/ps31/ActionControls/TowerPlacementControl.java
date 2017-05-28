@@ -18,40 +18,39 @@ public class TowerPlacementControl extends Control {
     private TowerCardSpace towerCardSpace = null;
     private FamilyMember familyMember = null;
 
-    /* Setters & Getters */
-    public TowerCardSpace getTowerCardSpace()
+    /* Constructor */
+    public TowerPlacementControl(Player player)
     {
-        return towerCardSpace;
+        super(player);
     }
 
+    /* Setters & Getters */
     public void setTowerCardSpace(TowerCardSpace towerCardSpace)
     {
         this.towerCardSpace = towerCardSpace;
     }
-
-    public FamilyMember getFamilyMember()
-    {
-        return familyMember;
-    }
-
     public void setFamilyMember(FamilyMember familyMember)
     {
         this.familyMember = familyMember;
     }
 
-    public void resetFamilyMember()
+    public TowerCardSpace getTowerCardSpace()
     {
-        this.familyMember = null;
+        return towerCardSpace;
+    }
+    public FamilyMember getFamilyMember()
+    {
+        return familyMember;
     }
 
+    /* Resetters */
     public void restTowerCardSpace()
     {
         this.towerCardSpace = null;
     }
-
-    /* Constructor */
-    public TowerPlacementControl(Player player) {
-        super(player);
+    public void resetFamilyMember()
+    {
+        this.familyMember = null;
     }
 
     /* Class Methods */

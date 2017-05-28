@@ -8,32 +8,44 @@ import it.polimi.ingsw.ps31.Player.Player;
  */
 public class ActionPayTowerMoney extends Action {
     private static final int COINTOPAY = 3; //Valore di default delle monete da pagare
-    private int coinToPay;
+    private Integer coinToPay;
 
+    /* Constructor */
     public ActionPayTowerMoney(Player player, ActionControlSet actionControlSet) {
         super(player, actionControlSet);
         this.coinToPay = COINTOPAY;
     }
 
-    public void setCoinToPay(int coinToPay)
+    /* Setters & Getters */
+    public void setCoinToPay(Integer coinToPay)
     {
         this.coinToPay = coinToPay;
 
-    }
-
-    public void resetCoinToPay ()
-    {
-        this.coinToPay = COINTOPAY;
     }
 
     public int getCoinToPay()
     {
         return this.coinToPay;
     }
+
+    /* Resetters */
+    public void resetCoinToPay ()
+    {
+        this.coinToPay = COINTOPAY;
+    }
+
+    /* Class Methods */
     @Override
     public void activate()
     {
-        Coin payment = new Coin(this.coinToPay);
-        player.subResources(payment);
+        //Controllo che i parametri siano settati
+        if( this.coinToPay == null)
+        {
+            //TODO: gestire;
+        }else
+        {
+            Coin payment = new Coin(this.coinToPay);
+            player.getPlayerActionSet().payResources(payment);
+        }
     }
 }

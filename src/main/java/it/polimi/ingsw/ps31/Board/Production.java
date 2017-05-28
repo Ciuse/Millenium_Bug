@@ -12,4 +12,10 @@ public abstract class Production extends ActionSpace {
     {
         super(diceCost, familyMemberLimit, effectList);    //TODO: specificare l'effetto immediato
     }
+
+    @Override
+    public void addFamilyMember(FamilyMember familyMember) {
+        super.addFamilyMember(familyMember);
+        familyMember.getPlayer().getPlayerActionSet().activateProduction(familyMember.getTotalValue());
+    }
 }

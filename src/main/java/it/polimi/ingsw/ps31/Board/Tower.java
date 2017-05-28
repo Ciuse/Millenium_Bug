@@ -4,7 +4,6 @@ import it.polimi.ingsw.ps31.Card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Effect.EffectList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +16,7 @@ public class Tower {
     private final CardColor color;
     private boolean isOccupied = false;
     private final TowerCardSpace[] towerCardSpaceList;
-    private final ActionSpace[] actionSpaceList;
+    private final TowerActionSpace[] towerActionSpaceList;
     private DevelopmentCardDeck deck;
 
     /* Constructor */
@@ -25,12 +24,12 @@ public class Tower {
     {
         this.TOWERDIMENSION = towerDimension;
         this.towerCardSpaceList = new TowerCardSpace[TOWERDIMENSION];
-        this.actionSpaceList = new ActionSpace[TOWERDIMENSION];
+        this.towerActionSpaceList = new TowerActionSpace[TOWERDIMENSION];
         for (int i = 0; i<TOWERDIMENSION; i++)
         {
             int[] diceCostList= {1,3,5,7};
             towerCardSpaceList[i] = new TowerCardSpace(color, null, this);   //TODO: inserire parametro dell'action space
-            actionSpaceList[i] = new ActionSpace(diceCostList[i],1,effectList.get(i));
+            towerActionSpaceList[i] = new TowerActionSpace(diceCostList[i],1, effectList.get(i), towerCardSpaceList[i]);
         }
         this.color = color;
     }
@@ -56,9 +55,9 @@ public class Tower {
         return towerCardSpaceList;
     }
 
-    public ActionSpace[] getActionSpaceList()
+    public TowerActionSpace[] getTowerActionSpaceList()
     {
-        return actionSpaceList;
+        return towerActionSpaceList;
     }
 
     public TowerCardSpace getCardBoxListAt(int i)
@@ -68,7 +67,7 @@ public class Tower {
 
     public ActionSpace getActionBoxListAt(int i)
     {
-        return actionSpaceList[i];
+        return towerActionSpaceList[i];
     }
 
     public void setDeck(List<DevelopmentCardDeck> deckList, int period) {

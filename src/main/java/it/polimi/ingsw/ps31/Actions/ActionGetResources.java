@@ -1,7 +1,11 @@
 package it.polimi.ingsw.ps31.Actions;
 
+import it.polimi.ingsw.ps31.GameThings.CouncilPrivilege;
+import it.polimi.ingsw.ps31.GameThings.Resource;
 import it.polimi.ingsw.ps31.GameThings.ResourceList;
 import it.polimi.ingsw.ps31.Player.Player;
+
+import java.util.List;
 
 /**
  * Created by Francesco on 18/05/2017.
@@ -41,11 +45,15 @@ public class ActionGetResources extends Action {
             //TODO: fare qualcosa (eccezione?)
         } else
         {
-
             //Eseguo l'azione
-            //TODO: mi serve l'iteratore per ResourceList
-            //player.addResources(this.resourcesToGet);
-
+            List<Resource> resourcesToGetList = this.resourcesToGet.getResourceList();
+            for(Resource currentResource : resourcesToGetList)
+            {
+                if (currentResource.getClass().equals(CouncilPrivilege.class))
+                    player.getPlayerActionSet().setChooseDifferentPrivilege(currentResource.getValue());
+                else
+                    player.addResources(currentResource);
+            }
             this.resetResourcesToGet();
         }
     }

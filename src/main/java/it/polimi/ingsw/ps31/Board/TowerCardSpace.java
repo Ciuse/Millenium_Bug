@@ -21,34 +21,44 @@ public class TowerCardSpace extends PhysicalCardBox {
         this.tower = tower;
     }
 
-    /*Getters & Setters*/
+    /* Getters & Setters */
     public CardColor getColor()
     {
         return this.color;
     }
-
     public DevelopmentCard getCard ()
     {
         return this.card;
     }
-
     public ActionSpace getActionSpace()
     {
         return actionSpace;
     }
-
     public Tower getTower()
     {
         return this.tower;
     }
+
     public void setCard(DevelopmentCard card)
     {
+
+        if ( card == null )
+        {
+            //TODO: gestire (eccezione?)
+        } else
         if (card.getCardColor() != this.color)
         {
             //TODO: gestire (eccezione?)
-        }
-        else
+        } else
             this.card = card;
+    }
+
+    /* Class Methods */
+    public DevelopmentCard takeCard()
+    {
+        DevelopmentCard takenCard = this.card;
+        this.card = null;
+        return takenCard;
     }
 
 }
