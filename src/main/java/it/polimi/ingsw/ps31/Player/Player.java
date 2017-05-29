@@ -7,8 +7,7 @@ import it.polimi.ingsw.ps31.Card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.Constants.CardColor;
 import it.polimi.ingsw.ps31.Constants.DiceColor;
 import it.polimi.ingsw.ps31.Constants.PlayerColor;
-import it.polimi.ingsw.ps31.GameThings.Resource;
-import it.polimi.ingsw.ps31.GameThings.ResourceList;
+import it.polimi.ingsw.ps31.GameThings.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,6 +28,7 @@ public class Player {
     private final ArrayList<FamilyMember> familyMembers;
     private int flagExcommunication;
 
+
     private DevelopmentCardList playerCardList;
 
     /* Constructor */
@@ -43,11 +43,11 @@ public class Player {
 
         //Risorse iniziali
         //TODO: il nome delle risorse deve essere preso da un enumeratore
-//        int woodAmt    = initialResources.get("Wood");
-//        int stoneAmt   = initialResources.get("Stone");
-//        int coinAmt    = initialResources.get("Coin");
-//        int servantAmt = initialResources.get("Servant");
-//        this.resources = new PlayerResources(woodAmt, stoneAmt, coinAmt, servantAmt);
+        int woodAmt    = initialResources.getSpecificResource(Wood.class).getValue();
+        int stoneAmt   = initialResources.getSpecificResource(Stone.class).getValue();
+        int coinAmt    = initialResources.getSpecificResource(Coin.class).getValue();
+        int servantAmt = initialResources.getSpecificResource(Servant.class).getValue();
+        this.resources = new PlayerResources(woodAmt, stoneAmt, coinAmt, servantAmt);
 
         //Creazione familiari
         this.familyMembers = new ArrayList<FamilyMember>();

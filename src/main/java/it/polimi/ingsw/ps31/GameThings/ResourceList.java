@@ -191,4 +191,19 @@ public class ResourceList {
 
         return false;
     }
+
+   public int getPhysicalResource(){
+        int physicalResource =0;
+        for(int i=0;i<resourceList.size();i++){
+            physicalResource= physicalResource + resourceList.get(i).getPhysicalResourceValue();
+        }
+        return physicalResource;
+   }
+    public int getPointResource(){
+        int pointResource =0;
+        for(int i=0;i<resourceList.size();i++){
+            pointResource= pointResource + resourceList.get(i).getPointResourceValue();
+        }
+        return pointResource;
+    }
 }

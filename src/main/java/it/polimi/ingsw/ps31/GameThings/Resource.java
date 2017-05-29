@@ -49,6 +49,11 @@ public abstract class Resource {
         return value == resource.value;
     }
 
+    public abstract int getPhysicalResourceValue();
+    public abstract int getPointResourceValue();
+
+
+
     @Override
     public int hashCode() {
         return value;

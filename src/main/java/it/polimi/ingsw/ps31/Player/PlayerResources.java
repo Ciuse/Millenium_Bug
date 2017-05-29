@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.Player;
 
+import com.sun.org.apache.regexp.internal.RE;
 import it.polimi.ingsw.ps31.GameThings.*;
 
 import java.util.HashMap;
@@ -73,6 +74,7 @@ public class PlayerResources {
         resourceListToReturn.addSpecificResource(this.getResource("VictoryPoint"));
         return resourceListToReturn;
     }
+
 
     public HashMap getResourcesMap()
     {
