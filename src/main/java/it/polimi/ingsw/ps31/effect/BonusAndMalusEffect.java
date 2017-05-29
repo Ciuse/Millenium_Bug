@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.effect;
 
-import it.polimi.ingsw.ps31.player.Player;
 import it.polimi.ingsw.ps31.bonus.Bonus;
+import it.polimi.ingsw.ps31.player.Player;
 
 /**
  * Created by giulia on 18/05/2017.

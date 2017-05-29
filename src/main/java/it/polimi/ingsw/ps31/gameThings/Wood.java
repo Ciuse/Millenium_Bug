@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31.GameThings;
+package it.polimi.ingsw.ps31.gameThings;
 
 /**
  * Created by Giuseppe on 10/05/2017.

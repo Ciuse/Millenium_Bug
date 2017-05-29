@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.actions;
 
 import it.polimi.ingsw.ps31.gameThings.*;
-import it.polimi.ingsw.ps31.gameThings.ResourceList;
 import it.polimi.ingsw.ps31.player.Player;
 
 import java.util.ArrayList;

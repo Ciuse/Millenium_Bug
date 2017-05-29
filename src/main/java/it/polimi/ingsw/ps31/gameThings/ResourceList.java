@@ -27,7 +27,6 @@ public class ResourceList {
         for(int i=0; i<this.resourceList.size(); i++) {
 
             if (this.resourceList.get(i).getClass().equals(resource.getClass()) && found == false) {
-                this.resourceList.get(i).toString();
                 this.resourceList.get(i).addValue(resource.getValue());
                 found = true;
             }

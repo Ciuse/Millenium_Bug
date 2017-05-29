@@ -3,11 +3,11 @@ package it.polimi.ingsw.ps31.json;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.ps31.bonus.*;
 import it.polimi.ingsw.ps31.card.*;
 import it.polimi.ingsw.ps31.card.Character;
 import it.polimi.ingsw.ps31.effect.*;
 import it.polimi.ingsw.ps31.gameThings.*;
-import it.polimi.ingsw.ps31.bonus.*;
 
 import java.util.ArrayList;
 import java.util.List;

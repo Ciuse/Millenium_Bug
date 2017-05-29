@@ -206,7 +206,7 @@ public class StartGame {
         }
         int contatore2 =0;
         for(int j=1;j<playerList.size();j++){
-            if (paritàTrovata=false && playerList.get(1).getResources().getResource("MilitaryStrength").getValue()== playerList.get(j).getResources().getResource("MilitaryStrength").getValue()) {
+            if (paritàTrovata==false && playerList.get(1).getResources().getResource("MilitaryStrength").getValue()== playerList.get(j).getResources().getResource("MilitaryStrength").getValue()) {
                 contatore2++;
               playerList.get(j).getResources().addResources(bonusVictoryPointFromMilitaryTrack[1]);
             }

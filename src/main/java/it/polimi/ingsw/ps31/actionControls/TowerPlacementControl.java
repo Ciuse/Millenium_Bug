@@ -96,7 +96,7 @@ public class TowerPlacementControl extends Control {
             boolean result = true;
             Iterator<Boolean> checkIterator = conditions.iterator();
             while(result && checkIterator.hasNext())
-                result = result && checkIterator.next();
+                result = checkIterator.next();
 
             return result;
 
