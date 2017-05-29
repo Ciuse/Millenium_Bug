@@ -7,8 +7,9 @@ import it.polimi.ingsw.ps31.Player.Player;
  */
 public abstract class Action implements PlayerActions{
     protected static Player player;
+    protected static  ActionControlSet actionControlSet;
 
-    public Action(Player player)
+    public Action(Player player, ActionControlSet actionControlSet)
     {
         if(player == null)
         {
@@ -16,6 +17,7 @@ public abstract class Action implements PlayerActions{
         }
 
         this.player = player;
+        this.actionControlSet = actionControlSet;
     }
 
 }

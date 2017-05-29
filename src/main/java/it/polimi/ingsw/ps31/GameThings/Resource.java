@@ -6,22 +6,36 @@ package it.polimi.ingsw.ps31.GameThings;
 public abstract class Resource {
     private int value;
 
-    public Resource(int value){
-        this.value=value;
-
-    }
-
-    public void addValue(int value){
-        this.value = this.value+value;
-    }
-    public void subValue(int value)
-    {
-        if ( this.value >= value)
-            this.value = this.value-value;
+    public Resource(int value) {
+        if(value > 0)
+            this.value=value;
         else
         {
-            //TODO: gestire (eccezione?)
+            //TODO: eccezione
+            //this.value = Math.abs(value);
         }
+
+    }
+
+    public void addValue(int value)
+    {
+        if (value >= 0)
+            this.value = this.value+value;
+        else
+            this.subValue(Math.abs(value));
+    }
+
+    public void subValue(int value)
+    {
+        if(value >= 0 )
+            if ( this.value >= value)
+                this.value = this.value-value;
+            else
+            {
+                //TODO: gestire (eccezione?)
+            }
+        else
+            this.addValue(Math.abs(value));
     }
 
     public void multvalue(int factor){

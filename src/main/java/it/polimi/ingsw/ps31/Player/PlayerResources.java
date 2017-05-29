@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.Player;
 
-import com.sun.org.apache.regexp.internal.RE;
 import it.polimi.ingsw.ps31.GameThings.*;
 
 import java.util.HashMap;
@@ -79,5 +78,11 @@ public class PlayerResources {
     public HashMap getResourcesMap()
     {
         return new HashMap<>(this.currentResources);
+    }
+
+    public boolean greaterThan(ResourceList resourceList)
+    {
+        //TODO: implementare
+        return true;
     }
 }

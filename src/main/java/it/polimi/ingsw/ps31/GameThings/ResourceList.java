@@ -14,6 +14,10 @@ public class ResourceList {
     public ResourceList(List<Resource> resourceList) {
         this.resourceList = resourceList;
     }
+    public ResourceList(Resource resource)
+    {
+        this.resourceList.add(resource);
+    }
     public ResourceList(){}
 
     //metodi tipici delle liste

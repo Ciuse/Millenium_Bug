@@ -9,8 +9,8 @@ import it.polimi.ingsw.ps31.Player.Player;
 public class ActiveLeaderCard extends Action {
     private LeaderCard leaderCard= null;
 
-    public ActiveLeaderCard(Player player) {
-        super(player);
+    public ActiveLeaderCard(Player player, ActionControlSet actionControlSet) {
+        super(player, actionControlSet);
     }
 
     @Override

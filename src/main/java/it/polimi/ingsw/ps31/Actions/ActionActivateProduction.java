@@ -6,13 +6,41 @@ import it.polimi.ingsw.ps31.Player.Player;
  * Created by Francesco on 18/05/2017.
  */
 public class ActionActivateProduction extends Action {
+    private Integer diceValue = null;
 
-    public ActionActivateProduction(Player player) {
-        super(player);
+    /* Constructor */
+    public ActionActivateProduction(Player player, ActionControlSet actionControlSet) {
+        super(player, actionControlSet);
     }
 
-    @Override
-    public void activate() {
+    /* Setters & Getters */
+    public Integer getDiceValue()
+    {
+        return diceValue;
+    }
 
+    public void setDiceValue(Integer diceValue)
+    {
+        this.diceValue = diceValue;
+    }
+
+    public void resetDiceValue()
+    {
+        this.diceValue = null;
+    }
+
+    /* Class Methods */
+    @Override
+    public void activate()
+    {
+        //Controllo che i paramatri siano settati
+        if ( this.diceValue == null )
+        {
+            //TODO: gestire
+        }
+        else
+            player.getProductionList().activate(this.diceValue);
+
+        resetDiceValue();
     }
 }

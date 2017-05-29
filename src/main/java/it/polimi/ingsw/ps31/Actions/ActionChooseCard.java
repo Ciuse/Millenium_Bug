@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps31.Actions;
 
+import it.polimi.ingsw.ps31.Board.TowerCardSpace;
 import it.polimi.ingsw.ps31.Constants.CardColor;
+import it.polimi.ingsw.ps31.GameThings.ResourceList;
 import it.polimi.ingsw.ps31.Player.Player;
 
 /**
@@ -8,74 +10,126 @@ import it.polimi.ingsw.ps31.Player.Player;
  */
 public class ActionChooseCard extends Action {
     private Integer diceCost = null;
-    private Integer diceDiscount = null;
+    private int diceDiscount= 0;
+    private ResourceList resourceDiscount = null;
     private CardColor cardColor = null;
+    private boolean anyCardColor = false;
 
     /* Constructor */
-    public ActionChooseCard(Player player)
+    public ActionChooseCard(Player player, ActionControlSet actionControlSet)
     {
-        super(player);
+        super(player, actionControlSet);
     }
 
     /* Getters & Setters*/
-    public void setDiceCost(int diceCost)
-    {
+    public void setDiceCost(int diceCost) {
         Integer castedDiceCost = new Integer(diceCost);
         this.setDiceCost(castedDiceCost);
     }
-
     public void setDiceCost(Integer diceCost)
     {
         this.diceCost = diceCost;
     }
-
+    public void setDiceDiscount(int diceDiscount)
+    {
+        this.diceDiscount = diceDiscount;
+    }
+    public void setResourceDiscount(ResourceList resourceDiscount)
+    {
+        this.resourceDiscount = resourceDiscount;
+    }
     public void setCardColor(CardColor cardColor)
     {
         this.cardColor = cardColor;
     }
-
-    public void setDiceDiscount(Integer diceDiscount)
+    public void setAnyCardColor (boolean anyCardColor)
     {
-        this.diceDiscount = diceDiscount;
-    }
-
-    public void resetCardColor()
-    {
-        this.cardColor = null;
-    }
-
-    public void resetDiceCost()
-    {
-        this.diceCost=null;
-    }
-
-    public void resetDiceDiscount()
-    {
-        this.diceDiscount = null;
-    }
-
-    public CardColor getCardColor()
-    {
-        return this.cardColor;
+        this.anyCardColor = anyCardColor;
     }
 
     public Integer getDiceCost()
     {
         return this.diceCost;
     }
-
     public Integer getDiceDiscount()
     {
         return this.diceDiscount;
+    }
+    public ResourceList getResourceDiscount()
+    {
+        return this.resourceDiscount;
+    }
+    public CardColor getCardColor()
+    {
+        return this.cardColor;
+    }
+    public boolean getAnyCardColor()
+    {
+        return this.anyCardColor;
+    }
+
+    /* Resetters */
+    public void resetDiceCost()
+    {
+        this.diceCost=null;
+    }
+    public void resetDiceDiscount()
+    {
+        this.diceDiscount = 0;
+    }
+    public void resetResourceDiscount ()
+    {
+        this.resourceDiscount = null;
+    }
+    public void resetCardColor()
+    {
+        this.cardColor = null;
+    }
+    public void resetAnyCardColor()
+    {
+        this.anyCardColor = false;
     }
 
     /* Activate method*/
     @Override
     public void activate()
     {
-        //Controllare che campi obbligatori siano settati
-        //Trovare carte selezionabili in base ai paametri
-        //Fare richiesta alla view per scegliere la carta
-        //Aggiungere la carta al player
+        //Controllo che campi obbligatori siano settati
+        if( (this.cardColor == null && this.anyCardColor == false) || this.diceCost == null )
+        {
+            //TODO: eccezione
+        }
+        //Faccio richiesta alla view per scegliere la carta e controllo che la carta scelta rispetti i parametri settati
+        TowerCardSpace chosenCardSpace;
+        do
+        {
+            //TODO: fare richiesta alla view per scegliere il tower card space
+            chosenCardSpace = new TowerCardSpace(null, null, null); //Cambiare questa riga
+        }while (!checkChosenTowerCardSpace(chosenCardSpace));
+
+        this.player.getPlayerActionSet().takeCard();    //TODO: e se il player non può attivare l'effetto della carta?
+    }
+
+    /* Class Methods */
+    private boolean checkChosenTowerCardSpace(TowerCardSpace chosenTCS)
+    {
+        //Controllo esistenza carta nel tcs
+        if ( chosenTCS.getCard() == null )
+            return false;
+
+        //Controllo colore
+        if( !this.anyCardColor )
+            if ( this.cardColor != null && !chosenTCS.getColor().equals(this.cardColor) )
+                return false;
+
+        //Controllo costo dado
+        if( !this.actionControlSet.diceValueVsCardSpaceControl(this.diceCost+this.diceDiscount, chosenTCS) )
+            return false;
+
+        //Controllo costo risorse
+        if ( !this.actionControlSet.payResourceListControl(chosenTCS.getCard().getCostList()) )
+                return false;
+
+        return true;
     }
 }

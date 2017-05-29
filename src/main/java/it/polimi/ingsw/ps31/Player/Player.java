@@ -1,7 +1,8 @@
 package it.polimi.ingsw.ps31.Player;
 
-import it.polimi.ingsw.ps31.Board.Dice;
 import it.polimi.ingsw.ps31.Board.PersonalBoard;
+import it.polimi.ingsw.ps31.Board.Production;
+import it.polimi.ingsw.ps31.Card.*;
 import it.polimi.ingsw.ps31.Card.DevelopmentCard;
 import it.polimi.ingsw.ps31.Card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.Constants.CardColor;
@@ -25,21 +26,24 @@ public class Player {
     private final String nickname;
     private PermanentBonus permanentBonus;
     private List<Excommunication> excommunications;
-    private final ArrayList<FamilyMember> familyMembers;
+    private final List<FamilyMember> familyMembers;
     private int flagExcommunication;
-
-
     private DevelopmentCardList playerCardList;
+    private FamilyMember lastUsedFamilyMember;
+    private PlayerActionSet playerActionSet;
+    private HarvestList harvestList;
+    private ProductionList productionList;
 
     /* Constructor */
-    public Player(PlayerColor color, ResourceList initialResources, String nickname)
+    public Player(PlayerColor color, ResourceList initialResources, String nickname, ArrayList<FamilyMember> familyMembers)
     {
         //Attributi base
         this.color            = color;
+        this.familyMembers = familyMembers;
         this.playerBoard      = new PersonalBoard(this);
         this.nickname         = nickname;
         this.permanentBonus   = new PermanentBonus();
-        this.excommunications = new ArrayList<Excommunication>();
+        this.excommunications = new ArrayList<Excommunication>(); //TODO: serve davvero??
 
         //Risorse iniziali
         //TODO: il nome delle risorse deve essere preso da un enumeratore
@@ -50,19 +54,41 @@ public class Player {
         this.resources = new PlayerResources(woodAmt, stoneAmt, coinAmt, servantAmt);
 
         //Creazione familiari
+        /*
         this.familyMembers = new ArrayList<FamilyMember>();
         for (DiceColor itrColor : DiceColor.values())
         {
             Dice itrDice = new Dice(itrColor); //TODO: NO!! Non si devono creare altri dadi, ma usare quelli già collegati alla board
             familyMembers.add(new FamilyMember(this, itrDice));
-        }
+        }*/
+
+        //Inizializzazione harvestList e productionList
+        this.harvestList = new HarvestList(this, null); //TODO: leggere firstHarvest da file
+        this.productionList = new ProductionList(this, null); //TODO: leggere firstProduction da file
 
         //Inizializzazione liste di carte
         //TODO: usare classe CardList di Giuse
         this.playerCardList = new DevelopmentCardList(null);
+
+        //Instanzio un PlayerActionSet
+        playerActionSet = new PlayerActionSet(this);
+
+        //Inizializzo lastUsedFamilyMember
+        this.lastUsedFamilyMember = null;
     }
 
     /* Setters & Getters */
+
+    public FamilyMember getLastUsedFamilyMember()
+    {
+        return lastUsedFamilyMember;
+    }
+
+    public void setLastUsedFamilyMember(FamilyMember lastUsedFamilyMember)
+    {
+        this.lastUsedFamilyMember = lastUsedFamilyMember;
+    }
+
     public PlayerColor getColor()
     {
         return this.color;
@@ -142,6 +168,20 @@ public class Player {
         return this.playerCardList;
     }
 
+    public PlayerActionSet getPlayerActionSet()
+    {
+        return this.playerActionSet;
+    }
+
+    public HarvestList getHarvestList()
+    {
+        return this.harvestList;
+    }
+
+    public ProductionList getProductionList()
+    {
+        return this.productionList;
+    }
     /* Class Methods */
     public void addDevelopmentCard(DevelopmentCard card)
     {
