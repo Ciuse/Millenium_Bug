@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.actions;
 
 import it.polimi.ingsw.ps31.board.TowerActionSpace;
+import it.polimi.ingsw.ps31.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.player.Player;
 
 /**

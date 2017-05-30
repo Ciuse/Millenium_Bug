@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps31.player;
 import it.polimi.ingsw.ps31.board.Production;
 import it.polimi.ingsw.ps31.effect.Effect;
 import it.polimi.ingsw.ps31.effect.EffectList;
+import it.polimi.ingsw.ps31.effect.HarvestEffect;
 import it.polimi.ingsw.ps31.effect.ProductionEffect;
 
 import java.util.Iterator;
@@ -34,6 +35,10 @@ public class ProductionList extends  HarvestProductionList{
     @Override
     public void activate(int diceValue)
     {
-        //TODO: fare cose
+        for(ProductionEffect currentEffect : effectList)
+        {
+            if (currentEffect.getProductionActionValue() > diceValue)
+                currentEffect.getGetResource().activate(super.getPlayer());
+        }
     }
 }

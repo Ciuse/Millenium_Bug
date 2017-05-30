@@ -18,6 +18,12 @@ public abstract class HarvestProductionList {
         this.player = player;
     }
 
+    /* Getters & Setters*/
+    protected Player getPlayer()
+    {
+        return this.player;
+    }
+
     /* Class Methods */
     public abstract void activate(int diceValue);
 
