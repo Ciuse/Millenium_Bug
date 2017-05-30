@@ -17,18 +17,17 @@ import java.util.List;
  */
 public class Player {
     private static final int MAXCARDLISTSIZE = 6;    //Massimo numero di carte dello stesso colore che si possono avere contemporaneamente
-
+    private final String nickname;
     private final PlayerColor color;
     private PlayerResources playerResources;      //setter -->add e sub
-    private final PersonalBoard playerBoard;
-    private final String nickname;
-    private PermanentBonus permanentBonus;
-    private List<Excommunication> excommunications;
-    private final List<FamilyMember> familyMembers;
-    private int flagExcommunication;
     private DevelopmentCardList playerCardList;
+    private final PersonalBoard playerBoard;
+    private final List<FamilyMember> familyMembers;
     private FamilyMember lastUsedFamilyMember;
     private PlayerActionSet playerActionSet;
+    private List<Excommunication> excommunications;
+    private int flagTurnExcommunication;
+    private PermanentBonus permanentBonus;
     private HarvestList harvestList;
     private ProductionList productionList;
     private List<ResourceList> finalBonusResources;
@@ -80,6 +79,10 @@ public class Player {
     }
 
     /* Setters & Getters */
+    public String getNickname() {
+        return nickname;
+    }
+
     public PlayerColor getColor() {
         return color;
     }
@@ -88,16 +91,8 @@ public class Player {
         return playerResources;
     }
 
-    public void setResources(PlayerResources resources) {
-        this.playerResources = resources;
-    }
-
     public PersonalBoard getPlayerBoard() {
         return playerBoard;
-    }
-
-    public String getNickname() {
-        return nickname;
     }
 
     public PermanentBonus getPermanentBonus() {
@@ -116,12 +111,12 @@ public class Player {
         return familyMembers;
     }
 
-    public int getFlagExcommunication() {
-        return flagExcommunication;
+    public int getFlagTurnExcommunication() {
+        return flagTurnExcommunication;
     }
 
-    public void setFlagExcommunication(int flagExcommunication) {
-        this.flagExcommunication = flagExcommunication;
+    public void setFlagTurnExcommunication(int flagTurnExcommunication) {
+        this.flagTurnExcommunication = flagTurnExcommunication;
     }
 
     public FamilyMember getLastUsedFamilyMember() {
@@ -270,7 +265,7 @@ public class Player {
         result = 31 * result + (permanentBonus != null ? permanentBonus.hashCode() : 0);
         result = 31 * result + (excommunications != null ? excommunications.hashCode() : 0);
         result = 31 * result + (familyMembers != null ? familyMembers.hashCode() : 0);
-        result = 31 * result + flagExcommunication;
+        result = 31 * result + flagTurnExcommunication;
         result = 31 * result + (playerCardList != null ? playerCardList.hashCode() : 0);
         return result;
     }

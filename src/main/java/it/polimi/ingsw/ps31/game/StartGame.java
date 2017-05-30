@@ -107,7 +107,7 @@ public class StartGame {
                         gameBoard.startActionTurn(playerList.get(playerMaxNumber));
                         //RICEVO CONFERMA RISPOSTA -> INIZIO TIMER
                         timer1.schedule(task1, delayAction);
-                        if (action == 1 && playerList.get(playerMaxNumber).getFlagExcommunication() == 1) {
+                        if (action == 1 && playerList.get(playerMaxNumber).getFlagTurnExcommunication() == 1) {
                             task1.cancel();
                             timer1.purge();
                             gameBoard.endActionTurn(playerList.get(playerMaxNumber));
@@ -122,7 +122,7 @@ public class StartGame {
                 }
                 //sono finite le 16 azioni(massime) del turnoe iniziano le 4 azioni(massime) che si sono perse per la scomunica
                 for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
-                    if (playerList.get(playerMaxNumber).getFlagExcommunication() == 1) {
+                    if (playerList.get(playerMaxNumber).getFlagTurnExcommunication() == 1) {
                         gameBoard.startActionTurn(playerList.get(playerMaxNumber));
                         //RICEVO CONFERMA RISPOSTA -> INIZIO TIMER
                         timer1.schedule(task1, delayAction);
