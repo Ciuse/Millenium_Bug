@@ -146,7 +146,7 @@ public class PlayerActionSet {
         this.getFinalResources.activate();
     }
 
-    public void addFinalVictoryPoints()
+    public void addFinalVictoryPoints(ResourceList iouigdvxzlgfsjklsgfvl)
     {
         //TODO: aggiornare
     }
