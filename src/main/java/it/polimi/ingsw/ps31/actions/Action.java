@@ -6,10 +6,10 @@ import it.polimi.ingsw.ps31.player.Player;
  * Created by Francesco on 18/05/2017.
  */
 public abstract class Action implements PlayerActions{
-    protected static Player player;
-    protected static  ActionControlSet actionControlSet;
+    protected final Player player;
+    protected final  ActionControlSet actionControlSet;
 
-    public Action(Player player, ActionControlSet actionControlSet)
+    protected Action(Player player, ActionControlSet actionControlSet)
     {
         if(player == null)
         {

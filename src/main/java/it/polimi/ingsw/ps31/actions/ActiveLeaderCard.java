@@ -15,6 +15,6 @@ public class ActiveLeaderCard extends Action {
 
     @Override
     public void activate() {
-        //leaderCard.activeLeaderCard(player); TODO FARE ALTRO?
+        //leaderCard.activeLeaderCard(player); TODO FARE ALTRO? e settera/usare il parametro (se serve)
      }
 }

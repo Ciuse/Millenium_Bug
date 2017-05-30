@@ -9,8 +9,10 @@ public class FaithPointTrack extends Track{
     private static FaithPointTrack ourInstance = new FaithPointTrack();
 
     public static FaithPointTrack getInstance() {
-        return ourInstance;
-    }
+        if(ourInstance == null) {
+            ourInstance = new FaithPointTrack();
+        }
+        return ourInstance;    }
 
     private FaithPointTrack() {
         super(15, FaithPoint.class);

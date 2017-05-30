@@ -11,6 +11,9 @@ import java.nio.file.Paths;
  */
 public abstract class JsonFile {
 
+    private JsonFile(){
+
+    }
 
     public static String filePath(String fileName) { //ottengo il patch della cartella in cui si trova l oggetto che chiama il metodo
         String path = Paths.get(".").toAbsolutePath().normalize().toString() + "\\" + fileName;

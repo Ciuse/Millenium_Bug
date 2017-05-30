@@ -51,7 +51,7 @@ public class StartGame {
         List<DevelopmentCardDeck> deckList = new ArrayList<>();
         CardColor[] cardColors = {CardColor.GREEN, CardColor.YELLOW, CardColor.PURPLE, CardColor.BLUE};
         for (int i = 0; i < cardColors.length; i++) {
-            for (int period = 1; period <= 3; period++) {
+            for (period = 1; period <= 3; period++) {
                 deckList.add(new DevelopmentCardDeck(cardColors[i], period));
             }
         }

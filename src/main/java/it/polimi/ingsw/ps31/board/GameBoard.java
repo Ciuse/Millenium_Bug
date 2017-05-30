@@ -6,6 +6,7 @@ import it.polimi.ingsw.ps31.effect.EffectList;
 import it.polimi.ingsw.ps31.player.Excommunication;
 import it.polimi.ingsw.ps31.player.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,10 +33,34 @@ public class GameBoard {
     private static GameBoard ourInstance;
 
     public static GameBoard getInstance() {
+        if(ourInstance == null) {
+            ourInstance = new GameBoard();
+        }
         return ourInstance;
     }
-    private GameBoard(List<EffectList> towerEffectList[], List<EffectList> otherEffectList) 
+    private GameBoard()
     {
+
+    }
+
+    public void add4PlayerMarketSpace(List<EffectList> otherEffectList){
+        this.market.add4PlayerMarketSpace(otherEffectList.get(7),otherEffectList.get(8));
+    }
+
+    public void remove4PlayerMarketSpace(){
+        this.market.remove4PlayerActionSpace();
+    }
+
+    public void rollTheDice(){
+        for(int i=0; i<dice.length; i++){
+            if(!dice[i].getColor().equals(DiceColor.NEUTRAL)){
+                int randomValue= (int)(Math.random()*6 + 1);
+                this.dice[i].setValue(randomValue);   
+            }
+        }
+    }
+
+    public void initializateGameBoard(List<EffectList> towerEffectList[], List<EffectList> otherEffectList){
         //creazione torri
         CardColor[] towerColor= {CardColor.GREEN,CardColor.BLUE,CardColor.YELLOW,CardColor.PURPLE};
         for(int i=0; i<TOWERNUMBER; i++) {
@@ -60,30 +85,12 @@ public class GameBoard {
         this.victoryPointTrack = VictoryPointTrack.getInstance();
     }
 
-    public void add4PlayerMarketSpace(List<EffectList> otherEffectList){
-        this.market.add4PlayerMarketSpace(otherEffectList.get(7),otherEffectList.get(8));
-    }
-
-    public void remove4PlayerMarketSpace(){
-        this.market.remove4PlayerActionSpace();
-    }
-
-    public void rollTheDice(){
-        for(int i=0; i<dice.length; i++){
-            if(!dice[i].getColor().equals(DiceColor.NEUTRAL)){
-                int randomValue= (int)(Math.random()*6 + 1);
-                this.dice[i].setValue(randomValue);   
-            }
-        }
-    }
-
-
     public static int getTOWERNUMBER() {
         return TOWERNUMBER;
     }
 
     public Tower[] getTowers() {
-        return towers;
+        return towers.clone();
     }
 
     public Market getMarket() {
@@ -111,7 +118,7 @@ public class GameBoard {
     }
 
     public Dice[] getDice() {
-        return dice;
+        return dice.clone();
     }
 
     public MilitaryPointTrack getMilitaryPointTrack() {
@@ -127,7 +134,7 @@ public class GameBoard {
     }
 
     public List<Excommunication> getExcommunicationList() {
-        return excommunicationList;
+        return new ArrayList<>(excommunicationList);
     }
 
     public void setExcommunicationList(List<Excommunication> excommunicationList) {

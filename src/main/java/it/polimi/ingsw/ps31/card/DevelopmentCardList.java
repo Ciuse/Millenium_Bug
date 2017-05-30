@@ -113,16 +113,16 @@ public class DevelopmentCardList {
         DevelopmentCardList that = (DevelopmentCardList) o;
         int contatore=0;
 
-        if (this.getSpecificCardList(CardColor.GREEN).size()<=that.getSpecificCardList((CardColor.GREEN)).size()){
+        if (this.getSpecificCardList(CardColor.GREEN).size()<=that.getSpecificCardList(CardColor.GREEN).size()){
             contatore++;
         }
-        if (this.getSpecificCardList(CardColor.PURPLE).size()<=that.getSpecificCardList((CardColor.PURPLE)).size()){
+        if (this.getSpecificCardList(CardColor.PURPLE).size()<=that.getSpecificCardList(CardColor.PURPLE).size()){
             contatore++;
         }
-        if (this.getSpecificCardList(CardColor.YELLOW).size()<=that.getSpecificCardList((CardColor.YELLOW)).size()){
+        if (this.getSpecificCardList(CardColor.YELLOW).size()<=that.getSpecificCardList(CardColor.YELLOW).size()){
             contatore++;
         }
-        if (this.getSpecificCardList(CardColor.BLUE).size()<=that.getSpecificCardList((CardColor.BLUE)).size()){
+        if (this.getSpecificCardList(CardColor.BLUE).size()<=that.getSpecificCardList(CardColor.BLUE).size()){
             contatore++;
         }
         if(contatore==4){          // se tutte e 4 le liste specifiche di carte sono minori delle altre allora la mia lista di carte generica è minore

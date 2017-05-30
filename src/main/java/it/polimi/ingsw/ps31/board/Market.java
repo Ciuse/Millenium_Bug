@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Market {
 
-    private List<ActionSpace> actionBox = new ArrayList<ActionSpace>();
+    private List<ActionSpace> actionBox = new ArrayList<>();
     private int numberOfActionSpace=0;
 
     public Market()

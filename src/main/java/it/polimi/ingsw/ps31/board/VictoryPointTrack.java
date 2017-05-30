@@ -10,8 +10,10 @@ public class VictoryPointTrack extends Track {
     private static VictoryPointTrack ourInstance = new VictoryPointTrack();
 
     public static VictoryPointTrack getInstance() {
-        return ourInstance;
-    }
+        if(ourInstance == null) {
+            ourInstance = new VictoryPointTrack();
+        }
+        return ourInstance;    }
 
     private VictoryPointTrack() {
         super(100,VictoryPoint.class);

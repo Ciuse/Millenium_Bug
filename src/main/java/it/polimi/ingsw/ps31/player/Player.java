@@ -33,7 +33,7 @@ public class Player {
     private ProductionList productionList;
 
     /* Constructor */
-    public Player(PlayerColor color, ResourceList initialResources, String nickname, ArrayList<FamilyMember> familyMembers)
+    public Player(PlayerColor color, ResourceList initialResources, String nickname, List<FamilyMember> familyMembers)
     {
         //Attributi base
         this.color            = color;
@@ -41,7 +41,7 @@ public class Player {
         this.playerBoard      = new PersonalBoard(this);
         this.nickname         = nickname;
         this.permanentBonus   = new PermanentBonus();
-        this.excommunications = new ArrayList<Excommunication>(); //TODO: serve davvero??
+        this.excommunications = new ArrayList<>(); //TODO: serve davvero??
 
         //Risorse iniziali
         //TODO: il nome delle risorse deve essere preso da un enumeratore
@@ -135,7 +135,7 @@ public class Player {
 
     public List<Excommunication> getExcommunications()
     {
-        return excommunications;
+        return new ArrayList<>(excommunications);
     }
 
     public void addExcommunication(Excommunication excommunication)

@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.player;
 
 import it.polimi.ingsw.ps31.actions.*;
 import it.polimi.ingsw.ps31.board.ActionSpace;
+import it.polimi.ingsw.ps31.board.TowerActionSpace;
 import it.polimi.ingsw.ps31.constants.CardColor;
 import it.polimi.ingsw.ps31.constants.DiceColor;
 import it.polimi.ingsw.ps31.gameThings.Resource;
@@ -122,21 +123,20 @@ public class PlayerActionSet {
 
     public void payTowerMoney(int payAmount)
     {
-        this.payTowerMoney.setCoinToPay(payAmount);
         this.payTowerMoney.activate();
     }
 
-    public void placeFamilyMemberInTower(FamilyMember familyMember, ActionSpace actionSpace)
+    public void placeFamilyMemberInTower(FamilyMember familyMember, TowerActionSpace towerActionSpace)
     {
         this.placeFamilyMemberInTower.setFamilyMember(familyMember);
-        this.placeFamilyMemberInTower.setTowerActionSpace(actionSpace);
+        this.placeFamilyMemberInTower.setTowerActionSpace(towerActionSpace);
         this.placeFamilyMemberInTower.activate();
     }
 
     public void placeFamilyMemberInBoard(FamilyMember familyMember, ActionSpace actionSpace)
     {
         this.placeFamilyMemberInBoard.setFamilyMember(familyMember);
-        this.placeFamilyMemberInBoard.setTowerActionSpace(actionSpace);
+        this.placeFamilyMemberInBoard.setActionSpace(actionSpace);
         this.placeFamilyMemberInBoard.activate();
     }
 
