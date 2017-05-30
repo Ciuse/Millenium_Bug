@@ -41,7 +41,7 @@ public class CardRequirementsControl extends Control {
         }
         else
         {
-            boolean result = player.getResources().greaterThan(this.requirement);
+            boolean result = player.getPlayerResources().greaterThan(this.requirement);
             resetRequirements();
             return result;
         }

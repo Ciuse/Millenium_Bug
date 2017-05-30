@@ -17,7 +17,7 @@ public class GetResourceFromResourceEffect extends GetResourceEffect {
     @Override
     public void activate(Player player) {
         //TODO modificare appena fra ha creato la risorsa di liste nel player.
-        int factor = player.getResources().getPlayerResourceAsResourceList().getSpecificResource(requiredResource.getClass()).getValue()%requiredResource.getValue();
+        int factor = player.getPlayerResources().getPlayerResourceAsResourceList().getSpecificResource(requiredResource.getClass()).getValue()%requiredResource.getValue();
         super.getResources().multiplyResourceList(factor);
         player.getPlayerActionSet().getResources(super.getResources());
     }

@@ -46,7 +46,7 @@ public class LeaderCard extends Card implements ActiveEffect {
 
     public void activeLeaderCard(Player player){
         if(developmentCardRequest.lessOrEquals(player.getPlayerCardList())
-                &&resourceRequest.lessOrEquals(player.getResources().getPlayerResourceAsResourceList())){
+                &&resourceRequest.lessOrEquals(player.getPlayerResources().getPlayerResourceAsResourceList())){
             this.activated=true;
         }
         else {//TODO "NON HAI ABBASTANZA RISORSE"

@@ -131,20 +131,20 @@ public class StartGame {
                 //SOLITE COSE DA FARE DOPO LA FINE DELLA FASE AZIONI
                 if (round == 2) {
                     for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
-                        if (playerList.get(playerNumber).getResources().getResource("FaithPoint").getValue() < gameBoard.getFaithPointTrack().getTrackCell()[2 + period].getValue()) {
+                        if (playerList.get(playerNumber).getPlayerResources().getResource("FaithPoint").getValue() < gameBoard.getFaithPointTrack().getTrackCell()[2 + period].getValue()) {
                             gameBoard.getExcommunicationList().get(period).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
 
                             //regola dell'ultimo turno del terzo periodo (tutti ricevono i punti vittoria )
                             if (period == 3) {
-                                int faithPointPlayer = playerList.get(playerNumber).getResources().getResource("FaithPoint").getValue();
+                                int faithPointPlayer = playerList.get(playerNumber).getPlayerResources().getResource("FaithPoint").getValue();
                                 playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell()[faithPointPlayer].getExtraValue());
-                                playerList.get(playerNumber).subResources(playerList.get(playerNumber).getResources().getResource("FaithPoint"));
+                                playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getResource("FaithPoint"));
                             }
                         } else {
                             //chiedo l'intervento della view e una volta ricevuto il messaggio di risposta true (il giocatore vuole spendere i suoi punti fede per evitare la scomunica)
-                            int faithPointPlayer = playerList.get(playerNumber).getResources().getResource("FaithPoint").getValue();
+                            int faithPointPlayer = playerList.get(playerNumber).getPlayerResources().getResource("FaithPoint").getValue();
                             playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell()[faithPointPlayer].getExtraValue());
-                            playerList.get(playerNumber).subResources(playerList.get(playerNumber).getResources().getResource("FaithPoint"));
+                            playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getResource("FaithPoint"));
                         }
                     }
                 }
@@ -195,9 +195,9 @@ public class StartGame {
         boolean paritàTrovata = false;
         int contatore=0;
         for(int i=0;i<playerList.size();i++) {
-            if (playerList.get(0).getResources().getResource("MilitaryStrength").getValue()== playerList.get(i).getResources().getResource("MilitaryStrength").getValue()) {
+            if (playerList.get(0).getPlayerResources().getResource("MilitaryStrength").getValue()== playerList.get(i).getPlayerResources().getResource("MilitaryStrength").getValue()) {
                 contatore++;
-                playerList.get(i).getResources().addResources(bonusVictoryPointFromMilitaryTrack[0]);
+                playerList.get(i).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[0]);
             }
 
         }
@@ -206,9 +206,9 @@ public class StartGame {
         }
         int contatore2 =0;
         for(int j=1;j<playerList.size();j++){
-            if (paritàTrovata==false && playerList.get(1).getResources().getResource("MilitaryStrength").getValue()== playerList.get(j).getResources().getResource("MilitaryStrength").getValue()) {
+            if (paritàTrovata==false && playerList.get(1).getPlayerResources().getResource("MilitaryStrength").getValue()== playerList.get(j).getPlayerResources().getResource("MilitaryStrength").getValue()) {
                 contatore2++;
-              playerList.get(j).getResources().addResources(bonusVictoryPointFromMilitaryTrack[1]);
+              playerList.get(j).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[1]);
             }
         }
         if (contatore2>1){
@@ -217,7 +217,7 @@ public class StartGame {
     }
     public void finalExtraVictoryPoints5(VictoryPoint factor) {
         for (int i=0;i<playerList.size();i++){
-            int value = playerList.get(i).getResources().getPlayerResourceAsResourceList().getPhysicalResource();
+            int value = playerList.get(i).getPlayerResources().getPlayerResourceAsResourceList().getPhysicalResource();
             int factorValue = factor.getValue();
             value= (value%5)*factorValue;
             VictoryPoint victoryPointToAdd = new VictoryPoint(value);
@@ -244,8 +244,8 @@ public class StartGame {
         Player[] arrayPlayerLists = playerList.toArray(new Player[playerList.size()]);
         for (int i = 0; i < arrayPlayerLists.length-1; i++) {
             for (int j = 0; j < arrayPlayerLists.length; j++) {
-                if (arrayPlayerLists[i].getResources().getResource("MilitaryStrength").getValue() <
-                        arrayPlayerLists[i+1].getResources().getResource("MilitaryStrength").getValue()) {
+                if (arrayPlayerLists[i].getPlayerResources().getResource("MilitaryStrength").getValue() <
+                        arrayPlayerLists[i+1].getPlayerResources().getResource("MilitaryStrength").getValue()) {
                     Player tempPlayer = arrayPlayerLists[i+1];
                     arrayPlayerLists[i+1] = arrayPlayerLists[i];
                     arrayPlayerLists[i] = tempPlayer;
