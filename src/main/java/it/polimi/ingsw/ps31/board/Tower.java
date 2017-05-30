@@ -52,22 +52,22 @@ public class Tower {
 
     public TowerCardSpace[] getTowerCardSpaceList()
     {
-        return towerCardSpaceList;
+        return towerCardSpaceList.clone();
     }
 
     public TowerActionSpace[] getTowerActionSpaceList()
     {
-        return towerActionSpaceList;
+        return towerActionSpaceList.clone();
     }
 
     public TowerCardSpace getCardBoxListAt(int i)
     {
-        return towerCardSpaceList[i];
+        return towerCardSpaceList.clone()[i];
     }
 
     public ActionSpace getActionBoxListAt(int i)
     {
-        return towerActionSpaceList[i];
+        return towerActionSpaceList.clone()[i];
     }
 
     public void setDeck(List<DevelopmentCardDeck> deckList, int period) {
@@ -83,11 +83,4 @@ public class Tower {
         }
 
     }
-
-    public void drawFromDeck(int period){
-
-    }
-
-
-
 }

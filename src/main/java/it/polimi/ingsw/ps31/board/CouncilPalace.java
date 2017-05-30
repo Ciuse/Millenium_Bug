@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class CouncilPalace extends ActionSpace {
 
-    private List<FamilyMember> order = new ArrayList<FamilyMember>();
+    private List<FamilyMember> order = new ArrayList<>();
 
     public CouncilPalace(EffectList immediateEffect ){
 
@@ -29,9 +29,9 @@ public class CouncilPalace extends ActionSpace {
         this.order.clear();
     }
 
-    public ArrayList<PlayerColor> getColorOrder()
+    public List<PlayerColor> getColorOrder()
     {
-        ArrayList<PlayerColor> toReturn = new ArrayList<PlayerColor>();
+        List<PlayerColor> toReturn = new ArrayList<>();
 
         Iterator<FamilyMember> orderIterator = order.iterator();
         while (orderIterator.hasNext())

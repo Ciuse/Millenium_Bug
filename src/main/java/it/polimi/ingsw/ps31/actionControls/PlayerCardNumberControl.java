@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps31.player.Player;
  * Created by Francesco on 25/05/2017.
  */
 public class PlayerCardNumberControl extends Control {
-    private final int MAX_CARD_NUMBER = 6;
+    private final static int MAX_CARD_NUMBER = 6;
     private CardColor cardColor = null;
 
     /* Constructor */
@@ -38,7 +38,7 @@ public class PlayerCardNumberControl extends Control {
             return false;
         }
 
-        boolean ret = (this.player.getPlayerCardList().getSpecificCardList(cardColor).size() < MAX_CARD_NUMBER);
+        boolean ret = this.player.getPlayerCardList().getSpecificCardList(cardColor).size() < MAX_CARD_NUMBER;
         resetCardColor();
 
         return ret;

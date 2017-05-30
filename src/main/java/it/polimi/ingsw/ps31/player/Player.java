@@ -6,8 +6,6 @@ import it.polimi.ingsw.ps31.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.constants.CardColor;
 import it.polimi.ingsw.ps31.constants.DiceColor;
 import it.polimi.ingsw.ps31.constants.PlayerColor;
-import it.polimi.ingsw.ps31.effect.GetResourceEffect;
-import it.polimi.ingsw.ps31.effect.GetResourceFromResourceEffect;
 import it.polimi.ingsw.ps31.gameThings.*;
 
 import java.util.ArrayList;
@@ -21,7 +19,7 @@ public class Player {
     private static final int MAXCARDLISTSIZE = 6;    //Massimo numero di carte dello stesso colore che si possono avere contemporaneamente
 
     private final PlayerColor color;
-    private PlayerResources resources;      //setter -->add e sub
+    private PlayerResources playerResources;      //setter -->add e sub
     private final PersonalBoard playerBoard;
     private final String nickname;
     private PermanentBonus permanentBonus;
@@ -36,15 +34,15 @@ public class Player {
     private List<ResourceList> finalBonusResources;
 
     /* Constructor */
-    public Player(PlayerColor color, ResourceList initialResources, String nickname, ArrayList<FamilyMember> familyMembers)
+    public Player(PlayerColor color, ResourceList initialResources, String nickname, List<FamilyMember> familyMembers)
     {
         //Attributi base
         this.color            = color;
-        this.familyMembers = familyMembers;
+        this.familyMembers    = familyMembers;
         this.playerBoard      = new PersonalBoard(this);
         this.nickname         = nickname;
         this.permanentBonus   = new PermanentBonus();
-        this.excommunications = new ArrayList<Excommunication>(); //TODO: serve davvero??
+        this.excommunications = new ArrayList<>(); //TODO: serve davvero??
 
         //Risorse iniziali
         //TODO: il nome delle risorse deve essere preso da un enumeratore
@@ -52,7 +50,7 @@ public class Player {
         int stoneAmt   = initialResources.getSpecificResource(Stone.class).getValue();
         int coinAmt    = initialResources.getSpecificResource(Coin.class).getValue();
         int servantAmt = initialResources.getSpecificResource(Servant.class).getValue();
-        this.resources = new PlayerResources(woodAmt, stoneAmt, coinAmt, servantAmt);
+        this.playerResources = new PlayerResources(woodAmt, stoneAmt, coinAmt, servantAmt);
 
         //Creazione familiari
         /*
@@ -82,89 +80,88 @@ public class Player {
     }
 
     /* Setters & Getters */
-
-    public FamilyMember getLastUsedFamilyMember()
-    {
-        return lastUsedFamilyMember;
+    public PlayerColor getColor() {
+        return color;
     }
 
-    public void setLastUsedFamilyMember(FamilyMember lastUsedFamilyMember)
-    {
-        this.lastUsedFamilyMember = lastUsedFamilyMember;
+    public PlayerResources getPlayerResources() {
+        return playerResources;
     }
 
-    public PlayerColor getColor()
-    {
-        return this.color;
+    public void setResources(PlayerResources resources) {
+        this.playerResources = resources;
     }
 
-    public PlayerResources getResources()
-    {
-        return this.resources;
-    }
-
-    public void addResources(Resource resourcesToAdd)
-    {
-        if (resourcesToAdd.getValue() >= 0)
-            this.resources.addResources(resourcesToAdd);
-        else
-            this.resources.subResources(resourcesToAdd);
-    }
-
-    public void subResources (Resource resourcesToSub)
-    {
-        if (resourcesToSub.getValue() >= 0)
-            this.resources.subResources(resourcesToSub);
-        else
-            this.resources.addResources(resourcesToSub);
-    }
-
-    public PersonalBoard getPlayerBoard()
-    {
+    public PersonalBoard getPlayerBoard() {
         return playerBoard;
     }
 
-    public String getNickname()
-    {
+    public String getNickname() {
         return nickname;
     }
 
-    public PermanentBonus getPermanentBonus()
-    {
+    public PermanentBonus getPermanentBonus() {
         return permanentBonus;
     }
 
-    public void setPermanentBonus(PermanentBonus permanentBonus)
-    {
-        this.permanentBonus = permanentBonus;   //TODO: non modificare così ma con metodi add() e sub()
+    public void setPermanentBonus(PermanentBonus permanentBonus) {
+        this.permanentBonus = permanentBonus;
     }
 
-    public List<Excommunication> getExcommunications()
-    {
-        return excommunications;
+    public List<Excommunication> getExcommunications() {
+        return new ArrayList<>(excommunications);
     }
 
-    public void addExcommunication(Excommunication excommunication)
-    {
-        this.excommunications.add(excommunication);
+    public List<FamilyMember> getFamilyMembers() {
+        return familyMembers;
     }
 
-    public FamilyMember getFamilyMember(DiceColor color)
-    {
-        Iterator<FamilyMember> itr = familyMembers.iterator();
-
-        FamilyMember itrMember;
-        do
-        {
-            itrMember = itr.next();
-        }while (itrMember.getDice().getColor() != color);
-
-        return itrMember;
+    public int getFlagExcommunication() {
+        return flagExcommunication;
     }
 
-    public DevelopmentCardList getColorCardList (CardColor cardColor)
-    {
-        return new DevelopmentCardList(this.playerCardList.getSpecificCardList(cardColor));
+    public void setFlagExcommunication(int flagExcommunication) {
+        this.flagExcommunication = flagExcommunication;
+    }
+
+    public FamilyMember getLastUsedFamilyMember() {
+        return lastUsedFamilyMember;
+    }
+
+    public void setLastUsedFamilyMember(FamilyMember lastUsedFamilyMember) {
+        this.lastUsedFamilyMember = lastUsedFamilyMember;
+    }
+
+    public PlayerActionSet getPlayerActionSet() {
+        return playerActionSet;
+    }
+
+    public void setPlayerActionSet(PlayerActionSet playerActionSet) {
+        this.playerActionSet = playerActionSet;
+    }
+
+    public HarvestList getHarvestList() {
+        return harvestList;
+    }
+
+    public void setHarvestList(HarvestList harvestList) {
+        this.harvestList = harvestList;
+    }
+
+    public ProductionList getProductionList() {
+        return productionList;
+    }
+
+    public void setProductionList(ProductionList productionList) {
+        this.productionList = productionList;
+    }
+
+    public List<ResourceList> getFinalBonusResources() {
+        return new ArrayList<>(finalBonusResources);
+    }
+
+    public void setFinalBonusResources(List<ResourceList> finalBonusResources) {
+        this.finalBonusResources = finalBonusResources;
     }
 
     public DevelopmentCardList getPlayerCardList()
@@ -172,27 +169,29 @@ public class Player {
         return this.playerCardList;
     }
 
-    public PlayerActionSet getPlayerActionSet()
-    {
-        return this.playerActionSet;
-    }
-
-    public HarvestList getHarvestList()
-    {
-        return this.harvestList;
-    }
-
-    public ProductionList getProductionList()
-    {
-        return this.productionList;
-    }
-
-    public ArrayList<ResourceList> getFinalBonusResources()
-    {
-        return new ArrayList<>(this.finalBonusResources);
-    }
 
     /* Class Methods */
+    public void addResources(Resource resourcesToAdd)
+    {
+        if (resourcesToAdd.getValue() >= 0)
+            this.playerResources.addResources(resourcesToAdd);
+        else
+            this.playerResources.subResources(resourcesToAdd);
+    }
+
+    public void subResources (Resource resourcesToSub)
+    {
+        if (resourcesToSub.getValue() >= 0)
+            this.playerResources.subResources(resourcesToSub);
+        else
+            this.playerResources.addResources(resourcesToSub);
+    }
+
+    public void addExcommunication(Excommunication excommunication)
+    {
+        this.excommunications.add(excommunication);
+    }
+
     public void addDevelopmentCard(DevelopmentCard card)
     {
         if ( this.playerCardList.getSpecificCardList(card.getCardColor()).size() < MAXCARDLISTSIZE)
@@ -210,28 +209,36 @@ public class Player {
     {
         this.finalBonusResources.add(bonusResourcesToAdd);
     }
+    public FamilyMember getSpecificFamilyMember(DiceColor color)
+    {
+        Iterator<FamilyMember> itr = familyMembers.iterator();
+
+        FamilyMember itrMember;
+        do
+        {
+            itrMember = itr.next();
+        }while (itrMember.getDice().getColor() != color);
+
+        return itrMember;
+    }
+
+    public DevelopmentCardList getColorCardList (CardColor cardColor)
+    {
+        return new DevelopmentCardList(this.playerCardList.getSpecificCardList(cardColor));
+    }
 
     public boolean checkIfOnlyNEUTRALRemained(){
-        if(this.getFamilyMember(DiceColor.NEUTRAL).isPlaced()==true){
+        if(this.getSpecificFamilyMember(DiceColor.NEUTRAL).isPlaced()==true){
             return false;
         }
         else{
-            if(this.getFamilyMember(DiceColor.BLACK).isPlaced()==true
-                    &&this.getFamilyMember(DiceColor.ORANGE).isPlaced()==true
-                    &&this.getFamilyMember(DiceColor.WHITE).isPlaced()==true){
+            if(this.getSpecificFamilyMember(DiceColor.BLACK).isPlaced()==true
+                    &&this.getSpecificFamilyMember(DiceColor.ORANGE).isPlaced()==true
+                    &&this.getSpecificFamilyMember(DiceColor.WHITE).isPlaced()==true){
                 return true;
             }
         }
         return false;
-    }
-
-    public int getFlagExcommunication() {
-
-        return flagExcommunication;
-    }
-
-    public void setFlagExcommunication(int flagExcommunication) {
-        this.flagExcommunication = flagExcommunication;
     }
 
     public void activateFinalEffects()
@@ -246,7 +253,7 @@ public class Player {
 
         Player player = (Player) o;
 
-        if (!resources.equals(player.resources)) return false;
+        if (!playerResources.equals(player.playerResources)) return false;
         if (permanentBonus != null ? !permanentBonus.equals(player.permanentBonus) : player.permanentBonus != null)
             return false;
         if (excommunications != null ? !excommunications.equals(player.excommunications) : player.excommunications != null)
@@ -257,7 +264,7 @@ public class Player {
     @Override
     public int hashCode() {
         int result = color.hashCode();
-        result = 31 * result + (resources != null ? resources.hashCode() : 0);
+        result = 31 * result + (playerResources != null ? playerResources.hashCode() : 0);
         result = 31 * result + (playerBoard != null ? playerBoard.hashCode() : 0);
         result = 31 * result + (nickname != null ? nickname.hashCode() : 0);
         result = 31 * result + (permanentBonus != null ? permanentBonus.hashCode() : 0);

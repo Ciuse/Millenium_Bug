@@ -42,7 +42,7 @@ public class ActionPayServants extends Action {
         } else
         {
             //Controllo che il familiare per cui si sta pagando non sia già stato piazzato
-            boolean condition1 = this.actionControlSet.placedFamilyMemberControl(player.getFamilyMember(this.diceColor));
+            boolean condition1 = super.actionControlSet.placedFamilyMemberControl(player.getSpecificFamilyMember(this.diceColor));
 
             //Controllo sul numero di servitori
             List<Resource> servantsAsList = new ArrayList<>();
@@ -50,13 +50,13 @@ public class ActionPayServants extends Action {
             servantsAsList.add(servantsAsResource);
             ResourceList servantsAsResourceList = new ResourceList(servantsAsList);
 
-            boolean condition2 = this.actionControlSet.payResourceControl(servantsAsResourceList);
+            boolean condition2 = super.actionControlSet.payResourceControl(servantsAsResourceList);
 
             if (condition1 && condition2)
             {
                 //Eseguo fisicamente l'azione
                 player.subResources(servantsAsResource);
-                player.getFamilyMember(this.diceColor).addAdditionalValue(servantsAmount * diceRisePerServant);
+                player.getSpecificFamilyMember(this.diceColor).addAdditionalValue(servantsAmount * diceRisePerServant);
             } else
             {
                 //TODO: eccezione?

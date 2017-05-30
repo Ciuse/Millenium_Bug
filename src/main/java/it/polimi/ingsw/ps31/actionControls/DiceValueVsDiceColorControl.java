@@ -54,7 +54,7 @@ public class DiceValueVsDiceColorControl extends Control {
             return false;
         }
 
-            boolean ret = (player.getFamilyMember(diceColor).getDice().getValue() >= this.diceValue);
+            boolean ret = player.getSpecificFamilyMember(diceColor).getDice().getValue() >= this.diceValue;
             resetDiceColor();
             resetDiceValue();
 

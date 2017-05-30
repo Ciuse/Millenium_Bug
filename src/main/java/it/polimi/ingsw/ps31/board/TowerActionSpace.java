@@ -22,6 +22,6 @@ public class TowerActionSpace extends ActionSpace {
     }
     public  boolean isTowerSpace()
     {
-        return (this.towerCardSpace != null);
+        return this.towerCardSpace != null;
     }
 }

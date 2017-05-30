@@ -107,7 +107,7 @@ public class ActionChooseCard extends Action {
             chosenCardSpace = new TowerCardSpace(null, null, null); //Cambiare questa riga
         }while (!checkChosenTowerCardSpace(chosenCardSpace));
 
-        this.player.getPlayerActionSet().takeCard();    //TODO: e se il player non può attivare l'effetto della carta?
+        super.player.getPlayerActionSet().takeCard();    //TODO: e se il player non può attivare l'effetto della carta?
     }
 
     /* Class Methods */
@@ -123,11 +123,11 @@ public class ActionChooseCard extends Action {
                 return false;
 
         //Controllo costo dado
-        if( !this.actionControlSet.diceValueVsCardSpaceControl(this.diceCost+this.diceDiscount, chosenTCS) )
+        if( !super.actionControlSet.diceValueVsCardSpaceControl(this.diceCost+this.diceDiscount, chosenTCS) )
             return false;
 
         //Controllo costo risorse
-        if ( !this.actionControlSet.payResourceListControl(chosenTCS.getCard().getCostList()) )
+        if ( !super.actionControlSet.payResourceListControl(chosenTCS.getCard().getCostList()) )
                 return false;
 
         return true;

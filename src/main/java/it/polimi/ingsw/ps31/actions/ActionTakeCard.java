@@ -59,7 +59,7 @@ public class ActionTakeCard extends Action {
         {
             DevelopmentCard takenCard = this.towerCardSpace.takeCard();
 
-            this.player.addDevelopmentCard(takenCard);
+            super.player.addDevelopmentCard(takenCard);
             //takenCard. TODO: aggiornare quando avrò i metodi per attivare gli effetti delle carte
         }
 

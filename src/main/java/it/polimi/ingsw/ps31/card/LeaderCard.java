@@ -46,7 +46,7 @@ public class LeaderCard extends Card implements ActiveEffect {
 
     public void activeLeaderCard(Player player){
         if(developmentCardRequest.lessOrEquals(player.getPlayerCardList())
-                &&resourceRequest.lessOrEquals(player.getResources().getPlayerResourceAsResourceList())){
+                &&resourceRequest.lessOrEquals(player.getPlayerResources().getPlayerResourceAsResourceList())){
             this.activated=true;
         }
         else {//TODO "NON HAI ABBASTANZA RISORSE"
@@ -64,5 +64,35 @@ public class LeaderCard extends Card implements ActiveEffect {
 
             }
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        LeaderCard that = (LeaderCard) o;
+
+        if (resourceRequest != null ? !resourceRequest.equals(that.resourceRequest) : that.resourceRequest != null)
+            return false;
+        if (developmentCardRequest != null ? !developmentCardRequest.equals(that.developmentCardRequest) : that.developmentCardRequest != null)
+            return false;
+        if (abilityOneTimeForTurn != null ? !abilityOneTimeForTurn.equals(that.abilityOneTimeForTurn) : that.abilityOneTimeForTurn != null)
+            return false;
+        if (permanentAbility != null ? !permanentAbility.equals(that.permanentAbility) : that.permanentAbility != null)
+            return false;
+        return activated.equals(that.activated);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (resourceRequest != null ? resourceRequest.hashCode() : 0);
+        result = 31 * result + (developmentCardRequest != null ? developmentCardRequest.hashCode() : 0);
+        result = 31 * result + (abilityOneTimeForTurn != null ? abilityOneTimeForTurn.hashCode() : 0);
+        result = 31 * result + (permanentAbility != null ? permanentAbility.hashCode() : 0);
+        result = 31 * result + activated.hashCode();
+        return result;
     }
 }

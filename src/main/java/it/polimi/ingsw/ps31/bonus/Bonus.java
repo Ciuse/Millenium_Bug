@@ -11,4 +11,8 @@ public abstract class Bonus {
     protected Bonus(Action actionToModify) {
         this.actionToModify = actionToModify;
     }
+
+    public Action getActionToModify() {
+        return actionToModify;
+    }
 }

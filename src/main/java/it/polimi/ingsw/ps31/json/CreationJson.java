@@ -48,7 +48,6 @@ public class CreationJson {
                 "Scavare Canalizzazioni", "Supporto al Re", "Accogliere gli Stranieri", "Crociata", "Sostegno al Cardinale", "Ingaggiare Mercenari", "Riparare la Cattedrale",
                 "Costruire le Torri", "Commissionare Arte Sacra", "Conquista Militare", "Migliorare le Strade", "Guerra Santa", "Sostegno al Papa",};
         //creazione degli effetti di tutte le carte
-        int contatore2 = 0;
 
         //creazione effetti immediati carte verdi
         List<EffectList> immediateEffectGreenList = new ArrayList<>();  //Creazione lista principale
@@ -833,7 +832,6 @@ public class CreationJson {
                 //inserimento altri parametri
                 int period = i + 1;
                 String name = greenCardName[contatore];
-                CardColor cardColor = CardColor.GREEN;
                 cardList.add(new Territory(cardNumber1, name, period, costListGreen, immediateEffectGreenList.get(cardNumber1-1), permanentEffectGreenList.get(cardNumber1-1)));
                 //creazione della carta giallo
                 int cardNumber2 = i * 8 + j + 24+1;
@@ -849,7 +847,6 @@ public class CreationJson {
                 //inserimento altri parametri
                 int period2 = i + 1;
                 String name2 = yellowCardName[contatore];
-                CardColor cardColor2 = CardColor.YELLOW;
                 cardList.add(new Building(cardNumber2, name2, period2, costListYellow, null, null));
                 // creazione carte blu
                 int cardNumber3 = i * 8 + j + 48+1;
@@ -862,7 +859,6 @@ public class CreationJson {
                 //inserimento altri parametri
                 int period3 = i + 1;
                 String name3 = blueCardName[contatore];
-                CardColor cardColor3 = CardColor.BLUE;
                 cardList.add(new Character(cardNumber3, name3, period3, costListBlue, null, null));
 
                 //creazione delle carte viola
@@ -886,7 +882,6 @@ public class CreationJson {
                 //inserimento altri parametri
                 int period4 = i + 1;
                 String name4 = purpleCardName[contatore];
-                CardColor cardColor4 = CardColor.PURPLE;
                 cardList.add(new Venture(cardNumber4, name4, period4, costListPurple, null, null));
 
                 contatore++;

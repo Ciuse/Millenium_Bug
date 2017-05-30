@@ -11,13 +11,15 @@ public abstract class Track {
 
    public Track(int maxNumber, Class<? extends PointResource> resourceType){
        this.maxNumber=maxNumber;
-       for(int i=0; i<maxNumber; i++){
-           this.trackCell[i]=new TrackCell(resourceType,i);
+       TrackCell[] trackCell = null;
+       for(int i=0; i<this.maxNumber; i++){
+           trackCell[i]=new TrackCell(resourceType,i);
        }
+       this.trackCell=trackCell;
    }
 
    public TrackCell[] getTrackCell(){
-       return this.trackCell;
+       return this.trackCell.clone();
    }
 
    public int getMaxNumber() {

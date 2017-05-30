@@ -9,8 +9,8 @@ import java.util.List;
  * Created by Francesco on 24/05/2017.
  */
 public abstract class Control {
-    protected static Player player;
-    protected List<Boolean> conditions = new ArrayList<Boolean>();
+    protected final Player player;
+    protected List<Boolean> conditions = new ArrayList<>();
 
     public abstract boolean execute();
 

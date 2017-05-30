@@ -10,6 +10,9 @@ public class MilitaryPointTrack extends Track {
     private static MilitaryPointTrack ourInstance = new MilitaryPointTrack();
 
     public static MilitaryPointTrack getInstance() {
+        if(ourInstance == null) {
+            ourInstance = new MilitaryPointTrack();
+        }
         return ourInstance;
     }
 
