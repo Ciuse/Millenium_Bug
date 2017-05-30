@@ -8,7 +8,6 @@ import it.polimi.ingsw.ps31.player.Player;
  * Created by Francesco on 26/05/2017.
  */
 public abstract class ActionPlaceFamilyMember extends Action{
-    protected ActionSpace towerActionSpace = null;
     protected FamilyMember familyMember = null;
 
     /* Constructor */
@@ -17,10 +16,6 @@ public abstract class ActionPlaceFamilyMember extends Action{
     }
 
     /* Getters & Setters */
-    public void setTowerActionSpace(ActionSpace towerActionSpace)
-    {
-        this.towerActionSpace = towerActionSpace;
-    }
     public void setFamilyMember(FamilyMember familyMember)
     {
         if( familyMember.isPlaced() )
@@ -31,11 +26,6 @@ public abstract class ActionPlaceFamilyMember extends Action{
             this.familyMember = familyMember;
     }
 
-    /* Resetters */
-    public void resetActionSpace()
-    {
-        this.towerActionSpace = null;
-    }
     public void resetFamilyMember()
     {
         this.familyMember = null;

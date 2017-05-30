@@ -15,6 +15,10 @@ public class MilitaryStrength extends PointResource{
         this.valueRequest = valueRequest;
     }
 
+    public int getValueRequest() {
+        return valueRequest;
+    }
+
     public void setValueRequest(int valueRequest){
         this.valueRequest = valueRequest;
     }

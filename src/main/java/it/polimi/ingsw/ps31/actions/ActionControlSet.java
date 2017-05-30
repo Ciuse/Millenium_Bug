@@ -46,64 +46,64 @@ public class ActionControlSet {
     public boolean cardRequirementsControl(ResourceList requirements)
     {
         this.cardRequirementsControl.setRequirements(requirements);
-        return (this.cardRequirementsControl.execute());
+        return this.cardRequirementsControl.execute();
     }
 
     public boolean diceValueVsDiceColorControl(Integer diceValue, DiceColor diceColor)
     {
         this.diceValueVsDiceColorControl.setDiceValue(diceValue);
         this.diceValueVsDiceColorControl.setDiceColor(diceColor);
-        return (this.diceValueVsDiceColorControl.execute());
+        return this.diceValueVsDiceColorControl.execute();
     }
 
     public boolean diceValueVsCardSpaceControl (Integer diceValue, TowerCardSpace towerCardSpace)
     {
         this.diceValueVsCardSpaceControl.setDiceValue(diceValue);
         this.diceValueVsCardSpaceControl.setTowerCardSpace(towerCardSpace);
-        return (this.diceValueVsCardSpaceControl.execute());
+        return this.diceValueVsCardSpaceControl.execute();
     }
 
     public boolean occupiedActionSpaceControl(ActionSpace actionSpace)
     {
         this.occupiedActionSpaceControl.setActionSpace(actionSpace);
-        return (this.occupiedActionSpaceControl.execute());
+        return this.occupiedActionSpaceControl.execute();
     }
 
     public boolean payResourceControl(ResourceList resourceList)
     {
         this.payResourceControl.setResourceList(resourceList);
-        return (this.payResourceControl.execute());
+        return this.payResourceControl.execute();
     }
 
     public boolean payResourceListControl(List<ResourceList> resourceLists)
     {
         this.payResourceListControl.setResourceLists(resourceLists);
-        return (this.payResourceControl.execute());
+        return this.payResourceControl.execute();
     }
 
     public boolean placedFamilyMemberControl(FamilyMember familyMember)
     {
         this.placedFamilyMemberControl.setFamilyMember(familyMember);
-        return (this.placedFamilyMemberControl.execute());
+        return this.placedFamilyMemberControl.execute();
     }
 
     public boolean playerCardNumberControl(CardColor cardColor)
     {
         this.playerCardNumberControl.setCardColor(cardColor);
-        return (this.playerCardNumberControl.execute());
+        return this.playerCardNumberControl.execute();
     }
 
     public boolean towerPlacementControl(FamilyMember familyMember, TowerCardSpace towerCardSpace)
     {
         this.towerPlacementControl.setFamilyMember(familyMember);
         this.towerPlacementControl.setTowerCardSpace(towerCardSpace);
-        return (this.towerPlacementControl.execute());
+        return this.towerPlacementControl.execute();
     }
 
     public boolean selfOccupiedTowerControl(FamilyMember familyMember, Tower tower)
     {
         this.selfOccupiedTowerControl.setFamilyMember(familyMember);
         this.selfOccupiedTowerControl.setTower(tower);
-        return (this.selfOccupiedTowerControl.execute());
+        return this.selfOccupiedTowerControl.execute();
     }
 }

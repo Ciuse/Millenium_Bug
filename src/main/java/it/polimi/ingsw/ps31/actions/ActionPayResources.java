@@ -19,7 +19,7 @@ public class ActionPayResources extends Action{
     }
 
     /* Setter & Getter */
-    public void setResourceToPay (ResourceList resourcesToPay)
+    public void setResourceToPay (ResourceList resourceToPay)
     {
         this.resourceToPay = resourceToPay;
     }
@@ -38,7 +38,7 @@ public class ActionPayResources extends Action{
         } else
         {
             //Eseguo il controllo
-            if ( this.actionControlSet.payResourceControl(this.resourceToPay) )
+            if ( super.actionControlSet.payResourceControl(this.resourceToPay) )
             {
                 //Eseguo l'azione
                 List<Resource> resourcesToGetList = this.resourceToPay.getResourceList();

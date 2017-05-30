@@ -50,7 +50,8 @@ public class ResourceList {
     }
 
     /*Getters & Setters*/
-    public void setCoin() {                                                 //METODI PER INSERIRE LE RISORSE NELLA CREAZIONE DELLE CARTE (NON SARANNO USATI NEl GIOCO)
+    public void setCoin() {
+        //METODI PER INSERIRE LE RISORSE NELLA CREAZIONE DELLE CARTE (NON SARANNO USATI NEl GIOCO)
         System.out.println("Inserisci il valore delle monete: ");
         Scanner scanner =new Scanner(System.in);
         int value= scanner.nextInt();

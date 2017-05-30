@@ -14,6 +14,19 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
         super(player, actionControlSet);
     }
 
+    public TowerActionSpace getTowerActionSpace() {
+        return towerActionSpace;
+    }
+
+    public void setTowerActionSpace(TowerActionSpace towerActionSpace) {
+        this.towerActionSpace = towerActionSpace;
+    }
+
+    /* Resetters */
+    public void resetActionSpace()
+    {
+        this.towerActionSpace = null;
+    }
     /* Class Methods */
     @Override
     public void activate()

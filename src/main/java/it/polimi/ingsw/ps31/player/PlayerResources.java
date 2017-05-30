@@ -24,7 +24,7 @@ public class PlayerResources {
         this.currentResources.put("MilitaryStrength", new MilitaryStrength(0));
         this.currentResources.put("FaithPoint", new FaithPoint(0));
         this.currentResources.put("VictoryPoint", new VictoryPoint(0));
-    }
+}
 
     /* Setters & Getters */
     public void addResources(Resource resourceToAdd)

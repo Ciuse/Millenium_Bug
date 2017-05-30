@@ -76,7 +76,7 @@ public class ActionChooseDifferentPrivilege extends Action {
 
                 }while (choiced.contains(choice));
 
-                this.player.getPlayerActionSet().getResources(choice);
+                super.player.getPlayerActionSet().getResources(choice);
                 choiced.add(choice);
             }
         }

@@ -37,7 +37,7 @@ public class PlacedFamilyMemberControl extends Control {
             return false;
         }
 
-        boolean ret = (this.familyMember.isPlaced());
+        boolean ret = this.familyMember.isPlaced();
         resetFamilyMember();
 
         return ret;
