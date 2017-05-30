@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d3a00578-764f-4c51-987c-fe4290c3e43c" name="Default" comment="merge of yellow effects into the master">
+    <list default="true" id="d3a00578-764f-4c51-987c-fe4290c3e43c" name="Default" comment="Controls fully implemented and added in">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/ActionDiscount.java" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/ActionDiscount.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Json/CreationCard.java" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Json/CreationCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/Market.java" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/Market.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/DevelopmentCardDeck.java" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/DevelopmentCardDeck.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Card.json" afterPath="$PROJECT_DIR$/Card.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/ResourceList.java" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/ResourceList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UML_Draft.svg" afterPath="$PROJECT_DIR$/UML_Draft.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionPlaceFamilyMemberInTower.java" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionPlaceFamilyMemberInTower.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/HarvestList.java" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/HarvestList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/HarvestProductionList.java" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/HarvestProductionList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/ProductionList.java" afterPath="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/ProductionList.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/classes/" />
     <ignored path="$PROJECT_DIR$/target/test-classes/" />
     <ignored path=".idea/" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/target/maven-status/" />
+    <ignored path="$PROJECT_DIR$/target/maven-archiver/" />
+    <ignored path="$PROJECT_DIR$/target/site/" />
+    <ignored path="$PROJECT_DIR$/target/surefire-reports/" />
     <manually-removed-from-ignored>
       <directory path=".idea/libraries/" />
       <directory path="$PROJECT_DIR$/target/" />
@@ -27,59 +27,83 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="ps31" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CreationCard.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Json/CreationCard.java">
+      <file leaf-file-name="HarvestList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/HarvestList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="765" column="109" lean-forward="false" selection-start-line="765" selection-start-column="109" selection-end-line="765" selection-end-column="109" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="340">
+              <caret line="35" column="7" lean-forward="true" selection-start-line="35" selection-start-column="7" selection-end-line="39" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActionDiscount.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/ActionDiscount.java">
+      <file leaf-file-name="HarvestEffect.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/effect/HarvestEffect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="153">
+              <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetResourceEffect.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/effect/GetResourceEffect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActionPlaceFamilyMemberInTower.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionPlaceFamilyMemberInTower.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="21" column="49" lean-forward="false" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductionList.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/ProductionList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ProductionEffect.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/ProductionEffect.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/effect/ProductionEffect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="91" lean-forward="false" selection-start-line="12" selection-start-column="91" selection-end-line="12" selection-end-column="91" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="306">
+              <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetResource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/GetResource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Actions.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/Actions.java">
+      <file leaf-file-name="Effect.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/effect/Effect.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
@@ -88,53 +112,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActionDecorator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActionDecorator.java">
+      <file leaf-file-name="HarvestProductionList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/HarvestProductionList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActivateHarvest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActivateHarvest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActionSpace.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/ActionSpace.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-191">
-              <caret line="21" column="47" lean-forward="false" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameBoard.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/GameBoard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state relative-caret-position="323">
+              <caret line="23" column="27" lean-forward="false" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#482#483#0" expanded="true" />
+                <element signature="e#516#517#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FaithPointTrack.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/FaithPointTrack.java">
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="1513">
+              <caret line="110" column="56" lean-forward="true" selection-start-line="110" selection-start-column="56" selection-end-line="110" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActionPayTowerMoney.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionPayTowerMoney.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-136">
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -145,8 +150,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Singleton" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -159,6 +164,7 @@
       <find>Period</find>
       <find>Int</find>
       <find>nomeFile</find>
+      <find>List</find>
     </findStrings>
     <replaceStrings>
       <replace>stone</replace>
@@ -172,13 +178,17 @@
       <replace>ResourceList</replace>
       <replace>int</replace>
       <replace>fileName</replace>
+      <replace>Production</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>C:\Git\Millenium_Bug\Millenium_Bug\src\main\java\it\polimi\ingsw\ps31\Actions</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Actions" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RESET_MODE" value="SOFT" />
@@ -194,57 +204,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Json/JsonAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Json/JsonTypeObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/ActionExample.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/Effect.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Json/RuntimeTypeAdapterFactory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/Cost.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/PointResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/MilitaryStrength.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/Wood.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/Coin.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/Stone.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/Servant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/FaithPoint.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/VictoryPoint.java" />
-        <option value="$PROJECT_DIR$/Card.json" />
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/ps31.iml" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Constants/PlayerColor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/PhysicalCardBox.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/TowerCardSpace.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/Tower.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/GenericEffect.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/GenericEffect.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/Production.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActionGetResources.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/ProductionEffect.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Player/ProductionList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Player/HarvestList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Player/HarvestProductionList.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Player/Player.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Json/JsonFile.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameInizialization.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Json/CreationCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/Character.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/Venture.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/Territory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/Building.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/DevelopmentCard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActionActivateProduction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActionActivateHarvest.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/Card.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/MarkerDisc.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/Track.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/FaithTrack.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/ProvaPadre.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/VictoryPoinTrack.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/MilitaryPointTrack.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/CardCostDiscount.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/TrackCell.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/Deck.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Json/JsonGameObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/TowerCardSpace.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/ActionControls/ChooseCardDiceValueControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/ActionControls/DiceValueControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/ActionControls/DiceValueVsDiceColorControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/ActionControls/Control.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/ActionControls/DiceValueVsCardSpaceControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/ActionControls/CardRequirementsControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/ActionControls/PayResourceListControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActionChooseCard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActionChoosePrivilege.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActionPayTowerMoney.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActionPlaceFamilyMember.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActionPlaceFamilyMemberInBoard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActionTakeCard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/TowerActionSpace.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/ActionSpace.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/Tower.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActionChooseDifferentPrivilege.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActionPlaceFamilyMemberInTower.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/CouncilPalace.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/CouncilPrivilege.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/Resource.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/ResourceList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/DevelopmentCardDeck.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/Market.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/ActionDiscount.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Json/CreationCard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/ActionControls/TowerPlacementControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/ActionControls/PlayerCardNumberControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/ActionControls/PlacedFamilyMemberControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActionControlSet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Player/PlayerActionSet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionPayTowerMoney.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/gameThings/Coin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/gameThings/CouncilPrivilege.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/gameThings/Wood.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionChooseDifferentPrivilege.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/Player.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/PlayerResources.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionGetResources.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionGetFinalResources.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/PlayerActionSet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionPlaceFamilyMemberInTower.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/HarvestProductionList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/HarvestList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/ProductionList.java" />
       </list>
     </option>
   </component>
@@ -274,7 +284,9 @@
     <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -290,7 +302,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -338,265 +351,18 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Millenium_Bug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Json" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Millenium_Bug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GameThings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Millenium_Bug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Effect" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Millenium_Bug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Constants" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Millenium_Bug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Card" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Millenium_Bug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Board" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Millenium_Bug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Actions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Millenium_Bug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps31" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Millenium_Bug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.uml" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="SearchEverywhereHistoryKey" value="maven&#9;ACTION&#9;ActivateMavenProjectsToolWindow" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/workspace.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
@@ -605,11 +371,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="it.polimi.ingsw.ps31.ActionControls" />
       <recent name="it.polimi.ingsw.ps31.Player" />
       <recent name="it.polimi.ingsw.ps31.Effect" />
       <recent name="it.polimi.ingsw.ps31.Constants" />
       <recent name="it.polimi.ingsw.ps31.Card" />
-      <recent name="it.polimi.ingsw.ps31.GlobalThings" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="it.polimi.ingsw.ps31.GameThings" />
@@ -1101,6 +867,20 @@
       <workItem from="1495217098474" duration="2943000" />
       <workItem from="1495270706334" duration="7605000" />
       <workItem from="1495278337306" duration="6395000" />
+      <workItem from="1495611998039" duration="7751000" />
+      <workItem from="1495694227590" duration="4939000" />
+      <workItem from="1495714495514" duration="6185000" />
+      <workItem from="1495778619602" duration="13992000" />
+      <workItem from="1495802582314" duration="16020000" />
+      <workItem from="1495904600599" duration="24513000" />
+      <workItem from="1496048433907" duration="438000" />
+      <workItem from="1496055058431" duration="2000" />
+      <workItem from="1496055355122" duration="787000" />
+      <workItem from="1496069866222" duration="587000" />
+      <workItem from="1496071274601" duration="626000" />
+      <workItem from="1496142902833" duration="11602000" />
+      <workItem from="1496158196559" duration="281000" />
+      <workItem from="1496170805172" duration="3565000" />
     </task>
     <task id="LOCAL-00001" summary="More Json and some package">
       <created>1494764756994</created>
@@ -1214,11 +994,53 @@
       <option name="project" value="LOCAL" />
       <updated>1495283210652</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Created control classes">
+      <created>1495780183716</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1495780183716</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Controls implemented">
+      <created>1495804348215</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1495804348215</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Controls fully implemented and integrated with actions">
+      <created>1495998006823</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1495998006823</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Add new playerActionSet method (addFinalVictoryPoints)">
+      <created>1496150814631</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1496150814631</updated>
+    </task>
+    <task id="LOCAL-00021" summary="things">
+      <created>1496158254579</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1496158254579</updated>
+    </task>
+    <task id="LOCAL-00022" summary="things again">
+      <created>1496158471341</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1496158471341</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104743000" />
+    <option name="totallyTimeSpent" value="196031000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1235,57 +1057,34 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.48081023" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.48081023" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5191898" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2196162" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.48081023" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.49573562" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5191898" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23524962" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.48081023" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.49573562" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22163388" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4936034" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29425114" sideWeight="0.49346405" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23344018" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29425114" sideWeight="0.50653595" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5191898" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2196162" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23344018" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.48081023" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.49573562" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21215352" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4936034" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.4936034" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1293,8 +1092,8 @@
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.50427353" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5191898" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2196162" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1302,20 +1101,20 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23344018" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.48081023" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.4957265" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.48081023" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.49573562" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27083334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21860817" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4936034" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1369,11 +1168,17 @@
     <MESSAGE value="Added track point, and small change in the card" />
     <MESSAGE value="Added Market Effect; Created Deck; and some resource things" />
     <MESSAGE value="merge of yellow effects into the master" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge of yellow effects into the master" />
+    <MESSAGE value="Created control classes" />
+    <MESSAGE value="Controls implemented" />
+    <MESSAGE value="Controls fully implemented and integrated with actions" />
+    <MESSAGE value="Add new playerActionSet method (addFinalVictoryPoints)" />
+    <MESSAGE value="things" />
+    <MESSAGE value="things again" />
+    <option name="LAST_COMMIT_MESSAGE" value="things again" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="21" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1382,247 +1187,1059 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/Servant.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actionControls/PayResourceControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionControlSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="33" column="31" lean-forward="false" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://MAVEN/it.polimi.ingsw:ps31:0.0.1-SNAPSHOT">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>MAVEN</ID>
+          <OriginalElement>it.polimi.ingsw:ps31:0.0.1-SNAPSHOT</OriginalElement>
+          <nodes>
+            <node x="" y="">it.polimi.ingsw:ps31:0.0.1-SNAPSHOT</node>
+            <node x="" y="">junit:junit:jar:4.12</node>
+            <node x="" y="">junit:junit:jar:4.12/org.hamcrest:hamcrest-core:jar:1.3</node>
+            <node x="" y="">com.google.code.gson:gson:jar:2.8.0</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="192.0" y="49.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>Project Files</SCOPE>
+          <VISIBILITY>All</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/it.polimi.ingsw.ps31">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>it.polimi.ingsw.ps31</OriginalElement>
+          <nodes>
+            <node x="" y="">it.polimi.ingsw.ps31.ActionControls</node>
+            <node x="" y="">it.polimi.ingsw.ps31.Json</node>
+            <node x="" y="">it.polimi.ingsw.ps31.Player</node>
+            <node x="" y="">it.polimi.ingsw.ps31.Card</node>
+            <node x="" y="">it.polimi.ingsw.ps31.Constants</node>
+            <node x="" y="">it.polimi.ingsw.ps31.Actions</node>
+            <node x="" y="">it.polimi.ingsw.ps31.Board</node>
+            <node x="" y="">it.polimi.ingsw.ps31.AppTest</node>
+            <node x="" y="">it.polimi.ingsw.ps31.Effect</node>
+            <node x="" y="">it.polimi.ingsw.ps31.GameThings</node>
+            <node x="" y="">it.polimi.ingsw.ps31.App</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="138.0" y="196.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionPayServants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <caret line="44" column="54" lean-forward="false" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement />
+          <nodes>
+            <node x="" y="">it</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="43.0" y="15.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/it.polimi.ingsw.ps31.ActionControls">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>it.polimi.ingsw.ps31.ActionControls</OriginalElement>
+          <nodes>
+            <node x="" y="">it.polimi.ingsw.ps31.ActionControls.TowerPlacementControl</node>
+            <node x="" y="">it.polimi.ingsw.ps31.ActionControls.PayResourceControl</node>
+            <node x="" y="">it.polimi.ingsw.ps31.ActionControls.DiceValueVsDiceColorControl</node>
+            <node x="" y="">it.polimi.ingsw.ps31.ActionControls.DiceValueVsCardSpaceControl</node>
+            <node x="" y="">it.polimi.ingsw.ps31.ActionControls.PlayerCardNumberControl</node>
+            <node x="" y="">it.polimi.ingsw.ps31.ActionControls.SelfOccupiedTowerControl</node>
+            <node x="" y="">it.polimi.ingsw.ps31.ActionControls.OccupiedActionSpaceControl</node>
+            <node x="" y="">it.polimi.ingsw.ps31.ActionControls.Control</node>
+            <node x="" y="">it.polimi.ingsw.ps31.ActionControls.PlacedFamilyMemberControl</node>
+            <node x="" y="">it.polimi.ingsw.ps31.ActionControls.CardRequirementsControl</node>
+            <node x="" y="">it.polimi.ingsw.ps31.ActionControls.PayResourceListControl</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.34068704695871416" x="1577.0" y="272.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/it.polimi.ingsw.ps31.Actions">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>it.polimi.ingsw.ps31.Actions</OriginalElement>
+          <nodes>
+            <node x="917.9999999999998" y="376.0">it.polimi.ingsw.ps31.Actions.ActionGetResources</node>
+            <node x="1312.9999999999998" y="376.0">it.polimi.ingsw.ps31.Actions.ActionActivateHarvest</node>
+            <node x="3024.0" y="101.0">it.polimi.ingsw.ps31.Actions.Action</node>
+            <node x="0.0" y="410.0">it.polimi.ingsw.ps31.Actions.DecoratorResourceDiscountedAction</node>
+            <node x="3746.0" y="354.0">it.polimi.ingsw.ps31.Actions.ActionTakeCard</node>
+            <node x="2070.0" y="277.0">it.polimi.ingsw.ps31.Actions.ActionChooseCard</node>
+            <node x="262.9999999999998" y="410.0">it.polimi.ingsw.ps31.Actions.DecoratorForbiddenAction</node>
+            <node x="365.2499999999998" y="123.5">it.polimi.ingsw.ps31.Actions.ActionDecorator</node>
+            <node x="0.0" y="786.0">it.polimi.ingsw.ps31.Actions.ActionControlSet</node>
+            <node x="2924.0" y="376.0">it.polimi.ingsw.ps31.Actions.ActionPayResources</node>
+            <node x="1719.9999999999998" y="353.5">it.polimi.ingsw.ps31.Actions.ActionPlaceFamilyMember</node>
+            <node x="2639.0" y="364.5">it.polimi.ingsw.ps31.Actions.ActionPayServants</node>
+            <node x="679.9999999999998" y="410.0">it.polimi.ingsw.ps31.Actions.DecoratorDiceDiscountedAction</node>
+            <node x="471.9999999999998" y="410.0">it.polimi.ingsw.ps31.Actions.DecoratorVictoryPointLoss</node>
+            <node x="3320.0" y="376.0">it.polimi.ingsw.ps31.Actions.ActionActivateProduction</node>
+            <node x="1868.4999999999998" y="655.5">it.polimi.ingsw.ps31.Actions.ActionPlaceFamilyMemberInBoard</node>
+            <node x="1541.4999999999998" y="644.0">it.polimi.ingsw.ps31.Actions.ActionPlaceFamilyMemberInTower</node>
+            <node x="1674.8124999999998" y="0.0">it.polimi.ingsw.ps31.Actions.PlayerActions</node>
+            <node x="4452.0" y="364.5">it.polimi.ingsw.ps31.Actions.ActionPayTowerMoney</node>
+            <node x="4705.0" y="387.0">it.polimi.ingsw.ps31.Actions.ActiveLeaderCard</node>
+            <node x="4160.0" y="375.5">it.polimi.ingsw.ps31.Actions.ActionChooseDifferentPrivilege</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="it.polimi.ingsw.ps31.Actions.ActionActivateProduction" target="it.polimi.ingsw.ps31.Actions.Action">
+              <point x="0.0" y="-59.5" />
+              <point x="3523.0" y="257.0" />
+              <point x="3128.0" y="257.0" />
+              <point x="16.0" y="48.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.ActionPlaceFamilyMember" target="it.polimi.ingsw.ps31.Actions.Action">
+              <point x="2.2737367544323206E-13" y="-82.0" />
+              <point x="1885.0" y="237.0" />
+              <point x="3064.0" y="237.0" />
+              <point x="-48.0" y="48.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.ActionChooseCard" target="it.polimi.ingsw.ps31.Actions.Action">
+              <point x="0.0" y="-158.5" />
+              <point x="2344.5" y="247.0" />
+              <point x="3080.0" y="247.0" />
+              <point x="-32.0" y="48.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.ActionActivateHarvest" target="it.polimi.ingsw.ps31.Actions.Action">
+              <point x="0.0" y="-59.5" />
+              <point x="1506.4999999999998" y="227.0" />
+              <point x="3048.0" y="227.0" />
+              <point x="-64.0" y="48.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.DecoratorForbiddenAction" target="it.polimi.ingsw.ps31.Actions.ActionDecorator">
+              <point x="0.0" y="-25.5" />
+              <point x="357.4999999999998" y="257.0" />
+              <point x="437.6249999999998" y="257.0" />
+              <point x="-24.125" y="25.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.ActionPayResources" target="it.polimi.ingsw.ps31.Actions.Action">
+              <point x="0.0" y="-59.5" />
+              <point x="0.0" y="48.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.Action" target="it.polimi.ingsw.ps31.Actions.PlayerActions">
+              <point x="0.0" y="-48.0" />
+              <point x="3112.0" y="76.0" />
+              <point x="1782.8124999999998" y="76.0" />
+              <point x="36.0" y="25.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.ActionChooseDifferentPrivilege" target="it.polimi.ingsw.ps31.Actions.Action">
+              <point x="0.0" y="-60.0" />
+              <point x="4296.0" y="237.0" />
+              <point x="3160.0" y="237.0" />
+              <point x="48.0" y="48.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.ActionPlaceFamilyMemberInTower" target="it.polimi.ingsw.ps31.Actions.ActionPlaceFamilyMember">
+              <point x="0.0" y="-48.5" />
+              <point x="1694.9999999999998" y="619.0" />
+              <point x="1802.4999999999998" y="619.0" />
+              <point x="-82.5" y="82.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.ActionPlaceFamilyMemberInBoard" target="it.polimi.ingsw.ps31.Actions.ActionPlaceFamilyMember">
+              <point x="0.0" y="-37.0" />
+              <point x="2075.0" y="619.0" />
+              <point x="1967.4999999999998" y="619.0" />
+              <point x="82.5" y="82.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.DecoratorDiceDiscountedAction" target="it.polimi.ingsw.ps31.Actions.ActionDecorator">
+              <point x="0.0" y="-25.5" />
+              <point x="788.9999999999998" y="247.0" />
+              <point x="534.1249999999998" y="247.0" />
+              <point x="72.375" y="25.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.ActiveLeaderCard" target="it.polimi.ingsw.ps31.Actions.Action">
+              <point x="0.0" y="-48.5" />
+              <point x="4819.5" y="217.0" />
+              <point x="3192.0" y="217.0" />
+              <point x="80.0" y="48.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.ActionPayTowerMoney" target="it.polimi.ingsw.ps31.Actions.Action">
+              <point x="0.0" y="-71.0" />
+              <point x="4568.5" y="227.0" />
+              <point x="3176.0" y="227.0" />
+              <point x="64.0" y="48.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.ActionGetResources" target="it.polimi.ingsw.ps31.Actions.Action">
+              <point x="0.0" y="-59.5" />
+              <point x="1105.4999999999998" y="217.0" />
+              <point x="3032.0" y="217.0" />
+              <point x="-80.0" y="48.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.ActionDecorator" target="it.polimi.ingsw.ps31.Actions.PlayerActions">
+              <point x="0.0" y="-25.5" />
+              <point x="461.7499999999998" y="76.0" />
+              <point x="1710.8124999999998" y="76.0" />
+              <point x="-36.0" y="25.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.DecoratorVictoryPointLoss" target="it.polimi.ingsw.ps31.Actions.ActionDecorator">
+              <point x="0.0" y="-25.5" />
+              <point x="565.9999999999998" y="257.0" />
+              <point x="485.8749999999998" y="257.0" />
+              <point x="24.125" y="25.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.ActionPayServants" target="it.polimi.ingsw.ps31.Actions.Action">
+              <point x="0.0" y="-71.0" />
+              <point x="2771.5" y="257.0" />
+              <point x="3096.0" y="257.0" />
+              <point x="-16.0" y="48.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.DecoratorResourceDiscountedAction" target="it.polimi.ingsw.ps31.Actions.ActionDecorator">
+              <point x="0.0" y="-25.5" />
+              <point x="121.5" y="247.0" />
+              <point x="389.3749999999998" y="247.0" />
+              <point x="-72.375" y="25.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Actions.ActionTakeCard" target="it.polimi.ingsw.ps31.Actions.Action">
+              <point x="0.0" y="-81.5" />
+              <point x="3943.0" y="247.0" />
+              <point x="3144.0" y="247.0" />
+              <point x="32.0" y="48.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.21820750908356884" x="1090.0" y="456.0" />
+          <SelectedNodes>
+            <node>it.polimi.ingsw.ps31.Actions.ActionChooseDifferentPrivilege</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/it.polimi.ingsw.ps31.Board">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>it.polimi.ingsw.ps31.Board</OriginalElement>
+          <nodes>
+            <node x="210.0" y="631.0">it.polimi.ingsw.ps31.Board.BigHarvest</node>
+            <node x="0.0" y="1487.0">it.polimi.ingsw.ps31.Board.MarkerDisc</node>
+            <node x="791.5" y="473.0">it.polimi.ingsw.ps31.Board.Production</node>
+            <node x="292.0" y="1487.0">it.polimi.ingsw.ps31.Board.PersonalBoard</node>
+            <node x="928.0" y="631.0">it.polimi.ingsw.ps31.Board.BigProduction</node>
+            <node x="0.0" y="439.0">it.polimi.ingsw.ps31.Board.CouncilPalace</node>
+            <node x="190.5" y="1199.0">it.polimi.ingsw.ps31.Board.Track</node>
+            <node x="1058.5" y="462.0">it.polimi.ingsw.ps31.Board.TowerActionSpace</node>
+            <node x="643.0" y="1487.0">it.polimi.ingsw.ps31.Board.Dice</node>
+            <node x="601.375" y="101.5">it.polimi.ingsw.ps31.Board.PhysicalActionBox</node>
+            <node x="559.0" y="727.0">it.polimi.ingsw.ps31.Board.Tower</node>
+            <node x="496.875" y="203.5">it.polimi.ingsw.ps31.Board.ActionSpace</node>
+            <node x="1201.875" y="281.5">it.polimi.ingsw.ps31.Board.PersonalBoardCardSpace</node>
+            <node x="875.5" y="0.0">it.polimi.ingsw.ps31.Board.PhysicalSpaceBehavior</node>
+            <node x="745.0" y="1199.0">it.polimi.ingsw.ps31.Board.Market</node>
+            <node x="314.0" y="473.0">it.polimi.ingsw.ps31.Board.Harvest</node>
+            <node x="0.0" y="727.0">it.polimi.ingsw.ps31.Board.GameBoard</node>
+            <node x="883.0" y="1487.0">it.polimi.ingsw.ps31.Board.PersonalBonusTiles</node>
+            <node x="672.0" y="631.0">it.polimi.ingsw.ps31.Board.SmallProduction</node>
+            <node x="1065.625" y="79.0">it.polimi.ingsw.ps31.Board.PhysicalCardBox</node>
+            <node x="870.875" y="203.0">it.polimi.ingsw.ps31.Board.TowerCardSpace</node>
+            <node x="1154.0" y="1199.0">it.polimi.ingsw.ps31.Board.TrackCell</node>
+            <node x="480.0" y="1323.0">it.polimi.ingsw.ps31.Board.VictoryPointTrack</node>
+            <node x="1236.0" y="1487.0">it.polimi.ingsw.ps31.Board.Board</node>
+            <node x="435.0" y="631.0">it.polimi.ingsw.ps31.Board.SmallHarvest</node>
+            <node x="240.0" y="1323.0">it.polimi.ingsw.ps31.Board.FaithPointTrack</node>
+            <node x="1078.0" y="1487.0">it.polimi.ingsw.ps31.Board.CreateBoard</node>
+            <node x="0.0" y="1323.0">it.polimi.ingsw.ps31.Board.MilitaryPointTrack</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="it.polimi.ingsw.ps31.Board.VictoryPointTrack" target="it.polimi.ingsw.ps31.Board.Track">
+              <point x="0.0" y="-59.5" />
+              <point x="590.0" y="1298.0" />
+              <point x="456.3333333333333" y="1298.0" />
+              <point x="106.33333333333331" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.FaithPointTrack" target="it.polimi.ingsw.ps31.Board.Track">
+              <point x="0.0" y="-59.5" />
+              <point x="0.0" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.ActionSpace" target="it.polimi.ingsw.ps31.Board.PhysicalActionBox">
+              <point x="0.0" y="-92.5" />
+              <point x="0.0" y="14.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.Harvest" target="it.polimi.ingsw.ps31.Board.ActionSpace">
+              <point x="0.0" y="-37.0" />
+              <point x="428.0" y="419.0" />
+              <point x="629.625" y="419.0" />
+              <point x="-44.25" y="92.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.PersonalBoardCardSpace" target="it.polimi.ingsw.ps31.Board.PhysicalCardBox">
+              <point x="0.0" y="-14.5" />
+              <point x="1291.875" y="178.0" />
+              <point x="1205.875" y="178.0" />
+              <point x="46.75" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.TowerCardSpace" target="it.polimi.ingsw.ps31.Board.PhysicalCardBox">
+              <point x="0.0" y="-93.0" />
+              <point x="1026.375" y="178.0" />
+              <point x="1112.375" y="178.0" />
+              <point x="-46.75" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.SmallProduction" target="it.polimi.ingsw.ps31.Board.Production">
+              <point x="0.0" y="-25.5" />
+              <point x="790.0" y="606.0" />
+              <point x="853.25" y="606.0" />
+              <point x="-61.75" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.BigHarvest" target="it.polimi.ingsw.ps31.Board.Harvest">
+              <point x="0.0" y="-25.5" />
+              <point x="312.5" y="606.0" />
+              <point x="371.0" y="606.0" />
+              <point x="-57.0" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.TowerActionSpace" target="it.polimi.ingsw.ps31.Board.ActionSpace">
+              <point x="0.0" y="-48.0" />
+              <point x="1259.5" y="409.0" />
+              <point x="806.625" y="409.0" />
+              <point x="132.75" y="92.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.CouncilPalace" target="it.polimi.ingsw.ps31.Board.ActionSpace">
+              <point x="0.0" y="-71.0" />
+              <point x="147.0" y="409.0" />
+              <point x="541.125" y="409.0" />
+              <point x="-132.75" y="92.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.PhysicalCardBox" target="it.polimi.ingsw.ps31.Board.PhysicalSpaceBehavior">
+              <point x="0.0" y="-37.0" />
+              <point x="1159.125" y="54.0" />
+              <point x="1001.5" y="54.0" />
+              <point x="42.0" y="14.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.MilitaryPointTrack" target="it.polimi.ingsw.ps31.Board.Track">
+              <point x="0.0" y="-59.5" />
+              <point x="110.0" y="1298.0" />
+              <point x="243.66666666666669" y="1298.0" />
+              <point x="-106.33333333333331" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.SmallHarvest" target="it.polimi.ingsw.ps31.Board.Harvest">
+              <point x="0.0" y="-25.5" />
+              <point x="543.5" y="606.0" />
+              <point x="485.0" y="606.0" />
+              <point x="57.0" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.Production" target="it.polimi.ingsw.ps31.Board.ActionSpace">
+              <point x="0.0" y="-37.0" />
+              <point x="915.0" y="419.0" />
+              <point x="718.125" y="419.0" />
+              <point x="44.25" y="92.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.BigProduction" target="it.polimi.ingsw.ps31.Board.Production">
+              <point x="0.0" y="-25.5" />
+              <point x="1040.0" y="606.0" />
+              <point x="976.75" y="606.0" />
+              <point x="61.75" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Board.PhysicalActionBox" target="it.polimi.ingsw.ps31.Board.PhysicalSpaceBehavior">
+              <point x="0.0" y="-14.5" />
+              <point x="673.875" y="54.0" />
+              <point x="917.5" y="54.0" />
+              <point x="-42.0" y="14.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.3395997574287447" x="-88.0" y="697.0" />
+          <SelectedNodes>
+            <node>it.polimi.ingsw.ps31.Board.SmallHarvest</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/it.polimi.ingsw.ps31.Card">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>it.polimi.ingsw.ps31.Card</OriginalElement>
+          <nodes>
+            <node x="664.5" y="169.0">it.polimi.ingsw.ps31.Card.DevelopmentCard</node>
+            <node x="580.0" y="624.0">it.polimi.ingsw.ps31.Card.DevelopmentCardDeck</node>
+            <node x="0.0" y="545.0">it.polimi.ingsw.ps31.Card.DevelopmentCardList</node>
+            <node x="734.5" y="545.0">it.polimi.ingsw.ps31.Card.Deck</node>
+            <node x="859.0" y="449.0">it.polimi.ingsw.ps31.Card.Character</node>
+            <node x="1295.0" y="449.0">it.polimi.ingsw.ps31.Card.Venture</node>
+            <node x="429.00000000000006" y="449.0">it.polimi.ingsw.ps31.Card.Territory</node>
+            <node x="1056.5" y="180.0">it.polimi.ingsw.ps31.Card.LeaderCard</node>
+            <node x="0.0" y="449.0">it.polimi.ingsw.ps31.Card.Building</node>
+            <node x="946.75" y="0.0">it.polimi.ingsw.ps31.Card.Card</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="it.polimi.ingsw.ps31.Card.DevelopmentCardDeck" target="it.polimi.ingsw.ps31.Card.Deck">
+              <point x="0.0" y="-104.0" />
+              <point x="0.0" y="14.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Card.LeaderCard" target="it.polimi.ingsw.ps31.Card.Card">
+              <point x="0.0" y="-104.0" />
+              <point x="1239.0" y="144.0" />
+              <point x="1093.75" y="144.0" />
+              <point x="49.0" y="59.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Card.DevelopmentCard" target="it.polimi.ingsw.ps31.Card.Card">
+              <point x="0.0" y="-115.0" />
+              <point x="850.5" y="144.0" />
+              <point x="995.75" y="144.0" />
+              <point x="-49.0" y="59.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Card.Venture" target="it.polimi.ingsw.ps31.Card.DevelopmentCard">
+              <point x="0.0" y="-25.5" />
+              <point x="1498.0" y="419.0" />
+              <point x="990.0" y="419.0" />
+              <point x="139.5" y="115.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Card.Territory" target="it.polimi.ingsw.ps31.Card.DevelopmentCard">
+              <point x="0.0" y="-25.5" />
+              <point x="634.0" y="429.0" />
+              <point x="804.0" y="429.0" />
+              <point x="-46.5" y="115.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Card.Character" target="it.polimi.ingsw.ps31.Card.DevelopmentCard">
+              <point x="0.0" y="-25.5" />
+              <point x="1067.0" y="429.0" />
+              <point x="897.0" y="429.0" />
+              <point x="46.5" y="115.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Card.Building" target="it.polimi.ingsw.ps31.Card.DevelopmentCard">
+              <point x="0.0" y="-25.5" />
+              <point x="204.5" y="419.0" />
+              <point x="711.0" y="419.0" />
+              <point x="-139.5" y="115.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.6281231841952353" x="851.0" y="421.0" />
+          <SelectedNodes>
+            <node>it.polimi.ingsw.ps31.Card.Card</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/it.polimi.ingsw.ps31.Constants">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>it.polimi.ingsw.ps31.Constants</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">it.polimi.ingsw.ps31.Constants.CardColor</node>
+            <node x="0.0" y="162.0">it.polimi.ingsw.ps31.Constants.DiceColor</node>
+            <node x="179.0" y="162.0">it.polimi.ingsw.ps31.Constants.PlayerColor</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-151.0" y="100.0" />
+          <SelectedNodes>
+            <node>it.polimi.ingsw.ps31.Constants.CardColor</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/it.polimi.ingsw.ps31.Effect">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>it.polimi.ingsw.ps31.Effect</OriginalElement>
+          <nodes>
+            <node x="877.25" y="255.0">it.polimi.ingsw.ps31.Effect.HarvestEffect</node>
+            <node x="681.25" y="289.0">it.polimi.ingsw.ps31.Effect.LeaderEffect</node>
+            <node x="420.25" y="266.0">it.polimi.ingsw.ps31.Effect.BonusAndMalus</node>
+            <node x="1562.25" y="446.5">it.polimi.ingsw.ps31.Effect.GetResourceFromResource</node>
+            <node x="0.0" y="255.0">it.polimi.ingsw.ps31.Effect.ChooseCard</node>
+            <node x="296.0" y="424.0">it.polimi.ingsw.ps31.Effect.CardCostDiscount</node>
+            <node x="2548.25" y="266.0">it.polimi.ingsw.ps31.Effect.ProductionActivation</node>
+            <node x="1324.25" y="435.0">it.polimi.ingsw.ps31.Effect.GetResourceFromCard</node>
+            <node x="537.0" y="435.0">it.polimi.ingsw.ps31.Effect.NoImmediateEffect</node>
+            <node x="2267.25" y="255.0">it.polimi.ingsw.ps31.Effect.ActionDiscount</node>
+            <node x="2054.25" y="266.0">it.polimi.ingsw.ps31.Effect.HarvestActivation</node>
+            <node x="1342.0" y="101.0">it.polimi.ingsw.ps31.Effect.Effect</node>
+            <node x="1145.25" y="255.0">it.polimi.ingsw.ps31.Effect.ProductionEffect</node>
+            <node x="0.0" y="588.0">it.polimi.ingsw.ps31.Effect.EffectList</node>
+            <node x="1332.0" y="0.0">it.polimi.ingsw.ps31.Effect.GenericEffect</node>
+            <node x="1706.25" y="255.0">it.polimi.ingsw.ps31.Effect.ChangeResource</node>
+            <node x="1434.25" y="266.0">it.polimi.ingsw.ps31.Effect.GetResource</node>
+            <node x="1.0" y="435.0">it.polimi.ingsw.ps31.Effect.ChooseCardWithDiscount</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="it.polimi.ingsw.ps31.Effect.Effect" target="it.polimi.ingsw.ps31.Effect.GenericEffect">
+              <point x="0.0" y="-37.0" />
+              <point x="0.0" y="25.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.GetResource" target="it.polimi.ingsw.ps31.Effect.Effect">
+              <point x="0.0" y="-48.5" />
+              <point x="1560.25" y="235.0" />
+              <point x="1427.8" y="235.0" />
+              <point x="7.7999999999999545" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.ChangeResource" target="it.polimi.ingsw.ps31.Effect.Effect">
+              <point x="0.0" y="-59.5" />
+              <point x="1870.25" y="225.0" />
+              <point x="1443.4" y="225.0" />
+              <point x="23.40000000000009" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.LeaderEffect" target="it.polimi.ingsw.ps31.Effect.Effect">
+              <point x="0.0" y="-25.5" />
+              <point x="769.25" y="215.0" />
+              <point x="1381.0" y="215.0" />
+              <point x="-39.0" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.ActionDiscount" target="it.polimi.ingsw.ps31.Effect.Effect">
+              <point x="0.0" y="-59.5" />
+              <point x="2397.75" y="205.0" />
+              <point x="1474.6" y="205.0" />
+              <point x="54.59999999999991" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.CardCostDiscount" target="it.polimi.ingsw.ps31.Effect.BonusAndMalus">
+              <point x="0.0" y="-59.5" />
+              <point x="406.5" y="399.0" />
+              <point x="480.5" y="399.0" />
+              <point x="-60.25" y="48.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.GetResourceFromResource" target="it.polimi.ingsw.ps31.Effect.GetResource">
+              <point x="0.0" y="-37.0" />
+              <point x="1687.25" y="399.0" />
+              <point x="1623.25" y="399.0" />
+              <point x="63.0" y="48.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.NoImmediateEffect" target="it.polimi.ingsw.ps31.Effect.BonusAndMalus">
+              <point x="0.0" y="-48.5" />
+              <point x="675.0" y="399.0" />
+              <point x="601.0" y="399.0" />
+              <point x="60.25" y="48.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.BonusAndMalus" target="it.polimi.ingsw.ps31.Effect.Effect">
+              <point x="0.0" y="-48.5" />
+              <point x="540.75" y="205.0" />
+              <point x="1365.4" y="205.0" />
+              <point x="-54.59999999999991" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.HarvestActivation" target="it.polimi.ingsw.ps31.Effect.Effect">
+              <point x="0.0" y="-48.5" />
+              <point x="2150.75" y="215.0" />
+              <point x="1459.0" y="215.0" />
+              <point x="39.0" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.HarvestEffect" target="it.polimi.ingsw.ps31.Effect.Effect">
+              <point x="0.0" y="-59.5" />
+              <point x="1001.25" y="225.0" />
+              <point x="1396.6" y="225.0" />
+              <point x="-23.40000000000009" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.ProductionEffect" target="it.polimi.ingsw.ps31.Effect.Effect">
+              <point x="0.0" y="-59.5" />
+              <point x="1279.75" y="235.0" />
+              <point x="1412.2" y="235.0" />
+              <point x="-7.7999999999999545" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.ChooseCard" target="it.polimi.ingsw.ps31.Effect.Effect">
+              <point x="0.0" y="-59.5" />
+              <point x="138.5" y="195.0" />
+              <point x="1349.8" y="195.0" />
+              <point x="-70.20000000000005" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.ProductionActivation" target="it.polimi.ingsw.ps31.Effect.Effect">
+              <point x="0.0" y="-48.5" />
+              <point x="2655.25" y="195.0" />
+              <point x="1490.2" y="195.0" />
+              <point x="70.20000000000005" y="37.0" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.GetResourceFromCard" target="it.polimi.ingsw.ps31.Effect.GetResource">
+              <point x="0.0" y="-48.5" />
+              <point x="1433.25" y="399.0" />
+              <point x="1497.25" y="399.0" />
+              <point x="-63.0" y="48.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Effect.ChooseCardWithDiscount" target="it.polimi.ingsw.ps31.Effect.ChooseCard">
+              <point x="0.0" y="-48.5" />
+              <point x="0.0" y="59.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.3884297520661157" x="608.0" y="273.0" />
+          <SelectedNodes>
+            <node>it.polimi.ingsw.ps31.Effect.ChooseCardWithDiscount</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/it.polimi.ingsw.ps31.GameThings">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>it.polimi.ingsw.ps31.GameThings</OriginalElement>
+          <nodes>
+            <node x="449.75" y="0.0">it.polimi.ingsw.ps31.GameThings.Resource</node>
+            <node x="65.5" y="447.5">it.polimi.ingsw.ps31.GameThings.VictoryPoint</node>
+            <node x="269.0" y="312.5">it.polimi.ingsw.ps31.GameThings.PointResource</node>
+            <node x="0.0" y="301.0">it.polimi.ingsw.ps31.GameThings.CouncilPrivilege</node>
+            <node x="950.5" y="447.5">it.polimi.ingsw.ps31.GameThings.Coin</node>
+            <node x="983.3863636363636" y="312.5">it.polimi.ingsw.ps31.GameThings.Stone</node>
+            <node x="778.3863636363636" y="312.5">it.polimi.ingsw.ps31.GameThings.PhysicalResource</node>
+            <node x="804.5" y="447.5">it.polimi.ingsw.ps31.GameThings.Wood</node>
+            <node x="244.5" y="425.0">it.polimi.ingsw.ps31.GameThings.MilitaryStrength</node>
+            <node x="483.5" y="447.5">it.polimi.ingsw.ps31.GameThings.FaithPoint</node>
+            <node x="0.0" y="566.0">it.polimi.ingsw.ps31.GameThings.ResourceList</node>
+            <node x="651.5" y="447.5">it.polimi.ingsw.ps31.GameThings.Servant</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="it.polimi.ingsw.ps31.GameThings.MilitaryStrength" target="it.polimi.ingsw.ps31.GameThings.PointResource">
+              <point x="0.0" y="-48.0" />
+              <point x="0.0" y="25.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.GameThings.PhysicalResource" target="it.polimi.ingsw.ps31.GameThings.Resource">
+              <point x="0.0" y="-25.5" />
+              <point x="870.8863636363636" y="281.0" />
+              <point x="651.0" y="281.0" />
+              <point x="40.25" y="125.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.GameThings.VictoryPoint" target="it.polimi.ingsw.ps31.GameThings.PointResource">
+              <point x="0.0" y="-25.5" />
+              <point x="145.0" y="400.0" />
+              <point x="297.3333333333333" y="400.0" />
+              <point x="-56.666666666666686" y="25.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.GameThings.Wood" target="it.polimi.ingsw.ps31.GameThings.PhysicalResource">
+              <point x="0.0" y="-25.5" />
+              <point x="867.5" y="400.0" />
+              <point x="870.8863636363636" y="400.0" />
+              <point x="0.0" y="25.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.GameThings.PointResource" target="it.polimi.ingsw.ps31.GameThings.Resource">
+              <point x="0.0" y="-25.5" />
+              <point x="354.0" y="281.0" />
+              <point x="570.5" y="281.0" />
+              <point x="-40.25" y="125.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.GameThings.Coin" target="it.polimi.ingsw.ps31.GameThings.PhysicalResource">
+              <point x="0.0" y="-25.5" />
+              <point x="1010.0" y="400.0" />
+              <point x="932.5530303030303" y="400.0" />
+              <point x="61.66666666666663" y="25.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.GameThings.CouncilPrivilege" target="it.polimi.ingsw.ps31.GameThings.Resource">
+              <point x="0.0" y="-37.0" />
+              <point x="124.5" y="271.0" />
+              <point x="490.0" y="271.0" />
+              <point x="-120.75" y="125.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.GameThings.Servant" target="it.polimi.ingsw.ps31.GameThings.PhysicalResource">
+              <point x="0.0" y="-25.5" />
+              <point x="718.0" y="400.0" />
+              <point x="809.219696969697" y="400.0" />
+              <point x="-61.66666666666663" y="25.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.GameThings.Stone" target="it.polimi.ingsw.ps31.GameThings.Resource">
+              <point x="0.0" y="-25.5" />
+              <point x="1045.3863636363635" y="271.0" />
+              <point x="731.5" y="271.0" />
+              <point x="120.75" y="125.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.GameThings.FaithPoint" target="it.polimi.ingsw.ps31.GameThings.PointResource">
+              <point x="0.0" y="-25.5" />
+              <point x="557.5" y="400.0" />
+              <point x="410.66666666666663" y="400.0" />
+              <point x="56.66666666666663" y="25.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.5293005671077504" x="-14.0" y="443.0" />
+          <SelectedNodes>
+            <node>it.polimi.ingsw.ps31.GameThings.Servant</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/it.polimi.ingsw.ps31.Json">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>it.polimi.ingsw.ps31.Json</OriginalElement>
+          <nodes>
+            <node x="0.0" y="460.0">it.polimi.ingsw.ps31.Json.JsonFile</node>
+            <node x="289.0" y="460.0">it.polimi.ingsw.ps31.Json.CreationCard</node>
+            <node x="0.0" y="296.0">it.polimi.ingsw.ps31.Json.JsonGameObject</node>
+            <node x="0.0" y="0.0">it.polimi.ingsw.ps31.Json.RuntimeTypeAdapterFactory</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.9380234505862647" x="-33.0" y="246.0" />
+          <SelectedNodes>
+            <node>it.polimi.ingsw.ps31.Json.JsonFile</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/it.polimi.ingsw.ps31.Player">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>it.polimi.ingsw.ps31.Player</OriginalElement>
+          <nodes>
+            <node x="446.0" y="1320.0">it.polimi.ingsw.ps31.Player.PlayerResources</node>
+            <node x="975.0" y="950.0">it.polimi.ingsw.ps31.Player.HarvestList</node>
+            <node x="692.0" y="950.0">it.polimi.ingsw.ps31.Player.ProductionList</node>
+            <node x="946.0" y="1320.0">it.polimi.ingsw.ps31.Player.PermanentBonus</node>
+            <node x="0.0" y="1320.0">it.polimi.ingsw.ps31.Player.FamilyMember</node>
+            <node x="0.0" y="715.0">it.polimi.ingsw.ps31.Player.Player</node>
+            <node x="1162.0" y="1320.0">it.polimi.ingsw.ps31.Player.Excommunication</node>
+            <node x="0.0" y="0.0">it.polimi.ingsw.ps31.Player.PlayerActionSet</node>
+            <node x="816.25" y="715.0">it.polimi.ingsw.ps31.Player.HarvestProductionList</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="it.polimi.ingsw.ps31.Player.ProductionList" target="it.polimi.ingsw.ps31.Player.HarvestProductionList">
+              <point x="0.0" y="-37.0" />
+              <point x="823.5" y="925.0" />
+              <point x="888.25" y="925.0" />
+              <point x="-72.0" y="92.5" />
+            </edge>
+            <edge source="it.polimi.ingsw.ps31.Player.HarvestList" target="it.polimi.ingsw.ps31.Player.HarvestProductionList">
+              <point x="0.0" y="-37.0" />
+              <point x="1097.0" y="925.0" />
+              <point x="1032.25" y="925.0" />
+              <point x="72.0" y="92.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.3519798868636078" x="653.0" y="786.0" />
+          <SelectedNodes>
+            <node>it.polimi.ingsw.ps31.Player.PlayerResources</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actionControls/Control.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="14" column="38" lean-forward="false" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actionControls/CardRequirementsControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actionControls/DiceValueVsCardSpaceControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actionControls/DiceValueVsDiceColorControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/gameThings/Coin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/VictoryPoint.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/json/CreationJson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="1025" column="0" lean-forward="false" selection-start-line="1025" selection-start-column="0" selection-end-line="1025" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/gameThings/Wood.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+          <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/Wood.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actionControls/TowerPlacementControl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="221">
+          <caret line="49" column="5" lean-forward="false" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding>
+            <element signature="e#1374#1375#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Json/RuntimeTypeAdapterFactory.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/effect/GetResourceFromResourceEffect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="122" column="23" lean-forward="false" selection-start-line="122" selection-start-column="23" selection-end-line="122" selection-end-column="23" />
+        <state relative-caret-position="119">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Json/JsonFile.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionChooseDifferentPrivilege.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-357">
+        <state relative-caret-position="119">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/Card.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/gameThings/CouncilPrivilege.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="357">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/Territory.java">
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_131/src.zip!/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" column="121" lean-forward="false" selection-start-line="13" selection-start-column="121" selection-end-line="13" selection-end-column="121" />
+        <state relative-caret-position="195">
+          <caret line="237" column="12" lean-forward="false" selection-start-line="237" selection-start-column="12" selection-end-line="237" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/Venture.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/card/DevelopmentCardList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="14" column="119" lean-forward="false" selection-start-line="14" selection-start-column="119" selection-end-line="14" selection-end-column="119" />
+        <state relative-caret-position="212">
+          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/Building.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionTakeCard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="15" column="90" lean-forward="false" selection-start-line="15" selection-start-column="90" selection-end-line="15" selection-end-column="90" />
+        <state relative-caret-position="349">
+          <caret line="61" column="30" lean-forward="true" selection-start-line="61" selection-start-column="30" selection-end-line="61" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/FaithtTrack.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/GameBoard.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/PlayerResources.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="816">
+          <caret line="50" column="9" lean-forward="false" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionGetResources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="38" column="13" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Prova.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/ProvaPadre.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/VictoryPoinTrack.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameInizialization.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/GetCardWithDiscount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/CardCostDiscount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/MarkerDisc.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionGetFinalResources.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/TrackCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="26" column="163" lean-forward="false" selection-start-line="26" selection-start-column="163" selection-end-line="26" selection-end-column="163" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/CreateBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/Stone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/Coin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/GetResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/GetResourceFromResource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/effect/EffectList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/effect/GetResourcesAtTheEndEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="15" column="51" lean-forward="false" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
+          <folding>
+            <element signature="e#398#399#0" expanded="false" />
+            <element signature="e#485#486#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/PlayerActionSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="153" column="26" lean-forward="false" selection-start-line="153" selection-start-column="26" selection-end-line="153" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/board/ActionSpace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="e#1630#1631#0" expanded="false" />
+            <element signature="e#1682#1683#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/board/TowerActionSpace.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/Track.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/board/TowerCardSpace.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="31" lean-forward="false" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/MilitaryPointTrack.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionPlaceFamilyMember.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        <state relative-caret-position="51">
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/Production.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionPlaceFamilyMemberInBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        <state relative-caret-position="377">
+          <caret line="28" column="32" lean-forward="true" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/BonusAndMalus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="43" lean-forward="false" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/FaithPointTrack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/ActionSpace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-191">
-          <caret line="21" column="47" lean-forward="false" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/BigHarvest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/CouncilPalace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="26" column="27" lean-forward="false" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/CouncilPrivilege.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/PhysicalResource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/PermanentBonus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
@@ -1630,126 +2247,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/Harvest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionPayTowerMoney.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        <state relative-caret-position="-136">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/Deck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/DevelopmentCardDeck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-          <folding>
-            <element signature="e#623#624#0" expanded="true" />
-            <element signature="e#662#663#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/PointResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-          <folding>
-            <element signature="e#170#171#0" expanded="true" />
-            <element signature="e#198#199#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Board/Market.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Card.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Json/JsonGameObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="15" column="54" lean-forward="false" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/ResourceList.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/actions/ActionPlaceFamilyMemberInTower.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <caret line="21" column="49" lean-forward="false" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/GameThings/Resource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/effect/HarvestEffect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="38" column="7" lean-forward="true" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Card/DevelopmentCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="29" column="15" lean-forward="true" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
+        <state relative-caret-position="153">
+          <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Actions/ActivateHarvest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/effect/GetResourceEffect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Json/CreationCard.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/HarvestProductionList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="765" column="109" lean-forward="false" selection-start-line="765" selection-start-column="109" selection-end-line="765" selection-end-column="109" />
+        <state relative-caret-position="323">
+          <caret line="23" column="27" lean-forward="false" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+            <element signature="e#516#517#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/ChangeResource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/HarvestList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="76" lean-forward="false" selection-start-line="13" selection-start-column="63" selection-end-line="13" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="340">
+          <caret line="35" column="7" lean-forward="true" selection-start-line="35" selection-start-column="7" selection-end-line="39" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/Effect/ActionDiscount.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/effect/ProductionEffect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="306">
+          <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/effect/Effect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1513">
+          <caret line="110" column="56" lean-forward="true" selection-start-line="110" selection-start-column="56" selection-end-line="110" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/polimi/ingsw/ps31/player/ProductionList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1855,6 +2432,7 @@
   </component>
   <component name="mavenExecuteGoalHistory">
     <option value="$PROJECT_DIR$" />
+    <option value="clean org.jacoco:jacoco-maven-plugin:prepare-agent package" />
     <option value="clean package" />
   </component>
 </project>

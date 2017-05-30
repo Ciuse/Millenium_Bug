@@ -33,6 +33,10 @@ public class HarvestList extends HarvestProductionList{
     @Override
     public void activate(int diceValue)
     {
-        //todo fare cose
+        for(HarvestEffect currentEffect : effectList)
+        {
+            if (currentEffect.getHarvestActionValue() > diceValue)
+                currentEffect.getGetResourceEffect().activate(super.getPlayer());
+        }
     }
 }
