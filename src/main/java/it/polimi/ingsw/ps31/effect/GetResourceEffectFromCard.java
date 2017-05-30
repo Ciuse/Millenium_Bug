@@ -15,9 +15,9 @@ public class GetResourceEffectFromCard extends GetResourceEffect {
     }
     @Override
     public void activate(Player player) {
-//        int numberCard = player.getPlayerCardList().countSpecificCardColor(cardColor);
-//        GetResources getResources = new GetResources(player);
-//        getResources.setResourcesToGet( super.getResources().multiplyResourceList(numberCard));
-//        getResources.activate();
+        int factor = player.getPlayerCardList().countSpecificCardColor(cardColor);
+        super.getResources().multiplyResourceList(factor);
+        player.getPlayerActionSet().getResources(super.getResources());
+
     }
 }
