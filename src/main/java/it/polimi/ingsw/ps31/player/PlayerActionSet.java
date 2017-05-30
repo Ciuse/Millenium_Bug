@@ -26,6 +26,7 @@ public class PlayerActionSet {
     private final ActionPlaceFamilyMemberInBoard placeFamilyMemberInBoard;
     private final ActionTakeCard takeCard;
     private final ActiveLeaderCard activeLeaderCard;
+    private final ActionGetFinalResources getFinalResources;
     private final ActionControlSet actionControlSet;
     private final Player player;
 
@@ -47,8 +48,7 @@ public class PlayerActionSet {
         this.placeFamilyMemberInBoard = new ActionPlaceFamilyMemberInBoard(player, actionControlSet);
         this.takeCard = new ActionTakeCard(player, actionControlSet);
         this.activeLeaderCard = new ActiveLeaderCard(player, actionControlSet);
-
-
+        this.getFinalResources = new ActionGetFinalResources(player, actionControlSet);
     }
 
     /* Setters & Getters */
@@ -82,7 +82,7 @@ public class PlayerActionSet {
         this.chooseCard.activate();
     }
 
-    public void setChooseDifferentPrivilege(int numOfPrivileges)
+    public void chooseDifferentPrivilege(int numOfPrivileges, boolean isDifferent)
     {
         //TODO: implementare
     }
@@ -138,6 +138,12 @@ public class PlayerActionSet {
         this.placeFamilyMemberInBoard.setFamilyMember(familyMember);
         this.placeFamilyMemberInBoard.setTowerActionSpace(actionSpace);
         this.placeFamilyMemberInBoard.activate();
+    }
+
+    public void getFinalResources()
+    {
+        this.getFinalResources.setResourcesToGet(player.getFinalBonusResources());
+        this.getFinalResources.activate();
     }
 
     public void addFinalVictoryPoints()

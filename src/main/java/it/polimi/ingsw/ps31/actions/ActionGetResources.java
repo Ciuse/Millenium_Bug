@@ -49,10 +49,8 @@ public class ActionGetResources extends Action {
             List<Resource> resourcesToGetList = this.resourcesToGet.getResourceList();
             for(Resource currentResource : resourcesToGetList)
             {
-                if (currentResource.getClass().equals(CouncilPrivilege.class))
-                    player.getPlayerActionSet().setChooseDifferentPrivilege(currentResource.getValue());
-                else
                     player.addResources(currentResource);
+                    //TODO: controllo per CouncilPrivilege
             }
             this.resetResourcesToGet();
         }

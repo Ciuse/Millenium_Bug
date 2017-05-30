@@ -32,7 +32,7 @@ public class PlayerResources {
         String resourceName = new String(resourceToAdd.toStringName());
 
         if ( this.currentResources.containsKey(resourceName) )
-            this.currentResources.get(resourceName).addValue(resourceToAdd.getValue());
+            this.currentResources.get(resourceName).addValue(resourceToAdd.getValue()); //TODO: fare metodo add() nelle classi risorsa
         else
         {
             //TODO: gestire (eccezione?)

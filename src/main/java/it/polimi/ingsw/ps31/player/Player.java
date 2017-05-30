@@ -6,6 +6,8 @@ import it.polimi.ingsw.ps31.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.constants.CardColor;
 import it.polimi.ingsw.ps31.constants.DiceColor;
 import it.polimi.ingsw.ps31.constants.PlayerColor;
+import it.polimi.ingsw.ps31.effect.GetResourceEffect;
+import it.polimi.ingsw.ps31.effect.GetResourceFromResourceEffect;
 import it.polimi.ingsw.ps31.gameThings.*;
 
 import java.util.ArrayList;
@@ -31,6 +33,7 @@ public class Player {
     private PlayerActionSet playerActionSet;
     private HarvestList harvestList;
     private ProductionList productionList;
+    private List<ResourceList> finalBonusResources;
 
     /* Constructor */
     public Player(PlayerColor color, ResourceList initialResources, String nickname, ArrayList<FamilyMember> familyMembers)
@@ -73,6 +76,9 @@ public class Player {
 
         //Inizializzo lastUsedFamilyMember
         this.lastUsedFamilyMember = null;
+
+        //Inizializzo la lista di risorse bonus
+        this.finalBonusResources = new ArrayList<>();
     }
 
     /* Setters & Getters */
@@ -180,12 +186,31 @@ public class Player {
     {
         return this.productionList;
     }
+
+    public ArrayList<ResourceList> getFinalBonusResources()
+    {
+        return new ArrayList<>(this.finalBonusResources);
+    }
+
     /* Class Methods */
     public void addDevelopmentCard(DevelopmentCard card)
     {
         if ( this.playerCardList.getSpecificCardList(card.getCardColor()).size() < MAXCARDLISTSIZE)
             this.playerCardList.add(card);
+        else
+        {
+            //TODO: eccezione
+        }
+
+        //Attivo gli effetti della carta
+        card.activeEffectList(this);
     }
+
+    public void addBonusResource(ResourceList bonusResourcesToAdd)
+    {
+        this.finalBonusResources.add(bonusResourcesToAdd);
+    }
+
     public boolean checkIfOnlyNEUTRALRemained(){
         if(this.getFamilyMember(DiceColor.NEUTRAL).isPlaced()==true){
             return false;
@@ -209,7 +234,10 @@ public class Player {
         this.flagExcommunication = flagExcommunication;
     }
 
-
+    public void activateFinalEffects()
+    {
+        //TODO: implementare
+    }
 
     @Override
     public boolean equals(Object o) {
