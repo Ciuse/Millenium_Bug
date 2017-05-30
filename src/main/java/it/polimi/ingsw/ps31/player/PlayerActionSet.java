@@ -140,6 +140,11 @@ public class PlayerActionSet {
         this.placeFamilyMemberInBoard.activate();
     }
 
+    public void addFinalVictoryPoints()
+    {
+        //TODO: aggiornare
+    }
+
     public void takeCard()
     {
         //TODO: settare i parametri
