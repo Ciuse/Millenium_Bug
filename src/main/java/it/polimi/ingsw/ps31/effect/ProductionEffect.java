@@ -14,6 +14,13 @@ public class ProductionEffect extends Effect {
         this.getResource = productionEffect;
     }
 
+    public int getProductionActionValue() {
+        return productionActionValue;
+    }
+
+    public Effect getGetResource() {
+        return getResource;
+    }
 
     @Override
     public void activate(Player player) {

@@ -11,6 +11,10 @@ public class CouncilPrivilege extends Resource {
         this.different = different;
     }
 
+    public boolean isDifferent() {
+        return different;
+    }
+
     public void setDifferent(Boolean different){
         this.different=different;
     }

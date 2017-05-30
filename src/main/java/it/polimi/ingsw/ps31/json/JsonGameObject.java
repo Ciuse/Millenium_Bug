@@ -59,9 +59,9 @@ public class JsonGameObject {
         effectAdapterFactory.registerSubtype(GetResourceEffect.class, "GetResourceEffect");
         effectAdapterFactory.registerSubtype(GetResourceEffectFromCard.class, "GetResourceEffectFromCard");
         effectAdapterFactory.registerSubtype(GetResourceFromResourceEffect.class, "GetResourceFromResourceEffect");
+        effectAdapterFactory.registerSubtype(GetResourcesAtTheEndEffect.class,"GetResourcesAtTheEndEffect");
         effectAdapterFactory.registerSubtype(HarvestActivationFromCard.class, "HarvestActivationFromCard");
         effectAdapterFactory.registerSubtype(HarvestEffect.class, "HarvestEffect");
-        effectAdapterFactory.registerSubtype(LeaderEffect.class, "LeaderEffect");
         effectAdapterFactory.registerSubtype(ProductionActivationFromCard.class, "ProductionActivationFromCard");
         effectAdapterFactory.registerSubtype(ProductionEffect.class, "ProductionEffect");
 

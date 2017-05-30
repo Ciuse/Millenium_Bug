@@ -11,8 +11,13 @@ public class GenericHarvestActivation extends Effect {
         this.basicValue = basicValue;
     }
 
+    public int getBasicValue() {
+        return basicValue;
+    }
+
     @Override
     public void activate(Player player) {
-
+        int diceValue = player.getLastUsedFamilyMember().getDice().getValue()+basicValue;
+        player.getPlayerActionSet().activateHarvest(diceValue);
     }
 }

@@ -18,13 +18,8 @@ public class GetResourceEffect extends Effect {
         return this.resources;
     }
 
-
-
     @Override
     public void activate(Player player) {
-//        GetResources getResources = new GetResources(player);
-//        getResources.setResourcesToGet(resources);
-//        getResources.activate();
-//TODO CAMBIARE IL NOME
+        player.getPlayerActionSet().getResources(this.resources);
     }
 }

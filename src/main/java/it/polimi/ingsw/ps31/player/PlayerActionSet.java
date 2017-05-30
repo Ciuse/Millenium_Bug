@@ -82,7 +82,7 @@ public class PlayerActionSet {
         this.chooseCard.activate();
     }
 
-    public void setChooseDifferentPrivilege(int numOfPrivileges)
+    public void chooseDifferentPrivilege(int numOfPrivileges, boolean isDifferent)
     {
         //TODO: implementare
     }
@@ -140,7 +140,7 @@ public class PlayerActionSet {
         this.placeFamilyMemberInBoard.activate();
     }
 
-    public void addFinalVictoryPoints()
+    public void addFinalVictoryPoints(ResourceList resourceList)
     {
         //TODO: aggiornare
     }

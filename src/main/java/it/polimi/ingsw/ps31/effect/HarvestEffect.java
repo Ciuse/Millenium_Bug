@@ -15,6 +15,14 @@ public class HarvestEffect extends Effect {
         this.harvestActionValue = harvestActionValue;
     }
 
+    public int getHarvestActionValue() {
+        return harvestActionValue;
+    }
+
+    public GetResourceEffect getGetResourceEffect() {
+        return getResourceEffect;
+    }
+
     @Override
     public void activate(Player player) {
 
