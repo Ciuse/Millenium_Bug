@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.player;
 
+import it.polimi.ingsw.ps31.board.Dice;
 import it.polimi.ingsw.ps31.board.PersonalBoard;
 import it.polimi.ingsw.ps31.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.card.DevelopmentCardList;
@@ -22,7 +23,7 @@ public class Player {
     private PlayerResources playerResources;      //setter -->add e sub
     private DevelopmentCardList playerCardList;
     private final PersonalBoard playerBoard;
-    private final List<FamilyMember> familyMembers;
+    private final List<FamilyMember> familyMembers = new ArrayList<>();
     private FamilyMember lastUsedFamilyMember;
     private PlayerActionSet playerActionSet;
     private List<Excommunication> excommunications;
@@ -33,15 +34,20 @@ public class Player {
     private List<ResourceList> finalBonusResources;
 
     /* Constructor */
-    public Player(PlayerColor color, ResourceList initialResources, String nickname, List<FamilyMember> familyMembers)
+    public Player(PlayerColor color, ResourceList initialResources, String nickname)
     {
         //Attributi base
         this.color            = color;
-        this.familyMembers    = familyMembers;
         this.playerBoard      = new PersonalBoard(this);
         this.nickname         = nickname;
         this.permanentBonus   = new PermanentBonus();
         this.excommunications = new ArrayList<>(); //TODO: serve davvero??
+        //creazione lista dei famigliari
+        DiceColor[] diceColor = {DiceColor.WHITE, DiceColor.ORANGE, DiceColor.BLACK, DiceColor.NEUTRAL};
+        for(int i =0 ;i<diceColor.length;i++){
+            FamilyMember familyMember = new FamilyMember(this,diceColor[i]);
+            this.familyMembers.add(familyMember);
+        }
 
         //Risorse iniziali
         //TODO: il nome delle risorse deve essere preso da un enumeratore
@@ -51,14 +57,6 @@ public class Player {
         int servantAmt = initialResources.getSpecificResource(Servant.class).getValue();
         this.playerResources = new PlayerResources(woodAmt, stoneAmt, coinAmt, servantAmt);
 
-        //Creazione familiari
-        /*
-        this.familyMembers = new ArrayList<FamilyMember>();
-        for (DiceColor itrColor : DiceColor.values())
-        {
-            Dice itrDice = new Dice(itrColor); //TODO: NO!! Non si devono creare altri dadi, ma usare quelli già collegati alla board
-            familyMembers.add(new FamilyMember(this, itrDice));
-        }*/
 
         //Inizializzazione harvestList e productionList
         this.harvestList = new HarvestList(this, null); //TODO: leggere firstHarvest da file
@@ -212,7 +210,7 @@ public class Player {
         do
         {
             itrMember = itr.next();
-        }while (itrMember.getDice().getColor() != color);
+        }while (itrMember.getDiceColor() != color);
 
         return itrMember;
     }

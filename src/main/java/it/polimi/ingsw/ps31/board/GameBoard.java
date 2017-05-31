@@ -33,41 +33,42 @@ public class GameBoard {
     private static GameBoard ourInstance;
 
     public static GameBoard getInstance() {
-        if(ourInstance == null) {
+        if (ourInstance == null) {
             ourInstance = new GameBoard();
         }
         return ourInstance;
     }
+
     private GameBoard() {
     }
 
-    public void add4PlayerMarketSpace(List<EffectList> otherEffectList){
-        this.market.add4PlayerMarketSpace(otherEffectList.get(7),otherEffectList.get(8));
+    public void add4PlayerMarketSpace(List<EffectList> otherEffectList) {
+        this.market.add4PlayerMarketSpace(otherEffectList.get(7), otherEffectList.get(8));
     }
 
-    public void remove4PlayerMarketSpace(){
+    public void remove4PlayerMarketSpace() {
         this.market.remove4PlayerActionSpace();
     }
 
-    public void rollTheDice(){
-        for(int i=0; i<dice.size(); i++){
-            if(!dice.get(i).getColor().equals(DiceColor.NEUTRAL)){
-                int randomValue= (int)(Math.random()*6 + 1);
+    public void rollTheDice() {
+        for (int i = 0; i < dice.size(); i++) {
+            if (!dice.get(i).getColor().equals(DiceColor.NEUTRAL)) {
+                int randomValue = (int) (Math.random() * 6 + 1);
                 dice.get(i).setValue(randomValue);
             }
         }
     }
 
-    public void initializateGameBoard(List<List<EffectList>> towerEffectList, List<EffectList> otherEffectList){
+    public void initializateGameBoard(List<List<EffectList>> towerEffectList, List<EffectList> otherEffectList) {
         //creazione torri
-        CardColor[] towerColor= {CardColor.GREEN,CardColor.BLUE,CardColor.YELLOW,CardColor.PURPLE};
-        for(int i=0; i<TOWERNUMBER; i++) {
+        CardColor[] towerColor = {CardColor.GREEN, CardColor.BLUE, CardColor.YELLOW, CardColor.PURPLE};
+        for (int i = 0; i < TOWERNUMBER; i++) {
             towers.add(new Tower(towerEffectList.get(i).size(), towerColor[i], towerEffectList.get(i)));
         }
         this.towers = towers;
         //creazione dadi
-        DiceColor[] diceColor={DiceColor.WHITE, DiceColor.ORANGE, DiceColor.BLACK, DiceColor.NEUTRAL};
-        for(int i=0; i<4; i++) {
+        DiceColor[] diceColor = {DiceColor.WHITE, DiceColor.ORANGE, DiceColor.BLACK, DiceColor.NEUTRAL};
+        for (int i = 0; i < 4; i++) {
             dice.add(new Dice(diceColor[i]));
             dice.get(i).setValue(0);
         }
@@ -79,8 +80,8 @@ public class GameBoard {
         this.smallProduction = new SmallProduction(1, otherEffectList.get(3));
         this.bigProduction = new BigProduction(-1, otherEffectList.get(4));
         this.market = new Market();
-        this.market.add2PlayerMarketSpace(otherEffectList.get(5),otherEffectList.get(6));
-        this.militaryPointTrack=MilitaryPointTrack.getInstance();
+        this.market.add2PlayerMarketSpace(otherEffectList.get(5), otherEffectList.get(6));
+        this.militaryPointTrack = MilitaryPointTrack.getInstance();
         this.faithPointTrack = FaithPointTrack.getInstance();
         this.victoryPointTrack = VictoryPointTrack.getInstance();
     }
@@ -145,12 +146,21 @@ public class GameBoard {
         return endActionButton;
     }
 
-    public void startActionTurn(Player player){//TODO IMPLEMENTARLO
-
-    }
-    public void endActionTurn(Player player){//TODO IMPLEMENTARLO
+    public void startActionTurn(Player player) {//TODO IMPLEMENTARLO
 
     }
 
+    public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
+
+    }
+
+    public Dice getSpecificDice(DiceColor diceColor) {
+        for (int i = 0; i < this.dice.size(); i++) {
+            if (this.dice.get(i).getColor().equals(diceColor)) {
+                return dice.get(i);
+            }
+        }
+        return null;
+    }
 
 }

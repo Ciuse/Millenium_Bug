@@ -2,21 +2,25 @@ package it.polimi.ingsw.ps31.player;
 
 import it.polimi.ingsw.ps31.board.ActionSpace;
 import it.polimi.ingsw.ps31.board.Dice;
+import it.polimi.ingsw.ps31.board.GameBoard;
+import it.polimi.ingsw.ps31.constants.DiceColor;
+
 /**
  * Created by Francesco on 15/05/2017.
  */
 public class FamilyMember {
 
     private final Player player;
-    private final Dice dice;
+    private final DiceColor diceColor;
     private int additionalValue;
     private ActionSpace actionSpace;
+    private static GameBoard gameBoard = GameBoard.getInstance();
 
     /* Constructor */
-    public FamilyMember(Player player, Dice dice)
+    public FamilyMember(Player player, DiceColor diceColor)
     {
         this.player = player;
-        this.dice = dice;
+        this.diceColor = diceColor;
         this.additionalValue = 0;
         this.actionSpace = null;
     }
@@ -27,9 +31,9 @@ public class FamilyMember {
         return this.player;
     }
 
-    public Dice getDice()
+    public DiceColor getDiceColor()
     {
-        return this.dice;
+        return this.diceColor;
     }
 
     public int getAdditionalValue()
@@ -49,7 +53,7 @@ public class FamilyMember {
 
     public int getTotalValue()
     {
-        return this.dice.getValue() + this.additionalValue;
+        return gameBoard.getSpecificDice(this.diceColor).getValue() + this.additionalValue;
     }
 
     public ActionSpace getActionSpace()

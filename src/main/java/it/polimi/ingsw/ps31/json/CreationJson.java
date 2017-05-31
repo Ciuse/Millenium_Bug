@@ -26,7 +26,9 @@ public class CreationJson {
         this.jsonGameObject.setBonusVictoryPointFromCharacterCard(bonusVictoryPointFromCharacterCard());
         this.jsonGameObject.setBonusVictoryPointFromMilitaryTrack(bonusVictoryPointFromMilitaryTrack());
         this.jsonGameObject.setBonusVictoryPointFromPlayerResources(bonusVictoryPointFromPlayerResources());
-        this.jsonGameObject.setRequiredMilitaryStrengthForTerritory(requiredMilitaryStrengthForTerritory());
+        this.jsonGameObject.setPointResourceRequired(listOfRequirements());
+        this.jsonGameObject.setInitialResourcePlayer(initialResourcePlayer());
+
 
     }
 
@@ -1024,19 +1026,38 @@ public class CreationJson {
                 new VictoryPoint(10),new VictoryPoint(15),new VictoryPoint(21)};
         return victoryPoint.clone();
     }
+    public VictoryPoint[] bonusVictoryPointFromMilitaryTrack(){
+        VictoryPoint victoryPoint[]={new VictoryPoint(5),new VictoryPoint(2)};
+        return victoryPoint.clone();
+    }
     public VictoryPoint bonusVictoryPointFromPlayerResources(){
         VictoryPoint victoryPoint= new VictoryPoint(1);
         return victoryPoint;
     }
-    public MilitaryStrength[] requiredMilitaryStrengthForTerritory(){
-        MilitaryStrength[] militaryStrength={new MilitaryStrength(0),new MilitaryStrength(0),new MilitaryStrength(3),
+    public List<PointResource[]> listOfRequirements(){
+        PointResource[] yellowRequired = {null,null,null,null,null,null};
+        MilitaryStrength[] greenRequired = {new MilitaryStrength(0),new MilitaryStrength(0),new MilitaryStrength(3),
                 new MilitaryStrength(7),new MilitaryStrength(12),new MilitaryStrength(18)};
-        return militaryStrength.clone();
+        PointResource[] purpleRequired = {null,null,null,null,null,null};
+        PointResource[] blueRequired = {null,null,null,null,null,null};
+        List<PointResource[]> listToReturn = new ArrayList<>();
+        listToReturn.add(yellowRequired);
+        listToReturn.add(greenRequired);
+        listToReturn.add(purpleRequired);
+        listToReturn.add(blueRequired);
+        return listToReturn;
     }
-    
-    public VictoryPoint[] bonusVictoryPointFromMilitaryTrack(){
-        VictoryPoint victoryPoint[]={new VictoryPoint(5),new VictoryPoint(2)};
-        return victoryPoint.clone();
+    public List<ResourceList> initialResourcePlayer(){
+        List<ResourceList> listToReturn = new ArrayList<>();
+        for(int i=0; i<initialResourcePlayer().size();i++){
+            ResourceList resourceListToAdd = new ResourceList();
+            resourceListToAdd.addSpecificResource(new Wood(2));
+            resourceListToAdd.addSpecificResource(new Stone(2));
+            resourceListToAdd.addSpecificResource(new Servant(2));
+            resourceListToAdd.addSpecificResource(new Coin(5+i));
+            listToReturn.add(resourceListToAdd);
+        }
+        return listToReturn;
     }
 
     public JsonGameObject getJsonGameObject() {

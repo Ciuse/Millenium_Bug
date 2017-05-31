@@ -24,8 +24,9 @@ public class JsonGameObject {
     private VictoryPoint[] bonusVictoryPointFromCharacterCard;
     private VictoryPoint[] bonusVictoryPointFromTerritory;
     private VictoryPoint[] bonusVictoryPointFromMilitaryTrack;
-    private MilitaryStrength[] requiredMilitaryStrengthForTerritory;
+    private List<PointResource[]> pointResourceRequired;
     private VictoryPoint bonusVictoryPointFromPlayerResources;
+    private List<ResourceList> initialResourcePlayer;
 
     public JsonGameObject() {
     }
@@ -155,12 +156,12 @@ public class JsonGameObject {
         this.bonusVictoryPointFromMilitaryTrack = bonusVictoryPointFromMilitaryTrack;
     }
 
-    public MilitaryStrength[] getRequiredMilitaryStrengthForTerritory() {
-        return requiredMilitaryStrengthForTerritory.clone();
+    public List<PointResource[]> getPointResourceRequired() {
+        return pointResourceRequired;
     }
 
-    public void setRequiredMilitaryStrengthForTerritory(MilitaryStrength[] requiredMilitaryStrengthForTerritory) {
-        this.requiredMilitaryStrengthForTerritory = requiredMilitaryStrengthForTerritory;
+    public void setPointResourceRequired(List<PointResource[]> pointResourceRequired) {
+        this.pointResourceRequired = pointResourceRequired;
     }
 
     public VictoryPoint getBonusVictoryPointFromPlayerResources() {
@@ -169,5 +170,13 @@ public class JsonGameObject {
 
     public void setBonusVictoryPointFromPlayerResources(VictoryPoint bonusVictoryPointFromPlayerResources) {
         this.bonusVictoryPointFromPlayerResources = bonusVictoryPointFromPlayerResources;
+    }
+
+    public List<ResourceList> getInitialResourcePlayer() {
+        return new ArrayList<>(initialResourcePlayer);
+    }
+
+    public void setInitialResourcePlayer(List<ResourceList> initialResourcePlayer) {
+        this.initialResourcePlayer = initialResourcePlayer;
     }
 }

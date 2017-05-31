@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.game;
 
 import com.google.gson.Gson;
+import it.polimi.ingsw.ps31.board.Dice;
 import it.polimi.ingsw.ps31.board.GameBoard;
 import it.polimi.ingsw.ps31.card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.card.DevelopmentCardList;
@@ -8,10 +9,13 @@ import it.polimi.ingsw.ps31.constants.CardColor;
 import it.polimi.ingsw.ps31.constants.PlayerColor;
 import it.polimi.ingsw.ps31.effect.EffectList;
 import it.polimi.ingsw.ps31.gameThings.MilitaryStrength;
+import it.polimi.ingsw.ps31.gameThings.PointResource;
+import it.polimi.ingsw.ps31.gameThings.ResourceList;
 import it.polimi.ingsw.ps31.gameThings.VictoryPoint;
 import it.polimi.ingsw.ps31.json.CreationJson;
 import it.polimi.ingsw.ps31.json.JsonFile;
 import it.polimi.ingsw.ps31.json.JsonGameObject;
+import it.polimi.ingsw.ps31.player.FamilyMember;
 import it.polimi.ingsw.ps31.player.Player;
 
 import java.util.*;
@@ -42,12 +46,11 @@ public class StartGame {
         VictoryPoint[] faithTrackExtraValue = jsonObjectReadFromFile.getFaithTrackExtraValue();
         VictoryPoint[] bonusVictoryPointFromCharacterCard = jsonObjectReadFromFile.getBonusVictoryPointFromCharacterCard();
         VictoryPoint[] bonusVictoryPointFromTerritory = jsonObjectReadFromFile.getBonusVictoryPointFromTerritory();
-        MilitaryStrength[] requiredMilitaryStrengthForTerritory = jsonObjectReadFromFile.getRequiredMilitaryStrengthForTerritory();
+        List<PointResource[]> personalBoardRequirements = jsonObjectReadFromFile.getPointResourceRequired();
         VictoryPoint[] bonusVictoryPointFromMilitaryTrack = jsonObjectReadFromFile.getBonusVictoryPointFromMilitaryTrack();
         VictoryPoint bonusVictoryPointFromPlayerResources = jsonObjectReadFromFile.getBonusVictoryPointFromPlayerResources();
-
+        List<ResourceList> initialPlayerResource = jsonObjectReadFromFile.getInitialResourcePlayer();
         gameBoard.initializateGameBoard(towerActionSpaceEffectList,actionSpaceEffectList);
-
 
         //creazione deck vuoti
         List<DevelopmentCardDeck> deckList = new ArrayList<>();
@@ -69,6 +72,13 @@ public class StartGame {
                 }
             }
         }
+
+
+
+
+
+
+
 
         long delayAction = 120000;
 
@@ -277,6 +287,15 @@ public class StartGame {
         }
         this.playerList = Arrays.asList(arrayPlayerLists);
     }
+
+    //la view deve richiedere il nome e il colore che vuole essere
+    //creazione familymembers in base al colore che il player ha scelto ,la personal board, la lista delle risorse iniziali infine il player
+
+    public Player createPlayer(String name,PlayerColor playerColor,List<ResourceList> listOfResourceList){
+        Player playerCreated = new Player(playerColor,listOfResourceList.get(playerList.size()),name);
+        return playerCreated;
+    }
+
 
 
 }
