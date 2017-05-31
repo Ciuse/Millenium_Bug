@@ -60,7 +60,7 @@ public class SelfOccupiedTowerControl extends Control {
             return false;
         }else
         {
-            if(this.familyMember.getDice().getColor() == DiceColor.NEUTRAL)
+            if(this.familyMember.getDiceColor() == DiceColor.NEUTRAL)
                 return true;
 
             Player fmOwner = this.familyMember.getPlayer();
@@ -68,7 +68,7 @@ public class SelfOccupiedTowerControl extends Control {
             for (TowerCardSpace tcs : this.tower.getTowerCardSpaceList())
             {
                 FamilyMember currentFamilyMember = tcs.getActionSpace().getFamilyMemberIndex(0);
-                if(!currentFamilyMember.getDice().getColor().equals(DiceColor.NEUTRAL) && currentFamilyMember.getPlayer().equals(fmOwner))
+                if(!currentFamilyMember.getDiceColor().equals(DiceColor.NEUTRAL) && currentFamilyMember.getPlayer().equals(fmOwner))
                     azionePossibile = false;
             }
 

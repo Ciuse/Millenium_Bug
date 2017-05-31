@@ -50,7 +50,7 @@ public class StartGame {
 
         gameBoard.initializateGameBoard(towerActionSpaceEffectList,actionSpaceEffectList,faithTrackExtraValue);
 
-        developmentCardList.shuffleCardList();  //mischio la lista di carte lette da file
+        developmentCardList.shuffleCardList();  //mischio la lista di carte le
 
         //creazione deck vuoti
         List<DevelopmentCardDeck> deckList = new ArrayList<>();
@@ -143,19 +143,19 @@ public class StartGame {
                 //SOLITE COSE DA FARE DOPO LA FINE DELLA FASE AZIONI
                 if (round == 2) {
                     for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
-                        if (playerList.get(playerNumber).getPlayerResources< gameBoard.getFaithPointTrack().getTrackCell()[2 + period].getValue()) {
+                        if (playerList.get(playerNumber).getPlayerResources().getResourceValue(FaithPoint.class)< gameBoard.getFaithPointTrack().getTrackCell().get(2 + period).getValue()) {
                             gameBoard.getExcommunicationList().get(period).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
 
                             //regola dell'ultimo turno del terzo periodo (tutti ricevono i punti vittoria )
                             if (period == 3) {
                                 int faithPointPlayer = playerList.get(playerNumber).getPlayerResources().getResource("FaithPoint").getValue();
-                                playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell()[faithPointPlayer].getExtraValue());
+                                playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
                                 playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getResource("FaithPoint"));
                             }
                         } else {
                             //chiedo l'intervento della view e una volta ricevuto il messaggio di risposta true (il giocatore vuole spendere i suoi punti fede per evitare la scomunica)
                             int faithPointPlayer = playerList.get(playerNumber).getPlayerResources().getResource("FaithPoint").getValue();
-                            playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell()[faithPointPlayer].getExtraValue());
+                            playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
                             playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getResource("FaithPoint"));
                         }
                     }

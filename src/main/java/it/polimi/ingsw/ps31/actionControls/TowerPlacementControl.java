@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.actionControls;
 
 import it.polimi.ingsw.ps31.actions.ActionControlSet;
 import it.polimi.ingsw.ps31.board.TowerCardSpace;
+import it.polimi.ingsw.ps31.gameThings.Coin;
 import it.polimi.ingsw.ps31.gameThings.ResourceList;
 import it.polimi.ingsw.ps31.player.FamilyMember;
 import it.polimi.ingsw.ps31.player.Player;
@@ -76,7 +77,7 @@ public class TowerPlacementControl extends Control {
 
             //Controllo che il giocatore abbia le tre monete (se necessario)
             conditions.add(towerCardSpace.getTower().isOccupied() &&
-                            player.getPlayerResources().getResource("Coin").getValue() >= OCCUPIED_TOWER_COST);
+                            player.getPlayerResources().getResourceValue(Coin.class) >= OCCUPIED_TOWER_COST);
 
             //Controllo che il valore del dado sia sufficiente per il piazzamento
             conditions.add(familyMember.getTotalValue() >= towerCardSpace.getActionSpace().getDiceCost());

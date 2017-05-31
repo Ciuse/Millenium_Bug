@@ -1,12 +1,13 @@
 package it.polimi.ingsw.ps31.gameThings;
-
 import it.polimi.ingsw.ps31.board.MarkerDisc;
+import it.polimi.ingsw.ps31.board.MilitaryPointTrack;
 import it.polimi.ingsw.ps31.player.Player;
 
 /**
  * Created by Giuseppe on 15/05/2017.
  */
 public class MilitaryStrength extends PointResource{
+    private static MilitaryPointTrack militaryTrack = MilitaryPointTrack.getInstance();
     private int valueRequest=0;
 
     public MilitaryStrength(int value) {
@@ -32,9 +33,9 @@ public class MilitaryStrength extends PointResource{
             //TODO NON PUOI AGGIUNGERLE
         }
         else{
-            MarkerDisc markerDiscToMove=super.gameBoard.getFaithPointTrack().getTrackCell().get(player.getPlayerResources().getResourceValue(MilitaryStrength.class)).unSetMarkerDisc(player);
+            MarkerDisc markerDiscToMove=militaryTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(MilitaryStrength.class)).unSetMarkerDisc(player);
             player.getPlayerResources().addResources(this);
-            super.gameBoard.getFaithPointTrack().getTrackCell().get(player.getPlayerResources().getResourceValue(MilitaryStrength.class)).setMarkerDisc(markerDiscToMove);
+            militaryTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(MilitaryStrength.class)).setMarkerDisc(markerDiscToMove);
         }
     }
 

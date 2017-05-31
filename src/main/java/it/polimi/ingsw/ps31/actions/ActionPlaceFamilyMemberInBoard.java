@@ -40,7 +40,7 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
         {
             if (actionControlSet.placedFamilyMemberControl(familyMember)
              && actionControlSet.occupiedActionSpaceControl(actionSpace)
-             && actionControlSet.diceValueVsDiceColorControl(actionSpace.getDiceCost(), familyMember.getDice().getColor()))
+             && actionControlSet.diceValueVsDiceColorControl(actionSpace.getDiceCost(), familyMember.getDiceColor()))
             {
                 this.actionSpace.addFamilyMember(familyMember);
                 super.player.setLastUsedFamilyMember(familyMember);

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.gameThings;
 
+import it.polimi.ingsw.ps31.board.FaithPointTrack;
 import it.polimi.ingsw.ps31.board.MarkerDisc;
 import it.polimi.ingsw.ps31.player.Player;
 
@@ -8,14 +9,16 @@ import it.polimi.ingsw.ps31.player.Player;
  */
 public class FaithPoint extends PointResource{
 
+    private static FaithPointTrack faithTrack = FaithPointTrack.getInstance();
+
     public FaithPoint(int value) {
         super(value);
     }
 
     @Override
     public void addResource(Player player){
-        MarkerDisc markerDiscToMove=super.gameBoard.getFaithPointTrack().getTrackCell().get(player.getPlayerResources().getResourceValue(FaithPoint.class)).unSetMarkerDisc(player);
+        MarkerDisc markerDiscToMove=faithTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(FaithPoint.class)).unSetMarkerDisc(player);
         player.getPlayerResources().addResources(this);
-        super.gameBoard.getFaithPointTrack().getTrackCell().get(player.getPlayerResources().getResourceValue(FaithPoint.class)).setMarkerDisc(markerDiscToMove);
+        faithTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(FaithPoint.class)).setMarkerDisc(markerDiscToMove);
     }
 }
