@@ -37,7 +37,7 @@ public class StartGame {
 
         //salvo tutti gli oggetti letti dal file json
         DevelopmentCardList developmentCardList = jsonObjectReadFromFile.getDevelopementCardList();
-        EffectList[] towerActionSpaceEffectArray = jsonObjectReadFromFile.getTowerActionSpaceEffectArray();
+        EffectList[][] towerActionSpaceEffectArray = jsonObjectReadFromFile.getTowerActionSpaceEffectArray();
         List<EffectList> actionSpaceEffectList = jsonObjectReadFromFile.getActionSpaceEffectList();
         VictoryPoint[] faithTrackExtraValue = jsonObjectReadFromFile.getFaithTrackExtraValue();
         VictoryPoint[] bonusVictoryPointFromCharacterCard = jsonObjectReadFromFile.getBonusVictoryPointFromCharacterCard();
@@ -45,6 +45,8 @@ public class StartGame {
         MilitaryStrength[] requiredMilitaryStrengthForTerritory = jsonObjectReadFromFile.getRequiredMilitaryStrengthForTerritory();
         VictoryPoint[] bonusVictoryPointFromMilitaryTrack = jsonObjectReadFromFile.getBonusVictoryPointFromMilitaryTrack();
         VictoryPoint bonusVictoryPointFromPlayerResources = jsonObjectReadFromFile.getBonusVictoryPointFromPlayerResources();
+
+        gameBoard.initializateGameBoard(towerActionSpaceEffectArray,actionSpaceEffectList);
 
 
         //creazione deck vuoti
@@ -95,11 +97,11 @@ public class StartGame {
         for (this.period = 1; period <= PERIODMAXNUMBER; period++) {                               //inizio periodo
 
             for (int towerNum = 0; towerNum < gameBoard.getTOWERNUMBER(); towerNum++) {
-                gameBoard.getTowers()[towerNum].setDeck(deckList, period);
+                gameBoard.getTowers().get(towerNum).setDeck(deckList, period);
             }
             for (this.round = 1; round <= ROUNDMAXNUMBER; round++) {
                 for (int towerNum = 0; towerNum < gameBoard.getTOWERNUMBER(); towerNum++) {
-                    gameBoard.getTowers()[towerNum].drawCardFromDeck();
+                    gameBoard.getTowers().get(towerNum).drawCardFromDeck();
                 }
                 gameBoard.rollTheDice();
                 for (int action = 1; action <= ACTIONMAXNUMBER; action++) {
@@ -120,7 +122,7 @@ public class StartGame {
 
                     }
                 }
-                //sono finite le 16 azioni(massime) del turnoe iniziano le 4 azioni(massime) che si sono perse per la scomunica
+                //sono finite le 16 azioni(massime) del turno e iniziano le 4 azioni(massime) che si sono perse per la scomunica
                 for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
                     if (playerList.get(playerMaxNumber).getFlagTurnExcommunication() == 1) {
                         gameBoard.startActionTurn(playerList.get(playerMaxNumber));
@@ -159,9 +161,18 @@ public class StartGame {
             }//fine ciclo turno
         }//fine ciclo periodo
         //gioco finito ,calcolo punteggio finale
+        this.finalExtraVictoryPoints1(bonusVictoryPointFromTerritory);
+        this.finalExtraVictoryPoints2(bonusVictoryPointFromCharacterCard);
+        this.finalExtraVictoryPoints3();
+        this.finalExtraVictoryPoints4(bonusVictoryPointFromMilitaryTrack);
+        this.finalExtraVictoryPoints5(bonusVictoryPointFromPlayerResources);
+        this.orderVictoryPoint();
+        //TODO metodo per stampare a video il vincitore
 
 
     }
+
+    /*Metodi per calcolare i punti vittoria alla fine del gioco */
 
     public void finalExtraVictoryPoints1(VictoryPoint[] bonusVictoryPointFromTerritory) {
         for (int i = 0; i < playerList.size(); i++) {
@@ -171,7 +182,6 @@ public class StartGame {
             }
         }
     }
-
     public void finalExtraVictoryPoints2(VictoryPoint[] bonusVictoryPointFromCharacter) {
         for (int i = 0; i < playerList.size(); i++) {
             if (playerList.get(i).getPlayerCardList().countCardBlue() > 1) {
@@ -180,24 +190,21 @@ public class StartGame {
             }
         }
     }
-    //TODO un metodo che sommi i punti vittoria delle carte viola alla fine del gioco
     public void finalExtraVictoryPoints3() {
         for (int i = 0; i < playerList.size(); i++) {
-            for (int k = 0; k < playerList.get(i).getPlayerCardList().getSpecificCardList(CardColor.PURPLE).size(); k++) {
-                //playerList.get(i).getPlayerCardList().getSpecificCardList(CardColor.PURPLE).get(k).getPermanentEffectList()
-            }
+            playerList.get(i).getPlayerActionSet().getFinalResources();
         }
 
     }
-    //aggiungo punti vittoria in base ai punti militari ottenuti a fine partita
-    public void finalExtraVictoryPoints4(MilitaryStrength[] bonusVictoryPointFromMilitaryTrack) {
-        this.orderMilitaryStrength();
+    public void finalExtraVictoryPoints4(VictoryPoint[] bonusVictoryPointFromMilitaryTrack) {
+        List<Player> tempPlayerList = new ArrayList<>(orderMilitaryStrength());
         boolean paritàTrovata = false;
         int contatore=0;
-        for(int i=0;i<playerList.size();i++) {
-            if (playerList.get(0).getPlayerResources().getResource("MilitaryStrength").getValue()== playerList.get(i).getPlayerResources().getResource("MilitaryStrength").getValue()) {
+        for(int i=0;i<tempPlayerList.size();i++) {
+            if (tempPlayerList.get(0).getPlayerResources().getResource("MilitaryStrength").getValue()
+                    == tempPlayerList.get(i).getPlayerResources().getResource("MilitaryStrength").getValue()) {
                 contatore++;
-                playerList.get(i).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[0]);
+                tempPlayerList.get(i).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[0]);
             }
 
         }
@@ -205,10 +212,12 @@ public class StartGame {
             paritàTrovata=true;
         }
         int contatore2 =0;
-        for(int j=1;j<playerList.size();j++){
-            if (paritàTrovata==false && playerList.get(1).getPlayerResources().getResource("MilitaryStrength").getValue()== playerList.get(j).getPlayerResources().getResource("MilitaryStrength").getValue()) {
+        for(int j=1;j<tempPlayerList.size();j++){
+            if (paritàTrovata==false
+                    && tempPlayerList.get(1).getPlayerResources().getResource("MilitaryStrength").getValue()
+                    == tempPlayerList.get(j).getPlayerResources().getResource("MilitaryStrength").getValue()) {
                 contatore2++;
-              playerList.get(j).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[1]);
+              tempPlayerList.get(j).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[1]);
             }
         }
         if (contatore2>1){
@@ -225,6 +234,7 @@ public class StartGame {
         }
     }
 
+    /*Metoci per Riordinare la Lista dei Player*/
 
     // riordina i giocatori in base all'ordine dei colori nel palazzo del concilio
     public void orderPlayersListWithColors(List<PlayerColor> colorList) {
@@ -237,15 +247,28 @@ public class StartGame {
             }
         }
     }
-
-
     // riordino la lista dei giocatori in base a chi ha preso più punti militari
-    public void orderMilitaryStrength() {
+    public List<Player> orderMilitaryStrength() {
         Player[] arrayPlayerLists = playerList.toArray(new Player[playerList.size()]);
         for (int i = 0; i < arrayPlayerLists.length-1; i++) {
             for (int j = 0; j < arrayPlayerLists.length; j++) {
                 if (arrayPlayerLists[i].getPlayerResources().getResource("MilitaryStrength").getValue() <
                         arrayPlayerLists[i+1].getPlayerResources().getResource("MilitaryStrength").getValue()) {
+                    Player tempPlayer = arrayPlayerLists[i+1];
+                    arrayPlayerLists[i+1] = arrayPlayerLists[i];
+                    arrayPlayerLists[i] = tempPlayer;
+                }
+            }
+        }
+        return new ArrayList<>(Arrays.asList(arrayPlayerLists));
+    }
+    //riordino i giocatori in base ai punti vittoria finale ottenuti alla fine della partita
+    public void orderVictoryPoint(){
+        Player[] arrayPlayerLists = playerList.toArray(new Player[playerList.size()]);
+        for (int i = 0; i < arrayPlayerLists.length-1; i++) {
+            for (int j = 0; j < arrayPlayerLists.length; j++) {
+                if (arrayPlayerLists[i].getPlayerResources().getResource("VictoryPoint").getValue() <
+                        arrayPlayerLists[i+1].getPlayerResources().getResource("VictoryPoint").getValue()) {
                     Player tempPlayer = arrayPlayerLists[i+1];
                     arrayPlayerLists[i+1] = arrayPlayerLists[i];
                     arrayPlayerLists[i] = tempPlayer;

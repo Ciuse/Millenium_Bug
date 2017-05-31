@@ -16,7 +16,7 @@ public class GameBoard {
     /* Singleton */
 
     private final static int TOWERNUMBER = 4;
-    private Tower[] towers;
+    private List<Tower> towers;
     private Market market;
     private CouncilPalace councilPalace;
     private SmallHarvest smallHarvest;
@@ -24,7 +24,7 @@ public class GameBoard {
     private SmallProduction smallProduction;
     private BigHarvest bigHarvest;
     private BigProduction bigProduction;
-    private Dice[] dice;
+    private List<Dice> dice;
     private MilitaryPointTrack militaryPointTrack;
     private FaithPointTrack faithPointTrack;
     private VictoryPointTrack victoryPointTrack;
@@ -38,9 +38,7 @@ public class GameBoard {
         }
         return ourInstance;
     }
-    private GameBoard()
-    {
-
+    private GameBoard() {
     }
 
     public void add4PlayerMarketSpace(List<EffectList> otherEffectList){
@@ -52,26 +50,28 @@ public class GameBoard {
     }
 
     public void rollTheDice(){
-        for(int i=0; i<dice.length; i++){
-            if(!dice[i].getColor().equals(DiceColor.NEUTRAL)){
+        for(int i=0; i<dice.size(); i++){
+            if(!dice.get(i).getColor().equals(DiceColor.NEUTRAL)){
                 int randomValue= (int)(Math.random()*6 + 1);
-                this.dice[i].setValue(randomValue);   
+                dice.get(i).setValue(randomValue);
             }
         }
     }
 
-    public void initializateGameBoard(List<EffectList> towerEffectList[], List<EffectList> otherEffectList){
+    public void initializateGameBoard(List<List<EffectList>> towerEffectList, List<EffectList> otherEffectList){
         //creazione torri
         CardColor[] towerColor= {CardColor.GREEN,CardColor.BLUE,CardColor.YELLOW,CardColor.PURPLE};
         for(int i=0; i<TOWERNUMBER; i++) {
-            this.towers[i] = new Tower(towerEffectList[i].size(), towerColor[i], towerEffectList[i]);
+            towers.add(new Tower(towerEffectList.get(i).size(), towerColor[i], towerEffectList.get(i)));
         }
+        this.towers = towers;
         //creazione dadi
         DiceColor[] diceColor={DiceColor.WHITE, DiceColor.ORANGE, DiceColor.BLACK, DiceColor.NEUTRAL};
         for(int i=0; i<4; i++) {
-            this.dice[i]= new Dice(diceColor[i]);
-            this.dice[i].setValue(0);
+            dice.add(new Dice(diceColor[i]));
+            dice.get(i).setValue(0);
         }
+
         //creazione del resto
         this.councilPalace = new CouncilPalace(otherEffectList.get(0));
         this.smallHarvest = new SmallHarvest(1, otherEffectList.get(1));
@@ -89,8 +89,8 @@ public class GameBoard {
         return TOWERNUMBER;
     }
 
-    public Tower[] getTowers() {
-        return towers.clone();
+    public List<Tower> getTowers() {
+        return new ArrayList<>(towers);
     }
 
     public Market getMarket() {
@@ -117,8 +117,8 @@ public class GameBoard {
         return bigProduction;
     }
 
-    public Dice[] getDice() {
-        return dice.clone();
+    public List<Dice> getDice() {
+        return new ArrayList<>(dice);
     }
 
     public MilitaryPointTrack getMilitaryPointTrack() {
