@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.board;
 
+import it.polimi.ingsw.ps31.GameInizialization;
 import it.polimi.ingsw.ps31.constants.CardColor;
 import it.polimi.ingsw.ps31.constants.DiceColor;
 import it.polimi.ingsw.ps31.effect.EffectList;

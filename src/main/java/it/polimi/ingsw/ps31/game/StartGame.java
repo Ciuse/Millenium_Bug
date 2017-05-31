@@ -124,7 +124,7 @@ public class StartGame {
                             timer1.purge();
                             gameBoard.endActionTurn(playerList.get(playerMaxNumber));
                         }
-                        if (playerList.get(playerNumber).checkIfOnlyNEUTRALRemained() == true) {
+                       if (playerList.get(playerNumber).checkIfOnlyNEUTRALRemained() == true) {
                             gameBoard.getEndActionButton().setActive(true);
                         }
                         //FASE AZIONE DEL GIOCATORE
@@ -236,7 +236,7 @@ public class StartGame {
     }
     public void finalExtraVictoryPoints5(VictoryPoint factor) {
         for (int i=0;i<playerList.size();i++){
-            int value = playerList.get(i).getPlayerResources().getPlayerResourceAsResourceList().getPhysicalResource();
+            int value = playerList.get(i).getPlayerResources().getPlayerResourceList().getPhysicalResource();
             int factorValue = factor.getValue();
             value= (value%5)*factorValue;
             VictoryPoint victoryPointToAdd = new VictoryPoint(value);

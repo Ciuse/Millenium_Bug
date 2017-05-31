@@ -11,13 +11,12 @@ public class TowerCardSpace extends PhysicalCardBox {
     private final ActionSpace actionSpace;
     private final CardColor color;
     private final Tower tower;
-    private DevelopmentCard card;
 
     /* Constructor */
     public TowerCardSpace(CardColor color, ActionSpace actionSpace, Tower tower) {
+        super();
         this.color = color;
         this.actionSpace = actionSpace;
-        this.card = null;
         this.tower = tower;
     }
 
@@ -25,10 +24,6 @@ public class TowerCardSpace extends PhysicalCardBox {
     public CardColor getColor()
     {
         return this.color;
-    }
-    public DevelopmentCard getCard ()
-    {
-        return this.card;
     }
     public ActionSpace getActionSpace()
     {
@@ -50,15 +45,9 @@ public class TowerCardSpace extends PhysicalCardBox {
         {
             //TODO: gestire (eccezione?)
         } else
-            this.card = card;
+            super.setCard(card);
     }
 
-    /* Class Methods */
-    public DevelopmentCard takeCard()
-    {
-        DevelopmentCard takenCard = this.card;
-        this.card = null;
-        return takenCard;
-    }
+
 
 }

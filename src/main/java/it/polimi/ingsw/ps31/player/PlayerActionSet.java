@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.player;
 
 import it.polimi.ingsw.ps31.actions.*;
 import it.polimi.ingsw.ps31.board.ActionSpace;
+import it.polimi.ingsw.ps31.board.GameBoard;
 import it.polimi.ingsw.ps31.board.TowerActionSpace;
 import it.polimi.ingsw.ps31.constants.CardColor;
 import it.polimi.ingsw.ps31.constants.DiceColor;

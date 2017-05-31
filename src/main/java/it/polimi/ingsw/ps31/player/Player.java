@@ -21,7 +21,6 @@ public class Player {
     private final String nickname;
     private final PlayerColor color;
     private PlayerResources playerResources;      //setter -->add e sub
-    private DevelopmentCardList playerCardList;
     private final PersonalBoard playerBoard;
     private final List<FamilyMember> familyMembers = new ArrayList<>();
     private FamilyMember lastUsedFamilyMember;
@@ -34,11 +33,11 @@ public class Player {
     private List<ResourceList> finalBonusResources;
 
     /* Constructor */
-    public Player(PlayerColor color, ResourceList initialResources, String nickname)
+    public Player(PlayerColor color, ResourceList initialResources, String nickname, PersonalBoard personalBoard)
     {
         //Attributi base
         this.color            = color;
-        this.playerBoard      = new PersonalBoard(this);
+        this.playerBoard      = personalBoard;
         this.nickname         = nickname;
         this.permanentBonus   = new PermanentBonus();
         this.excommunications = new ArrayList<>(); //TODO: serve davvero??
@@ -57,14 +56,9 @@ public class Player {
         int servantAmt = initialResources.getSpecificResource(Servant.class).getValue();
         this.playerResources = new PlayerResources(woodAmt, stoneAmt, coinAmt, servantAmt);
 
-
         //Inizializzazione harvestList e productionList
         this.harvestList = new HarvestList(this, null); //TODO: leggere firstHarvest da file
         this.productionList = new ProductionList(this, null); //TODO: leggere firstProduction da file
-
-        //Inizializzazione liste di carte
-        //TODO: usare classe CardList di Giuse
-        this.playerCardList = new DevelopmentCardList(null);
 
         //Instanzio un PlayerActionSet
         playerActionSet = new PlayerActionSet(this);
@@ -159,7 +153,7 @@ public class Player {
 
     public DevelopmentCardList getPlayerCardList()
     {
-        return this.playerCardList;
+        return this.playerBoard.getPlayerCardList();
     }
 
 
@@ -187,8 +181,8 @@ public class Player {
 
     public void addDevelopmentCard(DevelopmentCard card)
     {
-        if ( this.playerCardList.getSpecificCardList(card.getCardColor()).size() < MAXCARDLISTSIZE)
-            this.playerCardList.add(card);
+        if ( this.playerBoard.getPlayerCardList().getSpecificCardList(card.getCardColor()).size() < MAXCARDLISTSIZE)
+            this.playerBoard.addCard(card);
         else
         {
             //TODO: eccezione
@@ -217,7 +211,7 @@ public class Player {
 
     public DevelopmentCardList getColorCardList (CardColor cardColor)
     {
-        return new DevelopmentCardList(this.playerCardList.getSpecificCardList(cardColor));
+        return new DevelopmentCardList(this.playerBoard.getPlayerCardList().getSpecificCardList(cardColor));
     }
 
     public boolean checkIfOnlyNEUTRALRemained(){
@@ -246,25 +240,43 @@ public class Player {
 
         Player player = (Player) o;
 
-        if (!playerResources.equals(player.playerResources)) return false;
-        if (permanentBonus != null ? !permanentBonus.equals(player.permanentBonus) : player.permanentBonus != null)
+        if (flagTurnExcommunication != player.flagTurnExcommunication) return false;
+        if (nickname != null ? !nickname.equals(player.nickname) : player.nickname != null) return false;
+        if (color != player.color) return false;
+        if (playerResources != null ? !playerResources.equals(player.playerResources) : player.playerResources != null)
+            return false;
+        if (playerBoard != null ? !playerBoard.equals(player.playerBoard) : player.playerBoard != null) return false;
+        if (familyMembers != null ? !familyMembers.equals(player.familyMembers) : player.familyMembers != null)
+            return false;
+        if (lastUsedFamilyMember != null ? !lastUsedFamilyMember.equals(player.lastUsedFamilyMember) : player.lastUsedFamilyMember != null)
+            return false;
+        if (playerActionSet != null ? !playerActionSet.equals(player.playerActionSet) : player.playerActionSet != null)
             return false;
         if (excommunications != null ? !excommunications.equals(player.excommunications) : player.excommunications != null)
             return false;
-        return playerCardList != null ? playerCardList.equals(player.playerCardList) : player.playerCardList == null;
+        if (permanentBonus != null ? !permanentBonus.equals(player.permanentBonus) : player.permanentBonus != null)
+            return false;
+        if (harvestList != null ? !harvestList.equals(player.harvestList) : player.harvestList != null) return false;
+        if (productionList != null ? !productionList.equals(player.productionList) : player.productionList != null)
+            return false;
+        return finalBonusResources != null ? finalBonusResources.equals(player.finalBonusResources) : player.finalBonusResources == null;
     }
 
     @Override
     public int hashCode() {
-        int result = color.hashCode();
+        int result = nickname != null ? nickname.hashCode() : 0;
+        result = 31 * result + (color != null ? color.hashCode() : 0);
         result = 31 * result + (playerResources != null ? playerResources.hashCode() : 0);
         result = 31 * result + (playerBoard != null ? playerBoard.hashCode() : 0);
-        result = 31 * result + (nickname != null ? nickname.hashCode() : 0);
-        result = 31 * result + (permanentBonus != null ? permanentBonus.hashCode() : 0);
-        result = 31 * result + (excommunications != null ? excommunications.hashCode() : 0);
         result = 31 * result + (familyMembers != null ? familyMembers.hashCode() : 0);
+        result = 31 * result + (lastUsedFamilyMember != null ? lastUsedFamilyMember.hashCode() : 0);
+        result = 31 * result + (playerActionSet != null ? playerActionSet.hashCode() : 0);
+        result = 31 * result + (excommunications != null ? excommunications.hashCode() : 0);
         result = 31 * result + flagTurnExcommunication;
-        result = 31 * result + (playerCardList != null ? playerCardList.hashCode() : 0);
+        result = 31 * result + (permanentBonus != null ? permanentBonus.hashCode() : 0);
+        result = 31 * result + (harvestList != null ? harvestList.hashCode() : 0);
+        result = 31 * result + (productionList != null ? productionList.hashCode() : 0);
+        result = 31 * result + (finalBonusResources != null ? finalBonusResources.hashCode() : 0);
         return result;
     }
 }

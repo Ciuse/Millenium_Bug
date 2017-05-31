@@ -21,6 +21,14 @@ public abstract class PhysicalCardBox implements PhysicalSpaceBehavior
         this.card = card;
     }
 
+    public DevelopmentCard takeCard()
+    {
+        DevelopmentCard takenCard = this.card;
+        this.card = null;
+        return takenCard;
+    }
+
+    /* Class Methods */
     public DevelopmentCard getCard()
     {
         return this.card;

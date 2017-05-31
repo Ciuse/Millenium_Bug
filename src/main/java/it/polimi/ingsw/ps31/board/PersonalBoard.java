@@ -1,5 +1,10 @@
 package it.polimi.ingsw.ps31.board;
 
+import it.polimi.ingsw.ps31.card.DevelopmentCard;
+import it.polimi.ingsw.ps31.card.DevelopmentCardList;
+import it.polimi.ingsw.ps31.constants.CardColor;
+import it.polimi.ingsw.ps31.gameThings.MilitaryStrength;
+import it.polimi.ingsw.ps31.gameThings.PointResource;
 import it.polimi.ingsw.ps31.player.Player;
 
 import java.util.List;
@@ -9,14 +14,18 @@ import java.util.List;
  */
 public class PersonalBoard {
     private final Player player;
-    private final List<PersonalBoardCardSpace> cardSpaceList=null;
+    private final List<PersonalBoardCardList> personalBoardCardList=null;
     private final static int MAXCARDSPACELIST=4;
 
+
+
     /* Constructor */
-    public PersonalBoard(Player player) {                       //TODO SERVE IMPLEMENTARE LE CARD SPACE
+    public PersonalBoard(Player player, List<PointResource[]> pointResourceRequired) {
+        CardColor[] cardColor= {CardColor.YELLOW,CardColor.GREEN,CardColor.PURPLE,CardColor.BLUE};
         this.player = player;
         for(int i=0; i<MAXCARDSPACELIST;i++){
-            this.cardSpaceList.add(new PersonalBoardCardSpace());
+            personalBoardCardList.add(new PersonalBoardCardList(cardColor[i]));
+            personalBoardCardList.get(i).setExtraResourceRequired(pointResourceRequired.get(i));
         }
 
     }
@@ -27,4 +36,23 @@ public class PersonalBoard {
         return this.player;
     }
 
+    public DevelopmentCardList getPlayerCardList() {
+        DevelopmentCardList developmentCardList = new DevelopmentCardList();
+        for (PersonalBoardCardList list: personalBoardCardList
+                ) {
+            for (PersonalBoardCardCell cell: list.getPersonalBoardCardCellList()
+                    ) {
+                developmentCardList.add(cell.getCard());
+            }
+        }
+        return developmentCardList;
+    }
+
+    public void addCard(DevelopmentCard card){
+        for(int i=0; i<MAXCARDSPACELIST;i++){
+            if(personalBoardCardList.get(i).getCardColor().equals(card.getCardColor())){
+                personalBoardCardList.get(i).addCard(card);
+            }
+        }
+    }
 }
