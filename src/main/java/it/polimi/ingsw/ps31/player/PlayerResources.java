@@ -25,6 +25,9 @@ public class PlayerResources {
     public int getResourceValue(Class<? extends Resource> resourceClass) throws NullPointerException{
         return playerResourceList.getSpecificResource(resourceClass).getValue();
     }
+    protected ResourceList getPlayerResourceList(){
+        return this.playerResourceList;
+    }
 
     public boolean greaterThan(ResourceList that){
         int contatore=0;
