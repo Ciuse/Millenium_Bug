@@ -19,7 +19,7 @@ public class CreationJson {
 
     public CreationJson(){
         this.jsonGameObject.setDevelopementCardList(createCardList());
-        this.jsonGameObject.setTowerActionSpaceEffectArray(createTowerEffectArray());
+        this.jsonGameObject.setTowerActionSpaceEffectList(createTowerEffectList());
         this.jsonGameObject.setActionSpaceEffectList(createActionSpaceEffectList());
         this.jsonGameObject.setFaithTrackExtraValue(createFaithTrackExtraValue());
         this.jsonGameObject.setBonusVictoryPointFromTerritory(bonusVictoryPointFromTerritory());
@@ -896,53 +896,54 @@ public class CreationJson {
         return leaderCardList;
     }          //TODO SCRIVERE LE CARTE LEADER
     //TODO INSERIRE ANCHE LE TESSERE SCOMUNICA
-    public EffectList[] createTowerEffectArray(){       //EFFETTI SPAZZI AZIONE TORRE 1
-        EffectList[] towerEffectList= new EffectList[4];
-        EffectList effectListTower1 = new EffectList();
-        effectListTower1.add(null);
-        effectListTower1.add(null);
+    public List<List<EffectList>> createTowerEffectList() {
+        List<List<EffectList>> finalEffectList = new ArrayList<>();
+
+        List<EffectList> tower1EffectList = new ArrayList<>();         //EFFETTI SPAZI AZIONE TORRE 1
+        tower1EffectList.add(null);
+        tower1EffectList.add(null);
         ResourceList resourceList1 = new ResourceList();
         resourceList1.addSpecificResource(new Wood(1));
-        effectListTower1.add(new GetResourceEffect(resourceList1));
+        tower1EffectList.add(new EffectList(new GetResourceEffect(resourceList1)));
         ResourceList resourceList2 = new ResourceList();
         resourceList2.addSpecificResource(new Wood(2));
-        effectListTower1.add(new GetResourceEffect(resourceList2));
-        towerEffectList[0]=effectListTower1;
+        tower1EffectList.add(new EffectList(new GetResourceEffect(resourceList2)));
+        finalEffectList.add(tower1EffectList);
 
-        EffectList effectListTower2 = new EffectList();         //EFFETTI SPAZZI AZIONE TORRE 2
-        effectListTower2.add(null);
-        effectListTower2.add(null);
+        List<EffectList> tower2EffectList = new ArrayList<>();         //EFFETTI SPAZI AZIONE TORRE 2
+        tower2EffectList.add(null);
+        tower2EffectList.add(null);
         ResourceList resourceList7 = new ResourceList();
         resourceList7.addSpecificResource(new Stone(1));
-        effectListTower2.add(new GetResourceEffect(resourceList7));
+        tower2EffectList.add(new EffectList(new GetResourceEffect(resourceList7)));
         ResourceList resourceList8 = new ResourceList();
         resourceList8.addSpecificResource(new Stone(2));
-        effectListTower2.add(new GetResourceEffect(resourceList8));
-        towerEffectList[1]=effectListTower2;
+        tower2EffectList.add(new EffectList(new GetResourceEffect(resourceList8)));
+        finalEffectList.add(tower2EffectList);
 
-        EffectList effectListTower3 = new EffectList();         //EFFETTI SPAZZI AZIONE TORRE 3
-        effectListTower3.add(null);
-        effectListTower3.add(null);
+        List<EffectList> tower3EffectList = new ArrayList<>();         //EFFETTI SPAZI AZIONE TORRE 3
+        tower3EffectList.add(null);
+        tower3EffectList.add(null);
         ResourceList resourceList11 = new ResourceList();
         resourceList11.addSpecificResource(new MilitaryStrength(1));
-        effectListTower3.add(new GetResourceEffect(resourceList11));
+        tower3EffectList.add(new EffectList(new GetResourceEffect(resourceList11)));
         ResourceList resourceList12 = new ResourceList();
         resourceList12.addSpecificResource(new MilitaryStrength(2));
-        effectListTower3.add(new GetResourceEffect(resourceList12));
-        towerEffectList[2]=effectListTower3;
+        tower3EffectList.add(new EffectList(new GetResourceEffect(resourceList12)));
+        finalEffectList.add(tower3EffectList);
 
-        EffectList effectListTower4 = new EffectList();     //EFFETTI SPAZZI AZIONE TORRE 4
-        effectListTower4.add(null);
-        effectListTower4.add(null);
+        List<EffectList> tower4EffectList = new ArrayList<>();         //EFFETTI SPAZI AZIONE TORRE 4
+        tower4EffectList.add(null);
+        tower4EffectList.add(null);
         ResourceList resourceList15 = new ResourceList();
         resourceList15.addSpecificResource(new Coin(1));
-        effectListTower4.add(new GetResourceEffect(resourceList15));
+        tower4EffectList.add(new EffectList(new GetResourceEffect(resourceList15)));
         ResourceList resourceList16 = new ResourceList();
         resourceList16.addSpecificResource(new Coin(2));
-        effectListTower4.add(new GetResourceEffect(resourceList16));
-        towerEffectList[3]=effectListTower4;
+        tower4EffectList.add(new EffectList(new GetResourceEffect(resourceList16)));
+        finalEffectList.add(tower4EffectList);
 
-        return towerEffectList.clone();
+        return new ArrayList<>(finalEffectList);
 
     }
     public List<EffectList> createActionSpaceEffectList(){

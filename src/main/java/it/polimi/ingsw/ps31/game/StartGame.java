@@ -37,7 +37,7 @@ public class StartGame {
 
         //salvo tutti gli oggetti letti dal file json
         DevelopmentCardList developmentCardList = jsonObjectReadFromFile.getDevelopementCardList();
-        EffectList[][] towerActionSpaceEffectArray = jsonObjectReadFromFile.getTowerActionSpaceEffectArray();
+        List<List<EffectList>>towerActionSpaceEffectList = jsonObjectReadFromFile.getTowerActionSpaceEffectList();
         List<EffectList> actionSpaceEffectList = jsonObjectReadFromFile.getActionSpaceEffectList();
         VictoryPoint[] faithTrackExtraValue = jsonObjectReadFromFile.getFaithTrackExtraValue();
         VictoryPoint[] bonusVictoryPointFromCharacterCard = jsonObjectReadFromFile.getBonusVictoryPointFromCharacterCard();
@@ -46,7 +46,7 @@ public class StartGame {
         VictoryPoint[] bonusVictoryPointFromMilitaryTrack = jsonObjectReadFromFile.getBonusVictoryPointFromMilitaryTrack();
         VictoryPoint bonusVictoryPointFromPlayerResources = jsonObjectReadFromFile.getBonusVictoryPointFromPlayerResources();
 
-        gameBoard.initializateGameBoard(towerActionSpaceEffectArray,actionSpaceEffectList);
+        gameBoard.initializateGameBoard(towerActionSpaceEffectList,actionSpaceEffectList);
 
 
         //creazione deck vuoti

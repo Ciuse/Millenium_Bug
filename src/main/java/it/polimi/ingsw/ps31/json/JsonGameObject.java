@@ -18,7 +18,7 @@ import java.util.List;
 public class JsonGameObject {
     private DevelopmentCardList developementCardList;
     private List<LeaderCard> leaderCardList;
-    private EffectList[][] towerActionSpaceEffectArray;
+    private List<List<EffectList>> towerActionSpaceEffectList;
     private List<EffectList> actionSpaceEffectList;
     private VictoryPoint[] faithTrackExtraValue;
     private VictoryPoint[] bonusVictoryPointFromCharacterCard;
@@ -107,12 +107,12 @@ public class JsonGameObject {
         this.leaderCardList = leaderCardList;
     }
 
-    public EffectList[][] getTowerActionSpaceEffectArray() {
-        return towerActionSpaceEffectArray.clone();
+    public List<List<EffectList>> getTowerActionSpaceEffectList() {
+        return towerActionSpaceEffectList;
     }
 
-    public void setTowerActionSpaceEffectArray(EffectList[][] towerActionSpaceEffectArray) {
-        this.towerActionSpaceEffectArray = towerActionSpaceEffectArray;
+    public void setTowerActionSpaceEffectList(List<List<EffectList>> towerActionSpaceEffectList) {
+        this.towerActionSpaceEffectList = towerActionSpaceEffectList;
     }
 
     public List<EffectList> getActionSpaceEffectList() {

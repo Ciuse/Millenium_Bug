@@ -13,6 +13,9 @@ public class EffectList {
     public EffectList(List<Effect> effectList) {
         this.effectList = effectList;
     }
+    public EffectList(Effect effect){
+        this.effectList.add(effect);
+    }
     public EffectList(){}
 
 
