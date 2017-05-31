@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.gameThings;
 
+import it.polimi.ingsw.ps31.player.Player;
+
 /**
  * Created by Giuseppe on 09/05/2017.
  */
@@ -15,6 +17,10 @@ public abstract class Resource {
             //this.value = Math.abs(value);
         }
 
+    }
+
+    public void addResource(Player player){
+        player.addResources(this);
     }
 
     public void addValue(int value)

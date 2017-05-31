@@ -4,6 +4,7 @@ package it.polimi.ingsw.ps31.card;
 import it.polimi.ingsw.ps31.constants.CardColor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -90,6 +91,12 @@ public class DevelopmentCardList {
         }
         return specificCardList;
     }
+
+    public void shuffleCardList(){
+        Collections.shuffle(developmentCardList);
+    }
+
+
 
     @Override
     public boolean equals(Object o) {

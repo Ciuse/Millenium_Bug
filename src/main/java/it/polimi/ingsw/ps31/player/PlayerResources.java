@@ -16,7 +16,7 @@ public class PlayerResources {
 
     /* Setters & Getters */
     public void addResources(Resource resourceToAdd){
-
+       playerResourceList.addSpecificResource(resourceToAdd);
     }
 
     public void subResources(Resource resourceToSub) {

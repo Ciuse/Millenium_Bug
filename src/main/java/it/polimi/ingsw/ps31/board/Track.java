@@ -2,24 +2,25 @@ package it.polimi.ingsw.ps31.board;
 
 import it.polimi.ingsw.ps31.gameThings.PointResource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Giuseppe on 18/05/2017.
  */
 public abstract class Track {
-   private TrackCell[]  trackCell;
+   private List<TrackCell> trackCell=new ArrayList<>();
    private final int maxNumber;
 
    public Track(int maxNumber, Class<? extends PointResource> resourceType){
        this.maxNumber=maxNumber;
-       TrackCell[] trackCell = null;
        for(int i=0; i<this.maxNumber; i++){
-           trackCell[i]=new TrackCell(resourceType,i);
+           trackCell.add(new TrackCell(resourceType,i));
        }
-       this.trackCell=trackCell;
    }
 
-   public TrackCell[] getTrackCell(){
-       return this.trackCell.clone();
+   public List<TrackCell> getTrackCell(){
+       return new ArrayList<>(this.trackCell);
    }
 
    public int getMaxNumber() {
@@ -29,7 +30,7 @@ public abstract class Track {
    public void setTrackCellExtraValue(PointResource[] extraResourceValue)
    {
        for(int i=0; i<this.maxNumber; i++){
-           trackCell[i].setExtraValue(extraResourceValue[i]);
+           trackCell.get(i).setExtraValue(extraResourceValue[i]);
        }
 
    }

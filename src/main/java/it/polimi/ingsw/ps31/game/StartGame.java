@@ -50,6 +50,8 @@ public class StartGame {
 
         gameBoard.initializateGameBoard(towerActionSpaceEffectList,actionSpaceEffectList,faithTrackExtraValue);
 
+        developmentCardList.shuffleCardList();  //mischio la lista di carte lette da file
+
         //creazione deck vuoti
         List<DevelopmentCardDeck> deckList = new ArrayList<>();
         CardColor[] cardColors = {CardColor.GREEN, CardColor.YELLOW, CardColor.PURPLE, CardColor.BLUE};
