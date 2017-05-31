@@ -14,7 +14,7 @@ public class TrackCell {
     private List<MarkerDisc> markerDiscList= new ArrayList<>();
     private final Class<? extends PointResource> resourceType;
     private final int value;
-    private PointResource resourceValue;
+    private PointResource extraResource;
 
     public TrackCell(Class<? extends PointResource> resourceType, int value) {
         this.resourceType = resourceType;
@@ -38,7 +38,7 @@ public class TrackCell {
         return null;
     }
     public void setExtraValue(PointResource resourceValue){
-        this.resourceValue=resourceValue;
+        this.extraResource=resourceValue;
     }
     public int getValue(){
         return this.value;
@@ -47,7 +47,7 @@ public class TrackCell {
         return new ArrayList<>(this.markerDiscList);
     }
     public PointResource getExtraValue(){
-        return this.resourceValue;
+        return this.extraResource;
     }
     public Class<? extends PointResource> getResourceType(){
         return this.resourceType;

@@ -4,6 +4,7 @@ import it.polimi.ingsw.ps31.GameInizialization;
 import it.polimi.ingsw.ps31.constants.CardColor;
 import it.polimi.ingsw.ps31.constants.DiceColor;
 import it.polimi.ingsw.ps31.effect.EffectList;
+import it.polimi.ingsw.ps31.gameThings.VictoryPoint;
 import it.polimi.ingsw.ps31.player.Excommunication;
 import it.polimi.ingsw.ps31.player.Player;
 
@@ -60,7 +61,7 @@ public class GameBoard {
         }
     }
 
-    public void initializateGameBoard(List<List<EffectList>> towerEffectList, List<EffectList> otherEffectList) {
+    public void initializateGameBoard(List<List<EffectList>> towerEffectList, List<EffectList> otherEffectList,VictoryPoint[] faithTrackExtraValue) {
         //creazione torri
         CardColor[] towerColor = {CardColor.GREEN, CardColor.BLUE, CardColor.YELLOW, CardColor.PURPLE};
         for (int i = 0; i < TOWERNUMBER; i++) {
@@ -84,6 +85,7 @@ public class GameBoard {
         this.market.add2PlayerMarketSpace(otherEffectList.get(5), otherEffectList.get(6));
         this.militaryPointTrack = MilitaryPointTrack.getInstance();
         this.faithPointTrack = FaithPointTrack.getInstance();
+        this.faithPointTrack.inizializationFaithTrack(faithTrackExtraValue);
         this.victoryPointTrack = VictoryPointTrack.getInstance();
     }
 

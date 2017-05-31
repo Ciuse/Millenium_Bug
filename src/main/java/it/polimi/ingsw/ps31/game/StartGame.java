@@ -47,7 +47,8 @@ public class StartGame {
         VictoryPoint[] bonusVictoryPointFromMilitaryTrack = jsonObjectReadFromFile.getBonusVictoryPointFromMilitaryTrack();
         VictoryPoint bonusVictoryPointFromPlayerResources = jsonObjectReadFromFile.getBonusVictoryPointFromPlayerResources();
         List<ResourceList> initialPlayerResource = jsonObjectReadFromFile.getInitialResourcePlayer();
-        gameBoard.initializateGameBoard(towerActionSpaceEffectList,actionSpaceEffectList);
+
+        gameBoard.initializateGameBoard(towerActionSpaceEffectList,actionSpaceEffectList,faithTrackExtraValue);
 
         //creazione deck vuoti
         List<DevelopmentCardDeck> deckList = new ArrayList<>();

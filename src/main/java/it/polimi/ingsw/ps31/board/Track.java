@@ -25,4 +25,12 @@ public abstract class Track {
    public int getMaxNumber() {
        return maxNumber;
    }
+
+   public void setTrackCellExtraValue(PointResource[] extraResourceValue)
+   {
+       for(int i=0; i<this.maxNumber; i++){
+           trackCell[i].setExtraValue(extraResourceValue[i]);
+       }
+
+   }
 }
