@@ -13,16 +13,14 @@ import java.util.List;
  * Created by Francesco on 15/05/2017.
  */
 public class PersonalBoard {
-    private final Player player;
     private final List<PersonalBoardCardList> personalBoardCardList=null;
     private final static int MAXCARDSPACELIST=4;
 
 
 
     /* Constructor */
-    public PersonalBoard(Player player, List<PointResource[]> pointResourceRequired) {
+    public PersonalBoard(List<PointResource[]> pointResourceRequired) {
         CardColor[] cardColor= {CardColor.YELLOW,CardColor.GREEN,CardColor.PURPLE,CardColor.BLUE};
-        this.player = player;
         for(int i=0; i<MAXCARDSPACELIST;i++){
             personalBoardCardList.add(new PersonalBoardCardList(cardColor[i]));
             personalBoardCardList.get(i).setExtraResourceRequired(pointResourceRequired.get(i));
@@ -31,10 +29,6 @@ public class PersonalBoard {
     }
 
     /* Getters & Setters */
-    public Player getPlayer()
-    {
-        return this.player;
-    }
 
     public DevelopmentCardList getPlayerCardList() {
         DevelopmentCardList developmentCardList = new DevelopmentCardList();

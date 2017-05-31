@@ -8,10 +8,7 @@ import it.polimi.ingsw.ps31.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.constants.CardColor;
 import it.polimi.ingsw.ps31.constants.PlayerColor;
 import it.polimi.ingsw.ps31.effect.EffectList;
-import it.polimi.ingsw.ps31.gameThings.MilitaryStrength;
-import it.polimi.ingsw.ps31.gameThings.PointResource;
-import it.polimi.ingsw.ps31.gameThings.ResourceList;
-import it.polimi.ingsw.ps31.gameThings.VictoryPoint;
+import it.polimi.ingsw.ps31.gameThings.*;
 import it.polimi.ingsw.ps31.json.CreationJson;
 import it.polimi.ingsw.ps31.json.JsonFile;
 import it.polimi.ingsw.ps31.json.JsonGameObject;
@@ -143,7 +140,7 @@ public class StartGame {
                 //SOLITE COSE DA FARE DOPO LA FINE DELLA FASE AZIONI
                 if (round == 2) {
                     for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
-                        if (playerList.get(playerNumber).getPlayerResources().getResource("FaithPoint").getValue() < gameBoard.getFaithPointTrack().getTrackCell()[2 + period].getValue()) {
+                        if (playerList.get(playerNumber).getPlayerResources< gameBoard.getFaithPointTrack().getTrackCell()[2 + period].getValue()) {
                             gameBoard.getExcommunicationList().get(period).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
 
                             //regola dell'ultimo turno del terzo periodo (tutti ricevono i punti vittoria )

@@ -20,7 +20,7 @@ public class Player {
     private static final int MAXCARDLISTSIZE = 6;    //Massimo numero di carte dello stesso colore che si possono avere contemporaneamente
     private final String nickname;
     private final PlayerColor color;
-    private PlayerResources playerResources;      //setter -->add e sub
+    private final PlayerResources playerResources;      //setter -->add e sub
     private final PersonalBoard playerBoard;
     private final List<FamilyMember> familyMembers = new ArrayList<>();
     private FamilyMember lastUsedFamilyMember;
@@ -48,14 +48,7 @@ public class Player {
             this.familyMembers.add(familyMember);
         }
 
-        //Risorse iniziali
-        //TODO: il nome delle risorse deve essere preso da un enumeratore
-        int woodAmt    = initialResources.getSpecificResource(Wood.class).getValue();
-        int stoneAmt   = initialResources.getSpecificResource(Stone.class).getValue();
-        int coinAmt    = initialResources.getSpecificResource(Coin.class).getValue();
-        int servantAmt = initialResources.getSpecificResource(Servant.class).getValue();
-        this.playerResources = new PlayerResources(woodAmt, stoneAmt, coinAmt, servantAmt);
-
+        playerResources= new PlayerResources(initialResources);
         //Inizializzazione harvestList e productionList
         this.harvestList = new HarvestList(this, null); //TODO: leggere firstHarvest da file
         this.productionList = new ProductionList(this, null); //TODO: leggere firstProduction da file
