@@ -72,8 +72,8 @@ public class Player {
         return color;
     }
 
-    public ResourceList getPlayerResources() {
-        return playerResources.getPlayerResourceList();
+    public PlayerResources getPlayerResources() {
+        return playerResources;
     }
 
     public PersonalBoard getPlayerBoard() {
