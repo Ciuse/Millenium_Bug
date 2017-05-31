@@ -36,6 +36,10 @@ public class FamilyMember {
         return this.diceColor;
     }
 
+    public int getDiceValue(){
+        return gameBoard.getSpecificDice(this.diceColor).getValue();
+    }
+
     public int getAdditionalValue()
     {
         return this.additionalValue;

@@ -1,9 +1,9 @@
 package it.polimi.ingsw.ps31.player;
 
-import it.polimi.ingsw.ps31.board.Dice;
 import it.polimi.ingsw.ps31.board.PersonalBoard;
 import it.polimi.ingsw.ps31.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.card.DevelopmentCardList;
+import it.polimi.ingsw.ps31.card.ExcommunicationTiles;
 import it.polimi.ingsw.ps31.constants.CardColor;
 import it.polimi.ingsw.ps31.constants.DiceColor;
 import it.polimi.ingsw.ps31.constants.PlayerColor;
@@ -25,7 +25,7 @@ public class Player {
     private final List<FamilyMember> familyMembers = new ArrayList<>();
     private FamilyMember lastUsedFamilyMember;
     private PlayerActionSet playerActionSet;
-    private List<Excommunication> excommunications;
+    private List<ExcommunicationTiles> excommunicationTiles;
     private int flagTurnExcommunication;
     private PermanentBonus permanentBonus;
     private HarvestList harvestList;
@@ -40,7 +40,7 @@ public class Player {
         this.playerBoard      = personalBoard;
         this.nickname         = nickname;
         this.permanentBonus   = new PermanentBonus();
-        this.excommunications = new ArrayList<>(); //TODO: serve davvero??
+        this.excommunicationTiles = new ArrayList<>(); //TODO: serve davvero??
         //creazione lista dei famigliari
         DiceColor[] diceColor = {DiceColor.WHITE, DiceColor.ORANGE, DiceColor.BLACK, DiceColor.NEUTRAL};
         for(int i =0 ;i<diceColor.length;i++){
@@ -88,8 +88,8 @@ public class Player {
         this.permanentBonus = permanentBonus;
     }
 
-    public List<Excommunication> getExcommunications() {
-        return new ArrayList<>(excommunications);
+    public List<ExcommunicationTiles> getExcommunicationTiles() {
+        return new ArrayList<>(excommunicationTiles);
     }
 
     public List<FamilyMember> getFamilyMembers() {
@@ -167,9 +167,9 @@ public class Player {
             this.playerResources.addResources(resourcesToSub);
     }
 
-    public void addExcommunication(Excommunication excommunication)
+    public void addExcommunication(ExcommunicationTiles excommunicationTiles)
     {
-        this.excommunications.add(excommunication);
+        this.excommunicationTiles.add(excommunicationTiles);
     }
 
     public void addDevelopmentCard(DevelopmentCard card)
@@ -245,7 +245,7 @@ public class Player {
             return false;
         if (playerActionSet != null ? !playerActionSet.equals(player.playerActionSet) : player.playerActionSet != null)
             return false;
-        if (excommunications != null ? !excommunications.equals(player.excommunications) : player.excommunications != null)
+        if (excommunicationTiles != null ? !excommunicationTiles.equals(player.excommunicationTiles) : player.excommunicationTiles != null)
             return false;
         if (permanentBonus != null ? !permanentBonus.equals(player.permanentBonus) : player.permanentBonus != null)
             return false;
@@ -264,7 +264,7 @@ public class Player {
         result = 31 * result + (familyMembers != null ? familyMembers.hashCode() : 0);
         result = 31 * result + (lastUsedFamilyMember != null ? lastUsedFamilyMember.hashCode() : 0);
         result = 31 * result + (playerActionSet != null ? playerActionSet.hashCode() : 0);
-        result = 31 * result + (excommunications != null ? excommunications.hashCode() : 0);
+        result = 31 * result + (excommunicationTiles != null ? excommunicationTiles.hashCode() : 0);
         result = 31 * result + flagTurnExcommunication;
         result = 31 * result + (permanentBonus != null ? permanentBonus.hashCode() : 0);
         result = 31 * result + (harvestList != null ? harvestList.hashCode() : 0);

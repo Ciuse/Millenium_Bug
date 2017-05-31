@@ -27,6 +27,7 @@ public class JsonGameObject {
     private List<PointResource[]> pointResourceRequired;
     private VictoryPoint bonusVictoryPointFromPlayerResources;
     private List<ResourceList> initialResourcePlayer;
+    private List<ExcommunicationTiles> excommunicationTiles;
 
     public JsonGameObject() {
     }
@@ -178,5 +179,13 @@ public class JsonGameObject {
 
     public void setInitialResourcePlayer(List<ResourceList> initialResourcePlayer) {
         this.initialResourcePlayer = initialResourcePlayer;
+    }
+
+    public List<ExcommunicationTiles> getExcommunicationTiles() {
+        return excommunicationTiles;
+    }
+
+    public void setExcommunicationTiles(List<ExcommunicationTiles> excommunicationTiles) {
+        this.excommunicationTiles = excommunicationTiles;
     }
 }

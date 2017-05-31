@@ -28,6 +28,7 @@ public class CreationJson {
         this.jsonGameObject.setBonusVictoryPointFromPlayerResources(bonusVictoryPointFromPlayerResources());
         this.jsonGameObject.setPointResourceRequired(listOfRequirements());
         this.jsonGameObject.setInitialResourcePlayer(initialResourcePlayer());
+        //this.jsonGameObject.setExcommunicationTilesTiles(createExcommunicationTiles); //TODO rimuovere commento
 
 
     }
@@ -898,6 +899,9 @@ public class CreationJson {
         return leaderCardList;
     }          //TODO SCRIVERE LE CARTE LEADER
     //TODO INSERIRE ANCHE LE TESSERE SCOMUNICA
+//    public List<ExcommunicationTiles> createExcommunicationTiles(){
+//
+//    }
     public List<List<EffectList>> createTowerEffectList() {
         List<List<EffectList>> finalEffectList = new ArrayList<>();
 

@@ -18,7 +18,7 @@ public class GenericProductionActivation extends Effect {
 
     @Override
     public void activate(Player player) {
-        int diceValue = player.getLastUsedFamilyMember().getDice().getValue()+basicValue;
+        int diceValue = player.getLastUsedFamilyMember().getTotalValue()+basicValue;
         player.getPlayerActionSet().activateProduction(diceValue);
     }
 }

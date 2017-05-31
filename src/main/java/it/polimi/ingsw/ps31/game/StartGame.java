@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.game;
 
 import com.google.gson.Gson;
-import it.polimi.ingsw.ps31.board.Dice;
 import it.polimi.ingsw.ps31.board.GameBoard;
 import it.polimi.ingsw.ps31.card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.card.DevelopmentCardList;
@@ -12,7 +11,6 @@ import it.polimi.ingsw.ps31.gameThings.*;
 import it.polimi.ingsw.ps31.json.CreationJson;
 import it.polimi.ingsw.ps31.json.JsonFile;
 import it.polimi.ingsw.ps31.json.JsonGameObject;
-import it.polimi.ingsw.ps31.player.FamilyMember;
 import it.polimi.ingsw.ps31.player.Player;
 
 import java.util.*;
@@ -144,7 +142,7 @@ public class StartGame {
                 if (round == 2) {
                     for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
                         if (playerList.get(playerNumber).getPlayerResources().getResourceValue(FaithPoint.class)< gameBoard.getFaithPointTrack().getTrackCell().get(2 + period).getValue()) {
-                            gameBoard.getExcommunicationList().get(period).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
+                            gameBoard.getExcommunicationTilesList().get(period).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
 
                             //regola dell'ultimo turno del terzo periodo (tutti ricevono i punti vittoria )
                             if (period == 3) {

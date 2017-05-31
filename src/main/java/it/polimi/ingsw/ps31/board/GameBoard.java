@@ -1,11 +1,10 @@
 package it.polimi.ingsw.ps31.board;
 
-import it.polimi.ingsw.ps31.GameInizialization;
 import it.polimi.ingsw.ps31.constants.CardColor;
 import it.polimi.ingsw.ps31.constants.DiceColor;
 import it.polimi.ingsw.ps31.effect.EffectList;
 import it.polimi.ingsw.ps31.gameThings.VictoryPoint;
-import it.polimi.ingsw.ps31.player.Excommunication;
+import it.polimi.ingsw.ps31.card.ExcommunicationTiles;
 import it.polimi.ingsw.ps31.player.Player;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class GameBoard {
     private FaithPointTrack faithPointTrack;
     private VictoryPointTrack victoryPointTrack;
     private EndActionButton endActionButton;
-    private List<Excommunication> excommunicationList;
+    private List<ExcommunicationTiles> excommunicationTilesList;
     private static GameBoard ourInstance;
 
     public static GameBoard getInstance() {
@@ -137,12 +136,12 @@ public class GameBoard {
         return victoryPointTrack;
     }
 
-    public List<Excommunication> getExcommunicationList() {
-        return new ArrayList<>(excommunicationList);
+    public List<ExcommunicationTiles> getExcommunicationTilesList() {
+        return new ArrayList<>(excommunicationTilesList);
     }
 
-    public void setExcommunicationList(List<Excommunication> excommunicationList) {
-        this.excommunicationList = excommunicationList;
+    public void setExcommunicationTilesList(List<ExcommunicationTiles> excommunicationTiles) {
+        this.excommunicationTilesList = excommunicationTiles;
     }
 
     public EndActionButton getEndActionButton() {
