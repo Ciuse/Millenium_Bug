@@ -1059,6 +1059,9 @@ public class CreationJson {
             resourceListToAdd.addSpecificResource(new Stone(2));
             resourceListToAdd.addSpecificResource(new Servant(2));
             resourceListToAdd.addSpecificResource(new Coin(5+i));
+            resourceListToAdd.addSpecificResource(new MilitaryStrength(0));
+            resourceListToAdd.addSpecificResource(new FaithPoint(0));
+            resourceListToAdd.addSpecificResource(new VictoryPoint(0));
             listToReturn.add(resourceListToAdd);
         }
         return listToReturn;

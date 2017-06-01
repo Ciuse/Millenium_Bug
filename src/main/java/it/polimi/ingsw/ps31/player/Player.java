@@ -48,7 +48,8 @@ public class Player {
             this.familyMembers.add(familyMember);
         }
 
-        playerResources= new PlayerResources(initialResources);
+        playerResources = new PlayerResources(initialResources);
+
         //Inizializzazione harvestList e productionList
         this.harvestList = new HarvestList(this, null); //TODO: leggere firstHarvest da file
         this.productionList = new ProductionList(this, null); //TODO: leggere firstProduction da file

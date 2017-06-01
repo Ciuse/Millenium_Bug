@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.game;
 
 import com.google.gson.Gson;
 import it.polimi.ingsw.ps31.board.GameBoard;
+import it.polimi.ingsw.ps31.board.PersonalBoard;
 import it.polimi.ingsw.ps31.card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.constants.CardColor;
@@ -146,15 +147,15 @@ public class StartGame {
 
                             //regola dell'ultimo turno del terzo periodo (tutti ricevono i punti vittoria )
                             if (period == 3) {
-                                int faithPointPlayer = playerList.get(playerNumber).getPlayerResources().getResource("FaithPoint").getValue();
+                                int faithPointPlayer = playerList.get(playerNumber).getPlayerResources().getResourceValue(FaithPoint.class);
                                 playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
-                                playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getResource("FaithPoint"));
+                                playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getSpecificResource(FaithPoint.class));
                             }
                         } else {
                             //chiedo l'intervento della view e una volta ricevuto il messaggio di risposta true (il giocatore vuole spendere i suoi punti fede per evitare la scomunica)
-                            int faithPointPlayer = playerList.get(playerNumber).getPlayerResources().getResource("FaithPoint").getValue();
+                            int faithPointPlayer = playerList.get(playerNumber).getPlayerResources().getResourceValue(FaithPoint.class);
                             playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
-                            playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getResource("FaithPoint"));
+                            playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getSpecificResource(FaithPoint.class));
                         }
                     }
                 }
@@ -209,8 +210,8 @@ public class StartGame {
         boolean paritàTrovata = false;
         int contatore=0;
         for(int i=0;i<tempPlayerList.size();i++) {
-            if (tempPlayerList.get(0).getPlayerResources().getResource("MilitaryStrength").getValue()
-                    == tempPlayerList.get(i).getPlayerResources().getResource("MilitaryStrength").getValue()) {
+            if (tempPlayerList.get(0).getPlayerResources().getResourceValue(MilitaryStrength.class)
+                    == tempPlayerList.get(i).getPlayerResources().getResourceValue(MilitaryStrength.class)) {
                 contatore++;
                 tempPlayerList.get(i).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[0]);
             }
@@ -222,8 +223,8 @@ public class StartGame {
         int contatore2 =0;
         for(int j=1;j<tempPlayerList.size();j++){
             if (paritàTrovata==false
-                    && tempPlayerList.get(1).getPlayerResources().getResource("MilitaryStrength").getValue()
-                    == tempPlayerList.get(j).getPlayerResources().getResource("MilitaryStrength").getValue()) {
+                    && tempPlayerList.get(1).getPlayerResources().getResourceValue(MilitaryStrength.class)
+                    == tempPlayerList.get(j).getPlayerResources().getResourceValue(MilitaryStrength.class)) {
                 contatore2++;
               tempPlayerList.get(j).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[1]);
             }
@@ -260,8 +261,8 @@ public class StartGame {
         Player[] arrayPlayerLists = playerList.toArray(new Player[playerList.size()]);
         for (int i = 0; i < arrayPlayerLists.length-1; i++) {
             for (int j = 0; j < arrayPlayerLists.length; j++) {
-                if (arrayPlayerLists[i].getPlayerResources().getResource("MilitaryStrength").getValue() <
-                        arrayPlayerLists[i+1].getPlayerResources().getResource("MilitaryStrength").getValue()) {
+                if (arrayPlayerLists[i].getPlayerResources().getResourceValue(MilitaryStrength.class) <
+                        arrayPlayerLists[i+1].getPlayerResources().getResourceValue(MilitaryStrength.class)) {
                     Player tempPlayer = arrayPlayerLists[i+1];
                     arrayPlayerLists[i+1] = arrayPlayerLists[i];
                     arrayPlayerLists[i] = tempPlayer;
@@ -275,8 +276,8 @@ public class StartGame {
         Player[] arrayPlayerLists = playerList.toArray(new Player[playerList.size()]);
         for (int i = 0; i < arrayPlayerLists.length-1; i++) {
             for (int j = 0; j < arrayPlayerLists.length; j++) {
-                if (arrayPlayerLists[i].getPlayerResources().getResource("VictoryPoint").getValue() <
-                        arrayPlayerLists[i+1].getPlayerResources().getResource("VictoryPoint").getValue()) {
+                if (arrayPlayerLists[i].getPlayerResources().getResourceValue(VictoryPoint.class) <
+                        arrayPlayerLists[i+1].getPlayerResources().getResourceValue(VictoryPoint.class)) {
                     Player tempPlayer = arrayPlayerLists[i+1];
                     arrayPlayerLists[i+1] = arrayPlayerLists[i];
                     arrayPlayerLists[i] = tempPlayer;
@@ -289,8 +290,9 @@ public class StartGame {
     //la view deve richiedere il nome e il colore che vuole essere
     //creazione familymembers in base al colore che il player ha scelto ,la personal board, la lista delle risorse iniziali infine il player
 
-    public Player createPlayer(String name,PlayerColor playerColor,List<ResourceList> listOfResourceList){
-        Player playerCreated = new Player(playerColor,listOfResourceList.get(playerList.size()),name);
+    public Player createPlayer(String name,PlayerColor playerColor,List<ResourceList> listOfResourceList,List<PointResource[]>personalBoardRequirements){
+        PersonalBoard personalBoard = new PersonalBoard(personalBoardRequirements);
+        Player playerCreated = new Player(playerColor,listOfResourceList.get(playerList.size()),name,personalBoard);
         return playerCreated;
     }
 

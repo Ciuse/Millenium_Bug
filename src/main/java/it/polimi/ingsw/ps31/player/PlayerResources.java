@@ -25,6 +25,10 @@ public class PlayerResources {
     public int getResourceValue(Class<? extends Resource> resourceClass) throws NullPointerException{
         return playerResourceList.getSpecificResource(resourceClass).getValue();
     }
+
+    public Resource getSpecificResource(Class<? extends Resource> resourceClass) throws NullPointerException {
+        return playerResourceList.getSpecificResource(resourceClass);
+    }
     public ResourceList getPlayerResourceList(){
         return this.playerResourceList;
     }
