@@ -12,11 +12,8 @@ import java.util.Observer;
  */
 public class View implements Observer {
     @Override
-    public void update(Observable o, Object arg) {
-
+    public void update(Observable o, Object args) {
+        System.out.println("ho ricevuto il messaggio: " +args);
     }
 
-    public void update(Observable model, MessageEsemple arg) {
-        System.out.println("ho ricevuto il messaggio");
-    }
 }
