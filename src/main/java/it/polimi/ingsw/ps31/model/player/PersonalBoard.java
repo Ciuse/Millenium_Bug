@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31.model.board;
+package it.polimi.ingsw.ps31.model.player;
 
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
@@ -12,14 +12,14 @@ import java.util.List;
  */
 public class PersonalBoard {
     private final List<PersonalBoardCardList> personalBoardCardList=null;
-    private final static int MAXCARDSPACELIST=4;
+    private final static int NUM_OF_CARD_LIST =4;
 
 
 
     /* Constructor */
     public PersonalBoard(List<PointResource[]> pointResourceRequired) {
         CardColor[] cardColor= {CardColor.YELLOW,CardColor.GREEN,CardColor.PURPLE,CardColor.BLUE};
-        for(int i=0; i<MAXCARDSPACELIST;i++){
+        for(int i = 0; i< NUM_OF_CARD_LIST; i++){
             personalBoardCardList.add(new PersonalBoardCardList(cardColor[i]));
             personalBoardCardList.get(i).setExtraResourceRequired(pointResourceRequired.get(i));
         }
@@ -27,6 +27,20 @@ public class PersonalBoard {
     }
 
     /* Getters & Setters */
+
+    public PersonalBoardCardList getSpecificPersonalBoardCardList(CardColor  cardColor) {
+        for (PersonalBoardCardList list : personalBoardCardList
+                ) {
+            if (list.getCardColor().equals(cardColor)) {
+                return list;
+            }
+        }
+        return null;
+    }
+
+    protected static int getNumOfCardList() {
+        return NUM_OF_CARD_LIST;
+    }
 
     public DevelopmentCardList getPlayerCardList() {
         DevelopmentCardList developmentCardList = new DevelopmentCardList();
@@ -41,7 +55,7 @@ public class PersonalBoard {
     }
 
     public void addCard(DevelopmentCard card){
-        for(int i=0; i<MAXCARDSPACELIST;i++){
+        for(int i = 0; i< NUM_OF_CARD_LIST; i++){
             if(personalBoardCardList.get(i).getCardColor().equals(card.getCardColor())){
                 personalBoardCardList.get(i).addCard(card);
             }

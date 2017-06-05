@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps31.model.game;
 
 import com.google.gson.Gson;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
-import it.polimi.ingsw.ps31.model.board.PersonalBoard;
+import it.polimi.ingsw.ps31.model.player.PersonalBoard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.constants.CardColor;

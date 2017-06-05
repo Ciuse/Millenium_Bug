@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.model.player;
 
-import it.polimi.ingsw.ps31.model.board.PersonalBoard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
@@ -17,7 +16,6 @@ import java.util.List;
  * Created by giulia on 15/05/2017.
  */
 public class Player {
-    private static final int MAXCARDLISTSIZE = 6;    //Massimo numero di carte dello stesso colore che si possono avere contemporaneamente
     private final String nickname;
     private final PlayerColor color;
     private final PlayerResources playerResources;      //setter -->add e sub
@@ -175,7 +173,7 @@ public class Player {
 
     public void addDevelopmentCard(DevelopmentCard card)
     {
-        if ( this.playerBoard.getPlayerCardList().getSpecificCardList(card.getCardColor()).size() < MAXCARDLISTSIZE)
+        if ( this.playerBoard.getPlayerCardList().getSpecificCardList(card.getCardColor()).size() <PersonalBoardCardList.getMaxCardOfSameColor())
             this.playerBoard.addCard(card);
         else
         {

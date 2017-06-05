@@ -1,8 +1,6 @@
 package it.polimi.ingsw.ps31.model.gameThings;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by Giuseppe on 10/05/2017.
@@ -25,7 +23,6 @@ public class ResourceList {
         boolean found=false;
 
         for(int i=0; i<this.resourceList.size(); i++) {
-
             if (this.resourceList.get(i).getClass().equals(resource.getClass()) && found == false) {
                 this.resourceList.get(i).addValue(resource.getValue());
                 found = true;

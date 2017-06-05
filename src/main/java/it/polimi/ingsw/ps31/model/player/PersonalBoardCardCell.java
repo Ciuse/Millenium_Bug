@@ -1,5 +1,6 @@
-package it.polimi.ingsw.ps31.model.board;
+package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.model.board.PhysicalCardBox;
 import it.polimi.ingsw.ps31.model.gameThings.PointResource;
 
 /**
