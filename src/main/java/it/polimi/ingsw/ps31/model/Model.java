@@ -1,10 +1,12 @@
 package it.polimi.ingsw.ps31.model;
 
+import it.polimi.ingsw.ps31.model.StateModel.InfoPlayer;
+import it.polimi.ingsw.ps31.model.StateModel.StateCardBox;
+import it.polimi.ingsw.ps31.model.constants.CardColor;
+import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.gameThings.Coin;
-import it.polimi.ingsw.ps31.server.message.MessageToString;
-import it.polimi.ingsw.ps31.server.message.Visitable;
-import it.polimi.ingsw.ps31.server.message.Messaggio2;
 import it.polimi.ingsw.ps31.client.view.View;
+import it.polimi.ingsw.ps31.server.message.MesStateInfo;
 
 import java.util.Observable;
 
@@ -22,7 +24,9 @@ public class Model extends Observable {
     public void ask() {
         this.setChanged();
         System.out.println(this.hasChanged());
-        notifyObservers(new MessageToString(new Coin(3)));
+        notifyObservers(new MesStateInfo(new InfoPlayer("ciao", PlayerColor.RED)));
+        this.setChanged();
+        notifyObservers(new MesStateInfo(new StateCardBox("ciao",2, CardColor.BLUE)));
     }
 }
 

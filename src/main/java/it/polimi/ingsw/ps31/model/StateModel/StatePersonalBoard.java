@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.StateModel;
 
 import it.polimi.ingsw.ps31.model.player.PersonalBoardCardList;
+import it.polimi.ingsw.ps31.server.message.StateVisitor;
 
 import java.util.List;
 
@@ -13,5 +14,10 @@ public class StatePersonalBoard extends StateInfo{
 
     public StatePersonalBoard(List<PersonalBoardCardList> personalBoardCardList) {
         this.personalBoardCardList = personalBoardCardList;
+    }
+
+    @Override
+    public void acceptState(StateVisitor stateVisitor) {
+        stateVisitor.visit(this);
     }
 }

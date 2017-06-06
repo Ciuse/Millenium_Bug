@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.client.view;
 
-import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.server.message.Visitable;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 
@@ -9,7 +8,9 @@ import java.util.Observer;
 import java.util.Scanner;
 
 /**
- * Created by giulia on 01/06/2017.
+ * Created by giuli        System.out.println("INFO PLAYER");
+ System.out.println("INFO PLAYER");
+ a on 01/06/2017.
  */
 public class View implements Observer{
 

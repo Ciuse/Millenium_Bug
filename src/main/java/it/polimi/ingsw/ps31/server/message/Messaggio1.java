@@ -6,7 +6,7 @@ package it.polimi.ingsw.ps31.server.message;
 public class Messaggio1 implements Visitable {
 
     @Override
-    public void accept(it.polimi.ingsw.ps31.server.message.Visitor visitor) {
-        visitor.visit(this);
+    public void accept(MesVisitor mesVisitor) {
+        mesVisitor.visit(this);
     }
 }
