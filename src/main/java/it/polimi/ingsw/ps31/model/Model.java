@@ -1,9 +1,8 @@
 package it.polimi.ingsw.ps31.model;
 
-import it.polimi.ingsw.ps31.message.MessageExample;
-import it.polimi.ingsw.ps31.message.Messaggio1;
-import it.polimi.ingsw.ps31.message.Messaggio2;
-import it.polimi.ingsw.ps31.view.View;
+import it.polimi.ingsw.ps31.server.message.Visitable;
+import it.polimi.ingsw.ps31.server.message.Messaggio2;
+import it.polimi.ingsw.ps31.client.view.View;
 
 import java.util.Observable;
 
@@ -21,7 +20,7 @@ public class Model extends Observable {
     public void ask() {
         this.setChanged();
         System.out.println(this.hasChanged());
-        MessageExample messageExample = new Messaggio2();
+        Visitable messageExample = new Messaggio2();
         notifyObservers(messageExample);
     }
 }

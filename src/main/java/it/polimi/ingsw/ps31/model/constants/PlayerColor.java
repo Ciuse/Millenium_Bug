@@ -5,4 +5,5 @@ package it.polimi.ingsw.ps31.model.constants;
  */
 public enum PlayerColor {
     RED, GREEN, YELLOW, BLUE;
+
 }
