@@ -29,6 +29,14 @@ public class PersonalBoard {
 
     /* Getters & Setters */
 
+    public List<PersonalBoardCardList> getPersonalBoardCardList() {
+        return personalBoardCardList;
+    }
+
+    public StatePersonalBoard getStatePersonalBoard() {
+        return statePersonalBoard;
+    }
+
     public PersonalBoardCardList getSpecificPersonalBoardCardList(CardColor  cardColor) {
         for (PersonalBoardCardList list : personalBoardCardList
                 ) {
