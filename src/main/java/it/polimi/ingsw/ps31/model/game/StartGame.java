@@ -162,8 +162,8 @@ public class StartGame {
                 //aggiungo alla lista dei colori del palazzo del consiglio gli eventuali giocatori che non si sono posizionati in questo spazio azione e poi riordino la lista giocatori
                 List<PlayerColor> colorOrder = new ArrayList(gameBoard.getCouncilPalace().getColorOrder());
                 for (int i = 0; i < playerList.size(); i++) {
-                    if (gameBoard.getCouncilPalace().checkIfPresentColor(playerList.get(i).getColor()) == false) {
-                        colorOrder.add(playerList.get(i).getColor());
+                    if (gameBoard.getCouncilPalace().checkIfPresentColor(playerList.get(i).getPlayerColor()) == false) {
+                        colorOrder.add(playerList.get(i).getPlayerColor());
                     }
                 }
                 this.orderPlayersListWithColors(colorOrder);
@@ -183,6 +183,7 @@ public class StartGame {
 
     /*Metodi per calcolare i punti vittoria alla fine del gioco */
 
+
     public void finalExtraVictoryPoints1(VictoryPoint[] bonusVictoryPointFromTerritory) {
         for (int i = 0; i < playerList.size(); i++) {
             if (playerList.get(i).getPlayerCardList().countCardGreen() > 1) {
@@ -201,7 +202,7 @@ public class StartGame {
     }
     public void finalExtraVictoryPoints3() {
         for (int i = 0; i < playerList.size(); i++) {
-            playerList.get(i).getPlayerActionSet().getFinalResources();
+            playerList.get(i).activateFinalEffects();
         }
 
     }
@@ -249,7 +250,7 @@ public class StartGame {
     public void orderPlayersListWithColors(List<PlayerColor> colorList) {
         for (int i = 0; i < colorList.size(); i++) {
             for (int j = 0; j < playerList.size(); j++) { //il for con la j serve solo per fare 4 cicli massimi
-                if (!colorList.get(i).equals(playerList.get(i).getColor())) {
+                if (!colorList.get(i).equals(playerList.get(i).getPlayerColor())) {
                     Player removedPlayer = playerList.remove(i);   //il remove mi fa scalare automaticamente tutti i giocatori verso sinistra
                     playerList.add(removedPlayer);
                 }

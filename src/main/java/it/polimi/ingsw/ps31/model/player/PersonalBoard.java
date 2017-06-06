@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.model.StateModel.StatePersonalBoard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
@@ -13,7 +14,7 @@ import java.util.List;
 public class PersonalBoard {
     private final List<PersonalBoardCardList> personalBoardCardList=null;
     private final static int NUM_OF_CARD_LIST =4;
-
+    private StatePersonalBoard statePersonalBoard;
 
 
     /* Constructor */
@@ -61,4 +62,5 @@ public class PersonalBoard {
             }
         }
     }
+
 }

@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.model.StateModel.InfoPlayer;
+import it.polimi.ingsw.ps31.model.StateModel.StateResources;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
@@ -17,7 +19,7 @@ import java.util.List;
  */
 public class Player {
     private final String nickname;
-    private final PlayerColor color;
+    private final PlayerColor playerColor;
     private final PlayerResources playerResources;      //setter -->add e sub
     private final PersonalBoard playerBoard;
     private final List<FamilyMember> familyMembers = new ArrayList<>();
@@ -29,12 +31,14 @@ public class Player {
     private HarvestList harvestList;
     private ProductionList productionList;
     private List<ResourceList> finalBonusResources;
+    private InfoPlayer infoPlayer;
+    private StateResources stateResources;
 
     /* Constructor */
-    public Player(PlayerColor color, ResourceList initialResources, String nickname, PersonalBoard personalBoard)
+    public Player(PlayerColor playerColor, ResourceList initialResources, String nickname, PersonalBoard personalBoard)
     {
         //Attributi base
-        this.color            = color;
+        this.playerColor = playerColor;
         this.playerBoard      = personalBoard;
         this.nickname         = nickname;
         this.permanentBonus   = new PermanentBonus();
@@ -67,8 +71,8 @@ public class Player {
         return nickname;
     }
 
-    public PlayerColor getColor() {
-        return color;
+    public PlayerColor getPlayerColor() {
+        return playerColor;
     }
 
     public PlayerResources getPlayerResources() {
@@ -222,7 +226,17 @@ public class Player {
 
     public void activateFinalEffects()
     {
-        //TODO: implementare
+        playerActionSet.getFinalResources();
+    }
+
+    public InfoPlayer getInfoPlayer(){
+        InfoPlayer infoPlayer = new InfoPlayer(nickname,playerColor);
+        return infoPlayer;
+    }
+
+    public StateResources getStateResources(){
+        StateResources stateResources = new StateResources(playerResources);
+        return stateResources;
     }
 
     @Override
@@ -234,7 +248,7 @@ public class Player {
 
         if (flagTurnExcommunication != player.flagTurnExcommunication) return false;
         if (nickname != null ? !nickname.equals(player.nickname) : player.nickname != null) return false;
-        if (color != player.color) return false;
+        if (playerColor != player.playerColor) return false;
         if (playerResources != null ? !playerResources.equals(player.playerResources) : player.playerResources != null)
             return false;
         if (playerBoard != null ? !playerBoard.equals(player.playerBoard) : player.playerBoard != null) return false;
@@ -257,7 +271,7 @@ public class Player {
     @Override
     public int hashCode() {
         int result = nickname != null ? nickname.hashCode() : 0;
-        result = 31 * result + (color != null ? color.hashCode() : 0);
+        result = 31 * result + (playerColor != null ? playerColor.hashCode() : 0);
         result = 31 * result + (playerResources != null ? playerResources.hashCode() : 0);
         result = 31 * result + (playerBoard != null ? playerBoard.hashCode() : 0);
         result = 31 * result + (familyMembers != null ? familyMembers.hashCode() : 0);

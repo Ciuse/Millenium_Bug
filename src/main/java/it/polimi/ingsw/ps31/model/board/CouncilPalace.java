@@ -36,7 +36,7 @@ public class CouncilPalace extends ActionSpace {
         Iterator<FamilyMember> orderIterator = order.iterator();
         while (orderIterator.hasNext())
         {
-            PlayerColor currentColor = orderIterator.next().getPlayer().getColor();
+            PlayerColor currentColor = orderIterator.next().getPlayer().getPlayerColor();
             if(!toReturn.contains(currentColor))
                 toReturn.add(currentColor);
         }

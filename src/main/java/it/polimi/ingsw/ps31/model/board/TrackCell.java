@@ -30,7 +30,7 @@ public class TrackCell {
         while(iterator.hasNext()) {
 
             MarkerDisc currentItem = iterator.next();
-            if (currentItem.getPlayer().getColor() == player.getColor()) {
+            if (currentItem.getPlayer().getPlayerColor() == player.getPlayerColor()) {
                 this.markerDiscList.remove(currentItem);
                 return currentItem;
             }

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.board;
 
+import it.polimi.ingsw.ps31.model.StateModel.StateCardBox;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 
 /**
@@ -7,6 +8,7 @@ import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
  */
 public abstract class PhysicalCardBox implements PhysicalSpaceBehavior
 {
+    private StateCardBox stateCardBox;
     protected DevelopmentCard card;
 
     /* Constructor */
@@ -33,4 +35,10 @@ public abstract class PhysicalCardBox implements PhysicalSpaceBehavior
     {
         return this.card;
     }
+
+    public StateCardBox GetStateCardBox(){
+        StateCardBox stateCardBox = new StateCardBox(this.card.getName(),this.card.getCardId(),this.card.getCardColor());
+        return stateCardBox;
+    }
+
 }
