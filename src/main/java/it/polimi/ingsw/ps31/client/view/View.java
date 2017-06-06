@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.client.view;
 
+import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.server.message.Visitable;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 
@@ -56,6 +57,13 @@ public class View implements Observer{
             }
         }
         return playerColor;
+    }
+
+    public void objectToString (Object o){
+        System.out.println(o.toString());
+    }
+    public void printNewPlayer(){
+
     }
 
 }

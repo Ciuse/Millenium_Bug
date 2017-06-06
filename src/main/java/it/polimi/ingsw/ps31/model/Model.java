@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.model;
 
+import it.polimi.ingsw.ps31.model.gameThings.Coin;
+import it.polimi.ingsw.ps31.server.message.MessageToString;
 import it.polimi.ingsw.ps31.server.message.Visitable;
 import it.polimi.ingsw.ps31.server.message.Messaggio2;
 import it.polimi.ingsw.ps31.client.view.View;
@@ -20,8 +22,7 @@ public class Model extends Observable {
     public void ask() {
         this.setChanged();
         System.out.println(this.hasChanged());
-        Visitable messageExample = new Messaggio2();
-        notifyObservers(messageExample);
+        notifyObservers(new MessageToString(new Coin(3)));
     }
 }
 
