@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.model.actions;
 
-import it.polimi.ingsw.ps31.model.gameThings.Resource;
-import it.polimi.ingsw.ps31.model.gameThings.ResourceList;
+import it.polimi.ingsw.ps31.model.gameResource.Resource;
+import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.util.List;

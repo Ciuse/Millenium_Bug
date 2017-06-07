@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.model.actionControls;
 
-import it.polimi.ingsw.ps31.model.gameThings.ResourceList;
+import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 /**

@@ -5,10 +5,10 @@ import it.polimi.ingsw.ps31.model.StateModel.StateInfo;
 /**
  * Created by Giuseppe on 06/06/2017.
  */
-public class MesStateInfo implements Visitable {
+public class MexStateInfo implements MexVisitable {
     StateInfo stateInfo;
 
-    public MesStateInfo(StateInfo stateInfo) {
+    public MexStateInfo(StateInfo stateInfo) {
         this.stateInfo = stateInfo;
     }
 
@@ -17,7 +17,7 @@ public class MesStateInfo implements Visitable {
     }
 
     @Override
-    public void accept(MesVisitor mesVisitor) {
-        mesVisitor.visit(this);
+    public void accept(MexVisitor mexVisitor) {
+        mexVisitor.visit(this);
     }
 }

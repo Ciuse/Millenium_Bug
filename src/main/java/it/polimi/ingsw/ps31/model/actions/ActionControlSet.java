@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps31.model.board.Tower;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
-import it.polimi.ingsw.ps31.model.gameThings.ResourceList;
+import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.FamilyMember;
 import it.polimi.ingsw.ps31.model.player.Player;
 

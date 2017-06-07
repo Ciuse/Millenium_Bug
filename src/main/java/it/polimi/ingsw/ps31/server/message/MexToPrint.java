@@ -1,9 +1,10 @@
 package it.polimi.ingsw.ps31.server.message;
 
 /**
- * Created by Giuseppe on 02/06/2017.
+ * Created by giulia on 07/06/2017.
  */
-public class Messaggio2 implements MexVisitable {
+public class MexToPrint implements MexVisitable {
+
     @Override
     public void accept(MexVisitor mexVisitor) {
         mexVisitor.visit(this);

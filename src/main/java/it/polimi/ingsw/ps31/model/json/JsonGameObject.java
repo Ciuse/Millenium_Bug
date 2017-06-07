@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps31.model.bonus.*;
 import it.polimi.ingsw.ps31.model.card.*;
 import it.polimi.ingsw.ps31.model.card.Character;
 import it.polimi.ingsw.ps31.model.effect.*;
-import it.polimi.ingsw.ps31.model.gameThings.*;
+import it.polimi.ingsw.ps31.model.gameResource.*;
 
 import java.util.ArrayList;
 import java.util.List;

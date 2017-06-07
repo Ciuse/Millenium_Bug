@@ -1,9 +1,13 @@
 package it.polimi.ingsw.ps31.client.view;
 
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
-import it.polimi.ingsw.ps31.server.message.Visitable;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
+import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import it.polimi.ingsw.ps31.server.message.MexVisitable;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
@@ -12,11 +16,13 @@ import java.util.Scanner;
  * Created by giulia in 01/06/2017.
  */
 public class View implements Observer{
+    private final PlayerId viewId;
     private final StateViewBoard stateViewBoard;
-    private final StateViewPersonalBoard stateViewPersonalBoard;
-    private final StateViewPlayer stateViewPlayer;
+    private final List<StateViewPersonalBoard> stateViewPersonalBoard;
+    private final List<StateViewPlayer> stateViewPlayer;
 
-    public View(StateViewBoard stateViewBoard, StateViewPersonalBoard stateViewPersonalBoard, StateViewPlayer stateViewPlayer) {
+    public View(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoard, List<StateViewPlayer> stateViewPlayer) {
+        this.viewId = viewId;
         this.stateViewBoard = stateViewBoard;
         this.stateViewPersonalBoard = stateViewPersonalBoard;
         this.stateViewPlayer = stateViewPlayer;
@@ -25,7 +31,7 @@ public class View implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         MessageVisitor messageVisitor = new MessageVisitor();
-        Visitable message = (Visitable) arg;
+        MexVisitable message = (MexVisitable) arg;
         message.accept(messageVisitor);
     }
 

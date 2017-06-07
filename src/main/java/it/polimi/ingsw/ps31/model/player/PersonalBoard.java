@@ -4,7 +4,8 @@ import it.polimi.ingsw.ps31.model.StateModel.StatePersonalBoard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
-import it.polimi.ingsw.ps31.model.gameThings.PointResource;
+import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 
 import java.util.List;
 
@@ -12,13 +13,15 @@ import java.util.List;
  * Created by Francesco on 15/05/2017.
  */
 public class PersonalBoard {
+    private final PlayerId playerId;
     private final List<PersonalBoardCardList> personalBoardCardList=null;
     private final static int NUM_OF_CARD_LIST =4;
     private StatePersonalBoard statePersonalBoard;
 
 
     /* Constructor */
-    public PersonalBoard(List<PointResource[]> pointResourceRequired) {
+    public PersonalBoard(List<PointResource[]> pointResourceRequired, PlayerId playerId) {
+        this.playerId = playerId;
         CardColor[] cardColor= {CardColor.YELLOW,CardColor.GREEN,CardColor.PURPLE,CardColor.BLUE};
         for(int i = 0; i< NUM_OF_CARD_LIST; i++){
             personalBoardCardList.add(new PersonalBoardCardList(cardColor[i]));

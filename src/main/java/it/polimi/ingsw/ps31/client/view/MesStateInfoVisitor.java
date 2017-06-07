@@ -1,9 +1,7 @@
 package it.polimi.ingsw.ps31.client.view;
 
 import it.polimi.ingsw.ps31.model.StateModel.*;
-import it.polimi.ingsw.ps31.server.message.MesVisitor;
-import it.polimi.ingsw.ps31.server.message.StateVisitor;
-import sun.misc.resources.Messages_zh_CN;
+import it.polimi.ingsw.ps31.model.StateModel.StateVisitor;
 
 /**
  * Created by Giuseppe on 06/06/2017.

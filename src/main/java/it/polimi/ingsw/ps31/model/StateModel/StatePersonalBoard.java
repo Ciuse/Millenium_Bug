@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps31.model.StateModel;
 import it.polimi.ingsw.ps31.model.player.PersonalBoard;
 import it.polimi.ingsw.ps31.model.player.PersonalBoardCardCell;
 import it.polimi.ingsw.ps31.model.player.PersonalBoardCardList;
-import it.polimi.ingsw.ps31.server.message.StateVisitor;
 
 import java.util.List;
 

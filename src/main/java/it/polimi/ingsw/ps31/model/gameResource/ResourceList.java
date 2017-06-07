@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31.model.gameThings;
+package it.polimi.ingsw.ps31.model.gameResource;
 
 import java.util.*;
 

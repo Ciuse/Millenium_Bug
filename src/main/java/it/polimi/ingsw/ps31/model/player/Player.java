@@ -8,7 +8,8 @@ import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
-import it.polimi.ingsw.ps31.model.gameThings.*;
+import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import it.polimi.ingsw.ps31.model.gameResource.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,6 +19,7 @@ import java.util.List;
  * Created by giulia on 15/05/2017.
  */
 public class Player {
+    private final PlayerId playerId;
     private final String nickname;
     private final PlayerColor playerColor;
     private final PlayerResources playerResources;      //setter -->add e sub
@@ -35,13 +37,14 @@ public class Player {
     private StateResources stateResources;
 
     /* Constructor */
-    public Player(PlayerColor playerColor, ResourceList initialResources, String nickname, PersonalBoard personalBoard)
+    public Player(PlayerColor playerColor, ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard)
     {
         //Attributi base
         this.playerColor = playerColor;
-        this.playerBoard      = personalBoard;
-        this.nickname         = nickname;
-        this.permanentBonus   = new PermanentBonus();
+        this.playerId = playerId;
+        this.playerBoard = personalBoard;
+        this.nickname = nickname;
+        this.permanentBonus = new PermanentBonus();
         this.excommunicationTiles = new ArrayList<>(); //TODO: serve davvero??
         //creazione lista dei famigliari
         DiceColor[] diceColor = {DiceColor.WHITE, DiceColor.ORANGE, DiceColor.BLACK, DiceColor.NEUTRAL};
@@ -152,6 +155,9 @@ public class Player {
         return this.playerBoard.getPlayerCardList();
     }
 
+    public PlayerId getPlayerId() {
+        return playerId;
+    }
 
     /* Class Methods */
     public void addResources(Resource resourcesToAdd)

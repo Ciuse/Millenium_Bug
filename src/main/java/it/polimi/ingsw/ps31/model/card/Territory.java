@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps31.model.card;
 
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
-import it.polimi.ingsw.ps31.model.gameThings.ResourceList;
+import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 
 import java.util.List;
 

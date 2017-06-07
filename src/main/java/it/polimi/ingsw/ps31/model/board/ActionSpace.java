@@ -57,6 +57,8 @@ public class ActionSpace implements PhysicalSpaceBehavior, ActiveEffect {
     public void addFamilyMember(FamilyMember familyMember)
     {
         this.familyMembers.add(familyMember);
+
+
     }
 
 

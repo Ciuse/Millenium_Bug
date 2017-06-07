@@ -2,8 +2,8 @@ package it.polimi.ingsw.ps31.model.actionControls;
 
 import it.polimi.ingsw.ps31.model.actions.ActionControlSet;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
-import it.polimi.ingsw.ps31.model.gameThings.Coin;
-import it.polimi.ingsw.ps31.model.gameThings.ResourceList;
+import it.polimi.ingsw.ps31.model.gameResource.Coin;
+import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.FamilyMember;
 import it.polimi.ingsw.ps31.model.player.Player;
 

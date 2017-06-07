@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps31.model.card;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.effect.ActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
-import it.polimi.ingsw.ps31.model.gameThings.ResourceList;
+import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.util.ArrayList;

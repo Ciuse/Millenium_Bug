@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.model.board;
 
-import it.polimi.ingsw.ps31.model.gameThings.PointResource;
+import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.util.ArrayList;

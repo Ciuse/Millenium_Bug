@@ -3,10 +3,11 @@ package it.polimi.ingsw.ps31.model.player;
 import it.polimi.ingsw.ps31.model.actions.*;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
 import it.polimi.ingsw.ps31.model.board.TowerActionSpace;
+import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
-import it.polimi.ingsw.ps31.model.gameThings.Resource;
-import it.polimi.ingsw.ps31.model.gameThings.ResourceList;
+import it.polimi.ingsw.ps31.model.gameResource.Resource;
+import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -151,9 +152,9 @@ public class PlayerActionSet {
         //TODO: aggiornare
     }
 
-    public void takeCard()
+    public void takeCard(TowerCardSpace towerCardSpace)
     {
-        //TODO: settare i parametri
+        this.takeCard.setCardSpace(towerCardSpace);
         this.takeCard.activate();
     }
 
@@ -161,5 +162,59 @@ public class PlayerActionSet {
     {
         //TODO: settare i parametri
         this.activeLeaderCard.activate();
+    }
+
+    /*Getter*/
+
+    public ActionActivateHarvest getActivateHarvest() {
+        return activateHarvest;
+    }
+
+    public ActionActivateProduction getActivateProduction() {
+        return activateProduction;
+    }
+
+    public ActionChooseCard getChooseCard() {
+        return chooseCard;
+    }
+
+    public ActionChooseDifferentPrivilege getChooseDifferentPrivilege() {
+        return chooseDifferentPrivilege;
+    }
+
+    public ActionGetResources getGetResources() {
+        return getResources;
+    }
+
+    public ActionPayResources getPayResources() {
+        return payResources;
+    }
+
+    public ActionPayServants getPayServants() {
+        return payServants;
+    }
+
+    public ActionPayTowerMoney getPayTowerMoney() {
+        return payTowerMoney;
+    }
+
+    public ActionPlaceFamilyMemberInTower getPlaceFamilyMemberInTower() {
+        return placeFamilyMemberInTower;
+    }
+
+    public ActionPlaceFamilyMemberInBoard getPlaceFamilyMemberInBoard() {
+        return placeFamilyMemberInBoard;
+    }
+
+    public ActionTakeCard getTakeCard() {
+        return takeCard;
+    }
+
+    public ActiveLeaderCard getActiveLeaderCard() {
+        return activeLeaderCard;
+    }
+
+    public ActionGetFinalResources getGetFinalResources() {
+        return getFinalResources;
     }
 }

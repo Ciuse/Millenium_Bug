@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31.server.message;
+package it.polimi.ingsw.ps31.model.StateModel;
 
 import it.polimi.ingsw.ps31.model.StateModel.*;
 

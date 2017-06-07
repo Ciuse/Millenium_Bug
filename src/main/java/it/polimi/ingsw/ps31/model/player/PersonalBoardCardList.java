@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps31.model.player;
 
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
-import it.polimi.ingsw.ps31.model.gameThings.PointResource;
+import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 
 import java.util.ArrayList;
 import java.util.List;

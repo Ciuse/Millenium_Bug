@@ -2,13 +2,14 @@ package it.polimi.ingsw.ps31.model.game;
 
 import com.google.gson.Gson;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
+import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.player.PersonalBoard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
-import it.polimi.ingsw.ps31.model.gameThings.*;
+import it.polimi.ingsw.ps31.model.gameResource.*;
 import it.polimi.ingsw.ps31.model.json.CreationJson;
 import it.polimi.ingsw.ps31.model.json.JsonFile;
 import it.polimi.ingsw.ps31.model.json.JsonGameObject;
@@ -20,7 +21,7 @@ import java.util.*;
  * Created by giulia on 24/05/2017.
  */
 public class StartGame {
-    private static GameBoard gameBoard = GameBoard.getInstance();
+    private final GameBoard gameBoard = new GameBoard();
     private final static int PERIODMAXNUMBER = 3;
     private final static int ROUNDMAXNUMBER = 2;
     private final static int ACTIONMAXNUMBER = 4;
@@ -292,8 +293,9 @@ public class StartGame {
     //creazione familymembers in base al colore che il player ha scelto ,la personal board, la lista delle risorse iniziali infine il player
 
     public Player createPlayer(String name,PlayerColor playerColor,List<ResourceList> listOfResourceList,List<PointResource[]>personalBoardRequirements){
-        PersonalBoard personalBoard = new PersonalBoard(personalBoardRequirements);
-        Player playerCreated = new Player(playerColor,listOfResourceList.get(playerList.size()),name,personalBoard);
+        PlayerId[] playerId = {PlayerId.ONE,PlayerId.TWO,PlayerId.THREE,PlayerId.FOUR};
+        PersonalBoard personalBoard = new PersonalBoard(personalBoardRequirements, playerId[playerList.size()]);
+        Player playerCreated = new Player(playerColor,listOfResourceList.get(playerList.size()), playerId[playerList.size()], name,personalBoard);
         return playerCreated;
     }
 

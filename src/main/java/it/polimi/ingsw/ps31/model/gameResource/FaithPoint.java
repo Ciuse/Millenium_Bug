@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31.model.gameThings;
+package it.polimi.ingsw.ps31.model.gameResource;
 
 import it.polimi.ingsw.ps31.model.board.FaithPointTrack;
 import it.polimi.ingsw.ps31.model.board.MarkerDisc;

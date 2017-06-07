@@ -1,11 +1,16 @@
 package it.polimi.ingsw.ps31.model.board;
 
+import it.polimi.ingsw.ps31.model.Model;
+import it.polimi.ingsw.ps31.model.StateModel.StatePlayerAction;
+import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
-import it.polimi.ingsw.ps31.model.gameThings.VictoryPoint;
+import it.polimi.ingsw.ps31.model.gameResource.VictoryPoint;
 import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
 import it.polimi.ingsw.ps31.model.player.Player;
+import it.polimi.ingsw.ps31.server.message.MexStateInfo;
+import it.polimi.ingsw.ps31.server.message.MexToPrint;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +18,7 @@ import java.util.List;
 /**
  * Created by Francesco on 12/05/2017.
  */
-public class GameBoard {
-    /* Singleton */
+public class GameBoard extends Model{
 
     private final static int TOWERNUMBER = 4;
     private List<Tower> towers;
@@ -31,16 +35,8 @@ public class GameBoard {
     private VictoryPointTrack victoryPointTrack;
     private EndActionButton endActionButton;
     private List<ExcommunicationTiles> excommunicationTilesList;
-    private static GameBoard ourInstance;
 
-    public static GameBoard getInstance() {
-        if (ourInstance == null) {
-            ourInstance = new GameBoard();
-        }
-        return ourInstance;
-    }
-
-    private GameBoard() {
+    public GameBoard() {
     }
 
     public void add4PlayerMarketSpace(List<EffectList> otherEffectList) {
@@ -148,8 +144,16 @@ public class GameBoard {
         return endActionButton;
     }
 
-    public void startActionTurn(Player player) {//TODO IMPLEMENTARLO
-
+    public void startActionTurn(Player player) {
+        sendInformation(new MexToPrint());
+        List<Action> actionList = new ArrayList<>();
+        actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInBoard());
+        actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInTower());
+        actionList.add(player.getPlayerActionSet().getActiveLeaderCard());
+        if(this.getEndActionButton().getActive()){
+            actionList.add(player.getPlayerActionSet().getActiveButton);
+        }
+        sendInformation(new MexStateInfo(new StatePlayerAction(actionList)));
     }
 
     public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
