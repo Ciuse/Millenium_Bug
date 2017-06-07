@@ -23,8 +23,6 @@ public class MessageVisitor implements MesVisitor {
 
     public void visit(MesStateInfo mesStateInfo) {
         MesStateInfoVisitor mesStateInfoVisitor=new MesStateInfoVisitor();
-        StateVisitable message = (StateVisitable) mesStateInfo.getStateInfo();
-
-        message.acceptState(mesStateInfoVisitor);
+        mesStateInfo.getStateInfo().acceptState(mesStateInfoVisitor);
     }
 }

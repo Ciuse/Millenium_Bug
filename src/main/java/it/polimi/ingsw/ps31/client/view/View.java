@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.client.view;
 
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
 import it.polimi.ingsw.ps31.server.message.Visitable;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 
@@ -8,11 +9,18 @@ import java.util.Observer;
 import java.util.Scanner;
 
 /**
- * Created by giuli        System.out.println("INFO PLAYER");
- System.out.println("INFO PLAYER");
- a on 01/06/2017.
+ * Created by giulia in 01/06/2017.
  */
 public class View implements Observer{
+    private final StateViewBoard stateViewBoard;
+    private final StateViewPersonalBoard stateViewPersonalBoard;
+    private final StateViewPlayer stateViewPlayer;
+
+    public View(StateViewBoard stateViewBoard, StateViewPersonalBoard stateViewPersonalBoard, StateViewPlayer stateViewPlayer) {
+        this.stateViewBoard = stateViewBoard;
+        this.stateViewPersonalBoard = stateViewPersonalBoard;
+        this.stateViewPlayer = stateViewPlayer;
+    }
 
     @Override
     public void update(Observable o, Object arg) {

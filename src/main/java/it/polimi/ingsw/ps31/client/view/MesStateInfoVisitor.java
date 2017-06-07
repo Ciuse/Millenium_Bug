@@ -11,6 +11,7 @@ import sun.misc.resources.Messages_zh_CN;
 public class MesStateInfoVisitor implements StateVisitor {
     @Override
     public void visit(InfoPlayer infoPlayer) {
+
         System.out.println("INFO PLAYER: "+infoPlayer.getNickname()+infoPlayer.getPlayerColor());
     }
 
@@ -25,7 +26,7 @@ public class MesStateInfoVisitor implements StateVisitor {
     }
 
     @Override
-    public void visit(StateGame stateGame) {
+    public void visit(StateGame stateGhame) {
 
     }
 
