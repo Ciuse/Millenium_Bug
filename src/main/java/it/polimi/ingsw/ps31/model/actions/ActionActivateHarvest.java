@@ -29,7 +29,7 @@ public class ActionActivateHarvest extends Action {
         this.diceValue = null;
     }
 
-    /* Class Methods */
+    /* Activation Method */
     @Override
     public void activate()
     {

@@ -14,6 +14,7 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
         super(player, actionControlSet);
     }
 
+    /* Getters & Setters */
     public ActionSpace getActionSpace() {
         return actionSpace;
     }
@@ -46,6 +47,8 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
                 super.player.setLastUsedFamilyMember(familyMember);
             }
 
+            resetActionSpace();
+            resetFamilyMember();
         }
     }
 }

@@ -56,7 +56,11 @@ public class ActionSpace implements PhysicalSpaceBehavior, ActiveEffect {
 
     public void addFamilyMember(FamilyMember familyMember)
     {
+        //Aggiungo il familiare alla lista dello spazio azione
         this.familyMembers.add(familyMember);
+
+        //Attivo l'effetto dello spazio azione
+        this.activeEffectList(familyMember.getPlayer());
     }
 
 

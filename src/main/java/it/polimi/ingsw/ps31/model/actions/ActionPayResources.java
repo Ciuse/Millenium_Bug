@@ -50,6 +50,8 @@ public class ActionPayResources extends Action{
             {
                 //TODO: lanciare eccezione
             }
+
+            resetResourceToPay();
         }
     }
 }

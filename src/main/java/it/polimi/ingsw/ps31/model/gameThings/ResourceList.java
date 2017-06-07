@@ -31,7 +31,21 @@ public class ResourceList {
         if(found==false){
             this.resourceList.add(resource);
         }
+    }
+    public void subSpecificResource(Resource resource)
+    {
+        boolean found=false;
 
+        for(int i=0; i<this.resourceList.size(); i++) {
+
+            if (this.resourceList.get(i).getClass().equals(resource.getClass()) && found == false) {
+                this.resourceList.get(i).subValue(resource.getValue());
+                found = true;
+            }
+        }
+        if(found==false){
+            this.resourceList.add(resource);
+        }
     }
     public Resource remove(int index){
         return this.resourceList.remove(index);
