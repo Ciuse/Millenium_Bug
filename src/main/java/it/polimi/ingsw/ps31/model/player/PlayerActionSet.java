@@ -30,6 +30,8 @@ public class PlayerActionSet {
     private final ActiveLeaderCard activeLeaderCard;
     private final ActionGetFinalResources getFinalResources;
     private final ActionControlSet actionControlSet;
+    private final ActionActiveEndButton activeEndButton;
+    private final ActionAddFinalBonus addFinalBonus;
     private final Player player;
 
     /* Constructor */
@@ -37,7 +39,6 @@ public class PlayerActionSet {
         this.player = player;
 
         this.actionControlSet = new ActionControlSet(player);
-
         this.activateHarvest = new ActionActivateHarvest(player, actionControlSet);
         this.activateProduction = new ActionActivateProduction(player, actionControlSet);
         this.chooseCard = new ActionChooseCard(player, actionControlSet);
@@ -51,6 +52,8 @@ public class PlayerActionSet {
         this.takeCard = new ActionTakeCard(player, actionControlSet);
         this.activeLeaderCard = new ActiveLeaderCard(player, actionControlSet);
         this.getFinalResources = new ActionGetFinalResources(player, actionControlSet);
+        this.activeEndButton= new ActionActiveEndButton(player, actionControlSet); //TODO IMPLEMENTARLO
+        this.addFinalBonus= new ActionAddFinalBonus(player, actionControlSet); //TODO IMPLEMENTARE
     }
 
     /* Setters & Getters */
@@ -64,6 +67,10 @@ public class PlayerActionSet {
     }
 
     /* Class Methods */
+    public void addFinalBonus(ResourceList resourceList){
+        //TODO SETTARE I PARAMETRI
+        this.addFinalBonus.activate();
+    }
     public void activateHarvest(int diceValue)
     {
         //TODO:settare i parametri
@@ -216,5 +223,13 @@ public class PlayerActionSet {
 
     public ActionGetFinalResources getGetFinalResources() {
         return getFinalResources;
+    }
+
+    public ActionActiveEndButton getActiveEndButton() {
+        return activeEndButton;
+    }
+
+    public ActionAddFinalBonus getAddFinalBonus() {
+        return addFinalBonus;
     }
 }

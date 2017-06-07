@@ -13,7 +13,6 @@ public class FamilyMember {
     private final DiceColor diceColor;
     private int additionalValue;
     private ActionSpace actionSpace;
-    private static GameBoard gameBoard = GameBoard.getInstance();
 
     /* Constructor */
     public FamilyMember(Player player, DiceColor diceColor)
@@ -36,7 +35,7 @@ public class FamilyMember {
     }
 
     public int getDiceValue(){
-        return gameBoard.getSpecificDice(this.diceColor).getValue();
+        return GameBoard.getSpecificDice(this.diceColor).getValue();
     }
 
     public int getAdditionalValue()
@@ -56,7 +55,7 @@ public class FamilyMember {
 
     public int getTotalValue()
     {
-        return gameBoard.getSpecificDice(this.diceColor).getValue() + this.additionalValue;
+        return GameBoard.getSpecificDice(this.diceColor).getValue() + this.additionalValue;
     }
 
     public ActionSpace getActionSpace()

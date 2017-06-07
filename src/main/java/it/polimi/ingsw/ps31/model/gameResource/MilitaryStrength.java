@@ -1,4 +1,5 @@
 package it.polimi.ingsw.ps31.model.gameResource;
+import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.board.MarkerDisc;
 import it.polimi.ingsw.ps31.model.board.MilitaryPointTrack;
 import it.polimi.ingsw.ps31.model.player.Player;
@@ -7,7 +8,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
  * Created by Giuseppe on 15/05/2017.
  */
 public class MilitaryStrength extends PointResource{
-    private static MilitaryPointTrack militaryTrack = MilitaryPointTrack.getInstance();
+    private  MilitaryPointTrack militaryTrack= GameBoard.getMilitaryPointTrack();
     private int valueRequest=0;
 
     public MilitaryStrength(int value) {

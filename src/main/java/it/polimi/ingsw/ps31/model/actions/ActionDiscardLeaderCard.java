@@ -1,8 +1,8 @@
 package it.polimi.ingsw.ps31.model.actions;
 
 import it.polimi.ingsw.ps31.model.card.LeaderCard;
-import it.polimi.ingsw.ps31.model.gameThings.CouncilPrivilege;
-import it.polimi.ingsw.ps31.model.gameThings.ResourceList;
+import it.polimi.ingsw.ps31.model.gameResource.CouncilPrivilege;
+import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 /**

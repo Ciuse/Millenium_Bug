@@ -1,7 +1,8 @@
 package it.polimi.ingsw.ps31.model.player;
 
-import it.polimi.ingsw.ps31.model.StateModel.InfoPlayer;
-import it.polimi.ingsw.ps31.model.StateModel.StateResources;
+import it.polimi.ingsw.ps31.model.StateModel.StateInfoPlayer;
+import it.polimi.ingsw.ps31.model.StateModel.StatePlayerResources;
+import it.polimi.ingsw.ps31.model.actions.ActionControlSet;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
@@ -27,14 +28,15 @@ public class Player {
     private final List<FamilyMember> familyMembers = new ArrayList<>();
     private FamilyMember lastUsedFamilyMember;
     private PlayerActionSet playerActionSet;
+    private ActionControlSet actionControlSet;
     private List<ExcommunicationTiles> excommunicationTiles;
     private int flagTurnExcommunication;
     private PermanentBonus permanentBonus;
     private HarvestList harvestList;
     private ProductionList productionList;
     private List<ResourceList> finalBonusResources;
-    private InfoPlayer infoPlayer;
-    private StateResources stateResources;
+    private StateInfoPlayer stateInfoPlayer;
+    private StatePlayerResources statePlayerResources;
 
     /* Constructor */
     public Player(PlayerColor playerColor, ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard)
@@ -159,6 +161,10 @@ public class Player {
         return playerId;
     }
 
+    public ActionControlSet getActionControlSet() {
+        return actionControlSet;
+    }
+
     /* Class Methods */
     public void addResources(Resource resourcesToAdd)
     {
@@ -235,14 +241,14 @@ public class Player {
         playerActionSet.getFinalResources();
     }
 
-    public InfoPlayer getInfoPlayer(){
-        InfoPlayer infoPlayer = new InfoPlayer(nickname,playerColor);
-        return infoPlayer;
+    public StateInfoPlayer getStateInfoPlayer(){
+        StateInfoPlayer stateInfoPlayer = new StateInfoPlayer(playerId, nickname,playerColor);
+        return stateInfoPlayer;
     }
 
-    public StateResources getStateResources(){
-        StateResources stateResources = new StateResources(playerResources);
-        return stateResources;
+    public StatePlayerResources getStatePlayerResources(){
+        StatePlayerResources statePlayerResources = new StatePlayerResources(playerId, playerResources);
+        return statePlayerResources;
     }
 
     @Override

@@ -6,11 +6,11 @@ import it.polimi.ingsw.ps31.model.player.Player;
 /**
  * Created by Francesco on 24/05/2017.
  */
-public class CardRequirementsControl extends Control {
+public class ResourceRequirementsControl extends Control {
     private ResourceList requirement = null;
 
     /* Constructor */
-    public CardRequirementsControl(Player player) {
+    public ResourceRequirementsControl(Player player) {
         super(player);
     }
 

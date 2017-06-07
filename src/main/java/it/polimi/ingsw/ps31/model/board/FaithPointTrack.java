@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps31.model.gameResource.PointResource;
  */
 public class FaithPointTrack extends Track{
 
-    private FaithPointTrack() {
+    public FaithPointTrack() {
         super(15, FaithPoint.class);
     }
 

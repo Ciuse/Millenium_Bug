@@ -7,15 +7,21 @@ import it.polimi.ingsw.ps31.model.StateModel.StateVisitor;
  * Created by Giuseppe on 06/06/2017.
  */
 public class MesStateInfoVisitor implements StateVisitor {
-    @Override
-    public void visit(InfoPlayer infoPlayer) {
+    View view;
 
-        System.out.println("INFO PLAYER: "+infoPlayer.getNickname()+infoPlayer.getPlayerColor());
+    @Override
+    public void visit(StateInfoPlayer stateInfoPlayer) {
+        view.updateInfoPlayer(stateInfoPlayer);
+    }
+
+    @Override
+    public void visit(StatePlayerResources statePlayerResources) {
+        view.updatePlayerResources(statePlayerResources);
     }
 
     @Override
     public void visit(StateCardBox stateCardBox) {
-        System.out.println("INFO CARTA: "+stateCardBox.getName()+stateCardBox.getCardId()+stateCardBox.getCardColor());
+
     }
 
     @Override
@@ -38,8 +44,5 @@ public class MesStateInfoVisitor implements StateVisitor {
 
     }
 
-    @Override
-    public void visit(StateResources stateResources) {
 
-    }
 }

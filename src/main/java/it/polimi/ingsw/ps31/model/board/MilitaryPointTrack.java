@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps31.model.gameResource.MilitaryStrength;
  */
 public class MilitaryPointTrack extends Track {
 
-    private MilitaryPointTrack() {
+    public MilitaryPointTrack() {
         super(25, MilitaryStrength.class);
     }
 }

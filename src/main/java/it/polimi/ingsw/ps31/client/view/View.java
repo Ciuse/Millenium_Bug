@@ -3,6 +3,8 @@ package it.polimi.ingsw.ps31.client.view;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
+import it.polimi.ingsw.ps31.model.StateModel.StateInfoPlayer;
+import it.polimi.ingsw.ps31.model.StateModel.StatePlayerResources;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.server.message.MexVisitable;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
@@ -10,22 +12,21 @@ import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Scanner;
 
 /**
  * Created by giulia in 01/06/2017.
  */
-public class View implements Observer{
+public abstract class View implements Observer {
     private final PlayerId viewId;
     private final StateViewBoard stateViewBoard;
-    private final List<StateViewPersonalBoard> stateViewPersonalBoard;
-    private final List<StateViewPlayer> stateViewPlayer;
+    private final List<StateViewPersonalBoard> stateViewPersonalBoardList;
+    private final List<StateViewPlayer> stateViewPlayerList;
 
-    public View(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoard, List<StateViewPlayer> stateViewPlayer) {
+    public View(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoardList, List<StateViewPlayer> stateViewPlayerList) {
         this.viewId = viewId;
         this.stateViewBoard = stateViewBoard;
-        this.stateViewPersonalBoard = stateViewPersonalBoard;
-        this.stateViewPlayer = stateViewPlayer;
+        this.stateViewPersonalBoardList = stateViewPersonalBoardList;
+        this.stateViewPlayerList = stateViewPlayerList;
     }
 
     @Override
@@ -36,49 +37,30 @@ public class View implements Observer{
     }
 
 
-    public String inserisciNome(){
-        Scanner scanner =new Scanner(System.in);
-        String in= scanner.nextLine();
-        return in;
-    }
+    public abstract String inserisciNome();
 
 
-    public PlayerColor inserisciColore(){
-        PlayerColor playerColor=null;
-        Boolean ok=false;
-        while(ok==false) {
-            Scanner scanner =new Scanner(System.in);
-            String in= scanner.nextLine();
-            if (in.equals(PlayerColor.BLUE.name())) {
-                playerColor = PlayerColor.BLUE;
-                ok = true;
-            } else {
-                if (in.equals(PlayerColor.GREEN.name())) {
-                    playerColor = PlayerColor.GREEN;
-                    ok = true;
-                } else {
-                    if (in.equals(PlayerColor.YELLOW.name())) {
-                        playerColor = PlayerColor.YELLOW;
-                        ok = true;
-                    } else {
-                        if (in.equals(PlayerColor.RED.name())) {
-                            playerColor = PlayerColor.RED;
-                            ok = true;
-                        } else {
-                            System.out.println("Hai sbagliato a inserire, reinserisci colore:");
-                        }
-                    }
-                }
-            }
+    public abstract PlayerColor inserisciColore();
+
+    public void updateInfoPlayer(StateInfoPlayer stateInfoPlayer){
+        for (StateViewPlayer viewPlayer : stateViewPlayerList
+                ) {
+            if(viewPlayer.getPlayerId().equals(stateInfoPlayer.getPlayerId()));
+            viewPlayer.updateState(stateInfoPlayer);
+
         }
-        return playerColor;
     }
 
-    public void objectToString (Object o){
-        System.out.println(o.toString());
-    }
-    public void printNewPlayer(){
+    public void updatePlayerResources(StatePlayerResources statePlayerResources){
+        for (StateViewPlayer viewPlayer : stateViewPlayerList
+                ) {
+            if(viewPlayer.getPlayerId().equals(statePlayerResources.getPlayerId()));
+            viewPlayer.updateState(statePlayerResources);
 
+        }
     }
+
+
+
 
 }

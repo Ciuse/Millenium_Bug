@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps31.model.gameResource.VictoryPoint;
  */
 public class VictoryPointTrack extends Track {
 
-    private VictoryPointTrack() {
+    public VictoryPointTrack() {
         super(100,VictoryPoint.class);
     }
 }

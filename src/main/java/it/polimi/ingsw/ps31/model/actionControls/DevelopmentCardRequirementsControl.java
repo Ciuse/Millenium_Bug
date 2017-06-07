@@ -1,9 +1,7 @@
 package it.polimi.ingsw.ps31.model.actionControls;
 
-import it.polimi.ingsw.ps31.card.DevelopmentCard;
-import it.polimi.ingsw.ps31.card.DevelopmentCardList;
-import it.polimi.ingsw.ps31.gameThings.ResourceList;
-import it.polimi.ingsw.ps31.player.Player;
+import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
+import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 31/05/2017.

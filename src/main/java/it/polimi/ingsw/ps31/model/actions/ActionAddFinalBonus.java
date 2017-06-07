@@ -1,7 +1,10 @@
 package it.polimi.ingsw.ps31.model.actions;
 
-import it.polimi.ingsw.ps31.gameThings.ResourceList;
-import it.polimi.ingsw.ps31.player.Player;
+/**
+ * Created by Giuseppe on 07/06/2017.
+ */
+        import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
+        import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 31/05/2017.
@@ -35,7 +38,7 @@ public class ActionAddFinalBonus extends Action {
     @Override
     public void activate()
     {
-        player.addFinalBonusResource(this.resourceList);
-        resetResourceList();
+      //  player.addFinalBonusResource(this.resourceList); //TODO IMPLEMENTARE
+        //resetResourceList();
     }
 }

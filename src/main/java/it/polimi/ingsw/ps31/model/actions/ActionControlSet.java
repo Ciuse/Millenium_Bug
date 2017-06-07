@@ -4,6 +4,8 @@ import it.polimi.ingsw.ps31.model.actionControls.*;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
 import it.polimi.ingsw.ps31.model.board.Tower;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
+import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
+import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
@@ -16,21 +18,25 @@ import java.util.List;
  * Created by Francesco on 25/05/2017.
  */
 public class ActionControlSet {
-    private final CardRequirementsControl cardRequirementsControl;
+    private final DevelopmentCardRequirementsControl developmentCardRequirementsControl;
     private final DiceValueVsDiceColorControl diceValueVsDiceColorControl;
     private final DiceValueVsCardSpaceControl diceValueVsCardSpaceControl;
+
     private final OccupiedActionSpaceControl occupiedActionSpaceControl;
     private final PayResourceControl payResourceControl;
     private final PayResourceListControl payResourceListControl;
     private final PlacedFamilyMemberControl placedFamilyMemberControl;
     private final PlayerCardNumberControl playerCardNumberControl;
-    private final TowerPlacementControl towerPlacementControl;
+    private final ResourceRequirementsControl resourceRequirementsControl;
     private final SelfOccupiedTowerControl selfOccupiedTowerControl;
+    private final TakeDevelopmentCardControl takeDevelopmentCardControl;
+    private final TowerPlacementControl towerPlacementControl;
+
 
     /* Constructor */
     public ActionControlSet(Player player)
     {
-        this.cardRequirementsControl = new CardRequirementsControl(player);
+        this.resourceRequirementsControl = new ResourceRequirementsControl(player);
         this.diceValueVsDiceColorControl = new DiceValueVsDiceColorControl(player);
         this.diceValueVsCardSpaceControl = new DiceValueVsCardSpaceControl(player);
         this.occupiedActionSpaceControl = new OccupiedActionSpaceControl(player);
@@ -40,13 +46,19 @@ public class ActionControlSet {
         this.playerCardNumberControl = new PlayerCardNumberControl(player);
         this.towerPlacementControl = new TowerPlacementControl(player);
         this.selfOccupiedTowerControl= new SelfOccupiedTowerControl(player);
+        this.developmentCardRequirementsControl = new DevelopmentCardRequirementsControl(player);
+        this.takeDevelopmentCardControl = new TakeDevelopmentCardControl(player);
     }
 
     /* Class Methods */
-    public boolean cardRequirementsControl(ResourceList requirements)
+    public boolean developmentCardRequirementsControl(DevelopmentCardList requirements){
+        this.developmentCardRequirementsControl.setRequirements(requirements);
+        return this.developmentCardRequirementsControl.execute();
+    }
+    public boolean resourceRequirementsControl(ResourceList requirements)
     {
-        this.cardRequirementsControl.setRequirements(requirements);
-        return this.cardRequirementsControl.execute();
+        this.resourceRequirementsControl.setRequirements(requirements);
+        return this.resourceRequirementsControl.execute();
     }
 
     public boolean diceValueVsDiceColorControl(Integer diceValue, DiceColor diceColor)
@@ -98,6 +110,11 @@ public class ActionControlSet {
         this.towerPlacementControl.setFamilyMember(familyMember);
         this.towerPlacementControl.setTowerCardSpace(towerCardSpace);
         return this.towerPlacementControl.execute();
+    }
+
+    public boolean takeDevelopmentCardControl(DevelopmentCard developmentCard){
+        takeDevelopmentCardControl.setDevelopmentCard(developmentCard);
+        return this.takeDevelopmentCardControl.execute();
     }
 
     public boolean selfOccupiedTowerControl(FamilyMember familyMember, Tower tower)

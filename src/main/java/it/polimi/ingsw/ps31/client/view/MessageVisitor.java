@@ -7,20 +7,18 @@ import it.polimi.ingsw.ps31.server.message.*;
  */
 public class MessageVisitor implements MexVisitor {
     View view;
+
     @Override
-    public void visit(Messaggio1 messaggio1){
-        System.out.println("RICHIESTA NOME:");
+    public void visit(AskName askName){
         view.inserisciNome();
     }
 
     @Override
-    public void visit(Messaggio2 messaggio1) {
-
-        System.out.println("RICHIESTA COLORE:");
+    public void visit(AskColor askColor) {
         view.inserisciColore();
-
     }
 
+    @Override
     public void visit(MexStateInfo mexStateInfo) {
         MesStateInfoVisitor mesStateInfoVisitor=new MesStateInfoVisitor();
         mexStateInfo.getStateInfo().acceptState(mesStateInfoVisitor);

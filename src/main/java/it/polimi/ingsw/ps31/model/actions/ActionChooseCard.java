@@ -107,7 +107,7 @@ public class ActionChooseCard extends Action {
             chosenCardSpace = new TowerCardSpace(null, null, null); //Cambiare questa riga
         }while (!checkChosenTowerCardSpace(chosenCardSpace));
 
-        super.player.getPlayerActionSet().takeCard();    //TODO: e se il player non può attivare l'effetto della carta?
+        super.player.getPlayerActionSet().takeCard(chosenCardSpace);    //TODO: e se il player non può attivare l'effetto della carta?
 
         resetAnyCardColor();
         resetCardColor();

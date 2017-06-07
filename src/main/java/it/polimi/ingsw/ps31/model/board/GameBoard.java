@@ -21,7 +21,7 @@ import java.util.List;
 public class GameBoard extends Model{
 
     private final static int TOWERNUMBER = 4;
-    private List<Tower> towers;
+    private List<Tower> towers= new ArrayList<>();
     private Market market;
     private CouncilPalace councilPalace;
     private SmallHarvest smallHarvest;
@@ -29,10 +29,10 @@ public class GameBoard extends Model{
     private SmallProduction smallProduction;
     private BigHarvest bigHarvest;
     private BigProduction bigProduction;
-    private List<Dice> dice;
-    private MilitaryPointTrack militaryPointTrack;
-    private FaithPointTrack faithPointTrack;
-    private VictoryPointTrack victoryPointTrack;
+    private static List<Dice> dice = new ArrayList<>();
+    private static MilitaryPointTrack militaryPointTrack;
+    private static FaithPointTrack faithPointTrack;
+    private static VictoryPointTrack victoryPointTrack;
     private EndActionButton endActionButton;
     private List<ExcommunicationTiles> excommunicationTilesList;
 
@@ -62,7 +62,7 @@ public class GameBoard extends Model{
         for (int i = 0; i < TOWERNUMBER; i++) {
             towers.add(new Tower(towerEffectList.get(i).size(), towerColor[i], towerEffectList.get(i)));
         }
-        this.towers = towers;
+
         //creazione dadi
         DiceColor[] diceColor = {DiceColor.WHITE, DiceColor.ORANGE, DiceColor.BLACK, DiceColor.NEUTRAL};
         for (int i = 0; i < 4; i++) {
@@ -78,10 +78,11 @@ public class GameBoard extends Model{
         this.bigProduction = new BigProduction(-1, otherEffectList.get(4));
         this.market = new Market();
         this.market.add2PlayerMarketSpace(otherEffectList.get(5), otherEffectList.get(6));
-        this.militaryPointTrack = MilitaryPointTrack.getInstance();
-        this.faithPointTrack = FaithPointTrack.getInstance();
+        this.militaryPointTrack = new MilitaryPointTrack();
+        this.faithPointTrack = new FaithPointTrack();
         this.faithPointTrack.inizializationFaithTrack(faithTrackExtraValue);
-        this.victoryPointTrack = VictoryPointTrack.getInstance();
+        this.victoryPointTrack = new VictoryPointTrack();
+        this.endActionButton= new EndActionButton(false);
     }
 
     public static int getTOWERNUMBER() {
@@ -116,19 +117,19 @@ public class GameBoard extends Model{
         return bigProduction;
     }
 
-    public List<Dice> getDice() {
+    public static List<Dice> getDice() {
         return new ArrayList<>(dice);
     }
 
-    public MilitaryPointTrack getMilitaryPointTrack() {
+    public static MilitaryPointTrack getMilitaryPointTrack() {
         return militaryPointTrack;
     }
 
-    public FaithPointTrack getFaithPointTrack() {
+    public static FaithPointTrack getFaithPointTrack() {
         return faithPointTrack;
     }
 
-    public VictoryPointTrack getVictoryPointTrack() {
+    public static VictoryPointTrack getVictoryPointTrack() {
         return victoryPointTrack;
     }
 
@@ -151,7 +152,7 @@ public class GameBoard extends Model{
         actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInTower());
         actionList.add(player.getPlayerActionSet().getActiveLeaderCard());
         if(this.getEndActionButton().getActive()){
-            actionList.add(player.getPlayerActionSet().getActiveButton);
+            actionList.add(player.getPlayerActionSet().getActiveEndButton());
         }
         sendInformation(new MexStateInfo(new StatePlayerAction(actionList)));
     }
@@ -160,9 +161,9 @@ public class GameBoard extends Model{
 
     }
 
-    public Dice getSpecificDice(DiceColor diceColor) {
-        for (int i = 0; i < this.dice.size(); i++) {
-            if (this.dice.get(i).getColor().equals(diceColor)) {
+    public static Dice getSpecificDice(DiceColor diceColor) {
+        for (int i = 0; i < dice.size(); i++) {
+            if (dice.get(i).getColor().equals(diceColor)) {
                 return dice.get(i);
             }
         }
