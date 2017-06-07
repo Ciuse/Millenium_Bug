@@ -29,6 +29,7 @@ public class ActionGetResources extends Action {
         return this.resourcesToGet;
     }
 
+    /* Resetters */
     public void resetResourcesToGet()
     {
         this.resourcesToGet = null;

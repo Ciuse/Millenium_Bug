@@ -9,7 +9,7 @@ public abstract class Action implements PlayerActions{
     protected final Player player;
     protected final  ActionControlSet actionControlSet;
 
-    protected Action(Player player, ActionControlSet actionControlSet)
+    public Action(Player player, ActionControlSet actionControlSet)
     {
         if(player == null)
         {

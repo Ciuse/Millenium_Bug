@@ -11,15 +11,34 @@ public class PlayerResources {
 
     /* Constructor */
     public PlayerResources(ResourceList resourceList) {
-        playerResourceList=resourceList;
+        this.playerResourceList=resourceList;
     }
 
     /* Setters & Getters */
-    public void addResources(Resource resourceToAdd){
-       playerResourceList.addSpecificResource(resourceToAdd);
+    public void addResources(Resource resourceToAdd)
+    {
+        //controllo che il valore sia positivo
+        if(resourceToAdd.getValue() < 0)
+        {
+            //todo eccezione
+        }else
+        {
+            //Aggiungo la risorsa
+            this.playerResourceList.addSpecificResource(resourceToAdd);
+        }
+
     }
 
-    public void subResources(Resource resourceToSub) {
+    public void subResources(Resource resourceToSub)
+    {
+        if(resourceToSub.getValue() < 0)
+        {
+            //todo eccezione
+        }else
+        {
+            //Aggiungo la risorsa
+            this.playerResourceList.subSpecificResource(resourceToSub);
+        }
     }
 
     public int getResourceValue(Class<? extends Resource> resourceClass) throws NullPointerException{

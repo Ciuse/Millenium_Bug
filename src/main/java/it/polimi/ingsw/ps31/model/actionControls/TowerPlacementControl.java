@@ -83,6 +83,10 @@ public class TowerPlacementControl extends Control {
             conditions.add(familyMember.getTotalValue() >= towerCardSpace.getActionSpace().getDiceCost());
 
             //Controllo che il giocatore possa pagare il costo della carta
+//            conditions.add(player.getActionControlSet().)
+
+
+
             boolean cardCostAffordable = false;
             if (towerCardSpace.getCard().getCostList() == null)
                 cardCostAffordable = true;

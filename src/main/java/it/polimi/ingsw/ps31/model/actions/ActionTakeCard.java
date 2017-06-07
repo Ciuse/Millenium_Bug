@@ -57,13 +57,18 @@ public class ActionTakeCard extends Action {
             //TODO: gestire
         }else
         {
-            DevelopmentCard takenCard = this.towerCardSpace.takeCard();
+            //eseguo i controlli
+            if(this.actionControlSet.takeDevelopmentCardControl(this.towerCardSpace.getCard()))
+            {
+                DevelopmentCard takenCard = this.towerCardSpace.takeCard();
+                super.player.addDevelopmentCard(takenCard);
+            }else
+            {
+                //todo eccezione
+            }
 
-            super.player.addDevelopmentCard(takenCard);
-            //takenCard. TODO: aggiornare quando avrò i metodi per attivare gli effetti delle carte
+            resetCardColor();
+            resetCardSpace();
         }
-
-
-
     }
 }

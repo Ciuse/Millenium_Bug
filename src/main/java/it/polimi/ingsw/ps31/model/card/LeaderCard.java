@@ -16,6 +16,7 @@ public class LeaderCard extends Card implements ActiveEffect {
     private final Effect abilityOneTimeForTurn;
     private final Effect permanentAbility;
     private Boolean activated = false;
+    private Boolean discarded = false;
 
     public LeaderCard(String name, ResourceList resourceRequest, DevelopmentCardList developmentCardRequest, Effect abilityOneTimeForTurn, Effect permanentAbility) {
         super(name);
@@ -32,6 +33,16 @@ public class LeaderCard extends Card implements ActiveEffect {
         return requirementsList;
     }
 
+    public ResourceList getResourceRequest()
+    {
+        return this.resourceRequest;
+    }
+
+    public DevelopmentCardList getDevelopmentCardRequest()
+    {
+        return this.developmentCardRequest;
+    }
+
     public Effect getAbilityOneTimeForTurn(){
         return this.abilityOneTimeForTurn;
     }
@@ -44,12 +55,34 @@ public class LeaderCard extends Card implements ActiveEffect {
         return activated;
     }
 
-    public void activeLeaderCard(Player player){
-        if(developmentCardRequest.lessOrEquals(player.getPlayerCardList())
-                &&resourceRequest.lessOrEquals(player.getPlayerResources().getPlayerResourceList())){
-            this.activated=true;
+    public void activeLeaderCard(Player player) {
+        //se la carta non è attiva, controllo che il player soddisfi i requisiti di attivazione
+        if (this.activated == false)
+        {
+            if (developmentCardRequest.lessOrEquals(player.getPlayerCardList())
+                    && resourceRequest.lessOrEquals(player.getPlayerResources().getPlayerResourceList()))
+            {
+                this.activated = true;
+            } else
+            {
+                //TODO "NON HAI ABBASTANZA RISORSE"
+            }
         }
-        else {//TODO "NON HAI ABBASTANZA RISORSE"
+        //se la carta è attivata (perchè lo era prima o perchè è stata appena attivata) allor attivo anche l'effetto
+        if (this.activated == true)
+            this.activeEffectList(player);
+    }
+
+    public void discardLeaderCard()
+    {
+        //Controllo che la carta non sia attivata (???)
+        if (this.activated)
+        {
+            //TODO: eccezione
+        }
+        else
+        {
+            this.discarded = true;
         }
     }
 

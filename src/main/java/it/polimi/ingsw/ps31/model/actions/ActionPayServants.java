@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ActionPayServants extends Action {
     private DiceColor diceColor = null;
-    private int servantsAmount = 0;
+    private Integer servantsAmount = null;
     private int diceRisePerServant = 1;
 
     public ActionPayServants(Player player, ActionControlSet actionControlSet) {
@@ -27,16 +27,22 @@ public class ActionPayServants extends Action {
         this.diceColor = diceColor;
     }
 
-    public void setServantsAmount(int servantsAmount)
+    public void setServantsAmount(Integer servantsAmount)
     {
         this.servantsAmount = servantsAmount;
+    }
+
+    /* Resetters */
+    public void resetServantsAmount()
+    {
+        this.servantsAmount = null;
     }
 
     @Override
     public void activate()
     {
         //Controllo che i parametri siano settati;
-        if ( this.servantsAmount == 0 || this.diceColor == null )
+        if ( this.servantsAmount == null || this.diceColor == null )
         {
             //TODO: eccezione
         } else
@@ -61,6 +67,8 @@ public class ActionPayServants extends Action {
             {
                 //TODO: eccezione?
             }
+
+            resetServantsAmount();
         }
     }
 }

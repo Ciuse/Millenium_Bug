@@ -90,7 +90,7 @@ public class ActionChooseCard extends Action {
         this.anyCardColor = false;
     }
 
-    /* Activate method*/
+    /* Activation method*/
     @Override
     public void activate()
     {
@@ -108,6 +108,13 @@ public class ActionChooseCard extends Action {
         }while (!checkChosenTowerCardSpace(chosenCardSpace));
 
         super.player.getPlayerActionSet().takeCard();    //TODO: e se il player non può attivare l'effetto della carta?
+
+        resetAnyCardColor();
+        resetCardColor();
+        resetDiceCost();
+        resetDiceDiscount();
+        resetResourceDiscount();
+
     }
 
     /* Class Methods */

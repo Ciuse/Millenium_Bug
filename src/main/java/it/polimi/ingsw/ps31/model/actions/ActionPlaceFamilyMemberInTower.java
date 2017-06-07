@@ -14,6 +14,7 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
         super(player, actionControlSet);
     }
 
+    /* Getters & Setters */
     public TowerActionSpace getTowerActionSpace() {
         return towerActionSpace;
     }
@@ -27,6 +28,7 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
     {
         this.towerActionSpace = null;
     }
+
     /* Class Methods */
     @Override
     public void activate()
@@ -43,6 +45,9 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
                this.towerActionSpace.addFamilyMember(familyMember); //TODO: chi attiva gli effetti??
                player.setLastUsedFamilyMember(familyMember);
            }
+
+           resetActionSpace();
+           resetFamilyMember();
         }
     }
 }

@@ -13,6 +13,6 @@ public class GetResourcesAtTheEndEffect extends GetResourceEffect {
     }
     @Override
     public void activate(Player player) {
-        player.getPlayerActionSet().addFinalVictoryPoints(super.getResources());
+        player.getPlayerActionSet().addFinalBonus(super.getResources());
     }
 }
