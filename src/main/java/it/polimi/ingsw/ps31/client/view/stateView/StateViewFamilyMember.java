@@ -42,7 +42,7 @@ public class StateViewFamilyMember {
         return playerId;
     }
 
-    public void updateStateFamily(StateFamilyMember stateFamilyMember){
+    public void updateState(StateFamilyMember stateFamilyMember){
         if(stateFamilyMember.getDiceColor()!=null){
             this.diceColor=stateFamilyMember.getDiceColor();
             this.additionalValue = stateFamilyMember.getAdditionalValue();

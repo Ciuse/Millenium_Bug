@@ -68,7 +68,7 @@ public class StateViewPlayer {
     }
     public void updateState(StateAllFamilyMember stateAllFamilyMember){
         for(int i = 0;i<stateAllFamilyMember.getStateAllFamilyMember().size();i++){
-            stateViewFamilyMemberList.get(i).updateStateFamily(stateAllFamilyMember.getStateAllFamilyMember().get(i));
+            stateViewFamilyMemberList.get(i).updateState(stateAllFamilyMember.getStateAllFamilyMember().get(i));
         }
     }
 
@@ -76,7 +76,7 @@ public class StateViewPlayer {
             for (StateViewFamilyMember stateViewFamilyMember: stateViewFamilyMemberList
                     ) {
                 if(stateFamilyMember.getDiceColor().equals(stateViewFamilyMember.getDiceColor())) {
-                stateViewFamilyMember.updateStateFamily(stateFamilyMember);
+                stateViewFamilyMember.updateState(stateFamilyMember);
             }
         }
     }

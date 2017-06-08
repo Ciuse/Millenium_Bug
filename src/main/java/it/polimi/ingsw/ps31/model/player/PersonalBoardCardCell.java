@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.model.StateModel.StateCardBox;
 import it.polimi.ingsw.ps31.model.board.PhysicalCardBox;
 import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 
@@ -22,5 +23,14 @@ public class PersonalBoardCardCell extends PhysicalCardBox {
 
     public PointResource getExtraValue() {
         return extraValue;
+    }
+
+    @Override
+    public StateCardBox GetStateCardBox(){
+        if(this.card!=null) {
+            StateCardBox stateCardBox = new StateCardBox(super.card.getName(), super.card.getCardId(), super.card.getCardColor(),this.value,this.extraValue);
+            return stateCardBox;
+        }
+        return null;
     }
 }
