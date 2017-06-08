@@ -20,14 +20,21 @@ public class MesStateInfoVisitor implements StateVisitor {
     }
 
     @Override
-    public void visit(StateCardBox stateCardBox) {
+    public void visit(StateFamilyMember stateFamilyMember) {
+        view.updateFamilyMember(stateFamilyMember);
+    }
+
+    @Override
+    public void visit(StateAllFamilyMember stateAllFamilyMember) {
 
     }
 
     @Override
-    public void visit(StateFamilyMember stateFamilyMember) {
+    public void visit(StateCardBox stateCardBox) {
 
     }
+
+
 
     @Override
     public void visit(StateGame stateGhame) {

@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.model.StateModel.StateAllFamilyMember;
+import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
 import it.polimi.ingsw.ps31.model.StateModel.StateInfoPlayer;
 import it.polimi.ingsw.ps31.model.StateModel.StatePlayerResources;
 import it.polimi.ingsw.ps31.model.actions.ActionControlSet;
@@ -35,8 +37,6 @@ public class Player {
     private HarvestList harvestList;
     private ProductionList productionList;
     private List<ResourceList> finalBonusResources;
-    private StateInfoPlayer stateInfoPlayer;
-    private StatePlayerResources statePlayerResources;
 
     /* Constructor */
     public Player(PlayerColor playerColor, ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard)
@@ -249,6 +249,15 @@ public class Player {
     public StatePlayerResources getStatePlayerResources(){
         StatePlayerResources statePlayerResources = new StatePlayerResources(playerId, playerResources);
         return statePlayerResources;
+    }
+    public StateAllFamilyMember getStateAllFamilyMember(){
+        List<StateFamilyMember> stateAllFamilyMembers = new ArrayList<>();
+        for (FamilyMember familyMember :familyMembers
+                ) {
+            stateAllFamilyMembers.add(familyMember.getStateFamilyMember());
+        }
+        StateAllFamilyMember stateAllFamilyMember =new StateAllFamilyMember(stateAllFamilyMembers);
+        return stateAllFamilyMember;
     }
 
     @Override

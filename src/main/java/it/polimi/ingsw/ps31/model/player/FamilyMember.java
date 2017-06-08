@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
-import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 
 /**
@@ -11,6 +11,7 @@ public class FamilyMember {
 
     private final Player player;
     private final DiceColor diceColor;
+    private int diceValue;
     private int additionalValue;
     private ActionSpace actionSpace;
 
@@ -19,6 +20,7 @@ public class FamilyMember {
     {
         this.player = player;
         this.diceColor = diceColor;
+        this.diceValue=0;
         this.additionalValue = 0;
         this.actionSpace = null;
     }
@@ -35,7 +37,7 @@ public class FamilyMember {
     }
 
     public int getDiceValue(){
-        return GameBoard.getSpecificDice(this.diceColor).getValue();
+        return this.diceValue;
     }
 
     public int getAdditionalValue()
@@ -48,14 +50,15 @@ public class FamilyMember {
         this.additionalValue = this.additionalValue+additionalValue;
     }
 
-    public void resetAdditionalValue()
-    {
+    public void resetFamilyMember() {
+        this.diceValue = 0;
         this.additionalValue = 0;
+        this.actionSpace = null;
     }
 
     public int getTotalValue()
     {
-        return GameBoard.getSpecificDice(this.diceColor).getValue() + this.additionalValue;
+        return this.diceValue + this.additionalValue;
     }
 
     public ActionSpace getActionSpace()
@@ -68,9 +71,8 @@ public class FamilyMember {
         this.actionSpace = actionSpace;
     }
 
-    public void resetActionSpace()
-    {
-        this.actionSpace=null;
+    public void setDiceValue(int diceValue) {
+        this.diceValue = diceValue;
     }
 
     public boolean isPlaced()
@@ -80,4 +82,8 @@ public class FamilyMember {
         else
             return true;
     }
+     public StateFamilyMember getStateFamilyMember(){
+        StateFamilyMember stateFamilyMember = new StateFamilyMember(player.getPlayerId(),diceValue, additionalValue, diceColor, actionSpace);
+        return stateFamilyMember;
+     }
 }

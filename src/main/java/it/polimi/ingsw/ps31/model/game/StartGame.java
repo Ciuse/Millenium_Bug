@@ -113,10 +113,11 @@ public class StartGame {
                 for (int towerNum = 0; towerNum < gameBoard.getTOWERNUMBER(); towerNum++) {
                     gameBoard.getTowers().get(towerNum).drawCardFromDeck();
                 }
+                resetFamilyMember();
                 gameBoard.rollTheDice();
+                setFamilyMemberDiceValue();
                 for (int action = 1; action <= ACTIONMAXNUMBER; action++) {
                     for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
-                        gameBoard.startActionTurn(playerList.get(playerMaxNumber));
                         //RICEVO CONFERMA RISPOSTA -> INIZIO TIMER
                         timer1.schedule(task1, delayAction);
                         if (action == 1 && playerList.get(playerMaxNumber).getFlagTurnExcommunication() == 1) {
@@ -128,7 +129,7 @@ public class StartGame {
                             gameBoard.getEndActionButton().setActive(true);
                         }
                         //FASE AZIONE DEL GIOCATORE
-
+                        gameBoard.startActionTurn(playerList.get(playerMaxNumber));
 
                     }
                 }
@@ -299,6 +300,21 @@ public class StartGame {
         return playerCreated;
     }
 
+    public void setFamilyMemberDiceValue() {
+        for (int i = 0; i < playerList.size(); i++) {
+            for (int j = 0; j < playerList.get(i).getFamilyMembers().size(); j++) {
+                playerList.get(i).getFamilyMembers().get(j).setDiceValue(gameBoard.getSpecificDice(playerList.get(i).getFamilyMembers().get(j).getDiceColor()).getValue());
+            }
+        }
 
+    }
 
+    public void resetFamilyMember() {
+        for (int i = 0; i < playerList.size(); i++) {
+            for (int j = 0; j < playerList.get(i).getFamilyMembers().size(); j++) {
+                playerList.get(i).getFamilyMembers().get(j).resetFamilyMember();
+            }
+        }
+
+    }
 }

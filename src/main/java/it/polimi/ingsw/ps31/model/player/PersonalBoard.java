@@ -16,7 +16,6 @@ public class PersonalBoard {
     private final PlayerId playerId;
     private final List<PersonalBoardCardList> personalBoardCardList=null;
     private final static int NUM_OF_CARD_LIST =4;
-    private StatePersonalBoard statePersonalBoard;
 
 
     /* Constructor */
@@ -36,8 +35,9 @@ public class PersonalBoard {
         return personalBoardCardList;
     }
 
-    public StatePersonalBoard getStatePersonalBoard() {
-        return statePersonalBoard;
+    public StatePersonalBoard getStatePersonalBoard(){
+       // StatePersonalBoard statePersonalBoard = new StatePersonalBoard();
+        return  null;
     }
 
     public PersonalBoardCardList getSpecificPersonalBoardCardList(CardColor  cardColor) {

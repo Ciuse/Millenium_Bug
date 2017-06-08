@@ -29,7 +29,7 @@ public class GameBoard extends Model{
     private SmallProduction smallProduction;
     private BigHarvest bigHarvest;
     private BigProduction bigProduction;
-    private static List<Dice> dice = new ArrayList<>();
+    private List<Dice> dice = new ArrayList<>();
     private static MilitaryPointTrack militaryPointTrack;
     private static FaithPointTrack faithPointTrack;
     private static VictoryPointTrack victoryPointTrack;
@@ -117,7 +117,7 @@ public class GameBoard extends Model{
         return bigProduction;
     }
 
-    public static List<Dice> getDice() {
+    public List<Dice> getDice() {
         return new ArrayList<>(dice);
     }
 
@@ -154,20 +154,21 @@ public class GameBoard extends Model{
         if(this.getEndActionButton().getActive()){
             actionList.add(player.getPlayerActionSet().getActiveEndButton());
         }
-        sendInformation(new MexStateInfo(new StatePlayerAction(actionList)));
+        sendInformation(new MexStateInfo(new StatePlayerAction(player.getPlayerId(),actionList)));
     }
 
     public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
 
     }
 
-    public static Dice getSpecificDice(DiceColor diceColor) {
-        for (int i = 0; i < dice.size(); i++) {
-            if (dice.get(i).getColor().equals(diceColor)) {
+    public Dice getSpecificDice(DiceColor diceColor) {
+        for (int i = 0; i < dice.size(); i++) {           if (dice.get(i).getColor().equals(diceColor)) {
                 return dice.get(i);
             }
         }
         return null;
     }
+
+
 
 }

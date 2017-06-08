@@ -7,6 +7,7 @@ public interface StateVisitor {
     public void visit(StateInfoPlayer stateInfoPlayer);
     public void visit(StateCardBox stateCardBox);
     public void visit(StateFamilyMember stateFamilyMember);
+    public void visit(StateAllFamilyMember stateAllFamilyMember);
     public void visit(StateGame stateGame);
     public void visit(StatePersonalBoard statePersonalBoard);
     public void visit(StatePlayerAction statePlayerAction);

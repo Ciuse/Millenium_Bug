@@ -1,8 +1,11 @@
 package it.polimi.ingsw.ps31.client.view;
 
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
+import it.polimi.ingsw.ps31.model.StateModel.StateAllFamilyMember;
+import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
 import it.polimi.ingsw.ps31.model.StateModel.StateInfoPlayer;
 import it.polimi.ingsw.ps31.model.StateModel.StatePlayerResources;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
@@ -19,8 +22,9 @@ import java.util.Observer;
 public abstract class View implements Observer {
     private final PlayerId viewId;
     private final StateViewBoard stateViewBoard;
-    private final List<StateViewPersonalBoard> stateViewPersonalBoardList;
     private final List<StateViewPlayer> stateViewPlayerList;
+    private final List<StateViewPersonalBoard> stateViewPersonalBoardList;
+
 
     public View(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoardList, List<StateViewPlayer> stateViewPlayerList) {
         this.viewId = viewId;
@@ -39,27 +43,42 @@ public abstract class View implements Observer {
 
     public abstract String inserisciNome();
 
-
     public abstract PlayerColor inserisciColore();
 
-    public void updateInfoPlayer(StateInfoPlayer stateInfoPlayer){
+    public final void updateInfoPlayer(StateInfoPlayer stateInfoPlayer){
         for (StateViewPlayer viewPlayer : stateViewPlayerList
                 ) {
-            if(viewPlayer.getPlayerId().equals(stateInfoPlayer.getPlayerId()));
+            if(viewPlayer.getPlayerId().equals(stateInfoPlayer.getPlayerId()))
             viewPlayer.updateState(stateInfoPlayer);
 
         }
     }
 
-    public void updatePlayerResources(StatePlayerResources statePlayerResources){
+    public final void updatePlayerResources(StatePlayerResources statePlayerResources){
         for (StateViewPlayer viewPlayer : stateViewPlayerList
                 ) {
-            if(viewPlayer.getPlayerId().equals(statePlayerResources.getPlayerId()));
+            if(viewPlayer.getPlayerId().equals(statePlayerResources.getPlayerId()))
             viewPlayer.updateState(statePlayerResources);
 
         }
     }
+    public final void updateAllFamilyMember(StateAllFamilyMember stateAllFamilyMember){
+        for (StateViewPlayer viewPlayer : stateViewPlayerList
+                ) {
+            if(viewPlayer.getPlayerId().equals(stateAllFamilyMember.getIdFamilyMemberList()))
+                viewPlayer.updateState(stateAllFamilyMember);
 
+        }
+    }
+
+    public final void updateFamilyMember(StateFamilyMember stateFamilyMember){
+        for (StateViewPlayer viewPlayer : stateViewPlayerList
+                ) {
+            if(viewPlayer.getPlayerId().equals(stateFamilyMember.getPlayerId()))
+            viewPlayer.updateState(stateFamilyMember);
+
+        }
+    }
 
 
 
