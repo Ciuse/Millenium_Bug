@@ -1,12 +1,14 @@
 package it.polimi.ingsw.ps31.model.StateModel;
 
 import it.polimi.ingsw.ps31.model.constants.CardColor;
+import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 
 /**
  * Created by giulia on 06/06/2017.
  */
 public class StateCardBox extends StateInfo {
+    private PlayerId playerId;
     private final String name;
     private final int cardId;
     private final CardColor cardColor;
@@ -25,6 +27,10 @@ public class StateCardBox extends StateInfo {
         this.cardColor = cardColor;
         this.value = value;
         this.extraValue = extraValue;
+    }
+
+    public PlayerId getPlayerId() {
+        return playerId;
     }
 
     public String getName() {

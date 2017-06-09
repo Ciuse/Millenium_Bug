@@ -1,13 +1,7 @@
 package it.polimi.ingsw.ps31.client.view;
 
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
-import it.polimi.ingsw.ps31.model.StateModel.StateAllFamilyMember;
-import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
-import it.polimi.ingsw.ps31.model.StateModel.StateInfoPlayer;
-import it.polimi.ingsw.ps31.model.StateModel.StatePlayerResources;
+import it.polimi.ingsw.ps31.client.view.stateView.*;
+import it.polimi.ingsw.ps31.model.StateModel.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.server.message.MexVisitable;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
@@ -77,6 +71,22 @@ public abstract class View implements Observer {
             if(viewPlayer.getPlayerId().equals(stateFamilyMember.getPlayerId()))
             viewPlayer.updateState(stateFamilyMember);
 
+        }
+    }
+
+    public final void updatePersonalBoard(StatePersonalBoard statePersonalBoard){
+        for (StateViewPersonalBoard viewPersonalBoard : stateViewPersonalBoardList
+                ) {
+            if(statePersonalBoard.getPlayerId().equals(viewPersonalBoard.getPlayerId()))
+                viewPersonalBoard.updateState(statePersonalBoard);
+        }
+    }
+
+    public final void updateCardBox(StateCardBox stateCardBox){
+        for (StateViewPersonalBoard viewPersonalBoard : stateViewPersonalBoardList
+                ) {
+            if(viewPersonalBoard.getPlayerId().equals(stateCardBox.getPlayerId()))
+                viewPersonalBoard.updateState(stateCardBox);
         }
     }
 
