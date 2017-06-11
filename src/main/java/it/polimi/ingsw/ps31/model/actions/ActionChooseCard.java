@@ -104,7 +104,7 @@ public class ActionChooseCard extends Action {
         do
         {
             //TODO: fare richiesta alla view per scegliere il tower card space
-            chosenCardSpace = new TowerCardSpace(null, null, null); //Cambiare questa riga
+            chosenCardSpace = new TowerCardSpace(null, null, null, -1); //Cambiare questa riga
         }while (!checkChosenTowerCardSpace(chosenCardSpace));
 
         super.player.getPlayerActionSet().takeCard(chosenCardSpace);    //TODO: e se il player non può attivare l'effetto della carta?
@@ -126,7 +126,7 @@ public class ActionChooseCard extends Action {
 
         //Controllo colore
         if( !this.anyCardColor )
-            if ( this.cardColor != null && !chosenTCS.getColor().equals(this.cardColor) )
+            if ( this.cardColor != null && !chosenTCS.getTowerColor().equals(this.cardColor) )
                 return false;
 
         //Controllo costo dado

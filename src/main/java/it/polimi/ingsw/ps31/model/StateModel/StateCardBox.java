@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.model.StateModel;
 
+import it.polimi.ingsw.ps31.model.board.ActionSpace;
+import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.PointResource;
@@ -12,8 +14,11 @@ public class StateCardBox extends StateInfo {
     private final String name;
     private final int cardId;
     private final CardColor cardColor;
-    private int value;
+    private int value=-1;
     private PointResource extraValue;
+    private int towerFloor=-1;
+
+
 
     public StateCardBox(String name, int cardId, CardColor cardColor) {
         this.name = name;
@@ -28,6 +33,14 @@ public class StateCardBox extends StateInfo {
         this.value = value;
         this.extraValue = extraValue;
     }
+
+    public StateCardBox(String name,int cardId,CardColor cardColor,int towerFloor){
+        this.name = name;
+        this.cardId = cardId;
+        this.cardColor = cardColor;
+        this.towerFloor = towerFloor;
+    }
+
 
     public PlayerId getPlayerId() {
         return playerId;
@@ -51,6 +64,10 @@ public class StateCardBox extends StateInfo {
 
     public PointResource getExtraValue() {
         return extraValue;
+    }
+
+    public int getTowerFloor() {
+        return towerFloor;
     }
 
     @Override

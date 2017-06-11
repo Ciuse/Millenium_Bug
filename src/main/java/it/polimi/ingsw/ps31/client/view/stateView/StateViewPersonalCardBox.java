@@ -8,13 +8,13 @@ import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.g
 /**
  * Created by giulia on 08/06/2017.
  */
-public class StateViewCardBox {
+public class StateViewPersonalCardBox {
     private String name;
     private int cardId;
     private final CardColor cardColor;
     private final int value;
 
-    public StateViewCardBox(CardColor cardColor, int value) {
+    public StateViewPersonalCardBox(CardColor cardColor, int value) {
         this.cardColor = cardColor;
         this.value = value;
     }

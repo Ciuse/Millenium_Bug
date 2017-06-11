@@ -15,25 +15,25 @@ import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.g
  */
 public class StateViewPersonalBoard {
     private PlayerId playerId;
-    private final List<StateViewCardBox> stateViewCardBoxListGreen = new ArrayList<>();
-    private final List<StateViewCardBox> stateViewCardBoxListYellow = new ArrayList<>();
-    private final List<StateViewCardBox> stateViewCardBoxListBlue = new ArrayList<>();
-    private final List<StateViewCardBox> stateViewCardBoxListPurple = new ArrayList<>();
+    private final List<StateViewPersonalCardBox> stateViewPersonalCardBoxListGreen = new ArrayList<>();
+    private final List<StateViewPersonalCardBox> stateViewPersonalCardBoxListYellow = new ArrayList<>();
+    private final List<StateViewPersonalCardBox> stateViewPersonalCardBoxListBlue = new ArrayList<>();
+    private final List<StateViewPersonalCardBox> stateViewPersonalCardBoxListPurple = new ArrayList<>();
 
 
 
     public StateViewPersonalBoard() {
         for(int i =0;i<getPersonal_Board_Identical_Box_Max();i++){
-            stateViewCardBoxListGreen.add(new StateViewCardBox(CardColor.GREEN,i));
+            stateViewPersonalCardBoxListGreen.add(new StateViewPersonalCardBox(CardColor.GREEN,i));
         }
         for(int i =0;i<getPersonal_Board_Identical_Box_Max();i++){
-            stateViewCardBoxListYellow.add(new StateViewCardBox(CardColor.YELLOW, i));
+            stateViewPersonalCardBoxListYellow.add(new StateViewPersonalCardBox(CardColor.YELLOW, i));
         }
         for(int i =0;i<getPersonal_Board_Identical_Box_Max();i++){
-            stateViewCardBoxListBlue.add(new StateViewCardBox(CardColor.BLUE, i));
+            stateViewPersonalCardBoxListBlue.add(new StateViewPersonalCardBox(CardColor.BLUE, i));
         }
         for(int i =0;i<getPersonal_Board_Identical_Box_Max();i++){
-            stateViewCardBoxListPurple.add(new StateViewCardBox(CardColor.PURPLE,i));
+            stateViewPersonalCardBoxListPurple.add(new StateViewPersonalCardBox(CardColor.PURPLE,i));
         }
     }
 
@@ -42,33 +42,35 @@ public class StateViewPersonalBoard {
     }
 
     public void updateState(StateCardBox stateCardBox) {
-        if (stateCardBox.getCardColor().equals(CardColor.GREEN)) {
-            for (StateViewCardBox stateViewCardBox : stateViewCardBoxListGreen
-                    ) {
-                if (stateCardBox.getValue() == stateViewCardBox.getValue() && stateCardBox.getCardColor().equals(stateViewCardBox.getCardColor()))
-                    stateViewCardBox.updateState(stateCardBox);
+        if (stateCardBox.getValue() != -1) { //corrisponde al valore per dire che non è valido lo stato
+            if (stateCardBox.getCardColor().equals(CardColor.GREEN)) {
+                for (StateViewPersonalCardBox stateViewPersonalCardBox : stateViewPersonalCardBoxListGreen
+                        ) {
+                    if (stateCardBox.getValue() == stateViewPersonalCardBox.getValue() && stateCardBox.getCardColor().equals(stateViewPersonalCardBox.getCardColor()))
+                        stateViewPersonalCardBox.updateState(stateCardBox);
 
-            }
-        } else if (stateCardBox.getCardColor().equals(CardColor.YELLOW)) {
-            for (StateViewCardBox stateViewCardBox : stateViewCardBoxListYellow
-                    ) {
-                if (stateCardBox.getValue() == stateViewCardBox.getValue() && stateCardBox.getCardColor().equals(stateViewCardBox.getCardColor()))
-                    stateViewCardBox.updateState(stateCardBox);
+                }
+            } else if (stateCardBox.getCardColor().equals(CardColor.YELLOW)) {
+                for (StateViewPersonalCardBox stateViewPersonalCardBox : stateViewPersonalCardBoxListYellow
+                        ) {
+                    if (stateCardBox.getValue() == stateViewPersonalCardBox.getValue() && stateCardBox.getCardColor().equals(stateViewPersonalCardBox.getCardColor()))
+                        stateViewPersonalCardBox.updateState(stateCardBox);
 
-            }
-        } else if (stateCardBox.getCardColor().equals(CardColor.BLUE)) {
-            for (StateViewCardBox stateViewCardBox : stateViewCardBoxListBlue
-                    ) {
-                if (stateCardBox.getValue() == stateViewCardBox.getValue() && stateCardBox.getCardColor().equals(stateViewCardBox.getCardColor()))
-                    stateViewCardBox.updateState(stateCardBox);
+                }
+            } else if (stateCardBox.getCardColor().equals(CardColor.BLUE)) {
+                for (StateViewPersonalCardBox stateViewPersonalCardBox : stateViewPersonalCardBoxListBlue
+                        ) {
+                    if (stateCardBox.getValue() == stateViewPersonalCardBox.getValue() && stateCardBox.getCardColor().equals(stateViewPersonalCardBox.getCardColor()))
+                        stateViewPersonalCardBox.updateState(stateCardBox);
 
-            }
-        } else if (stateCardBox.getCardColor().equals(CardColor.PURPLE)) {
-            for (StateViewCardBox stateViewCardBox : stateViewCardBoxListPurple
-                    ) {
-                if (stateCardBox.getValue() == stateViewCardBox.getValue() && stateCardBox.getCardColor().equals(stateViewCardBox.getCardColor()))
-                    stateViewCardBox.updateState(stateCardBox);
+                }
+            } else if (stateCardBox.getCardColor().equals(CardColor.PURPLE)) {
+                for (StateViewPersonalCardBox stateViewPersonalCardBox : stateViewPersonalCardBoxListPurple
+                        ) {
+                    if (stateCardBox.getValue() == stateViewPersonalCardBox.getValue() && stateCardBox.getCardColor().equals(stateViewPersonalCardBox.getCardColor()))
+                        stateViewPersonalCardBox.updateState(stateCardBox);
 
+                }
             }
         }
     }

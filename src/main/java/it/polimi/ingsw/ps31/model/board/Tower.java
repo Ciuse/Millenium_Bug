@@ -30,7 +30,7 @@ public class Tower {
         {
             int[] diceCostList= {1,3,5,7};
             towerActionSpaceList.add(new TowerActionSpace(diceCostList[i],1, effectList.get(i), towerCardSpaceList.get(i)));
-            towerCardSpaceList.add(new TowerCardSpace(color,towerActionSpaceList.get(i) , this));
+            towerCardSpaceList.add(new TowerCardSpace(color,towerActionSpaceList.get(i) , this, i));
         }
         this.color = color;
     }

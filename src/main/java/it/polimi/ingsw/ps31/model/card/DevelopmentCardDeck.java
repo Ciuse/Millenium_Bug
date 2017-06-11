@@ -40,6 +40,10 @@ public class DevelopmentCardDeck {
         return this.cardList.size();
     }
 
+    public List<DevelopmentCard> getCardList() {
+        return cardList;
+    }
+
     public DevelopmentCard draw(){
         if(maxNumber>1) {           //le carte vanno dalla posizione 0 a 7
             maxNumber--;
