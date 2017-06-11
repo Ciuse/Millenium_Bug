@@ -19,8 +19,7 @@ public class Model extends Observable {
     public void sendInformation(MexVisitable message) {
         this.setChanged();
         notifyObservers(message);
-//        this.setChanged();
-//        notifyObservers(new MexStateInfo(new StateCardBox("ciao",2, CardColor.BLUE)));
+
     }
 }
 

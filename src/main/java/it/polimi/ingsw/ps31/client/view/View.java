@@ -1,11 +1,19 @@
 package it.polimi.ingsw.ps31.client.view;
 
-import it.polimi.ingsw.ps31.client.view.stateView.*;
+import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.CmdInterpreterView;
+import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrVisualization;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
+import it.polimi.ingsw.ps31.model.StateModel.StateAllFamilyMember;
+import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
+import it.polimi.ingsw.ps31.model.StateModel.StateInfoPlayer;
+import it.polimi.ingsw.ps31.model.StateModel.StatePlayerResources;
 import it.polimi.ingsw.ps31.model.StateModel.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.server.message.MexVisitable;
-import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -18,6 +26,7 @@ public abstract class View implements Observer {
     private final StateViewBoard stateViewBoard;
     private final List<StateViewPlayer> stateViewPlayerList;
     private final List<StateViewPersonalBoard> stateViewPersonalBoardList;
+    private IntrVisualization stateInterpreterView;
 
 
     public View(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoardList, List<StateViewPlayer> stateViewPlayerList) {
@@ -30,14 +39,15 @@ public abstract class View implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         MessageVisitor messageVisitor = new MessageVisitor();
+        messageVisitor.setView(this);
         MexVisitable message = (MexVisitable) arg;
         message.accept(messageVisitor);
     }
 
 
-    public abstract String inserisciNome();
+    public abstract void inserisciNome();
 
-    public abstract PlayerColor inserisciColore();
+    public abstract void inserisciColore() throws IOException;
 
     public final void updateInfoPlayer(StateInfoPlayer stateInfoPlayer){
         for (StateViewPlayer viewPlayer : stateViewPlayerList
@@ -90,6 +100,10 @@ public abstract class View implements Observer {
         }
     }
 
+    public abstract void askComand() throws IOException;
 
+    public abstract void runTerminal() throws IOException;
+
+    public abstract void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView);
 
 }

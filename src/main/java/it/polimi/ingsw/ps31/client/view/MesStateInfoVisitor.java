@@ -9,6 +9,9 @@ import it.polimi.ingsw.ps31.model.StateModel.StateVisitor;
 public class MesStateInfoVisitor implements StateVisitor {
     View view;
 
+    public void setView(View view){
+        this.view=view;
+    }
     @Override
     public void visit(StateInfoPlayer stateInfoPlayer) {
         view.updateInfoPlayer(stateInfoPlayer);
