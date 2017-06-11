@@ -1,5 +1,8 @@
 package it.polimi.ingsw.ps31.client;
 
+import it.polimi.ingsw.ps31.client.view.TerminalView;
+import it.polimi.ingsw.ps31.client.view.View;
+
 import java.io.*;
 import java.net.Socket;
 
@@ -8,47 +11,63 @@ import java.net.Socket;
  */
 public class Client {
     static final int PORT = 2727;
+    private static View view;
 
     public static void main(String[] args) throws IOException {
 
-        Socket socket = new Socket("127.0.0.1", PORT);
-        System.out.println("Socket Client Demo");
-
-        InputStreamReader inputStreamReader= new InputStreamReader(socket.getInputStream());
-        BufferedReader reader = new BufferedReader(inputStreamReader);
+        //Creo la view
+        view = new TerminalView(null, null, null, null);
 
 
-        OutputStreamWriter socketOutStream = new OutputStreamWriter(socket.getOutputStream());
-        BufferedWriter socketWriter = new BufferedWriter(socketOutStream);
-
-        InputStreamReader consoleStream = new InputStreamReader(System.in);
-        BufferedReader consoleReader = new BufferedReader(consoleStream);
-
-        String consoleIn;
-
-        do{
-//            String lettura="";
-//            if(reader.readLine()!=null && lettura!=""&&lettura.startsWith("exit")){
-//                lettura=lettura+reader.readLine();
-//                System.out.println("Server>"+lettura);
-//                consoleIn="exit";
-//            }
-//            else{
-//                System.out.println("Server>"+lettura);
-                System.out.print("Client>");
-                consoleIn=consoleReader.readLine();
-                socketWriter.write(consoleIn+"\n");
-                socketWriter.flush();
-//            }
 
 
-        } while(!consoleIn.equals("exit"));
 
-        reader.close();
-        socketOutStream.close();
-        socketWriter.close();
-        consoleStream.close();
-        consoleReader.close();
-        socket.close();
+
+
+
+
+
+
+
+
+//        Socket socket = new Socket("127.0.0.1", PORT);
+//        System.out.println("Socket Client Demo");
+//
+//        InputStreamReader inputStreamReader= new InputStreamReader(socket.getInputStream());
+//        BufferedReader reader = new BufferedReader(inputStreamReader);
+//
+//
+//        OutputStreamWriter socketOutStream = new OutputStreamWriter(socket.getOutputStream());
+//        BufferedWriter socketWriter = new BufferedWriter(socketOutStream);
+//
+//        InputStreamReader consoleStream = new InputStreamReader(System.in);
+//        BufferedReader consoleReader = new BufferedReader(consoleStream);
+//
+//        String consoleIn;
+//
+//        do{
+////            String lettura="";
+////            if(reader.readLine()!=null && lettura!=""&&lettura.startsWith("exit")){
+////                lettura=lettura+reader.readLine();
+////                System.out.println("Server>"+lettura);
+////                consoleIn="exit";
+////            }
+////            else{
+////                System.out.println("Server>"+lettura);
+//                System.out.print("Client>");
+//                consoleIn=consoleReader.readLine();
+//                socketWriter.write(consoleIn+"\n");
+//                socketWriter.flush();
+////            }
+//
+//
+//        } while(!consoleIn.equals("exit"));
+//
+//        reader.close();
+//        socketOutStream.close();
+//        socketWriter.close();
+//        consoleStream.close();
+//        consoleReader.close();
+//        socket.close();
     }
 }

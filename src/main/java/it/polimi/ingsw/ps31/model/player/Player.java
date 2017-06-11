@@ -30,7 +30,6 @@ public class Player {
     private final List<FamilyMember> familyMembers = new ArrayList<>();
     private FamilyMember lastUsedFamilyMember;
     private PlayerActionSet playerActionSet;
-    private ActionControlSet actionControlSet;
     private List<ExcommunicationTiles> excommunicationTiles;
     private int flagTurnExcommunication;
     private PermanentBonus permanentBonus;
@@ -64,6 +63,7 @@ public class Player {
         //Instanzio un PlayerActionSet
         playerActionSet = new PlayerActionSet(this);
 
+
         //Inizializzo lastUsedFamilyMember
         this.lastUsedFamilyMember = null;
 
@@ -90,10 +90,6 @@ public class Player {
 
     public PermanentBonus getPermanentBonus() {
         return permanentBonus;
-    }
-
-    public void setPermanentBonus(PermanentBonus permanentBonus) {
-        this.permanentBonus = permanentBonus;
     }
 
     public List<ExcommunicationTiles> getExcommunicationTiles() {
@@ -124,32 +120,19 @@ public class Player {
         return playerActionSet;
     }
 
-    public void setPlayerActionSet(PlayerActionSet playerActionSet) {
-        this.playerActionSet = playerActionSet;
-    }
 
     public HarvestList getHarvestList() {
         return harvestList;
     }
 
-    public void setHarvestList(HarvestList harvestList) {
-        this.harvestList = harvestList;
-    }
 
     public ProductionList getProductionList() {
         return productionList;
     }
 
-    public void setProductionList(ProductionList productionList) {
-        this.productionList = productionList;
-    }
 
     public List<ResourceList> getFinalBonusResources() {
         return new ArrayList<>(finalBonusResources);
-    }
-
-    public void setFinalBonusResources(List<ResourceList> finalBonusResources) {
-        this.finalBonusResources = finalBonusResources;
     }
 
     public DevelopmentCardList getPlayerCardList()
@@ -162,7 +145,7 @@ public class Player {
     }
 
     public ActionControlSet getActionControlSet() {
-        return actionControlSet;
+        return playerActionSet.getActionControlSet();
     }
 
     /* Class Methods */
@@ -200,7 +183,7 @@ public class Player {
         card.activeEffectList(this);
     }
 
-    public void addBonusResource(ResourceList bonusResourcesToAdd)
+    public void addFinalBonusResource(ResourceList bonusResourcesToAdd)
     {
         this.finalBonusResources.add(bonusResourcesToAdd);
     }
