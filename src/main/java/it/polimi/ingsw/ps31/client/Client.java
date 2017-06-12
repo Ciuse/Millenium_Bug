@@ -1,9 +1,12 @@
 package it.polimi.ingsw.ps31.client;
 
+import it.polimi.ingsw.ps31.client.ClientNetworking.ClientSocketConnection;
 import it.polimi.ingsw.ps31.client.view.TerminalView;
 import it.polimi.ingsw.ps31.client.view.View;
+import it.polimi.ingsw.ps31.client.view.ViewProva;
 
 import java.io.*;
+import java.net.NetworkInterface;
 import java.net.Socket;
 
 /**
@@ -11,12 +14,32 @@ import java.net.Socket;
  */
 public class Client {
     static final int PORT = 2727;
-    private static View view;
+    private static NetworkingThread networkingThread;
+    private static ViewThread viewThread;
 
     public static void main(String[] args) throws IOException {
 
-        //Creo la view
-        view = new TerminalView(null, null, null, null);
+        //todo: chiedere CLI/GUI
+        //todo: chiedere socket/RMI
+
+        //Creo la view (cli finchè non avremo la gui, poi if-else)
+        //todo: gestire i parametri del costruttore
+        //TerminalView terminalView = new TerminalView(null, null, null, null);
+        ViewProva viewProva = new ViewProva();
+
+        //Creo la connessione (socket finchè non avremo rmi, poi if-else)
+        ClientSocketConnection clientSocketConnection = new ClientSocketConnection(PORT);
+
+        //Inserisco view e networking in due thread dedicati
+        viewThread = new ViewThread();
+        networkingThread = new NetworkingThread(clientSocketConnection);
+
+        viewThread.setNetworking(networkingThread);
+        networkingThread.setViewThread(viewThread);
+
+        //Faccio partire i thread
+        viewThread.start();
+        networkingThread.start();
 
 
 

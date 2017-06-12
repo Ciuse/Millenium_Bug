@@ -73,6 +73,9 @@ public class MatchTable {
         //Avvio il match (= avvio il thread che si mette così in attesa di nuovi giocatori)
         match.start();
 
+        //TODO: istruzione di test da cancellare
+        System.out.println("Server> Creata nuova partita #"+match.getMatchId()+". Client associato.");
+
         return match;
     }
 
@@ -91,12 +94,16 @@ public class MatchTable {
             currentMatch = matchItr.next();
         } while ( currentMatch.isStarted() && matchItr.hasNext() );
 
-        //se il match puntato all'uascita dal ciclo è già iniziato, allora ne creo uno nuovo e lo ritorno
+        //se il match puntato all'uscita dal ciclo è già iniziato, allora ne creo uno nuovo e lo ritorno
         if ( currentMatch.isStarted() )
            return newMatch(connection);
 
         currentMatch.addPlayer(connection);
-        return currentMatch.getMatch();
+
+        //TODO: istruzione di test da cancellare
+        System.out.println("Server> Client connesso alla partita #"+currentMatch.getMatch().getMatchId());
+
+        return currentMatch.getMatch(); //todo a cosa serve??
     }
 
     //global = 3;

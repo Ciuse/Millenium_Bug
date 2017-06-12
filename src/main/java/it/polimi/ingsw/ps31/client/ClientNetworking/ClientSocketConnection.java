@@ -1,6 +1,9 @@
 package it.polimi.ingsw.ps31.client.ClientNetworking;
 
 import it.polimi.ingsw.ps31.client.Client;
+import it.polimi.ingsw.ps31.client.ViewThread;
+import it.polimi.ingsw.ps31.client.view.View;
+import it.polimi.ingsw.ps31.client.view.ViewProva;
 
 import java.io.*;
 import java.net.Socket;
@@ -9,9 +12,9 @@ import java.net.Socket;
  * Created by Francesco on 10/06/2017.
  */
 public class ClientSocketConnection extends ClientNetworkInterface {
-    private Socket socket;
-    private BufferedReader socketReader;
-    private BufferedWriter socketWriter;
+    private final Socket socket;
+    private final BufferedReader socketReader;
+    private final BufferedWriter socketWriter;
 
     /* Constructor */
     public ClientSocketConnection(int port) throws IOException {
@@ -21,20 +24,38 @@ public class ClientSocketConnection extends ClientNetworkInterface {
 
         //Creo il reader da socket
         InputStreamReader inputStreamReader= new InputStreamReader(socket.getInputStream());
-        socketReader = new BufferedReader(inputStreamReader);
+        this.socketReader = new BufferedReader(inputStreamReader);
 
         //creo il writer sulla socket
         OutputStreamWriter socketOutStream = new OutputStreamWriter(socket.getOutputStream());
-        socketWriter = new BufferedWriter(socketOutStream);
+        this.socketWriter = new BufferedWriter(socketOutStream);
     }
 
     @Override
-    public void writeToServer(Serializable object) {
+    public void sendToServer(String msg)
+    {
+        try {
 
+            socketWriter.write(msg+"\n");
+            socketWriter.flush();
+            //socketWriter.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public Object readFromServer() {
-        return null;
+    public String readFromServer()
+    {
+        String msgToReturn;
+        try {
+            msgToReturn = socketReader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return msgToReturn;
     }
 }

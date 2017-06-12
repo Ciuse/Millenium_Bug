@@ -41,6 +41,9 @@ public class SocketAccepter{
 
     public void startAccepting()
     {
+        //TODO: istruzione di test da cancellare
+        System.out.println("Server avviato. In attesa di connessioni...\n");
+
         boolean closeConnection = false;
         while( !closeConnection )
         {
@@ -56,20 +59,27 @@ public class SocketAccepter{
 
     public void acceptConnection(Socket clientSocket)
     {
-        if ( socket == null )
+        if ( clientSocket == null )
             return;
         //Creo l'oggetto connessione relativo al tipo di connessione scelta
         //todo: se il client passasse un oggetto ChosenConnection, si potrebbero evitare l'if seguente e l'enum
 
+        //TODO: istruzione di test da cancellare
+        System.out.println("Server> Connessione in ingresso. Deviata su porta "+clientSocket.getPort()+". Associazione del client in corso...");
+
         ConnectionInterface connectionInterface;
       //if ( chosenConnection.equals(ConnectionType.SOCKET) )
-          connectionInterface = new SocketConnection(clientSocket);
-      //else
+        try {
+            connectionInterface = new SocketConnection(clientSocket);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        //else
       //  connectionInterface = new RMIConnection();
 
         //aggiungo il client alla prima partita libera
         matchTable.addPlayer(connectionInterface);
-
     }
 
     public void refuseConnection() {
