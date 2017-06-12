@@ -9,20 +9,20 @@ import java.util.List;
  * Created by giulia on 06/06/2017.
  */
 public class StatePlayerAction extends StateInfo {
-    private PlayerId playerId;
-    List<Action> actionList;
+    private final PlayerId playerId;
+    private final List<String> stringPlayerAction;
 
-    public StatePlayerAction(PlayerId playerId,List<Action> actionList) {
+    public StatePlayerAction(PlayerId playerId,List<String> stringPlayerAction) {
         this.playerId = playerId;
-        this.actionList = actionList;
+        this.stringPlayerAction = stringPlayerAction;
     }
 
     public PlayerId getPlayerId() {
         return playerId;
     }
 
-    public List<Action> getActionList() {
-        return actionList;
+    public List<String> getStringPlayerAction() {
+        return stringPlayerAction;
     }
 
     @Override

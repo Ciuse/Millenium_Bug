@@ -93,7 +93,6 @@ public class StartGame {
         TimerTask task2 = new TimerTask() {
             @Override
             public void run() {
-
                 System.out.println("tempo scaduto");
             }
         };

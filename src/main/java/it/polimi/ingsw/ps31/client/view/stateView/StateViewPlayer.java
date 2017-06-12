@@ -1,9 +1,6 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
-import it.polimi.ingsw.ps31.model.StateModel.StateAllFamilyMember;
-import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
-import it.polimi.ingsw.ps31.model.StateModel.StateInfoPlayer;
-import it.polimi.ingsw.ps31.model.StateModel.StatePlayerResources;
+import it.polimi.ingsw.ps31.model.StateModel.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.player.PlayerResources;
@@ -22,7 +19,7 @@ public class StateViewPlayer {
     private PlayerColor playerColor;
     private PlayerResources playerResources;
     private final List<StateViewFamilyMember> stateViewFamilyMemberList = new ArrayList<>();
-
+    private List<String> stringPlayerAction;
     public StateViewPlayer(){
         for(int i=0; i<getFamily_Member_Number();i++){
             stateViewFamilyMemberList.add(new StateViewFamilyMember(playerId));
@@ -47,6 +44,10 @@ public class StateViewPlayer {
 
     public List<StateViewFamilyMember> getFamilyMembers() {
         return stateViewFamilyMemberList;
+    }
+
+    public List<String> getStringPlayerAction() {
+        return stringPlayerAction;
     }
 
     public void updateState(StateInfoPlayer stateInfoPlayer){
@@ -79,5 +80,9 @@ public class StateViewPlayer {
                 stateViewFamilyMember.updateState(stateFamilyMember);
             }
         }
+    }
+
+    public void updateState(StatePlayerAction statePlayerAction){
+        this.stringPlayerAction = statePlayerAction.getStringPlayerAction();
     }
 }

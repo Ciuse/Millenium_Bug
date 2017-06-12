@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by giulia on 11/06/2017.
  */
-public class StateActionSpace {
+public class StateActionSpace extends StateInfo{
     private int numberOfActionSpace=-1;
     private int diceValue =0;
     private String stringEffect= null;
@@ -38,5 +38,10 @@ public class StateActionSpace {
 
     public List<StateFamilyMember> getStateFamilyMemberList() {
         return stateFamilyMemberList;
+    }
+
+    @Override
+    public void acceptState(StateVisitor stateVisitor) {
+        stateVisitor.visit(this);
     }
 }

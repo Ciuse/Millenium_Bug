@@ -12,5 +12,7 @@ public interface StateVisitor {
     public void visit(StatePersonalBoard statePersonalBoard);
     public void visit(StatePlayerAction statePlayerAction);
     public void visit(StatePlayerResources statePlayerResources);
-
+    public void visit(StateActionSpace stateActionSpace);
+    public void visit(StateMarkerDisc stateMarkerDisc);
+    public void visit(StateTower stateTower);
 }

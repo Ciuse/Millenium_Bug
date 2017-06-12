@@ -33,4 +33,20 @@ public class StateViewActionSpace {
             }
         }
     }
+
+    public int getNumberOfActionSpace() {
+        return numberOfActionSpace;
+    }
+
+    public int getDiceValue() {
+        return diceValue;
+    }
+
+    public String getStringEffect() {
+        return stringEffect;
+    }
+
+    public List<StateFamilyMember> getStateFamilyMemberList() {
+        return stateFamilyMemberList;
+    }
 }

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.model.StateModel.StateCardBox;
 import it.polimi.ingsw.ps31.model.StateModel.StatePersonalBoard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
@@ -7,6 +8,7 @@ import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +25,7 @@ public class PersonalBoard {
         this.playerId = playerId;
         CardColor[] cardColor= {CardColor.YELLOW,CardColor.GREEN,CardColor.PURPLE,CardColor.BLUE};
         for(int i = 0; i< NUM_OF_CARD_LIST; i++){
-            personalBoardCardList.add(new PersonalBoardCardList(cardColor[i]));
+            personalBoardCardList.add(new PersonalBoardCardList(playerId,cardColor[i]));
             personalBoardCardList.get(i).setExtraResourceRequired(pointResourceRequired.get(i));
         }
 
@@ -36,8 +38,17 @@ public class PersonalBoard {
     }
 
     public StatePersonalBoard getStatePersonalBoard(){
-       // StatePersonalBoard statePersonalBoard = new StatePersonalBoard();
-        return  null;
+        List<StateCardBox> stateCardBoxes = new ArrayList<>();
+        for (PersonalBoardCardList list: personalBoardCardList
+             ) {
+            for (PersonalBoardCardCell cell : list.getPersonalBoardCardCellList()
+                    ) {
+                stateCardBoxes.add(cell.getStatePersonalCardBox());
+            }
+
+        }
+        StatePersonalBoard statePersonalBoard = new StatePersonalBoard(playerId,stateCardBoxes);
+        return statePersonalBoard;
     }
 
     public PersonalBoardCardList getSpecificPersonalBoardCardList(CardColor  cardColor) {

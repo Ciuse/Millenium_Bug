@@ -31,7 +31,7 @@ import java.util.TimerTask;
  */
 public class CmdLineView extends View {
     protected DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
-    protected TerminalSize terminalSize = new TerminalSize(240, 70);
+    protected TerminalSize terminalSize = new TerminalSize(168, 47);
     protected Terminal terminal = null;
     protected Screen screen = null;
     protected TextGraphics textGraphics = null;
@@ -144,7 +144,7 @@ public class CmdLineView extends View {
 
     public void printTitle(){
         //stampa del titolo
-        String sizeLabel = "LORENZO IL MAGNIFICO";
+        String sizeLabel = "LORENZO IL MAGNIFICO"+ terminalSize;
         TerminalPosition labelBoxTopLeft = new TerminalPosition(105,0);
         TerminalSize labelBoxSize = new TerminalSize(sizeLabel.length() + 2, 3);
         TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(labelBoxSize.getColumns() - 1);
@@ -165,6 +165,19 @@ public class CmdLineView extends View {
         textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(1), Symbols.DOUBLE_LINE_VERTICAL);
         textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(2), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
         textGraphics.putString(labelBoxTopLeft.withRelative(1, 1), sizeLabel);
+        textGraphics.putString(0,0,"ciao");
+        textGraphics.putString(0,1,"ciao");
+        textGraphics.putString(0,2,"ciao");
+        textGraphics.setCharacter(0,3,Symbols.SOLID_SQUARE);
+        textGraphics.setCharacter(0,4,Symbols.SOLID_SQUARE);
+
+        textGraphics.setCharacter(1,3,Symbols.SOLID_SQUARE);
+        textGraphics.setCharacter(1,4,Symbols.SOLID_SQUARE);
+        textGraphics.setCharacter(2,3,Symbols.OUTLINED_SQUARE);
+        textGraphics.setCharacter(0,3,Symbols.BOLD_SINGLE_LINE_VERTICAL);
+
+
+
         try {
             screen.refresh();
         } catch (IOException e) {

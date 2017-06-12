@@ -24,16 +24,15 @@ public class TowerCardSpace extends PhysicalCardBox {
     }
 
     /* Getters & Setters */
-    public CardColor getTowerColor()
-    {
+    public CardColor getTowerColor() {
         return this.towerColor;
     }
-    public ActionSpace getActionSpace()
-    {
+
+    public ActionSpace getActionSpace() {
         return actionSpace;
     }
-    public Tower getTower()
-    {
+
+    public Tower getTower() {
         return this.tower;
     }
 
@@ -41,23 +40,25 @@ public class TowerCardSpace extends PhysicalCardBox {
         return towerFloor;
     }
 
-    public void setCard(DevelopmentCard card)
-    {
+    public void setCard(DevelopmentCard card) {
 
-        if ( card == null )
-        {
+        if (card == null) {
             //TODO: gestire (eccezione?)
-        } else
-        if (card.getCardColor() != this.towerColor)
-        {
+        } else if (card.getCardColor() != this.towerColor) {
             //TODO: gestire (eccezione?)
         } else
             super.setCard(card);
     }
 
-    public StateCardBox getStateTowerCardBox(){
-        StateCardBox stateTowerCardBox = new StateCardBox(super.getCard().getName(),super.getCard().getCardId(),towerColor,this.towerFloor);
-        return stateTowerCardBox;
+    public StateCardBox getStateTowerCardBox() {
+        if (super.getCard() != null) {
+            StateCardBox stateTowerCardBox = new StateCardBox(super.getCard().getName(), super.getCard().getCardId(), towerColor, this.towerFloor);
+            return stateTowerCardBox;
+        }
+        StateCardBox stateCardBox = new StateCardBox(null, -1, null,this.towerFloor);
+        return stateCardBox;
     }
+
+
 
 }

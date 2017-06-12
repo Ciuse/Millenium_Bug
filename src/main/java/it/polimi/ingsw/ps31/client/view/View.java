@@ -111,6 +111,30 @@ public abstract class View extends Observable implements Observer {
                 viewPersonalBoard.updateState(stateCardBox);
         }
     }
+    public final void updateActionSpace(StateActionSpace stateActionSpace){
+                stateViewBoard.updateState(stateActionSpace);
+    }
+
+    public final void updateTower(StateTower stateTower){
+        stateViewBoard.updateState(stateTower);
+    }
+
+    public final void updateMarkerDisc(StateMarkerDisc stateMarkerDisc){
+        stateViewBoard.updateState(stateMarkerDisc);
+    }
+
+    public final void updatePlayerAction(StatePlayerAction statePlayerAction){
+         for (StateViewPlayer viewPlayer : stateViewPlayerList
+                 ) {
+             if(viewPlayer.getPlayerId().equals(statePlayerAction.getPlayerId()))
+             viewPlayer.updateState(statePlayerAction);
+         }
+    }
+
+    public final void updateGame(StateGame stateGame){
+
+    }
+
 
     public abstract void askComand() throws IOException;
 

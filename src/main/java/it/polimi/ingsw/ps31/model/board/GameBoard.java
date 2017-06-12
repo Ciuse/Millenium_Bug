@@ -147,12 +147,12 @@ public class GameBoard extends Model{
 
     public void startActionTurn(Player player) {
         notifyViews(new MVToPrint());
-        List<Action> actionList = new ArrayList<>();
-        actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInBoard());
-        actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInTower());
-        actionList.add(player.getPlayerActionSet().getActiveLeaderCard());
+        List<String> actionList = new ArrayList<>();
+        actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInBoard().toString());
+        actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInTower().toString());
+        actionList.add(player.getPlayerActionSet().getActiveLeaderCard().toString());
         if(this.getEndActionButton().getActive()){
-            actionList.add(player.getPlayerActionSet().getActiveEndButton());
+            actionList.add(player.getPlayerActionSet().getActiveEndButton().toString());
         }
         notifyViews(new MVStateInfo(new StatePlayerAction(player.getPlayerId(),actionList)));
     }

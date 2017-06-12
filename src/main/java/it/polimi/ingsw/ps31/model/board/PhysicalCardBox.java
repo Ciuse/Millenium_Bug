@@ -35,14 +35,5 @@ public abstract class PhysicalCardBox implements PhysicalSpaceBehavior
         return this.card;
     }
 
-    public StateCardBox GetStateCardBox(){
-        if(this.card!=null) {
-            StateCardBox stateCardBox = new StateCardBox(this.card.getName(), this.card.getCardId(), this.card.getCardColor());
-            return stateCardBox;
-        }
-        StateCardBox stateCardBox = new StateCardBox(null,-1,null);
-        return stateCardBox;
-    }
-
 
 }

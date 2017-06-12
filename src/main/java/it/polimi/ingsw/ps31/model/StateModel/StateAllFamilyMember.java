@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by giulia on 08/06/2017.
  */
-public class StateAllFamilyMember implements StateVisitable {
+public class StateAllFamilyMember extends StateInfo {
     private final List<StateFamilyMember> stateAllFamilyMember;
 
     public StateAllFamilyMember(List<StateFamilyMember> stateAllFamilyMember) {

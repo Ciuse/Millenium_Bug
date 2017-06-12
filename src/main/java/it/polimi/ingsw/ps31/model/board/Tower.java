@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.model.board;
 
+import it.polimi.ingsw.ps31.model.StateModel.StateCardBox;
+import it.polimi.ingsw.ps31.model.StateModel.StateTower;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
@@ -71,5 +73,14 @@ public class Tower {
             towerCardSpaceList.get(cardSpaceNum).setCard(deck.draw());
         }
 
+    }
+
+    public StateTower getStateTower(){
+        List<StateCardBox> stateCardBoxes = new ArrayList<>();
+        for (TowerCardSpace towerCardSpace : towerCardSpaceList
+                ) {
+            stateCardBoxes.add(towerCardSpace.getStateTowerCardBox());
+        }
+        return new StateTower(color,stateCardBoxes);
     }
 }

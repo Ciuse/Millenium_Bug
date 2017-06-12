@@ -11,15 +11,12 @@ import java.util.List;
  * Created by giulia on 06/06/2017.
  */
 public class StatePersonalBoard extends StateInfo{
-    private PlayerId playerId;
-    private final PersonalBoard personalBoard;
+    private final PlayerId playerId;
     private final List<StateCardBox> stateCardBoxes;
 
-    public StatePersonalBoard(PlayerId playerId,PersonalBoard personalBoard, List<StateCardBox> stateCardBoxes) {
+    public StatePersonalBoard(PlayerId playerId, List<StateCardBox> stateCardBoxes) {
         this.playerId = playerId;
-        this.personalBoard = personalBoard;
         this.stateCardBoxes = stateCardBoxes;
-        this.createListCardBox();
     }
 
     public PlayerId getPlayerId() {
@@ -28,16 +25,6 @@ public class StatePersonalBoard extends StateInfo{
 
     public List<StateCardBox> getStateCardBoxes() {
         return stateCardBoxes;
-    }
-
-    public void createListCardBox(){
-        for (PersonalBoardCardList list: personalBoard.getPersonalBoardCardList()
-                ) {
-            for (PersonalBoardCardCell cell: list.getPersonalBoardCardCellList()
-                    ) {
-                stateCardBoxes.add(cell.GetStateCardBox());
-            }
-        }
     }
 
     @Override

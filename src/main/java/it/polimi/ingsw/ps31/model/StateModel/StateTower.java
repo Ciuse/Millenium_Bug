@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by giulia on 09/06/2017.
  */
-public class StateTower {
+public class StateTower extends StateInfo {
     private final CardColor color;
     private final List<StateCardBox> towerCardSpaceList;
 
@@ -19,5 +19,16 @@ public class StateTower {
         this.towerCardSpaceList = towerCardSpaceList;
     }
 
+    public CardColor getColor() {
+        return color;
+    }
 
+    public List<StateCardBox> getTowerCardSpaceList() {
+        return towerCardSpaceList;
+    }
+
+    @Override
+    public void acceptState(StateVisitor stateVisitor) {
+        stateVisitor.visit(this);
+    }
 }

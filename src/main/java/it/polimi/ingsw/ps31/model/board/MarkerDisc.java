@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.board;
 
+import it.polimi.ingsw.ps31.model.StateModel.StateMarkerDisc;
 import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 import it.polimi.ingsw.ps31.model.player.Player;
 
@@ -28,5 +29,10 @@ public class MarkerDisc {
         trackCell.setMarkerDisc(this);
     }
     //TODO FINIRE ANCORA LA CLASSE CON I SET PER LE TRACK CELL
+
+    public StateMarkerDisc getStateMarkerDisc(){
+        StateMarkerDisc stateMarkerDisc = new StateMarkerDisc(player.getPlayerId(),resourceType.toString(),trackCell.getValue());
+        return stateMarkerDisc;
+    }
 
 }

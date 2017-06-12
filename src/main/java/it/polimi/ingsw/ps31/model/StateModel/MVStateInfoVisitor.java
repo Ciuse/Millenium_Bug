@@ -24,34 +24,47 @@ public class MVStateInfoVisitor implements StateVisitor {
     }
 
     @Override
+    public void visit(StateActionSpace stateActionSpace) { view.updateActionSpace(stateActionSpace);}
+
+    @Override
+    public void visit(StateMarkerDisc stateMarkerDisc) { view.updateMarkerDisc(stateMarkerDisc);
+
+    }
+
+    @Override
+    public void visit(StateTower stateTower) { view.updateTower(stateTower);
+
+    }
+
+    @Override
     public void visit(StateFamilyMember stateFamilyMember) {
         view.updateFamilyMember(stateFamilyMember);
     }
 
     @Override
-    public void visit(StateAllFamilyMember stateAllFamilyMember) {
+    public void visit(StateAllFamilyMember stateAllFamilyMember) { view.updateAllFamilyMember(stateAllFamilyMember);
 
     }
 
     @Override
     public void visit(StateCardBox stateCardBox) {
-
-    }
-
-
-
-    @Override
-    public void visit(StateGame stateGhame) {
+        view.updateCardBox(stateCardBox);
 
     }
 
     @Override
-    public void visit(StatePersonalBoard statePersonalBoard) {
+    public void visit(StateGame stateGame) { view.updateGame(stateGame);
+
+    }
+
+    @Override
+    public void visit(StatePersonalBoard statePersonalBoard) { view.updatePersonalBoard(statePersonalBoard);
 
     }
 
     @Override
     public void visit(StatePlayerAction statePlayerAction) {
+        view.updatePlayerAction(statePlayerAction);
 
     }
 
