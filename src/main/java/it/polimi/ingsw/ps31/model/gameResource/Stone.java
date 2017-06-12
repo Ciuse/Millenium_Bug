@@ -7,4 +7,9 @@ public class Stone extends PhysicalResource {
     public Stone(int value) {
         super(value);
     }
+
+    @Override
+    public String toString(){
+        return "ST"+"["+this.getValue()+"]";
+    }
 }

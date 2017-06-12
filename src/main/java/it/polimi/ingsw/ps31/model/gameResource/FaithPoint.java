@@ -22,4 +22,9 @@ public class FaithPoint extends PointResource{
         player.addResources(this);
         faithTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(FaithPoint.class)).setMarkerDisc(markerDiscToMove);
     }
+
+    @Override
+    public String toString(){
+        return "FP"+"["+this.getValue()+"]";
+    }
 }

@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Tower {
 
-    private final int TOWERDIMENSION; //Number of floors in the tower
+    private static final int TOWERDIMENSION=4; //Number of floors in the tower
 
     private final CardColor color;
     private boolean isOccupied = false;
@@ -23,9 +23,8 @@ public class Tower {
     private DevelopmentCardDeck deck;
 
     /* Constructor */
-    public Tower(int towerDimension, CardColor color, List<EffectList> effectList)
+    public Tower(CardColor color, List<EffectList> effectList)
     {
-        this.TOWERDIMENSION = towerDimension;
         this.towerCardSpaceList = new ArrayList<>();
         this.towerActionSpaceList = new ArrayList<>();
         for (int i = 0; i<TOWERDIMENSION; i++)

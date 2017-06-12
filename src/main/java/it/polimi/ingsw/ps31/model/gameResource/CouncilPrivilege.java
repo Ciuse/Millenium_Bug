@@ -35,4 +35,9 @@ public class CouncilPrivilege extends Resource {
     public int getPointResourceValue() {
         return 0;
     }
+
+    @Override
+    public String toString(){
+        return "CP"+"["+this.getValue()+"]";
+    }
 }
