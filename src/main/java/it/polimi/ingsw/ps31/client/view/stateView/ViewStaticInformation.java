@@ -8,6 +8,7 @@ public class ViewStaticInformation {
     private static int Personal_Board_Identical_Box_Max= 6;
     private static int Personal_Board_Card_List_Number = 4;
     private static int Tower_Identical_Box_Max= 4;
+    private static int Number_Of_Tower=4;
 
     public static int getFamily_Member_Number() {
         return Family_Member_Number;
@@ -23,5 +24,9 @@ public class ViewStaticInformation {
 
     public static int getTower_Identical_Box_Max() {
         return Tower_Identical_Box_Max;
+    }
+
+    public static int getNumber_Of_Tower() {
+        return Number_Of_Tower;
     }
 }

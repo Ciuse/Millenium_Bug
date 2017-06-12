@@ -9,4 +9,9 @@ public class Wood extends PhysicalResource {
         super(value);
     }
 
+
+    @Override
+    public String toString(){
+        return "WO"+"["+this.getValue()+"]";
+    }
 }

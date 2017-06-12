@@ -8,4 +8,9 @@ public class Coin extends PhysicalResource {
     public Coin(int value) {
         super(value);
     }
+
+    @Override
+    public String toString(){
+        return "CO"+"["+this.getValue()+"]";
+    }
 }

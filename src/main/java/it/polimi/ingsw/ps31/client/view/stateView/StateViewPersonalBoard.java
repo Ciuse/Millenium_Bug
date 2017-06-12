@@ -76,9 +76,14 @@ public class StateViewPersonalBoard {
     }
 
     public void updateState(StatePersonalBoard statePersonalBoard) {
+        if(statePersonalBoard.getPlayerId()!=null){
+            this.playerId=statePersonalBoard.getPlayerId();
+        }
+        if(statePersonalBoard.getStateCardBoxes()!=null){
         for (StateCardBox stateCardBox : statePersonalBoard.getStateCardBoxes()
                 ) {
             updateState(stateCardBox);
+        }
         }
     }
 }

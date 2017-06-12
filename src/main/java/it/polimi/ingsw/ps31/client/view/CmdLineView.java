@@ -16,7 +16,11 @@ import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewGame;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
+import it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation;
+import it.polimi.ingsw.ps31.model.constants.CardColor;
+import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import it.polimi.ingsw.ps31.model.gameResource.Resource;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,7 +30,7 @@ import java.util.List;
  */
 public class CmdLineView extends View {
     protected DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
-    protected TerminalSize terminalSize = new TerminalSize(168, 47);
+    protected TerminalSize terminalSize = new TerminalSize(168, 46);
     protected Terminal terminal = null;
     protected Screen screen = null;
     protected TextGraphics textGraphics = null;
@@ -53,6 +57,7 @@ public class CmdLineView extends View {
         defaultTerminalFactory.setInitialTerminalSize(terminalSize);
         terminal = defaultTerminalFactory.createTerminal();
         screen = new TerminalScreen(terminal);
+        screen.setCursorPosition(null);
         screen.startScreen();
         textGraphics = screen.newTextGraphics();
         screen.refresh();
@@ -137,10 +142,10 @@ public class CmdLineView extends View {
 
 
 
-    public void printTitle(){
+    public void printTitle() {
         //stampa del titolo
-        String sizeLabel = "LORENZO IL MAGNIFICO"+ terminalSize;
-        TerminalPosition labelBoxTopLeft = new TerminalPosition(105,0);
+        String sizeLabel = "LORENZO IL MAGNIFICO";
+        TerminalPosition labelBoxTopLeft = new TerminalPosition(105, 0);
         TerminalSize labelBoxSize = new TerminalSize(sizeLabel.length() + 2, 3);
         TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(labelBoxSize.getColumns() - 1);
         TextGraphics textGraphics = screen.newTextGraphics();
@@ -160,25 +165,198 @@ public class CmdLineView extends View {
         textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(1), Symbols.DOUBLE_LINE_VERTICAL);
         textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(2), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
         textGraphics.putString(labelBoxTopLeft.withRelative(1, 1), sizeLabel);
-        textGraphics.putString(0,0,"ciao");
-        textGraphics.putString(0,1,"ciao");
-        textGraphics.putString(0,2,"ciao");
-        textGraphics.setCharacter(0,3,Symbols.SOLID_SQUARE);
-        textGraphics.setCharacter(0,4,Symbols.SOLID_SQUARE);
-
-        textGraphics.setCharacter(1,3,Symbols.SOLID_SQUARE);
-        textGraphics.setCharacter(1,4,Symbols.SOLID_SQUARE);
-        textGraphics.setCharacter(2,3,Symbols.OUTLINED_SQUARE);
-        textGraphics.setCharacter(0,3,Symbols.BOLD_SINGLE_LINE_VERTICAL);
-
-
-
         try {
             screen.refresh();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
+
+        public void printTower (){
+
+            for(int i=0; i< ViewStaticInformation.getNumber_Of_Tower();i++){
+            for(int j=0;j<ViewStaticInformation.getTower_Identical_Box_Max();j++){
+                TerminalSize cardBox = new TerminalSize(5, 3);
+
+                TerminalPosition labelBoxTopLeft = new TerminalPosition(2+(i*6), 0+(j*3));
+                TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 1);
+
+                textGraphics.drawLine(
+                        labelBoxTopLeft.withRelativeColumn(1),
+                        labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 2),
+                        Symbols.DOUBLE_LINE_HORIZONTAL);
+                textGraphics.drawLine(
+                        labelBoxTopLeft.withRelativeRow(2).withRelativeColumn(1),
+                        labelBoxTopLeft.withRelativeRow(2).withRelativeColumn(cardBox.getColumns() - 2),
+                        Symbols.DOUBLE_LINE_HORIZONTAL);
+                textGraphics.setCharacter(labelBoxTopLeft, Symbols.DOUBLE_LINE_TOP_LEFT_CORNER);
+                textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(1), Symbols.DOUBLE_LINE_VERTICAL);
+                textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(2), Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);
+                textGraphics.setCharacter(labelBoxTopRightCorner, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
+                textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(1), Symbols.DOUBLE_LINE_VERTICAL);
+                textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(2), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
+
+                screen.setCharacter(labelBoxTopLeft.withRelative(1, 1), getCardColorCharatcter(labelBoxTopLeft,CardColor.GREEN));
+                textGraphics.putString(labelBoxTopLeft.withRelative(2, 1), "27");
+            }
+        }
+            try {
+                screen.refresh();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        public void printMyPlayer(){
+            for (StateViewPlayer player:super.getStateViewPlayerList()
+                    ) {
+                if(super.getViewId().equals(player.getPlayerId())){
+                    TerminalSize cardBox = new TerminalSize(61, 3);
+                    TerminalPosition labelBoxTopLeft = new TerminalPosition(100, 0);
+                    TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 1);
+                    textGraphics.drawLine(
+                            labelBoxTopLeft.withRelativeColumn(1),
+                            labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 2),
+                            Symbols.DOUBLE_LINE_HORIZONTAL);
+                    textGraphics.drawLine(
+                            labelBoxTopLeft.withRelativeRow(2).withRelativeColumn(1),
+                            labelBoxTopLeft.withRelativeRow(2).withRelativeColumn(cardBox.getColumns() - 2),
+                            Symbols.DOUBLE_LINE_HORIZONTAL);
+                    textGraphics.setCharacter(labelBoxTopLeft, Symbols.DOUBLE_LINE_TOP_LEFT_CORNER);
+                    textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(1), Symbols.DOUBLE_LINE_VERTICAL);
+                    textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(2), Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);
+                    textGraphics.setCharacter(labelBoxTopRightCorner, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
+                    textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(1), Symbols.DOUBLE_LINE_VERTICAL);
+                    textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(2), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
+                    screen.setCharacter(labelBoxTopLeft.withRelative(1, 1), getPlayerColorCharatcter(labelBoxTopLeft,player.getPlayerColor()));
+                    textGraphics.putString(labelBoxTopLeft.withRelative(2, 1), player.getNickname());
+                    int value=2+player.getNickname().length()+1;
+                    int i=0;
+                    for (Resource resource : player.getPlayerResources().getPlayerResourceList().getResourceList()
+                            ) {
+                        TerminalPosition resourcePosition = new TerminalPosition(value+i*7,1);
+                        textGraphics.putString(labelBoxTopLeft.withRelative(resourcePosition),resource.toString());
+                       // value=value+resource.toString().length()+1;
+                        i++;
+                    }
+                }
+            }
+            try {
+                screen.refresh();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void printAllPlayer(){
+            { int j=0;
+                for (StateViewPlayer player:super.getStateViewPlayerList()
+                        ) {
+                    TerminalSize cardBox = new TerminalSize(61, 3);
+                    TerminalPosition labelBoxTopLeft = new TerminalPosition(100, 0+j*3);
+                    TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 1);
+                    textGraphics.drawLine(
+                            labelBoxTopLeft.withRelativeColumn(1),
+                            labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 2),
+                            Symbols.DOUBLE_LINE_HORIZONTAL);
+                    textGraphics.drawLine(
+                            labelBoxTopLeft.withRelativeRow(2).withRelativeColumn(1),
+                            labelBoxTopLeft.withRelativeRow(2).withRelativeColumn(cardBox.getColumns() - 2),
+                            Symbols.DOUBLE_LINE_HORIZONTAL);
+                    textGraphics.setCharacter(labelBoxTopLeft, Symbols.DOUBLE_LINE_TOP_LEFT_CORNER);
+                    textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(1), Symbols.DOUBLE_LINE_VERTICAL);
+                    textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(2), Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);
+                    textGraphics.setCharacter(labelBoxTopRightCorner, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
+                    textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(1), Symbols.DOUBLE_LINE_VERTICAL);
+                    textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(2), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
+                    screen.setCharacter(labelBoxTopLeft.withRelative(1, 1), getPlayerColorCharatcter(labelBoxTopLeft, player.getPlayerColor()));
+                    textGraphics.putString(labelBoxTopLeft.withRelative(2, 1), player.getNickname());
+                    int value = 2 + player.getNickname().length() + 1;
+                    int i = 0;
+                    for (Resource resource : player.getPlayerResources().getPlayerResourceList().getResourceList()
+                            ) {
+                        TerminalPosition resourcePosition = new TerminalPosition(value + i * 7, 1);
+                        textGraphics.putString(labelBoxTopLeft.withRelative(resourcePosition), resource.toString());
+                        // value=value+resource.toString().length()+1;
+                        i++;
+                    }
+                    j++;
+                }
+                try {
+                    screen.refresh();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        public TextCharacter getPlayerColorCharatcter(TerminalPosition labelBoxTopLeft, PlayerColor playerColor) {
+            TextColor.ANSI color = TextColor.ANSI.BLACK;
+            if (playerColor.equals(PlayerColor.RED)) {
+                color = TextColor.ANSI.RED;
+            } else if (playerColor.equals(PlayerColor.GREEN)) {
+                color = TextColor.ANSI.GREEN;
+            } else if (playerColor.equals(PlayerColor.BLUE)) {
+                color = TextColor.ANSI.BLUE;
+            } else if (playerColor.equals(PlayerColor.YELLOW)) {
+                color = TextColor.ANSI.YELLOW;
+            }
+            TextCharacter characterInBackBuffer = screen.getBackCharacter(labelBoxTopLeft.withRelative(1, 1));
+            characterInBackBuffer = characterInBackBuffer.withBackgroundColor(color);
+            characterInBackBuffer = characterInBackBuffer.withCharacter(' ');   // Because of the label box further down, if it shrinks
+            screen.setCharacter(labelBoxTopLeft.withRelative(1, 1), characterInBackBuffer);
+            return characterInBackBuffer;
+        }
+
+        public void printMyPersonalBoard(){
+            for (StateViewPersonalBoard board:super.getStateViewPersonalBoardList()
+                ) {
+            if(super.getViewId().equals(board.getPlayerId())){
+                TerminalSize cardBox = new TerminalSize(61, 5);
+                TerminalPosition labelBoxTopLeft = new TerminalPosition(50, 20);
+                TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 1);
+                textGraphics.drawLine(
+                        labelBoxTopLeft.withRelativeColumn(1),
+                        labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 2),
+                        Symbols.DOUBLE_LINE_HORIZONTAL);
+                textGraphics.drawLine(
+                        labelBoxTopLeft.withRelativeRow(cardBox.getRows()-1).withRelativeColumn(1),
+                        labelBoxTopLeft.withRelativeRow(cardBox.getRows()-1).withRelativeColumn(cardBox.getColumns() - 2),
+                        Symbols.DOUBLE_LINE_HORIZONTAL);
+                textGraphics.setCharacter(labelBoxTopLeft, Symbols.DOUBLE_LINE_TOP_LEFT_CORNER);
+                textGraphics.drawLine(labelBoxTopLeft.withRelativeRow(1),labelBoxTopLeft.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_VERTICAL);
+                textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);
+                textGraphics.setCharacter(labelBoxTopRightCorner, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
+                textGraphics.drawLine(labelBoxTopRightCorner.withRelativeRow(1),labelBoxTopRightCorner.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_VERTICAL);
+                textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
+            }
+        }
+            try {
+                screen.refresh();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+        private TextCharacter getCardColorCharatcter(TerminalPosition labelBoxTopLeft, CardColor cardColor){
+            TextColor.ANSI color = TextColor.ANSI.BLACK;
+            if (cardColor.equals(CardColor.PURPLE)) {
+                color = TextColor.ANSI.MAGENTA;
+            } else if (cardColor.equals(CardColor.GREEN)) {
+                color = TextColor.ANSI.GREEN;
+            } else if (cardColor.equals(CardColor.BLUE)) {
+                color = TextColor.ANSI.BLUE;
+            } else if (cardColor.equals(CardColor.YELLOW)) {
+                color = TextColor.ANSI.YELLOW;
+            }
+            TextCharacter characterInBackBuffer = screen.getBackCharacter(labelBoxTopLeft.withRelative(1, 1));
+            characterInBackBuffer = characterInBackBuffer.withBackgroundColor(color);
+            characterInBackBuffer = characterInBackBuffer.withCharacter(' ');   // Because of the label box further down, if it shrinks
+            return characterInBackBuffer;
+        }
 
 }

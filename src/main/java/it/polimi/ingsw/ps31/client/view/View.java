@@ -145,6 +145,29 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void printTitle();
 
+    public abstract void printTower();
+
+    public abstract void printMyPlayer();
+
+    public abstract void printAllPlayer();
+
+    public abstract void printMyPersonalBoard();
+
     public abstract void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView);
 
+    public PlayerId getViewId() {
+        return viewId;
+    }
+
+    public StateViewBoard getStateViewBoard() {
+        return stateViewBoard;
+    }
+
+    public List<StateViewPlayer> getStateViewPlayerList() {
+        return stateViewPlayerList;
+    }
+
+    public List<StateViewPersonalBoard> getStateViewPersonalBoardList() {
+        return stateViewPersonalBoardList;
+    }
 }

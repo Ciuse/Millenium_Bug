@@ -55,7 +55,7 @@ public abstract class Resource {
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return this.getClass().getSimpleName()+"["+this.getValue()+"]";
     }
 

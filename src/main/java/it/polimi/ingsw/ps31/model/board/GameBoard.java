@@ -60,7 +60,7 @@ public class GameBoard extends Model{
         //creazione torri
         CardColor[] towerColor = {CardColor.GREEN, CardColor.BLUE, CardColor.YELLOW, CardColor.PURPLE};
         for (int i = 0; i < TOWERNUMBER; i++) {
-            towers.add(new Tower(towerEffectList.get(i).size(), towerColor[i], towerEffectList.get(i)));
+            towers.add(new Tower(towerColor[i], towerEffectList.get(i)));
         }
 
         //creazione dadi
