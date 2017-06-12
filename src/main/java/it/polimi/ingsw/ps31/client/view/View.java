@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps31.client.view;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrVisualization;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewGame;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
 import it.polimi.ingsw.ps31.controller.Controller;
@@ -29,14 +30,16 @@ public abstract class View extends Observable implements Observer {
     private final StateViewBoard stateViewBoard;
     private final List<StateViewPlayer> stateViewPlayerList;
     private final List<StateViewPersonalBoard> stateViewPersonalBoardList;
+    private final StateViewGame stateViewGame;
     private IntrVisualization stateInterpreterView;
 
 
-    public View(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoardList, List<StateViewPlayer> stateViewPlayerList) {
+    public View(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoardList, List<StateViewPlayer> stateViewPlayerList, StateViewGame stateViewGame) {
         this.viewId = viewId;
         this.stateViewBoard = stateViewBoard;
         this.stateViewPersonalBoardList = stateViewPersonalBoardList;
         this.stateViewPlayerList = stateViewPlayerList;
+        this.stateViewGame = stateViewGame;
     }
     public void addController(Controller controller){
         this.addObserver(controller);
@@ -132,7 +135,7 @@ public abstract class View extends Observable implements Observer {
     }
 
     public final void updateGame(StateGame stateGame){
-
+        stateViewGame.updateState(stateGame);
     }
 
 

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.game;
 
 import com.google.gson.Gson;
+import it.polimi.ingsw.ps31.model.StateModel.StateGame;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.player.PersonalBoard;
@@ -28,6 +29,7 @@ public class StartGame {
     private int period;
     private int round;
     private List<Player> playerList;
+
 
     public void playGame() {
         CreationJson creationJson = new CreationJson();
@@ -315,5 +317,10 @@ public class StartGame {
             }
         }
 
+    }
+
+    public StateGame getStateGame(Player player){
+            StateGame stateGame = new StateGame(period,round,player.getNickname());
+            return stateGame;
     }
 }
