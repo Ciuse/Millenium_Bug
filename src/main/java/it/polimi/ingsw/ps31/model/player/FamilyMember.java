@@ -83,7 +83,7 @@ public class FamilyMember {
             return true;
     }
      public StateFamilyMember getStateFamilyMember(){
-        StateFamilyMember stateFamilyMember = new StateFamilyMember(player.getPlayerId(),diceValue, additionalValue, diceColor, actionSpace);
+        StateFamilyMember stateFamilyMember = new StateFamilyMember(player.getPlayerId(),diceValue, additionalValue, diceColor, actionSpace.getActionSpaceId());
         return stateFamilyMember;
      }
 }

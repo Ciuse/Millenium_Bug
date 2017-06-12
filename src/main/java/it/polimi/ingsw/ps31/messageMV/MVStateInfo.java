@@ -1,14 +1,14 @@
-package it.polimi.ingsw.ps31.server.message;
+package it.polimi.ingsw.ps31.messageMV;
 
 import it.polimi.ingsw.ps31.model.StateModel.StateInfo;
 
 /**
  * Created by Giuseppe on 06/06/2017.
  */
-public class MexStateInfo implements MexVisitable {
+public class MVStateInfo implements MVVisitable {
     StateInfo stateInfo;
 
-    public MexStateInfo(StateInfo stateInfo) {
+    public MVStateInfo(StateInfo stateInfo) {
         this.stateInfo = stateInfo;
     }
 
@@ -17,7 +17,7 @@ public class MexStateInfo implements MexVisitable {
     }
 
     @Override
-    public void accept(MexVisitor mexVisitor) {
-        mexVisitor.visit(this);
+    public void accept(MVVisitor mvVisitor) {
+        mvVisitor.visit(this);
     }
 }

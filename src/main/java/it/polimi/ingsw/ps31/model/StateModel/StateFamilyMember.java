@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.StateModel;
 
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
+import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
@@ -12,14 +13,14 @@ public class StateFamilyMember extends StateInfo {
     private final int diceValue;
     private final int additionalValue;
     private final DiceColor diceColor;
-    private final ActionSpace actionSpace;
+    private final int actionSpaceId;
 
-    public StateFamilyMember(PlayerId playerId, int diceValue, int additionalValue, DiceColor diceColor, ActionSpace actionSpace) {
+    public StateFamilyMember(PlayerId playerId, int diceValue, int additionalValue, DiceColor diceColor, int actionSpaceId) {
         this.playerId = playerId;
         this.diceValue = diceValue;
         this.additionalValue = additionalValue;
         this.diceColor = diceColor;
-        this.actionSpace = actionSpace;
+        this.actionSpaceId = actionSpaceId;
     }
 
     public PlayerId getPlayerId() {
@@ -38,8 +39,8 @@ public class StateFamilyMember extends StateInfo {
         return diceColor;
     }
 
-    public ActionSpace getActionSpace() {
-        return actionSpace;
+    public int getActionSpaceId() {
+        return actionSpaceId;
     }
 
     @Override

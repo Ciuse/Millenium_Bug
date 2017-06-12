@@ -1,19 +1,18 @@
 package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
-
-import javax.swing.*;
+import it.polimi.ingsw.ps31.client.view.CmdLineView;
 
 /**
  * Created by Giuseppe on 08/06/2017.
  */
 public class IntrChooseColor implements CmdInterpreterView {
     @Override
-    public void messageInterpreter(TextGraphics textGraphics, Character in) {
+    public void messageInterpreter(CmdLineView cmdLineView, TextGraphics textGraphics, Character in) {
         if(in.compareTo('1')==0)
-            System.out.println("ChoosedColorRed");
+            textGraphics.putString(5,5,"scelto rosso");
         if(in.compareTo('2')==0){
-            System.out.println("ChoosedColorGreen");
+            textGraphics.putString(5,5, "scelto verde");
         }
     }
 

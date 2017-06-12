@@ -1,12 +1,13 @@
-package it.polimi.ingsw.ps31.client.view;
+package it.polimi.ingsw.ps31.model.StateModel;
 
+import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.model.StateModel.*;
 import it.polimi.ingsw.ps31.model.StateModel.StateVisitor;
 
 /**
  * Created by Giuseppe on 06/06/2017.
  */
-public class MesStateInfoVisitor implements StateVisitor {
+public class MVStateInfoVisitor implements StateVisitor {
     View view;
 
     public void setView(View view){

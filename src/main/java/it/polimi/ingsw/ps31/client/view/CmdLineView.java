@@ -1,8 +1,6 @@
-package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
+package it.polimi.ingsw.ps31.client.view;
 
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
@@ -11,14 +9,13 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import it.polimi.ingsw.ps31.client.view.View;
-import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrChooseColor;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.CmdInterpreterView;
+import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrChooseColor;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrString;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrVisualization;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
-import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import java.awt.*;
@@ -34,13 +31,12 @@ import java.util.TimerTask;
  */
 public class CmdLineView extends View {
     protected DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
-    protected TerminalSize terminalSize = new TerminalSize(235, 70);
+    protected TerminalSize terminalSize = new TerminalSize(240, 70);
     protected Terminal terminal = null;
     protected Screen screen = null;
+    protected TextGraphics textGraphics = null;
+    protected KeyStroke keyStroke=null;
 
-
-
-    Scanner scanner = new Scanner(System.in);
     private CmdInterpreterView cmdInterpreterView = new IntrVisualization();
 
 
@@ -63,16 +59,28 @@ public class CmdLineView extends View {
         terminal = defaultTerminalFactory.createTerminal();
         screen = new TerminalScreen(terminal);
         screen.startScreen();
+        textGraphics = screen.newTextGraphics();
         screen.refresh();
+
     }
 
     @Override
-    public void inserisciColore() throws IOException {
+    public void inserisciColore() {
 
-        this.setCmdInterpreterView(new IntrChooseColor());
-        System.out.println("Inserisci Colore: 1 Red, 2 Green");
-        askComand();
-        this.setCmdInterpreterView(new IntrVisualization());
+        try {
+            this.setCmdInterpreterView(new IntrChooseColor());
+            textGraphics.drawLine(0, 4, terminal.getTerminalSize().getColumns(), 4, ' ');
+            textGraphics.putString(0,4,"1 scegli rosso, 2 scegli verde");
+            screen.refresh();
+            keyStroke=screen.readInput();
+            cmdInterpreterView.messageInterpreter(this,textGraphics,keyStroke.getCharacter());
+            screen.refresh();
+            this.setCmdInterpreterView(new IntrVisualization());
+            askComand();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 //        PlayerColor playerColor = null;
 //        Boolean ok = false;
@@ -106,28 +114,61 @@ public class CmdLineView extends View {
 
 
     public void askComand() throws IOException {
-        KeyStroke keyStroke = screen.readInput();
-        while(cmdInterpreterView.toString().equals("IntrVisualization")&&keyStroke != null && keyStroke.getKeyType() != KeyType.Escape && keyStroke.getKeyType() != KeyType.EOF) {
+        keyStroke = screen.pollInput();
+        while(cmdInterpreterView.toString().equals("IntrVisualization")) {
 
+             if(keyStroke !=null && (keyStroke.getKeyType() == KeyType.Escape || keyStroke.getKeyType() == KeyType.EOF)){
+                 break;
+            }
 //            try {
 //                Thread.sleep(2000);
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
-            TextGraphics textGraphics = screen.newTextGraphics();
-
-            textGraphics.drawLine(5, 4, terminal.getTerminalSize().getColumns() - 1, 4, ' ');
-            textGraphics.putString(3, 65, "Last Keystroke: ", SGR.BOLD);
-            textGraphics.putString(5 + "Last Keystroke: ".length(), 4, keyStroke.toString());
-            terminal.flush();
-            cmdInterpreterView.messageInterpreter(textGraphics,keyStroke.getCharacter());
-
-            screen.refresh();
-
-            keyStroke = screen.readInput();
+            if(keyStroke!=null && keyStroke.getKeyType() != KeyType.Escape && keyStroke.getKeyType() != KeyType.EOF) {
+                textGraphics.drawLine(0, 4, terminal.getTerminalSize().getColumns(), 4, ' ');
+                textGraphics.putString(0 + "Last Keystroke: ".length(), 4, keyStroke.toString());
+                terminal.flush();
+                cmdInterpreterView.messageInterpreter(this,textGraphics, keyStroke.getCharacter());
+                screen.refresh();
+            }
+            keyStroke = screen.pollInput();
         }
         if(keyStroke != null){
             screen.close();
+        }
+
+    }
+
+
+
+    public void printTitle(){
+        //stampa del titolo
+        String sizeLabel = "LORENZO IL MAGNIFICO";
+        TerminalPosition labelBoxTopLeft = new TerminalPosition(105,0);
+        TerminalSize labelBoxSize = new TerminalSize(sizeLabel.length() + 2, 3);
+        TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(labelBoxSize.getColumns() - 1);
+        TextGraphics textGraphics = screen.newTextGraphics();
+        textGraphics.fillRectangle(labelBoxTopLeft, labelBoxSize, ' ');
+        textGraphics.drawLine(
+                labelBoxTopLeft.withRelativeColumn(1),
+                labelBoxTopLeft.withRelativeColumn(labelBoxSize.getColumns() - 2),
+                Symbols.DOUBLE_LINE_HORIZONTAL);
+        textGraphics.drawLine(
+                labelBoxTopLeft.withRelativeRow(2).withRelativeColumn(1),
+                labelBoxTopLeft.withRelativeRow(2).withRelativeColumn(labelBoxSize.getColumns() - 2),
+                Symbols.DOUBLE_LINE_HORIZONTAL);
+        textGraphics.setCharacter(labelBoxTopLeft, Symbols.DOUBLE_LINE_TOP_LEFT_CORNER);
+        textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(1), Symbols.DOUBLE_LINE_VERTICAL);
+        textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(2), Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);
+        textGraphics.setCharacter(labelBoxTopRightCorner, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
+        textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(1), Symbols.DOUBLE_LINE_VERTICAL);
+        textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(2), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
+        textGraphics.putString(labelBoxTopLeft.withRelative(1, 1), sizeLabel);
+        try {
+            screen.refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }

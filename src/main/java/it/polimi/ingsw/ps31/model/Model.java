@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.model;
 
 import it.polimi.ingsw.ps31.client.view.View;
-import it.polimi.ingsw.ps31.server.message.MexVisitable;
+import it.polimi.ingsw.ps31.messageMV.MVVisitable;
 
 import java.util.Observable;
 
@@ -16,7 +16,7 @@ public class Model extends Observable {
         this.addObserver(view);
     }
 
-    public void sendInformation(MexVisitable message) {
+    public void notifyViews(MVVisitable message) {
         this.setChanged();
         notifyObservers(message);
 

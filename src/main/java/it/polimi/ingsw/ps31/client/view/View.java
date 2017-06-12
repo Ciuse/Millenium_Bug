@@ -5,13 +5,16 @@ import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrVisualization;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
+import it.polimi.ingsw.ps31.controller.Controller;
+import it.polimi.ingsw.ps31.messageMV.MVMessageVisitor;
+import it.polimi.ingsw.ps31.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.StateModel.StateAllFamilyMember;
 import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
 import it.polimi.ingsw.ps31.model.StateModel.StateInfoPlayer;
 import it.polimi.ingsw.ps31.model.StateModel.StatePlayerResources;
 import it.polimi.ingsw.ps31.model.StateModel.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.server.message.MexVisitable;
+import it.polimi.ingsw.ps31.messageMV.MVVisitable;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,7 +24,7 @@ import java.util.Observer;
 /**
  * Created by giulia in 01/06/2017.
  */
-public abstract class View implements Observer {
+public abstract class View extends Observable implements Observer {
     private final PlayerId viewId;
     private final StateViewBoard stateViewBoard;
     private final List<StateViewPlayer> stateViewPlayerList;
@@ -35,19 +38,28 @@ public abstract class View implements Observer {
         this.stateViewPersonalBoardList = stateViewPersonalBoardList;
         this.stateViewPlayerList = stateViewPlayerList;
     }
+    public void addController(Controller controller){
+        this.addObserver(controller);
+    }
+
+    public void notifyController(VCVisitable message) {
+        this.setChanged();
+        notifyObservers(message);
+    }
+
 
     @Override
     public void update(Observable o, Object arg) {
-        MessageVisitor messageVisitor = new MessageVisitor();
-        messageVisitor.setView(this);
-        MexVisitable message = (MexVisitable) arg;
-        message.accept(messageVisitor);
+        MVMessageVisitor MVMessageVisitor = new MVMessageVisitor();
+        MVMessageVisitor.setView(this);
+        MVVisitable message = (MVVisitable) arg;
+        message.accept(MVMessageVisitor);
     }
 
 
     public abstract void inserisciNome();
 
-    public abstract void inserisciColore() throws IOException;
+    public abstract void inserisciColore();
 
     public final void updateInfoPlayer(StateInfoPlayer stateInfoPlayer){
         for (StateViewPlayer viewPlayer : stateViewPlayerList
@@ -103,6 +115,8 @@ public abstract class View implements Observer {
     public abstract void askComand() throws IOException;
 
     public abstract void runTerminal() throws IOException;
+
+    public abstract void printTitle();
 
     public abstract void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView);
 

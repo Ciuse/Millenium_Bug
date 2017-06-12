@@ -16,7 +16,7 @@ public class StateViewFamilyMember {
     private DiceColor diceColor;
     private int diceValue;
     private int additionalValue;
-    private ActionSpace actionSpace;
+    private int actionSpaceId;
 
     public StateViewFamilyMember(PlayerId playerId) {
         this.playerId = playerId;
@@ -34,8 +34,8 @@ public class StateViewFamilyMember {
         return additionalValue;
     }
 
-    public ActionSpace getActionSpace() {
-        return actionSpace;
+    public int getActionSpace() {
+        return actionSpaceId;
     }
 
     public PlayerId getPlayerId() {
@@ -46,7 +46,7 @@ public class StateViewFamilyMember {
         if(stateFamilyMember.getDiceColor()!=null){
             this.diceColor=stateFamilyMember.getDiceColor();
             this.additionalValue = stateFamilyMember.getAdditionalValue();
-            this.actionSpace = stateFamilyMember.getActionSpace();
+            this.actionSpaceId = stateFamilyMember.getActionSpaceId();
             this.diceValue = stateFamilyMember.getDiceValue();
         }
     }
