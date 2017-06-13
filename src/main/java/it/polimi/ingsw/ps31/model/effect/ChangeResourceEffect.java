@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps31.model.effect;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,5 +36,27 @@ public class ChangeResourceEffect extends Effect {
         int listChoose= scanner.nextInt();
         player.getPlayerActionSet().payResources(resourceToPayList.get(listChoose));
         player.getPlayerActionSet().getResources(resourceToGainList.get(listChoose));
+    }
+
+
+    public String nameString(){
+        return "Change";
+    }
+
+    public List<String> resourceToPayString(){
+        List<String> stringResourceToPayList = new ArrayList<>();
+        for (ResourceList resourceList:resourceToGainList
+                ) {
+            stringResourceToPayList.add(resourceList.toString());
+
+        } return stringResourceToPayList;
+    }
+
+    public List<String> resourceToGainString(){
+        List<String> stringResourceToGainList = new ArrayList<>();
+        for (ResourceList resourceList:resourceToGainList
+                ) {
+            stringResourceToGainList.add(resourceList.toString());
+        } return stringResourceToGainList;
     }
 }

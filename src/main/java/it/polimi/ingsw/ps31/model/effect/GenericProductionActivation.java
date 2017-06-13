@@ -21,4 +21,7 @@ public class GenericProductionActivation extends Effect {
         int diceValue = player.getLastUsedFamilyMember().getTotalValue()+basicValue;
         player.getPlayerActionSet().activateProduction(diceValue);
     }
+    public String nameString(){
+        return "ActProduction";
+    }
 }

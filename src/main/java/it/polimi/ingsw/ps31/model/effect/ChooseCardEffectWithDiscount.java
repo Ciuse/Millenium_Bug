@@ -23,4 +23,11 @@ public class ChooseCardEffectWithDiscount extends ChooseCardEffect {
 //        chooseCardAction.setDiscount(resourcesDiscount);
 //        chooseCardAction.activate();
     }
+    public String nameString(){
+        return "ChooseCard+D";
+    }
+
+    public String resourceDiscountString() {
+        return resourcesDiscount.toString();
+    }
 }

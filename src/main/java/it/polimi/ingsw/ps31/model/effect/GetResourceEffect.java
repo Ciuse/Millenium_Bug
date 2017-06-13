@@ -7,7 +7,6 @@ import it.polimi.ingsw.ps31.model.player.Player;
  * Created by giulia on 15/05/2017.
  */
 public class GetResourceEffect extends Effect {
-
     private final ResourceList resources;
 
     public GetResourceEffect(ResourceList resources){
@@ -21,5 +20,12 @@ public class GetResourceEffect extends Effect {
     @Override
     public void activate(Player player) {
         player.getPlayerActionSet().getResources(this.resources);
+    }
+
+    public String resourceToGainString(){
+        return resources.toString();
+    }
+    public String nameString(){
+        return "GetRes";
     }
 }

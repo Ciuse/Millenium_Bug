@@ -27,4 +27,8 @@ public class HarvestEffect extends Effect {
     public void activate(Player player) {
 
     }
+
+    public String nameString(){
+        return "HarvEffect";
+    }
 }

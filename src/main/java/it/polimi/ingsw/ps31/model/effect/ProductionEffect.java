@@ -26,4 +26,8 @@ public class ProductionEffect extends Effect {
     public void activate(Player player) {
 
     }
+
+    public String nameString(){
+        return "ProdEffect";
+    }
 }

@@ -1,7 +1,10 @@
 package it.polimi.ingsw.ps31.model.card;
 
+import it.polimi.ingsw.ps31.model.StateModel.StateDevelopmentCard;
+import it.polimi.ingsw.ps31.model.StateModel.StateEffect;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.effect.ActiveEffect;
+import it.polimi.ingsw.ps31.model.effect.Effect;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
@@ -29,23 +32,29 @@ public abstract class DevelopmentCard extends Card implements ActiveEffect {
         this.immediateEffectList = immediateEffectList;
         this.permanentEffectList = permanentEffectList;
     }
+
     /*Getters*/
     public int getCardId() {
         return this.cardId;
     }
-    public CardColor getCardColor(){
+
+    public CardColor getCardColor() {
         return this.cardColor;
     }
-    public int getPeriod(){
+
+    public int getPeriod() {
         return this.period;
     }
-    public List<ResourceList> getCostList(){   //ritorno una copia al riferimento alla lista per non farla modificare
+
+    public List<ResourceList> getCostList() {   //ritorno una copia al riferimento alla lista per non farla modificare
         return new ArrayList<>(this.costList);
     }
-    public EffectList getImmediateEffectList(){
+
+    public EffectList getImmediateEffectList() {
         return this.immediateEffectList;
     }
-    public EffectList getPermanentEffectList(){
+
+    public EffectList getPermanentEffectList() {
         return this.permanentEffectList;
     }
 
@@ -80,15 +89,37 @@ public abstract class DevelopmentCard extends Card implements ActiveEffect {
 
     @Override
     public void activeEffectList(Player player) {
-        if(this.immediateEffectList!=null) {
+        if (this.immediateEffectList != null) {
             for (int i = 0; i < this.immediateEffectList.size(); i++) {
                 this.immediateEffectList.get(i).activate(player);
             }
         }
-        if(this.permanentEffectList!=null){
-            for(int i=0; i<this.permanentEffectList.size();i++){        //TODO VERIFICARE SE SI ATTIVANO IN MODO DIVERSO
+        if (this.permanentEffectList != null) {
+            for (int i = 0; i < this.permanentEffectList.size(); i++) {        //TODO VERIFICARE SE SI ATTIVANO IN MODO DIVERSO
                 this.permanentEffectList.get(i).activate(player);
             }
         }
     }
+
+    public StateDevelopmentCard getStateDevelopmentCard() {
+        List<String> stringCosts = new ArrayList<>();
+        for (ResourceList resourceList : costList
+                ) {
+            stringCosts.add(resourceList.toString());
+        }
+
+        List<StateEffect> stateImmediateEffects = new ArrayList<>();
+        for (Effect effect : immediateEffectList.getEffectList()
+                ) {
+            stateImmediateEffects.add(new StateEffect(effect));
+        }
+
+        List<StateEffect> statePermanentEffects = new ArrayList<>();
+        for (Effect effect : permanentEffectList.getEffectList()
+                ) {
+            statePermanentEffects.add(new StateEffect(effect));
+        }
+        return new StateDevelopmentCard(super.getName(), cardId, cardColor, stateImmediateEffects, statePermanentEffects, stringCosts);
+    }
+
 }

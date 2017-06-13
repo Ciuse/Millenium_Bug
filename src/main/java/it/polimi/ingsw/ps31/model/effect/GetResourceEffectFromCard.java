@@ -20,4 +20,14 @@ public class GetResourceEffectFromCard extends GetResourceEffect {
         player.getPlayerActionSet().getResources(super.getResources());
 
     }
+
+    public CardColor getCardColor() {
+        return cardColor;
+    }
+    @Override
+    public String nameString(){
+        return "ResFromCard";
+    }
+
+
 }

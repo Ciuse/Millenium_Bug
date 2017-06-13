@@ -26,4 +26,15 @@ public class ChooseCardEffect extends Effect{
 //        chooseCardAction.setCardColor(cardColors);
 //        chooseCardAction.activate();
     }
+    public String nameString(){
+        return "ChooseCard";
+    }
+
+    public List<CardColor> getCardColors() {
+        return cardColors;
+    }
+
+    public int getDiceValue() {
+        return diceValue;
+    }
 }
