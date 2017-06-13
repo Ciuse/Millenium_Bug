@@ -5,8 +5,6 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.server.serverNetworking.ConnectionInterface;
 import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
 
-import java.io.IOException;
-
 /**
  * Created by Francesco on 08/06/2017.
  */

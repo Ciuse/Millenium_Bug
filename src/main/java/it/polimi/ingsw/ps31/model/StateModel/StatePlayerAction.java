@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.model.StateModel;
 
-import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import java.util.List;

@@ -52,7 +52,7 @@ public class ActionTakeCard extends Action {
     public void activate()
     {
         //Controllo che i parametri siano settati
-        if ( towerCardSpace == null || ( cardColor != null && !cardColor.equals(towerCardSpace.getColor()) ) )
+        if ( towerCardSpace == null || ( cardColor != null && !cardColor.equals(towerCardSpace.getTowerColor()) ) )
         {
             //TODO: gestire
         }else

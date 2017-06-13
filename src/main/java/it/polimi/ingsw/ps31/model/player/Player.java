@@ -12,7 +12,8 @@ import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.model.gameResource.*;
+import it.polimi.ingsw.ps31.model.gameResource.Resource;
+import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 
 import java.util.ArrayList;
 import java.util.Iterator;

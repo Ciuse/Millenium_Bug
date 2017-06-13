@@ -1,13 +1,9 @@
 package it.polimi.ingsw.ps31.client;
 
 import it.polimi.ingsw.ps31.client.ClientNetworking.ClientSocketConnection;
-import it.polimi.ingsw.ps31.client.view.TerminalView;
-import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.ViewProva;
 
-import java.io.*;
-import java.net.NetworkInterface;
-import java.net.Socket;
+import java.io.IOException;
 
 /**
  * Created by Giuseppe on 05/06/2017.

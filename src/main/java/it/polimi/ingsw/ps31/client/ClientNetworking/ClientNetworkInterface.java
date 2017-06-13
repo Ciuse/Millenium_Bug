@@ -1,10 +1,5 @@
 package it.polimi.ingsw.ps31.client.ClientNetworking;
 
-import it.polimi.ingsw.ps31.client.view.ViewProva;
-
-import java.io.IOException;
-import java.io.Serializable;
-
 /**
  * Created by Francesco on 10/06/2017.
  */

@@ -1,11 +1,6 @@
 package it.polimi.ingsw.ps31.server;
 
-import it.polimi.ingsw.ps31.model.StateModel.StateInfo;
-import it.polimi.ingsw.ps31.model.StateModel.StateVisitor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.server.message.MexStateInfo;
-import it.polimi.ingsw.ps31.server.message.MexVisitable;
-import it.polimi.ingsw.ps31.server.serverNetworking.ConnectionInterface;
 import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
 
 /**

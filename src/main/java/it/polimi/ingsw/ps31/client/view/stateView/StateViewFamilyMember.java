@@ -1,12 +1,8 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
 import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
-import it.polimi.ingsw.ps31.model.board.ActionSpace;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.model.player.FamilyMember;
-
-import java.util.List;
 
 /**
  * Created by giulia on 08/06/2017.

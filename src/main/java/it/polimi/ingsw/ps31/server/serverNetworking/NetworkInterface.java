@@ -1,14 +1,10 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
 import com.google.gson.Gson;
-import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.server.Match;
 import it.polimi.ingsw.ps31.server.MexProva;
 import it.polimi.ingsw.ps31.server.ModelProva;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Francesco on 08/06/2017.

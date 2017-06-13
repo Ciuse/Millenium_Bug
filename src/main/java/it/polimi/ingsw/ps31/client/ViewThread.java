@@ -1,7 +1,5 @@
 package it.polimi.ingsw.ps31.client;
 
-import it.polimi.ingsw.ps31.client.ClientNetworking.ClientNetworkInterface;
-import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.ViewProva;
 
 /**

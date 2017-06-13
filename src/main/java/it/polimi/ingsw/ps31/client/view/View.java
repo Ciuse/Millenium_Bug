@@ -8,14 +8,10 @@ import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
 import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.messageMV.MVMessageVisitor;
+import it.polimi.ingsw.ps31.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messageVC.VCVisitable;
-import it.polimi.ingsw.ps31.model.StateModel.StateAllFamilyMember;
-import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
-import it.polimi.ingsw.ps31.model.StateModel.StateInfoPlayer;
-import it.polimi.ingsw.ps31.model.StateModel.StatePlayerResources;
 import it.polimi.ingsw.ps31.model.StateModel.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.messageMV.MVVisitable;
 
 import java.io.IOException;
 import java.util.List;

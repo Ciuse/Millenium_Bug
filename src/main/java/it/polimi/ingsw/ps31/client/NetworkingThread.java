@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.client;
 
 import it.polimi.ingsw.ps31.client.ClientNetworking.ClientNetworkInterface;
-import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
 
 /**
  * Created by Francesco on 11/06/2017.

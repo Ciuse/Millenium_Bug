@@ -1,10 +1,6 @@
 package it.polimi.ingsw.ps31.client.ClientNetworking;
 
 import com.google.gson.Gson;
-import it.polimi.ingsw.ps31.client.Client;
-import it.polimi.ingsw.ps31.client.ViewThread;
-import it.polimi.ingsw.ps31.client.view.View;
-import it.polimi.ingsw.ps31.client.view.ViewProva;
 import it.polimi.ingsw.ps31.server.MexProva;
 
 import java.io.*;
