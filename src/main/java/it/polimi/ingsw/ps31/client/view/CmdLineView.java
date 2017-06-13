@@ -8,12 +8,12 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
-import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrChooseColor;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrString;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrVisualization;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewGame;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
 import it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation;
@@ -22,13 +22,8 @@ import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
-import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Created by Giuseppe on 07/06/2017.
@@ -44,8 +39,8 @@ public class CmdLineView extends View {
     private CmdInterpreterView cmdInterpreterView = new IntrVisualization();
 
 
-    public CmdLineView(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoard, List<StateViewPlayer> stateViewPlayer) {
-        super(viewId, stateViewBoard, stateViewPersonalBoard, stateViewPlayer);
+    public CmdLineView(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoard, List<StateViewPlayer> stateViewPlayer, StateViewGame stateViewGame) {
+        super(viewId, stateViewBoard, stateViewPersonalBoard, stateViewPlayer, stateViewGame);
     }
 
     public void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView) {
