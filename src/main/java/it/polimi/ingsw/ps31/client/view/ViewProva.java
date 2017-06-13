@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps31.client.view;
 import it.polimi.ingsw.ps31.client.Client;
 import it.polimi.ingsw.ps31.client.ClientNetworking.ClientNetworkInterface;
 import it.polimi.ingsw.ps31.client.NetworkingThread;
+import it.polimi.ingsw.ps31.server.message.MexStateInfo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +17,8 @@ public class ViewProva {
     private BufferedReader consoleReader = new BufferedReader(consoleStream);
     private ClientNetworkInterface networkInterface;
 
+    private String state = "void state";
+
     public ViewProva()
     {
 
@@ -28,9 +31,19 @@ public class ViewProva {
 
     public void switchOn()
     {
+        System.out.println("Client> Client avviato.");
+
         String command = "";
+        String waiting = null;
+
         while(!command.equals("exit"))
         {
+//            System.out.print("Client> In attesa di richieste dal server");
+//
+//            while(waiting != "waiting")
+//                waiting = networkInterface.readFromServer();
+
+            System.out.println("\nClient> Stato corrente: "+this.state);
             System.out.print("Client> Inserire un comando: ");
             try {
                 command = consoleReader.readLine();
@@ -45,6 +58,10 @@ public class ViewProva {
             System.out.println("Client> In attesa di risposta dal server: ");
             String answer = networkInterface.readFromServer();
             System.out.println("Client> Risposta dal server: "+answer);
+
+            this.state = new String(answer);
+
+
         }
     }
 

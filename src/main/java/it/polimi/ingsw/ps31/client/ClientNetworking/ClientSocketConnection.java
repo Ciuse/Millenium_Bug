@@ -1,9 +1,11 @@
 package it.polimi.ingsw.ps31.client.ClientNetworking;
 
+import com.google.gson.Gson;
 import it.polimi.ingsw.ps31.client.Client;
 import it.polimi.ingsw.ps31.client.ViewThread;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.ViewProva;
+import it.polimi.ingsw.ps31.server.MexProva;
 
 import java.io.*;
 import java.net.Socket;
@@ -57,5 +59,28 @@ public class ClientSocketConnection extends ClientNetworkInterface {
         }
 
         return msgToReturn;
+    }
+
+    @Override
+    public String serialize(Object obj) {
+
+        //Creo gson
+        Gson gson = new Gson();
+
+        //Serializzo l'oggetto
+        String strObj = gson.toJson(obj);
+
+        return strObj;
+    }
+
+    @Override
+    public Object deserialize(String msg) {
+        //Creo gson
+        Gson gson = new Gson();
+
+        //Deserializzo l'oggetto
+        MexProva strObj = gson.fromJson(msg, MexProva.class);
+
+        return strObj;
     }
 }

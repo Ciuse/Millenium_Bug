@@ -13,6 +13,7 @@ public abstract class ClientNetworkInterface {
 
     public abstract void sendToServer(String msg);
     public abstract String readFromServer();
-
+    public abstract String serialize(Object obj);
+    public abstract Object deserialize(String msg);
 
 }
