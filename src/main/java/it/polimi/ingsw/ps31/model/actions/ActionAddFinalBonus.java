@@ -38,7 +38,7 @@ public class ActionAddFinalBonus extends Action {
     @Override
     public void activate()
     {
-      //  player.addFinalBonusResource(this.resourceList); //TODO IMPLEMENTARE
-        //resetResourceList();
+        player.addFinalBonusResource(this.resourceList); //TODO IMPLEMENTARE
+        resetResourceList();
     }
 }
