@@ -15,4 +15,5 @@ public interface StateVisitor {
     public void visit(StateActionSpace stateActionSpace);
     public void visit(StateMarkerDisc stateMarkerDisc);
     public void visit(StateTower stateTower);
+    public void visit(StateDevelopmentCard stateDevelopmentCard);
 }

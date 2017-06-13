@@ -221,4 +221,14 @@ public class ResourceList {
         }
         return pointResource;
     }
+
+    @Override
+    public String toString() {
+        String resourceString = "";
+        for (Resource resource : resourceList
+                ) {
+            resourceString = resourceString + resource.toString();
+        }
+        return resourceString;
+    }
 }

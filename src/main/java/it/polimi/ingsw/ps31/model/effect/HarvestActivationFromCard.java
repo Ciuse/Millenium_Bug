@@ -17,4 +17,9 @@ public class HarvestActivationFromCard extends GenericHarvestActivation {
         int diceValue = 0+ super.getBasicValue(); // passo zero perchè viene attivato tramite la carta e non più dalla board
         player.getPlayerActionSet().activateHarvest(diceValue);//quando viene attivato da una carta facciamo finta che il famigliare che attiva l'effetto abbia valore zero
     }
+
+    @Override
+    public String nameString(){
+        return "HarvFromCard";
+    }
 }
