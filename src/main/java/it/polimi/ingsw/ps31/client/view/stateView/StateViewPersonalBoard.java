@@ -86,4 +86,20 @@ public class StateViewPersonalBoard {
         }
         }
     }
+
+    public List<StateViewPersonalCardBox> getStateViewPersonalCardBoxListGreen() {
+        return stateViewPersonalCardBoxListGreen;
+    }
+
+    public List<StateViewPersonalCardBox> getStateViewPersonalCardBoxListYellow() {
+        return stateViewPersonalCardBoxListYellow;
+    }
+
+    public List<StateViewPersonalCardBox> getStateViewPersonalCardBoxListBlue() {
+        return stateViewPersonalCardBoxListBlue;
+    }
+
+    public List<StateViewPersonalCardBox> getStateViewPersonalCardBoxListPurple() {
+        return stateViewPersonalCardBoxListPurple;
+    }
 }

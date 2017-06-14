@@ -320,7 +320,7 @@ public class StartGame {
     }
 
     public StateGame getStateGame(Player player){
-            StateGame stateGame = new StateGame(period,round,player.getNickname());
+            StateGame stateGame = new StateGame(period,round,player.getPlayerId());
             return stateGame;
     }
 }

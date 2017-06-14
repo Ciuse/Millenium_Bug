@@ -11,6 +11,6 @@ public class Servant extends PhysicalResource {
 
     @Override
     public String toString(){
-        return "SE"+"["+this.getValue()+"]";
+        return "SE "+this.getValue();
     }
 }

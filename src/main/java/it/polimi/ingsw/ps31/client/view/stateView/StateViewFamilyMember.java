@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
  * Created by giulia on 08/06/2017.
  */
 public class StateViewFamilyMember {
-    private PlayerId playerId;
+    private final PlayerId playerId;
     private DiceColor diceColor;
     private int diceValue;
     private int additionalValue;
@@ -30,7 +30,7 @@ public class StateViewFamilyMember {
         return additionalValue;
     }
 
-    public int getActionSpace() {
+    public int getActionSpaceId() {
         return actionSpaceId;
     }
 

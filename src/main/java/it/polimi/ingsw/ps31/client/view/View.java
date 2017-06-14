@@ -60,6 +60,8 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void inserisciColore();
 
+    public abstract void askComand() throws IOException;
+
     public final void updateInfoPlayer(StateInfoPlayer stateInfoPlayer){
         for (StateViewPlayer viewPlayer : stateViewPlayerList
                 ) {
@@ -77,6 +79,7 @@ public abstract class View extends Observable implements Observer {
 
         }
     }
+
     public final void updateAllFamilyMember(StateAllFamilyMember stateAllFamilyMember){
         for (StateViewPlayer viewPlayer : stateViewPlayerList
                 ) {
@@ -110,6 +113,7 @@ public abstract class View extends Observable implements Observer {
                 viewPersonalBoard.updateState(stateCardBox);
         }
     }
+
     public final void updateActionSpace(StateActionSpace stateActionSpace){
                 stateViewBoard.updateState(stateActionSpace);
     }
@@ -135,7 +139,6 @@ public abstract class View extends Observable implements Observer {
     }
 
 
-    public abstract void askComand() throws IOException;
 
     public abstract void runTerminal() throws IOException;
 
@@ -149,11 +152,16 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void printMyPersonalBoard();
 
+    public abstract void printAllPersonalBoard();
+
+    public abstract void printMyFamilyMember();
+
+
     public abstract void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView);
 
     public PlayerId getViewId() {
-        return viewId;
-    }
+    return viewId;
+}
 
     public StateViewBoard getStateViewBoard() {
         return stateViewBoard;
@@ -165,5 +173,9 @@ public abstract class View extends Observable implements Observer {
 
     public List<StateViewPersonalBoard> getStateViewPersonalBoardList() {
         return stateViewPersonalBoardList;
+    }
+
+    public StateViewGame getStateViewGame() {
+        return stateViewGame;
     }
 }
