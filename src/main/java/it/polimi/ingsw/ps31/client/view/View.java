@@ -8,14 +8,10 @@ import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
 import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.messageMV.MVMessageVisitor;
+import it.polimi.ingsw.ps31.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messageVC.VCVisitable;
-import it.polimi.ingsw.ps31.model.StateModel.StateAllFamilyMember;
-import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
-import it.polimi.ingsw.ps31.model.StateModel.StateInfoPlayer;
-import it.polimi.ingsw.ps31.model.StateModel.StatePlayerResources;
 import it.polimi.ingsw.ps31.model.StateModel.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.messageMV.MVVisitable;
 
 import java.io.IOException;
 import java.util.List;
@@ -64,6 +60,8 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void inserisciColore();
 
+    public abstract void askComand() throws IOException;
+
     public final void updateInfoPlayer(StateInfoPlayer stateInfoPlayer){
         for (StateViewPlayer viewPlayer : stateViewPlayerList
                 ) {
@@ -81,6 +79,7 @@ public abstract class View extends Observable implements Observer {
 
         }
     }
+
     public final void updateAllFamilyMember(StateAllFamilyMember stateAllFamilyMember){
         for (StateViewPlayer viewPlayer : stateViewPlayerList
                 ) {
@@ -114,6 +113,7 @@ public abstract class View extends Observable implements Observer {
                 viewPersonalBoard.updateState(stateCardBox);
         }
     }
+
     public final void updateActionSpace(StateActionSpace stateActionSpace){
                 stateViewBoard.updateState(stateActionSpace);
     }
@@ -140,7 +140,6 @@ public abstract class View extends Observable implements Observer {
     }
 
 
-    public abstract void askComand() throws IOException;
 
     public abstract void runTerminal() throws IOException;
 
@@ -154,11 +153,16 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void printMyPersonalBoard();
 
+    public abstract void printAllPersonalBoard();
+
+    public abstract void printMyFamilyMember();
+
+
     public abstract void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView);
 
     public PlayerId getViewId() {
-        return viewId;
-    }
+    return viewId;
+}
 
     public StateViewBoard getStateViewBoard() {
         return stateViewBoard;
@@ -170,5 +174,9 @@ public abstract class View extends Observable implements Observer {
 
     public List<StateViewPersonalBoard> getStateViewPersonalBoardList() {
         return stateViewPersonalBoardList;
+    }
+
+    public StateViewGame getStateViewGame() {
+        return stateViewGame;
     }
 }

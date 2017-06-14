@@ -3,8 +3,6 @@ package it.polimi.ingsw.ps31.client.view.stateView;
 import it.polimi.ingsw.ps31.model.StateModel.StateCardBox;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 
-import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getPersonal_Board_Identical_Box_Max;
-
 /**
  * Created by giulia on 08/06/2017.
  */

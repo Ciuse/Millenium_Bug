@@ -1,10 +1,7 @@
 package it.polimi.ingsw.ps31.model.StateModel;
 
-import it.polimi.ingsw.ps31.model.board.ActionSpace;
-import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 
 /**
  * Created by giulia on 06/06/2017.

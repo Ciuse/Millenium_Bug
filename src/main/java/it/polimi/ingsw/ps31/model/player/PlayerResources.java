@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.player;
 
-import it.polimi.ingsw.ps31.model.gameResource.*;
+import it.polimi.ingsw.ps31.model.gameResource.Resource;
+import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 
 /**
  * Created by Francesco on 15/05/2017.

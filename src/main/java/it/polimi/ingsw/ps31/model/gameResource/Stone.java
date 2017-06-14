@@ -10,6 +10,6 @@ public class Stone extends PhysicalResource {
 
     @Override
     public String toString(){
-        return "ST"+"["+this.getValue()+"]";
+        return "ST "+this.getValue();
     }
 }

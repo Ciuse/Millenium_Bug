@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.model.board;
 
-import it.polimi.ingsw.ps31.model.StateModel.StateCardBox;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 
 /**

@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.model.StateModel;
 
-import it.polimi.ingsw.ps31.model.card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 
 import java.util.List;

@@ -1,17 +1,19 @@
 package it.polimi.ingsw.ps31.model.StateModel;
 
+import it.polimi.ingsw.ps31.model.constants.PlayerId;
+
 /**
  * Created by giulia on 06/06/2017.
  */
 public class StateGame extends StateInfo {
     private int period=-1;
     private int round=-1;
-    private String namePlayerInAction=null;
+    private PlayerId playerIdInAction=null;
 
-    public StateGame(int period, int round, String namePlayerInAction) {
+    public StateGame(int period, int round, PlayerId playerIdInAction) {
         this.period = period;
         this.round = round;
-        this.namePlayerInAction = namePlayerInAction;
+        this.playerIdInAction=playerIdInAction;
     }
 
     public int getPeriod() {
@@ -22,8 +24,8 @@ public class StateGame extends StateInfo {
         return round;
     }
 
-    public String getNamePlayerInAction() {
-        return namePlayerInAction;
+    public PlayerId getPlayerIdInAction() {
+        return playerIdInAction;
     }
 
     @Override

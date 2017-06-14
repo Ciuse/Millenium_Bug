@@ -14,15 +14,17 @@ import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.g
  * Created by giulia on 07/06/2017.
  */
 public class StateViewPlayer {
-    private PlayerId playerId;
+    private final PlayerId playerId;
     private String nickname;
     private PlayerColor playerColor;
     private PlayerResources playerResources;
     private final List<StateViewFamilyMember> stateViewFamilyMemberList = new ArrayList<>();
     private List<String> stringPlayerAction;
-    public StateViewPlayer(){
+
+    public StateViewPlayer(PlayerId playerId){
+        this.playerId = playerId;
         for(int i=0; i<getFamily_Member_Number();i++){
-            stateViewFamilyMemberList.add(new StateViewFamilyMember(playerId));
+            stateViewFamilyMemberList.add(new StateViewFamilyMember(this.playerId));
         }
     }
 
@@ -42,7 +44,7 @@ public class StateViewPlayer {
         return playerResources;
     }
 
-    public List<StateViewFamilyMember> getFamilyMembers() {
+    public List<StateViewFamilyMember> getStateViewFamilyMemberList() {
         return stateViewFamilyMemberList;
     }
 
@@ -51,14 +53,13 @@ public class StateViewPlayer {
     }
 
     public void updateState(StateInfoPlayer stateInfoPlayer){
-        if(stateInfoPlayer.getPlayerId()!=null){
-            this.playerId= stateInfoPlayer.getPlayerId();
-        }
-        if(stateInfoPlayer.getNickname()!=null){
-            this.nickname= stateInfoPlayer.getNickname();
-        }
-        if(stateInfoPlayer.getPlayerColor()!=null){
-            this.playerColor= stateInfoPlayer.getPlayerColor();
+        if(stateInfoPlayer.getPlayerId().equals(this.playerId)) {
+            if (stateInfoPlayer.getNickname() != null) {
+                this.nickname = stateInfoPlayer.getNickname();
+            }
+            if (stateInfoPlayer.getPlayerColor() != null) {
+                this.playerColor = stateInfoPlayer.getPlayerColor();
+            }
         }
     }
 
