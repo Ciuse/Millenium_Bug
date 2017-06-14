@@ -15,4 +15,9 @@ public class GetResourcesAtTheEndEffect extends GetResourceEffect {
     public void activate(Player player) {
         player.getPlayerActionSet().addFinalBonus(super.getResources());
     }
+
+    @Override
+    public String nameString(){
+        return "ResAtTheEnd";
+    }
 }

@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
 /**
  * Created by giulia on 18/05/2017.
  */
-public class GetResourceFromResourceEffect extends GetResourceEffect {
+public class GetResourceFromResourceEffect extends GetResourceEffect { //per ogni risorsa di un tipo guadagno un'altra risorsa
     private final Resource requiredResource;
     public GetResourceFromResourceEffect(ResourceList resourceGained, Resource requiredResource) {
         super(resourceGained);
@@ -22,4 +22,11 @@ public class GetResourceFromResourceEffect extends GetResourceEffect {
         player.getPlayerActionSet().getResources(super.getResources());
     }
 
+    public String requiredResourceString(){
+        return requiredResource.toString();
+    }
+
+    public String nameString(){
+        return "ResFromRes";
+    }
 }
