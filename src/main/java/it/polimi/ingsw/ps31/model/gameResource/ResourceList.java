@@ -18,6 +18,12 @@ public class ResourceList {
     {
         this.resourceList.add(resource);
     }
+    public ResourceList(Resource resource1,Resource resource2)
+    {
+        this.resourceList.add(resource1);
+        this.resourceList.add(resource2);
+    }
+
     public ResourceList(){}
 
     //metodi tipici delle liste

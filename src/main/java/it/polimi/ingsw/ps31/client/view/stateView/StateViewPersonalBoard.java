@@ -14,7 +14,7 @@ import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.g
  * Created by giulia on 07/06/2017.
  */
 public class StateViewPersonalBoard {
-    private PlayerId playerId;
+    private final PlayerId playerId;
     private final List<StateViewPersonalCardBox> stateViewPersonalCardBoxListGreen = new ArrayList<>();
     private final List<StateViewPersonalCardBox> stateViewPersonalCardBoxListYellow = new ArrayList<>();
     private final List<StateViewPersonalCardBox> stateViewPersonalCardBoxListBlue = new ArrayList<>();
@@ -22,7 +22,8 @@ public class StateViewPersonalBoard {
 
 
 
-    public StateViewPersonalBoard() {
+    public StateViewPersonalBoard(PlayerId playerId) {
+        this.playerId = playerId;
         for(int i =0;i<getPersonal_Board_Identical_Box_Max();i++){
             stateViewPersonalCardBoxListGreen.add(new StateViewPersonalCardBox(CardColor.GREEN,i));
         }
@@ -76,14 +77,13 @@ public class StateViewPersonalBoard {
     }
 
     public void updateState(StatePersonalBoard statePersonalBoard) {
-        if(statePersonalBoard.getPlayerId()!=null){
-            this.playerId=statePersonalBoard.getPlayerId();
-        }
-        if(statePersonalBoard.getStateCardBoxes()!=null){
-        for (StateCardBox stateCardBox : statePersonalBoard.getStateCardBoxes()
-                ) {
-            updateState(stateCardBox);
-        }
+        if (statePersonalBoard.getPlayerId().equals(this.playerId)) {
+            if (statePersonalBoard.getStateCardBoxes() != null) {
+                for (StateCardBox stateCardBox : statePersonalBoard.getStateCardBoxes()
+                        ) {
+                    updateState(stateCardBox);
+                }
+            }
         }
     }
 

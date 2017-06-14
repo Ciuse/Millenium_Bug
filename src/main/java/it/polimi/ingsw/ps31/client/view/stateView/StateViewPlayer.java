@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getFamily_Member_Number;
+import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getMax_number_Of_MarkerDisc;
+import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getStringPointResourceType;
 
 /**
  * Created by giulia on 07/06/2017.
@@ -19,12 +21,17 @@ public class StateViewPlayer {
     private PlayerColor playerColor;
     private PlayerResources playerResources;
     private final List<StateViewFamilyMember> stateViewFamilyMemberList = new ArrayList<>();
+    private final List<StateViewMarkerDisc> stateViewMarkerDiscList = new ArrayList<>();
     private List<String> stringPlayerAction;
+
 
     public StateViewPlayer(PlayerId playerId){
         this.playerId = playerId;
         for(int i=0; i<getFamily_Member_Number();i++){
             stateViewFamilyMemberList.add(new StateViewFamilyMember(this.playerId));
+        }
+        for(int i=0;i<getMax_number_Of_MarkerDisc();i++){
+            stateViewMarkerDiscList.add(new StateViewMarkerDisc(this.playerId,getStringPointResourceType()[i]));
         }
     }
 
@@ -51,6 +58,11 @@ public class StateViewPlayer {
     public List<String> getStringPlayerAction() {
         return stringPlayerAction;
     }
+
+    public List<StateViewMarkerDisc> getStateViewMarkerDiscList() {
+        return stateViewMarkerDiscList;
+    }
+
 
     public void updateState(StateInfoPlayer stateInfoPlayer){
         if(stateInfoPlayer.getPlayerId().equals(this.playerId)) {
@@ -85,5 +97,15 @@ public class StateViewPlayer {
 
     public void updateState(StatePlayerAction statePlayerAction){
         this.stringPlayerAction = statePlayerAction.getStringPlayerAction();
+    }
+
+    public void updateState(StateMarkerDisc stateMarkerDisc){
+        for (StateViewMarkerDisc stateViewMarkerDisc : stateViewMarkerDiscList
+                ) {
+            if(stateMarkerDisc.getStringResourceType().equals(stateViewMarkerDisc.getStringResourceType())&&
+                    stateMarkerDisc.getPlayerId().equals(stateViewMarkerDisc.getPlayerId())){
+                stateViewMarkerDisc.updateState(stateMarkerDisc);
+            }
+        }
     }
 }

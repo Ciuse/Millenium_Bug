@@ -122,8 +122,13 @@ public abstract class View extends Observable implements Observer {
         stateViewBoard.updateState(stateTower);
     }
 
-    public final void updateMarkerDisc(StateMarkerDisc stateMarkerDisc){
-        stateViewBoard.updateState(stateMarkerDisc);
+    public final void updateMarkerDisc(StateMarkerDisc stateMarkerDisc) {
+        for (StateViewPlayer viewPlayer : stateViewPlayerList
+                ) {
+            if (viewPlayer.getPlayerId().equals(stateMarkerDisc.getPlayerId())) {
+                viewPlayer.updateState(stateMarkerDisc);
+            }
+        }
     }
 
     public final void updatePlayerAction(StatePlayerAction statePlayerAction){
@@ -137,6 +142,10 @@ public abstract class View extends Observable implements Observer {
 
     public final void updateGame(StateGame stateGame){
         stateViewGame.updateState(stateGame);
+    }
+
+    public final void updateDevelopmentCard(StateDevelopmentCard stateDevelopmentCard){
+        stateViewGame.updateState(stateDevelopmentCard);
     }
 
 

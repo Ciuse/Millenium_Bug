@@ -83,11 +83,13 @@ public class PlayerActionSet {
         this.activateProduction.activate();
     }
 
-    public void chooseCard(CardColor cardColor, int diceCost, int diceDiscount)
+    public void chooseCard(CardColor cardColor, int diceCost, int diceDiscount,boolean anyCardColor,ResourceList resourceDiscount)
     {
         this.chooseCard.setCardColor(cardColor);
         this.chooseCard.setDiceCost(diceCost);
         this.chooseCard.setDiceDiscount(diceDiscount);
+        this.chooseCard.setAnyCardColor(anyCardColor);
+        this.getChooseCard().setResourceDiscount(resourceDiscount);
         this.chooseCard.activate();
     }
 

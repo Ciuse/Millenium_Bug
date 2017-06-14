@@ -13,11 +13,14 @@ import java.util.List;
 public class StateViewActionSpace {
     private final int numberOfActionSpace;
     private int diceValue;
-    private StateEffect stateEffect;
+    private final StateViewEffect stateViewEffect;
     private List<StateFamilyMember> stateFamilyMemberList = new ArrayList<>();
 
-    public StateViewActionSpace(int numberOfActionSpace) {
+    public StateViewActionSpace(int numberOfActionSpace, StateViewEffect stateViewEffect,int diceValue) {
         this.numberOfActionSpace = numberOfActionSpace;
+        this.stateViewEffect=stateViewEffect;
+        this.diceValue=diceValue;
+        this.stateFamilyMemberList=null;
     }
 
 
@@ -25,12 +28,6 @@ public class StateViewActionSpace {
         if(stateActionSpace.getNumberOfActionSpace()!= -1){
             if(stateActionSpace.getNumberOfActionSpace()==numberOfActionSpace){
                 this.stateFamilyMemberList=stateActionSpace.getStateFamilyMemberList();
-            }
-            if(stateActionSpace.getStateEffect()!=null){
-                this.stateEffect = stateActionSpace.getStateEffect();
-            }
-            if(stateActionSpace.getDiceValue()!=0){
-                this.diceValue = stateActionSpace.getDiceValue();
             }
         }
     }
@@ -43,8 +40,8 @@ public class StateViewActionSpace {
         return diceValue;
     }
 
-    public StateEffect getStateEffect() {
-        return stateEffect;
+    public StateViewEffect getStateViewEffect() {
+        return stateViewEffect;
     }
 
     public List<StateFamilyMember> getStateFamilyMemberList() {

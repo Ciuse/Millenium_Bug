@@ -5,20 +5,25 @@ import it.polimi.ingsw.ps31.model.StateModel.StateCardBox;
 import it.polimi.ingsw.ps31.model.StateModel.StateMarkerDisc;
 import it.polimi.ingsw.ps31.model.StateModel.StateTower;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.*;
 
 /**
  * Created by giulia on 07/06/2017.
  */
 public class StateViewBoard {
-    private final List<StateViewTower> stateViewTowerList;
-    private final List<StateViewActionSpace> stateViewActionSpaceList;
-    private final List<StateViewMarkerDisc> stateViewMarkerDiscList;
+    private final List<StateViewTower> stateViewTowerList = new ArrayList<>();
+    private final List<StateViewActionSpace> stateViewActionSpaceList=new ArrayList<>();
 
-    public StateViewBoard(List<StateViewTower> stateViewTowerList, List<StateViewActionSpace> stateViewActionSpaceList, List<StateViewMarkerDisc> stateViewMarkerDiscList) {
-        this.stateViewTowerList = stateViewTowerList;
-        this.stateViewActionSpaceList = stateViewActionSpaceList;
-        this.stateViewMarkerDiscList = stateViewMarkerDiscList;
+    public StateViewBoard() {
+        for(int i = 0;i<getNumber_Of_Tower();i++){
+            stateViewTowerList.add(new StateViewTower(getCardColors()[i]));
+        }
+        for(int i=1;i<=getNumber_Of_ActionSpace();i++){
+            stateViewActionSpaceList.add(new StateViewActionSpace(i,getActionSpaceEffect()[i],getDiceActionSpaceValue()[i]));
+        }
     }
     public void updateState(StateActionSpace stateActionSpace){
         for (StateViewActionSpace stateViewActionSpace : stateViewActionSpaceList
@@ -38,15 +43,7 @@ public class StateViewBoard {
         }
     }
 
-    public void updateState(StateMarkerDisc stateMarkerDisc){
-        for (StateViewMarkerDisc stateViewMarkerDisc : stateViewMarkerDiscList
-                ) {
-            if(stateMarkerDisc.getStringResourceType().equals(stateViewMarkerDisc.getStringResourceType())&&
-                    stateMarkerDisc.getPlayerId().equals(stateViewMarkerDisc.getPlayerId())){
-                stateViewMarkerDisc.updateState(stateMarkerDisc);
-            }
-        }
-    }
+
 
     public List<StateViewTower> getStateViewTowerList() {
         return stateViewTowerList;
@@ -56,7 +53,4 @@ public class StateViewBoard {
         return stateViewActionSpaceList;
     }
 
-    public List<StateViewMarkerDisc> getStateViewMarkerDiscList() {
-        return stateViewMarkerDiscList;
-    }
 }

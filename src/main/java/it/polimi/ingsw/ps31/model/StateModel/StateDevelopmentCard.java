@@ -2,8 +2,6 @@ package it.polimi.ingsw.ps31.model.StateModel;
 
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 
-import it.polimi.ingsw.ps31.model.constants.CardColor;
-
 import java.util.List;
 
 /**
@@ -11,18 +9,18 @@ import java.util.List;
  */
 public class StateDevelopmentCard extends StateInfo {
     private String cardName = null;
-    private int cardId = -1;
+    private int cardId = 0;
     private final CardColor cardColor;
-    private List<StateEffect> stringImmediateEffects = null;
-    private List<StateEffect> stringPermanentEffects = null;
+    private List<StateEffect> immediateEffectList = null;
+    private List<StateEffect> permanentEffectList = null;
     private List<String> stringCosts = null;
 
-    public StateDevelopmentCard(String cardName, int cardId, CardColor cardColor, List<StateEffect> stringImmediateEffects, List<StateEffect> stringPermanentEffects,List<String> stringCosts) {
+    public StateDevelopmentCard(String cardName, int cardId, CardColor cardColor, List<StateEffect> immediateEffectList, List<StateEffect> permanentEffectList, List<String> stringCosts) {
         this.cardName = cardName;
         this.cardId = cardId;
         this.cardColor = cardColor;
-        this.stringImmediateEffects = stringImmediateEffects;
-        this.stringPermanentEffects = stringPermanentEffects;
+        this.immediateEffectList = immediateEffectList;
+        this.permanentEffectList = permanentEffectList;
         this.stringCosts = stringCosts;
     }
 
@@ -38,12 +36,12 @@ public class StateDevelopmentCard extends StateInfo {
         return cardColor;
     }
 
-    public List<StateEffect> getStringImmediateEffects() {
-        return stringImmediateEffects;
+    public List<StateEffect> getImmediateEffectList() {
+        return immediateEffectList;
     }
 
-    public List<StateEffect> getStringPermanentEffects() {
-        return stringPermanentEffects;
+    public List<StateEffect> getPermanentEffectList() {
+        return permanentEffectList;
     }
 
     public List<String> getStringCosts() {

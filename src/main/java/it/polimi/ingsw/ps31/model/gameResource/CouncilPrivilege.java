@@ -38,6 +38,9 @@ public class CouncilPrivilege extends Resource {
 
     @Override
     public String toString(){
-        return "CP"+"["+this.getValue()+"]";
+        if(this.different==true) {
+            return "CP"+"!="+this.getValue();
+        }
+        else  return "CP"+"="+this.getValue();
     }
 }

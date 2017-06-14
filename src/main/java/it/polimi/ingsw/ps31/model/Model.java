@@ -19,7 +19,12 @@ public class Model extends Observable {
     public void notifyViews(MVVisitable message) {
         this.setChanged();
         notifyObservers(message);
+    }
 
+    public synchronized int waitChoice(){
+
+
+        return -1;
     }
 }
 

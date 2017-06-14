@@ -56,7 +56,7 @@ public class StartGame {
 
         //creazione deck vuoti
         List<DevelopmentCardDeck> deckList = new ArrayList<>();
-        CardColor[] cardColors = {CardColor.GREEN, CardColor.YELLOW, CardColor.PURPLE, CardColor.BLUE};
+        CardColor[] cardColors = CardColor.values();
         for (int i = 0; i < cardColors.length; i++) {
             for (period = 1; period <= 3; period++) {
                 deckList.add(new DevelopmentCardDeck(cardColors[i], period));
@@ -295,7 +295,7 @@ public class StartGame {
     //creazione familymembers in base al colore che il player ha scelto ,la personal board, la lista delle risorse iniziali infine il player
 
     public Player createPlayer(String name,PlayerColor playerColor,List<ResourceList> listOfResourceList,List<PointResource[]>personalBoardRequirements){
-        PlayerId[] playerId = {PlayerId.ONE,PlayerId.TWO,PlayerId.THREE,PlayerId.FOUR};
+        PlayerId[] playerId = PlayerId.values();
         PersonalBoard personalBoard = new PersonalBoard(personalBoardRequirements, playerId[playerList.size()]);
         Player playerCreated = new Player(playerColor,listOfResourceList.get(playerList.size()), playerId[playerList.size()], name,personalBoard);
         return playerCreated;

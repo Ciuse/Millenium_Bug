@@ -8,5 +8,5 @@ public interface MVVisitor {
     public void visit(MVAskName MVAskName);
     public void visit(MVToPrint mvToPrint);
     public void visit(MVStateInfo mvStateInfo);
-
+    public void visit(MVAskChoice mvAskChoice);
 }

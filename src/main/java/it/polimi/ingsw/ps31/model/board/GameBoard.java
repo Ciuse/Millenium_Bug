@@ -57,13 +57,13 @@ public class GameBoard extends Model{
 
     public void initializateGameBoard(List<List<EffectList>> towerEffectList, List<EffectList> otherEffectList,VictoryPoint[] faithTrackExtraValue) {
         //creazione torri
-        CardColor[] towerColor = {CardColor.GREEN, CardColor.BLUE, CardColor.YELLOW, CardColor.PURPLE};
+        CardColor[] towerColor = CardColor.values();
         for (int i = 0; i < TOWERNUMBER; i++) {
             towers.add(new Tower(towerColor[i], towerEffectList.get(i)));
         }
 
         //creazione dadi
-        DiceColor[] diceColor = {DiceColor.WHITE, DiceColor.ORANGE, DiceColor.BLACK, DiceColor.NEUTRAL};
+        DiceColor[] diceColor = DiceColor.values();
         for (int i = 0; i < 4; i++) {
             dice.add(new Dice(diceColor[i]));
             dice.get(i).setValue(0);

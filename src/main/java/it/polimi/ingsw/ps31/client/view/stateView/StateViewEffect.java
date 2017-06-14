@@ -12,11 +12,20 @@ public class StateViewEffect {
     private String resourceToGain = null;
     private CardColor cardColor = null;
     private int diceValue = -1;
-    private int basicValue = -1;
+    private int basicValue = +10; //numero che non ha significato come valore base di un effetto produzione/raccolto
     private String resourceDiscount = null;
     private String requiredResource = null;
     private StateEffect stateEffect1 = null;
     private StateEffect stateEffect2 = null;
+
+    public StateViewEffect(String nameEffect, String resourceToGain,int basicValue) {
+        this.nameEffect = nameEffect;
+        this.resourceToGain = resourceToGain;
+        this.basicValue = basicValue;
+    }
+
+    public StateViewEffect() {
+    }
 
     public String getNameEffect() {
         return nameEffect;

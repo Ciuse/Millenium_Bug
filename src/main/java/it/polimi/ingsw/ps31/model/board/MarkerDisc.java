@@ -31,7 +31,7 @@ public class MarkerDisc {
     //TODO FINIRE ANCORA LA CLASSE CON I SET PER LE TRACK CELL
 
     public StateMarkerDisc getStateMarkerDisc(){
-        StateMarkerDisc stateMarkerDisc = new StateMarkerDisc(player.getPlayerId(),resourceType.toString(),trackCell.getValue());
+        StateMarkerDisc stateMarkerDisc = new StateMarkerDisc(player.getPlayerId(),resourceType.getTypeName(),trackCell.getValue());
         return stateMarkerDisc;
     }
 

@@ -42,7 +42,11 @@ public class MilitaryStrength extends PointResource{
 
     @Override
     public String toString(){
-        return "MS"+"["+this.getValue()+"]";
+        return "MS"+this.getValue();
+    }
+    @Override
+    public String getPointResourceType(){
+        return "MilitaryStrength";
     }
 
 }

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.messageMV;
 
 import it.polimi.ingsw.ps31.client.view.View;
+import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrChooseColor;
 import it.polimi.ingsw.ps31.model.StateModel.MVStateInfoVisitor;
 
 /**
@@ -33,6 +34,17 @@ public class MVMessageVisitor implements MVVisitor {
         MVStateInfoVisitor mvStateInfoVisitor =new MVStateInfoVisitor();
         mvStateInfoVisitor.setView(view);
         mvStateInfo.getStateInfo().acceptState(mvStateInfoVisitor);
+    }
+
+    @Override
+    public void visit(MVAskChoice mvAskChoice) {
+        if(mvAskChoice.getTypeOfChoice()==-1){
+            //TODO GESTIRE MESSAGGIO SENZA SENSO
+        }
+        if(mvAskChoice.getTypeOfChoice()==1){
+            view.setCmdInterpreterView(new IntrChooseColor());
+            view.inserisciColore();
+        }
     }
 
 }

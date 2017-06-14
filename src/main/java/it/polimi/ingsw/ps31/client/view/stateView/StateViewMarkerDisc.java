@@ -29,7 +29,7 @@ public class StateViewMarkerDisc {
     }
 
     public void updateState(StateMarkerDisc stateMarkerDisc){
-        if(stateMarkerDisc.getStringResourceType()!=null){
+        if(stateMarkerDisc.getStringResourceType().equals(stringResourceType)){
             this.value = stateMarkerDisc.getValue();
         }
     }

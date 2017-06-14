@@ -36,7 +36,10 @@ public class ActionChooseCard extends Action {
     }
     public void setResourceDiscount(ResourceList resourceDiscount)
     {
+        if(resourceDiscount!=null){
         this.resourceDiscount = resourceDiscount;
+        }
+
     }
     public void setCardColor(CardColor cardColor)
     {

@@ -25,6 +25,11 @@ public class FaithPoint extends PointResource{
 
     @Override
     public String toString(){
-        return "FP"+"["+this.getValue()+"]";
+        return "FP"+this.getValue();
+    }
+
+    @Override
+    public String getPointResourceType(){
+        return "FaithPoint";
     }
 }

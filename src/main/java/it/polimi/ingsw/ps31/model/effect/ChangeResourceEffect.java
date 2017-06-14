@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.effect;
 
+import it.polimi.ingsw.ps31.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
@@ -32,9 +33,8 @@ public class ChangeResourceEffect extends Effect {
     //TODO spostare la richiesta di inserimento alla view
     @Override
     public void activate(Player player) {
-        System.out.println("Giocatore scegli quale risorsa vuoi cambiare: ");
-        Scanner scanner =new Scanner(System.in);
-        int listChoose= scanner.nextInt();
+        super.notifyViews(new MVAskChoice(1,1,resourceToPayList.size()));
+        int listChoose = super.waitChoice();
         player.getPlayerActionSet().payResources(resourceToPayList.get(listChoose));
         player.getPlayerActionSet().getResources(resourceToGainList.get(listChoose));
     }

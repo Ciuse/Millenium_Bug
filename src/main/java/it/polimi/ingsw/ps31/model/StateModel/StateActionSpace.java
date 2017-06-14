@@ -8,7 +8,6 @@ import java.util.List;
 public class StateActionSpace extends StateInfo{
     private int numberOfActionSpace=-1;
     private int diceValue =0;
-    private StateEffect stateEffect;
     private final List<StateFamilyMember> stateFamilyMemberList;
 
     public StateActionSpace(int numberOfActionSpace, List<StateFamilyMember> stateFamilyMemberList) {
@@ -20,9 +19,6 @@ public class StateActionSpace extends StateInfo{
         this.diceValue = diceValue;
     }
 
-    public void setStateEffect(String stringEffect) {
-        this.stateEffect = stateEffect;
-    }
 
     public int getNumberOfActionSpace() {
         return numberOfActionSpace;
@@ -30,10 +26,6 @@ public class StateActionSpace extends StateInfo{
 
     public int getDiceValue() {
         return diceValue;
-    }
-
-    public StateEffect getStateEffect() {
-        return stateEffect;
     }
 
     public List<StateFamilyMember> getStateFamilyMemberList() {

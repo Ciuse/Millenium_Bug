@@ -24,6 +24,11 @@ public class VictoryPoint extends PointResource{
 
     @Override
     public String toString(){
-        return "VP"+"["+this.getValue()+"]";
+        return "VP"+this.getValue();
+    }
+
+    @Override
+    public String getPointResourceType(){
+        return "VictoryPoint";
     }
 }

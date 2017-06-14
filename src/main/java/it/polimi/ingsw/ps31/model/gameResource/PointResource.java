@@ -18,4 +18,6 @@ public abstract  class PointResource extends Resource {
     public int getPointResourceValue() {
         return this.getValue();
     }
+
+    public abstract String getPointResourceType();
 }
