@@ -134,6 +134,7 @@ public abstract class View extends Observable implements Observer {
          }
     }
 
+
     public final void updateGame(StateGame stateGame){
         stateViewGame.updateState(stateGame);
     }

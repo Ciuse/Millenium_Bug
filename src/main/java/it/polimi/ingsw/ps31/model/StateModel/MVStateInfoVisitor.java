@@ -42,6 +42,11 @@ public class MVStateInfoVisitor implements StateVisitor {
     }
 
     @Override
+    public void visit(StateEffect stateEffect) {
+
+    }
+
+    @Override
     public void visit(StateFamilyMember stateFamilyMember) {
         view.updateFamilyMember(stateFamilyMember);
     }

@@ -1,6 +1,10 @@
 package it.polimi.ingsw.ps31.model.effect;
 
+import it.polimi.ingsw.ps31.model.constants.CardColor;
+import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.player.Player;
+
+import java.util.List;
 
 /**
  * Created by Giuseppe on 09/05/2017.
@@ -27,4 +31,30 @@ public abstract class Effect implements EffectActivation {
     public int hashCode() {
         return player.hashCode();
     }
+
+    public abstract String nameString();
+
+    public abstract List<String> resourcesToPayString();
+
+    public abstract List<String> resourcesToGainString();
+
+    public abstract String resourceToGainString();
+
+    public abstract String requiredResourceString();
+
+    public abstract int getBasicValue();
+
+    public abstract int getDiceValue();
+
+    public abstract CardColor getCardColor();
+
+    public abstract Effect getGetResource();
+
+    public abstract GetResourceEffect getGetResourceEffect();
+
+    public abstract String resourceDiscountString();
+
+
+
+
 }

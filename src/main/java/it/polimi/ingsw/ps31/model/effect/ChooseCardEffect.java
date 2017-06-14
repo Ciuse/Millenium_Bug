@@ -30,11 +30,56 @@ public class ChooseCardEffect extends Effect{
         return "ChooseCard";
     }
 
+    @Override
+    public List<String> resourcesToPayString() {
+        return null;
+    }
+
+    @Override
+    public List<String> resourcesToGainString() {
+        return null;
+    }
+
+    @Override
+    public String resourceToGainString() {
+        return null;
+    }
+
+    @Override
+    public String requiredResourceString() {
+        return null;
+    }
+
+    @Override
+    public int getBasicValue() {
+        return 0;
+    }
+
     public List<CardColor> getCardColors() {
         return cardColors;
     }
 
     public int getDiceValue() {
         return diceValue;
+    }
+
+    @Override
+    public CardColor getCardColor() {
+        return null;
+    }
+
+    @Override
+    public Effect getGetResource() {
+        return null;
+    }
+
+    @Override
+    public GetResourceEffect getGetResourceEffect() {
+        return null;
+    }
+
+    @Override
+    public String resourceDiscountString() {
+        return null;
     }
 }

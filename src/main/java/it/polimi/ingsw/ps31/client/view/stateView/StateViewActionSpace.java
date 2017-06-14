@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
 import it.polimi.ingsw.ps31.model.StateModel.StateActionSpace;
+import it.polimi.ingsw.ps31.model.StateModel.StateEffect;
 import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
 public class StateViewActionSpace {
     private final int numberOfActionSpace;
     private int diceValue;
-    private String stringEffect;
+    private StateEffect stateEffect;
     private List<StateFamilyMember> stateFamilyMemberList = new ArrayList<>();
 
     public StateViewActionSpace(int numberOfActionSpace) {
@@ -25,8 +26,8 @@ public class StateViewActionSpace {
             if(stateActionSpace.getNumberOfActionSpace()==numberOfActionSpace){
                 this.stateFamilyMemberList=stateActionSpace.getStateFamilyMemberList();
             }
-            if(stateActionSpace.getStringEffect()!=null){
-                this.stringEffect = stateActionSpace.getStringEffect();
+            if(stateActionSpace.getStateEffect()!=null){
+                this.stateEffect = stateActionSpace.getStateEffect();
             }
             if(stateActionSpace.getDiceValue()!=0){
                 this.diceValue = stateActionSpace.getDiceValue();
@@ -42,8 +43,8 @@ public class StateViewActionSpace {
         return diceValue;
     }
 
-    public String getStringEffect() {
-        return stringEffect;
+    public StateEffect getStateEffect() {
+        return stateEffect;
     }
 
     public List<StateFamilyMember> getStateFamilyMemberList() {

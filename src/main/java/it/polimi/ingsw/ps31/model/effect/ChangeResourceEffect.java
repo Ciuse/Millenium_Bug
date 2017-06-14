@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.effect;
 
+import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
 
@@ -43,7 +44,7 @@ public class ChangeResourceEffect extends Effect {
         return "Change";
     }
 
-    public List<String> resourceToPayString(){
+    public List<String> resourcesToPayString(){
         List<String> stringResourceToPayList = new ArrayList<>();
         for (ResourceList resourceList:resourceToGainList
                 ) {
@@ -52,11 +53,51 @@ public class ChangeResourceEffect extends Effect {
         } return stringResourceToPayList;
     }
 
-    public List<String> resourceToGainString(){
+    public List<String> resourcesToGainString(){
         List<String> stringResourceToGainList = new ArrayList<>();
         for (ResourceList resourceList:resourceToGainList
                 ) {
             stringResourceToGainList.add(resourceList.toString());
         } return stringResourceToGainList;
+    }
+
+    @Override
+    public String resourceToGainString() {
+        return null;
+    }
+
+    @Override
+    public String requiredResourceString() {
+        return null;
+    }
+
+    @Override
+    public int getBasicValue() {
+        return 0;
+    }
+
+    @Override
+    public int getDiceValue() {
+        return 0;
+    }
+
+    @Override
+    public CardColor getCardColor() {
+        return null;
+    }
+
+    @Override
+    public Effect getGetResource() {
+        return null;
+    }
+
+    @Override
+    public GetResourceEffect getGetResourceEffect() {
+        return null;
+    }
+
+    @Override
+    public String resourceDiscountString() {
+        return null;
     }
 }
