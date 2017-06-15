@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.client.view.stateView;
 
 import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
+import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 /**
@@ -9,13 +10,15 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
  */
 public class StateViewFamilyMember {
     private final PlayerId playerId;
+    private final PlayerColor playerColor;
     private DiceColor diceColor;
     private int diceValue;
     private int additionalValue;
     private int actionSpaceId;
 
-    public StateViewFamilyMember(PlayerId playerId) {
+    public StateViewFamilyMember(PlayerId playerId, PlayerColor playerColor) {
         this.playerId = playerId;
+        this.playerColor = playerColor;
     }
 
     public DiceColor getDiceColor() {
@@ -36,6 +39,10 @@ public class StateViewFamilyMember {
 
     public PlayerId getPlayerId() {
         return playerId;
+    }
+
+    public PlayerColor getPlayerColor() {
+        return playerColor;
     }
 
     public void updateState(StateFamilyMember stateFamilyMember){

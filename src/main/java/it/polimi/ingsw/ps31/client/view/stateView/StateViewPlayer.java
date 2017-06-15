@@ -28,7 +28,7 @@ public class StateViewPlayer {
     public StateViewPlayer(PlayerId playerId){
         this.playerId = playerId;
         for(int i=0; i<getFamily_Member_Number();i++){
-            stateViewFamilyMemberList.add(new StateViewFamilyMember(this.playerId));
+            stateViewFamilyMemberList.add(new StateViewFamilyMember(this.playerId, this.playerColor));
         }
         for(int i=0;i<getMax_number_Of_MarkerDisc();i++){
             stateViewMarkerDiscList.add(new StateViewMarkerDisc(this.playerId,getStringPointResourceType()[i]));

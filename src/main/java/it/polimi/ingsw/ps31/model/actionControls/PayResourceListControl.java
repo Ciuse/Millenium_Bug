@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Francesco on 28/05/2017.
  */
-public class PayResourceListControl extends PayResourceControl{
+public class  PayResourceListControl extends PayResourceControl{
     private List<ResourceList> resourceLists = null;
 
     /* Constructor */

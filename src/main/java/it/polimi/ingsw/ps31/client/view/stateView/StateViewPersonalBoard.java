@@ -42,7 +42,7 @@ public class StateViewPersonalBoard {
         return playerId;
     }
 
-    public void updateState(StateCardBox stateCardBox) {
+    public void updateState(StateCardBox  stateCardBox) {
         if (stateCardBox.getValue() != -1) { //corrisponde al valore per dire che non è valido lo stato
             if (stateCardBox.getCardColor().equals(CardColor.GREEN)) {
                 for (StateViewPersonalCardBox stateViewPersonalCardBox : stateViewPersonalCardBoxListGreen

@@ -21,8 +21,8 @@ public class StateViewBoard {
         for(int i = 0;i<getNumber_Of_Tower();i++){
             stateViewTowerList.add(new StateViewTower(getCardColors()[i]));
         }
-        for(int i=1;i<=getNumber_Of_ActionSpace();i++){
-            stateViewActionSpaceList.add(new StateViewActionSpace(i,getActionSpaceEffect()[i],getDiceActionSpaceValue()[i]));
+        for(int i=0;i<getNumber_Of_ActionSpace();i++){
+            stateViewActionSpaceList.add(new StateViewActionSpace(i+1,getActionSpaceEffect()[i],getDiceActionSpaceValue()[i]));
         }
     }
     public void updateState(StateActionSpace stateActionSpace){
