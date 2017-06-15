@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
-import it.polimi.ingsw.ps31.ConnectionType;
+import it.polimi.ingsw.ps31.networking.ConnectionType;
 
 import java.io.*;
 import java.net.Socket;
@@ -47,6 +47,8 @@ public class SocketConnection extends ConnectionInterface {
     public void notifyClient(String msg)
     {
 
+        System.out.println("SocketConnection:notifyClient()> msg="+msg);
+
         try {
             socketWriter.write(msg+"\n");
             socketWriter.flush();
@@ -54,11 +56,25 @@ public class SocketConnection extends ConnectionInterface {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+//        return;
     }
 
     @Override
     public String getConnectionInfo() {
-        Integer boh = (Integer)socket.getPort();
-        return boh.toString();
+        Integer port = (Integer)socket.getPort();
+        return port.toString();
+    }
+
+    @Override
+    public void close() {
+        try {
+            this.socketWriter.close();
+            this.socketReader.close();
+            this.socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

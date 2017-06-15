@@ -53,6 +53,8 @@ public class Match extends Thread {
         //Avvia partita
 
         modelProva.startModel();
+        System.out.println("Match:run()> all listened connections closed. Shutting down match");
+        networkInterface.closeAll();
 
         //Fa cose alla fine della partita?
     }

@@ -23,20 +23,30 @@ public class ModelProva {
 
     public void startModel()
     {
-        networkInterface.readFromClient(PlayerId.ONE);
+        boolean exit = false;
+        while (!exit)
+        {
+            String msgFromClient = networkInterface.readFromClient(PlayerId.ONE);
+            if( msgFromClient.equals("closedConnection") )
+                exit = true;
+            else
+                setState(msgFromClient, PlayerId.ONE);
+        }
     }
 
-    public void setState(String state, PlayerId sender)
+    public void setState(String newState, PlayerId sender)
     {
-        System.out.println("Model> Messaggio in ingresso: " + state + " proveniente dal player "+sender);
+        System.out.println("Model> Messaggio in ingresso: '" + newState + "' proveniente dal player "+sender);
 
-        this.state = state;
+        this.state = newState;
         generateAnswer(sender);
     }
 
     private void generateAnswer(PlayerId sendBackTo)
     {
         this.state = new StringBuilder(this.state).reverse().toString();
+
+        System.out.println("Model: generateAnswer()> stato modificato. Novo stato: "+this.state);
 
         //genero l'oggetto di risposta
         MexProva answerObj = new MexProva(this.state);
@@ -55,6 +65,8 @@ public class ModelProva {
 
     public void notifyState(PlayerId receiver, MexProva obj)
     {
+        System.out.println("Model: notifyState()> Metodo richiamato. Invio messaggio "+obj+" al playerId "+receiver);
+
         System.out.println("Server> receiver: "+receiver+"; obj: "+obj);
         networkInterface.sendToClient(obj, receiver);
     }

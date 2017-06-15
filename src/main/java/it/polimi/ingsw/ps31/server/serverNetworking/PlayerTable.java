@@ -105,4 +105,17 @@ public class PlayerTable {
         System.out.println("\n");
     }
 
+    public void disconnect(PlayerId playerId)
+    {
+        playerIdToConncetion(playerId).close();
+    }
+
+    public void disconnectAll()
+    {
+        for (PlayerConnectionRow currentRow : playerConnectionRows)
+        {
+            disconnect(currentRow.getPlayerId());
+        }
+    }
+
 }

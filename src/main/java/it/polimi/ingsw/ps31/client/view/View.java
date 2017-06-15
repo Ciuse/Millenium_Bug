@@ -13,7 +13,7 @@ import java.util.Observer;
 /**
  * Created by giulia in 01/06/2017.
  */
-public abstract class View implements Observer {
+public abstract class View /* extends GenericView */ implements Observer {
     private final PlayerId viewId;
     private final StateViewBoard stateViewBoard;
     private final List<StateViewPlayer> stateViewPlayerList;
@@ -26,6 +26,12 @@ public abstract class View implements Observer {
         this.stateViewPersonalBoardList = stateViewPersonalBoardList;
         this.stateViewPlayerList = stateViewPlayerList;
     }
+
+//    @Override
+//    public void switchOn()
+//    {
+//        return;
+//    }
 
     @Override
     public void update(Observable o, Object arg) {

@@ -19,7 +19,7 @@ public class NetworkingThread extends Thread {
     /* run() method */
     public void run()
     {
-
+        clientNetworkInterface.switchOn();
     }
 
     public void setViewThread(ViewThread viewThread)

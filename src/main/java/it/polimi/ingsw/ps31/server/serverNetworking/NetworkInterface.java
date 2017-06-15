@@ -45,8 +45,16 @@ public class NetworkInterface {
         ConnectionInterface connection = this.playerTable.playerIdToConncetion(playerId);
 
         String msgToReturn = connection.notifyModel();
+        System.out.println("Server> Messaggio ricevuto: '"+msgToReturn+"'.");
 
-        modelProva.setState(msgToReturn, playerId);
+        if(msgToReturn.equals("exit"))
+        {
+            System.out.println("\nserverNI : readFromClient()> exiting...\n");
+
+            msgToReturn = "closedConnection";
+            sendToClient("closeAck", playerId);
+        }
+
         return msgToReturn;
     }
 
@@ -67,6 +75,8 @@ public class NetworkInterface {
 
         ConnectionInterface connection = this.playerTable.playerIdToConncetion(playerId);
         connection.notifyClient(strMsg);
+        System.out.println("Server NI sendToClient> messaggio in uscita : "+msg);
+
     }
 
     public void setModelProva(ModelProva modelProva)
@@ -82,6 +92,11 @@ public class NetworkInterface {
     public boolean playerConnected(PlayerId playerId)
     {
         return playerTable.playerIdToConncetion(playerId) != null;
+    }
+
+    public void closeAll()
+    {
+        playerTable.disconnectAll();
     }
 
 }

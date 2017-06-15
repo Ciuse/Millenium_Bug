@@ -22,20 +22,26 @@ public class Client {
         //todo: chiedere CLI/GUI
         //todo: chiedere socket/RMI
 
-        //Creo la view (cli finchè non avremo la gui, poi if-else)
-        //todo: gestire i parametri del costruttore
+        //Creo la connessione (todo socket finchè non avremo rmi, poi if-else)
+        ClientSocketConnection clientSocketConnection = new ClientSocketConnection(PORT);
+
+        //Creo la view (todo cli finchè non avremo la gui, poi if-else)
+        //todo: gestire i parametri del costruttore di TerminalView
         //TerminalView terminalView = new TerminalView(null, null, null, null);
         ViewProva viewProva = new ViewProva();
 
-        //Creo la connessione (socket finchè non avremo rmi, poi if-else)
-        ClientSocketConnection clientSocketConnection = new ClientSocketConnection(PORT);
+        //Dico alla view di collegarsi alla network interface
+        viewProva.attachNetworkInterface(clientSocketConnection);
+
+        //Dico alla network interface di collegarsi alla view (per comunicazioni urgenti e asincrone)
+        clientSocketConnection.attachView(viewProva);
 
         //Inserisco view e networking in due thread dedicati
-        viewThread = new ViewThread();
+        viewThread = new ViewThread(viewProva);
         networkingThread = new NetworkingThread(clientSocketConnection);
 
-        viewThread.setNetworking(networkingThread);
-        networkingThread.setViewThread(viewThread);
+//        viewThread.setNetworking(networkingThread);
+//        networkingThread.setViewThread(viewThread);
 
         //Faccio partire i thread
         viewThread.start();

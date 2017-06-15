@@ -11,9 +11,16 @@ import java.io.Serializable;
 //Classe che unifica le connessioni Socket e RMI sotto un'unica interfaccia di funzionamento
 public abstract class ClientNetworkInterface {
 
+    public abstract void attachView(ViewProva viewProva);
+    public abstract void switchOn();
+
     public abstract void sendToServer(String msg);
-    public abstract String readFromServer();
+    public abstract String readFromBuffer();
     public abstract String serialize(Object obj);
     public abstract Object deserialize(String msg);
+
+    public abstract void close();
+
+    public abstract String printBuffer();
 
 }

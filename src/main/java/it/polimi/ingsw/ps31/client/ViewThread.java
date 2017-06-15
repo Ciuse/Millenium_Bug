@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.client;
 
 import it.polimi.ingsw.ps31.client.ClientNetworking.ClientNetworkInterface;
+import it.polimi.ingsw.ps31.client.view.GenericView;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.ViewProva;
 
@@ -8,15 +9,15 @@ import it.polimi.ingsw.ps31.client.view.ViewProva;
  * Created by Francesco on 11/06/2017.
  */
 public class ViewThread extends Thread {
-    private final ViewProva view;
+    private final GenericView view;
     private NetworkingThread networkingThread;
 
 //    private final
 
     /* Constructor */
-    public ViewThread()
+    public ViewThread( GenericView view)
     {
-        this.view = new ViewProva();
+        this.view = view;
     }
 
     /* run() method */
@@ -29,6 +30,5 @@ public class ViewThread extends Thread {
     public void setNetworking(NetworkingThread networkingThread)
     {
         this.networkingThread = networkingThread;
-        this.view.setNetworkInterface(networkingThread.getClientNetworkInterface());
     }
 }
