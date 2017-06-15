@@ -1,33 +1,23 @@
 package it.polimi.ingsw.ps31.messageMV;
 
+import it.polimi.ingsw.ps31.model.StateChoice.ChoiceInfo;
+
 /**
  * Created by giulia on 14/06/2017.
  */
 public class MVAskChoice implements MVVisitable {
-    private int typeOfChoice=-1;
-    private int minRange;
-    private int maxRange;
+    private ChoiceInfo choiceInfo;
 
-    public MVAskChoice(int typeOfChoice, int minRange, int maxRange) {
-        this.typeOfChoice = typeOfChoice;
-        this.minRange = minRange;
-        this.maxRange = maxRange;
+    public MVAskChoice(ChoiceInfo choiceInfo) {
+        this.choiceInfo = choiceInfo;
     }
 
-    public int getMinRange() {
-        return minRange;
-    }
-
-    public int getMaxRange() {
-        return maxRange;
+    public ChoiceInfo getChoiceInfo() {
+        return choiceInfo;
     }
 
     @Override
     public void accept(MVVisitor mvVisitor) {
         mvVisitor.visit(this);
-    }
-
-    public int getTypeOfChoice() {
-        return typeOfChoice;
     }
 }

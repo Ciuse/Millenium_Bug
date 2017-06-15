@@ -13,7 +13,6 @@ import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrChooseColor;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrString;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrVisualization;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
-import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
@@ -22,6 +21,8 @@ import it.polimi.ingsw.ps31.model.gameResource.Resource;
 
 import java.io.IOException;
 import java.util.List;
+
+import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.*;
 
 /**
  * Created by Giuseppe on 07/06/2017.
@@ -42,6 +43,10 @@ public class CmdLineView extends View {
 
     public void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView) {
         this.cmdInterpreterView = cmdInterpreterView;
+    }
+
+    public void askPlayer(){
+
     }
 
     @Override
@@ -137,49 +142,17 @@ public class CmdLineView extends View {
 
     }
 
-
-    @Override
-    public void printTitle() {
-        //stampa del titolo
-        String sizeLabel = "LORENZO IL MAGNIFICO";
-        TerminalPosition labelBoxTopLeft = new TerminalPosition(105, 0);
-        TerminalSize labelBoxSize = new TerminalSize(sizeLabel.length() + 2, 3);
-        TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(labelBoxSize.getColumns() - 1);
-        TextGraphics textGraphics = screen.newTextGraphics();
-        textGraphics.fillRectangle(labelBoxTopLeft, labelBoxSize, ' ');
-        textGraphics.drawLine(
-                labelBoxTopLeft.withRelativeColumn(1),
-                labelBoxTopLeft.withRelativeColumn(labelBoxSize.getColumns() - 2),
-                Symbols.DOUBLE_LINE_HORIZONTAL);
-        textGraphics.drawLine(
-                labelBoxTopLeft.withRelativeRow(2).withRelativeColumn(1),
-                labelBoxTopLeft.withRelativeRow(2).withRelativeColumn(labelBoxSize.getColumns() - 2),
-                Symbols.DOUBLE_LINE_HORIZONTAL);
-        textGraphics.setCharacter(labelBoxTopLeft, Symbols.DOUBLE_LINE_TOP_LEFT_CORNER);
-        textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(1), Symbols.DOUBLE_LINE_VERTICAL);
-        textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(2), Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);
-        textGraphics.setCharacter(labelBoxTopRightCorner, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
-        textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(1), Symbols.DOUBLE_LINE_VERTICAL);
-        textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(2), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
-        textGraphics.putString(labelBoxTopLeft.withRelative(1, 1), sizeLabel);
-        try {
-            screen.refresh();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public void printTower (){
-
-        for(int i=0; i< ViewStaticInformation.getNumber_Of_Tower();i++){
-        for(int j=0;j<ViewStaticInformation.getTower_Identical_Box_Max();j++) {
-            {
-                TerminalSize cardBox = new TerminalSize(6, 4);
-                TerminalPosition labelBoxTopLeft = new TerminalPosition((1 + i * 6) + ((i * cardBox.getColumns())), (1 * j) + (j * cardBox.getRows()));
-//                printCardTowerBox(labelBoxTopLeft,cardBox);
-            }
-        }
+        int i=0;
+        for (StateViewTower tower:super.getStateViewBoard().getStateViewTowerList()
+                ) {
+                for (StateViewTowerCardBox floor:tower.getStateViewTowerCardBox()
+                        ) {
+                    printTowerCardBox(tower.getTowerColor(),floor.getTowerFloor());
+                    printTowerActionSpace(i);
+                    i++;
+                }
     }
         try {
             screen.refresh();
@@ -288,25 +261,97 @@ public class CmdLineView extends View {
         }
     }
 
-    private void printCardTowerBox(TerminalPosition labelBoxTopLeft, TerminalSize cardBox,CardColor towerColor,int towerFloor){
-        TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 1);
-        textGraphics.drawLine(
-                labelBoxTopLeft.withRelativeColumn(1),
-                labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 2),
-                Symbols.DOUBLE_LINE_HORIZONTAL);
-        textGraphics.drawLine(
-                labelBoxTopLeft.withRelativeRow(cardBox.getRows()-1).withRelativeColumn(1),
-                labelBoxTopLeft.withRelativeRow(cardBox.getRows()-1).withRelativeColumn(cardBox.getColumns() - 2),
-                Symbols.DOUBLE_LINE_HORIZONTAL);
-        textGraphics.setCharacter(labelBoxTopLeft, Symbols.DOUBLE_LINE_TOP_LEFT_CORNER);
-        textGraphics.drawLine(labelBoxTopLeft.withRelativeRow(1),labelBoxTopLeft.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_VERTICAL);
-        textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);
-        textGraphics.setCharacter(labelBoxTopRightCorner, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
-        textGraphics.drawLine(labelBoxTopRightCorner.withRelativeRow(1),labelBoxTopRightCorner.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_VERTICAL);
-        textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
+    private void printTowerCardBox(CardColor towerColor, int towerFloor){
+        int i=0;
+        for (StateViewTower tower:super.getStateViewBoard().getStateViewTowerList()
+             ) {
+            if(tower.getTowerColor().equals(towerColor)){
+                int j=3;
+                for (StateViewTowerCardBox floor:tower.getStateViewTowerCardBox()
+                     ) {
 
-        screen.setCharacter(labelBoxTopLeft.withRelative(1, 1), getCardColorCharatcter(labelBoxTopLeft,CardColor.GREEN));
-        textGraphics.putString(labelBoxTopLeft.withRelative(2, 1), "27");
+                    if(floor.getTowerFloor()==towerFloor){
+
+                        TerminalSize cardBox = new TerminalSize(6, 4);
+                        TerminalPosition labelBoxTopLeft = new TerminalPosition((1 + i * 8) + ((i * cardBox.getColumns())), (1 * j) + (j * cardBox.getRows()));
+                        TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 1);
+                        textGraphics.drawLine(
+                                labelBoxTopLeft.withRelativeColumn(1),
+                                labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 2),
+                                Symbols.DOUBLE_LINE_HORIZONTAL);
+                        textGraphics.drawLine(
+                                labelBoxTopLeft.withRelativeRow(cardBox.getRows()-1).withRelativeColumn(1),
+                                labelBoxTopLeft.withRelativeRow(cardBox.getRows()-1).withRelativeColumn(cardBox.getColumns() - 2),
+                                Symbols.DOUBLE_LINE_HORIZONTAL);
+                        textGraphics.setCharacter(labelBoxTopLeft, Symbols.DOUBLE_LINE_TOP_LEFT_CORNER);
+                        textGraphics.drawLine(labelBoxTopLeft.withRelativeRow(1),labelBoxTopLeft.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_VERTICAL);
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);
+                        textGraphics.setCharacter(labelBoxTopRightCorner, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
+                        textGraphics.drawLine(labelBoxTopRightCorner.withRelativeRow(1),labelBoxTopRightCorner.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_VERTICAL);
+                        textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
+
+                        screen.setCharacter(labelBoxTopLeft.withRelative(1, 1), getCardColorCharatcter(labelBoxTopLeft,towerColor));
+                        textGraphics.putString(labelBoxTopLeft.withRelative(2, 1), "27");
+                        textGraphics.putString(labelBoxTopLeft.withRelative(1, 2), "F.");
+
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3, 2), String.valueOf(floor.getTowerFloor()));
+
+                    }j--;
+                }
+            }i++;
+        }
+
+    }
+    private void printTowerActionSpace(int actionSpaceId) {
+        int k=-1;
+        for (int i = 0; i < getNumber_Of_Tower(); i++) {
+            for (int j = 0; j < getTower_Identical_Box_Max(); j++) {
+                k++;
+                if(k==actionSpaceId) {
+                    TerminalSize cardBox = new TerminalSize(6, 4);
+                    TerminalPosition labelBoxTopLeft = new TerminalPosition((7 + i * 8) + ((i * cardBox.getColumns())), (1 * j) + (j * cardBox.getRows()));
+                    TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 1);
+                    textGraphics.drawLine(
+                            labelBoxTopLeft.withRelativeColumn(1),
+                            labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 2),
+                            Symbols.DOUBLE_LINE_HORIZONTAL);
+                    textGraphics.drawLine(
+                            labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1).withRelativeColumn(1),
+                            labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1).withRelativeColumn(cardBox.getColumns() - 2),
+                            Symbols.DOUBLE_LINE_HORIZONTAL);
+                    textGraphics.setCharacter(labelBoxTopLeft, Symbols.DOUBLE_LINE_TOP_LEFT_CORNER);
+                    textGraphics.drawLine(labelBoxTopLeft.withRelativeRow(1), labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_VERTICAL);
+                    textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);
+                    textGraphics.setCharacter(labelBoxTopRightCorner, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
+                    textGraphics.drawLine(labelBoxTopRightCorner.withRelativeRow(1), labelBoxTopRightCorner.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_VERTICAL);
+                    textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
+                    printEffectActionSpace(labelBoxTopLeft, actionSpaceId);
+                }
+            }
+        }
+    }
+
+    private void printEffectActionSpace(TerminalPosition labelBoxTopLeft, int actionSpaceId){
+        StateViewEffect effect = getActionSpaceEffect()[actionSpaceId];
+        if(effect!=null){
+            if(effect.getNameEffect()!=null){
+                textGraphics.putString(labelBoxTopLeft.withRelative(1, 1), effect.getNameEffect());
+            }
+            else {
+                textGraphics.putString(labelBoxTopLeft.withRelative(1, 1),effect.getResourceToGain());
+                textGraphics.setCharacter(labelBoxTopLeft.withRelative(1,2),Symbols.SOLID_SQUARE);
+                textGraphics.putString(labelBoxTopLeft.withRelative(2, 2),String.valueOf(getDiceActionSpaceValue()[actionSpaceId]));
+                for (StateViewActionSpace actionSpace:super.getStateViewBoard().getStateViewActionSpaceList()
+                     ) {
+                    if(actionSpace.getNumberOfActionSpace()==actionSpaceId&&actionSpace.getStateFamilyMemberList()!=null&&actionSpace.getStateFamilyMemberList().size()==1){
+                        screen.setCharacter(labelBoxTopLeft.withRelative(4,2),getPlayerColorCharatcter(labelBoxTopLeft,actionSpace.getStateFamilyMemberList().get(0).getPlayerColor()));
+
+                    }
+                }
+
+            }
+        }
+
     }
 
     private void printPlayer(StateViewPlayer player,TerminalPosition labelBoxTopLeft){
@@ -462,7 +507,7 @@ public class CmdLineView extends View {
         TextCharacter characterInBackBuffer = screen.getBackCharacter(labelBoxTopLeft.withRelative(1, 1));
         characterInBackBuffer = characterInBackBuffer.withBackgroundColor(color);
         characterInBackBuffer = characterInBackBuffer.withCharacter(' ');   // Because of the label box further down, if it shrinks
-        screen.setCharacter(labelBoxTopLeft.withRelative(1, 1), characterInBackBuffer);
+        //screen.setCharacter(labelBoxTopLeft.withRelative(1, 1), characterInBackBuffer);
         return characterInBackBuffer;
     }
 

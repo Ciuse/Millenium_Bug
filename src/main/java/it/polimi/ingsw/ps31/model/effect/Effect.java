@@ -55,7 +55,4 @@ public abstract class Effect extends Model implements EffectActivation{
 
     public abstract String resourceDiscountString();
 
-
-
-
 }

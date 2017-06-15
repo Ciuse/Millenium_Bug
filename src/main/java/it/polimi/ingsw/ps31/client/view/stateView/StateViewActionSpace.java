@@ -44,7 +44,7 @@ public class StateViewActionSpace {
         return stateViewEffect;
     }
 
-    public List<StateFamilyMember> getStateFamilyMemberList() {
+    public List<StateFamilyMember>  getStateFamilyMemberList() {
         return stateFamilyMemberList;
     }
 }

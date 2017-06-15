@@ -55,6 +55,7 @@ public abstract class View extends Observable implements Observer {
         message.accept(MVMessageVisitor);
     }
 
+    public abstract void askPlayer();
 
     public abstract void inserisciNome();
 
@@ -151,8 +152,6 @@ public abstract class View extends Observable implements Observer {
 
 
     public abstract void runTerminal() throws IOException;
-
-    public abstract void printTitle();
 
     public abstract void printTower();
 

@@ -11,8 +11,9 @@ import java.util.List;
  */
 public class ChooseCardEffectWithDiscount extends ChooseCardEffect {
     private final ResourceList resourcesDiscount; //la carta che devo prendere ha uno sconto sulle risorse
-    public ChooseCardEffectWithDiscount(List<CardColor> cardColors, int diceValue, ResourceList resourcesDiscount) {
-        super(cardColors, diceValue);
+
+    public ChooseCardEffectWithDiscount(CardColor cardColor, int diceValue, ResourceList resourcesDiscount, boolean anyColor) {
+        super(cardColor, diceValue, anyColor);
         this.resourcesDiscount = resourcesDiscount;
     }
     @Override

@@ -33,7 +33,7 @@ public class ChangeResourceEffect extends Effect {
     //TODO spostare la richiesta di inserimento alla view
     @Override
     public void activate(Player player) {
-        super.notifyViews(new MVAskChoice(1,1,resourceToPayList.size()));
+        super.notifyViews();
         int listChoose = super.waitChoice();
         player.getPlayerActionSet().payResources(resourceToPayList.get(listChoose));
         player.getPlayerActionSet().getResources(resourceToGainList.get(listChoose));
