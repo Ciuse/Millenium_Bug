@@ -7,7 +7,6 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by giulia on 17/05/2017.
@@ -16,8 +15,8 @@ public class ChangeResourceEffect extends Effect {
     private final List<ResourceList> resourceToPayList; // alcune carte hanno una doppia scelta sulle risorse da pagare per ottenere nuove risorse
     private final List<ResourceList> resourceToGainList; // alcune carte potrebbero avere una doppia scelta di risorse da guadagnare
 
-    public ChangeResourceEffect(List<ResourceList> resourceToPayList, List<ResourceList> resourceToGainList) {
-
+    public ChangeResourceEffect(int cardId, List<ResourceList> resourceToPayList, List<ResourceList> resourceToGainList) {
+        super(cardId);
         this.resourceToPayList = resourceToPayList;
         this.resourceToGainList = resourceToGainList;
     }
@@ -33,10 +32,15 @@ public class ChangeResourceEffect extends Effect {
     //TODO spostare la richiesta di inserimento alla view
     @Override
     public void activate(Player player) {
-        super.notifyViews(new MVAskChoice(1,1,resourceToPayList.size()));
-        int listChoose = super.waitChoice();
-        player.getPlayerActionSet().payResources(resourceToPayList.get(listChoose));
-        player.getPlayerActionSet().getResources(resourceToGainList.get(listChoose));
+        if(resourceToGainList.size()==1&&resourceToPayList.size()==1){
+            player.getPlayerActionSet().payResources(resourceToPayList.get(0));
+            player.getPlayerActionSet().getTempResources(resourceToGainList.get(0));
+        }else{
+            super.notifyViews(new MVAskChoice(1,1,resourceToPayList.size()));
+            int listChoose = super.waitIntChosen();
+            player.getPlayerActionSet().payResources(resourceToPayList.get(listChoose));
+            player.getPlayerActionSet().getTempResources(resourceToGainList.get(listChoose));
+        }
     }
 
 
@@ -86,10 +90,6 @@ public class ChangeResourceEffect extends Effect {
         return null;
     }
 
-    @Override
-    public Effect getGetResource() {
-        return null;
-    }
 
     @Override
     public GetResourceEffect getGetResourceEffect() {
@@ -98,6 +98,16 @@ public class ChangeResourceEffect extends Effect {
 
     @Override
     public String resourceDiscountString() {
+        return null;
+    }
+
+    @Override
+    public GetResourceEffectFromCard getGetResourceEffectFromCard() {
+        return null;
+    }
+
+    @Override
+    public ChangeResourceEffect getChangeResourceEffect() {
         return null;
     }
 }

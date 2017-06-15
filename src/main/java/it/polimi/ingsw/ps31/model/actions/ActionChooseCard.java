@@ -10,7 +10,6 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class ActionChooseCard extends Action {
     private Integer diceCost = null;
-    private int diceDiscount= 0;
     private ResourceList resourceDiscount = null;
     private CardColor cardColor = null;
     private boolean anyCardColor = false;
@@ -30,10 +29,7 @@ public class ActionChooseCard extends Action {
     {
         this.diceCost = diceCost;
     }
-    public void setDiceDiscount(int diceDiscount)
-    {
-        this.diceDiscount = diceDiscount;
-    }
+
     public void setResourceDiscount(ResourceList resourceDiscount)
     {
         if(resourceDiscount!=null){
@@ -54,10 +50,7 @@ public class ActionChooseCard extends Action {
     {
         return this.diceCost;
     }
-    public Integer getDiceDiscount()
-    {
-        return this.diceDiscount;
-    }
+
     public ResourceList getResourceDiscount()
     {
         return this.resourceDiscount;
@@ -78,7 +71,6 @@ public class ActionChooseCard extends Action {
     }
     public void resetDiceDiscount()
     {
-        this.diceDiscount = 0;
     }
     public void resetResourceDiscount ()
     {
@@ -102,12 +94,12 @@ public class ActionChooseCard extends Action {
         {
             //TODO: eccezione
         }
-        //Faccio richiesta alla view per scegliere la carta e controllo che la carta scelta rispetti i parametri settati
+
         TowerCardSpace chosenCardSpace;
         do
         {
-            //TODO: fare richiesta alla view per scegliere il tower card space
-            chosenCardSpace = new TowerCardSpace(null, null, null, -1); //Cambiare questa riga
+            super.notifyViews();
+            chosenCardSpace =super.waitTowerCardChosen();
         }while (!checkChosenTowerCardSpace(chosenCardSpace));
 
         super.player.getPlayerActionSet().takeCard(chosenCardSpace);    //TODO: e se il player non può attivare l'effetto della carta?
@@ -133,7 +125,7 @@ public class ActionChooseCard extends Action {
                 return false;
 
         //Controllo costo dado
-        if( !super.actionControlSet.diceValueVsCardSpaceControl(this.diceCost+this.diceDiscount, chosenTCS) )
+        if( !super.actionControlSet.diceValueVsCardSpaceControl(this.diceCost, chosenTCS) )
             return false;
 
         //Controllo costo risorse

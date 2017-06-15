@@ -17,6 +17,7 @@ public class StateEffect extends StateInfo{
     private String requiredResource = null;
     private StateEffect stateEffect1 = null;
     private StateEffect stateEffect2 = null;
+    private StateEffect stateEffect3 = null;
 
 
     public StateEffect(Effect effect) {
@@ -32,8 +33,11 @@ public class StateEffect extends StateInfo{
             if(effect.getGetResourceEffect()!=null){
                 this.stateEffect1 = new StateEffect(effect.getGetResourceEffect());
             }
-            if (effect.getGetResource()!=null){
-                this.stateEffect2 = new StateEffect(effect.getGetResource());
+            if (effect.getChangeResourceEffect()!=null){
+                this.stateEffect2 = new StateEffect(effect.getChangeResourceEffect());
+            }
+            if(effect.getGetResourceEffectFromCard()!=null){
+                this.stateEffect3 = new StateEffect(effect.getGetResourceEffectFromCard());
             }
         }
 
@@ -77,6 +81,10 @@ public class StateEffect extends StateInfo{
 
     public StateEffect getStateEffect2() {
         return stateEffect2;
+    }
+
+    public StateEffect getStateEffect3() {
+        return stateEffect3;
     }
 
     @Override

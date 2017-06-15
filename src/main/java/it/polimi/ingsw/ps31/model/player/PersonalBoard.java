@@ -23,7 +23,7 @@ public class PersonalBoard {
     /* Constructor */
     public PersonalBoard(List<PointResource[]> pointResourceRequired, PlayerId playerId) {
         this.playerId = playerId;
-        CardColor[] cardColor= {CardColor.YELLOW,CardColor.GREEN,CardColor.PURPLE,CardColor.BLUE};
+        CardColor[] cardColor= CardColor.values();
         for(int i = 0; i< NUM_OF_CARD_LIST; i++){
             personalBoardCardList.add(new PersonalBoardCardList(playerId,cardColor[i]));
             personalBoardCardList.get(i).setExtraResourceRequired(pointResourceRequired.get(i));

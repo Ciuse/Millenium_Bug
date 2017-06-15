@@ -11,33 +11,44 @@ import java.util.List;
 // generico effetto produzione
 public class ProductionEffect extends Effect {
     private final int productionActionValue; // è il valore del dado che serve per attivare la produzione
-    private final Effect getResource; // ogni produzione ha un effetto ottieni risorsa
-    public ProductionEffect(int productionActionValue, Effect productionEffect) {
+    private final GetResourceEffect getResourceEffect;
+    private final ChangeResourceEffect changeResourceEffect;
+    private final GetResourceEffectFromCard getResourceEffectFromCard;
+
+
+    public ProductionEffect(int cardId,int productionActionValue, Effect productionEffect, GetResourceEffect getResourceEffect, ChangeResourceEffect changeResourceEffect, GetResourceEffectFromCard getResourceEffectFromCard) {
+        super(cardId);
         this.productionActionValue = productionActionValue;
-        this.getResource = productionEffect;
+        this.getResourceEffect = getResourceEffect;
+        this.changeResourceEffect = changeResourceEffect;
+        this.getResourceEffectFromCard = getResourceEffectFromCard;
     }
 
     public int getProductionActionValue() {
         return productionActionValue;
     }
 
-    public Effect getGetResource() {
-        return getResource;
+    public ChangeResourceEffect getChangeResourceEffect() {
+        return changeResourceEffect;
+    }
+
+    public GetResourceEffectFromCard getGetResourceEffectFromCard() {
+        return getResourceEffectFromCard;
+    }
+
+    @Override
+    public void activate(Player player) {
+        player.getPlayerActionSet().activateProduction(productionActionValue);
     }
 
     @Override
     public GetResourceEffect getGetResourceEffect() {
-        return null;
+        return getResourceEffect;
     }
 
     @Override
     public String resourceDiscountString() {
         return null;
-    }
-
-    @Override
-    public void activate(Player player) {
-
     }
 
     public String nameString(){

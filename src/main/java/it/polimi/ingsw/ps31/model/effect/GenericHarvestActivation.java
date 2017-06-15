@@ -11,7 +11,8 @@ import java.util.List;
 public class GenericHarvestActivation extends Effect { //è l'effetto generico presente sul tabellone
     private final int basicValue;
 
-    public  GenericHarvestActivation(int basicValue){
+    public  GenericHarvestActivation(int cardId,int basicValue){
+        super(cardId);
         this.basicValue = basicValue;
     }
 
@@ -29,10 +30,6 @@ public class GenericHarvestActivation extends Effect { //è l'effetto generico p
         return null;
     }
 
-    @Override
-    public Effect getGetResource() {
-        return null;
-    }
 
     @Override
     public GetResourceEffect getGetResourceEffect() {
@@ -41,6 +38,16 @@ public class GenericHarvestActivation extends Effect { //è l'effetto generico p
 
     @Override
     public String resourceDiscountString() {
+        return null;
+    }
+
+    @Override
+    public GetResourceEffectFromCard getGetResourceEffectFromCard() {
+        return null;
+    }
+
+    @Override
+    public ChangeResourceEffect getChangeResourceEffect() {
         return null;
     }
 

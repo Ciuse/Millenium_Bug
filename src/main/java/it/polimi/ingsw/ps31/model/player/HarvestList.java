@@ -11,17 +11,12 @@ public class HarvestList extends HarvestProductionList{
     private List<HarvestEffect> effectList;
 
     /* Constructor */
-    public HarvestList(Player player, List<HarvestEffect> firstHarvest) {
+    public HarvestList(Player player, HarvestEffect firstHarvest) {
         super(player);
-        this.addEffectList(firstHarvest);
+        this.addEffect(firstHarvest);
     }
 
     /* Class Methods */
-    private void addEffectList(List<HarvestEffect> effectListToAdd)
-    {
-        this.effectList.addAll(effectListToAdd);
-    }
-
     private void addEffect (HarvestEffect effectToAdd)
     {
         this.effectList.add(effectToAdd);
@@ -35,5 +30,6 @@ public class HarvestList extends HarvestProductionList{
             if (currentEffect.getHarvestActionValue() > diceValue)
                 currentEffect.getGetResourceEffect().activate(super.getPlayer());
         }
+        super.getPlayer().addTempResoucesToPlayerResources();
     }
 }

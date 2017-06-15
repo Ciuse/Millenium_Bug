@@ -8,8 +8,8 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class GetResourcesAtTheEndEffect extends GetResourceEffect {
 
-    public GetResourcesAtTheEndEffect(ResourceList resources) {
-        super(resources);
+    public GetResourcesAtTheEndEffect(int cardId,ResourceList resources) {
+        super(cardId,resources);
     }
     @Override
     public void activate(Player player) {

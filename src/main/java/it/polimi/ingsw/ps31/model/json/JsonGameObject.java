@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps31.model.card.*;
 import it.polimi.ingsw.ps31.model.card.Character;
 import it.polimi.ingsw.ps31.model.effect.*;
 import it.polimi.ingsw.ps31.model.gameResource.*;
+import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +29,12 @@ public class JsonGameObject {
     private VictoryPoint bonusVictoryPointFromPlayerResources;
     private List<ResourceList> initialResourcePlayer;
     private List<ExcommunicationTiles> excommunicationTiles;
+    private List<PersonalBonusTiles> personalBonusTilesList;
 
     public JsonGameObject() {
     }
 
-    public static Gson gsonGameBuilder(){       //TODO assicurarsi che ci siano tutti i sottotipi di queste classi astratte
+        public static Gson gsonGameBuilder(){       //TODO assicurarsi che ci siano tutti i sottotipi di queste classi astratte
 
         //Serve per poter far riconoscere a json una Lista di classi polimorfe
         RuntimeTypeAdapterFactory<Resource> resourceAdapterFactory = RuntimeTypeAdapterFactory.of(Resource.class, "ResourceType");
@@ -72,6 +74,8 @@ public class JsonGameObject {
         bonusAdapterFactory.registerSubtype(HarvestBonus.class, "HarvestBonus");
         bonusAdapterFactory.registerSubtype(NoImmediateEffectBonus.class, "NoImmediateEffectBonus");
         bonusAdapterFactory.registerSubtype(ProductionBonus.class, "ProductionBonus");
+
+
 
 
         //TODO MANCANO I LEADER EFFECT
@@ -187,5 +191,13 @@ public class JsonGameObject {
 
     public void setExcommunicationTiles(List<ExcommunicationTiles> excommunicationTiles) {
         this.excommunicationTiles = excommunicationTiles;
+    }
+
+    public List<PersonalBonusTiles> getPersonalBonusTilesList() {
+        return personalBonusTilesList;
+    }
+
+    public void setPersonalBonusTilesList(List<PersonalBonusTiles> personalBonusTilesList) {
+        this.personalBonusTilesList = personalBonusTilesList;
     }
 }

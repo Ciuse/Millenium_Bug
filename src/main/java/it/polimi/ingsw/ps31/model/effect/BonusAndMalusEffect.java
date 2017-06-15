@@ -12,7 +12,8 @@ import java.util.List;
 public class BonusAndMalusEffect extends Effect {
     private final Bonus bonusToSet;
 
-    public BonusAndMalusEffect(Bonus bonusToSet) {
+    public BonusAndMalusEffect(int cardId,Bonus bonusToSet) {
+        super(cardId);
         this.bonusToSet = bonusToSet;
     }
 
@@ -62,17 +63,22 @@ public class BonusAndMalusEffect extends Effect {
     }
 
     @Override
-    public Effect getGetResource() {
-        return null;
-    }
-
-    @Override
     public GetResourceEffect getGetResourceEffect() {
         return null;
     }
 
     @Override
     public String resourceDiscountString() {
+        return null;
+    }
+
+    @Override
+    public GetResourceEffectFromCard getGetResourceEffectFromCard() {
+        return null;
+    }
+
+    @Override
+    public ChangeResourceEffect getChangeResourceEffect() {
         return null;
     }
 }

@@ -12,7 +12,8 @@ import java.util.List;
 public class GetResourceEffect extends Effect {
     private final ResourceList resources;
 
-    public GetResourceEffect(ResourceList resources){
+    public GetResourceEffect(int cardId,ResourceList resources){
+        super(cardId);
         this.resources=resources;
     }
 
@@ -22,7 +23,7 @@ public class GetResourceEffect extends Effect {
 
     @Override
     public void activate(Player player) {
-        player.getPlayerActionSet().getResources(this.resources);
+        player.getPlayerActionSet().getTempResources(this.resources);
     }
     public String resourceToGainString(){
         return resources.toString();
@@ -48,10 +49,6 @@ public class GetResourceEffect extends Effect {
         return null;
     }
 
-    @Override
-    public Effect getGetResource() {
-        return null;
-    }
 
     @Override
     public GetResourceEffect getGetResourceEffect() {
@@ -60,6 +57,16 @@ public class GetResourceEffect extends Effect {
 
     @Override
     public String resourceDiscountString() {
+        return null;
+    }
+
+    @Override
+    public GetResourceEffectFromCard getGetResourceEffectFromCard() {
+        return null;
+    }
+
+    @Override
+    public ChangeResourceEffect getChangeResourceEffect() {
         return null;
     }
 

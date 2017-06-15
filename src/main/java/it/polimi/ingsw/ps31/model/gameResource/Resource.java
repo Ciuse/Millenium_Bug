@@ -23,6 +23,10 @@ public abstract class Resource {
         player.addResources(this);
     }
 
+    public void addTempResource(Player player){
+        player.addTempResources(this);
+    }
+
     public void addValue(int value)
     {
         if (value >= 0)

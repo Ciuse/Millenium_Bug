@@ -13,7 +13,8 @@ public class ChooseCardEffect extends Effect{
     private boolean anyColor=false;
     private final int diceValue;
 
-    public ChooseCardEffect(CardColor cardColor, int diceValue, boolean anyColor) {
+    public ChooseCardEffect(int cardId,CardColor cardColor, int diceValue, boolean anyColor) {
+        super(cardId);
         this.anyColor=anyColor;
         this.cardColor = cardColor;
         this.diceValue = diceValue;
@@ -22,7 +23,7 @@ public class ChooseCardEffect extends Effect{
 
     @Override
     public void activate(Player player) {
-        player.getPlayerActionSet().chooseCard(this.cardColor,this.diceValue,0,this.anyColor,null);
+        player.getPlayerActionSet().chooseCard(this.cardColor,this.diceValue,this.anyColor);
     }
     public String nameString(){
         return "ChooseCard";
@@ -66,10 +67,6 @@ public class ChooseCardEffect extends Effect{
         return null;
     }
 
-    @Override
-    public Effect getGetResource() {
-        return null;
-    }
 
     @Override
     public GetResourceEffect getGetResourceEffect() {
@@ -78,6 +75,16 @@ public class ChooseCardEffect extends Effect{
 
     @Override
     public String resourceDiscountString() {
+        return null;
+    }
+
+    @Override
+    public GetResourceEffectFromCard getGetResourceEffectFromCard() {
+        return null;
+    }
+
+    @Override
+    public ChangeResourceEffect getChangeResourceEffect() {
         return null;
     }
 }

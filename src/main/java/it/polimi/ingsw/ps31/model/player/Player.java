@@ -27,6 +27,7 @@ public class Player {
     private final String nickname;
     private final PlayerColor playerColor;
     private final PlayerResources playerResources;      //setter -->add e sub
+    private ResourceList tempPlayerResourcesToGain;
     private final PersonalBoard playerBoard;
     private final List<FamilyMember> familyMembers = new ArrayList<>();
     private FamilyMember lastUsedFamilyMember;
@@ -39,7 +40,7 @@ public class Player {
     private List<ResourceList> finalBonusResources;
 
     /* Constructor */
-    public Player(PlayerColor playerColor, ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard)
+    public Player(PlayerColor playerColor, ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard,PersonalBonusTiles personalBonusTiles)
     {
         //Attributi base
         this.playerColor = playerColor;
@@ -48,6 +49,7 @@ public class Player {
         this.nickname = nickname;
         this.permanentBonus = new PermanentBonus();
         this.excommunicationTiles = new ArrayList<>(); //TODO: serve davvero??
+        this.tempPlayerResourcesToGain=null;
         //creazione lista dei famigliari
         DiceColor[] diceColor = {DiceColor.WHITE, DiceColor.ORANGE, DiceColor.BLACK, DiceColor.NEUTRAL};
         for(int i =0 ;i<diceColor.length;i++){
@@ -58,8 +60,8 @@ public class Player {
         playerResources = new PlayerResources(initialResources);
 
         //Inizializzazione harvestList e productionList
-        this.harvestList = new HarvestList(this, null); //TODO: leggere firstHarvest da file
-        this.productionList = new ProductionList(this, null); //TODO: leggere firstProduction da file
+        this.harvestList = new HarvestList(this,personalBonusTiles.getHarvestEffect()); //TODO: leggere firstHarvest da file
+        this.productionList = new ProductionList(this, personalBonusTiles.getProductionEffect()); //TODO: leggere firstProduction da file
 
         //Instanzio un PlayerActionSet
         playerActionSet = new PlayerActionSet(this);
@@ -149,6 +151,10 @@ public class Player {
         return playerActionSet.getActionControlSet();
     }
 
+    public ResourceList getTempPlayerResourcesToGain() {
+        return tempPlayerResourcesToGain;
+    }
+
     /* Class Methods */
     public void addResources(Resource resourcesToAdd)
     {
@@ -164,6 +170,18 @@ public class Player {
             this.playerResources.subResources(resourcesToSub);
         else
             this.playerResources.addResources(resourcesToSub);
+    }
+
+    public void addTempResources(Resource tempResourceToAdd){
+        if(tempResourceToAdd.getValue() >=0)
+            this.tempPlayerResourcesToGain.addSpecificResource(tempResourceToAdd);
+    }
+
+    public void addTempResoucesToPlayerResources(){
+        for(int i = 0;i<tempPlayerResourcesToGain.size();i++){
+            playerResources.addResources(tempPlayerResourcesToGain.get(i));
+        }
+        this.tempPlayerResourcesToGain.clear();
     }
 
     public void addExcommunication(ExcommunicationTiles excommunicationTiles)

@@ -93,7 +93,9 @@ public abstract class DevelopmentCard extends Card implements ActiveEffect {
             for (int i = 0; i < this.immediateEffectList.size(); i++) {
                 this.immediateEffectList.get(i).activate(player);
             }
+            player.addTempResoucesToPlayerResources();
         }
+
         if (this.permanentEffectList != null) {
             for (int i = 0; i < this.permanentEffectList.size(); i++) {        //TODO VERIFICARE SE SI ATTIVANO IN MODO DIVERSO
                 this.permanentEffectList.get(i).activate(player);

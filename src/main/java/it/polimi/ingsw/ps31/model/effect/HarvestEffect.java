@@ -13,7 +13,8 @@ public class HarvestEffect extends Effect {
     private final GetResourceEffect getResourceEffect; //effetto che viene attivato se fai una produzione in cui ottengo una risorsa
 
 
-    public HarvestEffect(int harvestActionValue,GetResourceEffect getResourceEffect) {
+    public HarvestEffect(int cardId,int harvestActionValue,GetResourceEffect getResourceEffect) {
+        super(cardId);
         this.getResourceEffect = getResourceEffect;
         this.harvestActionValue = harvestActionValue;
     }
@@ -27,13 +28,23 @@ public class HarvestEffect extends Effect {
     }
 
     @Override
+    public void activate(Player player) {
+        player.getPlayerActionSet().activateHarvest(harvestActionValue);
+    }
+
+    @Override
     public String resourceDiscountString() {
         return null;
     }
 
     @Override
-    public void activate(Player player) {
+    public GetResourceEffectFromCard getGetResourceEffectFromCard() {
+        return null;
+    }
 
+    @Override
+    public ChangeResourceEffect getChangeResourceEffect() {
+        return null;
     }
 
     public String nameString(){
@@ -75,8 +86,4 @@ public class HarvestEffect extends Effect {
         return null;
     }
 
-    @Override
-    public Effect getGetResource() {
-        return null;
-    }
 }

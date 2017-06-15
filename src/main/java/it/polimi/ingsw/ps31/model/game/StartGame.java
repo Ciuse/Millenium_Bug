@@ -14,6 +14,7 @@ import it.polimi.ingsw.ps31.model.json.CreationJson;
 import it.polimi.ingsw.ps31.model.json.JsonFile;
 import it.polimi.ingsw.ps31.model.json.JsonGameObject;
 import it.polimi.ingsw.ps31.model.player.PersonalBoard;
+import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.util.*;
@@ -49,10 +50,12 @@ public class StartGame {
         VictoryPoint[] bonusVictoryPointFromMilitaryTrack = jsonObjectReadFromFile.getBonusVictoryPointFromMilitaryTrack();
         VictoryPoint bonusVictoryPointFromPlayerResources = jsonObjectReadFromFile.getBonusVictoryPointFromPlayerResources();
         List<ResourceList> initialPlayerResource = jsonObjectReadFromFile.getInitialResourcePlayer();
+        List<PersonalBonusTiles> personalBonusTilesList = jsonObjectReadFromFile.getPersonalBonusTilesList();
 
         gameBoard.initializateGameBoard(towerActionSpaceEffectList,actionSpaceEffectList,faithTrackExtraValue);
 
-        developmentCardList.shuffleCardList();  //mischio la lista di carte le
+        developmentCardList.shuffleCardList();  //mischio la lista di carte
+        Collections.shuffle(personalBonusTilesList); //mischio i personal bonus tiles
 
         //creazione deck vuoti
         List<DevelopmentCardDeck> deckList = new ArrayList<>();
@@ -294,10 +297,11 @@ public class StartGame {
     //la view deve richiedere il nome e il colore che vuole essere
     //creazione familymembers in base al colore che il player ha scelto ,la personal board, la lista delle risorse iniziali infine il player
 
-    public Player createPlayer(String name,PlayerColor playerColor,List<ResourceList> listOfResourceList,List<PointResource[]>personalBoardRequirements){
+    public Player createPlayer(String name,PlayerColor playerColor,List<ResourceList> listOfResourceList,List<PointResource[]>personalBoardRequirements,List<PersonalBonusTiles> personalBonusTilesList){
         PlayerId[] playerId = PlayerId.values();
         PersonalBoard personalBoard = new PersonalBoard(personalBoardRequirements, playerId[playerList.size()]);
-        Player playerCreated = new Player(playerColor,listOfResourceList.get(playerList.size()), playerId[playerList.size()], name,personalBoard);
+        Player playerCreated = new Player(playerColor,listOfResourceList.get(playerList.size()), playerId[playerList.size()], name,personalBoard,personalBonusTilesList.get(playerList.size()));
+
         return playerCreated;
     }
 

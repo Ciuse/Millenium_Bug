@@ -32,6 +32,7 @@ public class PlayerActionSet {
     private final ActionControlSet actionControlSet;
     private final ActionActiveEndButton activeEndButton;
     private final ActionAddFinalBonus addFinalBonus;
+    private final ActionGetTempResources getTempResources;
     private final Player player;
 
     /* Constructor */
@@ -54,6 +55,7 @@ public class PlayerActionSet {
         this.getFinalResources = new ActionGetFinalResources(player, actionControlSet);
         this.activeEndButton= new ActionActiveEndButton(player, actionControlSet); //TODO IMPLEMENTARLO
         this.addFinalBonus= new ActionAddFinalBonus(player, actionControlSet); //TODO IMPLEMENTARE
+        this.getTempResources = new ActionGetTempResources(player,actionControlSet);
     }
 
     /* Setters & Getters */
@@ -73,23 +75,30 @@ public class PlayerActionSet {
     }
     public void activateHarvest(int diceValue)
     {
-        //TODO:settare i parametri
+        this.activateHarvest.setDiceValue(diceValue);
         this.activateHarvest.activate();
     }
 
     public void activateProduction(int diceValue)
     {
-        //TODO:settare i parametri
+        this.activateProduction.setDiceValue(diceValue);
         this.activateProduction.activate();
     }
 
-    public void chooseCard(CardColor cardColor, int diceCost, int diceDiscount,boolean anyCardColor,ResourceList resourceDiscount)
+    public void chooseCard(CardColor cardColor, int diceCost,boolean anyCardColor,ResourceList resourceDiscount)
     {
         this.chooseCard.setCardColor(cardColor);
         this.chooseCard.setDiceCost(diceCost);
-        this.chooseCard.setDiceDiscount(diceDiscount);
         this.chooseCard.setAnyCardColor(anyCardColor);
-        this.getChooseCard().setResourceDiscount(resourceDiscount);
+        this.chooseCard.setResourceDiscount(resourceDiscount);
+        this.chooseCard.activate();
+    }
+
+    public void chooseCard(CardColor cardColor, int diceCost,boolean anyCardColor)
+    {
+        this.chooseCard.setCardColor(cardColor);
+        this.chooseCard.setDiceCost(diceCost);
+        this.chooseCard.setAnyCardColor(anyCardColor);
         this.chooseCard.activate();
     }
 
@@ -102,6 +111,11 @@ public class PlayerActionSet {
     {
         this.getResources.setResourcesToGet(resourcesToGet);
         this.getResources.activate();
+    }
+
+    public void getTempResources(ResourceList tempResources){
+        this.getTempResources.setResourcesTempToGet(tempResources);
+        this.getTempResources.activate();
     }
 
     public void payResources(ResourceList resourcesToPay)

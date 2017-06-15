@@ -7,8 +7,8 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class HarvestActivationFromCard extends GenericHarvestActivation {
 
-    public HarvestActivationFromCard(int harvestValue)// rappresenta il valore con cui viene creato l'effetto raccolto
-    {super(harvestValue);
+    public HarvestActivationFromCard(int cardId,int harvestValue)// rappresenta il valore con cui viene creato l'effetto raccolto
+    {super(cardId,harvestValue);
     }
 
 

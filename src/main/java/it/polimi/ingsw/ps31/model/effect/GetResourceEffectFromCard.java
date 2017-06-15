@@ -9,8 +9,8 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class GetResourceEffectFromCard extends GetResourceEffect {
     private final CardColor cardColor; // per ogni carte del colore specificato nella carta , ottengo le risorse corrispondenti
-    public GetResourceEffectFromCard(ResourceList resources, CardColor cardColor) {
-        super(resources);
+    public GetResourceEffectFromCard(int cardId, ResourceList resources, CardColor cardColor) {
+        super(cardId,resources);
         this.cardColor = cardColor;
     }
     @Override

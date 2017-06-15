@@ -92,5 +92,6 @@ public class ActionSpace implements PhysicalSpaceBehavior, ActiveEffect {
                 this.immediateEffectList.get(i).activate(player);
             }
         }
+        player.addTempResoucesToPlayerResources();
     }
 }

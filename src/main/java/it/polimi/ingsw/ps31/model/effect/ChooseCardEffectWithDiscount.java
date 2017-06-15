@@ -11,17 +11,13 @@ import java.util.List;
  */
 public class ChooseCardEffectWithDiscount extends ChooseCardEffect {
     private final ResourceList resourcesDiscount; //la carta che devo prendere ha uno sconto sulle risorse
-    public ChooseCardEffectWithDiscount(List<CardColor> cardColors, int diceValue, ResourceList resourcesDiscount) {
-        super(cardColors, diceValue);
+    public ChooseCardEffectWithDiscount(int cardId,CardColor cardColor, int diceValue, ResourceList resourcesDiscount,boolean anyColor) {
+        super(cardId,cardColor, diceValue, anyColor);
         this.resourcesDiscount = resourcesDiscount;
     }
     @Override
     public void activate(Player player) {
-//        ChooseCardAction chooseCardAction = new ChooseCardEffect();
-//        chooseCardAction.setDiceCost(diceValue);
-//        chooseCardAction.setCardColor(cardColors);
-//        chooseCardAction.setDiscount(resourcesDiscount);
-//        chooseCardAction.activate();
+        player.getPlayerActionSet().chooseCard(super.getCardColor(),super.getDiceValue(),super.isAnyColor(),this.resourcesDiscount);
     }
     public String nameString(){
         return "ChooseCard+D";

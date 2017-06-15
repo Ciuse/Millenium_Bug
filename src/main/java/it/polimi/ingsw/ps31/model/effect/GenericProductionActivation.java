@@ -11,7 +11,8 @@ import java.util.List;
 public class GenericProductionActivation extends Effect {
     private final int basicValue;
 
-    public GenericProductionActivation(int basicValue) {
+    public GenericProductionActivation(int cardId,int basicValue) {
+        super(cardId);
         this.basicValue = basicValue;
     }
 
@@ -30,17 +31,22 @@ public class GenericProductionActivation extends Effect {
     }
 
     @Override
-    public Effect getGetResource() {
-        return null;
-    }
-
-    @Override
     public GetResourceEffect getGetResourceEffect() {
         return null;
     }
 
     @Override
     public String resourceDiscountString() {
+        return null;
+    }
+
+    @Override
+    public GetResourceEffectFromCard getGetResourceEffectFromCard() {
+        return null;
+    }
+
+    @Override
+    public ChangeResourceEffect getChangeResourceEffect() {
         return null;
     }
 

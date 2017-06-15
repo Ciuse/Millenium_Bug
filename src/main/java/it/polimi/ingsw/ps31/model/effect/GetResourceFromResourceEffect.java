@@ -9,17 +9,16 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class GetResourceFromResourceEffect extends GetResourceEffect { //per ogni risorsa di un tipo guadagno un'altra risorsa
     private final Resource requiredResource;
-    public GetResourceFromResourceEffect(ResourceList resourceGained, Resource requiredResource) {
-        super(resourceGained);
+    public GetResourceFromResourceEffect(int cardId,ResourceList resourceGained, Resource requiredResource) {
+        super(cardId,resourceGained);
         this.requiredResource = requiredResource;
     }
 
     @Override
     public void activate(Player player) {
-        //TODO modificare appena fra ha creato la risorsa di liste nel player.
         int factor = player.getPlayerResources().getPlayerResourceList().getSpecificResource(requiredResource.getClass()).getValue()%requiredResource.getValue();
         super.getResources().multiplyResourceList(factor);
-        player.getPlayerActionSet().getResources(super.getResources());
+        player.getPlayerActionSet().getTempResources(super.getResources());
     }
 
     public String requiredResourceString(){

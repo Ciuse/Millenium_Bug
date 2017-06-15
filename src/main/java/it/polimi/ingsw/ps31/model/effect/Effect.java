@@ -1,17 +1,19 @@
 package it.polimi.ingsw.ps31.model.effect;
 
-import it.polimi.ingsw.ps31.model.Model;
+import it.polimi.ingsw.ps31.model.ModelChoices;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
-import it.polimi.ingsw.ps31.model.gameResource.Resource;
-import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.util.List;
 
 /**
  * Created by Giuseppe on 09/05/2017.
  */
-public abstract class Effect extends Model implements EffectActivation{
-    private Player player;
+public abstract class Effect extends ModelChoices implements EffectActivation{
+    int cardId;
+
+    public Effect(int cardId) {
+        this.cardId = cardId;
+    }
 
     @Override
     public String toString(){
@@ -25,12 +27,16 @@ public abstract class Effect extends Model implements EffectActivation{
 
         Effect effect = (Effect) o;
 
-        return player != null ? player.equals(effect.player) : effect.player == null;
+        return cardId == effect.cardId;
     }
 
     @Override
     public int hashCode() {
-        return player.hashCode();
+        return cardId;
+    }
+
+    public int getCardId() {
+        return cardId;
     }
 
     public abstract String nameString();
@@ -49,12 +55,13 @@ public abstract class Effect extends Model implements EffectActivation{
 
     public abstract CardColor getCardColor();
 
-    public abstract Effect getGetResource();
-
     public abstract GetResourceEffect getGetResourceEffect();
 
     public abstract String resourceDiscountString();
 
+    public abstract GetResourceEffectFromCard getGetResourceEffectFromCard();
+
+    public abstract ChangeResourceEffect getChangeResourceEffect();
 
 
 

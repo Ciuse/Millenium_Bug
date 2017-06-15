@@ -7,8 +7,8 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class ProductionActivationFromCard extends GenericProductionActivation {
 
-    public ProductionActivationFromCard(int productionValue) {// rappresenta il valore con cui viene creato l'effetto produzione
-        super(0);
+    public ProductionActivationFromCard(int cardId,int productionValue) {// rappresenta il valore con cui viene creato l'effetto produzione
+        super(cardId,0);
     }
 
     @Override
