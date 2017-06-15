@@ -16,8 +16,15 @@ public class ProductionEffect extends Effect {
     private final GetResourceEffectFromCard getResourceEffectFromCard;
 
 
-    public ProductionEffect(int cardId,int productionActionValue, Effect productionEffect, GetResourceEffect getResourceEffect, ChangeResourceEffect changeResourceEffect, GetResourceEffectFromCard getResourceEffectFromCard) {
+    public ProductionEffect(int cardId,int productionActionValue,GetResourceEffect getResourceEffect, ChangeResourceEffect changeResourceEffect, GetResourceEffectFromCard getResourceEffectFromCard) {
         super(cardId);
+        this.productionActionValue = productionActionValue;
+        this.getResourceEffect = getResourceEffect;
+        this.changeResourceEffect = changeResourceEffect;
+        this.getResourceEffectFromCard = getResourceEffectFromCard;
+    }
+
+    public ProductionEffect(int productionActionValue, GetResourceEffect getResourceEffect, ChangeResourceEffect changeResourceEffect, GetResourceEffectFromCard getResourceEffectFromCard) {
         this.productionActionValue = productionActionValue;
         this.getResourceEffect = getResourceEffect;
         this.changeResourceEffect = changeResourceEffect;

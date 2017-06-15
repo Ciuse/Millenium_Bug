@@ -19,6 +19,11 @@ public class HarvestEffect extends Effect {
         this.harvestActionValue = harvestActionValue;
     }
 
+    public HarvestEffect(int harvestActionValue, GetResourceEffect getResourceEffect) {
+        this.harvestActionValue = harvestActionValue;
+        this.getResourceEffect = getResourceEffect;
+    }
+
     public int getHarvestActionValue() {
         return harvestActionValue;
     }

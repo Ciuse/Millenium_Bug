@@ -426,94 +426,94 @@ public class CreationJson {
         EffectList immediateEffectYellow10 = new EffectList();//creazione effetto
         resourceList10.clear();
         resourceList10.addSpecificResource(new VictoryPoint(4));
-        immediateEffectYellow10.add(new GetResourceEffect(resourceList10));
+        immediateEffectYellow10.add(new GetResourceEffect(34,resourceList10));
         immediateEffectYellowList.add(9, immediateEffectYellow10);  //aggiunta effetto alla lista principale
         //effetto immediato undicesima carta
         EffectList immediateEffectYellow11 = new EffectList();//creazione effetto
         resourceList11.clear();
         resourceList11.addSpecificResource(new VictoryPoint(5));
-        immediateEffectYellow11.add(new GetResourceEffect(resourceList11));
+        immediateEffectYellow11.add(new GetResourceEffect(35,resourceList11));
         immediateEffectYellowList.add(10, immediateEffectYellow11);  //aggiunta effetto alla lista principale
         //effetto immediato dodicesima carta
         EffectList immediateEffectYellow12 = new EffectList();//creazione effetto
         resourceList12.clear();
         resourceList12.addSpecificResource(new VictoryPoint(6));
-        immediateEffectYellow12.add(new GetResourceEffect(resourceList12));
+        immediateEffectYellow12.add(new GetResourceEffect(36,resourceList12));
         immediateEffectYellowList.add(11, immediateEffectYellow12);  //aggiunta effetto alla lista principale
         //effetto immediato tredicesima carta
         EffectList immediateEffectYellow13 = new EffectList();//creazione effetto
         resourceList13.clear();
         resourceList13.addSpecificResource(new VictoryPoint(4));
-        immediateEffectYellow13.add(new GetResourceEffect(resourceList13));
+        immediateEffectYellow13.add(new GetResourceEffect(37,resourceList13));
         immediateEffectYellowList.add(12, immediateEffectYellow13);  //aggiunta effetto alla lista principale
         //effetto immediato quattordicesima carta
         EffectList immediateEffectYellow14 = new EffectList();//creazione effetto
         resourceList14.clear();
         resourceList14.addSpecificResource(new VictoryPoint(2));
         resourceList14.addSpecificResource(new FaithPoint(1));
-        immediateEffectYellow14.add(new GetResourceEffect(resourceList14));
+        immediateEffectYellow14.add(new GetResourceEffect(38,resourceList14));
         immediateEffectYellowList.add(13, immediateEffectYellow14);  //aggiunta effetto alla lista principale
         //effetto immediato quindicesima carta
         EffectList immediateEffectYellow15 = new EffectList();//creazione effetto
         resourceList15.clear();
         resourceList15.addSpecificResource(new VictoryPoint(3));
-        immediateEffectYellow15.add(new GetResourceEffect(resourceList15));
+        immediateEffectYellow15.add(new GetResourceEffect(39,resourceList15));
         immediateEffectYellowList.add(14, immediateEffectYellow15);  //aggiunta effetto alla lista principale
         //effetto immediato sedicesima carta
         EffectList immediateEffectYellow16 = new EffectList();//creazione effetto
         resourceList16.clear();
         resourceList16.addSpecificResource(new VictoryPoint(8));
-        immediateEffectYellow16.add(new GetResourceEffect(resourceList16));
+        immediateEffectYellow16.add(new GetResourceEffect(40,resourceList16));
         immediateEffectYellowList.add(15, immediateEffectYellow16);  //aggiunta effetto alla lista principale
         //effetto immediato diciassettesima carta
         EffectList immediateEffectYellow17 = new EffectList();//creazione effetto
         resourceList17.clear();
         resourceList17.addSpecificResource(new VictoryPoint(7));
-        immediateEffectYellow17.add(new GetResourceEffect(resourceList17));
+        immediateEffectYellow17.add(new GetResourceEffect(41,resourceList17));
         immediateEffectYellowList.add(16, immediateEffectYellow17);  //aggiunta effetto alla lista principale
         //effetto immediato diciottesima carta
         EffectList immediateEffectYellow18 = new EffectList();//creazione effetto
         resourceList18.clear();
         resourceList18.addSpecificResource(new VictoryPoint(8));
-        immediateEffectYellow18.add(new GetResourceEffect(resourceList18));
+        immediateEffectYellow18.add(new GetResourceEffect(42,resourceList18));
         immediateEffectYellowList.add(17, immediateEffectYellow18);  //aggiunta effetto alla lista principale
         //effetto immediato diciannovesima carta
         EffectList immediateEffectYellow19 = new EffectList();//creazione effetto
         resourceList19.clear();
         resourceList19.addSpecificResource(new VictoryPoint(10));
-        immediateEffectYellow19.add(new GetResourceEffect(resourceList19));
+        immediateEffectYellow19.add(new GetResourceEffect(43,resourceList19));
         immediateEffectYellowList.add(18, immediateEffectYellow19);  //aggiunta effetto alla lista principale
         //effetto immediato ventesima carta
         EffectList immediateEffectYellow20 = new EffectList();//creazione effetto
         resourceList20.clear();
         resourceList20.addSpecificResource(new VictoryPoint(9));
-        immediateEffectYellow20.add(new GetResourceEffect(resourceList20));
+        immediateEffectYellow20.add(new GetResourceEffect(44,resourceList20));
         immediateEffectYellowList.add(19, immediateEffectYellow20);  //aggiunta effetto alla lista principale
         //effetto immediato ventunesima carta
         EffectList immediateEffectYellow21 = new EffectList();//creazione effetto
         resourceList21.clear();
         resourceList21.addSpecificResource(new VictoryPoint(9));
-        immediateEffectYellow21.add(new GetResourceEffect(resourceList21));
+        immediateEffectYellow21.add(new GetResourceEffect(45,resourceList21));
         immediateEffectYellowList.add(20, immediateEffectYellow21);  //aggiunta effetto alla lista principale
         //effetto immediato ventiduesima carta
         EffectList immediateEffectYellow22 = new EffectList();//creazione effetto
         resourceList22.clear();
         resourceList22.addSpecificResource(new VictoryPoint(5));
         resourceList22.addSpecificResource(new FaithPoint(1));
-        immediateEffectYellow22.add(new GetResourceEffect(resourceList22));
+        immediateEffectYellow22.add(new GetResourceEffect(46,resourceList22));
         immediateEffectYellowList.add(21, immediateEffectYellow22);  //aggiunta effetto alla lista principale
         //effetto immediato ventritreesima carta
         EffectList immediateEffectYellow23 = new EffectList();//creazione effetto
         resourceList23.clear();
         resourceList23.addSpecificResource(new VictoryPoint(7));
-        immediateEffectYellow23.add(new GetResourceEffect(resourceList23));
+        immediateEffectYellow23.add(new GetResourceEffect(47,resourceList23));
         immediateEffectYellowList.add(22, immediateEffectYellow23);  //aggiunta effetto alla lista principale
         //effetto immediato ventiquattresima carta
         EffectList immediateEffectYellow24 = new EffectList();//creazione effetto
         resourceList24.clear();
         resourceList24.addSpecificResource(new VictoryPoint(7));
         resourceList24.addSpecificResource(new FaithPoint(3));
-        immediateEffectYellow24.add(new GetResourceEffect(resourceList24));
+        immediateEffectYellow24.add(new GetResourceEffect(48,resourceList24));
         immediateEffectYellowList.add(23, immediateEffectYellow24);  //aggiunta effetto alla lista principale
 
         //creazione effetti permanenti carte gialle
@@ -523,29 +523,29 @@ public class CreationJson {
         EffectList permanentEffectYellow1 = new EffectList();         //creazione  effetto
         resourceList1.clear();
         resourceList1.addSpecificResource(new Coin(1));
-        GetResourceEffectFromCard effetto1 = new GetResourceEffectFromCard(resourceList1, CardColor.YELLOW);
-        permanentEffectYellow1.add(new ProductionEffect(5, effetto1, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        GetResourceEffectFromCard effetto1 = new GetResourceEffectFromCard(25,resourceList1, CardColor.YELLOW);
+        permanentEffectYellow1.add(new ProductionEffect(25,5,null,null, effetto1));
         permanentEffectYellowList.add(0, permanentEffectYellow1);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente seconda carta
         EffectList permanentEffectYellow2 = new EffectList();         //creazione  effetto
         resourceList2.clear();
         resourceList2.addSpecificResource(new Coin(1));
-        GetResourceEffectFromCard effetto2 = new GetResourceEffectFromCard(resourceList1, CardColor.GREEN);
-        permanentEffectYellow2.add(new ProductionEffect(5, effetto2, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        GetResourceEffectFromCard effetto2 = new GetResourceEffectFromCard(26,resourceList1, CardColor.GREEN);
+        permanentEffectYellow2.add(new ProductionEffect(26,5,null,null, effetto2));
         permanentEffectYellowList.add(1, permanentEffectYellow2);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente terza carta
         EffectList permanentEffectYellow3 = new EffectList();         //creazione  effetto
         resourceList3.clear();
         resourceList3.addSpecificResource(new VictoryPoint(1));
-        GetResourceEffectFromCard effetto3 = new GetResourceEffectFromCard(resourceList3, CardColor.PURPLE);
-        permanentEffectYellow3.add(new ProductionEffect(6, effetto3, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        GetResourceEffectFromCard effetto3 = new GetResourceEffectFromCard(27,resourceList3, CardColor.PURPLE);
+        permanentEffectYellow3.add(new ProductionEffect(27,6,null,null, effetto3));
         permanentEffectYellowList.add(2, permanentEffectYellow3);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente quarta carta
         EffectList permanentEffectYellow4 = new EffectList();         //creazione  effetto
         resourceList4.clear();
         resourceList4.addSpecificResource(new VictoryPoint(1));
-        GetResourceEffectFromCard effetto4 = new GetResourceEffectFromCard(resourceList4, CardColor.BLUE);
-        permanentEffectYellow4.add(new ProductionEffect(6, effetto4, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        GetResourceEffectFromCard effetto4 = new GetResourceEffectFromCard(28,resourceList4, CardColor.BLUE);
+        permanentEffectYellow4.add(new ProductionEffect(28,6,null,null, effetto4));
         permanentEffectYellowList.add(3, permanentEffectYellow4);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente quinta carta
         EffectList permanentEffectYellow5 = new EffectList();         //creazione  effetto
@@ -563,8 +563,8 @@ public class CreationJson {
         resourceList5d.addSpecificResource(new Coin(5));
         resourceListToTake5.add(resourceList5c);
         resourceListToTake5.add(resourceList5d);
-        ChangeResourceEffect effetto5 = new ChangeResourceEffect(resourceListToChooose5, resourceListToTake5);
-        permanentEffectYellow5.add(new ProductionEffect(4, effetto5, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto5 = new ChangeResourceEffect(29,resourceListToChooose5, resourceListToTake5);
+        permanentEffectYellow5.add(new ProductionEffect(29,4,null, effetto5,null));
         permanentEffectYellowList.add(4, permanentEffectYellow5);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente sesta carta
         EffectList permanentEffectYellow6 = new EffectList();         //creazione  effetto
@@ -582,8 +582,8 @@ public class CreationJson {
         resourceList6d.addSpecificResource(new Coin(5));
         resourceListToTake6.add(resourceList6c);
         resourceListToTake6.add(resourceList6d);
-        ChangeResourceEffect effetto6 = new ChangeResourceEffect(resourceListToChooose6, resourceListToTake6);
-        permanentEffectYellow6.add(new ProductionEffect(3, effetto6, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto6 = new ChangeResourceEffect(30,resourceListToChooose6, resourceListToTake6);
+        permanentEffectYellow6.add(new ProductionEffect(30,3,null, effetto6,null));
         permanentEffectYellowList.add(5, permanentEffectYellow6);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente settima carta
         EffectList permanentEffectYellow7 = new EffectList();         //creazione  effetto
@@ -595,8 +595,8 @@ public class CreationJson {
         ResourceList resourceList7b = new ResourceList();
         resourceList7b.addSpecificResource(new FaithPoint(1));
         resourceListToTake7.add(resourceList7b);
-        ChangeResourceEffect effetto7 = new ChangeResourceEffect(resourceListToChooose7, resourceListToTake7);
-        permanentEffectYellow7.add(new ProductionEffect(2, effetto7, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto7 = new ChangeResourceEffect(31,resourceListToChooose7, resourceListToTake7);
+        permanentEffectYellow7.add(new ProductionEffect(31,2,null, effetto7,null));
         permanentEffectYellowList.add(6, permanentEffectYellow7);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente ottava carta
         EffectList permanentEffectYellow8 = new EffectList();         //creazione  effetto
@@ -608,8 +608,8 @@ public class CreationJson {
         ResourceList resourceList8b = new ResourceList();
         resourceList8b.addSpecificResource(new CouncilPrivilege(1, false));
         resourceListToTake8.add(resourceList8b);
-        ChangeResourceEffect effetto8 = new ChangeResourceEffect(resourceListToChooose8, resourceListToTake8);
-        permanentEffectYellow8.add(new ProductionEffect(1, effetto8, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto8 = new ChangeResourceEffect(32,resourceListToChooose8, resourceListToTake8);
+        permanentEffectYellow8.add(new ProductionEffect(32,1,null, effetto8,null));
         permanentEffectYellowList.add(7, permanentEffectYellow8);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente nona carta
         EffectList permanentEffectYellow9 = new EffectList();         //creazione  effetto
@@ -622,8 +622,8 @@ public class CreationJson {
         resourceList9b.addSpecificResource(new Wood(2));
         resourceList9b.addSpecificResource(new Stone(2));
         resourceListToTake9.add(resourceList9b);
-        ChangeResourceEffect effetto9 = new ChangeResourceEffect(resourceListToChooose9, resourceListToTake9);
-        permanentEffectYellow9.add(new ProductionEffect(3, effetto9, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto9 = new ChangeResourceEffect(33,resourceListToChooose9, resourceListToTake9);
+        permanentEffectYellow9.add(new ProductionEffect(33,3,null, effetto9,null));
         permanentEffectYellowList.add(8, permanentEffectYellow9);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente decima carta
         EffectList permanentEffectYellow10 = new EffectList();         //creazione  effetto
@@ -641,8 +641,8 @@ public class CreationJson {
         resourceList10d.addSpecificResource(new VictoryPoint(5));
         resourceListToTake10.add(resourceList10c);
         resourceListToTake10.add(resourceList10d);
-        ChangeResourceEffect effetto10 = new ChangeResourceEffect(resourceListToChooose10, resourceListToTake10);
-        permanentEffectYellow10.add(new ProductionEffect(3, effetto10, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto10 = new ChangeResourceEffect(34,resourceListToChooose10, resourceListToTake10);
+        permanentEffectYellow10.add(new ProductionEffect(34,3,null, effetto10,null));
         permanentEffectYellowList.add(9, permanentEffectYellow10);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente undicesima carta
         EffectList permanentEffectYellow11 = new EffectList();         //creazione  effetto
@@ -660,8 +660,8 @@ public class CreationJson {
         resourceList11d.addSpecificResource(new VictoryPoint(7));
         resourceListToTake11.add(resourceList10c);
         resourceListToTake11.add(resourceList10d);
-        ChangeResourceEffect effetto11 = new ChangeResourceEffect(resourceListToChooose11, resourceListToTake11);
-        permanentEffectYellow11.add(new ProductionEffect(4, effetto11, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto11 = new ChangeResourceEffect(35,resourceListToChooose11, resourceListToTake11);
+        permanentEffectYellow11.add(new ProductionEffect(35,4,null, effetto11,null));
         permanentEffectYellowList.add(10, permanentEffectYellow11);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente dodicesima carta
         EffectList permanentEffectYellow12 = new EffectList();         //creazione  effetto
@@ -679,8 +679,8 @@ public class CreationJson {
         resourceList12d.addSpecificResource(new VictoryPoint(7));
         resourceListToTake12.add(resourceList10a);
         resourceListToTake12.add(resourceList10b);
-        ChangeResourceEffect effetto12 = new ChangeResourceEffect(resourceListToChooose12, resourceListToTake12);
-        permanentEffectYellow12.add(new ProductionEffect(5, effetto12, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto12 = new ChangeResourceEffect(36,resourceListToChooose12, resourceListToTake12);
+        permanentEffectYellow12.add(new ProductionEffect(36,5,null, effetto12,null));
         permanentEffectYellowList.add(11, permanentEffectYellow12);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente tredicesima carta
         EffectList permanentEffectYellow13 = new EffectList();         //creazione  effetto
@@ -694,8 +694,8 @@ public class CreationJson {
         ResourceList resourceList13b = new ResourceList();
         resourceList13b.addSpecificResource(new VictoryPoint(6));
         resourceListToTake13.add(resourceList13b);
-        ChangeResourceEffect effetto13 = new ChangeResourceEffect(resourceListToChooose13, resourceListToTake13);
-        permanentEffectYellow13.add(new ProductionEffect(4, effetto13, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto13 = new ChangeResourceEffect(37,resourceListToChooose13, resourceListToTake13);
+        permanentEffectYellow13.add(new ProductionEffect(37,4,null, effetto13,null));
         permanentEffectYellowList.add(12, permanentEffectYellow13);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente quattordicesima carta
         EffectList permanentEffectYellow14 = new EffectList();         //creazione  effetto
@@ -708,8 +708,8 @@ public class CreationJson {
         resourceList14b.addSpecificResource(new Coin(2));
         resourceList14b.addSpecificResource(new VictoryPoint(2));
         resourceListToTake14.add(resourceList14b);
-        ChangeResourceEffect effetto14 = new ChangeResourceEffect(resourceListToChooose14, resourceListToTake14);
-        permanentEffectYellow14.add(new ProductionEffect(2, effetto14, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto14 = new ChangeResourceEffect(38,resourceListToChooose14, resourceListToTake14);
+        permanentEffectYellow14.add(new ProductionEffect(38,2,null, effetto14,null));
         permanentEffectYellowList.add(13, permanentEffectYellow14);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente quindicesima carta
         EffectList permanentEffectYellow15 = new EffectList();         //creazione  effetto
@@ -721,23 +721,23 @@ public class CreationJson {
         ResourceList resourceList15b = new ResourceList();
         resourceList15b.addSpecificResource(new MilitaryStrength(3));
         resourceListToTake15.add(resourceList15b);
-        ChangeResourceEffect effetto15 = new ChangeResourceEffect(resourceListToChooose15, resourceListToTake15);
-        permanentEffectYellow15.add(new ProductionEffect(1, effetto15, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto15 = new ChangeResourceEffect(39,resourceListToChooose15, resourceListToTake15);
+        permanentEffectYellow15.add(new ProductionEffect(39,1,null, effetto15,null));
         permanentEffectYellowList.add(14, permanentEffectYellow15);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente sedicesima carta
         EffectList permanentEffectYellow16 = new EffectList();//creazione effetto
         resourceList16.clear();
         resourceList16.addSpecificResource(new VictoryPoint(2));
         resourceList16.addSpecificResource(new MilitaryStrength(2));
-        GetResourceEffect effetto16 = new GetResourceEffect(resourceList16);
-        permanentEffectYellow16.add(new ProductionEffect(6, effetto16, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        GetResourceEffect effetto16 = new GetResourceEffect(40,resourceList16);
+        permanentEffectYellow16.add(new ProductionEffect(40,6, effetto16,null,null));
         permanentEffectYellowList.add(15, permanentEffectYellow16);  //aggiunta effetto alla lista principale
         //creazione effetto permanente diciassettesima carta
         EffectList permanentEffectYellow17 = new EffectList();//creazione effetto
         resourceList17.clear();
         resourceList17.addSpecificResource(new Coin(5));
-        GetResourceEffect effetto17 = new GetResourceEffect(resourceList17);
-        permanentEffectYellow17.add(new ProductionEffect(2, effetto17, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        GetResourceEffect effetto17 = new GetResourceEffect(41,resourceList17);
+        permanentEffectYellow17.add(new ProductionEffect(41,2, effetto17,null,null));
         permanentEffectYellowList.add(16, permanentEffectYellow17);  //aggiunta effetto alla lista principale
         //creazione effetto permanente diciottesima carta
         EffectList permanentEffectYellow18 = new EffectList();         //creazione  effetto
@@ -750,23 +750,23 @@ public class CreationJson {
         resourceList18c.addSpecificResource(new Wood(3));
         resourceList18c.addSpecificResource(new Stone(3));
         resourceListToTake18.add(resourceList18c);
-        ChangeResourceEffect effetto18 = new ChangeResourceEffect(resourceListToChooose18, resourceListToTake18);
-        permanentEffectYellow18.add(new ProductionEffect(4, effetto18, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto18 = new ChangeResourceEffect(42,resourceListToChooose18, resourceListToTake18);
+        permanentEffectYellow18.add(new ProductionEffect(42,4,null, effetto18, null));
         permanentEffectYellowList.add(17, permanentEffectYellow18);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente diciannovesima carta
         EffectList permanentEffectYellow19 = new EffectList();//creazione effetto
         resourceList19.clear();
         resourceList19.addSpecificResource(new VictoryPoint(3));
-        GetResourceEffect effetto19 = new GetResourceEffect(resourceList19);
-        permanentEffectYellow19.add(new ProductionEffect(1, effetto19, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        GetResourceEffect effetto19 = new GetResourceEffect(43,resourceList19);
+        permanentEffectYellow19.add(new ProductionEffect(43,1, effetto19,null,null));
         permanentEffectYellowList.add(18, permanentEffectYellow19);  //aggiunta effetto alla lista principale
         //creazione effetto permanente ventesima carta
         EffectList permanentEffectYellow20 = new EffectList();//creazione effetto
         resourceList20.clear();
         resourceList20.addSpecificResource(new VictoryPoint(2));
         resourceList20.addSpecificResource(new CouncilPrivilege(1, false));
-        GetResourceEffect effetto20 = new GetResourceEffect(resourceList20);
-        permanentEffectYellow20.add(new ProductionEffect(5, effetto20, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        GetResourceEffect effetto20 = new GetResourceEffect(44,resourceList20);
+        permanentEffectYellow20.add(new ProductionEffect(44,5, effetto20,null,null));
         permanentEffectYellowList.add(19, permanentEffectYellow20);  //aggiunta effetto alla lista principale
         //creazione effetto permanente ventunesima carta
         EffectList permanentEffectYellow21 = new EffectList();         //creazione  effetto
@@ -779,8 +779,8 @@ public class CreationJson {
         resourceList21b.addSpecificResource(new Servant(2));
         resourceList21b.addSpecificResource(new VictoryPoint(4));
         resourceListToTake21.add(resourceList21b);
-        ChangeResourceEffect effetto21 = new ChangeResourceEffect(resourceListToChooose21, resourceListToTake21);
-        permanentEffectYellow21.add(new ProductionEffect(6, effetto21, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto21 = new ChangeResourceEffect(45,resourceListToChooose21, resourceListToTake21);
+        permanentEffectYellow21.add(new ProductionEffect(45,6,null, effetto21,null));
         permanentEffectYellowList.add(20, permanentEffectYellow21);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente ventiduesima carta
         EffectList permanentEffectYellow22 = new EffectList();         //creazione  effetto
@@ -798,8 +798,8 @@ public class CreationJson {
         resourceList22d.addSpecificResource(new FaithPoint(2));
         resourceListToTake22.add(resourceList22c);
         resourceListToTake22.add(resourceList22d);
-        ChangeResourceEffect effetto22 = new ChangeResourceEffect(resourceListToChooose22, resourceListToTake22);
-        permanentEffectYellow22.add(new ProductionEffect(1, effetto22, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto22 = new ChangeResourceEffect(46,resourceListToChooose22, resourceListToTake22);
+        permanentEffectYellow22.add(new ProductionEffect(46,1,null, effetto22,null));
         permanentEffectYellowList.add(21, permanentEffectYellow22);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente ventitrresima carta
         EffectList permanentEffectYellow23 = new EffectList();         //creazione  effetto
@@ -812,16 +812,195 @@ public class CreationJson {
         resourceList23b.addSpecificResource(new MilitaryStrength(3));
         resourceList23b.addSpecificResource(new VictoryPoint(1));
         resourceListToTake23.add(resourceList23b);
-        ChangeResourceEffect effetto23 = new ChangeResourceEffect(resourceListToChooose23, resourceListToTake23);
-        permanentEffectYellow23.add(new ProductionEffect(3, effetto23, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        ChangeResourceEffect effetto23 = new ChangeResourceEffect(47,resourceListToChooose23, resourceListToTake23);
+        permanentEffectYellow23.add(new ProductionEffect(47,3,null, effetto23,null));
         permanentEffectYellowList.add(22, permanentEffectYellow23);      //aggiunta  effetto alla lista principale
         //creazione effetto permanente ventiquattresima carta
         EffectList permanentEffectYellow24 = new EffectList();//creazione effetto
         resourceList24.clear();
         resourceList24.addSpecificResource(new VictoryPoint(1));
-        GetResourceEffect effetto24 = new GetResourceEffect(resourceList24);
-        permanentEffectYellow24.add(new ProductionEffect(2, effetto24, getResourceEffect, changeResourceEffect, getResourceEffectFromCard));
+        GetResourceEffect effetto24 = new GetResourceEffect(48,resourceList24);
+        permanentEffectYellow24.add(new ProductionEffect(48,2, effetto24,null,null));
         permanentEffectYellowList.add(23, permanentEffectYellow24);  //aggiunta effetto alla lista principale
+
+
+
+
+        //creazione effetti immediati carte verdi
+        List<EffectList> immediateEffectBlueList = new ArrayList<>();  //Creazione lista principale
+
+
+        //effetto immediato prima carta
+        EffectList immediateEffectBlue1 = new EffectList();//creazione  effetto
+        resourceList1.clear();
+        resourceList1.addSpecificResource(new MilitaryStrength(3));
+        immediateEffectBlue1.add(new GetResourceEffect(49,resourceList1));
+        immediateEffectBlueList.add(0, immediateEffectBlue1);  //aggiunta effetto alla lista principale
+
+        //effetto immediato seconda carta
+        EffectList immediateEffectBlue2 = new EffectList();           //creazione effetto
+        immediateEffectBlue2.add(null);
+        immediateEffectBlueList.add(1, immediateEffectBlue2);  //aggiunta effetto alla lista principale
+
+        //effetto immediato terza carta
+        EffectList immediateEffectBlue3 = new EffectList();           //creazione effetto
+        immediateEffectBlue3.add(null);
+        immediateEffectBlueList.add(2, immediateEffectBlue3);  //aggiunta effetto alla lista principale
+
+        //effetto immediato quarta carta
+        EffectList immediateEffectBlue4 = new EffectList();//creazione  effetto
+        resourceList4.clear();
+        resourceList4.addSpecificResource(new CouncilPrivilege(1,false));
+        immediateEffectBlue4.add(new GetResourceEffect(52,resourceList4));
+        immediateEffectBlueList.add(3, immediateEffectBlue4);  //aggiunta effetto alla lista principale
+
+        //effetto immediato quinta carta
+        EffectList immediateEffectBlue5 = new EffectList();           //creazione effetto
+        immediateEffectBlue5.add(null);
+        immediateEffectBlueList.add(4, immediateEffectBlue5);  //aggiunta effetto alla lista principale
+
+        //effetto immediato sesta carta
+        EffectList immediateEffectBlue6 = new EffectList();           //creazione effetto
+        immediateEffectBlue6.add(null);
+        immediateEffectBlueList.add(5, immediateEffectBlue6);  //aggiunta effetto alla lista principale
+
+        //effetto immediato settima carta
+        EffectList immediateEffectBlue7 = new EffectList();//creazione  effetto
+        resourceList7.clear();
+        resourceList7.addSpecificResource(new FaithPoint(4));
+        immediateEffectBlue7.add(new GetResourceEffect(55,resourceList7));
+        immediateEffectBlueList.add(6, immediateEffectBlue7);  //aggiunta effetto alla lista principale
+
+        //effetto immediato ottava carta
+        EffectList immediateEffectBlue8 = new EffectList();//creazione  effetto
+        resourceList8.clear();
+        resourceList8.addSpecificResource(new FaithPoint(1));
+        immediateEffectBlue8.add(new GetResourceEffect(56,resourceList8));
+        immediateEffectBlue8.add(new ChooseCardEffect(56,null,4,true));
+        immediateEffectBlueList.add(7, immediateEffectBlue8);  //aggiunta effetto alla lista principale
+
+        //effetto immediato nona carta
+        EffectList immediateEffectBlue9 = new EffectList();//creazione  effetto
+        resourceList9.clear();
+        resourceList9.addSpecificResource(new MilitaryStrength(2));
+        immediateEffectBlue9.add(new GetResourceEffect(57,resourceList8));
+        immediateEffectBlue9.add(new ChooseCardEffect(57,CardColor.GREEN,6,false));
+        immediateEffectBlueList.add(8, immediateEffectBlue9);  //aggiunta effetto alla lista principale
+
+        //effetto immediato decima carta
+        EffectList immediateEffectBlue10 = new EffectList();//creazione  effetto
+        resourceList10.clear();
+        resourceList10.addSpecificResource(new Wood(1));
+        resourceList10.addSpecificResource(new Stone(1));
+        immediateEffectBlue10.add(new ChooseCardEffectWithDiscount(58,CardColor.YELLOW,6,resourceList10,false));
+        immediateEffectBlueList.add(9,immediateEffectBlue10);
+
+        //effetto immediato undicesima carta
+        EffectList immediateEffectBlue11 = new EffectList();//creazione  effetto
+        resourceList11.clear();
+        resourceList11.addSpecificResource(new Coin(2));
+        immediateEffectBlue11.add(new ChooseCardEffectWithDiscount(59,CardColor.BLUE,6,resourceList11,false));
+        immediateEffectBlueList.add(10,immediateEffectBlue11);
+
+        //effetto immediato dodicesima carta
+        EffectList immediateEffectBlue12 = new EffectList();//creazione  effetto
+        resourceList12.clear();
+        resourceList12.addSpecificResource(new CouncilPrivilege(1,false));
+        immediateEffectBlue12.add(new ChooseCardEffectWithDiscount(60,CardColor.PURPLE,6,resourceList12,false));
+        immediateEffectBlueList.add(11,immediateEffectBlue12);
+
+        //effetto immediato tredicesima carta
+        EffectList immediateEffectBlue13 = new EffectList();           //creazione effetto
+        immediateEffectBlue13.add(null);
+        immediateEffectBlueList.add(12, immediateEffectBlue13);  //aggiunta effetto alla lista principale
+
+        //effetto immediato quattordicesima carta
+        EffectList immediateEffectBlue14 = new EffectList();           //creazione effetto
+        immediateEffectBlue14.add(null);
+        immediateEffectBlueList.add(13, immediateEffectBlue14);  //aggiunta effetto alla lista principale
+
+        //effetto immediato quindicesima carta
+        EffectList immediateEffectBlue15 = new EffectList();//creazione  effetto
+        resourceList15.clear();
+        resourceList15.addSpecificResource(new FaithPoint(3));
+        immediateEffectBlue15.add(new GetResourceEffect(63,resourceList15));
+        immediateEffectBlueList.add(14, immediateEffectBlue15);  //aggiunta effetto alla lista principale
+
+        //effetto immediato sedicesima carta
+        EffectList immediateEffectBlue16 = new EffectList();//creazione  effetto
+        resourceList16.clear();
+        resourceList16.addSpecificResource(new CouncilPrivilege(3,true));
+        immediateEffectBlue16.add(new GetResourceEffect(64,resourceList16));
+        immediateEffectBlueList.add(15, immediateEffectBlue16);  //aggiunta effetto alla lista principale
+
+        //effetto immediato diciassettesima carta
+        EffectList immediateEffectBlue17 = new EffectList();//creazione  effetto
+        resourceList17.clear();
+        resourceList17.addSpecificResource(new VictoryPoint(2));
+        immediateEffectBlue17.add(new GetResourceEffectFromCard(65,resourceList17,CardColor.GREEN));
+        immediateEffectBlueList.add(16, immediateEffectBlue17);  //aggiunta effetto alla lista principale
+
+        //effetto immediato diciottesima carta
+        EffectList immediateEffectBlue18 = new EffectList();//creazione  effetto
+        resourceList18.clear();
+        resourceList18.addSpecificResource(new VictoryPoint(2));
+        immediateEffectBlue18.add(new GetResourceEffectFromCard(66,resourceList18,CardColor.YELLOW));
+        immediateEffectBlueList.add(17, immediateEffectBlue18);  //aggiunta effetto alla lista principale
+
+        //effetto immediato diciannovesima carta
+        EffectList immediateEffectBlue19 = new EffectList();//creazione  effetto
+        resourceList19.clear();
+        resourceList19.addSpecificResource(new VictoryPoint(2));
+        immediateEffectBlue19.add(new GetResourceEffectFromCard(67,resourceList19,CardColor.BLUE));
+        immediateEffectBlueList.add(18, immediateEffectBlue19);  //aggiunta effetto alla lista principale
+
+        //effetto immediato ventesima carta
+        EffectList immediateEffectBlue20 = new EffectList();//creazione  effetto
+        resourceList20.clear();
+        resourceList20.addSpecificResource(new VictoryPoint(2));
+        immediateEffectBlue20.add(new GetResourceEffectFromCard(68,resourceList20,CardColor.PURPLE));
+        immediateEffectBlueList.add(19, immediateEffectBlue20);  //aggiunta effetto alla lista principale
+
+        //effetto immediato ventunesima carta
+        EffectList immediateEffectBlue21 = new EffectList();//creazione  effetto
+        resourceList21.clear();
+        resourceList21.addSpecificResource(new FaithPoint(2));
+        immediateEffectBlue21.add(new GetResourceEffect(69,resourceList21));
+        immediateEffectBlue21.add(new HarvestActivationFromCard(69,4));
+        immediateEffectBlueList.add(20, immediateEffectBlue21);  //aggiunta effetto alla lista principale
+
+        //effetto immediato ventiduesima carta
+        EffectList immediateEffectBlue22 = new EffectList();//creazione  effetto
+        resourceList22.clear();
+        resourceList22.addSpecificResource(new FaithPoint(1));
+        immediateEffectBlue22.add(new GetResourceEffect(70,resourceList22));
+        immediateEffectBlue22.add(new ProductionActivationFromCard(70,4));
+        immediateEffectBlueList.add(21, immediateEffectBlue22);  //aggiunta effetto alla lista principale
+
+        //effetto immediato ventitreesima carta
+        EffectList immediateEffectBlue23 = new EffectList();//creazione  effetto
+        resourceList23.clear();
+        resourceList23.addSpecificResource(new VictoryPoint(1));
+        immediateEffectBlue23.add(new GetResourceFromResourceEffect(71,new MilitaryStrength(2),resourceList23));
+        immediateEffectBlueList.add(22, immediateEffectBlue23);  //aggiunta effetto alla lista principale
+
+        //effetto immediato ventiquattresima carta
+        EffectList immediateEffectBlue24 = new EffectList();//creazione  effetto
+        resourceList24.clear();
+        resourceList24.addSpecificResource(new CouncilPrivilege (1,false));
+        immediateEffectBlue24.add(new GetResourceEffect(72,resourceList24));
+        immediateEffectBlue24.add(new ChooseCardEffect(72,null,7,true));
+        immediateEffectBlueList.add(23, immediateEffectBlue24);  //aggiunta effetto alla lista principale
+
+
+
+
+
+
+
+
+
+
 
 
         // creazione di tutte le carte
@@ -1082,7 +1261,7 @@ public class CreationJson {
         resourceProductionEffectList1.addSpecificResource(new Coin(1));
         GetResourceEffect getResourceProductionEffect1 = new GetResourceEffect(resourceProductionEffectList1);
         HarvestEffect harvestEffect1 = new HarvestEffect(harvestActionValue1,getResourceHarvestEffect1);
-        ProductionEffect productionEffect1 = new ProductionEffect(productionActionValue1,getResourceProductionEffect1, getResourceEffect, changeResourceEffect, getResourceEffectFromCard);
+        ProductionEffect productionEffect1 = new ProductionEffect(productionActionValue1,getResourceProductionEffect1, null,null);
 
         //creazione seconda PersonalBonusTiles
         int harvestActionValue2 = 1;
@@ -1097,7 +1276,7 @@ public class CreationJson {
         resourceProductionEffectList2.addSpecificResource(new Coin(1));
         GetResourceEffect getResourceProductionEffect2 = new GetResourceEffect(resourceProductionEffectList2);
         HarvestEffect harvestEffect2 = new HarvestEffect(harvestActionValue2,getResourceHarvestEffect2);
-        ProductionEffect productionEffect2 = new ProductionEffect(productionActionValue2,getResourceProductionEffect2, getResourceEffect, changeResourceEffect, getResourceEffectFromCard);
+        ProductionEffect productionEffect2 = new ProductionEffect(productionActionValue2,getResourceProductionEffect2,null,null);
 
         //creazione terza PersonalBonusTiles
         int harvestActionValue3 = 1;
@@ -1112,7 +1291,7 @@ public class CreationJson {
         resourceProductionEffectList3.addSpecificResource(new Coin(2));
         GetResourceEffect getResourceProductionEffect3 = new GetResourceEffect(resourceProductionEffectList3);
         HarvestEffect harvestEffect3 = new HarvestEffect(harvestActionValue3,getResourceHarvestEffect3);
-        ProductionEffect productionEffect3 = new ProductionEffect(productionActionValue3,getResourceProductionEffect3, getResourceEffect, changeResourceEffect, getResourceEffectFromCard);
+        ProductionEffect productionEffect3 = new ProductionEffect(productionActionValue3,getResourceProductionEffect3, null,null);
 
         //creazione quarta PersonalBonusTiles
         int harvestActionValue4 = 1;
@@ -1127,7 +1306,7 @@ public class CreationJson {
         resourceProductionEffectList4.addSpecificResource(new MilitaryStrength(2));
         GetResourceEffect getResourceProductionEffect4 = new GetResourceEffect(resourceProductionEffectList4);
         HarvestEffect harvestEffect4 = new HarvestEffect(harvestActionValue4,getResourceHarvestEffect4);
-        ProductionEffect productionEffect4 = new ProductionEffect(productionActionValue4,getResourceProductionEffect4, getResourceEffect, changeResourceEffect, getResourceEffectFromCard);
+        ProductionEffect productionEffect4 = new ProductionEffect(productionActionValue4,getResourceProductionEffect4,null,null);
 
         List<PersonalBonusTiles> personalBonusTilesList = new ArrayList<>();
         PersonalBonusTiles personalBonusTiles1 = new PersonalBonusTiles(harvestEffect1,productionEffect1);

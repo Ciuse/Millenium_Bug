@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.messageMV.MVAskChoice;
+import it.polimi.ingsw.ps31.model.StateChoice.ChoiceActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.ProductionEffect;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 
@@ -45,7 +47,7 @@ public class ProductionList extends  HarvestProductionList{
                     currentEffect.getGetResourceEffectFromCard().activate(super.getPlayer());
                 }
                 if(currentEffect.getChangeResourceEffect()!=null){
-                    super.notifyViews(new ChoiceActiveEffect(currentEffect.getChangeResourceEffect().getCardId()));
+                    super.notifyViews(new MVAskChoice(new ChoiceActiveEffect(currentEffect.getChangeResourceEffect().getCardId())));
                     boolean choice = super.waitActiveEffect();
                     if(choice==true) {
                         currentEffect.getChangeResourceEffect().activate(super.getPlayer());

@@ -15,6 +15,8 @@ public abstract class Effect extends ModelChoices implements EffectActivation{
         this.cardId = cardId;
     }
 
+    public Effect(){}
+
     @Override
     public String toString(){
         return this.getClass().getSimpleName();

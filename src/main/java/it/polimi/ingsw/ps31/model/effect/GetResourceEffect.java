@@ -17,6 +17,10 @@ public class GetResourceEffect extends Effect {
         this.resources=resources;
     }
 
+    public GetResourceEffect(ResourceList resources) {
+        this.resources = resources;
+    }
+
     public ResourceList getResources(){
         return this.resources;
     }

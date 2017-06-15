@@ -16,6 +16,10 @@ public class GenericHarvestActivation extends Effect { //è l'effetto generico p
         this.basicValue = basicValue;
     }
 
+    public GenericHarvestActivation(int basicValue) {
+        this.basicValue = basicValue;
+    }
+
     public int getBasicValue() {
         return basicValue;
     }

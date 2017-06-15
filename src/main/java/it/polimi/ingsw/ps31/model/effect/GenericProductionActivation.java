@@ -16,6 +16,10 @@ public class GenericProductionActivation extends Effect {
         this.basicValue = basicValue;
     }
 
+    public GenericProductionActivation(int basicValue) {
+        this.basicValue = basicValue;
+    }
+
     public int getBasicValue() {
         return basicValue;
     }

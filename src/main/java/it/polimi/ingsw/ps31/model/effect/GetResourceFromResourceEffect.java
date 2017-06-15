@@ -9,7 +9,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class GetResourceFromResourceEffect extends GetResourceEffect { //per ogni risorsa di un tipo guadagno un'altra risorsa
     private final Resource requiredResource;
-    public GetResourceFromResourceEffect(int cardId,ResourceList resourceGained, Resource requiredResource) {
+    public GetResourceFromResourceEffect(int cardId,Resource requiredResource,ResourceList resourceGained) {
         super(cardId,resourceGained);
         this.requiredResource = requiredResource;
     }

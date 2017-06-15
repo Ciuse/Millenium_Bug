@@ -6,6 +6,8 @@ import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 
 import java.util.Observable;
+import java.util.Observer;
+import java.util.Vector;
 
 import static java.lang.Thread.currentThread;
 import static java.lang.Thread.sleep;
@@ -15,13 +17,15 @@ import static java.lang.Thread.sleep;
  */
 public class Model extends Observable {
 
-
     public Model() {
     }
     public void addView(View view){
         this.addObserver(view);
     }
 
+    public Vector<Observer> getObserver(){
+        super.
+    }
     public void notifyViews(MVVisitable message) {
         this.setChanged();
         notifyObservers(message);
