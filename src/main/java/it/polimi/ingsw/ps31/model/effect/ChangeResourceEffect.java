@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.model.effect;
 
-import it.polimi.ingsw.ps31.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
@@ -21,6 +20,8 @@ public class ChangeResourceEffect extends Effect {
         this.resourceToGainList = resourceToGainList;
     }
 
+
+
     public List<ResourceList> getResourceToPayList() {
         return resourceToPayList;
     }
@@ -36,7 +37,7 @@ public class ChangeResourceEffect extends Effect {
             player.getPlayerActionSet().payResources(resourceToPayList.get(0));
             player.getPlayerActionSet().getTempResources(resourceToGainList.get(0));
         }else{
-            super.notifyViews(new MVAskChoice(1,1,resourceToPayList.size()));
+          //TODO  super.notifyViews(new MVAskChoice(1,1,resourceToPayList.size()));
             int listChoose = super.waitIntChosen();
             player.getPlayerActionSet().payResources(resourceToPayList.get(listChoose));
             player.getPlayerActionSet().getTempResources(resourceToGainList.get(listChoose));
@@ -48,66 +49,20 @@ public class ChangeResourceEffect extends Effect {
         return "Change";
     }
 
-    public List<String> resourcesToPayString(){
+    public List<String> getResourceToPayListString(){
         List<String> stringResourceToPayList = new ArrayList<>();
-        for (ResourceList resourceList:resourceToGainList
+        for (ResourceList resourceList:resourceToPayList
                 ) {
             stringResourceToPayList.add(resourceList.toString());
 
         } return stringResourceToPayList;
     }
 
-    public List<String> resourcesToGainString(){
+    public List<String> getResourceToGainListString(){
         List<String> stringResourceToGainList = new ArrayList<>();
         for (ResourceList resourceList:resourceToGainList
                 ) {
             stringResourceToGainList.add(resourceList.toString());
         } return stringResourceToGainList;
-    }
-
-    @Override
-    public String resourceToGainString() {
-        return null;
-    }
-
-    @Override
-    public String requiredResourceString() {
-        return null;
-    }
-
-    @Override
-    public int getBasicValue() {
-        return 0;
-    }
-
-    @Override
-    public int getDiceValue() {
-        return 0;
-    }
-
-    @Override
-    public CardColor getCardColor() {
-        return null;
-    }
-
-
-    @Override
-    public GetResourceEffect getGetResourceEffect() {
-        return null;
-    }
-
-    @Override
-    public String resourceDiscountString() {
-        return null;
-    }
-
-    @Override
-    public GetResourceEffectFromCard getGetResourceEffectFromCard() {
-        return null;
-    }
-
-    @Override
-    public ChangeResourceEffect getChangeResourceEffect() {
-        return null;
     }
 }

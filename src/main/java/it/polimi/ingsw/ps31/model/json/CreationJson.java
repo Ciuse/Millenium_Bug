@@ -29,8 +29,9 @@ public class CreationJson {
         this.jsonGameObject.setBonusVictoryPointFromPlayerResources(bonusVictoryPointFromPlayerResources());
         this.jsonGameObject.setPointResourceRequired(listOfRequirements());
         this.jsonGameObject.setInitialResourcePlayer(initialResourcePlayer());
-        //this.jsonGameObject.setExcommunicationTilesTiles(createExcommunicationTiles); //TODO rimuovere commento
         this.jsonGameObject.setPersonalBonusTilesList(createPersonalBonusTilesList());
+
+        //this.jsonGameObject.setExcommunicationTilesTiles(createExcommunicationTiles); //TODO rimuovere commento
 
     }
 
@@ -1320,7 +1321,6 @@ public class CreationJson {
 
         return personalBonusTilesList;
     }
-
 
     public JsonGameObject getJsonGameObject() {
         return jsonGameObject;

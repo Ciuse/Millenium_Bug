@@ -261,15 +261,15 @@ public class StartGame {
                     }
                     if (excommunicationTiles.getPermanentMalus().getResourceList() != null) {// il giocatore ha una scomunica che in base ai costi di legno e pietra delle carte gialle
                         int costToPay = 0;
-                        for (DevelopmentCard developmentCard : player.getColorCardList(excommunicationTiles.getPermanentMalus().getCardColorForCostCard()).getDevelopmentCardList()
-                                ) {
-                            for (ResourceList costList : developmentCard.getCostList()
+                        for (Resource resource:excommunicationTiles.getPermanentMalus().getResourceList().getResourceList()
+                             ) {
+                            for (DevelopmentCard developmentCard : player.getColorCardList(excommunicationTiles.getPermanentMalus().getCardColorForCostCard()).getDevelopmentCardList()
                                     ) {
-                                if (costList.getSpecificResource(Wood.class) != null) {
-                                    costToPay = costToPay + costList.getSpecificResource(Wood.class).getValue();
-                                }
-                                if (costList.getSpecificResource(Stone.class) != null) {
-                                    costToPay = costToPay + costList.getSpecificResource(Stone.class).getValue();
+                                for (ResourceList costList : developmentCard.getCostList()
+                                        ) {
+                                    if (costList.getSpecificResource(resource.getClass()) != null) {
+                                        costToPay = costToPay + costList.getSpecificResource(resource.getClass()).getValue();
+                                    }
                                 }
                             }
                         }

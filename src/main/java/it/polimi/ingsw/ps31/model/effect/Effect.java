@@ -3,12 +3,13 @@ package it.polimi.ingsw.ps31.model.effect;
 import it.polimi.ingsw.ps31.model.ModelChoices;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Giuseppe on 09/05/2017.
  */
-public abstract class Effect extends ModelChoices implements EffectActivation{
+public abstract class   Effect extends ModelChoices implements EffectActivation{
     int cardId;
 
     public Effect(int cardId) {
@@ -41,29 +42,57 @@ public abstract class Effect extends ModelChoices implements EffectActivation{
         return cardId;
     }
 
-    public abstract String nameString();
+    public String nameString(){
+        return null;
+    }
 
-    public abstract List<String> resourcesToPayString();
+    public List<String> getResourceToPayListString(){
+        return  new ArrayList<>();
+    }
 
-    public abstract List<String> resourcesToGainString();
+    public List<String> getResourceToGainListString() {
+        return new ArrayList<>();
+    }
 
-    public abstract String resourceToGainString();
+    public String getResourceToGainString(){
+        return null;
+    }
 
-    public abstract String requiredResourceString();
+    public String getRequiredResourceString() {
+        return null;
+    }
 
-    public abstract int getBasicValue();
+    public int getBasicValue(){
+        return +10;
+    }
 
-    public abstract int getDiceValue();
+    public int getDiceValue(){
+        return -1;
+    }
 
-    public abstract CardColor getCardColor();
+    public CardColor getCardColor(){
+        return null;
+    }
 
-    public abstract GetResourceEffect getGetResourceEffect();
+    public boolean isAnyColor() {
+        return false;
+    }
 
-    public abstract String resourceDiscountString();
+    public GetResourceEffect getGetResourceEffect(){
+        return null;
+    }
 
-    public abstract GetResourceEffectFromCard getGetResourceEffectFromCard();
+    public String resourceDiscountString(){
+        return null;
+    }
 
-    public abstract ChangeResourceEffect getChangeResourceEffect();
+    public GetResourceEffectFromCard getGetResourceEffectFromCard(){
+        return null;
+    }
+
+    public ChangeResourceEffect getChangeResourceEffect(){
+        return null;
+    }
 
 
 

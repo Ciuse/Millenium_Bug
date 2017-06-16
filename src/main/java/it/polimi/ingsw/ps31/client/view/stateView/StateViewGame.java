@@ -50,6 +50,10 @@ public class StateViewGame {
         return round;
     }
 
+    public List<StateViewDevelopmentCard> getStateViewDevelopmentCardList() {
+        return stateViewDevelopmentCardList;
+    }
+
     public PlayerId getPlayerIdInACtion() {
         return playerIdInACtion;
     }

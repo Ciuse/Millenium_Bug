@@ -21,7 +21,7 @@ public class GetResourceFromResourceEffect extends GetResourceEffect { //per ogn
         player.getPlayerActionSet().getTempResources(super.getResources());
     }
 
-    public String requiredResourceString(){
+    public String getRequiredResourceString(){
         return requiredResource.toString();
     }
 

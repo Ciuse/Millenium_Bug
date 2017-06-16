@@ -11,6 +11,6 @@ public class Coin extends PhysicalResource {
 
     @Override
     public String toString(){
-        return "CO "+this.getValue();
+        return "CO"+this.getValue();
     }
 }

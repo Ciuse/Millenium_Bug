@@ -3,14 +3,20 @@ package it.polimi.ingsw.ps31.model.StateModel;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.effect.Effect;
 
+import java.util.List;
+
+
 /**
  * Created by giulia on 13/06/2017.
  */
 public class StateEffect extends StateInfo{
+    private int cardId =0;
     private String nameEffect = null;
-    private String resourceToPay = null;
     private String resourceToGain = null;
+    private List<String> resourceToGainList =null;
+    private List<String> resourceToPayList =null;
     private CardColor cardColor = null;
+    private boolean anyColor = false;
     private int diceValue = -1;
     private int basicValue = -1;
     private String resourceDiscount = null;
@@ -19,16 +25,17 @@ public class StateEffect extends StateInfo{
     private StateEffect stateEffect2 = null;
     private StateEffect stateEffect3 = null;
 
-
     public StateEffect(Effect effect) {
         if(effect!=null) {
             this.nameEffect = effect.nameString();
-            this.resourceToPay = effect.resourcesToPayString().toString();
             this.basicValue = effect.getBasicValue();
-            this.resourceToGain = effect.resourceToGainString().toString();
+            this.resourceToGainList =effect.getResourceToGainListString();
+            this.resourceToPayList =effect.getResourceToPayListString();
+            this.resourceToGain = effect.getResourceToGainString();
             this.diceValue = effect.getDiceValue();
             this.cardColor = effect.getCardColor();
-            this.requiredResource = effect.requiredResourceString();
+            this.anyColor=effect.isAnyColor();
+            this.requiredResource = effect.getRequiredResourceString();
             this.resourceDiscount = effect.resourceDiscountString();
             if(effect.getGetResourceEffect()!=null){
                 this.stateEffect1 = new StateEffect(effect.getGetResourceEffect());
@@ -43,12 +50,20 @@ public class StateEffect extends StateInfo{
 
     }
 
+    public int getCardId() {
+        return cardId;
+    }
+
     public String getNameEffect() {
         return nameEffect;
     }
 
-    public String getResourceToPay() {
-        return resourceToPay;
+    public List<String> getResourceToGainList() {
+        return resourceToGainList;
+    }
+
+    public List<String> getResourceToPayList() {
+        return resourceToPayList;
     }
 
     public String getResourceToGain() {
@@ -57,6 +72,10 @@ public class StateEffect extends StateInfo{
 
     public CardColor getCardColor() {
         return cardColor;
+    }
+
+    public boolean isAnyColor() {
+        return anyColor;
     }
 
     public int getDiceValue() {

@@ -11,6 +11,7 @@ import it.polimi.ingsw.ps31.messageMV.MVMessageVisitor;
 import it.polimi.ingsw.ps31.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.StateModel.*;
+import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import java.io.IOException;
@@ -165,7 +166,8 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void printMyFamilyMember();
 
-
+    public abstract void printBoardActionSpace();
+    public abstract void printDevelopmentCard(int cardId);
     public abstract void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView);
 
     public PlayerId getViewId() {

@@ -20,8 +20,8 @@ public abstract class DevelopmentCard extends Card implements ActiveEffect {
     private final CardColor cardColor;
     private final int period;
     private final List<ResourceList> costList;  // il costo viene visto come una lista di risorse
-    private final EffectList immediateEffectList;
-    private final EffectList permanentEffectList;
+    private  EffectList immediateEffectList;
+    private  EffectList permanentEffectList;
 
     public DevelopmentCard(int cardId, String name, CardColor cardColor, int period, List<ResourceList> costList, EffectList immediateEffectList, EffectList permanentEffectList) {
         super(name);
@@ -119,6 +119,7 @@ public abstract class DevelopmentCard extends Card implements ActiveEffect {
         List<StateEffect> statePermanentEffects = new ArrayList<>();
         for (Effect effect : permanentEffectList.getEffectList()
                 ) {
+
             statePermanentEffects.add(new StateEffect(effect));
         }
         return new StateDevelopmentCard(super.getName(), cardId, cardColor, stateImmediateEffects, statePermanentEffects, stringCosts);

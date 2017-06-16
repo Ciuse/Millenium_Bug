@@ -194,7 +194,7 @@ public class JsonGameObject {
     }
 
     public List<PersonalBonusTiles> getPersonalBonusTilesList() {
-        return personalBonusTilesList;
+        return new ArrayList<>(personalBonusTilesList);
     }
 
     public void setPersonalBonusTilesList(List<PersonalBonusTiles> personalBonusTilesList) {

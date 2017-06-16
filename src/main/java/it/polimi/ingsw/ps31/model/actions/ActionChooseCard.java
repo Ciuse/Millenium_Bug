@@ -98,7 +98,7 @@ public class ActionChooseCard extends Action {
         TowerCardSpace chosenCardSpace;
         do
         {
-            super.notifyViews();
+        //TODO FINIRE MESSAGGIO    super.notifyViews();
             chosenCardSpace =super.waitTowerCardChosen();
         }while (!checkChosenTowerCardSpace(chosenCardSpace));
 

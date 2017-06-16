@@ -1,8 +1,10 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
 import it.polimi.ingsw.ps31.model.StateModel.StateDevelopmentCard;
+import it.polimi.ingsw.ps31.model.StateModel.StateEffect;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,8 +14,8 @@ public class StateViewDevelopmentCard {
     private String cardName = null;
     private final int cardId;
     private CardColor cardColor;
-    private List<StateViewEffect> stateViewImmediateEffectList = null;
-    private List<StateViewEffect> stateViewPermanentEffectList = null;
+    private List<StateViewEffect> stateViewImmediateEffectList = new ArrayList<>();
+    private List<StateViewEffect> stateViewPermanentEffectList = new ArrayList<>();
     private List<String> stringCosts = null;
 
 
@@ -46,18 +48,28 @@ public class StateViewDevelopmentCard {
     }
 
     public void updateState(StateDevelopmentCard stateDevelopmentCard){
-        if(stateDevelopmentCard.getCardId()!=0){
+        if(stateDevelopmentCard.getCardId()!=0) {
             this.cardName = stateDevelopmentCard.getCardName();
             this.cardColor = stateDevelopmentCard.getCardColor();
             this.stringCosts = stateDevelopmentCard.getStringCosts();
-            int i=0;
-            for (StateViewEffect effect:stateViewImmediateEffectList
-                 ) {
+            int i = 0;
+            for (StateEffect stateEffect : stateDevelopmentCard.getImmediateEffectList()
+                    ) {
+                stateViewImmediateEffectList.add(new StateViewEffect());
+            }
+            for (StateViewEffect effect : stateViewImmediateEffectList
+                    ) {
+
                 effect.updateState(stateDevelopmentCard.getImmediateEffectList().get(i));
                 i++;
             }
-            int j=0;
-            for (StateViewEffect effect:stateViewPermanentEffectList
+
+            int j = 0;
+            for (StateEffect stateEffect : stateDevelopmentCard.getPermanentEffectList()
+                    ) {
+                stateViewPermanentEffectList.add(new StateViewEffect());
+            }
+            for (StateViewEffect effect : stateViewPermanentEffectList
                     ) {
                 effect.updateState(stateDevelopmentCard.getImmediateEffectList().get(j));
                 j++;

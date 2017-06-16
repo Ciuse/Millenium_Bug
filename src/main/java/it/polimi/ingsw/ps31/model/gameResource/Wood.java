@@ -12,6 +12,6 @@ public class Wood extends PhysicalResource {
 
     @Override
     public String toString(){
-        return "WO "+this.getValue();
+        return "WO"+this.getValue();
     }
 }

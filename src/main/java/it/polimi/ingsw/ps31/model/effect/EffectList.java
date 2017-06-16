@@ -16,6 +16,11 @@ public class EffectList {
     public EffectList(Effect effect){
         this.effectList.add(effect);
     }
+    public EffectList(Effect effect1,Effect effect2){
+        this.effectList.add(effect1);
+        this.effectList.add(effect2);
+    }
+
     public EffectList(){}
 
 

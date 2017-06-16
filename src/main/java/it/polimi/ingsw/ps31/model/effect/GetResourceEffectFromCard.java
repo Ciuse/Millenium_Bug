@@ -24,6 +24,7 @@ public class GetResourceEffectFromCard extends GetResourceEffect {
     public CardColor getCardColor() {
         return cardColor;
     }
+
     @Override
     public String nameString(){
         return "ResFromCard";
