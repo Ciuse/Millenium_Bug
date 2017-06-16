@@ -36,6 +36,8 @@ public class CmdLineView extends View {
     private TextGraphics textGraphics = null;
     private KeyStroke keyStroke=null;
     private CmdInterpreterView cmdInterpreterView = new IntrVisualization();
+    private TerminalPosition consolePosition = new TerminalPosition (2,31);
+
 
 
     public CmdLineView(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoard, List<StateViewPlayer> stateViewPlayer, StateViewGame stateViewGame) {
@@ -141,6 +143,32 @@ public class CmdLineView extends View {
             screen.close();
         }
 
+    }
+
+    @Override
+    public void printLastEvent(String string) {
+        try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        if(consolePosition.getRow()<44){
+            textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns()-3, consolePosition.getRow(), ' ');
+            textGraphics.putString(consolePosition.getColumn(),consolePosition.getRow(),string);
+            textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow()+1, terminalSize.getColumns()-3, consolePosition.getRow()+1, ' ');
+            consolePosition=consolePosition.withRelative(0,1);
+
+        }else {
+            textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns()-3, consolePosition.getRow(), ' ');
+            textGraphics.putString(consolePosition.getColumn(),consolePosition.getRow(),string);
+            consolePosition=consolePosition.withRelative(0,-13);
+        }
+
+        try {
+            screen.refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -267,19 +295,19 @@ public class CmdLineView extends View {
         TerminalSize actionSpaceBox = new TerminalSize(9, 4);
         TerminalSize actionSpaceBox2 = new TerminalSize(15, 4);
         TerminalSize actionSpaceBox3 = new TerminalSize(20, 4);
-        TerminalPosition position17 = new TerminalPosition(30,20);
+        TerminalPosition position17 = new TerminalPosition(28,20);
         printActionSpace(17,position17,actionSpaceBox3);
-        TerminalPosition position18 = new TerminalPosition(0,20);
+        TerminalPosition position18 = new TerminalPosition(1,20);
         printActionSpace(18,position18,actionSpaceBox);
         TerminalPosition position19 = new TerminalPosition(11,20);
         printActionSpace(19,position19,actionSpaceBox2);
-        TerminalPosition position20 = new TerminalPosition(0,25);
+        TerminalPosition position20 = new TerminalPosition(1,25);
         printActionSpace(20,position20,actionSpaceBox);
         TerminalPosition position21 = new TerminalPosition(11,25);
         printActionSpace(21,position21,actionSpaceBox2);
 
         for (int i = 0; i <4; i++) {
-            TerminalPosition positionMarket = new TerminalPosition((30 + i * 2) + ((i * actionSpaceBox.getColumns())), (25));
+            TerminalPosition positionMarket = new TerminalPosition((28 + i * 2) + ((i * actionSpaceBox.getColumns())), (25));
             printActionSpace(22+i,positionMarket,actionSpaceBox);
         }
 
@@ -289,6 +317,97 @@ public class CmdLineView extends View {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void printTextBox(){
+        TerminalSize cardBox = new TerminalSize(166, 16);
+        TerminalPosition labelBoxTopLeft = new TerminalPosition (1,30);
+        TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 1);
+        textGraphics.drawLine(
+                labelBoxTopLeft.withRelativeColumn(1),
+                labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 2),
+                Symbols.DOUBLE_LINE_HORIZONTAL);
+        textGraphics.drawLine(
+                labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1).withRelativeColumn(1),
+                labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1).withRelativeColumn(cardBox.getColumns() - 2),
+                Symbols.DOUBLE_LINE_HORIZONTAL);
+        textGraphics.setCharacter(labelBoxTopLeft, Symbols.DOUBLE_LINE_TOP_LEFT_CORNER);
+        textGraphics.drawLine(labelBoxTopLeft.withRelativeRow(1), labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_VERTICAL);
+        textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);
+        textGraphics.setCharacter(labelBoxTopRightCorner, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
+        textGraphics.drawLine(labelBoxTopRightCorner.withRelativeRow(1), labelBoxTopRightCorner.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_VERTICAL);
+        textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
+        try {
+            screen.refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public void printDevelopmentCard(int cardId){
+        TerminalSize cardBox = new TerminalSize(31, 21);
+        TerminalPosition labelBoxTopLeft = new TerminalPosition (80,8);
+        TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 1);
+        textGraphics.drawLine(
+                labelBoxTopLeft.withRelativeColumn(1),
+                labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 2),
+                Symbols.DOUBLE_LINE_HORIZONTAL);
+        textGraphics.drawLine(
+                labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1).withRelativeColumn(1),
+                labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1).withRelativeColumn(cardBox.getColumns() - 2),
+                Symbols.DOUBLE_LINE_HORIZONTAL);
+        textGraphics.setCharacter(labelBoxTopLeft, Symbols.DOUBLE_LINE_TOP_LEFT_CORNER);
+        textGraphics.drawLine(labelBoxTopLeft.withRelativeRow(1), labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_VERTICAL);
+        textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);
+        textGraphics.setCharacter(labelBoxTopRightCorner, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
+        textGraphics.drawLine(labelBoxTopRightCorner.withRelativeRow(1), labelBoxTopRightCorner.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_VERTICAL);
+        textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
+        for (StateViewDevelopmentCard developmentCard : getStateViewGame().getStateViewDevelopmentCardList()
+                ) {
+            if(developmentCard.getCardId()==cardId){
+                textGraphics.putString(labelBoxTopLeft.withRelative(1,1),developmentCard.getCardName());
+                screen.setCharacter(labelBoxTopLeft.withRelative(cardBox.getColumns()-3,1),getCardColorCharatcter(labelBoxTopLeft,developmentCard.getCardColor()));
+                textGraphics.putString(labelBoxTopLeft.withRelative(cardBox.getColumns()-2,1),valueOf(developmentCard.getCardId()));
+                textGraphics.drawLine(labelBoxTopLeft.withRelative(1,2),labelBoxTopLeft.withRelative(cardBox.getColumns()-2,2),Symbols.SINGLE_LINE_HORIZONTAL);
+
+                textGraphics.putString(labelBoxTopLeft.withRelative(1,3),"Cost: ");
+                int i=0;
+                for (String cost:developmentCard.getStringCosts()
+                        ) {
+                    textGraphics.putString(labelBoxTopLeft.withRelative(6+1+(cost.length()+2)*i,3),cost);
+                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(6+(2+cost.length())*(i+1),3),Symbols.SINGLE_LINE_VERTICAL);
+                    i++;
+                }
+                textGraphics.drawLine(labelBoxTopLeft.withRelative(1,4),labelBoxTopLeft.withRelative(cardBox.getColumns()-2,4),Symbols.SINGLE_LINE_HORIZONTAL);
+
+                textGraphics.putString(labelBoxTopLeft.withRelative(1,5),"Immediate Effect:");
+                int j=0;
+                for (StateViewEffect effect:developmentCard.getStateViewImmediateEffectList()
+                        ) {
+                    j=j+printCardEffect(labelBoxTopLeft,effect,j);
+                    j++;
+
+                }
+                textGraphics.drawLine(labelBoxTopLeft.withRelative(1,6+j),labelBoxTopLeft.withRelative(cardBox.getColumns()-2,6+j),Symbols.SINGLE_LINE_HORIZONTAL);
+
+                textGraphics.putString(labelBoxTopLeft.withRelative(1,7+j),"Permanent Effect:");
+
+                for (StateViewEffect effect:developmentCard.getStateViewPermanentEffectList()
+                        ) {
+                    j=j+printCardEffect(labelBoxTopLeft,effect,j+2);
+                    j++;
+
+                }
+                textGraphics.drawLine(labelBoxTopLeft.withRelative(1,8+j),labelBoxTopLeft.withRelative(cardBox.getColumns()-2,8+j),Symbols.SINGLE_LINE_HORIZONTAL);
+
+            }
+        }
+        try {
+            screen.refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void printTowerCardBox(CardColor towerColor, int towerFloor){
@@ -462,71 +581,6 @@ public class CmdLineView extends View {
         }
     }
 
-
-    public void printDevelopmentCard(int cardId){
-        TerminalSize cardBox = new TerminalSize(31, 21);
-        TerminalPosition labelBoxTopLeft = new TerminalPosition (80,8);
-        TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 1);
-        textGraphics.drawLine(
-                labelBoxTopLeft.withRelativeColumn(1),
-                labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 2),
-                Symbols.DOUBLE_LINE_HORIZONTAL);
-        textGraphics.drawLine(
-                labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1).withRelativeColumn(1),
-                labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1).withRelativeColumn(cardBox.getColumns() - 2),
-                Symbols.DOUBLE_LINE_HORIZONTAL);
-        textGraphics.setCharacter(labelBoxTopLeft, Symbols.DOUBLE_LINE_TOP_LEFT_CORNER);
-        textGraphics.drawLine(labelBoxTopLeft.withRelativeRow(1), labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_VERTICAL);
-        textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_BOTTOM_LEFT_CORNER);
-        textGraphics.setCharacter(labelBoxTopRightCorner, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
-        textGraphics.drawLine(labelBoxTopRightCorner.withRelativeRow(1), labelBoxTopRightCorner.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_VERTICAL);
-        textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(cardBox.getRows() - 1), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
-        for (StateViewDevelopmentCard developmentCard : getStateViewGame().getStateViewDevelopmentCardList()
-                ) {
-            if(developmentCard.getCardId()==cardId){
-                textGraphics.putString(labelBoxTopLeft.withRelative(1,1),developmentCard.getCardName());
-                screen.setCharacter(labelBoxTopLeft.withRelative(cardBox.getColumns()-3,1),getCardColorCharatcter(labelBoxTopLeft,developmentCard.getCardColor()));
-                textGraphics.putString(labelBoxTopLeft.withRelative(cardBox.getColumns()-2,1),valueOf(developmentCard.getCardId()));
-                textGraphics.drawLine(labelBoxTopLeft.withRelative(1,2),labelBoxTopLeft.withRelative(cardBox.getColumns()-2,2),Symbols.SINGLE_LINE_HORIZONTAL);
-
-                int i=0;
-                for (String cost:developmentCard.getStringCosts()
-                     ) {
-                    textGraphics.putString(labelBoxTopLeft.withRelative(1+(cost.length()+2)*i,3),cost);
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative((2+cost.length())*(i+1),3),Symbols.SINGLE_LINE_VERTICAL);
-                    i++;
-                }
-                textGraphics.drawLine(labelBoxTopLeft.withRelative(1,4),labelBoxTopLeft.withRelative(cardBox.getColumns()-2,4),Symbols.SINGLE_LINE_HORIZONTAL);
-
-                textGraphics.putString(labelBoxTopLeft.withRelative(1,5),"Immediate Effect:");
-                int j=0;
-                for (StateViewEffect effect:developmentCard.getStateViewImmediateEffectList()
-                     ) {
-                    j=j+printCardEffect(labelBoxTopLeft,effect,j);
-                    j++;
-
-                }
-                textGraphics.drawLine(labelBoxTopLeft.withRelative(1,6+j),labelBoxTopLeft.withRelative(cardBox.getColumns()-2,6+j),Symbols.SINGLE_LINE_HORIZONTAL);
-
-                textGraphics.putString(labelBoxTopLeft.withRelative(1,7+j),"Permanent Effect:");
-
-                for (StateViewEffect effect:developmentCard.getStateViewPermanentEffectList()
-                     ) {
-//                    j=j+printCardEffect(labelBoxTopLeft,effect,j);
-//                    j++;
-
-                }
-                textGraphics.drawLine(labelBoxTopLeft.withRelative(1,8+j),labelBoxTopLeft.withRelative(cardBox.getColumns()-2,8+j),Symbols.SINGLE_LINE_HORIZONTAL);
-
-            }
-        }
-        try {
-            screen.refresh();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     private int printCardEffect(TerminalPosition labelBoxTopLeft, StateViewEffect effect,int j){
         int length=0;
 
@@ -541,19 +595,19 @@ public class CmdLineView extends View {
                 length++;
 
             } else {
-                if (effect.getResourceToPayList().size() == 0 && effect.getResourceToGain() != null && effect.getRequiredResource() == null) {
+                if (effect.getResourceToPayList().size() == 0 && effect.getResourceToGain() != null && effect.getRequiredResource() == null) { //getResFromCardColor
                     textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), effect.getResourceToGain());
                     textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + effect.getResourceToGain().length() + 1, 6 + j + length), "X");
                     textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + effect.getResourceToGain().length() + 3, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, effect.getCardColor()));
                     length++;
                 }
-                if (effect.getResourceToPayList().size() == 0 && effect.getResourceToGain() != null && effect.getRequiredResource() != null) {
+                if (effect.getResourceToPayList().size() == 0 && effect.getResourceToGain() != null && effect.getRequiredResource() != null) { //get res from res
                     textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), effect.getResourceToGain());
                     textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + effect.getResourceToGain().length() + 1, 6 + j + length), "X");
                     textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + effect.getResourceToGain().length() + 3, 6 + j + length), effect.getRequiredResource());
                     length++;
                 }
-                if (effect.getResourceToPayList().size() != 0) {
+                if (effect.getResourceToPayList().size() != 0) { //change resources
                     int i = 0;
                     for (String gain : effect.getResourceToGainList()
                             ) {
@@ -564,7 +618,7 @@ public class CmdLineView extends View {
                         i++;
                     }
                 }
-                if (effect.getCardColor() != null && effect.getDiceValue() != -1 && effect.isAnyColor() == false) {
+                if (effect.getCardColor() != null && effect.getDiceValue() != -1 && effect.isAnyColor() == false) { //choose card
                     textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j + length), Symbols.INVERSE_WHITE_CIRCLE);
                     textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 1, 6 + j + length), valueOf(effect.getDiceValue()));
                     textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 3, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, effect.getCardColor()));
@@ -573,7 +627,7 @@ public class CmdLineView extends View {
 
 
                 }
-                if (effect.getCardColor() == null && effect.getDiceValue() != -1 && effect.isAnyColor() == true) {
+                if (effect.getCardColor() == null && effect.getDiceValue() != -1 && effect.isAnyColor() == true) { //choose AnyCard
                     textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j + length), Symbols.INVERSE_WHITE_CIRCLE);
                     textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 1, 6 + j + length), valueOf(effect.getDiceValue()));
                     textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 3, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, CardColor.GREEN));
@@ -583,12 +637,39 @@ public class CmdLineView extends View {
                     length++;
                 }
 
-                if(effect.getStateEffect1()!=null){
+                if(effect.getStateEffect1()!=null){ //Harvest
                     textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), Symbols.INVERSE_WHITE_CIRCLE);
                     textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length()+1, 6 + j), valueOf(effect.getDiceValue()));
                     textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 7 + j),Symbols.DIAMOND);
                     textGraphics.putString(labelBoxTopLeft.withRelative(2, 7 + j), effect.getStateEffect1().getNameEffect()+": ");
                     textGraphics.putString(labelBoxTopLeft.withRelative(4 + effect.getStateEffect1().getNameEffect().length(), 7 + j), effect.getStateEffect1().getResourceToGain());
+                    length++;
+                    length++;
+                }
+                if(effect.getStateEffect2()!=null){ // Prod 1
+                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), Symbols.INVERSE_WHITE_CIRCLE);
+                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length()+1, 6 + j), valueOf(effect.getDiceValue()));
+                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 7 + j),Symbols.DIAMOND);
+                    textGraphics.putString(labelBoxTopLeft.withRelative(2, 7 + j), effect.getStateEffect2().getNameEffect()+": ");
+                    int i = 0;
+                    for (String gain : effect.getStateEffect2().getResourceToGainList()
+                            ) {
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getStateEffect2().getNameEffect().length(), 7 + j + length), gain);
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getStateEffect2().getNameEffect().length() + gain.length() + 1, 7 + j + length), Symbols.ARROW_RIGHT);
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getStateEffect2().getNameEffect().length() + gain.length() + 3, 7 + j + length), effect.getStateEffect2().getResourceToPayList().get(i));
+                        length++;
+                        i++;
+                    }
+                    length++;
+                }
+                if(effect.getStateEffect3()!=null){ //Prod 2
+                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), Symbols.INVERSE_WHITE_CIRCLE);
+                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length()+1, 6 + j), valueOf(effect.getDiceValue()));
+                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 7 + j),Symbols.DIAMOND);
+                    textGraphics.putString(labelBoxTopLeft.withRelative(2, 7 + j), effect.getStateEffect3().getNameEffect()+": ");
+                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getStateEffect3().getNameEffect().length(), 7 + j), effect.getStateEffect3().getResourceToGain());
+                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getStateEffect3().getNameEffect().length() + effect.getStateEffect3().getResourceToGain().length() + 1, 7 + j + length), "X");
+                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getStateEffect3().getNameEffect().length() + effect.getStateEffect3().getResourceToGain().length() + 3, 7 + j + length), getCardColorCharatcter(labelBoxTopLeft, effect.getStateEffect3().getCardColor()));
                     length++;
                     length++;
                 }

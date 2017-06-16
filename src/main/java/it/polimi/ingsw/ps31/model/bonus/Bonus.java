@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 /**
  * Created by Giuseppe on 27/05/2017.
  */
-public abstract class Bonus  {
+public abstract class Bonus implements BonusActivation  {
     private final Action actionToModify;
 
     protected Bonus(Action actionToModify) {

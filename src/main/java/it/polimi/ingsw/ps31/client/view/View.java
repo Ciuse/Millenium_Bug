@@ -156,6 +156,8 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void printTower();
 
+    public abstract void printLastEvent(String string);
+
     public abstract void printMyPlayer();
 
     public abstract void printAllPlayer();
@@ -167,7 +169,11 @@ public abstract class View extends Observable implements Observer {
     public abstract void printMyFamilyMember();
 
     public abstract void printBoardActionSpace();
+
     public abstract void printDevelopmentCard(int cardId);
+
+    public abstract void printTextBox();
+
     public abstract void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView);
 
     public PlayerId getViewId() {

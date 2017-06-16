@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.model.bonus;
 
 import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
+import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by giulia on 16/06/2017.
@@ -22,5 +23,10 @@ public class ResourceBonus extends Bonus{
 
     public Resource getResourceToSub2() {
         return resourceToSub2;
+    }
+
+    @Override
+    public void activate(Player player) {
+
     }
 }

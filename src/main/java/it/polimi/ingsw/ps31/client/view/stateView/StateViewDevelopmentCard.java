@@ -71,7 +71,7 @@ public class StateViewDevelopmentCard {
             }
             for (StateViewEffect effect : stateViewPermanentEffectList
                     ) {
-                effect.updateState(stateDevelopmentCard.getImmediateEffectList().get(j));
+                effect.updateState(stateDevelopmentCard.getPermanentEffectList().get(j));
                 j++;
             }
         }

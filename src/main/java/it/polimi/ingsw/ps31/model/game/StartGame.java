@@ -293,7 +293,6 @@ public class StartGame {
             }
             if (thirdPeriodExcomunication == false) {
                 finalExtraVictoryPoints1(player);
-                
                 finalExtraVictoryPoints2(player);
                 finalExtraVictoryPoints3(player);
             }

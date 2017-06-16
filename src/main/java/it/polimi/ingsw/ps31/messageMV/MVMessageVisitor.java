@@ -40,7 +40,7 @@ public class MVMessageVisitor implements MVVisitor {
     public void visit(MVAskChoice mvAskChoice) {
         MVChoiceInfoVisitor mvChoiceInfoVisitor=new MVChoiceInfoVisitor();
         mvChoiceInfoVisitor.setView(view);
-        mvAskChoice.getChoiceInfo().acceptChoice(mvChoiceInfoVisitor);
+        mvAskChoice.getChoiceType().acceptChoice(mvChoiceInfoVisitor);
     }
 
 }

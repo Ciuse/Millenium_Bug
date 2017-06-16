@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Giuseppe on 09/05/2017.
  */
-public abstract class   Effect extends ModelChoices implements EffectActivation{
+public abstract class Effect extends ModelChoices implements EffectActivation{
     int cardId;
 
     public Effect(int cardId) {

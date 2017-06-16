@@ -29,6 +29,10 @@ public class ProductionEffect extends Effect {
         this.getResourceEffectFromCard = getResourceEffectFromCard;
     }
 
+    public int getDiceValue() {
+        return productionActionValue;
+    }
+
     public int getProductionActionValue() {
         return productionActionValue;
     }

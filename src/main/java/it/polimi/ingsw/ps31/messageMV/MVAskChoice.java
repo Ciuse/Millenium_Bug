@@ -1,19 +1,19 @@
 package it.polimi.ingsw.ps31.messageMV;
 
-import it.polimi.ingsw.ps31.model.StateChoice.ChoiceInfo;
+import it.polimi.ingsw.ps31.model.StateChoice.ChoiceType;
 
 /**
  * Created by giulia on 14/06/2017.
  */
 public class MVAskChoice implements MVVisitable {
-    private ChoiceInfo choiceInfo;
+    private ChoiceType choiceType;
 
-    public MVAskChoice(ChoiceInfo choiceInfo) {
-        this.choiceInfo = choiceInfo;
+    public MVAskChoice(ChoiceType choiceType) {
+        this.choiceType = choiceType;
     }
 
-    public ChoiceInfo getChoiceInfo() {
-        return choiceInfo;
+    public ChoiceType getChoiceType() {
+        return choiceType;
     }
 
     @Override
