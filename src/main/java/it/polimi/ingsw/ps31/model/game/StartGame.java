@@ -3,8 +3,13 @@ package it.polimi.ingsw.ps31.model.game;
 import com.google.gson.Gson;
 import it.polimi.ingsw.ps31.model.StateModel.StateGame;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
+import it.polimi.ingsw.ps31.model.board.MilitaryPointTrack;
+import it.polimi.ingsw.ps31.model.bonus.ExtraFinalVictoryPointBonus;
+import it.polimi.ingsw.ps31.model.bonus.LostFinalVictoryPointBonus;
+import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
+import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
@@ -30,7 +35,10 @@ public class StartGame {
     private int period;
     private int round;
     private List<Player> playerList;
-
+    private VictoryPoint[] bonusVictoryPointFromTerritory;
+    private VictoryPoint[] bonusVictoryPointFromCharacterCard;
+    private VictoryPoint[] bonusVictoryPointFromMilitaryTrack;
+    private VictoryPoint bonusVictoryPointFromPlayerResources;
 
     public void playGame() {
         CreationJson creationJson = new CreationJson();
@@ -44,11 +52,11 @@ public class StartGame {
         List<List<EffectList>>towerActionSpaceEffectList = jsonObjectReadFromFile.getTowerActionSpaceEffectList();
         List<EffectList> actionSpaceEffectList = jsonObjectReadFromFile.getActionSpaceEffectList();
         VictoryPoint[] faithTrackExtraValue = jsonObjectReadFromFile.getFaithTrackExtraValue();
-        VictoryPoint[] bonusVictoryPointFromCharacterCard = jsonObjectReadFromFile.getBonusVictoryPointFromCharacterCard();
-        VictoryPoint[] bonusVictoryPointFromTerritory = jsonObjectReadFromFile.getBonusVictoryPointFromTerritory();
+        this.bonusVictoryPointFromCharacterCard = jsonObjectReadFromFile.getBonusVictoryPointFromCharacterCard();
+        this.bonusVictoryPointFromTerritory = jsonObjectReadFromFile.getBonusVictoryPointFromTerritory();
+        this.bonusVictoryPointFromMilitaryTrack = jsonObjectReadFromFile.getBonusVictoryPointFromMilitaryTrack();
+        this.bonusVictoryPointFromPlayerResources = jsonObjectReadFromFile.getBonusVictoryPointFromPlayerResources();
         List<PointResource[]> personalBoardRequirements = jsonObjectReadFromFile.getPointResourceRequired();
-        VictoryPoint[] bonusVictoryPointFromMilitaryTrack = jsonObjectReadFromFile.getBonusVictoryPointFromMilitaryTrack();
-        VictoryPoint bonusVictoryPointFromPlayerResources = jsonObjectReadFromFile.getBonusVictoryPointFromPlayerResources();
         List<ResourceList> initialPlayerResource = jsonObjectReadFromFile.getInitialResourcePlayer();
         List<PersonalBonusTiles> personalBonusTilesList = jsonObjectReadFromFile.getPersonalBonusTilesList();
 
@@ -175,12 +183,9 @@ public class StartGame {
                 this.orderPlayersListWithColors(colorOrder);
             }//fine ciclo turno
         }//fine ciclo periodo
-        //gioco finito ,calcolo punteggio finale
-        this.finalExtraVictoryPoints1(bonusVictoryPointFromTerritory);
-        this.finalExtraVictoryPoints2(bonusVictoryPointFromCharacterCard);
-        this.finalExtraVictoryPoints3();
-        this.finalExtraVictoryPoints4(bonusVictoryPointFromMilitaryTrack);
-        this.finalExtraVictoryPoints5(bonusVictoryPointFromPlayerResources);
+        //gioco finito e calcolo punteggio finale
+        this.getFinalVictoryPoint();
+        this.militaryTrackWinnerPoint();
         this.orderVictoryPoint();
         //TODO metodo per stampare a video il vincitore
 
@@ -190,65 +195,103 @@ public class StartGame {
     /*Metodi per calcolare i punti vittoria alla fine del gioco */
 
 
-    public void finalExtraVictoryPoints1(VictoryPoint[] bonusVictoryPointFromTerritory) {
-        for (int i = 0; i < playerList.size(); i++) {
-            if (playerList.get(i).getPlayerCardList().countCardGreen() > 1) {
-                VictoryPoint victoryPointToAdd = bonusVictoryPointFromTerritory[playerList.get(i).getPlayerCardList().countCardGreen() - 1];
-                playerList.get(i).addResources(victoryPointToAdd);
-            }
+    public void finalExtraVictoryPoints1(Player player) {
+        if (player.getPlayerCardList().countCardGreen() > 1) {
+            VictoryPoint victoryPointToAdd = bonusVictoryPointFromTerritory[player.getPlayerCardList().countCardGreen() - 1];
+            player.addResources(victoryPointToAdd);
         }
     }
-    public void finalExtraVictoryPoints2(VictoryPoint[] bonusVictoryPointFromCharacter) {
-        for (int i = 0; i < playerList.size(); i++) {
-            if (playerList.get(i).getPlayerCardList().countCardBlue() > 1) {
-                VictoryPoint victoryPointToAdd = bonusVictoryPointFromCharacter[playerList.get(i).getPlayerCardList().countCardBlue() - 1];
-                playerList.get(i).addResources(victoryPointToAdd);
-            }
+    public void finalExtraVictoryPoints2(Player player) {
+        if (player.getPlayerCardList().countCardBlue() > 1) {
+            VictoryPoint victoryPointToAdd = bonusVictoryPointFromCharacterCard[player.getPlayerCardList().countCardBlue() - 1];
+            player.addResources(victoryPointToAdd);
         }
     }
-    public void finalExtraVictoryPoints3() {
-        for (int i = 0; i < playerList.size(); i++) {
-            playerList.get(i).activateFinalEffects();
-        }
+    public void finalExtraVictoryPoints3(Player player) {
+        player.activateFinalEffects();
+    }
 
-    }
-    public void finalExtraVictoryPoints4(VictoryPoint[] bonusVictoryPointFromMilitaryTrack) {
-        List<Player> tempPlayerList = new ArrayList<>(orderMilitaryStrength());
-        boolean paritàTrovata = false;
-        int contatore=0;
-        for(int i=0;i<tempPlayerList.size();i++) {
-            if (tempPlayerList.get(0).getPlayerResources().getResourceValue(MilitaryStrength.class)
-                    == tempPlayerList.get(i).getPlayerResources().getResourceValue(MilitaryStrength.class)) {
-                contatore++;
-                tempPlayerList.get(i).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[0]);
-            }
 
-        }
-        if(contatore>1){
-            paritàTrovata=true;
-        }
-        int contatore2 =0;
-        for(int j=1;j<tempPlayerList.size();j++){
-            if (paritàTrovata==false
-                    && tempPlayerList.get(1).getPlayerResources().getResourceValue(MilitaryStrength.class)
-                    == tempPlayerList.get(j).getPlayerResources().getResourceValue(MilitaryStrength.class)) {
-                contatore2++;
-              tempPlayerList.get(j).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[1]);
+    public void finalExtraVictoryPoints4(Player player) {
+        int value = player.getPlayerResources().getPlayerResourceList().getPhysicalResource();
+        int factorValue = bonusVictoryPointFromPlayerResources.getValue();
+        value = (value / 5) * factorValue;
+        VictoryPoint victoryPointToAdd = new VictoryPoint(value);
+        player.addResources(victoryPointToAdd);
+    }
+
+    public void getFinalVictoryPoint() {
+        boolean thirdPeriodExcomunication = false;
+        for (Player player : playerList
+                ) {
+            for (ExcommunicationTiles excommunicationTiles : player.getExcommunicationTiles()
+                    ) {
+                if (excommunicationTiles.getPeriod() == 3) {            //se il giocatore ha una scomunica del terzo periodo allora dovrà sottrarre i punti vittoria diversamente
+                    if (excommunicationTiles.getPermanentMalus().getCardColor() != null) {
+                        if (excommunicationTiles.getPermanentMalus().getCardColor().equals(CardColor.GREEN)) {
+                            finalExtraVictoryPoints2(player);
+                            finalExtraVictoryPoints3(player);
+                            thirdPeriodExcomunication = true;
+                        }
+                        if (excommunicationTiles.getPermanentMalus().getCardColor().equals(CardColor.PURPLE)) {
+                            finalExtraVictoryPoints1(player);
+                            finalExtraVictoryPoints2(player);
+                            thirdPeriodExcomunication = true;
+                        }
+                        if (excommunicationTiles.getPermanentMalus().getCardColor().equals(CardColor.BLUE)) {
+                            finalExtraVictoryPoints1(player);
+                            finalExtraVictoryPoints3(player);
+                            thirdPeriodExcomunication = true;
+                        }
+                    }
+                    if (excommunicationTiles.getPermanentMalus().getPointResource() != null) {  // il giocatore ha una scomunica che sottrae punti vittoria in base ad altri punti
+                        if (excommunicationTiles.getPermanentMalus().getPointResource().getClass().equals(VictoryPoint.class)) {
+                            int value = player.getPlayerResources().getPlayerResourceList().getSpecificResource(VictoryPoint.class).getValue();
+                            value = (value / 5) * excommunicationTiles.getPermanentMalus().getPointResource().getValue();
+                            VictoryPoint victoryPointToSub = new VictoryPoint(value);
+                            player.subResources(victoryPointToSub);
+                        }
+                        if (excommunicationTiles.getPermanentMalus().getPointResource().getClass().equals(MilitaryStrength.class)) {
+                            int value = player.getPlayerResources().getPlayerResourceList().getSpecificResource(MilitaryStrength.class).getValue();
+                            value = (value) * excommunicationTiles.getPermanentMalus().getPointResource().getValue();
+                            VictoryPoint victoryPointToSub = new VictoryPoint(value);
+                            player.subResources(victoryPointToSub);
+                        }
+
+                    }
+                    if (excommunicationTiles.getPermanentMalus().getResourceList() != null) {// il giocatore ha una scomunica che in base ai costi di legno e pietra delle carte gialle
+                        int costToPay = 0;
+                        for (DevelopmentCard developmentCard : player.getColorCardList(excommunicationTiles.getPermanentMalus().getCardColorForCostCard()).getDevelopmentCardList()
+                                ) {
+                            for (ResourceList costList : developmentCard.getCostList()
+                                    ) {
+                                if (costList.getSpecificResource(Wood.class) != null) {
+                                    costToPay = costToPay + costList.getSpecificResource(Wood.class).getValue();
+                                }
+                                if (costList.getSpecificResource(Stone.class) != null) {
+                                    costToPay = costToPay + costList.getSpecificResource(Stone.class).getValue();
+                                }
+                            }
+                        }
+                        VictoryPoint victoryPointToSub = new VictoryPoint(costToPay);
+                        player.subResources(victoryPointToSub);
+                    }
+                    if () {
+
+                    }
+                }
             }
-        }
-        if (contatore2>1){
-            paritàTrovata = true;
-        }
-    }
-    public void finalExtraVictoryPoints5(VictoryPoint factor) {
-        for (int i=0;i<playerList.size();i++){
-            int value = playerList.get(i).getPlayerResources().getPlayerResourceList().getPhysicalResource();
-            int factorValue = factor.getValue();
-            value= (value%5)*factorValue;
-            VictoryPoint victoryPointToAdd = new VictoryPoint(value);
-            playerList.get(i).addResources(victoryPointToAdd);
+            if (thirdPeriodExcomunication == false) {
+                finalExtraVictoryPoints1(player);
+                finalExtraVictoryPoints2(player);
+                finalExtraVictoryPoints3(player);
+            }
+            finalExtraVictoryPoints4(player);
         }
     }
+
+
+
 
     /*Metoci per Riordinare la Lista dei Player*/
 
@@ -320,7 +363,35 @@ public class StartGame {
                 playerList.get(i).getFamilyMembers().get(j).resetFamilyMember();
             }
         }
+    }
 
+
+    public void militaryTrackWinnerPoint() {
+        List<Player> tempPlayerList = new ArrayList<>(orderMilitaryStrength());
+        boolean paritàTrovata = false;
+        int contatore=0;
+        for(int i=0;i<tempPlayerList.size();i++) {
+            if (tempPlayerList.get(0).getPlayerResources().getResourceValue(MilitaryStrength.class)
+                    == tempPlayerList.get(i).getPlayerResources().getResourceValue(MilitaryStrength.class)) {
+                contatore++;
+                tempPlayerList.get(i).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[0]);
+            }
+        }
+        if(contatore>1){
+            paritàTrovata=true;
+        }
+        int contatore2 =0;
+        for(int j=1;j<tempPlayerList.size();j++){
+            if (paritàTrovata==false
+                    && tempPlayerList.get(1).getPlayerResources().getResourceValue(MilitaryStrength.class)
+                    == tempPlayerList.get(j).getPlayerResources().getResourceValue(MilitaryStrength.class)) {
+                contatore2++;
+                tempPlayerList.get(j).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[1]);
+            }
+        }
+        if (contatore2>1){
+            paritàTrovata = true;
+        }
     }
 
     public StateGame getStateGame(Player player){

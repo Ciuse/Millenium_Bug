@@ -1,0 +1,26 @@
+package it.polimi.ingsw.ps31.model.bonus;
+
+import it.polimi.ingsw.ps31.model.actions.Action;
+import it.polimi.ingsw.ps31.model.gameResource.Resource;
+
+/**
+ * Created by giulia on 16/06/2017.
+ */
+public class ResourceBonus extends Bonus{
+    private final Resource resourceToSub1;
+    private final Resource resourceToSub2;
+
+    protected ResourceBonus(Action actionToModify, Resource resourceToSub1, Resource resourceToSub2) {
+        super(actionToModify);
+        this.resourceToSub1 = resourceToSub1;
+        this.resourceToSub2 = resourceToSub2;
+    }
+
+    public Resource getResourceToSub1() {
+        return resourceToSub1;
+    }
+
+    public Resource getResourceToSub2() {
+        return resourceToSub2;
+    }
+}

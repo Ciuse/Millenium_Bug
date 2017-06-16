@@ -50,6 +50,7 @@ public class ActionPayServants extends Action {
             //Controllo che il familiare per cui si sta pagando non sia già stato piazzato
             boolean condition1 = super.actionControlSet.placedFamilyMemberControl(player.getSpecificFamilyMember(this.diceColor));
 
+            //TODO chiedere al player quanti servitori vuole pagare per aumentare il valore del familiare
             //Controllo sul numero di servitori
             List<Resource> servantsAsList = new ArrayList<>();
             Resource servantsAsResource = new Servant(servantsAmount);

@@ -23,9 +23,6 @@ public class Model extends Observable {
         this.addObserver(view);
     }
 
-    public Vector<Observer> getObserver(){
-        super.
-    }
     public void notifyViews(MVVisitable message) {
         this.setChanged();
         notifyObservers(message);
