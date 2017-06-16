@@ -39,6 +39,13 @@ public class StartGame {
     private VictoryPoint[] bonusVictoryPointFromCharacterCard;
     private VictoryPoint[] bonusVictoryPointFromMilitaryTrack;
     private VictoryPoint bonusVictoryPointFromPlayerResources;
+    private DevelopmentCardList developmentCardList;
+    private List<List<EffectList>>towerActionSpaceEffectList;
+    private List<EffectList> actionSpaceEffectList;
+    private VictoryPoint[] faithTrackExtraValue;
+    List<PointResource[]> personalBoardRequirements;
+    List<ResourceList> initialPlayerResource;
+    List<PersonalBonusTiles> personalBonusTilesList;
 
     public void playGame() {
         CreationJson creationJson = new CreationJson();
@@ -48,17 +55,17 @@ public class StartGame {
         JsonGameObject jsonObjectReadFromFile = gson.fromJson(jsonStringReadFromFile, JsonGameObject.class);        //salvataggio stringa json letta
 
         //salvo tutti gli oggetti letti dal file json
-        DevelopmentCardList developmentCardList = jsonObjectReadFromFile.getDevelopementCardList();
-        List<List<EffectList>>towerActionSpaceEffectList = jsonObjectReadFromFile.getTowerActionSpaceEffectList();
-        List<EffectList> actionSpaceEffectList = jsonObjectReadFromFile.getActionSpaceEffectList();
-        VictoryPoint[] faithTrackExtraValue = jsonObjectReadFromFile.getFaithTrackExtraValue();
+        this.developmentCardList = jsonObjectReadFromFile.getDevelopementCardList();
+        this.towerActionSpaceEffectList = jsonObjectReadFromFile.getTowerActionSpaceEffectList();
+        this.actionSpaceEffectList = jsonObjectReadFromFile.getActionSpaceEffectList();
+        this.faithTrackExtraValue = jsonObjectReadFromFile.getFaithTrackExtraValue();
         this.bonusVictoryPointFromCharacterCard = jsonObjectReadFromFile.getBonusVictoryPointFromCharacterCard();
         this.bonusVictoryPointFromTerritory = jsonObjectReadFromFile.getBonusVictoryPointFromTerritory();
         this.bonusVictoryPointFromMilitaryTrack = jsonObjectReadFromFile.getBonusVictoryPointFromMilitaryTrack();
         this.bonusVictoryPointFromPlayerResources = jsonObjectReadFromFile.getBonusVictoryPointFromPlayerResources();
-        List<PointResource[]> personalBoardRequirements = jsonObjectReadFromFile.getPointResourceRequired();
-        List<ResourceList> initialPlayerResource = jsonObjectReadFromFile.getInitialResourcePlayer();
-        List<PersonalBonusTiles> personalBonusTilesList = jsonObjectReadFromFile.getPersonalBonusTilesList();
+        this.personalBoardRequirements = jsonObjectReadFromFile.getPointResourceRequired();
+        this.initialPlayerResource = jsonObjectReadFromFile.getInitialResourcePlayer();
+        this.personalBonusTilesList = jsonObjectReadFromFile.getPersonalBonusTilesList();
 
         gameBoard.initializateGameBoard(towerActionSpaceEffectList,actionSpaceEffectList,faithTrackExtraValue);
 
@@ -276,13 +283,17 @@ public class StartGame {
                         VictoryPoint victoryPointToSub = new VictoryPoint(costToPay);
                         player.subResources(victoryPointToSub);
                     }
-                    if () {
+                    if (excommunicationTiles.getPermanentMalus().getString().equals("LostFinalVictoryPointFromPlayerResources")) {
+                        int value = player.getPlayerResources().getPlayerResourceList().getPhysicalResource();
+                        VictoryPoint victoryPointToSub = new VictoryPoint(value);
+                        player.subResources(victoryPointToSub);
 
                     }
                 }
             }
             if (thirdPeriodExcomunication == false) {
                 finalExtraVictoryPoints1(player);
+                
                 finalExtraVictoryPoints2(player);
                 finalExtraVictoryPoints3(player);
             }

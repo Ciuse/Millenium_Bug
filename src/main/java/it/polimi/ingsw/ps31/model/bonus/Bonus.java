@@ -34,4 +34,16 @@ public abstract class Bonus  {
     public ResourceList getResourceList() {
         return null;
     }
+
+    public String getString() {
+        return null;
+    }
+
+    public ResourceList getResourceFinalPersonalBoardList() {
+        return null;
+    }
+
+    public int getLostPoint() {
+        return -1;
+    }
 }
