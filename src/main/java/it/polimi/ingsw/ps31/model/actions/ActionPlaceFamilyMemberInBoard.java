@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
  * Created by Francesco on 26/05/2017.
  */
 public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
-    protected ActionSpace actionSpace = null;
+    private ActionSpace actionSpace = null;
 
     /* Constructor */
     public ActionPlaceFamilyMemberInBoard(Player player, ActionControlSet actionControlSet) {

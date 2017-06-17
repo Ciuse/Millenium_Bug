@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps31.model.player.PlayerResources;
 /**
  * Created by giulia on 06/06/2017.
  */
-public class StatePlayerResources extends StateInfo{
+public class StatePlayerResources extends StateType {
     private final PlayerId playerId;
     private final PlayerResources playerResources;
 

@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps31.client.view.CmdLineView;
  */
 public class IntrChoiseActiveEffect implements CmdInterpreterView {
     @Override
-    public void messageInterpreter(CmdLineView terminalView, TextGraphics textGraphics, Character in) {
+    public void messageInterpreter(CmdLineView terminalView, Character in) {
 
     }
 }

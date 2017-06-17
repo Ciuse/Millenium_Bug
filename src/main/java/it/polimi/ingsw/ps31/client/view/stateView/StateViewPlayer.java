@@ -64,7 +64,7 @@ public class StateViewPlayer {
     }
 
 
-    public void updateState(StateInfoPlayer stateInfoPlayer){
+    public void updateState(StateTypePlayer stateInfoPlayer){
         if(stateInfoPlayer.getPlayerId().equals(this.playerId)) {
             if (stateInfoPlayer.getNickname() != null) {
                 this.nickname = stateInfoPlayer.getNickname();

@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps31.model.player;
 
 import it.polimi.ingsw.ps31.model.StateModel.StateAllFamilyMember;
 import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
-import it.polimi.ingsw.ps31.model.StateModel.StateInfoPlayer;
+import it.polimi.ingsw.ps31.model.StateModel.StateTypePlayer;
 import it.polimi.ingsw.ps31.model.StateModel.StatePlayerResources;
 import it.polimi.ingsw.ps31.model.actions.ActionControlSet;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
@@ -243,8 +243,8 @@ public class Player {
         playerActionSet.getFinalResources();
     }
 
-    public StateInfoPlayer getStateInfoPlayer(){
-        StateInfoPlayer stateInfoPlayer = new StateInfoPlayer(playerId, nickname,playerColor);
+    public StateTypePlayer getStateInfoPlayer(){
+        StateTypePlayer stateInfoPlayer = new StateTypePlayer(playerId, nickname,playerColor);
         return stateInfoPlayer;
     }
 

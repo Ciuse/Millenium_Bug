@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by giulia on 13/06/2017.
  */
-public class StateDevelopmentCard extends StateInfo {
+public class StateDevelopmentCard extends StateType {
     private String cardName = null;
     private int cardId = 0;
     private final CardColor cardColor;

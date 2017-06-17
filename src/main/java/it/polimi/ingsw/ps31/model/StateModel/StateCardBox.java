@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 /**
  * Created by giulia on 06/06/2017.
  */
-public class StateCardBox extends StateInfo {
+public class StateCardBox extends StateType {
     private final String name;
     private final int cardId;
     private final CardColor cardColor;

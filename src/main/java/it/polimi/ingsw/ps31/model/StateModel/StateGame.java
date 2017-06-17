@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 /**
  * Created by giulia on 06/06/2017.
  */
-public class StateGame extends StateInfo {
+public class StateGame extends StateType {
     private int period=-1;
     private int round=-1;
     private PlayerId playerIdInAction=null;

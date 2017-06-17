@@ -12,7 +12,7 @@ public class MVStateInfoVisitor implements StateVisitor {
         this.view=view;
     }
     @Override
-    public void visit(StateInfoPlayer stateInfoPlayer) {
+    public void visit(StateTypePlayer stateInfoPlayer) {
         view.updateInfoPlayer(stateInfoPlayer);
     }
 

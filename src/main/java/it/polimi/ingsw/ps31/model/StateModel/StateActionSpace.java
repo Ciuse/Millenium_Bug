@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by giulia on 11/06/2017.
  */
-public class StateActionSpace extends StateInfo{
+public class StateActionSpace extends StateType {
     private int numberOfActionSpace=-1;
     private int diceValue =0;
     private final List<StateFamilyMember> stateFamilyMemberList;

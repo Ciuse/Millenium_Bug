@@ -15,29 +15,21 @@ public class MVMessageVisitor implements MVVisitor {
     }
 
     @Override
-    public void visit(MVAskColor mvAskColor) {
-        view.inserisciColore();
+    public void visit(MVStringToPrint mvStringToPrint) {
+        view.printLastEvent(mvStringToPrint.getStringToPrint());
     }
 
     @Override
-    public void visit(MVAskName mvAskName){
-        view.inserisciNome();
-    }
-
-    @Override
-    public void visit(MVToPrint mvToPrint) {
-
-    }
-
-    @Override
-    public void visit(MVStateInfo mvStateInfo) {
+    public void visit(MVUpdateState mvUpdateState) {
+        view.printLastEvent(mvUpdateState.getStringToPrint());
         MVStateInfoVisitor mvStateInfoVisitor =new MVStateInfoVisitor();
         mvStateInfoVisitor.setView(view);
-        mvStateInfo.getStateInfo().acceptState(mvStateInfoVisitor);
+        mvUpdateState.getStateType().acceptState(mvStateInfoVisitor);
     }
 
     @Override
     public void visit(MVAskChoice mvAskChoice) {
+        view.printLastEvent(mvAskChoice.getStringToPrint());
         MVChoiceInfoVisitor mvChoiceInfoVisitor=new MVChoiceInfoVisitor();
         mvChoiceInfoVisitor.setView(view);
         mvAskChoice.getChoiceType().acceptChoice(mvChoiceInfoVisitor);

@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by giulia on 06/06/2017.
  */
-public class StatePersonalBoard extends StateInfo{
+public class StatePersonalBoard extends StateType {
     private final PlayerId playerId;
     private final List<StateCardBox> stateCardBoxes;
 

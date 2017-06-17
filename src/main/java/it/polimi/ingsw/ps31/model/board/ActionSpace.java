@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.model.board;
 
+import it.polimi.ingsw.ps31.messageMV.MVUpdateState;
+import it.polimi.ingsw.ps31.model.ModelChoices;
 import it.polimi.ingsw.ps31.model.StateModel.StateActionSpace;
 import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
 import it.polimi.ingsw.ps31.model.effect.ActiveEffect;
@@ -13,7 +15,7 @@ import java.util.List;
 /**
  * Created by Francesco on 12/05/2017.
  */
-public class ActionSpace implements PhysicalSpaceBehavior, ActiveEffect {
+public class ActionSpace extends ModelChoices implements PhysicalSpaceBehavior, ActiveEffect {
     private int actionSpaceId; //utile per la stampa
     private final int diceCost;
     private final int familyMemberLimit; //Limite massimo di familiari nello spazio azione. -1 indica l'assenza di limite
@@ -70,8 +72,20 @@ public class ActionSpace implements PhysicalSpaceBehavior, ActiveEffect {
         //Aggiungo il familiare alla lista dello spazio azione
         this.familyMembers.add(familyMember);
 
+        String string="Aggiornato ActionSpace: "+this.actionSpaceId;
+        super.notifyViews(new MVUpdateState(string, getStateActionSpace()));
+
         //Attivo l'effetto dello spazio azione
         this.activeEffectList(familyMember.getPlayer());
+    }
+
+    public void removeFamilyMember(FamilyMember familyMember)
+    {
+        //Rimuovo il familiare alla lista dello spazio azione
+        this.familyMembers.remove(familyMember);
+
+        String string="Aggiornato ActionSpace: "+this.actionSpaceId;
+        super.notifyViews(new MVUpdateState(string, getStateActionSpace()));
     }
 
     public StateActionSpace getStateActionSpace(){

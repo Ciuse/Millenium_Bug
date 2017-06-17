@@ -8,9 +8,8 @@ import it.polimi.ingsw.ps31.client.view.CmdLineView;
  */
 public class IntrVisualization implements CmdInterpreterView {
     @Override
-    public void messageInterpreter(CmdLineView cmdLineView, TextGraphics textGraphics, Character in) {
+    public void messageInterpreter(CmdLineView cmdLineView, Character in) {
         if(in.compareTo('1')==0) {
-            textGraphics.putString(2,4,"DIJAWFIOAWFJIOEJ");
 
 
             //manda il messaggi al controller che stampa dalla terminal view.

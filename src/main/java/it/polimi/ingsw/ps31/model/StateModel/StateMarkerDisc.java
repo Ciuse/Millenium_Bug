@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 /**
  * Created by giulia on 12/06/2017.
  */
-public class StateMarkerDisc extends  StateInfo {
+public class StateMarkerDisc extends StateType {
     private final PlayerId playerId;
     private String stringResourceType = null;
     private final int value;

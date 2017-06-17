@@ -21,7 +21,7 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
     @Override
     public void visit(ChoiceActiveEffect choiceActiveEffect) {
         view.setCmdInterpreterView(new IntrChoiseActiveEffect());
-       // view.askPlayer(choiceActiveEffect.cardIdEffect);
+//        view.askPlayer(choiceActiveEffect.cardIdEffect);
     }
 
     @Override

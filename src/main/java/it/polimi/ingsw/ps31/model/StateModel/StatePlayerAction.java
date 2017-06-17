@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by giulia on 06/06/2017.
  */
-public class StatePlayerAction extends StateInfo {
+public class StatePlayerAction extends StateType {
     private final PlayerId playerId;
     private final List<String> stringPlayerAction;
 

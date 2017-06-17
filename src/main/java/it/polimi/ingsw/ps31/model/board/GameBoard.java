@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.model.board;
 
-import it.polimi.ingsw.ps31.messageMV.MVStateInfo;
-import it.polimi.ingsw.ps31.messageMV.MVToPrint;
+import it.polimi.ingsw.ps31.messageMV.MVUpdateState;
+import it.polimi.ingsw.ps31.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.StateModel.StatePlayerAction;
 import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
@@ -145,7 +145,8 @@ public class GameBoard extends Model{
     }
 
     public void startActionTurn(Player player) {
-        notifyViews(new MVToPrint());
+        String string1 = player.getPlayerId().toString()+": INIZIO FASE AZIONE";
+        notifyViews(new MVStringToPrint(null,true,string1));
         List<String> actionList = new ArrayList<>();
         actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInBoard().toString());
         actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInTower().toString());
@@ -153,7 +154,8 @@ public class GameBoard extends Model{
         if(this.getEndActionButton().getActive()){
             actionList.add(player.getPlayerActionSet().getActiveEndButton().toString());
         }
-        notifyViews(new MVStateInfo(new StatePlayerAction(player.getPlayerId(),actionList)));
+        String string2 = player.getPlayerId().toString()+": Aggiornato Stato Azioni";
+        notifyViews(new MVUpdateState(string2,new StatePlayerAction(player.getPlayerId(),actionList)));
     }
 
     public void endActionTurn(Player player) {//TODO IMPLEMENTARLO

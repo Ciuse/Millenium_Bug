@@ -33,10 +33,6 @@ public class ProductionList extends  HarvestProductionList{
     @Override
     public void activate(int diceValue)
     {
-        ResourceList tempResourceToPayList = new ResourceList();
-        ResourceList tempResourceToGainList = new ResourceList();
-        ResourceList tempResourcePlayerList = new ResourceList(super.getPlayer().getPlayerResources().getPlayerResourceList().getResourceList());
-
         for(ProductionEffect currentEffect : effectList)
         {
             if (currentEffect.getProductionActionValue() > diceValue){
@@ -47,7 +43,8 @@ public class ProductionList extends  HarvestProductionList{
                     currentEffect.getGetResourceEffectFromCard().activate(super.getPlayer());
                 }
                 if(currentEffect.getChangeResourceEffect()!=null){
-                    super.notifyViews(new MVAskChoice(new ChoiceActiveEffect(currentEffect.getChangeResourceEffect().getCardId())));
+                    String string =" Vuoi attivare questo effetto?";
+                    super.notifyViews(new MVAskChoice(super.getPlayer().getPlayerId(),string,new ChoiceActiveEffect(currentEffect.getChangeResourceEffect().getCardId())));
                     boolean choice = super.waitActiveEffect();
                     if(choice==true) {
                         currentEffect.getChangeResourceEffect().activate(super.getPlayer());

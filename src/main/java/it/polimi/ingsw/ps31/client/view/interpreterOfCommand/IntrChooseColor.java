@@ -8,11 +8,9 @@ import it.polimi.ingsw.ps31.client.view.CmdLineView;
  */
 public class IntrChooseColor implements CmdInterpreterView {
     @Override
-    public void messageInterpreter(CmdLineView cmdLineView, TextGraphics textGraphics, Character in) {
+    public void messageInterpreter(CmdLineView cmdLineView,Character in) {
         if(in.compareTo('1')==0)
-            textGraphics.putString(5,5,"scelto rosso");
         if(in.compareTo('2')==0){
-            textGraphics.putString(5,5, "scelto verde");
         }
     }
 

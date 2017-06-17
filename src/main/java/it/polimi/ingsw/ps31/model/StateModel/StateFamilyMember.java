@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 /**
  * Created by giulia on 06/06/2017.
  */
-public class StateFamilyMember extends StateInfo {
+public class StateFamilyMember extends StateType {
     private final PlayerId playerId;
     private final PlayerColor playerColor;
     private final int diceValue;

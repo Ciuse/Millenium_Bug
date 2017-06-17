@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by giulia on 09/06/2017.
  */
-public class StateTower extends StateInfo {
+public class StateTower extends StateType {
     private final CardColor color;
     private final List<StateCardBox> towerCardSpaceList;
 

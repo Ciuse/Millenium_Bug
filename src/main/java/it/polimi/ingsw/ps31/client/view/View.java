@@ -11,7 +11,6 @@ import it.polimi.ingsw.ps31.messageMV.MVMessageVisitor;
 import it.polimi.ingsw.ps31.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.StateModel.*;
-import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import java.io.IOException;
@@ -53,7 +52,15 @@ public abstract class View extends Observable implements Observer {
         MVMessageVisitor MVMessageVisitor = new MVMessageVisitor();
         MVMessageVisitor.setView(this);
         MVVisitable message = (MVVisitable) arg;
-        message.accept(MVMessageVisitor);
+
+        if(message.isNotifyAll()){          //se il messaggio riguarda tutti lo accetto
+            message.accept(MVMessageVisitor);
+        } else {
+            if(message.getNotifySinglePlayer().equals(this.viewId)){  //se il messaggio notifica solo un player controllo se è la mia la View di quel Player
+                message.accept(MVMessageVisitor);
+            }
+        }
+
     }
 
     public abstract void askPlayer();
@@ -64,7 +71,7 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void askComand() throws IOException;
 
-    public final void updateInfoPlayer(StateInfoPlayer stateInfoPlayer){
+    public final void updateInfoPlayer(StateTypePlayer stateInfoPlayer){
         for (StateViewPlayer viewPlayer : stateViewPlayerList
                 ) {
             if(viewPlayer.getPlayerId().equals(stateInfoPlayer.getPlayerId()))

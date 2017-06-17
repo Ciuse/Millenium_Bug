@@ -78,7 +78,7 @@ public class CmdLineView extends View {
             textGraphics.putString(0,4,"1 scegli rosso, 2 scegli verde");
             screen.refresh();
             keyStroke=screen.readInput();
-            cmdInterpreterView.messageInterpreter(this,textGraphics,keyStroke.getCharacter());
+            cmdInterpreterView.messageInterpreter(this,keyStroke.getCharacter());
             screen.refresh();
             this.setCmdInterpreterView(new IntrVisualization());
             askComand();
@@ -134,7 +134,7 @@ public class CmdLineView extends View {
                 textGraphics.drawLine(0, 4, terminal.getTerminalSize().getColumns(), 4, ' ');
                 textGraphics.putString(0 + "Last Keystroke: ".length(), 4, keyStroke.toString());
                 terminal.flush();
-                cmdInterpreterView.messageInterpreter(this,textGraphics, keyStroke.getCharacter());
+                cmdInterpreterView.messageInterpreter(this, keyStroke.getCharacter());
                 screen.refresh();
             }
             keyStroke = screen.pollInput();
@@ -147,28 +147,31 @@ public class CmdLineView extends View {
 
     @Override
     public void printLastEvent(String string) {
-        try {
-                Thread.sleep(100);
+        if (string != null) {
+
+            if (consolePosition.getRow() < 44) {
+                textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns() - 3, consolePosition.getRow(), ' ');
+                textGraphics.putString(consolePosition.getColumn(), consolePosition.getRow(), string);
+                textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow() + 1, terminalSize.getColumns() - 3, consolePosition.getRow() + 1, ' ');
+                consolePosition = consolePosition.withRelative(0, 1);
+
+            } else {
+                textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns() - 3, consolePosition.getRow(), ' ');
+                textGraphics.putString(consolePosition.getColumn(), consolePosition.getRow(), string);
+                consolePosition = consolePosition.withRelative(0, -13);
+            }
+            try {
+                Thread.sleep(300);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        if(consolePosition.getRow()<44){
-            textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns()-3, consolePosition.getRow(), ' ');
-            textGraphics.putString(consolePosition.getColumn(),consolePosition.getRow(),string);
-            textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow()+1, terminalSize.getColumns()-3, consolePosition.getRow()+1, ' ');
-            consolePosition=consolePosition.withRelative(0,1);
-
-        }else {
-            textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns()-3, consolePosition.getRow(), ' ');
-            textGraphics.putString(consolePosition.getColumn(),consolePosition.getRow(),string);
-            consolePosition=consolePosition.withRelative(0,-13);
         }
-
         try {
             screen.refresh();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override
