@@ -1,31 +1,31 @@
 package it.polimi.ingsw.ps31.server;
 
+import it.polimi.ingsw.ps31.model.GenericModel;
 import it.polimi.ingsw.ps31.model.Model;
+import it.polimi.ingsw.ps31.model.ModelProva;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.server.serverNetworking.ConnectionInterface;
-import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
-
-import java.io.IOException;
+import it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionInterface;
+import it.polimi.ingsw.ps31.server.serverNetworking.ServerNetworkInterface;
 
 /**
  * Created by Francesco on 08/06/2017.
  */
 public class Match extends Thread {
     private final int MAX_PLAYER_NUMBER = PlayerId.values().length;
-    private final NetworkInterface networkInterface;
-    private ConnectionInterface hostConnection; //primo client che si collega alla partita
+    private final ServerNetworkInterface serverNetworkInterface;
+    private ServerConnectionInterface hostConnection; //primo client che si collega alla partita
     private int id;
     private Model model;
 
-    private ModelProva modelProva;
+    private GenericModel modelProva;
 
     //private List<Socket> sockets = new ArrayList<>();
 
     /* Constructor */
-    public Match(ConnectionInterface host, int id){
-        this.networkInterface = new NetworkInterface(this);
-        this.modelProva = new ModelProva(this, networkInterface);
-        this.networkInterface.setModelProva(modelProva);
+    public Match(ServerConnectionInterface host, int id){
+        this.serverNetworkInterface = new ServerNetworkInterface(this);
+        this.modelProva = new ModelProva(this, serverNetworkInterface);
+        this.serverNetworkInterface.setModelProva(modelProva);
         this.hostConnection = host;
         this.id = id;
     }
@@ -45,7 +45,7 @@ public class Match extends Thread {
     public void run()
     {
         //Instanzia connessione con il primo client
-        this.networkInterface.addConnection(hostConnection);
+        this.serverNetworkInterface.addConnection(hostConnection);
 
         //Rimane in attesa degli altri giocatori
 
@@ -54,23 +54,23 @@ public class Match extends Thread {
 
         modelProva.startModel();
         System.out.println("Match:run()> all listened connections closed. Shutting down match");
-        networkInterface.closeAll();
+        serverNetworkInterface.closeAll();
 
         //Fa cose alla fine della partita?
     }
 
-    public boolean addConnection(ConnectionInterface clientConnection)
+    public boolean addConnection(ServerConnectionInterface clientConnection)
     {
-        if ( this.networkInterface.getConnectionListSize() == MAX_PLAYER_NUMBER )
+        if ( this.serverNetworkInterface.getConnectionListSize() == MAX_PLAYER_NUMBER )
         {
             //TODO: eccezione
             return false;
         }
 
-        this.networkInterface.addConnection(clientConnection);
-        boolean started = ( this.networkInterface.getConnectionListSize() == MAX_PLAYER_NUMBER );
+        this.serverNetworkInterface.addConnection(clientConnection);
+        boolean started = ( this.serverNetworkInterface.getConnectionListSize() == MAX_PLAYER_NUMBER );
 
-        networkInterface.printPlayerTable();
+        serverNetworkInterface.printPlayerTable();
 
         return started;
     }

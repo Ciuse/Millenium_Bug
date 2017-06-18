@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.client;
 
 import it.polimi.ingsw.ps31.client.ClientNetworking.ClientNetworkInterface;
-import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
 
 /**
  * Created by Francesco on 11/06/2017.
@@ -20,6 +19,19 @@ public class NetworkingThread extends Thread {
     public void run()
     {
         clientNetworkInterface.switchOn();
+
+        while (!clientNetworkInterface.isSwitchOff())
+        {
+            try
+            {
+                sleep(2000);
+            } catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        clientNetworkInterface.close();
     }
 
     public void setViewThread(ViewThread viewThread)
@@ -31,4 +43,6 @@ public class NetworkingThread extends Thread {
     {
         return this.clientNetworkInterface;
     }
+
+
 }

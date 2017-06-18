@@ -8,7 +8,7 @@ import java.util.Observable;
 /**
  * Created by giulia on 01/06/2017.
  */
-public class Model extends Observable {
+public class Model extends /*GenericModel*/ Observable {
 
     public Model() {
     }

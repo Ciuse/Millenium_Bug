@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
+import it.polimi.ingsw.ps31.networking.MexProva;
 import it.polimi.ingsw.ps31.server.Match;
+import it.polimi.ingsw.ps31.server.Server;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,10 +13,10 @@ import java.util.List;
  */
 class MatchRow {
     private Match match;
-    private List<ConnectionInterface> clientList;
+    private List<ServerConnectionInterface> clientList;
     private boolean started = false;
 
-    public MatchRow(Match match, ConnectionInterface hostConnection)
+    public MatchRow(Match match, ServerConnectionInterface hostConnection)
     {
         this.match = match;
         this.clientList = new ArrayList<>();
@@ -26,7 +28,7 @@ class MatchRow {
         return this.started;
     }
 
-    public void addPlayer(ConnectionInterface client)
+    public void addPlayer(ServerConnectionInterface client)
     {
         //passo il socket alla partita
         this.started = this.match.addConnection(client);
@@ -42,6 +44,10 @@ class MatchRow {
         return this.match;
     }
 
+    public boolean contains(ServerConnectionInterface serverConnectionInterface)
+    {
+        return clientList.contains(serverConnectionInterface);
+    }
 }
 
 public class MatchTable {
@@ -61,14 +67,14 @@ public class MatchTable {
     }
 
     /* Class Methods */
-    private Match newMatch(ConnectionInterface connectionInterface)
+    private Match newMatch(ServerConnectionInterface serverConnectionInterface)
     {
         //Creo il match (che è un thread)
-        Match match = new Match(connectionInterface, nextMatchId);
+        Match match = new Match(serverConnectionInterface, nextMatchId);
         nextMatchId++;
 
         //Aggiungo il match alla tabella
-        this.matchTable.add(new MatchRow(match, connectionInterface));
+        this.matchTable.add(new MatchRow(match, serverConnectionInterface));
 
         //Avvio il match (= avvio il thread che si mette così in attesa di nuovi giocatori)
         match.start();
@@ -79,8 +85,19 @@ public class MatchTable {
         return match;
     }
 
-    public Match addPlayer(ConnectionInterface connection)
+    public Match addPlayer(ServerConnectionInterface connection)
     {
+        //Chiedo username e password
+        connection.notifyClient(new MexProva("SendCredentials"));
+        MexProva clientAnswer = connection.notifyModel();
+        String username = clientAnswer.visit().split("; ")[0];
+        String password = clientAnswer.visit().split("; ")[1];
+
+//        for(MatchRow currentMatch : matchTable)
+//        {
+//            if(currentMatch.)
+//        }
+
         //Iteratore che scorre la lista di partite
         Iterator<MatchRow> matchItr = matchTable.iterator();
 
@@ -104,6 +121,16 @@ public class MatchTable {
         System.out.println("Server> Client connesso alla partita #"+currentMatch.getMatch().getMatchId());
 
         return currentMatch.getMatch(); //todo a cosa serve??
+    }
+
+    public Match getMatchFromConnection(ServerConnectionInterface serverConnectionInterface)
+    {
+        for ( MatchRow currentRow : matchTable)
+        {
+            if ( currentRow.contains(serverConnectionInterface) )
+                return currentRow.getMatch();
+        }
+        return null;
     }
 
     //global = 3;

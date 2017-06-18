@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.client.view;
 
 import it.polimi.ingsw.ps31.client.ClientNetworking.ClientNetworkInterface;
+import it.polimi.ingsw.ps31.networking.MexProva;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -71,10 +72,10 @@ public class ViewProva extends GenericView{
 
                 //System.out.println("Client> "+command);
 
-                networkInterface.sendToServer(command);
+                networkInterface.sendToServer(new MexProva(command));
 
                 System.out.println("Client> In attesa di risposta dal server: ");
-                String answer = networkInterface.readFromBuffer();
+                String answer = networkInterface.readFromBuffer().visit();
                 System.out.println("Client> Risposta dal server: "+answer);
 
                 this.state = answer;
@@ -82,7 +83,7 @@ public class ViewProva extends GenericView{
 
         }
 
-        networkInterface.sendToServer(command);
+        networkInterface.sendToServer(new MexProva(command));
 
         System.out.println("\nClient> sessione terminata. Disconnessione in corso");
         this.networkInterface.close();

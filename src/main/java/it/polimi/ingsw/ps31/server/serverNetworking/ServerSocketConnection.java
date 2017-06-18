@@ -1,20 +1,23 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
 import it.polimi.ingsw.ps31.networking.ConnectionType;
+import it.polimi.ingsw.ps31.networking.MexProva;
+import jdk.jfr.events.SocketReadEvent;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketException;
 
 /**
  * Created by Francesco on 09/06/2017.
  */
-public class SocketConnection extends ConnectionInterface {
+public class ServerSocketConnection extends ServerConnectionInterface {
     private final Socket socket;
     private final BufferedReader socketReader;
     private final BufferedWriter socketWriter;
 
     /* Constructor */
-    public SocketConnection(Socket socket) throws IOException {
+    public ServerSocketConnection(Socket socket) throws IOException {
         super(ConnectionType.SOCKET);
         this.socket = socket;
 
@@ -28,13 +31,17 @@ public class SocketConnection extends ConnectionInterface {
     }
 
     @Override
-    public String notifyModel()
+    protected String readMsgFromNetwork()
     {
         String msgToReturn = null;
 
         try
         {
             msgToReturn = socketReader.readLine();
+        } catch (SocketException se)
+        {
+            //Client disconnesso all'improvviso
+            msgToReturn = serialize(new MexProva("SuddenlyClosedConnection"));
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -44,17 +51,15 @@ public class SocketConnection extends ConnectionInterface {
     }
 
     @Override
-    public void notifyClient(String msg)
+    protected void sendMsgToNetwork(String msg)
     {
-
-        System.out.println("SocketConnection:notifyClient()> msg="+msg);
 
         try {
             socketWriter.write(msg+"\n");
             socketWriter.flush();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Impossibile spedire il seguente messaggio : '"+msg+"'. Socket chiusa");
         }
 
 //        return;
@@ -68,6 +73,8 @@ public class SocketConnection extends ConnectionInterface {
 
     @Override
     public void close() {
+
+//        notifyModel();
         try {
             this.socketWriter.close();
             this.socketReader.close();

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31.server;
+package it.polimi.ingsw.ps31.networking;
 
 /**
  * Created by Francesco on 13/06/2017.
@@ -12,6 +12,12 @@ public class MexProva {
     }
 
     public String visit()
+    {
+        return this.state;
+    }
+
+    @Override
+    public String toString()
     {
         return this.state;
     }

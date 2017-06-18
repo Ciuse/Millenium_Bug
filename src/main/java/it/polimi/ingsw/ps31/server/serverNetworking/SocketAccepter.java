@@ -57,7 +57,7 @@ public class SocketAccepter{
         }
     }
 
-    public void acceptConnection(Socket clientSocket)
+    private synchronized void acceptConnection(Socket clientSocket)
     {
         if ( clientSocket == null )
             return;
@@ -67,19 +67,19 @@ public class SocketAccepter{
         //TODO: istruzione di test da cancellare
         System.out.println("Server> Connessione in ingresso. Deviata su porta "+clientSocket.getPort()+". Associazione del client in corso...");
 
-        ConnectionInterface connectionInterface;
+        ServerConnectionInterface serverConnectionInterface;
       //if ( chosenConnection.equals(ConnectionType.SOCKET) )
         try {
-            connectionInterface = new SocketConnection(clientSocket);
+            serverConnectionInterface = new ServerSocketConnection(clientSocket);
         } catch (IOException e) {
             e.printStackTrace();
             return;
         }
         //else
-      //  connectionInterface = new RMIConnection();
+      //  serverConnectionInterface = new RMIConnection();
 
         //aggiungo il client alla prima partita libera
-        matchTable.addPlayer(connectionInterface);
+        matchTable.addPlayer(serverConnectionInterface);
     }
 
     public void refuseConnection() {

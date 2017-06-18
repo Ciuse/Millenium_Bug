@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import it.polimi.ingsw.ps31.networking.ConnectionState;
 import it.polimi.ingsw.ps31.server.Match;
 
 import java.util.ArrayList;
@@ -12,13 +13,14 @@ import java.util.List;
  */
 class PlayerConnectionRow{
     private final PlayerId playerId;
-    private final ConnectionInterface connectionInterface;
+    private final ServerConnectionInterface serverConnectionInterface;
+    private boolean active = false;
 
     /* Constructor */
-    public PlayerConnectionRow(PlayerId playerId, ConnectionInterface connectionInterface)
+    public PlayerConnectionRow(PlayerId playerId, ServerConnectionInterface serverConnectionInterface)
     {
         this.playerId = playerId;
-        this.connectionInterface = connectionInterface;
+        this.serverConnectionInterface = serverConnectionInterface;
     }
 
     /* Getters */
@@ -27,9 +29,24 @@ class PlayerConnectionRow{
         return playerId;
     }
 
-    public ConnectionInterface getConnectionInterface()
+    public ServerConnectionInterface getServerConnectionInterface()
     {
-        return connectionInterface;
+        return serverConnectionInterface;
+    }
+
+    public void activate ()
+    {
+        this.active = true;
+    }
+
+    public void deactivate()
+    {
+        this.active = false;
+    }
+
+    public void setConnectionState(ConnectionState connectionState)
+    {
+        serverConnectionInterface.setConnectionState(connectionState);
     }
 }
 
@@ -44,7 +61,7 @@ public class PlayerTable {
     }
 
     /* Class Methods */
-    public void addPlayer(ConnectionInterface connectionInterface)
+    public void addPlayer(ServerConnectionInterface serverConnectionInterface)
     {
         if ( nextPlayerIdIndex == PlayerId.values().length )
         {
@@ -52,13 +69,13 @@ public class PlayerTable {
         }
 
         PlayerId playerId = PlayerId.values()[nextPlayerIdIndex];
-        PlayerConnectionRow newRow = new PlayerConnectionRow(playerId, connectionInterface);
+        PlayerConnectionRow newRow = new PlayerConnectionRow(playerId, serverConnectionInterface);
         this.playerConnectionRows.add(newRow);
 
         nextPlayerIdIndex++;
     }
 
-    public PlayerId connectionToPlayerId(ConnectionInterface connectionInterface)
+    public PlayerId connectionToPlayerId(ServerConnectionInterface serverConnectionInterface)
     {
         Iterator<PlayerConnectionRow> rowsItr = this.playerConnectionRows.iterator();
         PlayerConnectionRow currentRow;
@@ -66,26 +83,31 @@ public class PlayerTable {
         while (rowsItr.hasNext() && playerIdToReturn == null)
         {
             currentRow = rowsItr.next();
-            if( currentRow.getConnectionInterface().equals(connectionInterface) )
+            if( currentRow.getServerConnectionInterface().equals(serverConnectionInterface) )
                 playerIdToReturn = currentRow.getPlayerId();
         }
 
         return playerIdToReturn;
     }
 
-    public ConnectionInterface playerIdToConncetion(PlayerId playerId)
+    public ServerConnectionInterface playerIdToConnection(PlayerId playerId)
     {
         Iterator<PlayerConnectionRow> rowsItr = this.playerConnectionRows.iterator();
         PlayerConnectionRow currentRow;
-        ConnectionInterface connectionToReturn = null;
+        ServerConnectionInterface connectionToReturn = null;
         while (rowsItr.hasNext() && connectionToReturn == null)
         {
             currentRow = rowsItr.next();
             if( currentRow.getPlayerId().equals(playerId) )
-                connectionToReturn = currentRow.getConnectionInterface();
+                connectionToReturn = currentRow.getServerConnectionInterface();
         }
 
         return connectionToReturn;
+    }
+
+    public void setPlayerConnectionState(PlayerId playerId, ConnectionState connectionState)
+    {
+        playerIdToConnection(playerId).setConnectionState(connectionState);
     }
 
     public int size()
@@ -100,14 +122,14 @@ public class PlayerTable {
         System.out.println("Tabella della partita #"+match.getMatchId());
         System.out.println("========================");
         for(PlayerConnectionRow currentRow : playerConnectionRows)
-            System.out.println("Player "+currentRow.getPlayerId()+"\t : "+currentRow.getConnectionInterface().toString());
+            System.out.println("Player "+currentRow.getPlayerId()+"\t : "+currentRow.getServerConnectionInterface().toString());
 
         System.out.println("\n");
     }
 
     public void disconnect(PlayerId playerId)
     {
-        playerIdToConncetion(playerId).close();
+        playerIdToConnection(playerId).close();
     }
 
     public void disconnectAll()
