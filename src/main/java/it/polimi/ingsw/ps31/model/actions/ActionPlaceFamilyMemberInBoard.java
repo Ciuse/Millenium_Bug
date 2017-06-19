@@ -52,9 +52,14 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
                 this.actionSpace.addFamilyMember(familyMember);
                 super.player.setLastUsedFamilyMember(familyMember);
             }
-
+            super.setUsed(true);
             resetActionSpace();
             resetFamilyMember();
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Place FM Board";
     }
 }

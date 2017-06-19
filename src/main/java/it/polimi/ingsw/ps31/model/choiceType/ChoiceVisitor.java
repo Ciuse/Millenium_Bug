@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31.model.stateChoice;
+package it.polimi.ingsw.ps31.model.choiceType;
 
 /**
  * Created by Giuseppe on 15/06/2017.
@@ -10,4 +10,5 @@ public interface ChoiceVisitor {
     void visit(ChoiceActiveExcommunication choiceActiveExcommunication);
     void visit(ChoiceFamilyMember choiceFamilyMember);
     void visit(ChoiceActionSpace choiceActionSpace);
+    void visit(ChoiseActionToDo choiseActionToDo);
 }

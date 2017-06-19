@@ -1,15 +1,10 @@
 package it.polimi.ingsw.ps31.model.board;
 
-import it.polimi.ingsw.ps31.messageMV.MVUpdateState;
-import it.polimi.ingsw.ps31.messageMV.MVStringToPrint;
-import it.polimi.ingsw.ps31.model.Model;
-import it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction;
 import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
 import it.polimi.ingsw.ps31.model.gameResource.VictoryPoint;
-import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +12,7 @@ import java.util.List;
 /**
  * Created by Francesco on 12/05/2017.
  */
-public class GameBoard extends Model{
+public class GameBoard{
 
     private final static int TOWERNUMBER = 4;
     private List<Tower> towers= new ArrayList<>();
@@ -35,27 +30,8 @@ public class GameBoard extends Model{
     private EndActionButton endActionButton;
     private List<ExcommunicationTiles> excommunicationTilesList;
 
-    public GameBoard() {
-    }
-
-    public void add4PlayerMarketSpace(List<EffectList> otherEffectList) {
-        this.market.add4PlayerMarketSpace(otherEffectList.get(7), otherEffectList.get(8));
-    }
-
-    public void remove4PlayerMarketSpace() {
-        this.market.remove4PlayerActionSpace();
-    }
-
-    public void rollTheDice() {
-        for (int i = 0; i < dice.size(); i++) {
-            if (!dice.get(i).getColor().equals(DiceColor.NEUTRAL)) {
-                int randomValue = (int) (Math.random() * 6 + 1);
-                dice.get(i).setValue(randomValue);
-            }
-        }
-    }
-
-    public void initializateGameBoard(List<List<EffectList>> towerEffectList, List<EffectList> otherEffectList,VictoryPoint[] faithTrackExtraValue) {
+    public GameBoard(List<List<EffectList>> towerEffectList, List<EffectList> otherEffectList,VictoryPoint[] faithTrackExtraValue)
+    {
         //creazione torri
         CardColor[] towerColor = CardColor.values();
         for (int i = 0; i < TOWERNUMBER; i++) {
@@ -81,8 +57,27 @@ public class GameBoard extends Model{
         this.faithPointTrack = new FaithPointTrack();
         this.faithPointTrack.inizializationFaithTrack(faithTrackExtraValue);
         this.victoryPointTrack = new VictoryPointTrack();
-        this.endActionButton= new EndActionButton(false);
+        this.endActionButton = new EndActionButton(false);
     }
+
+    public void add4PlayerMarketSpace(List<EffectList> otherEffectList) {
+        this.market.add4PlayerMarketSpace(otherEffectList.get(7), otherEffectList.get(8));
+    }
+
+    public void remove4PlayerMarketSpace() {
+        this.market.remove4PlayerActionSpace();
+    }
+
+    public void rollTheDice() {
+        for (int i = 0; i < dice.size(); i++) {
+            if (!dice.get(i).getColor().equals(DiceColor.NEUTRAL)) {
+                int randomValue = (int) (Math.random() * 6 + 1);
+                dice.get(i).setValue(randomValue);
+            }
+        }
+    }
+
+
 
     public static int getTOWERNUMBER() {
         return TOWERNUMBER;
@@ -140,26 +135,10 @@ public class GameBoard extends Model{
         this.excommunicationTilesList = excommunicationTiles;
     }
 
+
+
     public EndActionButton getEndActionButton() {
         return endActionButton;
-    }
-
-    public void startActionTurn(Player player) {
-        String string1 = player.getPlayerId().toString()+": INIZIO FASE AZIONE";
-        notifyViews(new MVStringToPrint(null,true,string1));
-        List<String> actionList = new ArrayList<>();
-        actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInBoard().toString());
-        actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInTower().toString());
-        actionList.add(player.getPlayerActionSet().getActiveLeaderCard().toString());
-        if(this.getEndActionButton().getActive()){
-            actionList.add(player.getPlayerActionSet().getActiveEndButton().toString());
-        }
-        String string2 = player.getPlayerId().toString()+": Aggiornato Stato Azioni";
-        notifyViews(new MVUpdateState(string2,new StatePlayerAction(player.getPlayerId(),actionList)));
-    }
-
-    public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
-
     }
 
     public Dice getSpecificDice(DiceColor diceColor) {

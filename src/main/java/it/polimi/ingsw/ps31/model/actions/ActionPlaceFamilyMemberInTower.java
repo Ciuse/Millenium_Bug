@@ -56,10 +56,15 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
                if(immediateEffectsAreActivable)
                    towerActionSpace.activeEffectList(player);
            }
-
+           setUsed(true);
            resetActionSpace();
            resetFamilyMember();
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Place FM in Tower";
     }
 
     /* Modifiers */

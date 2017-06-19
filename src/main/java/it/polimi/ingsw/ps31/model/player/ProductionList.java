@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.model.player;
 
 import it.polimi.ingsw.ps31.messageMV.MVAskChoice;
-import it.polimi.ingsw.ps31.model.stateChoice.ChoiceActiveEffect;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.ProductionEffect;
 
 import java.util.List;

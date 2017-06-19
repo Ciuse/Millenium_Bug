@@ -13,6 +13,7 @@ import java.util.Map;
  * Created by Francesco on 26/05/2017.
  */
 public abstract class ActionPlaceFamilyMember extends Action{
+    private boolean used = false;
     protected FamilyMember familyMember = null;
     protected List<Integer> defaultDenyActionSpaces;
 
@@ -36,6 +37,14 @@ public abstract class ActionPlaceFamilyMember extends Action{
     public void resetFamilyMember()
     {
         this.familyMember = null;
+    }
+
+    public boolean isUsed() {
+        return used;
+    }
+
+    public void setUsed(boolean used) {
+        this.used = used;
     }
 
     /* Modifiers */

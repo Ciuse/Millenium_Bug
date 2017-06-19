@@ -248,8 +248,8 @@ public class Player {
     }
 
     public StatePlayerResources getStatePlayerResources(){
-        StatePlayerResources statePlayerResources = new StatePlayerResources(playerId, playerResources);
-        return statePlayerResources;
+        return new StatePlayerResources(playerId, playerResources);
+
     }
     public StateAllFamilyMember getStateAllFamilyMember(){
         List<StateFamilyMember> stateAllFamilyMembers = new ArrayList<>();
@@ -257,9 +257,27 @@ public class Player {
                 ) {
             stateAllFamilyMembers.add(familyMember.getStateFamilyMember());
         }
-        StateAllFamilyMember stateAllFamilyMember =new StateAllFamilyMember(stateAllFamilyMembers);
-        return stateAllFamilyMember;
+        return  new StateAllFamilyMember(stateAllFamilyMembers);
+
     }
+
+    public StatePlayerAction getStatePlayerAction() {
+        List<String> actionList = new ArrayList<>();
+        if(!playerActionSet.getPlaceFamilyMemberInBoard().isUsed()){
+        actionList.add(playerActionSet.getPlaceFamilyMemberInBoard().toString());
+        }
+        if(!playerActionSet.getPlaceFamilyMemberInBoard().isUsed()) {
+            actionList.add(playerActionSet.getPlaceFamilyMemberInTower().toString());
+        }
+        if(!playerActionSet.getActiveLeaderCard().isUsed()) {
+            actionList.add(playerActionSet.getActiveLeaderCard().toString());
+        }
+        if (playerActionSet.getActiveEndButton().isActive()) {
+            actionList.add(playerActionSet.getActiveEndButton().toString());
+        }
+        return new StatePlayerAction(playerId,actionList);
+    }
+
 
     /* Modifiers */
     public void fixFamilyMemberValue(DiceColor memberColor, int value){
@@ -313,4 +331,5 @@ public class Player {
         result = 31 * result + (finalBonusResources != null ? finalBonusResources.hashCode() : 0);
         return result;
     }
+
 }

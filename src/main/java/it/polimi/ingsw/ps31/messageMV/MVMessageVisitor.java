@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.messageMV;
 
 import it.polimi.ingsw.ps31.client.view.View;
-import it.polimi.ingsw.ps31.model.stateChoice.MVChoiceInfoVisitor;
+import it.polimi.ingsw.ps31.model.choiceType.MVChoiceInfoVisitor;
 import it.polimi.ingsw.ps31.model.stateModel.MVStateInfoVisitor;
 
 /**

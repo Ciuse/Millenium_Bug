@@ -67,6 +67,9 @@ public class PlayerActionSet {
     {
         return this.actionControlSet;
     }
+    public ActionGetTempResources getGetTempResources() {
+        return getTempResources;
+    }
 
     /* Class Methods */
     public void addFinalBonus(ResourceList resourceList){
@@ -133,19 +136,7 @@ public class PlayerActionSet {
         this.payResources.activate();
     }
 
-    public void payServants(DiceColor color, int servantsAmount)
-    {
-        this.payServants.setServantsAmount(servantsAmount);
-        this.payServants.setDiceColor(color);
-        this.payServants.activate();
-    }
-
     public void payTowerMoney()
-    {
-        this.payTowerMoney.activate();
-    }
-
-    public void payTowerMoney(int payAmount)
     {
         this.payTowerMoney.activate();
     }
@@ -247,5 +238,11 @@ public class PlayerActionSet {
 
     public ActionAddFinalBonus getAddFinalBonus() {
         return addFinalBonus;
+    }
+
+    public void resetUsedAction(){
+        this.getActiveLeaderCard().setUsed(false);
+        this.getPlaceFamilyMemberInBoard().setUsed(false);
+        this.getPlaceFamilyMemberInTower().setUsed(false);
     }
 }
