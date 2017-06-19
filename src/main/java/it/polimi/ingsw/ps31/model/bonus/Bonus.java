@@ -9,15 +9,19 @@ import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
  * Created by Giuseppe on 27/05/2017.
  */
 public abstract class Bonus implements BonusActivation  {
-    private final Action actionToModify;
 
-    protected Bonus(Action actionToModify) {
-        this.actionToModify = actionToModify;
-    }
+    protected Bonus() {}
+    protected Bonus(Action actionToModify) {}
 
-    public Action getActionToModify() {
-        return actionToModify;
-    }
+   // private final Action actionToModify;
+
+//    protected Bonus(Action actionToModify) {
+//        this.actionToModify = actionToModify;
+//    }
+
+//    public Action getActionToModify() {
+//        return actionToModify;
+//    }
 
     public CardColor getCardColor(){
         return null;

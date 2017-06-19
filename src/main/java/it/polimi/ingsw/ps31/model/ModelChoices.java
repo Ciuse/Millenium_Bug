@@ -17,6 +17,7 @@ public class ModelChoices extends Model {
     TowerCardSpace towerCardSpaceChosen=null;
     DevelopmentCard developmentCardChosen = null;
     boolean activeEffect = false;
+
     public synchronized int waitIntChosen(){
         while(intChosen==-1){
             try {

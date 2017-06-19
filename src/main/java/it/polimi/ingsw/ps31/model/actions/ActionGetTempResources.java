@@ -1,9 +1,12 @@
 package it.polimi.ingsw.ps31.model.actions;
 
+import com.sun.org.apache.regexp.internal.RE;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -11,6 +14,8 @@ import java.util.List;
  */
 public class ActionGetTempResources extends Action {
     private ResourceList resourcesTempToGet = null;
+    private ResourceList resourceBonus = new ResourceList();
+    private List<ResourceList> resourceBonusChoice = new ArrayList<>();
 
     /* Constructor */
     public ActionGetTempResources(Player player, ActionControlSet actionControlSet)
@@ -42,9 +47,27 @@ public class ActionGetTempResources extends Action {
             List<Resource> resourcesTempToGetList = this.resourcesTempToGet.getResourceList();
             for(Resource currentResource : resourcesTempToGetList)
             {
+                //Aggiungo i bonus alle risorse ottenute
+                //todo: da attivare sse le risorse provengono da carte sviluppo o spazi azione
+                //todo: attivare anche le scelte
+                Resource currentBonus = resourceBonus.getSpecificResource(currentResource.getClass());
+                if( currentBonus != null )
+                    currentResource.addValue(currentBonus.getValue());
+
                 currentResource.addTempResource(super.player);
             }
             this.resetResourcesTempToGet();
         }
+    }
+
+    /* Modifiers */
+    public void addResourceBonus (Resource resourceBonus)
+    {
+       this.resourceBonus.addSpecificResource(resourceBonus);
+    }
+
+    public void addResourceBonusChoice(ResourceList resourceBonusChoice)
+    {
+        this.resourceBonusChoice.add(resourceBonusChoice);
     }
 }

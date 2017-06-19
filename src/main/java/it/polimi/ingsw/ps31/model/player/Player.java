@@ -38,7 +38,6 @@ public class Player {
     private HarvestList harvestList;
     private ProductionList productionList;
     private List<ResourceList> finalBonusResources;
-    private BonusActivator bonusActivator;
 
     /* Constructor */
     public Player(PlayerColor playerColor, ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard,PersonalBonusTiles personalBonusTiles)
@@ -66,9 +65,6 @@ public class Player {
 
         //Instanzio un PlayerActionSet
         playerActionSet = new PlayerActionSet(this);
-
-        //Instanzio il bonusActivator
-        this.bonusActivator = new BonusActivator(playerActionSet, playerActionSet.getActionControlSet(), this);
 
         //Inizializzo lastUsedFamilyMember
         this.lastUsedFamilyMember = null;
@@ -120,10 +116,6 @@ public class Player {
 
     public void setLastUsedFamilyMember(FamilyMember lastUsedFamilyMember) {
         this.lastUsedFamilyMember = lastUsedFamilyMember;
-    }
-
-    public BonusActivator getBonusActivator() {
-        return bonusActivator;
     }
 
     public PlayerActionSet getPlayerActionSet() {
@@ -268,6 +260,12 @@ public class Player {
         StateAllFamilyMember stateAllFamilyMember =new StateAllFamilyMember(stateAllFamilyMembers);
         return stateAllFamilyMember;
     }
+
+    /* Modifiers */
+    public void fixFamilyMemberValue(DiceColor memberColor, int value){
+        this.getSpecificFamilyMember(memberColor).setFixedValue(value);
+    }
+
 
     @Override
     public boolean equals(Object o) {

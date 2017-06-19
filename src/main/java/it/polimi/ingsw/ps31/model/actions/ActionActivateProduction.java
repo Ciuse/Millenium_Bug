@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class ActionActivateProduction extends Action {
     private Integer diceValue = null;
+    private Integer diceBonus = 0;
 
     /* Constructor */
     public ActionActivateProduction(Player player, ActionControlSet actionControlSet) {
@@ -42,5 +43,11 @@ public class ActionActivateProduction extends Action {
             player.getProductionList().activate(this.diceValue);
 
         resetDiceValue();
+    }
+
+    /* Modifiers */
+    public void addDiceBonus(int diceBonus)
+    {
+        this.diceBonus += diceBonus;
     }
 }

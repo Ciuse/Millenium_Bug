@@ -3,6 +3,9 @@ package it.polimi.ingsw.ps31.model.actions;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
 import it.polimi.ingsw.ps31.model.player.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Francesco on 26/05/2017.
  */
@@ -38,10 +41,13 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
         {
             //TODO: gestire (eccezione?)
         } else
+        if (super.defaultDenyActionSpaces.contains(actionSpace.getActionSpaceId()))
+            return;
+        else
         {
             if (actionControlSet.placedFamilyMemberControl(familyMember)
-             && actionControlSet.occupiedActionSpaceControl(actionSpace)
-             && actionControlSet.diceValueVsDiceColorControl(actionSpace.getDiceCost(), familyMember.getDiceColor()))
+                    && actionControlSet.occupiedActionSpaceControl(actionSpace)
+                    && actionControlSet.diceValueVsDiceColorControl(actionSpace.getDiceCost(), familyMember.getDiceColor()))
             {
                 this.actionSpace.addFamilyMember(familyMember);
                 super.player.setLastUsedFamilyMember(familyMember);

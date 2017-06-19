@@ -20,6 +20,6 @@ public class ProductionBonus extends Bonus {
 
     @Override
     public void activate(Player player) {
-
+        player.getPlayerActionSet().getActivateProduction().addDiceBonus(value);
     }
 }

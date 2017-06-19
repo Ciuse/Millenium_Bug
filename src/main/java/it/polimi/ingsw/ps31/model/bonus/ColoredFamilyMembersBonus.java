@@ -8,12 +8,10 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class ColoredFamilyMembersBonus extends Bonus {
     private final int bonus; //riduzione del valore dei familiari colorati quando li piazzo su uno spazio azione(scomunica)
-    private final int modifyValueColoredFamilyMember;//(carta leader)i familiari colorati assumeranno un nuovo valore indipendentemente dal valore dei dadi
 
-    protected ColoredFamilyMembersBonus(Action actionToModify, int bonus, int modifyValueColoredFamilyMember) {
-        super(actionToModify);
+    protected ColoredFamilyMembersBonus(int bonus) {
+        super();
         this.bonus = bonus;
-        this.modifyValueColoredFamilyMember = modifyValueColoredFamilyMember;
     }
 
     @Override

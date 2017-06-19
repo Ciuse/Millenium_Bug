@@ -10,8 +10,8 @@ import it.polimi.ingsw.ps31.model.player.Player;
 public class CardDiscountBonus extends Bonus {
     private final int value;
     private final CardColor cardColor;
-    protected CardDiscountBonus(Action actionToModify, int value, CardColor cardColor) {
-        super(actionToModify);
+    protected CardDiscountBonus(int value, CardColor cardColor) {
+        super();
         this.value = value;
         this.cardColor = cardColor;
     }
@@ -26,6 +26,7 @@ public class CardDiscountBonus extends Bonus {
 
     @Override
     public void activate(Player player) {
+        player.getPlayerActionSet().getPlaceFamilyMemberInTower().addCardDiceBonus(cardColor, value);
 
     }
 }

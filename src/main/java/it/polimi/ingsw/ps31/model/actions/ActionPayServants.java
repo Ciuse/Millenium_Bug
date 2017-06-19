@@ -15,7 +15,7 @@ import java.util.List;
 public class ActionPayServants extends Action {
     private DiceColor diceColor = null;
     private Integer servantsAmount = null;
-    private int diceRisePerServant = 1;
+    private int servantsToPayPerUnitaryDiceValueArise = 1;
 
     public ActionPayServants(Player player, ActionControlSet actionControlSet) {
         super(player, actionControlSet);
@@ -63,7 +63,7 @@ public class ActionPayServants extends Action {
             {
                 //Eseguo fisicamente l'azione
                 player.subResources(servantsAsResource);
-                player.getSpecificFamilyMember(this.diceColor).addAdditionalValue(servantsAmount * diceRisePerServant);
+                player.getSpecificFamilyMember(this.diceColor).addAdditionalValue(Math.floorDiv(servantsAmount, servantsToPayPerUnitaryDiceValueArise));
             } else
             {
                 //TODO: eccezione?
@@ -72,4 +72,10 @@ public class ActionPayServants extends Action {
             resetServantsAmount();
         }
     }
+
+    public void setServantsPerDiceRise(int servantsToPayPerUnitaryDiceValueArise)
+    {
+        this.servantsToPayPerUnitaryDiceValueArise = servantsToPayPerUnitaryDiceValueArise;
+    }
 }
+

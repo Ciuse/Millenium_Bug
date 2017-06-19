@@ -11,8 +11,8 @@ public class ResourceBonus extends Bonus{
     private final Resource resourceToSub1;
     private final Resource resourceToSub2;
 
-    protected ResourceBonus(Action actionToModify, Resource resourceToSub1, Resource resourceToSub2) {
-        super(actionToModify);
+    protected ResourceBonus(Resource resourceToSub1, Resource resourceToSub2) {
+        super();
         this.resourceToSub1 = resourceToSub1;
         this.resourceToSub2 = resourceToSub2;
     }

@@ -16,7 +16,6 @@ public class ExtraFinalVictoryPointBonus extends Bonus {
         this.cardColor = cardColor;
     }
 
-    @Override
     public CardColor getCardColor(){
         return this.cardColor;
     }

@@ -8,17 +8,18 @@ import java.util.List;
 /**
  * Created by giulia on 16/06/2017.
  */
-public class CantPlaceInActionSpace extends Bonus{
+public class CanPlaceInOccupiedActionSpace extends Bonus {
     private List<Integer> actionSpaceIdList;
+//    private final int[] occupatedActionSpace;
 
     /* Constructor */
-    protected CantPlaceInActionSpace(List<Integer> actionSpaceIdList){
+    protected CanPlaceInOccupiedActionSpace(List<Integer> actionSpaceIdList){
         super();
         this.actionSpaceIdList = actionSpaceIdList;
     }
 
     @Override
     public void activate(Player player) {
-        player.getPlayerActionSet().getPlaceFamilyMemberInBoard().addDefaultDenyActionSpace(actionSpaceIdList);
+        player.getActionControlSet().getOccupiedActionSpaceControl().addDefaultAllowedActionSpace(actionSpaceIdList);
     }
 }

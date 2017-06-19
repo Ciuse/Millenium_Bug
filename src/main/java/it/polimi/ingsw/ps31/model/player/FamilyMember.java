@@ -14,6 +14,7 @@ public class FamilyMember {
     private int diceValue;
     private int additionalValue;
     private ActionSpace actionSpace;
+    private Integer fixedValue;
 
     /* Constructor */
     public FamilyMember(Player player, DiceColor diceColor)
@@ -23,6 +24,7 @@ public class FamilyMember {
         this.diceValue=0;
         this.additionalValue = 0;
         this.actionSpace = null;
+        this.fixedValue = null;
     }
 
     /* Setters & Getters */
@@ -59,7 +61,10 @@ public class FamilyMember {
 
     public int getTotalValue()
     {
-        return this.diceValue + this.additionalValue;
+        if( this.fixedValue == null )
+            return this.diceValue + this.additionalValue;
+        else
+            return this.fixedValue;
     }
 
     public ActionSpace getActionSpace()
@@ -89,5 +94,9 @@ public class FamilyMember {
             return stateFamilyMember;
         }
         else return new StateFamilyMember(player.getPlayerId(), player.getPlayerColor(), diceValue, additionalValue, diceColor, this.actionSpace.getActionSpaceId());
+     }
+
+     public void setFixedValue(int fixedValue){
+         this.fixedValue = fixedValue;
      }
 }

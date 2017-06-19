@@ -8,8 +8,9 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class HarvestBonus extends Bonus {
     private final int value;
-    protected HarvestBonus(Action actionToModify, int value) {
-        super(actionToModify);
+
+    protected HarvestBonus( int value) {
+        super();
         this.value = value;
     }
 
@@ -19,6 +20,6 @@ public class HarvestBonus extends Bonus {
 
     @Override
     public void activate(Player player) {
-
+        player.getPlayerActionSet().getActivateHarvest().addDiceBonus(value);
     }
 }

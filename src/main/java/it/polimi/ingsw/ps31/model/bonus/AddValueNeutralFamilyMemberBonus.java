@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps31.model.bonus;
 
 import it.polimi.ingsw.ps31.model.actions.Action;
+import it.polimi.ingsw.ps31.model.actions.ActionControlSet;
+import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
@@ -9,13 +11,14 @@ import it.polimi.ingsw.ps31.model.player.Player;
 public class AddValueNeutralFamilyMemberBonus extends Bonus {
     private final int bonusNeutralFamilyMember;
 
-    protected AddValueNeutralFamilyMemberBonus(Action actionToModify, int bonusNeutralFamilyMember) {
-        super(actionToModify);
+    protected AddValueNeutralFamilyMemberBonus(int bonusNeutralFamilyMember) {
+        super();
         this.bonusNeutralFamilyMember = bonusNeutralFamilyMember;
     }
 
     @Override
     public void activate(Player player) {
-
+        player.getActionControlSet().getDiceValueVsDiceColorControl().
+                addPermanentValueAtSpecificMember(DiceColor.NEUTRAL, bonusNeutralFamilyMember);
     }
 }
