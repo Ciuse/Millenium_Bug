@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.messageMV;
 
-import it.polimi.ingsw.ps31.model.StateChoice.ChoiceType;
+import it.polimi.ingsw.ps31.model.stateChoice.ChoiceType;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 /**

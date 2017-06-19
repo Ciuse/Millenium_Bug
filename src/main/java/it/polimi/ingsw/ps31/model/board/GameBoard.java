@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps31.model.board;
 import it.polimi.ingsw.ps31.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.model.Model;
-import it.polimi.ingsw.ps31.model.StateModel.StatePlayerAction;
+import it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction;
 import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;

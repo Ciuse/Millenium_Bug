@@ -21,7 +21,6 @@ public class ActionControlSet {
     private final DevelopmentCardRequirementsControl developmentCardRequirementsControl;
     private final DiceValueVsDiceColorControl diceValueVsDiceColorControl;
     private final DiceValueVsCardSpaceControl diceValueVsCardSpaceControl;
-
     private final OccupiedActionSpaceControl occupiedActionSpaceControl;
     private final PayResourceControl payResourceControl;
     private final PayResourceListControl payResourceListControl;
@@ -123,4 +122,55 @@ public class ActionControlSet {
         this.selfOccupiedTowerControl.setTower(tower);
         return this.selfOccupiedTowerControl.execute();
     }
+
+    /* Getters */
+    public DevelopmentCardRequirementsControl getDevelopmentCardRequirementsControl() {
+        return developmentCardRequirementsControl;
+    }
+
+    public DiceValueVsDiceColorControl getDiceValueVsDiceColorControl() {
+        return diceValueVsDiceColorControl;
+    }
+
+    public DiceValueVsCardSpaceControl getDiceValueVsCardSpaceControl() {
+        return diceValueVsCardSpaceControl;
+    }
+
+    public OccupiedActionSpaceControl getOccupiedActionSpaceControl() {
+        return occupiedActionSpaceControl;
+    }
+
+    public PayResourceControl getPayResourceControl() {
+        return payResourceControl;
+    }
+
+    public PayResourceListControl getPayResourceListControl() {
+        return payResourceListControl;
+    }
+
+    public PlacedFamilyMemberControl getPlacedFamilyMemberControl() {
+        return placedFamilyMemberControl;
+    }
+
+    public PlayerCardNumberControl getPlayerCardNumberControl() {
+        return playerCardNumberControl;
+    }
+
+    public ResourceRequirementsControl getResourceRequirementsControl() {
+        return resourceRequirementsControl;
+    }
+
+    public SelfOccupiedTowerControl getSelfOccupiedTowerControl() {
+        return selfOccupiedTowerControl;
+    }
+
+    public TakeDevelopmentCardControl getTakeDevelopmentCardControl() {
+        return takeDevelopmentCardControl;
+    }
+
+    public TowerPlacementControl getTowerPlacementControl() {
+        return towerPlacementControl;
+    }
+
+
 }

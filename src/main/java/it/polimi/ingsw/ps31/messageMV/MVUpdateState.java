@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.messageMV;
 
-import it.polimi.ingsw.ps31.model.StateModel.StateType;
+import it.polimi.ingsw.ps31.model.stateModel.StateType;
 
 /**
  * Created by Giuseppe on 06/06/2017.

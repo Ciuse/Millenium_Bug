@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.client.view;
 
-import it.polimi.ingsw.ps31.client.ClientNetworking.ClientNetworkInterface;
+import it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface;
 
 import java.io.BufferedReader;
 import java.io.IOException;

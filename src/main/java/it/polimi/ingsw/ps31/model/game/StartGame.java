@@ -1,11 +1,8 @@
 package it.polimi.ingsw.ps31.model.game;
 
 import com.google.gson.Gson;
-import it.polimi.ingsw.ps31.model.StateModel.StateGame;
+import it.polimi.ingsw.ps31.model.stateModel.StateGame;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
-import it.polimi.ingsw.ps31.model.board.MilitaryPointTrack;
-import it.polimi.ingsw.ps31.model.bonus.ExtraFinalVictoryPointBonus;
-import it.polimi.ingsw.ps31.model.bonus.LostFinalVictoryPointBonus;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;

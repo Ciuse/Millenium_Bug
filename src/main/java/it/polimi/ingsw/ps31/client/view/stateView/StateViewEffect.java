@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
-import it.polimi.ingsw.ps31.model.StateModel.StateEffect;
+import it.polimi.ingsw.ps31.model.stateModel.StateEffect;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 
 import java.util.List;

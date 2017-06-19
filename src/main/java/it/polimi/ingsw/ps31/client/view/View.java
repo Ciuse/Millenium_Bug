@@ -10,7 +10,7 @@ import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.messageMV.MVMessageVisitor;
 import it.polimi.ingsw.ps31.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messageVC.VCVisitable;
-import it.polimi.ingsw.ps31.model.StateModel.*;
+import it.polimi.ingsw.ps31.model.stateModel.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import java.io.IOException;

@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
-import it.polimi.ingsw.ps31.model.StateModel.StateMarkerDisc;
+import it.polimi.ingsw.ps31.model.stateModel.StateMarkerDisc;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 /**

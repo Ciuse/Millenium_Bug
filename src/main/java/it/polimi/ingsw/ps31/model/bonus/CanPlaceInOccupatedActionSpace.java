@@ -17,6 +17,6 @@ public class CanPlaceInOccupatedActionSpace extends Bonus {
 
     @Override
     public void activate(Player player) {
-
+//        player.getActionControlSet().occupiedActionSpaceControl().
     }
 }

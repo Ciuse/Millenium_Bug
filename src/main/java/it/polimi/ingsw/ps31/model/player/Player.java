@@ -1,9 +1,9 @@
 package it.polimi.ingsw.ps31.model.player;
 
-import it.polimi.ingsw.ps31.model.StateModel.StateAllFamilyMember;
-import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
-import it.polimi.ingsw.ps31.model.StateModel.StateTypePlayer;
-import it.polimi.ingsw.ps31.model.StateModel.StatePlayerResources;
+import it.polimi.ingsw.ps31.model.stateModel.StateAllFamilyMember;
+import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
+import it.polimi.ingsw.ps31.model.stateModel.StateTypePlayer;
+import it.polimi.ingsw.ps31.model.stateModel.StatePlayerResources;
 import it.polimi.ingsw.ps31.model.actions.ActionControlSet;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
@@ -38,6 +38,7 @@ public class Player {
     private HarvestList harvestList;
     private ProductionList productionList;
     private List<ResourceList> finalBonusResources;
+    private BonusActivator bonusActivator;
 
     /* Constructor */
     public Player(PlayerColor playerColor, ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard,PersonalBonusTiles personalBonusTiles)
@@ -66,6 +67,8 @@ public class Player {
         //Instanzio un PlayerActionSet
         playerActionSet = new PlayerActionSet(this);
 
+        //Instanzio il bonusActivator
+        this.bonusActivator = new BonusActivator(playerActionSet, playerActionSet.getActionControlSet(), this);
 
         //Inizializzo lastUsedFamilyMember
         this.lastUsedFamilyMember = null;
@@ -117,6 +120,10 @@ public class Player {
 
     public void setLastUsedFamilyMember(FamilyMember lastUsedFamilyMember) {
         this.lastUsedFamilyMember = lastUsedFamilyMember;
+    }
+
+    public BonusActivator getBonusActivator() {
+        return bonusActivator;
     }
 
     public PlayerActionSet getPlayerActionSet() {
