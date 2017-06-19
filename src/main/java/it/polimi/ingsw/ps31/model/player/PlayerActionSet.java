@@ -4,8 +4,8 @@ import it.polimi.ingsw.ps31.model.actions.*;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
 import it.polimi.ingsw.ps31.model.board.TowerActionSpace;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
+import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
-import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 
@@ -27,7 +27,8 @@ public class PlayerActionSet {
     private final ActionPlaceFamilyMemberInTower placeFamilyMemberInTower;
     private final ActionPlaceFamilyMemberInBoard placeFamilyMemberInBoard;
     private final ActionTakeCard takeCard;
-    private final ActiveLeaderCard activeLeaderCard;
+    private final ActionActiveLeaderCard actionActiveLeaderCard;
+    private final ActionDiscardLeaderCard discardLeaderCard;
     private final ActionGetFinalResources getFinalResources;
     private final ActionControlSet actionControlSet;
     private final ActionActiveEndButton activeEndButton;
@@ -51,7 +52,8 @@ public class PlayerActionSet {
         this.placeFamilyMemberInTower = new ActionPlaceFamilyMemberInTower(player, actionControlSet);
         this.placeFamilyMemberInBoard = new ActionPlaceFamilyMemberInBoard(player, actionControlSet);
         this.takeCard = new ActionTakeCard(player, actionControlSet);
-        this.activeLeaderCard = new ActiveLeaderCard(player, actionControlSet);
+        this.actionActiveLeaderCard = new ActionActiveLeaderCard(player, actionControlSet);
+        this.discardLeaderCard = new ActionDiscardLeaderCard(player, actionControlSet);
         this.getFinalResources = new ActionGetFinalResources(player, actionControlSet);
         this.activeEndButton= new ActionActiveEndButton(player, actionControlSet); //TODO IMPLEMENTARLO
         this.addFinalBonus= new ActionAddFinalBonus(player, actionControlSet); //TODO IMPLEMENTARE
@@ -73,7 +75,7 @@ public class PlayerActionSet {
 
     /* Class Methods */
     public void addFinalBonus(ResourceList resourceList){
-        //TODO SETTARE I PARAMETRI
+        this.addFinalBonus.setResourceList(resourceList);
         this.addFinalBonus.activate();
     }
     public void activateHarvest(int diceValue)
@@ -161,21 +163,21 @@ public class PlayerActionSet {
         this.getFinalResources.activate();
     }
 
-    public void addFinalVictoryPoints(ResourceList iouigdvxzlgfsjklsgfvl)
-    {
-        //TODO: aggiornare
-    }
-
     public void takeCard(TowerCardSpace towerCardSpace)
     {
         this.takeCard.setCardSpace(towerCardSpace);
         this.takeCard.activate();
     }
 
-    public void activeLeaderCard()
+    public void activeLeaderCard(LeaderCard leaderCard)
     {
-        //TODO: settare i parametri
-        this.activeLeaderCard.activate();
+        this.actionActiveLeaderCard.setLeaderCard(leaderCard);
+        this.actionActiveLeaderCard.activate();
+    }
+
+    public void discardLeaderCard(LeaderCard leaderCard){
+        this.discardLeaderCard.setLeaderCard(leaderCard);
+        this.discardLeaderCard.activate();
     }
 
     /*Getter*/
@@ -224,8 +226,8 @@ public class PlayerActionSet {
         return takeCard;
     }
 
-    public ActiveLeaderCard getActiveLeaderCard() {
-        return activeLeaderCard;
+    public ActionActiveLeaderCard getActionActiveLeaderCard() {
+        return actionActiveLeaderCard;
     }
 
     public ActionGetFinalResources getGetFinalResources() {
@@ -240,8 +242,9 @@ public class PlayerActionSet {
         return addFinalBonus;
     }
 
+
     public void resetUsedAction(){
-        this.getActiveLeaderCard().setUsed(false);
+        this.getActionActiveLeaderCard().setUsed(false);
         this.getPlaceFamilyMemberInBoard().setUsed(false);
         this.getPlaceFamilyMemberInTower().setUsed(false);
     }

@@ -11,4 +11,5 @@ public interface ChoiceVisitor {
     void visit(ChoiceFamilyMember choiceFamilyMember);
     void visit(ChoiceActionSpace choiceActionSpace);
     void visit(ChoiseActionToDo choiseActionToDo);
+    void visit(ChoiceLeaderCard choiceLeaderCard);
 }

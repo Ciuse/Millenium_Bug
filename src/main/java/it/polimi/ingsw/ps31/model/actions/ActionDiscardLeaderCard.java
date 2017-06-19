@@ -42,11 +42,11 @@ public class ActionDiscardLeaderCard extends Action {
         }
         else
         {
-            //segno la carta come scartata
-            this.leaderCard.discardLeaderCard();
-
+            player.removeLeaderCard(leaderCard);
             //attivo la ricompensa (1 privilegio del consiglio)
             player.getPlayerActionSet().getResources(new ResourceList(new CouncilPrivilege(1,false)));
         }
+
+        resetLeaderCard();
     }
 }

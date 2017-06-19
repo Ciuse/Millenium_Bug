@@ -60,8 +60,7 @@ public class ActionTakeCard extends Action {
             //eseguo i controlli
             if(this.actionControlSet.takeDevelopmentCardControl(this.towerCardSpace.getCard()))
             {
-                DevelopmentCard takenCard = this.towerCardSpace.takeCard();
-                super.player.addDevelopmentCard(takenCard);
+                super.player.addDevelopmentCard(this.towerCardSpace.takeCard());
             }else
             {
                 //todo eccezione

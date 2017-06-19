@@ -8,10 +8,7 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
-import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.CmdInterpreterView;
-import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrChooseColor;
-import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrString;
-import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrVisualization;
+import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.*;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
@@ -47,7 +44,7 @@ public class CmdLineView extends View {
 
     @Override
     public void askPlayerAction() {
-
+        this.setCmdInterpreterView(new IntrChoisePlayerAction());
     }
 
     public void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView) {
@@ -99,7 +96,8 @@ public class CmdLineView extends View {
 //                    if (in.equals(PlayerColor.YELLOW.name())) {
 //                        playerColor = PlayerColor.YELLOW;
 //                        ok = true;
-//                    } else {
+
+//                   } else {
 //                        if (in.equals(PlayerColor.RED.name())) {
 //                            playerColor = PlayerColor.RED;
 //                            ok = true;

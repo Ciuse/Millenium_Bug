@@ -42,7 +42,9 @@ public class GameLogic {
         gameUtility.setPersonalBoardRequirements(jsonObjectReadFromFile.getPointResourceRequired());
         gameUtility.setInitialPlayerResource(jsonObjectReadFromFile.getInitialResourcePlayer());
         gameUtility.setPersonalBonusTilesList(jsonObjectReadFromFile.getPersonalBonusTilesList());
-
+        gameUtility.setTimerAction(jsonObjectReadFromFile.getPlayerActionTimer());
+        gameUtility.setTimerConnection(jsonObjectReadFromFile.getPlayerConnectionTimer());
+        gameUtility.setLeaderCardList(jsonObjectReadFromFile.getLeaderCardList());
 
         GameBoard gameBoard = new GameBoard(jsonObjectReadFromFile.getTowerActionSpaceEffectList(), jsonObjectReadFromFile.getActionSpaceEffectList(), jsonObjectReadFromFile.getFaithTrackExtraValue());
         gameUtility.setGameBoard(gameBoard);

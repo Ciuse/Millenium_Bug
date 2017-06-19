@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.model.card.LeaderCard;
+import it.polimi.ingsw.ps31.model.stateModel.*;
 import it.polimi.ingsw.ps31.model.stateModel.StateAllFamilyMember;
 import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
 import it.polimi.ingsw.ps31.model.stateModel.StateTypePlayer;
@@ -38,6 +40,7 @@ public class Player {
     private HarvestList harvestList;
     private ProductionList productionList;
     private List<ResourceList> finalBonusResources;
+    private List<LeaderCard> leaderCardList;
 
     /* Constructor */
     public Player(PlayerColor playerColor, ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard,PersonalBonusTiles personalBonusTiles)
@@ -122,16 +125,13 @@ public class Player {
         return playerActionSet;
     }
 
-
     public HarvestList getHarvestList() {
         return harvestList;
     }
 
-
     public ProductionList getProductionList() {
         return productionList;
     }
-
 
     public List<ResourceList> getFinalBonusResources() {
         return new ArrayList<>(finalBonusResources);
@@ -201,6 +201,16 @@ public class Player {
         card.activeEffectList(this);
     }
 
+    public void addLeaderCard(LeaderCard leaderCard)
+    {
+        leaderCardList.add(leaderCard);
+    }
+
+    public void removeLeaderCard(LeaderCard leaderCard)
+    {
+        leaderCardList.remove(leaderCard);
+    }
+
     public void addFinalBonusResource(ResourceList bonusResourcesToAdd)
     {
         this.finalBonusResources.add(bonusResourcesToAdd);
@@ -251,6 +261,7 @@ public class Player {
         return new StatePlayerResources(playerId, playerResources);
 
     }
+
     public StateAllFamilyMember getStateAllFamilyMember(){
         List<StateFamilyMember> stateAllFamilyMembers = new ArrayList<>();
         for (FamilyMember familyMember :familyMembers
@@ -269,8 +280,8 @@ public class Player {
         if(!playerActionSet.getPlaceFamilyMemberInBoard().isUsed()) {
             actionList.add(playerActionSet.getPlaceFamilyMemberInTower().toString());
         }
-        if(!playerActionSet.getActiveLeaderCard().isUsed()) {
-            actionList.add(playerActionSet.getActiveLeaderCard().toString());
+        if(!playerActionSet.getActionActiveLeaderCard().isUsed()) {
+            actionList.add(playerActionSet.getActionActiveLeaderCard().toString());
         }
         if (playerActionSet.getActiveEndButton().isActive()) {
             actionList.add(playerActionSet.getActiveEndButton().toString());

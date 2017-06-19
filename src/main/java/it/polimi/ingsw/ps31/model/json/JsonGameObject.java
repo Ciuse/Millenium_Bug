@@ -30,6 +30,8 @@ public class JsonGameObject {
     private List<ResourceList> initialResourcePlayer;
     private List<ExcommunicationTiles> excommunicationTiles;
     private List<PersonalBonusTiles> personalBonusTilesList;
+    private long playerConnectionTimer;
+    private long playerActionTimer;
 
     public JsonGameObject() {
     }
@@ -199,5 +201,21 @@ public class JsonGameObject {
 
     public void setPersonalBonusTilesList(List<PersonalBonusTiles> personalBonusTilesList) {
         this.personalBonusTilesList = personalBonusTilesList;
+    }
+
+    public long getPlayerConnectionTimer() {
+        return playerConnectionTimer;
+    }
+
+    public void setPlayerConnectionTimer(long playerConnectionTimer) {
+        this.playerConnectionTimer = playerConnectionTimer;
+    }
+
+    public long getPlayerActionTimer() {
+        return playerActionTimer;
+    }
+
+    public void setPlayerActionTimer(long playerActionTimer) {
+        this.playerActionTimer = playerActionTimer;
     }
 }

@@ -4,15 +4,12 @@ import it.polimi.ingsw.ps31.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.ModelChoices;
+import it.polimi.ingsw.ps31.model.card.*;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
 import it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl;
 import it.polimi.ingsw.ps31.model.stateModel.StateGame;
 import it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
-import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
-import it.polimi.ingsw.ps31.model.card.DevelopmentCardDeck;
-import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
-import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
@@ -35,6 +32,7 @@ public class GameUtility extends ModelChoices {
     private VictoryPoint[] bonusVictoryPointFromMilitaryTrack;
     private VictoryPoint bonusVictoryPointFromPlayerResources;
     private DevelopmentCardList developmentCardList;
+    private List<LeaderCard> leaderCardList;
     private List<List<EffectList>>towerActionSpaceEffectList;
     private List<EffectList> actionSpaceEffectList;
     private VictoryPoint[] faithTrackExtraValue;
@@ -50,19 +48,19 @@ public class GameUtility extends ModelChoices {
     public void createDeck(){
         //creazione deck vuoti
         CardColor[] cardColors = CardColor.values();
-        for (int i = 0; i < cardColors.length; i++) {
+        for (CardColor cardColor : cardColors) {
             for (int period = 1; period <= 3; period++) {
-                deckList.add(new DevelopmentCardDeck(cardColors[i], period));
+                deckList.add(new DevelopmentCardDeck(cardColor, period));
             }
         }
         //riempimento dei deck in base al periodo e al colore delle carte
 
         for (int i = 0; i < developmentCardList.size(); i++) {
-            for (int j = 0; j < deckList.size(); j++) {
-                if (deckList.get(j).getCardListSize() < deckList.get(j).getMaxNumber()
-                        && developmentCardList.get(i).getCardColor().equals(deckList.get(j).getColor())
-                        && developmentCardList.get(i).getPeriod() == deckList.get(j).getPeriod()) {
-                    deckList.get(j).setCard(developmentCardList.get(i));
+            for (DevelopmentCardDeck aDeckList : deckList) {
+                if (aDeckList.getCardListSize() < aDeckList.getMaxNumber()
+                        && developmentCardList.get(i).getCardColor().equals(aDeckList.getColor())
+                        && developmentCardList.get(i).getPeriod() == aDeckList.getPeriod()) {
+                    aDeckList.setCard(developmentCardList.get(i));
                     break;
                 }
             }
@@ -181,6 +179,14 @@ public class GameUtility extends ModelChoices {
 
     public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
 
+    }
+
+    public void leaderCardSetup(){
+       Collections.shuffle(leaderCardList);
+        for (Player player:playerList
+             ) {
+
+        }
     }
 
     public Player createPlayer(String name, PlayerColor playerColor, List<ResourceList> listOfResourceList, List<PointResource[]>personalBoardRequirements, List<PersonalBonusTiles> personalBonusTilesList){
@@ -503,4 +509,31 @@ public class GameUtility extends ModelChoices {
         this.gameBoard = gameBoard;
     }
 
+    public long getTimerConnection() {
+        return timerConnection;
+    }
+
+    public void setTimerConnection(long timerConnection) {
+        this.timerConnection = timerConnection;
+    }
+
+    public long getTimerAction() {
+        return timerAction;
+    }
+
+    public void setTimerAction(long timerAction) {
+        this.timerAction = timerAction;
+    }
+
+    public void setPlayerList(List<Player> playerList) {
+        this.playerList = playerList;
+    }
+
+    public List<LeaderCard> getLeaderCardList() {
+        return leaderCardList;
+    }
+
+    public void setLeaderCardList(List<LeaderCard> leaderCardList) {
+        this.leaderCardList = leaderCardList;
+    }
 }

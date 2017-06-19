@@ -30,6 +30,8 @@ public class CreationJson {
         this.jsonGameObject.setPointResourceRequired(listOfRequirements());
         this.jsonGameObject.setInitialResourcePlayer(initialResourcePlayer());
         this.jsonGameObject.setPersonalBonusTilesList(createPersonalBonusTilesList());
+        this.jsonGameObject.setPlayerConnectionTimer(createPlayerConnectionTimer());
+        this.jsonGameObject.setPlayerActionTimer(createPlayerActionTimer());
 
         //this.jsonGameObject.setExcommunicationTilesTiles(createExcommunicationTiles); //TODO rimuovere commento
 
@@ -1320,6 +1322,14 @@ public class CreationJson {
         personalBonusTilesList.add(personalBonusTiles4);
 
         return personalBonusTilesList;
+    }
+    private long createPlayerActionTimer(){
+        long playerActionTimer=120000;
+        return playerActionTimer;
+    }
+    private long createPlayerConnectionTimer(){
+        long playerConnectionTimer=120000;
+        return playerConnectionTimer;
     }
 
     public JsonGameObject getJsonGameObject() {

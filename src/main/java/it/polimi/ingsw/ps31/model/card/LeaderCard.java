@@ -15,8 +15,9 @@ public class LeaderCard extends Card implements ActiveEffect {
     private final DevelopmentCardList developmentCardRequest;
     private final Effect abilityOneTimeForTurn;
     private final Effect permanentAbility;
-    private Boolean activated = false;
-    private Boolean discarded = false;
+    private boolean played = false;
+    private boolean usedEffect1 = false;
+    private boolean usedEffect2 = false;
 
     public LeaderCard(String name, ResourceList resourceRequest, DevelopmentCardList developmentCardRequest, Effect abilityOneTimeForTurn, Effect permanentAbility) {
         super(name);
@@ -51,52 +52,47 @@ public class LeaderCard extends Card implements ActiveEffect {
         return this.permanentAbility;
     }
 
-    public Boolean getActivated() {
-        return activated;
+    public boolean isPlayed() {
+        return played;
     }
 
-    public void activeLeaderCard(Player player) {
-        //se la carta non è attiva, controllo che il player soddisfi i requisiti di attivazione
-        if (this.activated == false)
-        {
-            if (developmentCardRequest.lessOrEquals(player.getPlayerCardList())
-                    && resourceRequest.lessOrEquals(player.getPlayerResources().getPlayerResourceList()))
-            {
-                this.activated = true;
-            } else
-            {
-                //TODO "NON HAI ABBASTANZA RISORSE"
-            }
-        }
-        //se la carta è attivata (perchè lo era prima o perchè è stata appena attivata) allor attivo anche l'effetto
-        if (this.activated == true)
-            this.activeEffectList(player);
+    public void setPlayed(boolean played) {
+        this.played = played;
     }
 
-    public void discardLeaderCard()
-    {
-        //Controllo che la carta non sia attivata (???)
-        if (this.activated)
-        {
-            //TODO: eccezione
-        }
-        else
-        {
-            this.discarded = true;
-        }
+    public boolean isUsedEffect1() {
+        return usedEffect1;
     }
+
+    public void setUsedEffect1(boolean usedEffect1) {
+        this.usedEffect1 = usedEffect1;
+    }
+
+    public boolean isUsedEffect2() {
+        return usedEffect2;
+    }
+
+    public void setUsedEffect2(boolean usedEffect2) {
+        this.usedEffect2 = usedEffect2;
+    }
+
 
     @Override
     public void activeEffectList(Player player) {
-        if(this.activated==true){
+        if(this.played ==true && usedEffect1 ==false){
             if(this.abilityOneTimeForTurn!=null){
                 this.abilityOneTimeForTurn.activate(player);
+                setUsedEffect1(true);
             }
-            if(this.abilityOneTimeForTurn!=null){
+            if(this.abilityOneTimeForTurn!=null && usedEffect2 == false){
                 this.permanentAbility.activate(player);
-
+                setUsedEffect2(true);
             }
         }
+    }
+
+    public void resetEffectLeaderCard(){
+      setUsedEffect1(false);
     }
 
     @Override
@@ -107,15 +103,16 @@ public class LeaderCard extends Card implements ActiveEffect {
 
         LeaderCard that = (LeaderCard) o;
 
+        if (played != that.played) return false;
+        if (usedEffect1 != that.usedEffect1) return false;
+        if (usedEffect2 != that.usedEffect2) return false;
         if (resourceRequest != null ? !resourceRequest.equals(that.resourceRequest) : that.resourceRequest != null)
             return false;
         if (developmentCardRequest != null ? !developmentCardRequest.equals(that.developmentCardRequest) : that.developmentCardRequest != null)
             return false;
         if (abilityOneTimeForTurn != null ? !abilityOneTimeForTurn.equals(that.abilityOneTimeForTurn) : that.abilityOneTimeForTurn != null)
             return false;
-        if (permanentAbility != null ? !permanentAbility.equals(that.permanentAbility) : that.permanentAbility != null)
-            return false;
-        return activated.equals(that.activated);
+        return permanentAbility != null ? permanentAbility.equals(that.permanentAbility) : that.permanentAbility == null;
     }
 
     @Override
@@ -125,7 +122,9 @@ public class LeaderCard extends Card implements ActiveEffect {
         result = 31 * result + (developmentCardRequest != null ? developmentCardRequest.hashCode() : 0);
         result = 31 * result + (abilityOneTimeForTurn != null ? abilityOneTimeForTurn.hashCode() : 0);
         result = 31 * result + (permanentAbility != null ? permanentAbility.hashCode() : 0);
-        result = 31 * result + activated.hashCode();
+        result = 31 * result + (played ? 1 : 0);
+        result = 31 * result + (usedEffect1 ? 1 : 0);
+        result = 31 * result + (usedEffect2 ? 1 : 0);
         return result;
     }
 }

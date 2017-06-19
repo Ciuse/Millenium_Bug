@@ -6,6 +6,7 @@ import it.polimi.ingsw.ps31.model.board.Tower;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
+import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
@@ -30,6 +31,7 @@ public class ActionControlSet {
     private final SelfOccupiedTowerControl selfOccupiedTowerControl;
     private final TakeDevelopmentCardControl takeDevelopmentCardControl;
     private final TowerPlacementControl towerPlacementControl;
+    private final LeaderCardRequirementControl leaderCardRequirementControl;
 
 
     /* Constructor */
@@ -47,6 +49,7 @@ public class ActionControlSet {
         this.selfOccupiedTowerControl= new SelfOccupiedTowerControl(player);
         this.developmentCardRequirementsControl = new DevelopmentCardRequirementsControl(player);
         this.takeDevelopmentCardControl = new TakeDevelopmentCardControl(player);
+        this.leaderCardRequirementControl= new LeaderCardRequirementControl(player);
     }
 
     /* Class Methods */
@@ -123,6 +126,10 @@ public class ActionControlSet {
         return this.selfOccupiedTowerControl.execute();
     }
 
+    public boolean leaderCardRequirementControl(LeaderCard leaderCard){
+        this.leaderCardRequirementControl.setLeaderCard(leaderCard);
+        return this.leaderCardRequirementControl.execute();
+    }
     /* Getters */
     public DevelopmentCardRequirementsControl getDevelopmentCardRequirementsControl() {
         return developmentCardRequirementsControl;
