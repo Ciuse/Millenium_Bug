@@ -1,8 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
-import it.polimi.ingsw.ps31.model.StateModel.StateActionSpace;
-import it.polimi.ingsw.ps31.model.StateModel.StateEffect;
-import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
+import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
+import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
 
 import java.util.ArrayList;
 import java.util.List;

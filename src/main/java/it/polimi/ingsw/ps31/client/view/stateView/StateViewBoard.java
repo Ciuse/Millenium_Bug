@@ -1,9 +1,8 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
-import it.polimi.ingsw.ps31.model.StateModel.StateActionSpace;
-import it.polimi.ingsw.ps31.model.StateModel.StateCardBox;
-import it.polimi.ingsw.ps31.model.StateModel.StateMarkerDisc;
-import it.polimi.ingsw.ps31.model.StateModel.StateTower;
+import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
+import it.polimi.ingsw.ps31.model.stateModel.StateCardBox;
+import it.polimi.ingsw.ps31.model.stateModel.StateTower;
 
 import java.util.ArrayList;
 import java.util.List;

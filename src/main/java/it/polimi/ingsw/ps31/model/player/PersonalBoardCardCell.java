@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.model.player;
 
-import it.polimi.ingsw.ps31.model.StateModel.StateCardBox;
+import it.polimi.ingsw.ps31.model.stateModel.StateCardBox;
 import it.polimi.ingsw.ps31.model.board.PhysicalCardBox;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.PointResource;

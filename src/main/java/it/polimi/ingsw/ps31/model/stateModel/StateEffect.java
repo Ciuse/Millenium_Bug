@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31.model.StateModel;
+package it.polimi.ingsw.ps31.model.stateModel;
 
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.effect.Effect;

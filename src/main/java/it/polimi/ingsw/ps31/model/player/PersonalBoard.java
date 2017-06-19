@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.model.player;
 
-import it.polimi.ingsw.ps31.model.StateModel.StateCardBox;
-import it.polimi.ingsw.ps31.model.StateModel.StatePersonalBoard;
+import it.polimi.ingsw.ps31.model.stateModel.StateCardBox;
+import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBoard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.constants.CardColor;

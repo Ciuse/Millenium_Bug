@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31.model.StateChoice;
+package it.polimi.ingsw.ps31.model.choiceType;
 
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrChoiseActiveEffect;
@@ -42,5 +42,10 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
     @Override
     public void visit(ChoiceActionSpace choiceActionSpace) {
 
+    }
+
+    @Override
+    public void visit(ChoiseActionToDo choiseActionToDo) {
+        view.askPlayerAction();
     }
 }

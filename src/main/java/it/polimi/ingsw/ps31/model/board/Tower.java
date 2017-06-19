@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.model.board;
 
-import it.polimi.ingsw.ps31.model.StateModel.StateCardBox;
-import it.polimi.ingsw.ps31.model.StateModel.StateTower;
+import it.polimi.ingsw.ps31.model.stateModel.StateCardBox;
+import it.polimi.ingsw.ps31.model.stateModel.StateTower;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.effect.EffectList;

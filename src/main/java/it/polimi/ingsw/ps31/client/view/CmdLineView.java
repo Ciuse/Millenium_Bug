@@ -44,6 +44,11 @@ public class CmdLineView extends View {
         super(viewId, stateViewBoard, stateViewPersonalBoard, stateViewPlayer, stateViewGame);
     }
 
+    @Override
+    public void askPlayerAction() {
+
+    }
+
     public void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView) {
         this.cmdInterpreterView = cmdInterpreterView;
     }

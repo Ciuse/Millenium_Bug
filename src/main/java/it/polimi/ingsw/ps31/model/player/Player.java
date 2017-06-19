@@ -1,9 +1,9 @@
 package it.polimi.ingsw.ps31.model.player;
 
-import it.polimi.ingsw.ps31.model.StateModel.StateAllFamilyMember;
-import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
-import it.polimi.ingsw.ps31.model.StateModel.StateTypePlayer;
-import it.polimi.ingsw.ps31.model.StateModel.StatePlayerResources;
+import it.polimi.ingsw.ps31.model.stateModel.StateAllFamilyMember;
+import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
+import it.polimi.ingsw.ps31.model.stateModel.StateTypePlayer;
+import it.polimi.ingsw.ps31.model.stateModel.StatePlayerResources;
 import it.polimi.ingsw.ps31.model.actions.ActionControlSet;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;

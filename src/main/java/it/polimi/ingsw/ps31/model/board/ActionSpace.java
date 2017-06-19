@@ -2,8 +2,8 @@ package it.polimi.ingsw.ps31.model.board;
 
 import it.polimi.ingsw.ps31.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.ModelChoices;
-import it.polimi.ingsw.ps31.model.StateModel.StateActionSpace;
-import it.polimi.ingsw.ps31.model.StateModel.StateFamilyMember;
+import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
+import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
 import it.polimi.ingsw.ps31.model.effect.ActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
 import it.polimi.ingsw.ps31.model.player.FamilyMember;

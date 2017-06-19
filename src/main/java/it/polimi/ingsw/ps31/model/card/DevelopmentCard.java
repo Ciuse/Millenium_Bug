@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.model.card;
 
-import it.polimi.ingsw.ps31.model.StateModel.StateDevelopmentCard;
-import it.polimi.ingsw.ps31.model.StateModel.StateEffect;
+import it.polimi.ingsw.ps31.model.stateModel.StateDevelopmentCard;
+import it.polimi.ingsw.ps31.model.stateModel.StateEffect;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.effect.ActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.Effect;

@@ -1,15 +1,10 @@
 package it.polimi.ingsw.ps31.model.board;
 
-import it.polimi.ingsw.ps31.messageMV.MVUpdateState;
-import it.polimi.ingsw.ps31.messageMV.MVStringToPrint;
-import it.polimi.ingsw.ps31.model.Model;
-import it.polimi.ingsw.ps31.model.StateModel.StatePlayerAction;
 import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
 import it.polimi.ingsw.ps31.model.gameResource.VictoryPoint;
-import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +12,7 @@ import java.util.List;
 /**
  * Created by Francesco on 12/05/2017.
  */
-public class GameBoard extends Model{
+public class GameBoard{
 
     private final static int TOWERNUMBER = 4;
     private List<Tower> towers= new ArrayList<>();
@@ -140,26 +135,10 @@ public class GameBoard extends Model{
         this.excommunicationTilesList = excommunicationTiles;
     }
 
+
+
     public EndActionButton getEndActionButton() {
         return endActionButton;
-    }
-
-    public void startActionTurn(Player player) {
-        String string1 = player.getPlayerId().toString()+": INIZIO FASE AZIONE";
-        notifyViews(new MVStringToPrint(null,true,string1));
-        List<String> actionList = new ArrayList<>();
-        actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInBoard().toString());
-        actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInTower().toString());
-        actionList.add(player.getPlayerActionSet().getActiveLeaderCard().toString());
-        if(this.getEndActionButton().getActive()){
-            actionList.add(player.getPlayerActionSet().getActiveEndButton().toString());
-        }
-        String string2 = player.getPlayerId().toString()+": Aggiornato Stato Azioni";
-        notifyViews(new MVUpdateState(string2,new StatePlayerAction(player.getPlayerId(),actionList)));
-    }
-
-    public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
-
     }
 
     public Dice getSpecificDice(DiceColor diceColor) {
