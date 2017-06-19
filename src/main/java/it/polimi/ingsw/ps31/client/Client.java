@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.client;
 
-import it.polimi.ingsw.ps31.client.ClientNetworking.ClientSocketConnection;
+import it.polimi.ingsw.ps31.client.clientNetworking.ClientSocketConnection;
 import it.polimi.ingsw.ps31.client.view.ViewProva;
 
 import java.io.IOException;

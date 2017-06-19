@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31.client.ClientNetworking;
+package it.polimi.ingsw.ps31.client.clientNetworking;
 
 /**
  * Created by Francesco on 10/06/2017.

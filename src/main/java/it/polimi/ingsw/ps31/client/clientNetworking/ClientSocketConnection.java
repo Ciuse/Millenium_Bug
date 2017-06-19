@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31.client.ClientNetworking;
+package it.polimi.ingsw.ps31.client.clientNetworking;
 
 import com.google.gson.Gson;
 import it.polimi.ingsw.ps31.server.MexProva;

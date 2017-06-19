@@ -38,6 +38,7 @@ public class Player {
     private HarvestList harvestList;
     private ProductionList productionList;
     private List<ResourceList> finalBonusResources;
+    private BonusActivator bonusActivator;
 
     /* Constructor */
     public Player(PlayerColor playerColor, ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard,PersonalBonusTiles personalBonusTiles)
@@ -66,6 +67,8 @@ public class Player {
         //Instanzio un PlayerActionSet
         playerActionSet = new PlayerActionSet(this);
 
+        //Instanzio il bonusActivator
+        this.bonusActivator = new BonusActivator(playerActionSet, playerActionSet.getActionControlSet(), this);
 
         //Inizializzo lastUsedFamilyMember
         this.lastUsedFamilyMember = null;
@@ -117,6 +120,10 @@ public class Player {
 
     public void setLastUsedFamilyMember(FamilyMember lastUsedFamilyMember) {
         this.lastUsedFamilyMember = lastUsedFamilyMember;
+    }
+
+    public BonusActivator getBonusActivator() {
+        return bonusActivator;
     }
 
     public PlayerActionSet getPlayerActionSet() {
