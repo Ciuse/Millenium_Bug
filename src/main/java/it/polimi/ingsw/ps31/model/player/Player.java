@@ -1,9 +1,6 @@
 package it.polimi.ingsw.ps31.model.player;
 
-import it.polimi.ingsw.ps31.model.stateModel.StateAllFamilyMember;
-import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
-import it.polimi.ingsw.ps31.model.stateModel.StateTypePlayer;
-import it.polimi.ingsw.ps31.model.stateModel.StatePlayerResources;
+import it.polimi.ingsw.ps31.model.stateModel.*;
 import it.polimi.ingsw.ps31.model.actions.ActionControlSet;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
@@ -18,6 +15,8 @@ import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import static sun.audio.AudioPlayer.player;
 
 /**
  * Created by giulia on 15/05/2017.
@@ -256,8 +255,8 @@ public class Player {
     }
 
     public StatePlayerResources getStatePlayerResources(){
-        StatePlayerResources statePlayerResources = new StatePlayerResources(playerId, playerResources);
-        return statePlayerResources;
+        return new StatePlayerResources(playerId, playerResources);
+
     }
     public StateAllFamilyMember getStateAllFamilyMember(){
         List<StateFamilyMember> stateAllFamilyMembers = new ArrayList<>();
@@ -265,9 +264,27 @@ public class Player {
                 ) {
             stateAllFamilyMembers.add(familyMember.getStateFamilyMember());
         }
-        StateAllFamilyMember stateAllFamilyMember =new StateAllFamilyMember(stateAllFamilyMembers);
-        return stateAllFamilyMember;
+        return  new StateAllFamilyMember(stateAllFamilyMembers);
+
     }
+
+    public StatePlayerAction getStatePlayerAction() {
+        List<String> actionList = new ArrayList<>();
+        if(!playerActionSet.getPlaceFamilyMemberInBoard().isUsed()){
+        actionList.add(playerActionSet.getPlaceFamilyMemberInBoard().toString());
+        }
+        if(!playerActionSet.getPlaceFamilyMemberInBoard().isUsed()) {
+            actionList.add(playerActionSet.getPlaceFamilyMemberInTower().toString());
+        }
+        if(!playerActionSet.getActiveLeaderCard().isUsed()) {
+            actionList.add(playerActionSet.getActiveLeaderCard().toString());
+        }
+        if (playerActionSet.getActiveEndButton().isActive()) {
+            actionList.add(playerActionSet.getActiveEndButton().toString());
+        }
+        return new StatePlayerAction(playerId,actionList);
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -315,4 +332,5 @@ public class Player {
         result = 31 * result + (finalBonusResources != null ? finalBonusResources.hashCode() : 0);
         return result;
     }
+
 }

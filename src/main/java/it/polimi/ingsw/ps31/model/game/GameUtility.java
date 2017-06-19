@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps31.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.ModelChoices;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
+import it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl;
 import it.polimi.ingsw.ps31.model.stateModel.StateGame;
 import it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
@@ -167,19 +168,13 @@ public class GameUtility extends ModelChoices {
     public void startActionTurn(Player player) {
         String string1 = player.getPlayerId().toString()+": INIZIO FASE AZIONE";
         notifyViews(new MVStringToPrint(null,true,string1));
-        List<String> actionList = new ArrayList<>();
-        actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInBoard().toString());
-        actionList.add(player.getPlayerActionSet().getPlaceFamilyMemberInTower().toString());
-        actionList.add(player.getPlayerActionSet().getActiveLeaderCard().toString());
-        if(player.getPlayerActionSet().getActiveEndButton().isActive()){
-            actionList.add(player.getPlayerActionSet().getActiveEndButton().toString());
-        }
         String string2 = player.getPlayerId().toString()+": Aggiornato Stato Azioni";
-        notifyViews(new MVUpdateState(string2,new StatePlayerAction(player.getPlayerId(),actionList)));
+        notifyViews(new MVUpdateState(string2,player.getStatePlayerAction()));
     }
 
     public void doActionTurn(Player player){
         this.createTimerAction();
+        super.getLastModelStateForControl().setStateForControl(player.getStatePlayerAction());
         String string = player.getNickname()+": Scegli l'azione";
         notifyViews(new MVAskChoice(player.getPlayerId(),string, new ChoiseActionToDo()));
     }

@@ -45,7 +45,7 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
                this.towerActionSpace.addFamilyMember(familyMember); //TODO: chi attiva gli effetti??
                player.setLastUsedFamilyMember(familyMember);
            }
-
+           setUsed(true);
            resetActionSpace();
            resetFamilyMember();
         }

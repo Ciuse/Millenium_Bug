@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
  * Created by Francesco on 26/05/2017.
  */
 public abstract class ActionPlaceFamilyMember extends Action{
+    private boolean used = false;
     protected FamilyMember familyMember = null;
 
     /* Constructor */
@@ -28,5 +29,13 @@ public abstract class ActionPlaceFamilyMember extends Action{
     public void resetFamilyMember()
     {
         this.familyMember = null;
+    }
+
+    public boolean isUsed() {
+        return used;
+    }
+
+    public void setUsed(boolean used) {
+        this.used = used;
     }
 }

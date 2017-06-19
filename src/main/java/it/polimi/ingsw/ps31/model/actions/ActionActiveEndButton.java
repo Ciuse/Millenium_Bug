@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class ActionActiveEndButton extends Action {
     private boolean active =false;
+    private boolean used = false;
     //TODO IMPLEMENTARE
 
     public ActionActiveEndButton(Player player, ActionControlSet actionControlSet) {
@@ -24,5 +25,9 @@ public class ActionActiveEndButton extends Action {
     @Override
     public String toString() {
         return "End Turn";
+    }
+
+    public boolean isUsed() {
+        return used;
     }
 }
