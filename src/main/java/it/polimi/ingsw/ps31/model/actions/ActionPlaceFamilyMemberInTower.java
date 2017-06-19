@@ -50,4 +50,9 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
            resetFamilyMember();
         }
     }
+
+    @Override
+    public String toString() {
+        return "Place FM in Tower";
+    }
 }

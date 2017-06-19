@@ -27,7 +27,6 @@ public abstract class View extends Observable implements Observer {
     private final List<StateViewPlayer> stateViewPlayerList;
     private final List<StateViewPersonalBoard> stateViewPersonalBoardList;
     private final StateViewGame stateViewGame;
-    private IntrVisualization stateInterpreterView;
 
 
     public View(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoardList, List<StateViewPlayer> stateViewPlayerList, StateViewGame stateViewGame) {
@@ -37,6 +36,7 @@ public abstract class View extends Observable implements Observer {
         this.stateViewPlayerList = stateViewPlayerList;
         this.stateViewGame = stateViewGame;
     }
+
     public void addController(Controller controller){
         this.addObserver(controller);
     }
@@ -64,11 +64,6 @@ public abstract class View extends Observable implements Observer {
     }
 
     public abstract void askPlayerAction();
-    public abstract void askPlayer();
-
-    public abstract void inserisciNome();
-
-    public abstract void inserisciColore();
 
     public abstract void askComand() throws IOException;
 
@@ -77,8 +72,8 @@ public abstract class View extends Observable implements Observer {
                 ) {
             if(viewPlayer.getPlayerId().equals(stateInfoPlayer.getPlayerId()))
             viewPlayer.updateState(stateInfoPlayer);
-
         }
+        printAllPlayer();
     }
 
     public final void updatePlayerResources(StatePlayerResources statePlayerResources){
@@ -86,8 +81,8 @@ public abstract class View extends Observable implements Observer {
                 ) {
             if(viewPlayer.getPlayerId().equals(statePlayerResources.getPlayerId()))
             viewPlayer.updateState(statePlayerResources);
-
         }
+        printPlayerInAction();
     }
 
     public final void updateAllFamilyMember(StateAllFamilyMember stateAllFamilyMember){
@@ -95,7 +90,6 @@ public abstract class View extends Observable implements Observer {
                 ) {
             if(viewPlayer.getPlayerId().equals(stateAllFamilyMember.getIdFamilyMemberList()))
                 viewPlayer.updateState(stateAllFamilyMember);
-
         }
     }
 
@@ -104,8 +98,8 @@ public abstract class View extends Observable implements Observer {
                 ) {
             if(viewPlayer.getPlayerId().equals(stateFamilyMember.getPlayerId()))
             viewPlayer.updateState(stateFamilyMember);
-
         }
+        printFamilyMemberInAction();
     }
 
     public final void updatePersonalBoard(StatePersonalBoard statePersonalBoard){
@@ -114,6 +108,7 @@ public abstract class View extends Observable implements Observer {
             if(statePersonalBoard.getPlayerId().equals(viewPersonalBoard.getPlayerId()))
                 viewPersonalBoard.updateState(statePersonalBoard);
         }
+        printAllPersonalBoard();
     }
 
     public final void updateCardBox(StateCardBox stateCardBox){
@@ -122,14 +117,17 @@ public abstract class View extends Observable implements Observer {
             if(viewPersonalBoard.getPlayerId().equals(stateCardBox.getPlayerId()))
                 viewPersonalBoard.updateState(stateCardBox);
         }
+        printPersonalBoardInAction();
     }
 
     public final void updateActionSpace(StateActionSpace stateActionSpace){
                 stateViewBoard.updateState(stateActionSpace);
+                printBoardActionSpace();
     }
 
     public final void updateTower(StateTower stateTower){
         stateViewBoard.updateState(stateTower);
+        printTower();
     }
 
     public final void updateMarkerDisc(StateMarkerDisc stateMarkerDisc) {
@@ -147,11 +145,13 @@ public abstract class View extends Observable implements Observer {
              if(viewPlayer.getPlayerId().equals(statePlayerAction.getPlayerId()))
              viewPlayer.updateState(statePlayerAction);
          }
+         printPlayerAction();
     }
-
 
     public final void updateGame(StateGame stateGame){
         stateViewGame.updateState(stateGame);
+        printAllPlayer();
+        printAllPersonalBoard();
     }
 
     public final void updateDevelopmentCard(StateDevelopmentCard stateDevelopmentCard){
@@ -166,15 +166,17 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void printLastEvent(String string);
 
-    public abstract void printMyPlayer();
+    public abstract void printPlayerInAction();
 
     public abstract void printAllPlayer();
 
-    public abstract void printMyPersonalBoard();
+    public abstract void printPlayerAction();
+
+    public abstract void printPersonalBoardInAction();
 
     public abstract void printAllPersonalBoard();
 
-    public abstract void printMyFamilyMember();
+    public abstract void printFamilyMemberInAction();
 
     public abstract void printBoardActionSpace();
 

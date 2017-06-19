@@ -18,6 +18,7 @@ import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
+import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.io.IOException;
 import java.util.List;
@@ -53,15 +54,6 @@ public class CmdLineView extends View {
         this.cmdInterpreterView = cmdInterpreterView;
     }
 
-    public void askPlayer(){
-
-    }
-
-    @Override
-    public void inserisciNome() {
-        this.setCmdInterpreterView(new IntrString());
-    }
-
     @Override
     public void runTerminal() throws IOException {
         defaultTerminalFactory.setInitialTerminalSize(terminalSize);
@@ -74,7 +66,6 @@ public class CmdLineView extends View {
 
     }
 
-    @Override
     public void inserisciColore() {
 
         try {
@@ -200,7 +191,7 @@ public class CmdLineView extends View {
     }
 
     @Override
-    public void printMyPlayer(){
+    public void printPlayerInAction(){
         for (StateViewPlayer player:super.getStateViewPlayerList()
                 ) {
           //  if(super.getViewId().equals(player.getPlayerId())){
@@ -238,8 +229,24 @@ public class CmdLineView extends View {
         }
     }
 
+    public void printPlayerAction(){
+        for (StateViewPlayer player:super.getStateViewPlayerList()
+                ) {
+            //  if(super.getViewId().equals(player.getPlayerId())){
+            if(super.getStateViewGame().getPlayerIdInACtion().equals(player.getPlayerId())){
+                TerminalPosition labelBoxTopLeft = new TerminalPosition(60,11);
+                printPlayerAction(player,labelBoxTopLeft);
+            }
+        }
+        try {
+            screen.refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
-    public void printMyPersonalBoard(){
+    public void printPersonalBoardInAction(){
         for (StateViewPersonalBoard personalBoard:super.getStateViewPersonalBoardList()
             ) {
        // if(super.getViewId().equals(personalBoard.getPlayerId())){
@@ -277,7 +284,7 @@ public class CmdLineView extends View {
     }
 
     @Override
-    public void printMyFamilyMember(){
+    public void printFamilyMemberInAction(){
         for (StateViewPlayer player:super.getStateViewPlayerList()
                 ) {
             //  if(super.getViewId().equals(player.getPlayerId())){
@@ -352,6 +359,7 @@ public class CmdLineView extends View {
             e.printStackTrace();
         }
     }
+    
     @Override
     public void printDevelopmentCard(int cardId){
         TerminalSize cardBox = new TerminalSize(31, 21);
@@ -417,6 +425,7 @@ public class CmdLineView extends View {
             e.printStackTrace();
         }
     }
+    
 
     private void printTowerCardBox(CardColor towerColor, int towerFloor){
         int i=0;
@@ -823,6 +832,20 @@ public class CmdLineView extends View {
             if(familyMember.getActionSpaceId()!=1){
 
             }
+    }
+    
+    private void printPlayerAction(StateViewPlayer player, TerminalPosition labelBoxTopLeft){
+
+        int i=0;
+        textGraphics.putString(labelBoxTopLeft.withRelative(0, 1+i),"Player Action:");
+        i++;
+        for (String action: player.getStringPlayerAction()
+             ) {
+            String string=valueOf(i)+":";
+            textGraphics.putString(labelBoxTopLeft.withRelative(0, 1+i),string);
+            textGraphics.putString(labelBoxTopLeft.withRelative(0+string.length(), 1+i),action);
+            i++;
+        }
     }
 
     private TextCharacter getPlayerColorCharatcter(TerminalPosition labelBoxTopLeft, PlayerColor playerColor) {

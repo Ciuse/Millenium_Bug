@@ -51,4 +51,9 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
             resetFamilyMember();
         }
     }
+
+    @Override
+    public String toString() {
+        return "Place FM Board";
+    }
 }

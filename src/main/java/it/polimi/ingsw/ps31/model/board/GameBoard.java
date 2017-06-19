@@ -30,27 +30,8 @@ public class GameBoard{
     private EndActionButton endActionButton;
     private List<ExcommunicationTiles> excommunicationTilesList;
 
-    public GameBoard() {
-    }
-
-    public void add4PlayerMarketSpace(List<EffectList> otherEffectList) {
-        this.market.add4PlayerMarketSpace(otherEffectList.get(7), otherEffectList.get(8));
-    }
-
-    public void remove4PlayerMarketSpace() {
-        this.market.remove4PlayerActionSpace();
-    }
-
-    public void rollTheDice() {
-        for (int i = 0; i < dice.size(); i++) {
-            if (!dice.get(i).getColor().equals(DiceColor.NEUTRAL)) {
-                int randomValue = (int) (Math.random() * 6 + 1);
-                dice.get(i).setValue(randomValue);
-            }
-        }
-    }
-
-    public void initializateGameBoard(List<List<EffectList>> towerEffectList, List<EffectList> otherEffectList,VictoryPoint[] faithTrackExtraValue) {
+    public GameBoard(List<List<EffectList>> towerEffectList, List<EffectList> otherEffectList,VictoryPoint[] faithTrackExtraValue)
+    {
         //creazione torri
         CardColor[] towerColor = CardColor.values();
         for (int i = 0; i < TOWERNUMBER; i++) {
@@ -76,8 +57,27 @@ public class GameBoard{
         this.faithPointTrack = new FaithPointTrack();
         this.faithPointTrack.inizializationFaithTrack(faithTrackExtraValue);
         this.victoryPointTrack = new VictoryPointTrack();
-        this.endActionButton= new EndActionButton(false);
+        this.endActionButton = new EndActionButton(false);
     }
+
+    public void add4PlayerMarketSpace(List<EffectList> otherEffectList) {
+        this.market.add4PlayerMarketSpace(otherEffectList.get(7), otherEffectList.get(8));
+    }
+
+    public void remove4PlayerMarketSpace() {
+        this.market.remove4PlayerActionSpace();
+    }
+
+    public void rollTheDice() {
+        for (int i = 0; i < dice.size(); i++) {
+            if (!dice.get(i).getColor().equals(DiceColor.NEUTRAL)) {
+                int randomValue = (int) (Math.random() * 6 + 1);
+                dice.get(i).setValue(randomValue);
+            }
+        }
+    }
+
+
 
     public static int getTOWERNUMBER() {
         return TOWERNUMBER;

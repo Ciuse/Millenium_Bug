@@ -20,4 +20,9 @@ public class ActionActiveEndButton extends Action {
     @Override
     public void activate() {
     }
+
+    @Override
+    public String toString() {
+        return "End Turn";
+    }
 }

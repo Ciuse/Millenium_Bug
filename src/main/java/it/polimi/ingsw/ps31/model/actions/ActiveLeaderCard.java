@@ -17,4 +17,9 @@ public class ActiveLeaderCard extends Action {
     public void activate() {
         //leaderCard.activeLeaderCard(player); TODO FARE ALTRO? e settera/usare il parametro (se serve)
      }
+
+    @Override
+    public String toString() {
+        return "Active Leader";
+    }
 }
