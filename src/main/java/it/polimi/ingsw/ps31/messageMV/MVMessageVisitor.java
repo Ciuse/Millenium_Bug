@@ -16,12 +16,12 @@ public class MVMessageVisitor implements MVVisitor {
 
     @Override
     public void visit(MVStringToPrint mvStringToPrint) {
-        view.printLastEvent(mvStringToPrint.getStringToPrint());
+        view.printLastEvent(mvStringToPrint.getStringToPrint()+" ");
     }
 
     @Override
     public void visit(MVUpdateState mvUpdateState) {
-        view.printLastEvent(mvUpdateState.getStringToPrint());
+        view.printLastEvent(mvUpdateState.getStringToPrint()+" ");
         MVStateInfoVisitor mvStateInfoVisitor =new MVStateInfoVisitor();
         mvStateInfoVisitor.setView(view);
         mvUpdateState.getStateType().acceptState(mvStateInfoVisitor);
@@ -29,7 +29,7 @@ public class MVMessageVisitor implements MVVisitor {
 
     @Override
     public void visit(MVAskChoice mvAskChoice) {
-        view.printLastEvent(mvAskChoice.getStringToPrint());
+        view.printLastEvent(mvAskChoice.getStringToPrint()+" ");
         MVChoiceInfoVisitor mvChoiceInfoVisitor=new MVChoiceInfoVisitor();
         mvChoiceInfoVisitor.setView(view);
         mvAskChoice.getChoiceType().acceptChoice(mvChoiceInfoVisitor);

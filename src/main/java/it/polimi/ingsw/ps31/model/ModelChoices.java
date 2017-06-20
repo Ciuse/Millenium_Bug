@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.effect.Effect;
 import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl;
+import it.polimi.ingsw.ps31.model.stateModel.TempModelStateForLeaderChoice;
 
 import java.util.Observer;
 
@@ -26,10 +27,12 @@ public class ModelChoices extends Model {
     private PlayerColor playerColorChosen=null;
     private LeaderCard leaderCardChosen=null;
     private boolean supportTheChurch=false;
+    private TempModelStateForLeaderChoice tempModelStateForLeaderChoice=new TempModelStateForLeaderChoice();
+    private String stateModelChoices;
 
     public synchronized int waitIntChosen(){
         setIntChosen(-1);
-        while(intChosen==-1){
+        while(intChosen==-1 || this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -40,22 +43,22 @@ public class ModelChoices extends Model {
         return intChosen;
     }
 
-    public synchronized TowerCardSpace waitTowerCardChosen(){
-        setTowerCardSpaceChosen(null);
-        while(towerCardSpaceChosen==null){
+    public synchronized void waitAllInitialLeaderCardChosen() {
+
+        long startTime = System.currentTimeMillis();
+        while (System.currentTimeMillis() - startTime < 20000 || this.stateModelChoices.equals("StateChoice")) {  //aspetto 20 secondi per far scegliere a tutti il leader
             try {
-                sleep(200);
+                sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             //TODO SISTEMARE
         }
-        return towerCardSpaceChosen;
     }
 
     public synchronized LeaderCard waitLeaderCardChosen(){
         setLeaderCardChosen(null);
-        while(leaderCardChosen==null){
+        while(leaderCardChosen==null || this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -66,42 +69,22 @@ public class ModelChoices extends Model {
         return leaderCardChosen;
     }
 
-    public synchronized PersonalBonusTiles waitPersonalBonusTilesChosen(){
-        setPersonalBonusTilesChosen(null);
-        while(personalBonusTilesChosen==null){
+    public synchronized TowerCardSpace waitTowerCardChosen(){
+        setTowerCardSpaceChosen(null);
+        while(towerCardSpaceChosen==null|| this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }return personalBonusTilesChosen;
-    }
-
-    public synchronized boolean waitSupportTheChurch(){
-        setSupportTheChurch(false);
-        while(supportTheChurch==false){
-            try {
-                sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }return supportTheChurch;
-    }
-
-    public synchronized PlayerColor waitPlayerColorChosen(){
-        setPlayerColorChosen(null);
-        while(playerColorChosen==null){
-            try {
-                sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }return playerColorChosen;
+            //TODO SISTEMARE
+        }
+        return towerCardSpaceChosen;
     }
 
     public synchronized DevelopmentCard waitDevelopmentCardChosen(){
         setDevelopmentCardChosen(null);
-        while(developmentCardChosen==null){
+        while(developmentCardChosen==null|| this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -112,13 +95,46 @@ public class ModelChoices extends Model {
 
     public synchronized boolean waitActiveEffect(){
         setActiveEffect(false);
-        while(activeEffect==false){
+        while(activeEffect==false|| this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }return activeEffect;
+    }
+
+    public synchronized PersonalBonusTiles waitPersonalBonusTilesChosen(){
+        setPersonalBonusTilesChosen(null);
+        while(personalBonusTilesChosen==null || this.stateModelChoices.equals("StateChoice")){
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }return personalBonusTilesChosen;
+    }
+
+    public synchronized boolean waitSupportTheChurch(){
+        setSupportTheChurch(false);
+        while(supportTheChurch==false || this.stateModelChoices.equals("StateChoice")){
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }return supportTheChurch;
+    }
+
+    public synchronized PlayerColor waitPlayerColorChosen(){
+        setPlayerColorChosen(null);
+        while(playerColorChosen==null || this.stateModelChoices.equals("StateChoice")){
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }return playerColorChosen;
     }
 
     public void setSupportTheChurch(boolean supportTheChurch) {
@@ -161,4 +177,19 @@ public class ModelChoices extends Model {
         this.towerCardSpaceChosen=choice;
     }
 
+    public TempModelStateForLeaderChoice getTempModelStateForLeaderChoice() {
+        return tempModelStateForLeaderChoice;
+    }
+
+    public void setTempModelStateForLeaderChoice(TempModelStateForLeaderChoice tempModelStateForLeaderChoice) {
+        this.tempModelStateForLeaderChoice = tempModelStateForLeaderChoice;
+    }
+
+    public void setStateChoice(){
+        this.stateModelChoices="StateChoice";
+    }
+    public void setStateEndTurn(){
+        this.stateModelChoices="StateEndTurn";
+
+    }
 }

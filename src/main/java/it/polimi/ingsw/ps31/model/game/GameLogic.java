@@ -46,19 +46,24 @@ public class GameLogic {
         gameUtility.setTimerConnection(jsonObjectReadFromFile.getPlayerConnectionTimer());
         gameUtility.setLeaderCardList(jsonObjectReadFromFile.getLeaderCardList());
 
-        GameBoard gameBoard = new GameBoard(jsonObjectReadFromFile.getTowerActionSpaceEffectList(), jsonObjectReadFromFile.getActionSpaceEffectList(), jsonObjectReadFromFile.getFaithTrackExtraValue());
-        gameUtility.setGameBoard(gameBoard);
-
-        gameUtility.getDevelopmentCardList().shuffleCardList();  //mischio la lista di carte
-        Collections.shuffle(gameUtility.getPersonalBonusTilesList()); //mischio i personal bonus tiles
-
-        gameUtility.createDeck();
+        //parte di connessione
 
         gameUtility.createTimerConnection();
 
         //viene invocato dopo lo scadere del tempo dopo che si sono connessi i primi 2 giocatori
         playerMaxNumber = gameUtility.getPlayerList().size();
         gameUtility.setPlayerMaxNumber(playerMaxNumber);
+
+
+        //va fatto dopo aver saputo in quanti si gioca
+        GameBoard gameBoard = new GameBoard(jsonObjectReadFromFile.getTowerActionSpaceEffectList(), jsonObjectReadFromFile.getActionSpaceEffectList(), jsonObjectReadFromFile.getFaithTrackExtraValue());
+        gameUtility.setGameBoard(gameBoard);
+
+
+        gameUtility.getDevelopmentCardList().shuffleCardList();  //mischio la lista di carte
+        Collections.shuffle(gameUtility.getPersonalBonusTilesList()); //mischio i personal bonus tiles
+
+        gameUtility.createDeck();
 
         for (this.period = 1; period <= PERIODMAXNUMBER; period++) {                               //inizio periodo
             gameUtility.setDeckTower(period);

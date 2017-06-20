@@ -1,14 +1,13 @@
 package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import it.polimi.ingsw.ps31.client.view.CmdLineView;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
- * Created by Giuseppe on 08/06/2017.
+ * Created by Giuseppe on 20/06/2017.
  */
-public class IntrString implements CmdInterpreterView {
-
+public class IntrChoiceLeader implements CmdInterpreterView {
     @Override
     public void messageInterpreter(CmdLineView terminalView, Character in) {
 
@@ -16,12 +15,9 @@ public class IntrString implements CmdInterpreterView {
 
     @Override
     public void messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
+        ChoiceLeaderCard choiceLeaderCard = (ChoiceLeaderCard) choiceType;
+        for(int i=0; i<choiceLeaderCard.getLeaderId().size();i++){
 
+        }
     }
-
-    @Override
-    public String toString() {
-        return "IntrString";
-    }
-
 }

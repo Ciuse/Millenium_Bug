@@ -10,6 +10,8 @@ import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.messageMV.MVMessageVisitor;
 import it.polimi.ingsw.ps31.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messageVC.VCVisitable;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderCard;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
 import it.polimi.ingsw.ps31.model.stateModel.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
@@ -63,7 +65,9 @@ public abstract class View extends Observable implements Observer {
 
     }
 
-    public abstract void askPlayerAction();
+    public abstract void askPlayerAction(ChoiseActionToDo choiseActionToDo);
+
+    public abstract void askChoiceLeader(ChoiceLeaderCard choiceLeaderCard);
 
     public abstract void askComand() throws IOException;
 

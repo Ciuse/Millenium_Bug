@@ -14,8 +14,8 @@ public class LeaderCard extends Card implements ActiveEffect {
     private final int leaderId;
     private final ResourceList resourceRequest;
     private final DevelopmentCardList developmentCardRequest;
-    private final Effect abilityOneTimeForTurn;
-    private final Effect permanentAbility;
+    private Effect abilityOneTimeForTurn;
+    private Effect permanentAbility;
     private boolean played = false;
     private boolean usedEffect1 = false;
     private boolean usedEffect2 = false;

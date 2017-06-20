@@ -11,4 +11,9 @@ public class VCMessageVisitor implements VCVisitor {
     public void setController(Controller controller) {
         this.controller = controller;
     }
+
+    @Override
+    public void visit(VCLeaderChoice vcLeaderChoice) {
+        controller.createLeader(vcLeaderChoice.getLeaderId());
+    }
 }

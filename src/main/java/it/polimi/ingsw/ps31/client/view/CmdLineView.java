@@ -10,6 +10,8 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.*;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderCard;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
@@ -43,8 +45,19 @@ public class CmdLineView extends View {
     }
 
     @Override
-    public void askPlayerAction() {
+    public void askPlayerAction(ChoiseActionToDo choiseActionToDo) {
         this.setCmdInterpreterView(new IntrChoisePlayerAction());
+        printPlayerAction();
+    }
+
+    @Override
+    public void askChoiceLeader(ChoiceLeaderCard choiceLeaderCard) {
+        this.setCmdInterpreterView(new IntrChoiceLeader());
+        for (int i = 0; i < choiceLeaderCard.getLeaderName().size(); i++){
+            printLastEvent(choiceLeaderCard.getLeaderId().get(i).toString()+" "+choiceLeaderCard.getLeaderName().get(i));
+        }
+        input();
+        cmdInterpreterView.messageInterpreter(this,choiceLeaderCard,keyStroke.getCharacter());
     }
 
     public void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView) {
@@ -61,6 +74,17 @@ public class CmdLineView extends View {
         textGraphics = screen.newTextGraphics();
         screen.refresh();
 
+    }
+
+    public void input(){
+        try {
+            keyStroke=screen.readInput();
+            cmdInterpreterView.messageInterpreter(this,keyStroke.getCharacter());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        printLastEvent( "Input: "+keyStroke.toString());
     }
 
     public void inserisciColore() {
