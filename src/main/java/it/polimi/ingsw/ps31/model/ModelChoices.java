@@ -3,7 +3,10 @@ package it.polimi.ingsw.ps31.model;
 import it.polimi.ingsw.ps31.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
+import it.polimi.ingsw.ps31.model.card.LeaderCard;
+import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.effect.Effect;
+import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl;
 
 import java.util.Observer;
@@ -15,12 +18,17 @@ import static java.lang.Thread.sleep;
  */
 public class ModelChoices extends Model {
     private LastModelStateForControl lastModelStateForControl=new LastModelStateForControl();
-    int intChosen=-1;
-    TowerCardSpace towerCardSpaceChosen=null;
-    DevelopmentCard developmentCardChosen = null;
-    boolean activeEffect = false;
+    private int intChosen=-1;
+    private TowerCardSpace towerCardSpaceChosen=null;
+    private DevelopmentCard developmentCardChosen = null;
+    private boolean activeEffect = false;
+    private PersonalBonusTiles personalBonusTilesChosen=null;
+    private PlayerColor playerColorChosen=null;
+    private LeaderCard leaderCardChosen=null;
+    private boolean supportTheChurch=false;
 
     public synchronized int waitIntChosen(){
+        setIntChosen(-1);
         while(intChosen==-1){
             try {
                 sleep(200);
@@ -33,6 +41,7 @@ public class ModelChoices extends Model {
     }
 
     public synchronized TowerCardSpace waitTowerCardChosen(){
+        setTowerCardSpaceChosen(null);
         while(towerCardSpaceChosen==null){
             try {
                 sleep(200);
@@ -44,7 +53,54 @@ public class ModelChoices extends Model {
         return towerCardSpaceChosen;
     }
 
+    public synchronized LeaderCard waitLeaderCardChosen(){
+        setLeaderCardChosen(null);
+        while(leaderCardChosen==null){
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            //TODO SISTEMARE
+        }
+        return leaderCardChosen;
+    }
+
+    public synchronized PersonalBonusTiles waitPersonalBonusTilesChosen(){
+        setPersonalBonusTilesChosen(null);
+        while(personalBonusTilesChosen==null){
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }return personalBonusTilesChosen;
+    }
+
+    public synchronized boolean waitSupportTheChurch(){
+        setSupportTheChurch(false);
+        while(supportTheChurch==false){
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }return supportTheChurch;
+    }
+
+    public synchronized PlayerColor waitPlayerColorChosen(){
+        setPlayerColorChosen(null);
+        while(playerColorChosen==null){
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }return playerColorChosen;
+    }
+
     public synchronized DevelopmentCard waitDevelopmentCardChosen(){
+        setDevelopmentCardChosen(null);
         while(developmentCardChosen==null){
             try {
                 sleep(200);
@@ -55,6 +111,7 @@ public class ModelChoices extends Model {
     }
 
     public synchronized boolean waitActiveEffect(){
+        setActiveEffect(false);
         while(activeEffect==false){
             try {
                 sleep(200);
@@ -62,6 +119,14 @@ public class ModelChoices extends Model {
                 e.printStackTrace();
             }
         }return activeEffect;
+    }
+
+    public void setSupportTheChurch(boolean supportTheChurch) {
+        this.supportTheChurch = supportTheChurch;
+    }
+
+    public void setLeaderCardChosen(LeaderCard leaderCardChosen) {
+        this.leaderCardChosen = leaderCardChosen;
     }
 
     public void setIntChosen(int choice){
@@ -74,6 +139,22 @@ public class ModelChoices extends Model {
 
     public void setLastModelStateForControl(LastModelStateForControl lastModelStateForControl) {
         this.lastModelStateForControl = lastModelStateForControl;
+    }
+
+    public void setDevelopmentCardChosen(DevelopmentCard developmentCardChosen) {
+        this.developmentCardChosen = developmentCardChosen;
+    }
+
+    public void setActiveEffect(boolean activeEffect) {
+        this.activeEffect = activeEffect;
+    }
+
+    public void setPersonalBonusTilesChosen(PersonalBonusTiles personalBonusTilesChosen) {
+        this.personalBonusTilesChosen = personalBonusTilesChosen;
+    }
+
+    public void setPlayerColorChosen(PlayerColor playerColorChosen) {
+        this.playerColorChosen = playerColorChosen;
     }
 
     public void setTowerCardSpaceChosen(TowerCardSpace choice){

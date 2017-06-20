@@ -4,10 +4,15 @@ import it.polimi.ingsw.ps31.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.ModelChoices;
+import it.polimi.ingsw.ps31.model.bonus.GainVictoryPointFromLeaderCardBonus;
 import it.polimi.ingsw.ps31.model.card.*;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceColor;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceIfSupportTheChurch;
+import it.polimi.ingsw.ps31.model.choiceType.ChoicePersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
 import it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl;
 import it.polimi.ingsw.ps31.model.stateModel.StateGame;
+import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
@@ -105,6 +110,7 @@ public class GameUtility extends ModelChoices {
 
     public void vaticanReport(int period){
         for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
+
             // il giocatore non ha abbastanza punti fede e prende la scomunica (non viene chiesto niente al giocatore)
             if (playerList.get(playerNumber).getPlayerResources().getResourceValue(FaithPoint.class) < gameBoard.getFaithPointTrack().getTrackCell().get(2 + period).getValue()) {
                 gameBoard.getExcommunicationTilesList().get(period).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
@@ -116,10 +122,33 @@ public class GameUtility extends ModelChoices {
                     playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getSpecificResource(FaithPoint.class));
                 }
             } else {
+                //mostro il sostegno alla chiesa
                 //chiedo l'intervento della view e una volta ricevuto il messaggio di risposta true (il giocatore vuole spendere i suoi punti fede per evitare la scomunica)
-                int faithPointPlayer = playerList.get(playerNumber).getPlayerResources().getResourceValue(FaithPoint.class);
-                playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
-                playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getSpecificResource(FaithPoint.class));
+                String string = playerList.get(playerNumber).getPlayerId()+": vuoi spendere tutti i tuoi punti fede per evitare la scomunica?";
+                notifyViews(new MVAskChoice(playerList.get(playerNumber).getPlayerId(),string,new ChoiceIfSupportTheChurch()));
+                boolean supportTheChurch = super.waitSupportTheChurch();
+                if(supportTheChurch) {
+                    int faithPointPlayer = playerList.get(playerNumber).getPlayerResources().getResourceValue(FaithPoint.class);
+                    playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
+                    playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getSpecificResource(FaithPoint.class));
+                    for (LeaderCard leaderCard : playerList.get(playerNumber).getLeaderCardList()
+                            ) {
+                        if (leaderCard.getPermanentAbility() != null
+                                && leaderCard.getPermanentAbility().getBonus() != null
+                                && leaderCard.getPermanentAbility().getBonus().getExtraResourceOfVaticanReport() != null) {
+                            playerList.get(playerNumber).addResources(leaderCard.getPermanentAbility().getBonus().getExtraResourceOfVaticanReport());
+                        }
+                    }
+                }
+                else {
+                    //il giocatore ha deciso di non mostrare il suo sostegno alla chiesa
+                    gameBoard.getExcommunicationTilesList().get(period).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
+                    if (period == 3) {
+                        int faithPointPlayer = playerList.get(playerNumber).getPlayerResources().getResourceValue(FaithPoint.class);
+                        playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
+                        playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getSpecificResource(FaithPoint.class));
+                    }
+                }
             }
         }
     }
@@ -188,16 +217,50 @@ public class GameUtility extends ModelChoices {
 
         }
     }
+     public void choiseColorPlayer(){
+         List<PlayerColor> playerColorList = new ArrayList<>();
+         playerColorList.add(PlayerColor.GREEN);
+         playerColorList.add(PlayerColor.BLUE);
+         playerColorList.add(PlayerColor.RED);
+         playerColorList.add(PlayerColor.YELLOW);
+         for (Player player:playerList
+                 ) {
+             String string = player.getPlayerId()+": scegli il tuo colore";
+             notifyViews(new MVAskChoice(player.getPlayerId(),string,new ChoiceColor(playerColorList)));
+             PlayerColor playerColor = super.waitPlayerColorChosen();
+             int i=0;
+                 for (PlayerColor color : playerColorList
+                         ) {
+                     if(color.equals(playerColor))
+                         player.setPlayerColor(playerColorList.remove(i));
 
-    public Player createPlayer(String name, PlayerColor playerColor, List<ResourceList> listOfResourceList, List<PointResource[]>personalBoardRequirements, List<PersonalBonusTiles> personalBonusTilesList){
-        //la view deve richiedere il nome e il colore che vuole essere
-        //creazione familymembers in base al colore che il player ha scelto ,la personal board, la lista delle risorse iniziali infine il player
+                     i++;
+                 }
+         }
+     }
 
+    public Player createPlayer(String name, PlayerColor playerColor, List<ResourceList> listOfResourceList, List<PointResource[]>personalBoardRequirements){
+        //la view deve richiedere il nome
         PlayerId[] playerId = PlayerId.values();
         PersonalBoard personalBoard = new PersonalBoard(personalBoardRequirements, playerId[playerList.size()]);
-        Player playerCreated = new Player(playerColor,listOfResourceList.get(playerList.size()), playerId[playerList.size()], name,personalBoard,personalBonusTilesList.get(playerList.size()));
+        Player playerCreated = new Player(listOfResourceList.get(playerList.size()), playerId[playerList.size()], name,personalBoard);
 
         return playerCreated;
+    }
+
+    public void phaseChoicePersonalBonusTiles(){
+        for (Player player: playerList
+             ) {
+            String string = player.getPlayerId()+": Scegli il tuo personal bonus tiles";
+            List<StatePersonalBonusTiles> statePersonalBonusTiles = new ArrayList<>();
+            for (PersonalBonusTiles personalBonusTiles : personalBonusTilesList
+                    ) {
+                statePersonalBonusTiles.add(personalBonusTiles.getStatePersonalBonusTiles());
+            }
+            notifyViews(new MVAskChoice(player.getPlayerId(),string,new ChoicePersonalBonusTiles(statePersonalBonusTiles)));
+            PersonalBonusTiles personalBonusTiles = super.waitPersonalBonusTilesChosen();
+            player.setPersonalBonusTiles(removePersonalBonusTiles(personalBonusTiles));
+        }
     }
 
     /*Metoci per Riordinare la Lista dei Player*/
@@ -536,4 +599,18 @@ public class GameUtility extends ModelChoices {
     public void setLeaderCardList(List<LeaderCard> leaderCardList) {
         this.leaderCardList = leaderCardList;
     }
+
+    public PersonalBonusTiles removePersonalBonusTiles(PersonalBonusTiles personalBonusTiles){
+        int i=0;
+        for (PersonalBonusTiles tiles:this.personalBonusTilesList
+             ) {
+            if(tiles.equals(personalBonusTiles))
+            return this.personalBonusTilesList.remove(i);
+
+            i++;
+        }
+        return null;
+    }
+
+
 }

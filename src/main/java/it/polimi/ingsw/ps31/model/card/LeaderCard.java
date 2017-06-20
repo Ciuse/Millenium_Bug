@@ -11,6 +11,7 @@ import java.util.List;
  * Created by Giuseppe on 22/05/2017.
  */
 public class LeaderCard extends Card implements ActiveEffect {
+    private final int leaderId;
     private final ResourceList resourceRequest;
     private final DevelopmentCardList developmentCardRequest;
     private final Effect abilityOneTimeForTurn;
@@ -19,8 +20,9 @@ public class LeaderCard extends Card implements ActiveEffect {
     private boolean usedEffect1 = false;
     private boolean usedEffect2 = false;
 
-    public LeaderCard(String name, ResourceList resourceRequest, DevelopmentCardList developmentCardRequest, Effect abilityOneTimeForTurn, Effect permanentAbility) {
+    public LeaderCard(String name, int leaderId, ResourceList resourceRequest, DevelopmentCardList developmentCardRequest, Effect abilityOneTimeForTurn, Effect permanentAbility) {
         super(name);
+        this.leaderId = leaderId;
         this.resourceRequest = resourceRequest;
         this.developmentCardRequest = developmentCardRequest;
         this.abilityOneTimeForTurn = abilityOneTimeForTurn;
@@ -76,6 +78,9 @@ public class LeaderCard extends Card implements ActiveEffect {
         this.usedEffect2 = usedEffect2;
     }
 
+    public int getLeaderId() {
+        return leaderId;
+    }
 
     @Override
     public void activeEffectList(Player player) {

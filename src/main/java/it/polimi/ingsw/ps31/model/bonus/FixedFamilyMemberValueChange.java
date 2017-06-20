@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Francesco on 19/06/2017.
  */
 public class FixedFamilyMemberValueChange extends Bonus {
-    private final int modifyValueColoredFamilyMember;//(carta leader)i familiari colorati assumeranno un nuovo valore indipendentemente dal valore dei dadi
+    private final int modifyValueColoredFamilyMember;//(carta leader Ludovico il Moro)i familiari colorati assumeranno un nuovo valore indipendentemente dal valore dei dadi
     private List<DiceColor> membersToModify;
 
     /* Constructor */

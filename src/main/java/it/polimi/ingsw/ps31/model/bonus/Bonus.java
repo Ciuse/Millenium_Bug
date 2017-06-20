@@ -1,14 +1,16 @@
 package it.polimi.ingsw.ps31.model.bonus;
 
+import it.polimi.ingsw.ps31.model.ModelChoices;
 import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.PointResource;
+import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 
 /**
  * Created by Giuseppe on 27/05/2017.
  */
-public abstract class Bonus implements BonusActivation  {
+public abstract class Bonus extends ModelChoices implements BonusActivation  {
 
     protected Bonus() {}
     protected Bonus(Action actionToModify) {}
@@ -43,11 +45,7 @@ public abstract class Bonus implements BonusActivation  {
         return null;
     }
 
-    public ResourceList getResourceFinalPersonalBoardList() {
+    public Resource getExtraResourceOfVaticanReport(){
         return null;
-    }
-
-    public int getLostPoint() {
-        return -1;
     }
 }

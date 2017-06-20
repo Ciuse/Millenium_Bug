@@ -27,7 +27,7 @@ import java.util.List;
 public class Player {
     private final PlayerId playerId;
     private final String nickname;
-    private final PlayerColor playerColor;
+    private PlayerColor playerColor;
     private final PlayerResources playerResources;      //setter -->add e sub
     private ResourceList tempPlayerResourcesToGain;
     private final PersonalBoard playerBoard;
@@ -43,10 +43,9 @@ public class Player {
     private List<LeaderCard> leaderCardList;
 
     /* Constructor */
-    public Player(PlayerColor playerColor, ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard,PersonalBonusTiles personalBonusTiles)
+    public Player( ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard)
     {
         //Attributi base
-        this.playerColor = playerColor;
         this.playerId = playerId;
         this.playerBoard = personalBoard;
         this.nickname = nickname;
@@ -62,9 +61,6 @@ public class Player {
 
         playerResources = new PlayerResources(initialResources);
 
-        //Inizializzazione harvestList e productionList
-        this.harvestList = new HarvestList(this,personalBonusTiles.getHarvestEffect()); //TODO: leggere firstHarvest da file
-        this.productionList = new ProductionList(this, personalBonusTiles.getProductionEffect()); //TODO: leggere firstProduction da file
 
         //Instanzio un PlayerActionSet
         playerActionSet = new PlayerActionSet(this);
@@ -77,6 +73,17 @@ public class Player {
     }
 
     /* Setters & Getters */
+
+    public void setPlayerColor(PlayerColor playerColor){
+        this.playerColor = playerColor;
+    }
+
+    public void setPersonalBonusTiles(PersonalBonusTiles personalBonusTiles){
+        //Inizializzazione harvestList e productionList
+        this.harvestList = new HarvestList(this,personalBonusTiles.getHarvestEffect());
+        this.productionList = new ProductionList(this, personalBonusTiles.getProductionEffect());
+    }
+
     public String getNickname() {
         return nickname;
     }
@@ -152,6 +159,10 @@ public class Player {
 
     public ResourceList getTempPlayerResourcesToGain() {
         return tempPlayerResourcesToGain;
+    }
+
+    public List<LeaderCard> getLeaderCardList() {
+        return leaderCardList;
     }
 
     /* Class Methods */

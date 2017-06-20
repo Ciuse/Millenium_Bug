@@ -1,14 +1,18 @@
 package it.polimi.ingsw.ps31.model.actionControls;
 
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
+import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
+
+import java.util.List;
 
 /**
  * Created by Francesco on 31/05/2017.
  */
 public class TakeDevelopmentCardControl extends Control {
     private DevelopmentCard developmentCard = null;
+    private List<CardColor> cardsWithARequirementToIgnore;
 
     /* Constructor */
     public TakeDevelopmentCardControl(Player player) {
@@ -59,6 +63,12 @@ public class TakeDevelopmentCardControl extends Control {
 //        if(player.getPlayerBoard().)
         //Controllo requisiti
 //        if()  todo robe di giuse needed
+
         return true;
+    }
+
+    public void addColorCardTOIgnore (CardColor cardColor)
+    {
+        this.cardsWithARequirementToIgnore.add(cardColor);
     }
 }

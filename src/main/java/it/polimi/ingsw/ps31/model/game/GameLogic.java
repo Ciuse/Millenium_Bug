@@ -59,6 +59,7 @@ public class GameLogic {
         //viene invocato dopo lo scadere del tempo dopo che si sono connessi i primi 2 giocatori
         playerMaxNumber = gameUtility.getPlayerList().size();
         gameUtility.setPlayerMaxNumber(playerMaxNumber);
+
         for (this.period = 1; period <= PERIODMAXNUMBER; period++) {                               //inizio periodo
             gameUtility.setDeckTower(period);
             for (this.round = 1; round <= ROUNDMAXNUMBER; round++) {

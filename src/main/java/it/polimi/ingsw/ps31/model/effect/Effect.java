@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.effect;
 
 import it.polimi.ingsw.ps31.model.ModelChoices;
+import it.polimi.ingsw.ps31.model.bonus.Bonus;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 
 import java.util.ArrayList;
@@ -94,6 +95,8 @@ public abstract class Effect extends ModelChoices implements EffectActivation{
         return null;
     }
 
-
+    public Bonus getBonus(){
+        return null;
+    }
 
 }

@@ -2,6 +2,11 @@ package it.polimi.ingsw.ps31.model.player;
 
 import it.polimi.ingsw.ps31.model.effect.HarvestEffect;
 import it.polimi.ingsw.ps31.model.effect.ProductionEffect;
+import it.polimi.ingsw.ps31.model.stateModel.StateEffect;
+import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Francesco on 15/05/2017.
@@ -22,6 +27,15 @@ public class PersonalBonusTiles {
 
     public ProductionEffect getProductionEffect() {
         return productionEffect;
+    }
+
+
+    public StatePersonalBonusTiles getStatePersonalBonusTiles(){
+        List<StateEffect> stateEffectList = new ArrayList<>();
+        stateEffectList.add(new StateEffect(harvestEffect));
+        stateEffectList.add(new StateEffect(productionEffect));
+        StatePersonalBonusTiles statePersonalBonusTiles = new StatePersonalBonusTiles(stateEffectList);
+        return statePersonalBonusTiles;
     }
 }
 

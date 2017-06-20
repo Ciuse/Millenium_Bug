@@ -17,4 +17,5 @@ public interface StateVisitor {
     public void visit(StateTower stateTower);
     public void visit(StateDevelopmentCard stateDevelopmentCard);
     public void visit(StateEffect stateEffect);
+    public void visit(StatePersonalBonusTiles statePersonalBonusTiles);
 }
