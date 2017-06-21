@@ -1,9 +1,9 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
 import com.google.gson.Gson;
+import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.server.Match;
-import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.server.ModelProva;
 
 /**

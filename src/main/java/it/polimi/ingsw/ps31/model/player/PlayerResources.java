@@ -68,5 +68,9 @@ public class PlayerResources {
 
         return false;
     }
+    public boolean greaterThan(Resource resource){
+        ResourceList that = new ResourceList(resource);
+        return greaterThan(that);
+    }
 
 }

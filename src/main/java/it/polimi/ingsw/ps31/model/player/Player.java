@@ -1,21 +1,17 @@
 package it.polimi.ingsw.ps31.model.player;
 
-import it.polimi.ingsw.ps31.model.card.LeaderCard;
-import it.polimi.ingsw.ps31.model.stateModel.*;
-import it.polimi.ingsw.ps31.model.stateModel.StateAllFamilyMember;
-import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
-import it.polimi.ingsw.ps31.model.stateModel.StateTypePlayer;
-import it.polimi.ingsw.ps31.model.stateModel.StatePlayerResources;
 import it.polimi.ingsw.ps31.model.actions.ActionControlSet;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
+import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
+import it.polimi.ingsw.ps31.model.stateModel.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,7 +26,7 @@ public class Player {
     private PlayerColor playerColor;
     private final PlayerResources playerResources;      //setter -->add e sub
     private ResourceList tempPlayerResourcesToGain;
-    private final PersonalBoard playerBoard;
+    private final PersonalBoard personalBoard;
     private final List<FamilyMember> familyMembers = new ArrayList<>();
     private FamilyMember lastUsedFamilyMember;
     private PlayerActionSet playerActionSet;
@@ -47,7 +43,7 @@ public class Player {
     {
         //Attributi base
         this.playerId = playerId;
-        this.playerBoard = personalBoard;
+        this.personalBoard = personalBoard;
         this.nickname = nickname;
         this.permanentBonus = new PermanentBonus();
         this.excommunicationTiles = new ArrayList<>(); //TODO: serve davvero??
@@ -96,8 +92,8 @@ public class Player {
         return playerResources;
     }
 
-    public PersonalBoard getPlayerBoard() {
-        return playerBoard;
+    public PersonalBoard getPersonalBoard() {
+        return personalBoard;
     }
 
     public PermanentBonus getPermanentBonus() {
@@ -146,7 +142,7 @@ public class Player {
 
     public DevelopmentCardList getPlayerCardList()
     {
-        return this.playerBoard.getPlayerCardList();
+        return this.personalBoard.getPlayerCardList();
     }
 
     public PlayerId getPlayerId() {
@@ -201,8 +197,8 @@ public class Player {
 
     public void addDevelopmentCard(DevelopmentCard card)
     {
-        if ( this.playerBoard.getPlayerCardList().getSpecificCardList(card.getCardColor()).size() <PersonalBoardCardList.getMaxCardOfSameColor())
-            this.playerBoard.addCard(card);
+        if ( this.personalBoard.getPlayerCardList().getSpecificCardList(card.getCardColor()).size() <PersonalBoardCardList.getMaxCardOfSameColor())
+            this.personalBoard.addCard(card);
         else
         {
             //TODO: eccezione
@@ -241,7 +237,7 @@ public class Player {
 
     public DevelopmentCardList getColorCardList (CardColor cardColor)
     {
-        return new DevelopmentCardList(this.playerBoard.getPlayerCardList().getSpecificCardList(cardColor));
+        return new DevelopmentCardList(this.personalBoard.getPlayerCardList().getSpecificCardList(cardColor));
     }
 
     public boolean checkIfOnlyNEUTRALRemained(){
@@ -319,7 +315,7 @@ public class Player {
         if (playerColor != player.playerColor) return false;
         if (playerResources != null ? !playerResources.equals(player.playerResources) : player.playerResources != null)
             return false;
-        if (playerBoard != null ? !playerBoard.equals(player.playerBoard) : player.playerBoard != null) return false;
+        if (personalBoard != null ? !personalBoard.equals(player.personalBoard) : player.personalBoard != null) return false;
         if (familyMembers != null ? !familyMembers.equals(player.familyMembers) : player.familyMembers != null)
             return false;
         if (lastUsedFamilyMember != null ? !lastUsedFamilyMember.equals(player.lastUsedFamilyMember) : player.lastUsedFamilyMember != null)
@@ -341,7 +337,7 @@ public class Player {
         int result = nickname != null ? nickname.hashCode() : 0;
         result = 31 * result + (playerColor != null ? playerColor.hashCode() : 0);
         result = 31 * result + (playerResources != null ? playerResources.hashCode() : 0);
-        result = 31 * result + (playerBoard != null ? playerBoard.hashCode() : 0);
+        result = 31 * result + (personalBoard != null ? personalBoard.hashCode() : 0);
         result = 31 * result + (familyMembers != null ? familyMembers.hashCode() : 0);
         result = 31 * result + (lastUsedFamilyMember != null ? lastUsedFamilyMember.hashCode() : 0);
         result = 31 * result + (playerActionSet != null ? playerActionSet.hashCode() : 0);

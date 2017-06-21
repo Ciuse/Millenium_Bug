@@ -15,6 +15,11 @@ public class PlayerCardNumberControl extends Control {
         super(player);
     }
 
+    @Override
+    public String getControlStringError() {
+        return "Non puoi mettere un'altra carta " +this.cardColor.toString()+" nella tua personal board ";
+    }
+
     /* Setters & Getters */
     public void setCardColor(CardColor cardColor) {
         this.cardColor = cardColor;

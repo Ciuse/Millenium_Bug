@@ -15,6 +15,11 @@ public class PayResourceControl extends Control {
         super(player);
     }
 
+    @Override
+    public String getControlStringError() {
+        return "Non hai abbastanza risorse per poter pagare";
+    }
+
     /* Setters & Getters */
     public ResourceList getResourceList() {
         return resourceList;
@@ -39,7 +44,6 @@ public class PayResourceControl extends Control {
 
         boolean ret = player.getPlayerResources().greaterThan(this.resourceList);
         resetResourceList();
-
         return ret;
     }
 

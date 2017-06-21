@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Francesco on 24/05/2017.
  */
-public abstract class Control {
+public abstract class Control{
     protected final Player player;
     protected List<Boolean> conditions = new ArrayList<>();
 
@@ -18,4 +18,6 @@ public abstract class Control {
     {
         this.player = player;
     }
+
+    public abstract String getControlStringError();
 }

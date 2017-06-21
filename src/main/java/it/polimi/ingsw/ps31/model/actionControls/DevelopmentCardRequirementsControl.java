@@ -14,6 +14,11 @@ public class DevelopmentCardRequirementsControl extends Control{
         super(player);
     }
 
+    @Override
+    public String getControlStringError() {
+        return "Non hai abbastanza requisiti per poter prendere la carta";
+    }
+
     /* Setters & Getters */
     public void setRequirements(DevelopmentCardList requirement)
     {

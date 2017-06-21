@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
-import it.polimi.ingsw.ps31.model.stateModel.StateMarkerDisc;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import it.polimi.ingsw.ps31.model.stateModel.StateMarkerDisc;
 
 /**
  * Created by giulia on 12/06/2017.

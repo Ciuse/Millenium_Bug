@@ -15,6 +15,11 @@ public class DiceValueVsCardSpaceControl extends Control {
         super(player);
     }
 
+    @Override
+    public String getControlStringError() {
+        return "Il costo del dado del towerCardSpace non è minore del valore del dado ";
+    }
+
     /* Setters & Getters */
     public void setDiceValue(Integer diceValue)
     {

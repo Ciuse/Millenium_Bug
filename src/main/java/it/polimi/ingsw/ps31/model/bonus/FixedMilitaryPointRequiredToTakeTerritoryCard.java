@@ -18,6 +18,6 @@ public class FixedMilitaryPointRequiredToTakeTerritoryCard extends Bonus {
 
     @Override
     public void activate(Player player) {
-        player.getPlayerActionSet().getActionControlSet().getTakeDevelopmentCardControl().addColorCardTOIgnore(cardColor);
+        player.getPlayerActionSet().getActionControlSet().getTakeDevelopmentCardControl().addColorCardToIgnore(cardColor);
     }
 }

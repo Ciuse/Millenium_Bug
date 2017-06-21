@@ -1,13 +1,13 @@
 package it.polimi.ingsw.ps31.model.card;
 
-import it.polimi.ingsw.ps31.model.stateModel.StateDevelopmentCard;
-import it.polimi.ingsw.ps31.model.stateModel.StateEffect;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.effect.ActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.Effect;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
+import it.polimi.ingsw.ps31.model.stateModel.StateDevelopmentCard;
+import it.polimi.ingsw.ps31.model.stateModel.StateEffect;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -17,7 +17,6 @@ import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
-import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.io.IOException;
 import java.util.List;

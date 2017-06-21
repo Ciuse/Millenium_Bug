@@ -1,8 +1,8 @@
 package it.polimi.ingsw.ps31.model.player;
 
-import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
+import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
 
 /**
  * Created by Francesco on 15/05/2017.

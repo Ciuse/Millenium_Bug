@@ -14,6 +14,11 @@ public class PlacedFamilyMemberControl extends Control {
         super(player);
     }
 
+    @Override
+    public String getControlStringError() {
+        return "Non puoi posizionare il tuo family member "+this.familyMember.getDiceColor().name();
+    }
+
     /* Getters & Setters */
     public void setFamilyMember(FamilyMember familyMember) {
         this.familyMember = familyMember;

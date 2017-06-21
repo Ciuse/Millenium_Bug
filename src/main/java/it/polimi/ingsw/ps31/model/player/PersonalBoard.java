@@ -1,12 +1,12 @@
 package it.polimi.ingsw.ps31.model.player;
 
-import it.polimi.ingsw.ps31.model.stateModel.StateCardBox;
-import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBoard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.PointResource;
+import it.polimi.ingsw.ps31.model.stateModel.StateCardBox;
+import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBoard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +60,8 @@ public class PersonalBoard {
         }
         return null;
     }
+
+
 
     protected static int getNumOfCardList() {
         return NUM_OF_CARD_LIST;

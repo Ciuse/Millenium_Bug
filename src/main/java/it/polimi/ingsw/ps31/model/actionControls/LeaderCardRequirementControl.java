@@ -14,6 +14,11 @@ public class LeaderCardRequirementControl extends Control {
         super(player);
     }
 
+    @Override
+    public String getControlStringError() {
+        return "Non hai abbastanza requisiti per poter prendere la carta leader";
+    }
+
     /* Setters & Getters */
     public void setLeaderCard(LeaderCard leaderCard)
     {

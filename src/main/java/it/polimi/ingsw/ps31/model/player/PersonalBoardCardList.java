@@ -46,14 +46,28 @@ public class PersonalBoardCardList {
         return new ArrayList<>(personalBoardCardCellList);
     }
 
-    public void addCard(DevelopmentCard card){
-        boolean trovato=false;
-        for (int i = 0; i< MAX_CARD_OF_SAME_COLOR; i++){
-            if(trovato==false && personalBoardCardCellList.get(i).getCard()==null){
-                personalBoardCardCellList.get(i).setCard(card);
-                trovato=true;
+    public PersonalBoardCardCell getFirstEmptyCardCell() {
+        for (PersonalBoardCardCell cardCell : personalBoardCardCellList
+                ) {
+            if (cardCell.getCard() == null) {
+                return cardCell;
+            }
+        }return null;
+    }
+
+    public boolean isFull(){
+        boolean empty=false;
+        for (PersonalBoardCardCell cardCell : personalBoardCardCellList
+                ) {
+            if(cardCell.getCard()==null) {
+                empty = true;
+                return false;
             }
         }
+        return true;
+    }
 
+    public void addCard(DevelopmentCard card){
+        getFirstEmptyCardCell().setCard(card);
     }
 }

@@ -4,8 +4,6 @@ import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
 
-import java.util.List;
-
 /**
  * Created by giulia on 17/05/2017.
  */

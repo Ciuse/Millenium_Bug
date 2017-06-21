@@ -18,6 +18,11 @@ public class SelfOccupiedTowerControl extends Control {
         super(player);
     }
 
+    @Override
+    public String getControlStringError() {
+        return "non puoi mettere due family member non neutri nella stessa torre"+tower.getColor().name();
+    }
+
     /*Getters & Setters */
     public Tower getTower()
     {

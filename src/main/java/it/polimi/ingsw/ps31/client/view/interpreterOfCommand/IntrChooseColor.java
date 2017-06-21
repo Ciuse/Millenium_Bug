@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import it.polimi.ingsw.ps31.client.view.CmdLineView;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 

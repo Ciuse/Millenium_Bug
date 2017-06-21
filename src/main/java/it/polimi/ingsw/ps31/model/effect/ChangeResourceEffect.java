@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.model.effect;
 
-import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
 

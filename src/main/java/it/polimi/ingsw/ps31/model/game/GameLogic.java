@@ -7,12 +7,13 @@ import it.polimi.ingsw.ps31.model.json.CreationJson;
 import it.polimi.ingsw.ps31.model.json.JsonFile;
 import it.polimi.ingsw.ps31.model.json.JsonGameObject;
 
-import java.util.*;
+import java.util.Collections;
 
 /**
  * Created by giulia on 24/05/2017.
  */
 public class GameLogic {
+    private final InformationFromNetworking informationFromNetworking;
     private final GameUtility gameUtility = new GameUtility();
     private final static int PERIODMAXNUMBER = 3;
     private final static int ROUNDMAXNUMBER = 2;
@@ -22,6 +23,9 @@ public class GameLogic {
     private int round;
     private int action;
 
+    public GameLogic(InformationFromNetworking informationFromNetworking) {
+        this.informationFromNetworking = informationFromNetworking;
+    }
 
     public void playGame() {
         CreationJson creationJson = new CreationJson();
@@ -48,7 +52,9 @@ public class GameLogic {
 
         //parte di connessione
 
-        gameUtility.createTimerConnection();
+        if(informationFromNetworking.getPlayerNameList().size()>2) {
+            gameUtility.createTimerConnection();
+        }
 
         //viene invocato dopo lo scadere del tempo dopo che si sono connessi i primi 2 giocatori
         playerMaxNumber = gameUtility.getPlayerList().size();

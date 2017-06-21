@@ -1,7 +1,5 @@
 package it.polimi.ingsw.ps31.model.choiceType;
 
-import it.polimi.ingsw.ps31.model.ModelChoices;
-
 /**
  * Created by giulia on 20/06/2017.
  */

@@ -1,12 +1,10 @@
 package it.polimi.ingsw.ps31.model.actions;
 
-import com.sun.org.apache.regexp.internal.RE;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**

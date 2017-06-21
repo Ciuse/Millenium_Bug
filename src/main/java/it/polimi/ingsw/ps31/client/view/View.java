@@ -11,8 +11,8 @@ import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
-import it.polimi.ingsw.ps31.model.stateModel.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import it.polimi.ingsw.ps31.model.stateModel.*;
 
 import java.io.IOException;
 import java.util.List;

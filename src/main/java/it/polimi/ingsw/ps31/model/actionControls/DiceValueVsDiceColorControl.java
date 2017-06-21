@@ -23,6 +23,11 @@ public class DiceValueVsDiceColorControl extends Control {
             this.bonusValues.put(currentColor, new Integer(0));
     }
 
+    @Override
+    public String getControlStringError() {
+        return  "booooh";
+    }
+
     /* Setters & Getters */
     public void setDiceValue(Integer diceValue)
     {

@@ -1,16 +1,14 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
-import it.polimi.ingsw.ps31.model.stateModel.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.player.PlayerResources;
+import it.polimi.ingsw.ps31.model.stateModel.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getFamily_Member_Number;
-import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getMax_number_Of_MarkerDisc;
-import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getStringPointResourceType;
+import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.*;
 
 /**
  * Created by giulia on 07/06/2017.

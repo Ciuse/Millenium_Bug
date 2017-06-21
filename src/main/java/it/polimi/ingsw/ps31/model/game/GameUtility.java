@@ -4,15 +4,9 @@ import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.ModelChoices;
-import it.polimi.ingsw.ps31.model.card.*;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceColor;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceIfSupportTheChurch;
-import it.polimi.ingsw.ps31.model.choiceType.ChoicePersonalBonusTiles;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderCard;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
-import it.polimi.ingsw.ps31.model.stateModel.StateGame;
-import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
+import it.polimi.ingsw.ps31.model.card.*;
+import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
@@ -21,6 +15,8 @@ import it.polimi.ingsw.ps31.model.gameResource.*;
 import it.polimi.ingsw.ps31.model.player.PersonalBoard;
 import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.player.Player;
+import it.polimi.ingsw.ps31.model.stateModel.StateGame;
+import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.stateModel.TempModelStateForLeaderChoice;
 
 import java.util.*;
@@ -274,12 +270,10 @@ public class GameUtility extends ModelChoices {
          }
      }
 
-    public Player createPlayer(String name, PlayerColor playerColor, List<ResourceList> listOfResourceList, List<PointResource[]>personalBoardRequirements){
-        //la view deve richiedere il nome
+    public Player createPlayer(String name){
         PlayerId[] playerId = PlayerId.values();
         PersonalBoard personalBoard = new PersonalBoard(personalBoardRequirements, playerId[playerList.size()]);
-        Player playerCreated = new Player(listOfResourceList.get(playerList.size()), playerId[playerList.size()], name,personalBoard);
-
+        Player playerCreated = new Player(initialPlayerResource.get(playerList.size()), playerId[playerList.size()], name,personalBoard);
         return playerCreated;
     }
 

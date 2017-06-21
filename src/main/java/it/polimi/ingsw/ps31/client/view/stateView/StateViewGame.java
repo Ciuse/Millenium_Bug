@@ -1,8 +1,8 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
+import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.stateModel.StateDevelopmentCard;
 import it.polimi.ingsw.ps31.model.stateModel.StateGame;
-import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import java.util.ArrayList;
 import java.util.List;

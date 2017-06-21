@@ -1,10 +1,9 @@
 package it.polimi.ingsw.ps31.model.actions;
 
+
+import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
 import it.polimi.ingsw.ps31.model.player.Player;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Francesco on 26/05/2017.
@@ -34,28 +33,32 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
 
     /* Class Methods */
     @Override
-    public void activate()
-    {
+    public void activate() {
         //Controllo che i parametri siano settati
-        if ( this.familyMember == null || this.actionSpace == null )
-        {
+        if (this.familyMember == null || this.actionSpace == null) {
             //TODO: gestire (eccezione?)
-        } else
-        if (super.defaultDenyActionSpaces.contains(actionSpace.getActionSpaceId()))
+        } else if (super.defaultDenyActionSpaces.contains(actionSpace.getActionSpaceId())) {
+            super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, "Non puoi piazzare il family member perchè hai la scomunica"));
             return;
-        else
-        {
-            if (actionControlSet.placedFamilyMemberControl(familyMember)
-                    && actionControlSet.occupiedActionSpaceControl(actionSpace)
-                    && actionControlSet.diceValueVsDiceColorControl(actionSpace.getDiceCost(), familyMember.getDiceColor()))
-            {
-                this.actionSpace.addFamilyMember(familyMember);
-                super.player.setLastUsedFamilyMember(familyMember);
-            }
-            super.setUsed(true);
-            resetActionSpace();
-            resetFamilyMember();
         }
+        else {
+            if (actionControlSet.placedFamilyMemberControl(familyMember)) {
+                if (actionControlSet.occupiedActionSpaceControl(actionSpace)) {
+                    if (actionControlSet.diceValueVsDiceColorControl(actionSpace.getDiceCost(), familyMember.getDiceColor())) {
+                        this.actionSpace.addFamilyMember(familyMember);
+                        super.player.setLastUsedFamilyMember(familyMember);
+                    } else
+                        super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPlacedFamilyMemberControl().getControlStringError()));
+                } else
+                    super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getOccupiedActionSpaceControl().getControlStringError()));
+            }  else
+                super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getDiceValueVsDiceColorControl().getControlStringError()));
+
+        }
+
+        super.setUsed(true);
+        resetActionSpace();
+        resetFamilyMember();
     }
 
     @Override

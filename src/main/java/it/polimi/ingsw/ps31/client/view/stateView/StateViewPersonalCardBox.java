@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
-import it.polimi.ingsw.ps31.model.stateModel.StateCardBox;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
+import it.polimi.ingsw.ps31.model.stateModel.StateCardBox;
 
 /**
  * Created by giulia on 08/06/2017.

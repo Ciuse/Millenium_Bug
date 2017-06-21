@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.model.bonus;
 
-import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.util.List;

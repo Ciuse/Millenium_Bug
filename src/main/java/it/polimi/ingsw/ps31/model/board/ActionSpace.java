@@ -2,12 +2,12 @@ package it.polimi.ingsw.ps31.model.board;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.ModelChoices;
-import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
-import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
 import it.polimi.ingsw.ps31.model.effect.ActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
 import it.polimi.ingsw.ps31.model.player.FamilyMember;
 import it.polimi.ingsw.ps31.model.player.Player;
+import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
+import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
 
 import java.util.ArrayList;
 import java.util.List;

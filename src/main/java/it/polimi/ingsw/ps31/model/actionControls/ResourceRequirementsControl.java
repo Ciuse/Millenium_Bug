@@ -14,6 +14,11 @@ public class ResourceRequirementsControl extends Control {
         super(player);
     }
 
+    @Override
+    public String getControlStringError() {
+        return "non hai abbastanza risorse richieste";
+    }
+
     /* Setters & Getters */
     public void setRequirements(ResourceList requirement)
     {

@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps31.model.player.FamilyMember;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Francesco on 26/05/2017.
@@ -16,11 +17,17 @@ public class TowerPlacementControl extends Control {
     private int OCCUPIED_TOWER_COST = 3;        //Costo in monete per poter piazzare un familiare in una torre già occupata
     private TowerCardSpace towerCardSpace = null;
     private FamilyMember familyMember = null;
+    private List<ResourceList> resourceList = null;
 
     /* Constructor */
     public TowerPlacementControl(Player player)
     {
         super(player);
+    }
+
+    @Override
+    public String getControlStringError() {
+        return "non puoi piazzare il familiare";
     }
 
     /* Setters & Getters */
@@ -69,7 +76,7 @@ public class TowerPlacementControl extends Control {
             //Controllo che il familiare non sia già piazzato
             conditions.add(controlSet.placedFamilyMemberControl(familyMember));
 
-            //Controllo che il cardSpace contenga una carta
+            //Controllo che il TowerCardSpace contenga una carta
             conditions.add(towerCardSpace.getCard() != null);
 
             //Controllo che il familiare non sarebbe il secondo familiare colorato nella torre
@@ -83,7 +90,7 @@ public class TowerPlacementControl extends Control {
             conditions.add(familyMember.getTotalValue() >= towerCardSpace.getActionSpace().getDiceCost());
 
             //Controllo che il giocatore possa pagare il costo della carta
-//            conditions.add(player.getActionControlSet().)
+            conditions.add(player.getActionControlSet().payResourceListControl(resourceList));
 
 
 

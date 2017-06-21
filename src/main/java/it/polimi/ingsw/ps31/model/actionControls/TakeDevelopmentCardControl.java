@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps31.model.actionControls;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
+import it.polimi.ingsw.ps31.model.player.PersonalBoardCardCell;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.util.List;
@@ -12,11 +13,16 @@ import java.util.List;
  */
 public class TakeDevelopmentCardControl extends Control {
     private DevelopmentCard developmentCard = null;
-    private List<CardColor> cardsWithARequirementToIgnore;
+    private List<CardColor> colorListRequirementToIgnore;
 
     /* Constructor */
     public TakeDevelopmentCardControl(Player player) {
         super(player);
+    }
+
+    @Override
+    public String getControlStringError() {
+        return "non puoi prendere la carta: "+developmentCard.getCardId()+" "+developmentCard.getName()+ "perchè non hai abbastanza risorse";
     }
 
     /* Setters & Getters */
@@ -59,16 +65,31 @@ public class TakeDevelopmentCardControl extends Control {
         }
 
         //Controllo che il player abbia spazio nella personal board per la carta in questione
-        //Controllo spazio residuo
-//        if(player.getPlayerBoard().)
-        //Controllo requisiti
-//        if()  todo robe di giuse needed
+        if(player.getPlayerActionSet().getActionControlSet().getPlayerCardNumberControl().execute()){
+            //Controllo requisiti
+            boolean ignoreRequirement=false;
+            for (CardColor cardColor :colorListRequirementToIgnore
+                    ) {
+                if(developmentCard.getCardColor().equals(cardColor))
+                    ignoreRequirement=true;
+            }
+
+            if(ignoreRequirement==false) {
+                PersonalBoardCardCell personalBoardCardCell = super.player.getPersonalBoard().getSpecificPersonalBoardCardList(developmentCard.getCardColor()).getFirstEmptyCardCell();
+                if(personalBoardCardCell.getExtraPointRequired()!=null
+                        &&!super.player.getPlayerResources().greaterThan(personalBoardCardCell.getExtraPointRequired())){
+                    return false;
+                }
+            }
+            player.addDevelopmentCard(developmentCard);
+        }
+
 
         return true;
     }
 
-    public void addColorCardTOIgnore (CardColor cardColor)
+    public void addColorCardToIgnore(CardColor cardColor)
     {
-        this.cardsWithARequirementToIgnore.add(cardColor);
+        this.colorListRequirementToIgnore.add(cardColor);
     }
 }

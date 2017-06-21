@@ -5,8 +5,6 @@ import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 
 import java.util.Observable;
 
-import static java.lang.Thread.sleep;
-
 /**
  * Created by giulia on 01/06/2017.
  */

@@ -1,7 +1,5 @@
 package it.polimi.ingsw.ps31.model.choiceType;
 
-import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
-import it.polimi.ingsw.ps31.model.stateModel.StateEffect;
 import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles;
 
 import java.util.List;
