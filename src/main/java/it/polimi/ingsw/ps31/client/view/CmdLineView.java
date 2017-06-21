@@ -10,6 +10,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.*;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceActiveEffect;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
@@ -44,19 +45,29 @@ public class CmdLineView extends View {
     }
 
     @Override
-    public void askPlayerAction(ChoiseActionToDo choiseActionToDo) {
+    public void askChoicePlayerAction(ChoiseActionToDo choiseActionToDo) {
         this.setCmdInterpreterView(new IntrChoisePlayerAction());
         printPlayerAction();
+        input();
+        cmdInterpreterView.messageInterpreter(this,choiseActionToDo,keyStroke.getCharacter());
     }
 
     @Override
-    public void askChoiceLeader(ChoiceLeaderCard choiceLeaderCard) {
-        this.setCmdInterpreterView(new IntrChoiceLeader());
+    public void askChoiceStartLeader(ChoiceLeaderCard choiceLeaderCard) {
+        this.setCmdInterpreterView(new IntrChoiseStartLeader());
         for (int i = 0; i < choiceLeaderCard.getLeaderName().size(); i++){
             printLastEvent(choiceLeaderCard.getLeaderId().get(i).toString()+" "+choiceLeaderCard.getLeaderName().get(i));
         }
         input();
         cmdInterpreterView.messageInterpreter(this,choiceLeaderCard,keyStroke.getCharacter());
+    }
+
+    @Override
+    public void askChoiceActiveEffect(ChoiceActiveEffect choiceActiveEffect) {
+        this.setCmdInterpreterView(new IntrChoiseActiveEffect());
+        printDevelopmentCard(choiceActiveEffect.getCardIdEffect());
+        input();
+        cmdInterpreterView.messageInterpreter(this,choiceActiveEffect,keyStroke.getCharacter());
     }
 
     public void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView) {

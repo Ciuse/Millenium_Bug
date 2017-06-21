@@ -46,12 +46,12 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoiseActionToDo choiseActionToDo) {
-        view.askPlayerAction(choiseActionToDo);
+        view.askChoicePlayerAction(choiseActionToDo);
     }
 
     @Override
     public void visit(ChoiceLeaderCard choiceLeaderCard) {
-        view.askChoiceLeader(choiceLeaderCard);
+        view.askChoiceStartLeader(choiceLeaderCard);
     }
 
     @Override

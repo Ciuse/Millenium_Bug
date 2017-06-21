@@ -18,11 +18,11 @@ public class ModelChoices extends Model {
     private int intChosen=-1;
     private TowerCardSpace towerCardSpaceChosen=null;
     private DevelopmentCard developmentCardChosen = null;
-    private boolean activeEffect = false;
+    private Boolean activeEffect = null ;
+    private Boolean supportTheChurch=null;
     private PersonalBonusTiles personalBonusTilesChosen=null;
     private PlayerColor playerColorChosen=null;
     private LeaderCard leaderCardChosen=null;
-    private boolean supportTheChurch=false;
     private TempModelStateForLeaderChoice tempModelStateForLeaderChoice=new TempModelStateForLeaderChoice();
     private String stateModelChoices;
 
@@ -91,7 +91,7 @@ public class ModelChoices extends Model {
 
     public synchronized boolean waitActiveEffect(){
         setActiveEffect(false);
-        while(activeEffect==false|| this.stateModelChoices.equals("StateChoice")){
+        while(activeEffect==null|| this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -113,7 +113,7 @@ public class ModelChoices extends Model {
 
     public synchronized boolean waitSupportTheChurch(){
         setSupportTheChurch(false);
-        while(supportTheChurch==false || this.stateModelChoices.equals("StateChoice")){
+        while(supportTheChurch==null || this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {

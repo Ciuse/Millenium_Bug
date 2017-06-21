@@ -1,14 +1,12 @@
 package it.polimi.ingsw.ps31.messages.messageVC;
 
-import it.polimi.ingsw.ps31.messages.GenericMessage;
-
 /**
  * Created by Giuseppe on 20/06/2017.
  */
-public class VCLeaderChoice extends GenericMessage implements VCVisitable {
-    int leaderId;
+public class VCStartLeaderChoice implements VCVisitable {
+    private int leaderId;
 
-    public VCLeaderChoice(int leaderId) {
+    public VCStartLeaderChoice(int leaderId) {
         this.leaderId = leaderId;
     }
 

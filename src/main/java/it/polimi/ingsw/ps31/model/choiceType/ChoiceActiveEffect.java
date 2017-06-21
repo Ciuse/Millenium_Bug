@@ -5,6 +5,7 @@ package it.polimi.ingsw.ps31.model.choiceType;
  */
 public class ChoiceActiveEffect extends ChoiceType {
     int cardIdEffect;
+    boolean choose;
 
     public ChoiceActiveEffect(int cardIdEffect) {
         this.cardIdEffect = cardIdEffect;

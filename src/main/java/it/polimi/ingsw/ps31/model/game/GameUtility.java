@@ -34,6 +34,7 @@ public class GameUtility extends ModelChoices {
     private VictoryPoint bonusVictoryPointFromPlayerResources;
     private DevelopmentCardList developmentCardList;
     private List<LeaderCard> leaderCardList;
+    private List<LeaderCard> tempLeaderCardList = new ArrayList<>();
     private List<List<EffectList>>towerActionSpaceEffectList;
     private List<EffectList> actionSpaceEffectList;
     private VictoryPoint[] faithTrackExtraValue;
@@ -211,9 +212,8 @@ public class GameUtility extends ModelChoices {
 
     public void leaderCardSetup() {
         Collections.shuffle(leaderCardList);
-
+        tempLeaderCardList=leaderCardList;
         for (int k = 0; k < Max_Leader_Card; k++) {
-            List<LeaderCard> tempLeaderCardList = new ArrayList<>(leaderCardList);
             List<LeaderCard> temp1 = new ArrayList<>();
             List<LeaderCard> temp2 = new ArrayList<>();
             List<LeaderCard> temp3 = new ArrayList<>();
@@ -639,6 +639,14 @@ public class GameUtility extends ModelChoices {
 
     public void setLeaderCardList(List<LeaderCard> leaderCardList) {
         this.leaderCardList = leaderCardList;
+    }
+
+    public List<LeaderCard> getTempLeaderCardList() {
+        return tempLeaderCardList;
+    }
+
+    public void setTempLeaderCardList(List<LeaderCard> tempLeaderCardList) {
+        this.tempLeaderCardList = tempLeaderCardList;
     }
 
     public PersonalBonusTiles removePersonalBonusTiles(PersonalBonusTiles personalBonusTiles){
