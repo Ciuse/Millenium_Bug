@@ -92,7 +92,7 @@ public class ActionControlSet {
     public boolean payResourceListControl(List<ResourceList> resourceLists)
     {
         this.payResourceListControl.setResourceLists(resourceLists);
-        return this.payResourceControl.execute();
+        return this.payResourceListControl.execute();
     }
 
     public boolean placedFamilyMemberControl(FamilyMember familyMember)

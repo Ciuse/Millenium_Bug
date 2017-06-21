@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.client.clientNetworking;
 
 import com.google.gson.Gson;
-import it.polimi.ingsw.ps31.server.MexProva;
+import it.polimi.ingsw.ps31.messages.GenericMessage;
 
 import java.io.*;
 import java.net.Socket;
@@ -75,7 +75,7 @@ public class ClientSocketConnection extends ClientNetworkInterface {
         Gson gson = new Gson();
 
         //Deserializzo l'oggetto
-        MexProva strObj = gson.fromJson(msg, MexProva.class);
+        GenericMessage strObj = gson.fromJson(msg, GenericMessage.class);
 
         return strObj;
     }

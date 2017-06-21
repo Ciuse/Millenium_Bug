@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.model.bonus;
 
-import it.polimi.ingsw.ps31.messageMV.MVAskChoice;
+import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderEffectToCopy;
 import it.polimi.ingsw.ps31.model.player.Player;

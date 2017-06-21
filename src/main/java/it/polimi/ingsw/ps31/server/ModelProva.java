@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.server;
 
+import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
 
@@ -34,7 +35,7 @@ public class ModelProva {
         this.state = new StringBuilder(this.state).reverse().toString();
 
         //genero l'oggetto di risposta
-        MexProva answerObj = new MexProva(this.state);
+        GenericMessage answerObj = new GenericMessage(this.state);
 
         notifyState(sendBackTo, answerObj);
 
@@ -48,7 +49,7 @@ public class ModelProva {
 
     }
 
-    public void notifyState(PlayerId receiver, MexProva obj)
+    public void notifyState(PlayerId receiver, GenericMessage obj)
     {
         System.out.println("Server> receiver: "+receiver+"; obj: "+obj);
         networkInterface.sendToClient(obj, receiver);

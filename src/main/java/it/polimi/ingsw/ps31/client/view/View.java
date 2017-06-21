@@ -1,15 +1,14 @@
 package it.polimi.ingsw.ps31.client.view;
 
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.CmdInterpreterView;
-import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrVisualization;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewGame;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
 import it.polimi.ingsw.ps31.controller.Controller;
-import it.polimi.ingsw.ps31.messageMV.MVMessageVisitor;
-import it.polimi.ingsw.ps31.messageMV.MVVisitable;
-import it.polimi.ingsw.ps31.messageVC.VCVisitable;
+import it.polimi.ingsw.ps31.messages.messageMV.MVMessageVisitor;
+import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
+import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
 import it.polimi.ingsw.ps31.model.stateModel.*;

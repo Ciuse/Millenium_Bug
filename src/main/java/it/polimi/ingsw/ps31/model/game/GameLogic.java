@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.model.game;
 
 import com.google.gson.Gson;
-import it.polimi.ingsw.ps31.messageMV.MVUpdateState;
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.json.CreationJson;
 import it.polimi.ingsw.ps31.model.json.JsonFile;

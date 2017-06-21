@@ -1,20 +1,17 @@
 package it.polimi.ingsw.ps31.model.game;
 
-import it.polimi.ingsw.ps31.messageMV.MVAskChoice;
-import it.polimi.ingsw.ps31.messageMV.MVStringToPrint;
-import it.polimi.ingsw.ps31.messageMV.MVUpdateState;
+import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
+import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.ModelChoices;
-import it.polimi.ingsw.ps31.model.bonus.GainVictoryPointFromLeaderCardBonus;
 import it.polimi.ingsw.ps31.model.card.*;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceColor;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceIfSupportTheChurch;
 import it.polimi.ingsw.ps31.model.choiceType.ChoicePersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
-import it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl;
 import it.polimi.ingsw.ps31.model.stateModel.StateGame;
 import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles;
-import it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;

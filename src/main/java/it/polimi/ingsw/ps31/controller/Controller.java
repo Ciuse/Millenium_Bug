@@ -1,11 +1,10 @@
 package it.polimi.ingsw.ps31.controller;
 
 import it.polimi.ingsw.ps31.client.view.View;
-import it.polimi.ingsw.ps31.messageVC.VCMessageVisitor;
-import it.polimi.ingsw.ps31.messageVC.VCVisitable;
+import it.polimi.ingsw.ps31.messages.messageVC.VCMessageVisitor;
+import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.card.LeaderCard;
-import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.game.GameUtility;
 import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl;

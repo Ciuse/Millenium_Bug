@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps31.server.serverNetworking;
 import com.google.gson.Gson;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.server.Match;
-import it.polimi.ingsw.ps31.server.MexProva;
+import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.server.ModelProva;
 
 /**
@@ -52,7 +52,7 @@ public class NetworkInterface {
         connection.notifyClient(msg);
     }
 
-    public void sendToClient(MexProva msg, PlayerId playerId)
+    public void sendToClient(GenericMessage msg, PlayerId playerId)
     {
         //Trasformo l'oggetto in json
         //Creo gson

@@ -1,15 +1,10 @@
 package it.polimi.ingsw.ps31.model;
 
 import it.polimi.ingsw.ps31.client.view.View;
-import it.polimi.ingsw.ps31.messageMV.MVVisitable;
-import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
-import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
+import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 
 import java.util.Observable;
-import java.util.Observer;
-import java.util.Vector;
 
-import static java.lang.Thread.currentThread;
 import static java.lang.Thread.sleep;
 
 /**

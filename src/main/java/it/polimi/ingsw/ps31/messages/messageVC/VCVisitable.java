@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31.messageVC;
+package it.polimi.ingsw.ps31.messages.messageVC;
 
 /**
  * Created by Giuseppe on 12/06/2017.

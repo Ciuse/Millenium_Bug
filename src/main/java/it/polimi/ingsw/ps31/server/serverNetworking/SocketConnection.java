@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
-import it.polimi.ingsw.ps31.ConnectionType;
+import it.polimi.ingsw.ps31.networking.ConnectionType;
 
 import java.io.*;
 import java.net.Socket;

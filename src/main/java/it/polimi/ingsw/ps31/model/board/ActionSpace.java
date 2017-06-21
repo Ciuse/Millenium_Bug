@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.model.board;
 
-import it.polimi.ingsw.ps31.messageMV.MVUpdateState;
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.ModelChoices;
 import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
 import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
