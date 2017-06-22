@@ -11,8 +11,7 @@ public class ExtraFinalVictoryPointBonus extends Bonus {
     private final CardColor cardColor;
 
 
-    protected ExtraFinalVictoryPointBonus(Action actionToModify, CardColor cardColor) {
-        super(actionToModify);
+    protected ExtraFinalVictoryPointBonus(CardColor cardColor) {
         this.cardColor = cardColor;
     }
 

@@ -23,9 +23,6 @@ public class ActionGetFinalResources extends ActionGetResources {   //Attivato s
     @Override
     public void activate()
     {
-        //Controllo che sia la fine della partita
-        //TODO: implementare controllo??
-
         List<ResourceList> resList = player.getFinalBonusResources();
         for(ResourceList currentList : resList)
             player.getPlayerActionSet().getResources(currentList);

@@ -10,18 +10,12 @@ import java.util.List;
  * Created by Giuseppe on 27/05/2017.
  */
 public class NoImmediateEffectBonus extends Bonus {
-    private final List<Integer> arrayValue;
-    protected NoImmediateEffectBonus(Action actionToModify, ArrayList<Integer> arrayValue) {
-        super(actionToModify);
-        this.arrayValue = arrayValue;
-    }
 
-    public List<Integer> getValue() {
-        return arrayValue.subList(0, arrayValue.size()-1);
+    public NoImmediateEffectBonus() {
     }
 
     @Override
     public void activate(Player player) {
-
+        player.getPlayerActionSet().getPlaceFamilyMemberInTower().setImmediateEffectsAreActivable(false);
     }
 }

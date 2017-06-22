@@ -16,4 +16,9 @@ public interface ChoiceVisitor {
     void visit(ChoiceColor choiceColor);
     void visit(ChoiceLeaderEffectToCopy choiceLeaderEffectToCopy);
     void visit(ChoiceIfSupportTheChurch choiceIfSupportTheChurch);
+    void visit(ChoicePrivilegeResource choicePrivilegeResource);
+    void visit(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay);
+    void visit(ChoiceLeaderToActive choiceLeaderToActive);
+    void visit(ChoiceLeaderToDiscard choiceLeaderToDiscard);
+    void visit(ChoiceTowerActionSpace choiceTowerActionSpace);
 }

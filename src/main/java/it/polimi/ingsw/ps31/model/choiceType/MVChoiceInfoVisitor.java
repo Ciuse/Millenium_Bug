@@ -77,4 +77,14 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
     public void visit(ChoiceIfSupportTheChurch choiceIfSupportTheChurch) {
 
     }
+
+    @Override
+    public void visit(ChoicePrivilegeResource choicePrivilegeResource) {
+
+    }
+
+    @Override
+    public void visit(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay) {
+
+    }
 }

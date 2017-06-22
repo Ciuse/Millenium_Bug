@@ -4,7 +4,6 @@ import it.polimi.ingsw.ps31.model.actions.*;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
 import it.polimi.ingsw.ps31.model.board.TowerActionSpace;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
-import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
@@ -110,6 +109,9 @@ public class PlayerActionSet {
     public void chooseDifferentPrivilege(int numOfPrivileges, boolean isDifferent)
     {
         //TODO: implementare
+        this.chooseDifferentPrivilege.setNumberOfDifferentPrivileges(numOfPrivileges);
+        this.chooseDifferentPrivilege.setAreDifferent(isDifferent);
+        this.chooseDifferentPrivilege.activate();
     }
 
     public void activeEndButton(){
@@ -150,15 +152,11 @@ public class PlayerActionSet {
 
     public void placeFamilyMemberInTower()
     {
-//        this.placeFamilyMemberInTower.setFamilyMember(familyMember);
-//        this.placeFamilyMemberInTower.setTowerActionSpace(towerActionSpace);
         this.placeFamilyMemberInTower.activate();
     }
 
     public void placeFamilyMemberInBoard()
     {
-//        this.placeFamilyMemberInBoard.setFamilyMember(familyMember);
-//        this.placeFamilyMemberInBoard.setActionSpace(actionSpace);
         this.placeFamilyMemberInBoard.activate();
     }
 
@@ -176,12 +174,10 @@ public class PlayerActionSet {
 
     public void activeLeaderCard()
     {
-//        this....
         this.actionActiveLeaderCard.activate();
     }
 
     public void discardLeaderCard(){
-//        this.discardLeaderCard.setLeaderCard(leaderCard);
         this.discardLeaderCard.activate();
     }
 

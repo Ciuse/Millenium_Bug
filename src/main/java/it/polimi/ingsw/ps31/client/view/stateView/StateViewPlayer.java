@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
+import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.player.PlayerResources;
@@ -21,6 +22,7 @@ public class StateViewPlayer {
     private final List<StateViewFamilyMember> stateViewFamilyMemberList = new ArrayList<>();
     private final List<StateViewMarkerDisc> stateViewMarkerDiscList = new ArrayList<>();
     private List<String> stringPlayerAction;
+    private List<StateViewLeaderCard> stateViewLeaderCardList = new ArrayList<>();
 
 
     public StateViewPlayer(PlayerId playerId){
@@ -103,6 +105,16 @@ public class StateViewPlayer {
             if(stateMarkerDisc.getStringResourceType().equals(stateViewMarkerDisc.getStringResourceType())&&
                     stateMarkerDisc.getPlayerId().equals(stateViewMarkerDisc.getPlayerId())){
                 stateViewMarkerDisc.updateState(stateMarkerDisc);
+            }
+        }
+    }
+    public void updateState(StateLeaderCard stateLeaderCard){
+        if(stateLeaderCard.getLeaderId()!=-1)
+        if(stateViewLeaderCardList.size()>0){
+            for (StateViewLeaderCard stateViewLeaderCard:stateViewLeaderCardList
+                 ) {
+                if(stateLeaderCard.getLeaderId()==stateViewLeaderCard.getLeaderId())
+                    stateViewLeaderCard.updateState(stateLeaderCard);
             }
         }
     }

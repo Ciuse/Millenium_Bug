@@ -1,8 +1,13 @@
 package it.polimi.ingsw.ps31.model.actions;
 
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceActionSpace;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceFamilyMember;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerCardSpace;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
@@ -34,6 +39,10 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
     /* Class Methods */
     @Override
     public void activate() {
+        super.notifyViews(new MVAskChoice(player.getPlayerId(),"Quale family member vuoi usare?",new ChoiceFamilyMember()));
+        this.familyMember=super.waitFamilyMemberChosen();
+        super.notifyViews(new MVAskChoice(player.getPlayerId(),"In quale action space della board vuoi mettere il tuo family member?",new ChoiceActionSpace()));
+        this.actionSpace=super.waitActionSpaceChosen();
         //Controllo che i parametri siano settati
         if (this.familyMember == null || this.actionSpace == null) {
             //TODO: gestire (eccezione?)
@@ -53,7 +62,8 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
                     super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getOccupiedActionSpaceControl().getControlStringError()));
             }  else
                 super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getDiceValueVsDiceColorControl().getControlStringError()));
-
+            super.notifyViews(new MVUpdateState("Aggiornato stato family member",familyMember.getStateFamilyMember()));
+            super.notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella board",actionSpace.getStateActionSpace()));
         }
 
         super.setUsed(true);

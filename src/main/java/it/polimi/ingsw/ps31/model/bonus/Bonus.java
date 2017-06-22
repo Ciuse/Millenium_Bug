@@ -13,7 +13,7 @@ import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 public abstract class Bonus extends ModelChoices implements BonusActivation  {
 
     protected Bonus() {}
-    protected Bonus(Action actionToModify) {}
+ //   protected Bonus(Action actionToModify) {}
 
    // private final Action actionToModify;
 

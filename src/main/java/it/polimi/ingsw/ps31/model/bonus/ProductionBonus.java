@@ -9,8 +9,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
 public class ProductionBonus extends Bonus {
     private final int value;
 
-    protected ProductionBonus(Action actionToModify, int value) {
-        super(actionToModify);
+    protected ProductionBonus(int value) {
         this.value = value;
     }
 

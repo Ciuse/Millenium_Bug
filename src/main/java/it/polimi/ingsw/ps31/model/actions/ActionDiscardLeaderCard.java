@@ -1,6 +1,10 @@
 package it.polimi.ingsw.ps31.model.actions;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.card.LeaderCard;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderToActive;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderToDiscard;
 import it.polimi.ingsw.ps31.model.gameResource.CouncilPrivilege;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
@@ -35,6 +39,8 @@ public class ActionDiscardLeaderCard extends Action {
     @Override
     public void activate()
     {
+        super.notifyViews(new MVAskChoice(player.getPlayerId(),"Quale leader non giocato vuoi scartare?",new ChoiceLeaderToDiscard()));
+        this.leaderCard=super.waitLeaderCardChosen();
         //Controllo che i parametri siano settati
         if (this.leaderCard == null)
         {
@@ -42,12 +48,15 @@ public class ActionDiscardLeaderCard extends Action {
         }
         else
         {
+            if(!leaderCard.isPlayed()){
             player.removeLeaderCard(leaderCard);
             //attivo la ricompensa (1 privilegio del consiglio)
             player.getPlayerActionSet().getResources(new ResourceList(new CouncilPrivilege(1,false)));
+            }
         }
 
         resetLeaderCard();
+        super.notifyViews(new MVUpdateState("Aggiornato stato leader card",leaderCard.getStateLeaderCard()));
     }
 
     @Override

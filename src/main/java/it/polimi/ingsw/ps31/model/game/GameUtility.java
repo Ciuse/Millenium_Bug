@@ -416,6 +416,8 @@ public class GameUtility extends ModelChoices {
                 finalExtraVictoryPoints3(player);
             }
             finalExtraVictoryPoints4(player);
+
+            super.notifyViews(new MVUpdateState("Aggiornato lo stato delle risorse finali",player.getStatePlayerResources()));
         }
     }
 

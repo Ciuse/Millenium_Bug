@@ -12,8 +12,7 @@ public class LostFinalVictoryPointFromCardCosts extends Bonus {
     private  final ResourceList resourceList;
     private final CardColor cardColorForCostCard;
 
-    protected LostFinalVictoryPointFromCardCosts(Action actionToModify, ResourceList resourceList, CardColor cardColorForCostCard) {
-        super(actionToModify);
+    protected LostFinalVictoryPointFromCardCosts(ResourceList resourceList, CardColor cardColorForCostCard) {
         this.resourceList = resourceList;
         this.cardColorForCostCard = cardColorForCostCard;
     }
