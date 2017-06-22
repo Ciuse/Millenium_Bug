@@ -1,9 +1,13 @@
 package it.polimi.ingsw.ps31.model;
 
+import it.polimi.ingsw.ps31.model.board.ActionSpace;
+import it.polimi.ingsw.ps31.model.board.TowerActionSpace;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
+import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
+import it.polimi.ingsw.ps31.model.player.FamilyMember;
 import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl;
 import it.polimi.ingsw.ps31.model.stateModel.TempModelStateForLeaderChoice;
@@ -25,6 +29,11 @@ public class ModelChoices extends Model {
     private boolean supportTheChurch=false;
     private TempModelStateForLeaderChoice tempModelStateForLeaderChoice=new TempModelStateForLeaderChoice();
     private String stateModelChoices;
+    private ResourceList resourceChosen;
+    private int numberOfServantsToPay;
+    private FamilyMember familyMemberChosen;
+    private TowerActionSpace towerActionSpaceChosen;
+    private ActionSpace actionSpaceChosen;
 
     public synchronized int waitIntChosen(){
         setIntChosen(-1);
@@ -77,6 +86,31 @@ public class ModelChoices extends Model {
         }
         return towerCardSpaceChosen;
     }
+    public synchronized TowerActionSpace waitTowerActionSpaceChosen(){
+        setTowerActionSpaceChosen(null);
+        while(towerActionSpaceChosen==null|| this.stateModelChoices.equals("StateChoice")){
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            //TODO SISTEMARE
+        }
+        return towerActionSpaceChosen;
+    }
+
+    public synchronized ActionSpace waitActionSpaceChosen(){
+        setActionSpaceChosen(null);
+        while(actionSpaceChosen==null|| this.stateModelChoices.equals("StateChoice")){
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            //TODO SISTEMARE
+        }
+        return actionSpaceChosen;
+    }
 
     public synchronized DevelopmentCard waitDevelopmentCardChosen(){
         setDevelopmentCardChosen(null);
@@ -99,6 +133,16 @@ public class ModelChoices extends Model {
             }
         }return activeEffect;
     }
+    public synchronized ResourceList waitResourceChosen(){
+        setResourceChosen(null);
+        while(resourceChosen==null|| this.stateModelChoices.equals("StateChoice")){
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }return resourceChosen;
+    }
 
     public synchronized PersonalBonusTiles waitPersonalBonusTilesChosen(){
         setPersonalBonusTilesChosen(null);
@@ -109,6 +153,17 @@ public class ModelChoices extends Model {
                 e.printStackTrace();
             }
         }return personalBonusTilesChosen;
+    }
+
+    public synchronized int waitNumberOfServantsToPay(){
+        setNumberOfServantsToPay(-1);
+        while(numberOfServantsToPay!=-1 || this.stateModelChoices.equals("StateChoice")){
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }return numberOfServantsToPay;
     }
 
     public synchronized boolean waitSupportTheChurch(){
@@ -133,6 +188,29 @@ public class ModelChoices extends Model {
         }return playerColorChosen;
     }
 
+    public synchronized FamilyMember waitFamilyMemberChosen(){
+        setFamilyMemberChosen(null);
+        while(familyMemberChosen==null || this.stateModelChoices.equals("StateChoice")){
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }return familyMemberChosen;
+    }
+
+    public void setActionSpaceChosen(ActionSpace actionSpaceChosen) {
+        this.actionSpaceChosen = actionSpaceChosen;
+    }
+
+    public void setTowerActionSpaceChosen(TowerActionSpace towerActionSpaceChosen) {
+        this.towerActionSpaceChosen = towerActionSpaceChosen;
+    }
+
+    public void setFamilyMemberChosen(FamilyMember familyMemberChosen) {
+        this.familyMemberChosen = familyMemberChosen;
+    }
+
     public void setSupportTheChurch(boolean supportTheChurch) {
         this.supportTheChurch = supportTheChurch;
     }
@@ -147,6 +225,10 @@ public class ModelChoices extends Model {
 
     public LastModelStateForControl getLastModelStateForControl() {
         return lastModelStateForControl;
+    }
+
+    public void setNumberOfServantsToPay(int numberOfServantsToPay) {
+        this.numberOfServantsToPay = numberOfServantsToPay;
     }
 
     public void setLastModelStateForControl(LastModelStateForControl lastModelStateForControl) {
@@ -187,5 +269,9 @@ public class ModelChoices extends Model {
     public void setStateEndTurn(){
         this.stateModelChoices="StateEndTurn";
 
+    }
+
+    public void setResourceChosen(ResourceList resourceChosen) {
+        this.resourceChosen = resourceChosen;
     }
 }

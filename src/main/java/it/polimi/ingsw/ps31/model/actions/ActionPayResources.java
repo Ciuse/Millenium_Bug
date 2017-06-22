@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.model.actions;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
@@ -48,10 +50,11 @@ public class ActionPayResources extends Action{
                 resetResourceToPay();
             } else
             {
-                //TODO: lanciare eccezione
+                super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPayResourceControl().getControlStringError()));
             }
 
             resetResourceToPay();
+            super.notifyViews(new MVUpdateState("Aggiornato stato player resource",player.getStatePlayerResources()));
         }
     }
 }

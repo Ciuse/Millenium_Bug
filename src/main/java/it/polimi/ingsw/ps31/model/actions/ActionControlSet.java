@@ -179,5 +179,7 @@ public class ActionControlSet {
         return towerPlacementControl;
     }
 
-
+    public LeaderCardRequirementControl getLeaderCardRequirementControl() {
+        return leaderCardRequirementControl;
+    }
 }

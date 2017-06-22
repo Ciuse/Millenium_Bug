@@ -12,8 +12,7 @@ public class LostFinalVictoryPointBonus extends  Bonus {
     private final PointResource pointResource;
 
 
-    protected LostFinalVictoryPointBonus(Action actionToModify, PointResource pointResource) {
-        super(actionToModify);
+    protected LostFinalVictoryPointBonus(PointResource pointResource) {
         this.pointResource = pointResource;
     }
 

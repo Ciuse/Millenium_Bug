@@ -50,8 +50,8 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
     }
 
     @Override
-    public void visit(ChoiceLeaderCard choiceLeaderCard) {
-        view.askChoiceLeader(choiceLeaderCard);
+    public void visit(ChoiceStartLeaderCard choiceStartLeaderCard) {
+        view.askChoiceLeader(choiceStartLeaderCard);
     }
 
     @Override
@@ -71,6 +71,16 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoiceIfSupportTheChurch choiceIfSupportTheChurch) {
+
+    }
+
+    @Override
+    public void visit(ChoicePrivilegeResource choicePrivilegeResource) {
+
+    }
+
+    @Override
+    public void visit(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay) {
 
     }
 }

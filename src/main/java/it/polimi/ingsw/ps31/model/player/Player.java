@@ -36,7 +36,7 @@ public class Player {
     private HarvestList harvestList;
     private ProductionList productionList;
     private List<ResourceList> finalBonusResources;
-    private List<LeaderCard> leaderCardList;
+    private List<LeaderCard> leaderCardList= new ArrayList<>();
 
     /* Constructor */
     public Player( ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard)
@@ -222,7 +222,7 @@ public class Player {
     {
         this.finalBonusResources.add(bonusResourcesToAdd);
     }
-    public FamilyMember getSpecificFamilyMember(DiceColor color)
+    public FamilyMember     getSpecificFamilyMember(DiceColor color)
     {
         Iterator<FamilyMember> itr = familyMembers.iterator();
 
@@ -269,6 +269,7 @@ public class Player {
 
     }
 
+
     public StateAllFamilyMember getStateAllFamilyMember(){
         List<StateFamilyMember> stateAllFamilyMembers = new ArrayList<>();
         for (FamilyMember familyMember :familyMembers
@@ -289,6 +290,12 @@ public class Player {
         }
         if(!playerActionSet.getActionActiveLeaderCard().isUsed()) {
             actionList.add(playerActionSet.getActionActiveLeaderCard().toString());
+        }
+        for (LeaderCard leaderCard:leaderCardList
+             ) {
+           if(leaderCardList.size()>0&&!leaderCard.isPlayed()){
+               actionList.add(playerActionSet.getDiscardLeaderCard().toString());
+           }
         }
         if (playerActionSet.getActiveEndButton().isActive()) {
             actionList.add(playerActionSet.getActiveEndButton().toString());

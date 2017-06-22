@@ -9,7 +9,7 @@ import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.messages.messageMV.MVMessageVisitor;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderCard;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.stateModel.*;
@@ -66,7 +66,7 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void askPlayerAction(ChoiseActionToDo choiseActionToDo);
 
-    public abstract void askChoiceLeader(ChoiceLeaderCard choiceLeaderCard);
+    public abstract void askChoiceLeader(ChoiceStartLeaderCard choiceStartLeaderCard);
 
     public abstract void askComand() throws IOException;
 
@@ -161,6 +161,13 @@ public abstract class View extends Observable implements Observer {
         stateViewGame.updateState(stateDevelopmentCard);
     }
 
+    public final void updateLeaderCard(StateLeaderCard stateLeaderCard){
+        for (StateViewPlayer stateViewPlayer:stateViewPlayerList
+             ) {
+           if(stateViewPlayer.getPlayerId().equals(stateLeaderCard.getPlayerId()))
+               stateViewPlayer.updateState(stateLeaderCard);
+        }
+    }
 
 
     public abstract void runTerminal() throws IOException;

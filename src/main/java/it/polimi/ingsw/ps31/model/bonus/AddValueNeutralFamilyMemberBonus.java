@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.bonus;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.player.Player;
 

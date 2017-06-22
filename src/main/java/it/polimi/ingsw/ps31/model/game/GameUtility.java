@@ -238,7 +238,7 @@ public class GameUtility extends ModelChoices {
                 tempModelStateForLeaderChoice.addPlayerPossibleChoide(player.getPlayerId(), leaderCardId);
                 String string = "SCEGLI CARTA LEADER: ";
                 super.setTempModelStateForLeaderChoice(tempModelStateForLeaderChoice);
-                super.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceLeaderCard(leaderCardId, leaderCardString)));
+                super.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceStartLeaderCard(leaderCardId, leaderCardString)));
             }
             super.waitAllInitialLeaderCardChosen();
             tempLeaderCardList.clear();
@@ -430,6 +430,8 @@ public class GameUtility extends ModelChoices {
                 finalExtraVictoryPoints3(player);
             }
             finalExtraVictoryPoints4(player);
+
+            super.notifyViews(new MVUpdateState("Aggiornato lo stato delle risorse finali",player.getStatePlayerResources()));
         }
     }
 

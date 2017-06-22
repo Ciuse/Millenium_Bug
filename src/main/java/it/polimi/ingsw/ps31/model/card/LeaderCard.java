@@ -3,6 +3,8 @@ import it.polimi.ingsw.ps31.model.effect.ActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.Effect;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
+import it.polimi.ingsw.ps31.model.stateModel.StateEffect;
+import it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +82,13 @@ public class LeaderCard extends Card implements ActiveEffect {
 
     public int getLeaderId() {
         return leaderId;
+    }
+
+    public StateLeaderCard getStateLeaderCard() {
+        if (this.leaderId != -1) {
+            StateLeaderCard stateLeaderCard = new StateLeaderCard(playerId, leaderId, super.getName(), new StateEffect(abilityOneTimeForTurn), new StateEffect(permanentAbility), played, usedEffect1);
+            return stateLeaderCard;
+        } return null;
     }
 
     @Override

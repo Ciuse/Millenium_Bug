@@ -11,9 +11,14 @@ public interface ChoiceVisitor {
     void visit(ChoiceFamilyMember choiceFamilyMember);
     void visit(ChoiceActionSpace choiceActionSpace);
     void visit(ChoiseActionToDo choiseActionToDo);
-    void visit(ChoiceLeaderCard choiceLeaderCard);
+    void visit(ChoiceStartLeaderCard choiceStartLeaderCard);
     void visit(ChoicePersonalBonusTiles choicePersonalBonusTiles);
     void visit(ChoiceColor choiceColor);
     void visit(ChoiceLeaderEffectToCopy choiceLeaderEffectToCopy);
     void visit(ChoiceIfSupportTheChurch choiceIfSupportTheChurch);
+    void visit(ChoicePrivilegeResource choicePrivilegeResource);
+    void visit(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay);
+    void visit(ChoiceLeaderToActive choiceLeaderToActive);
+    void visit(ChoiceLeaderToDiscard choiceLeaderToDiscard);
+    void visit(ChoiceTowerActionSpace choiceTowerActionSpace);
 }
