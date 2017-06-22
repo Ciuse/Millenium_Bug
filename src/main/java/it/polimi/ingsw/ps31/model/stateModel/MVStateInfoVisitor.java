@@ -41,17 +41,19 @@ public class MVStateInfoVisitor implements StateVisitor {
 
     @Override
     public void visit(StateEffect stateEffect) {
+        //non viene mai mandato questo stato da solo dato che non cambiano mai durante il gioco
 
     }
 
     @Override
     public void visit(StatePersonalBonusTiles statePersonalBonusTiles) {
+        //non viene mai mandato questo stato da solo dato che non cambiano mai durante il gioco
 
     }
 
     @Override
     public void visit(StateLeaderCard stateLeaderCard) {
-
+        view.updateLeaderCard(stateLeaderCard);
     }
 
     @Override

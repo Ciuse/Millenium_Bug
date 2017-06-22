@@ -173,6 +173,8 @@ public abstract class View extends Observable implements Observer {
         }
     }
 
+
+
     public abstract void runTerminal() throws IOException;
 
     public abstract void printTower();
