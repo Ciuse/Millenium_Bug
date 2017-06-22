@@ -4,6 +4,7 @@ import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.messageVC.VCMessageVisitor;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.Model;
+import it.polimi.ingsw.ps31.model.ModelChoices;
 import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.game.GameUtility;
 import it.polimi.ingsw.ps31.model.player.Player;
@@ -18,6 +19,7 @@ import java.util.Observer;
  */
 public class Controller implements Observer{
     private Model model;
+    private ModelChoices modelChoices;
     private View view;
     private LastModelStateForControl lastModelStateForControl;
     private TempModelStateForLeaderChoice tempModelStateForLeaderChoice;
@@ -36,14 +38,14 @@ public class Controller implements Observer{
               for (Integer leaderId:tempModelStateForLeaderChoice.getPlayerPossibleChoiceList().get(i).getLeaderId()
                    ) {
                   if(leaderId==leaderIdToCreate){
-                      for (LeaderCard leaderCard: gameUtility.getLeaderCardList()
+                      for (LeaderCard leaderCard: gameUtility.getTempLeaderCardList()
                            ) {
                           if(leaderIdToCreate==leaderCard.getLeaderId()){
                               for (Player player:gameUtility.getPlayerList()
                                    ) {
                                   if (player.getPlayerId().equals(tempModelStateForLeaderChoice.getPlayerPossibleChoiceList().get(i).getPlayerId())){
                                       player.addLeaderCard(leaderCard);
-                                      gameUtility.getLeaderCardList().remove(leaderCard);
+                                      gameUtility.getTempLeaderCardList().remove(leaderCard);
                                   }
                               }
                           }
@@ -54,7 +56,9 @@ public class Controller implements Observer{
       }
     }
 
+    public void activeEffect(boolean isToActive){
+
+    }
+
 
 }
-
-

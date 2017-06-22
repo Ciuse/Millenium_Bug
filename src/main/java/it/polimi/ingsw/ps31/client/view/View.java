@@ -63,12 +63,14 @@ public abstract class View extends Observable implements Observer {
         }
 
     }
+    public abstract void askChoiceActiveEffect(ChoiceActiveEffect choiceActiveEffect);
 
-    public abstract void askPlayerAction(ChoiseActionToDo choiseActionToDo);
+    public abstract void askChoicePlayerAction(ChoiseActionToDo choiseActionToDo);
 
-    public abstract void askChoiceLeader(ChoiceStartLeaderCard choiceStartLeaderCard);
+    public abstract void askChoiceStartLeader(ChoiceLeaderCard choiceLeaderCard);
 
     public abstract void askComand() throws IOException;
+
 
     public final void updateInfoPlayer(StateTypePlayer stateInfoPlayer){
         for (StateViewPlayer viewPlayer : stateViewPlayerList

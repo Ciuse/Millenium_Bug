@@ -14,7 +14,12 @@ public class VCMessageVisitor extends GenericMessage implements VCVisitor {
     }
 
     @Override
-    public void visit(VCLeaderChoice vcLeaderChoice) {
-        controller.createLeader(vcLeaderChoice.getLeaderId());
+    public void visit(VCStartLeaderChoice vcStartLeaderChoice) {
+        controller.createLeader(vcStartLeaderChoice.getLeaderId());
+    }
+
+    @Override
+    public void visit(VCActiveEffectChoice vcActiveEffectChoice) {
+        controller.activeEffect(vcActiveEffectChoice.isToActive());
     }
 }
