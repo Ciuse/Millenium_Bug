@@ -1,4 +1,5 @@
 package it.polimi.ingsw.ps31.model.card;
+import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.effect.ActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.Effect;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by Giuseppe on 22/05/2017.
  */
 public class LeaderCard extends Card implements ActiveEffect {
+    private PlayerId playerId;
     private final int leaderId;
     private final ResourceList resourceRequest;
     private final DevelopmentCardList developmentCardRequest;

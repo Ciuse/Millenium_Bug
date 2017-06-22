@@ -87,4 +87,19 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
     public void visit(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay) {
 
     }
+
+    @Override
+    public void visit(ChoiceLeaderToActive choiceLeaderToActive) {
+
+    }
+
+    @Override
+    public void visit(ChoiceLeaderToDiscard choiceLeaderToDiscard) {
+
+    }
+
+    @Override
+    public void visit(ChoiceTowerActionSpace choiceTowerActionSpace) {
+
+    }
 }

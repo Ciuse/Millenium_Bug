@@ -21,6 +21,7 @@ import it.polimi.ingsw.ps31.model.stateModel.TempModelStateForLeaderChoice;
 
 import java.util.*;
 
+
 /**
  * Created by giulia on 19/06/2017.
  */
@@ -45,7 +46,6 @@ public class GameUtility extends ModelChoices {
     private int playerMaxNumber;
     private static final int Max_Leader_Card = 4;
     private long timerAction;
-
 
     public void createDeck(){
         //creazione deck vuoti
@@ -474,7 +474,7 @@ public class GameUtility extends ModelChoices {
         }
     }
 
-    public StateGame getStateGame(int period,int round,int playerNumber){
+    public StateGame getStateGame(int period, int round, int playerNumber){
         StateGame stateGame = new StateGame(period,round,playerList.get(playerNumber).getPlayerId());
         return stateGame;
     }

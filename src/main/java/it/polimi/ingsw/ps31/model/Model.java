@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.model;
 
-import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.server.VirtualView;
 

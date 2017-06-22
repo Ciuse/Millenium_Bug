@@ -1,12 +1,10 @@
 package it.polimi.ingsw.ps31.controller;
 
-import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.messageVC.VCMessageVisitor;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.ModelChoices;
 import it.polimi.ingsw.ps31.model.card.LeaderCard;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.game.GameUtility;
 import it.polimi.ingsw.ps31.model.player.Player;
@@ -15,7 +13,6 @@ import it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction;
 import it.polimi.ingsw.ps31.model.stateModel.TempModelStateForLeaderChoice;
 import it.polimi.ingsw.ps31.server.VirtualView;
 
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 

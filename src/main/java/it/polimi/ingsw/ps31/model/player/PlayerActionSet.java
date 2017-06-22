@@ -1,8 +1,6 @@
 package it.polimi.ingsw.ps31.model.player;
 
 import it.polimi.ingsw.ps31.model.actions.*;
-import it.polimi.ingsw.ps31.model.board.ActionSpace;
-import it.polimi.ingsw.ps31.model.board.TowerActionSpace;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;

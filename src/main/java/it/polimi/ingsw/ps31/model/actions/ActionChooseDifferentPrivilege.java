@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps31.model.actions;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
-import it.polimi.ingsw.ps31.model.bonus.Bonus;
 import it.polimi.ingsw.ps31.model.choiceType.ChoicePrivilegeResource;
 import it.polimi.ingsw.ps31.model.gameResource.*;
 import it.polimi.ingsw.ps31.model.player.Player;

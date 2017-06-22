@@ -6,7 +6,6 @@ import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.board.TowerActionSpace;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceFamilyMember;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerActionSpace;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerCardSpace;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.player.Player;
 

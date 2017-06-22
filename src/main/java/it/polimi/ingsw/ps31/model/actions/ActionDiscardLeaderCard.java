@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps31.model.actions;
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.card.LeaderCard;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderToActive;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderToDiscard;
 import it.polimi.ingsw.ps31.model.gameResource.CouncilPrivilege;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;

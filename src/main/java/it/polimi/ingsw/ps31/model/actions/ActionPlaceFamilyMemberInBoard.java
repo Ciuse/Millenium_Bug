@@ -7,7 +7,6 @@ import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceActionSpace;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceFamilyMember;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerCardSpace;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
