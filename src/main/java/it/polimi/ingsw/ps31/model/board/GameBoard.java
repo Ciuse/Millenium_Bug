@@ -48,9 +48,7 @@ public class GameBoard{
         //creazione del resto
         this.councilPalace = new CouncilPalace(otherEffectList.get(0));
         this.smallHarvest = new SmallHarvest(1, otherEffectList.get(1));
-        this.bigHarvest = new BigHarvest(-1, otherEffectList.get(2));
         this.smallProduction = new SmallProduction(1, otherEffectList.get(3));
-        this.bigProduction = new BigProduction(-1, otherEffectList.get(4));
         this.market = new Market();
         this.market.add2PlayerMarketSpace(otherEffectList.get(5), otherEffectList.get(6));
         this.militaryPointTrack = new MilitaryPointTrack();
@@ -58,6 +56,11 @@ public class GameBoard{
         this.faithPointTrack.inizializationFaithTrack(faithTrackExtraValue);
         this.victoryPointTrack = new VictoryPointTrack();
         this.endActionButton = new EndActionButton(false);
+    }
+
+    public void add3PlayerActionSpace(List<EffectList> otherEffectList){
+        this.bigHarvest = new BigHarvest(-1, otherEffectList.get(2));
+        this.bigProduction = new BigProduction(-1, otherEffectList.get(4));
     }
 
     public void add4PlayerMarketSpace(List<EffectList> otherEffectList) {
@@ -69,10 +72,10 @@ public class GameBoard{
     }
 
     public void rollTheDice() {
-        for (int i = 0; i < dice.size(); i++) {
-            if (!dice.get(i).getColor().equals(DiceColor.NEUTRAL)) {
+        for (Dice aDice : dice) {
+            if (!aDice.getColor().equals(DiceColor.NEUTRAL)) {
                 int randomValue = (int) (Math.random() * 6 + 1);
-                dice.get(i).setValue(randomValue);
+                aDice.setValue(randomValue);
             }
         }
     }
@@ -142,8 +145,9 @@ public class GameBoard{
     }
 
     public Dice getSpecificDice(DiceColor diceColor) {
-        for (int i = 0; i < dice.size(); i++) {           if (dice.get(i).getColor().equals(diceColor)) {
-                return dice.get(i);
+        for (Dice aDice : dice) {
+            if (aDice.getColor().equals(diceColor)) {
+                return aDice;
             }
         }
         return null;

@@ -86,6 +86,14 @@ public class LeaderCard extends Card implements ActiveEffect {
         return leaderId;
     }
 
+    public PlayerId getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(PlayerId playerId) {
+        this.playerId = playerId;
+    }
+
     public StateLeaderCard getStateLeaderCard() {
         if (this.leaderId != -1) {
             StateLeaderCard stateLeaderCard = new StateLeaderCard(playerId, leaderId, super.getName(), new StateEffect(abilityOneTimeForTurn), new StateEffect(permanentAbility), played, usedEffect1);

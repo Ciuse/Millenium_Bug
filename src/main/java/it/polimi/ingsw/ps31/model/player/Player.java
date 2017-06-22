@@ -284,22 +284,28 @@ public class Player {
     public StatePlayerAction getStatePlayerAction() {
         List<String> actionList = new ArrayList<>();
         if(!playerActionSet.getPlaceFamilyMemberInBoard().isUsed()){
-        actionList.add(playerActionSet.getPlaceFamilyMemberInBoard().toString());
+        actionList.add(playerActionSet.getPlaceFamilyMemberInBoard().toString());           //aggiungo l azione piazza fagmigliare nella board
         }
         if(!playerActionSet.getPlaceFamilyMemberInBoard().isUsed()) {
-            actionList.add(playerActionSet.getPlaceFamilyMemberInTower().toString());
+            actionList.add(playerActionSet.getPlaceFamilyMemberInTower().toString());       //aggiungo l azione piazza famigliare nella torre
         }
-        if(!playerActionSet.getActiveLeaderCard().isUsed()) {
-            actionList.add(playerActionSet.getActiveLeaderCard().toString());
+        if(leaderCardList.size()>0) {
+            actionList.add(playerActionSet.getActiveLeaderCard().toString());             //aggiungo l azione gioca leader
         }
-        for (LeaderCard leaderCard:leaderCardList
-             ) {
-           if(leaderCardList.size()>0&&!leaderCard.isPlayed()){
-               actionList.add(playerActionSet.getDiscardLeaderCard().toString());
-           }
+        if(leaderCardList.size()>0){
+            boolean found=false;
+            for (LeaderCard leaderCard:leaderCardList
+                    ) {
+                if(!leaderCard.isPlayed()){
+                    found=true;
+                }
+            }
+            if(found)
+                actionList.add(playerActionSet.getDiscardLeaderCard().toString());      //aggiungo l azione scarta leader se ne hai ancora uno in mano
         }
+
         if (playerActionSet.getActiveEndButton().isActive()) {
-            actionList.add(playerActionSet.getActiveEndButton().toString());
+            actionList.add(playerActionSet.getActiveEndButton().toString());             //se l oggetto fine turno è attivo aggiungo l azione per finire il turno
         }
         return new StatePlayerAction(playerId,actionList);
     }

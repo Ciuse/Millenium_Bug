@@ -250,7 +250,6 @@ public class PlayerActionSet {
     }
 
     public void resetUsedAction(){
-        this.getActiveLeaderCard().setUsed(false);
         this.getPlaceFamilyMemberInBoard().setUsed(false);
         this.getPlaceFamilyMemberInTower().setUsed(false);
     }

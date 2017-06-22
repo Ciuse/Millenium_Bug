@@ -10,9 +10,10 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.*;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceActionSpace;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceActiveEffect;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceActionToDo;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
@@ -20,7 +21,6 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 
 import java.io.IOException;
-import java.util.List;
 
 import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.*;
 import static java.lang.String.valueOf;
@@ -38,14 +38,28 @@ public class CmdLineView extends View {
     private CmdInterpreterView cmdInterpreterView = new IntrVisualization();
     private TerminalPosition consolePosition = new TerminalPosition (2,31);
 
+    public CmdLineView(PlayerId viewId, int playerMaxNumber) {
+        super(viewId, playerMaxNumber);
+    }
 
 
-    public CmdLineView(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoard, List<StateViewPlayer> stateViewPlayer, StateViewGame stateViewGame) {
-        super(viewId, stateViewBoard, stateViewPersonalBoard, stateViewPlayer, stateViewGame);
+    @Override
+    public void askChoiceActionSpace(ChoiceActionSpace choiceActionSpace) {
+        do{
+            this.setCmdInterpreterView(new IntrChoiceActionSpace());
+            printBoardActionSpace();
+            String string="seleziona";
+            StringBuilder stringBuilder= new StringBuilder(string);
+            for (StateViewActionSpace actionSpace: getStateViewBoard().getStateViewActionSpaceList()
+                 ) {
+                stringBuilder.append(actionSpace.getNumberOfActionSpace());
+                stringBuilder.append(" ");
+            }
+        }while(true);
     }
 
     @Override
-    public void askChoicePlayerAction(ChoiseActionToDo choiseActionToDo) {
+    public void askChoiceActionToDo(ChoiceActionToDo choiceActionToDo) {
         do {
             this.setCmdInterpreterView(new IntrChoisePlayerAction());
             printPlayerAction();
@@ -53,7 +67,7 @@ public class CmdLineView extends View {
             int numberOfChoice = player.getStringPlayerAction().size();
             printLastEvent("Inserisci da 1 a" + numberOfChoice);
             input();
-        }while(!cmdInterpreterView.messageInterpreter(this, choiseActionToDo, keyStroke.getCharacter()));
+        }while(!cmdInterpreterView.messageInterpreter(this, choiceActionToDo, keyStroke.getCharacter()));
     }
 
     @Override
@@ -235,8 +249,9 @@ public class CmdLineView extends View {
     public void printPlayerInAction(){
         for (StateViewPlayer player:super.getStateViewPlayerList()
                 ) {
-          //  if(super.getViewId().equals(player.getPlayerId())){
-            if(super.getStateViewGame().getPlayerIdInACtion().equals(player.getPlayerId())){
+            //  if(super.getViewId().equals(player.getPlayerId())){
+            if(super.getStateViewGame().getPlayerIdInAction().equals(player.getPlayerId())){
+
                 TerminalPosition labelBoxTopLeft = new TerminalPosition(60,0);
                 printPlayer(player,labelBoxTopLeft);
 
@@ -256,7 +271,7 @@ public class CmdLineView extends View {
             for (StateViewPlayer player:super.getStateViewPlayerList()
                     ) {
                // if(!super.getViewId().equals(player.getPlayerId())) {
-                if(!super.getStateViewGame().getPlayerIdInACtion().equals(player.getPlayerId())){
+                if(!super.getStateViewGame().getPlayerIdInAction().equals(player.getPlayerId())){
                     TerminalPosition labelBoxTopLeft = new TerminalPosition(116, 0 + j * 9);
                     printPlayer(player, labelBoxTopLeft);
                     j++;
@@ -274,7 +289,7 @@ public class CmdLineView extends View {
         for (StateViewPlayer player:super.getStateViewPlayerList()
                 ) {
             //  if(super.getViewId().equals(player.getPlayerId())){
-            if(super.getStateViewGame().getPlayerIdInACtion().equals(player.getPlayerId())){
+            if(super.getStateViewGame().getPlayerIdInAction().equals(player.getPlayerId())){
                 TerminalPosition labelBoxTopLeft = new TerminalPosition(60,11);
                 printPlayerAction(player,labelBoxTopLeft);
             }
@@ -291,7 +306,7 @@ public class CmdLineView extends View {
         for (StateViewPersonalBoard personalBoard:super.getStateViewPersonalBoardList()
             ) {
        // if(super.getViewId().equals(personalBoard.getPlayerId())){
-            if(super.getStateViewGame().getPlayerIdInACtion().equals(personalBoard.getPlayerId())){
+            if(super.getStateViewGame().getPlayerIdInAction().equals(personalBoard.getPlayerId())){
                 TerminalPosition labelBoxTopLeft = new TerminalPosition(60, 3);
             printPersonalBoard(personalBoard,labelBoxTopLeft);
 
@@ -310,7 +325,7 @@ public class CmdLineView extends View {
         for (StateViewPersonalBoard personalBoard : super.getStateViewPersonalBoardList()
                 ) {
          //   if(!super.getViewId().equals(personalBoard.getPlayerId())){
-            if(!super.getStateViewGame().getPlayerIdInACtion().equals(personalBoard.getPlayerId())){
+            if(!super.getStateViewGame().getPlayerIdInAction().equals(personalBoard.getPlayerId())){
 
                 TerminalPosition labelBoxTopLeft = new TerminalPosition(116, 3+j*9);
                 printPersonalBoard(personalBoard,labelBoxTopLeft);
@@ -329,7 +344,7 @@ public class CmdLineView extends View {
         for (StateViewPlayer player:super.getStateViewPlayerList()
                 ) {
             //  if(super.getViewId().equals(player.getPlayerId())){
-            if(super.getStateViewGame().getPlayerIdInACtion().equals(player.getPlayerId())){
+            if(super.getStateViewGame().getPlayerIdInAction().equals(player.getPlayerId())){
                 int j=0;
                 for (StateViewFamilyMember family:player.getStateViewFamilyMemberList()
                         ) {
@@ -355,14 +370,22 @@ public class CmdLineView extends View {
         printActionSpace(17,position17,actionSpaceBox3);
         TerminalPosition position18 = new TerminalPosition(1,20);
         printActionSpace(18,position18,actionSpaceBox);
-        TerminalPosition position19 = new TerminalPosition(11,20);
-        printActionSpace(19,position19,actionSpaceBox2);
+
         TerminalPosition position20 = new TerminalPosition(1,25);
         printActionSpace(20,position20,actionSpaceBox);
-        TerminalPosition position21 = new TerminalPosition(11,25);
-        printActionSpace(21,position21,actionSpaceBox2);
-
-        for (int i = 0; i <4; i++) {
+        if(getStateViewGame().getPlayerMaxNumber()>=3) {            //stampa dei big harvest/production solo se siamo in piu di 3
+            TerminalPosition position19 = new TerminalPosition(11, 20);
+            printActionSpace(19, position19, actionSpaceBox2);
+            TerminalPosition position21 = new TerminalPosition(11, 25);
+            printActionSpace(21, position21, actionSpaceBox2);
+        }
+        int numberOfMarket=0;
+        if(getStateViewGame().getPlayerMaxNumber()==4) {
+            numberOfMarket=4;
+        } else{
+            numberOfMarket=2;
+        }
+        for (int i = 0; i <numberOfMarket; i++) {
             TerminalPosition positionMarket = new TerminalPosition((28 + i * 2) + ((i * actionSpaceBox.getColumns())), (25));
             printActionSpace(22+i,positionMarket,actionSpaceBox);
         }

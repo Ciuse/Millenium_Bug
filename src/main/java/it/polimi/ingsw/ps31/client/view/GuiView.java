@@ -11,9 +11,10 @@ import java.util.List;
 /**
  * Created by Giuseppe on 07/06/2017.
  */
-public abstract class GuiView extends View { //TODO TOGLIERE ABSTRACT ED IMPLEMEMTARE TUTTI I METODI
+public abstract class GuiView extends View {
+    public GuiView(PlayerId viewId, int playerMaxNumber) {
+        super(viewId, playerMaxNumber);
+    } //TODO TOGLIERE ABSTRACT ED IMPLEMEMTARE TUTTI I METODI
 
-    public GuiView(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoard, List<StateViewPlayer> stateViewPlayer, StateViewGame stateViewGame) {
-        super(viewId, stateViewBoard, stateViewPersonalBoard, stateViewPlayer, stateViewGame);
-    }
+
 }

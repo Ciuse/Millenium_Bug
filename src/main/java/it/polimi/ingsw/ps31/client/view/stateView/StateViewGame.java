@@ -15,10 +15,12 @@ import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.g
 public class StateViewGame {
     private int period;
     private int round;
-    private PlayerId playerIdInACtion;
+    private int playerMaxNumber;
+    private PlayerId playerIdInAction;
     private final List<StateViewDevelopmentCard> stateViewDevelopmentCardList = new ArrayList<>();
 
-    public StateViewGame() {
+    public StateViewGame(int playerMaxNumber) {
+        this.playerMaxNumber=playerMaxNumber;
         for (int i = 1;i<=getNumber_Of_DevelopmentCard();i++){
             stateViewDevelopmentCardList.add(new StateViewDevelopmentCard(i));
         }
@@ -27,9 +29,10 @@ public class StateViewGame {
 
     public void updateState(StateGame stateGame){
         if(stateGame.getPeriod()!=-1){
+
             this.period = stateGame.getPeriod();
             this.round = stateGame.getRound();
-            this.playerIdInACtion = stateGame.getPlayerIdInAction();
+            this.playerIdInAction = stateGame.getPlayerIdInAction();
         }
     }
 
@@ -40,6 +43,10 @@ public class StateViewGame {
                 stateCard.updateState(stateDevelopmentCard);
             }
         }
+    }
+
+    public int getPlayerMaxNumber() {
+        return playerMaxNumber;
     }
 
     public int getPeriod() {
@@ -54,7 +61,7 @@ public class StateViewGame {
         return stateViewDevelopmentCardList;
     }
 
-    public PlayerId getPlayerIdInACtion() {
-        return playerIdInACtion;
+    public PlayerId getPlayerIdInAction() {
+        return playerIdInAction;
     }
 }

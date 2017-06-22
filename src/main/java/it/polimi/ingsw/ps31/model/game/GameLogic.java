@@ -52,20 +52,19 @@ public class GameLogic {
 
         //parte di connessione
         playerMaxNumber=gameUtility.waitPlayerConnection();  //mi metto in attesa dei giocatori che si connettano
+        gameUtility.setPlayerMaxNumber(playerMaxNumber);
+
 
         for(int i=0; i<playerMaxNumber; i++){
             gameUtility.createPlayer(gameUtility.getInformationFromNetworking().getPlayerNameList().get(i));
         }
 
-        //todo CHIEDERE IL COLORE
+        gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
+
+        gameUtility.phaseChoicePersonalBonusTiles(); //chiedo ai player di scegliere (in base all ordine di connessione) un personal bonus tiles
 
 
-        //viene invocato dopo lo scadere del tempo dopo che si sono connessi i primi 2 giocatori
-        playerMaxNumber = gameUtility.getPlayerList().size();
-        gameUtility.setPlayerMaxNumber(playerMaxNumber);
-
-
-        //va fatto dopo aver saputo in quanti si gioca
+        //viene fatto dopo aver saputo in quanto si gioca (per istanziare le aree da 3 e/o 4 giocatori)
         GameBoard gameBoard = new GameBoard(jsonObjectReadFromFile.getTowerActionSpaceEffectList(), jsonObjectReadFromFile.getActionSpaceEffectList(), jsonObjectReadFromFile.getFaithTrackExtraValue());
         gameUtility.setGameBoard(gameBoard);
 
@@ -79,7 +78,7 @@ public class GameLogic {
             gameUtility.setDeckTower(period);
             for (this.round = 1; round <= ROUNDMAXNUMBER; round++) {
                 gameUtility.drawCardDeck();
-                gameUtility.resetFamilyMember();
+                gameUtility.resetFamilyMember();        //restituisco a tutti i propri famigliari
                 gameUtility.getGameBoard().rollTheDice();
                 gameUtility.setFamilyMemberDiceValue();
 

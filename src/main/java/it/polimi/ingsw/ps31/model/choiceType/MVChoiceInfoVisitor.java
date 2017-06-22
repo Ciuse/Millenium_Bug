@@ -47,9 +47,9 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
     }
 
     @Override
-    public void visit(ChoiseActionToDo choiseActionToDo) {
+    public void visit(ChoiceActionToDo choiceActionToDo) {
         view.setCmdInterpreterView(new IntrChoisePlayerAction());
-        view.askChoicePlayerAction(choiseActionToDo);
+        view.askChoiceActionToDo(choiceActionToDo);
     }
 
     @Override

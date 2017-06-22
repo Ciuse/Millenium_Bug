@@ -178,6 +178,7 @@ public class GameUtility extends ModelChoices {
     }
 
     public void startActionTurn(Player player) {
+        resetPlayerAction();            //riattivo le azioni che i player hanno usato il turno prima
         setPlayerInAction(player);
         String string1 = player.getPlayerId().toString()+": INIZIO FASE AZIONE";
         notifyViews(new MVStringToPrint(null,true,string1));
@@ -189,7 +190,7 @@ public class GameUtility extends ModelChoices {
         this.createTimerAction();
         super.getLastModelStateForControl().setStateForControl(player.getStatePlayerAction());
         String string = player.getNickname()+": Scegli l'azione";
-        notifyViews(new MVAskChoice(player.getPlayerId(),string, new ChoiseActionToDo()));
+        notifyViews(new MVAskChoice(player.getPlayerId(),string, new ChoiceActionToDo()));
     }
 
     public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
@@ -446,6 +447,12 @@ public class GameUtility extends ModelChoices {
         }
     }
 
+    public void resetPlayerAction(){
+        for (Player player: playerList
+             ) {
+            player.getPlayerActionSet().resetUsedAction();
+        }
+    }
     public void militaryTrackWinnerPoint() {
         List<Player> tempPlayerList = new ArrayList<>(orderMilitaryStrength());
         boolean paritàTrovata = false;
@@ -606,6 +613,9 @@ public class GameUtility extends ModelChoices {
 
     public void setGameBoard(GameBoard gameBoard) {
         this.gameBoard = gameBoard;
+        if(playerMaxNumber>=3){
+            this.gameBoard.add3PlayerActionSpace(actionSpaceEffectList);
+        }
         if(playerMaxNumber==4)
         {
             this.gameBoard.add4PlayerMarketSpace(actionSpaceEffectList);

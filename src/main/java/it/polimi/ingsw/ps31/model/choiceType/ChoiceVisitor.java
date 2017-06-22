@@ -10,7 +10,7 @@ public interface ChoiceVisitor {
     void visit(ChoiceActiveExcommunication choiceActiveExcommunication);
     void visit(ChoiceFamilyMember choiceFamilyMember);
     void visit(ChoiceActionSpace choiceActionSpace);
-    void visit(ChoiseActionToDo choiseActionToDo);
+    void visit(ChoiceActionToDo choiceActionToDo);
     void visit(ChoiceStartLeaderCard choiceStartLeaderCard);
     void visit(ChoicePersonalBonusTiles choicePersonalBonusTiles);
     void visit(ChoiceColor choiceColor);
