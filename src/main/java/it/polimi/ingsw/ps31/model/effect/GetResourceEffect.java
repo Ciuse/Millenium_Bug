@@ -24,6 +24,9 @@ public class GetResourceEffect extends Effect {
 
     @Override
     public void activate(Player player) {
+        if(super.getCardId()!=0) {
+            player.getPlayerActionSet().getGetTempResources().setFromCardEffect(true);
+        }
         player.getPlayerActionSet().getTempResources(this.resources);
     }
 

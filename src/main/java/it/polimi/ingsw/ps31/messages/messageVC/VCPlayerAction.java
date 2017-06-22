@@ -5,16 +5,16 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 /**
  * Created by Giuseppe on 21/06/2017.
  */
-public class VCActiveEffectChoice extends VCVisitable {
-    private boolean toActive;
+public class VCPlayerAction extends VCVisitable {
+    private String actionName;
 
-    public VCActiveEffectChoice(PlayerId viewId, boolean toActive) {
+    public VCPlayerAction(PlayerId viewId, String actionName) {
         super(viewId);
-        this.toActive = toActive;
+        this.actionName = actionName;
     }
 
-    public boolean isToActive() {
-        return toActive;
+    public String getActionName() {
+        return actionName;
     }
 
     @Override

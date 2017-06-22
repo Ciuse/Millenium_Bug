@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
 
 import it.polimi.ingsw.ps31.client.view.CmdLineView;
 import it.polimi.ingsw.ps31.messages.messageVC.VCStartLeaderChoice;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderCard;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
@@ -10,30 +10,26 @@ import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
  */
 public class IntrChoiseStartLeader implements CmdInterpreterView {
     @Override
-    public void messageInterpreter(CmdLineView terminalView, Character in) {
+    public void notGameMessageInterpreter(CmdLineView terminalView, Character in) {
 
     }
 
     @Override
-    public void messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
+    public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
-            ChoiceLeaderCard choiceLeaderCard = (ChoiceLeaderCard) choiceType;
-            boolean found = false;
-            for (int i = 1; i < choiceLeaderCard.getLeaderId().size() + 1; i++) {
+            ChoiceStartLeaderCard choiceStartLeaderCard = (ChoiceStartLeaderCard) choiceType;
+            for (int i = 1; i < choiceStartLeaderCard.getLeaderId().size() + 1; i++) {
                 if (in == i) {
-                    String string = "Comando OK";
-                    terminalView.printLastEvent(string);
-                    terminalView.notifyController(new VCStartLeaderChoice(((ChoiceLeaderCard) choiceType).getLeaderId().get(in - 1)));
-                    found = true;
+                    terminalView.printLastEvent("Comando OK");
+                    terminalView.notifyController(new VCStartLeaderChoice(terminalView.getViewId(),((ChoiceStartLeaderCard) choiceType).getLeaderId().get(in - 1)));
+                    return true;
                 }
             }
-            if (!found) {
-                String string = "Comando Non Riconusciuto";
-                terminalView.printLastEvent(string);
-            }
+            terminalView.printLastEvent("Comando Non Riconusciuto");
+            return false;
         } else {
-            String string = "Comando Non Rilevato";
-            terminalView.printLastEvent(string);
+        terminalView.printLastEvent("Comando Non Rilevato");
+        return false;
         }
     }
 }

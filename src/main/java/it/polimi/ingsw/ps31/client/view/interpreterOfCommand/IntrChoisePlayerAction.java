@@ -1,6 +1,9 @@
 package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
 
 import it.polimi.ingsw.ps31.client.view.CmdLineView;
+import it.polimi.ingsw.ps31.messages.messageVC.VCPlayerAction;
+import it.polimi.ingsw.ps31.messages.messageVC.VCStartLeaderChoice;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
@@ -8,12 +11,25 @@ import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
  */
 public class IntrChoisePlayerAction implements CmdInterpreterView {
     @Override
-    public void messageInterpreter(CmdLineView terminalView, Character in) {
+    public void notGameMessageInterpreter(CmdLineView terminalView, Character in) {
 
     }
 
     @Override
-    public void messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
-
+    public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
+        if (in != null) {
+            for (int i = 1; i < terminalView.getMyStateViewPlayer().getStringPlayerAction().size() + 1; i++) {
+                if (in == i) {
+                    terminalView.printLastEvent("Comando OK");
+                    terminalView.notifyController(new VCPlayerAction(terminalView.getViewId(),terminalView.getMyStateViewPlayer().getStringPlayerAction().get(in - 1)));
+                    return true;
+                }
+            }
+            terminalView.printLastEvent("Comando Non Riconusciuto");
+            return false;
+        } else {
+            terminalView.printLastEvent("Comando Non Rilevato");
+            return false;
+        }
     }
 }

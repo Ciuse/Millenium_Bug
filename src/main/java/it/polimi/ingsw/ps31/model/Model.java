@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.model;
 
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
+import it.polimi.ingsw.ps31.server.VirtualView;
 
 import java.util.Observable;
 
@@ -12,8 +13,8 @@ public class Model extends Observable {
 
     public Model() {
     }
-    public void addView(View view){
-        this.addObserver(view);
+    public void addVirtualView(VirtualView virtualView){
+        this.addObserver(virtualView);
     }
 
     public void notifyViews(MVVisitable message) {

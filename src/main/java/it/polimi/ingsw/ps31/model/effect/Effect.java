@@ -12,10 +12,11 @@ import java.util.List;
  */
 public abstract class Effect extends ModelChoices implements EffectActivation{
     int cardId;
-
+    int actionSpaceId;
     public Effect(int cardId) {
         this.cardId = cardId;
     }
+
 
     public Effect(){}
 

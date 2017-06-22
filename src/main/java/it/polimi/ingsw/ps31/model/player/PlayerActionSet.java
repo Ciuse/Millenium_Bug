@@ -33,7 +33,7 @@ public class PlayerActionSet {
     private final ActionControlSet actionControlSet;
     private final ActionActiveEndButton activeEndButton;
     private final ActionAddFinalBonus addFinalBonus;
-    private final ActionGetTempResources getTempResources;
+    private final ActionGetTempResourcesFromAllEffect getTempResources;
     private final Player player;
 
     /* Constructor */
@@ -57,7 +57,7 @@ public class PlayerActionSet {
         this.getFinalResources = new ActionGetFinalResources(player, actionControlSet);
         this.activeEndButton= new ActionActiveEndButton(player, actionControlSet); //TODO IMPLEMENTARLO
         this.addFinalBonus= new ActionAddFinalBonus(player, actionControlSet); //TODO IMPLEMENTARE
-        this.getTempResources = new ActionGetTempResources(player,actionControlSet);
+        this.getTempResources = new ActionGetTempResourcesFromAllEffect(player,actionControlSet);
     }
 
     /* Setters & Getters */
@@ -69,7 +69,7 @@ public class PlayerActionSet {
     {
         return this.actionControlSet;
     }
-    public ActionGetTempResources getGetTempResources() {
+    public ActionGetTempResourcesFromAllEffect getGetTempResources() {
         return getTempResources;
     }
 
@@ -112,6 +112,11 @@ public class PlayerActionSet {
         //TODO: implementare
     }
 
+    public void activeEndButton(){
+        //todo implementare
+        this.getActiveEndButton().activate();
+    }
+
     public void getResources(ResourceList resourcesToGet)
     {
         this.getResources.setResourcesToGet(resourcesToGet);
@@ -143,17 +148,17 @@ public class PlayerActionSet {
         this.payTowerMoney.activate();
     }
 
-    public void placeFamilyMemberInTower(FamilyMember familyMember, TowerActionSpace towerActionSpace)
+    public void placeFamilyMemberInTower()
     {
-        this.placeFamilyMemberInTower.setFamilyMember(familyMember);
-        this.placeFamilyMemberInTower.setTowerActionSpace(towerActionSpace);
+//        this.placeFamilyMemberInTower.setFamilyMember(familyMember);
+//        this.placeFamilyMemberInTower.setTowerActionSpace(towerActionSpace);
         this.placeFamilyMemberInTower.activate();
     }
 
-    public void placeFamilyMemberInBoard(FamilyMember familyMember, ActionSpace actionSpace)
+    public void placeFamilyMemberInBoard()
     {
-        this.placeFamilyMemberInBoard.setFamilyMember(familyMember);
-        this.placeFamilyMemberInBoard.setActionSpace(actionSpace);
+//        this.placeFamilyMemberInBoard.setFamilyMember(familyMember);
+//        this.placeFamilyMemberInBoard.setActionSpace(actionSpace);
         this.placeFamilyMemberInBoard.activate();
     }
 
@@ -169,14 +174,14 @@ public class PlayerActionSet {
         this.takeCard.activate();
     }
 
-    public void activeLeaderCard(LeaderCard leaderCard)
+    public void activeLeaderCard()
     {
-        this.actionActiveLeaderCard.setLeaderCard(leaderCard);
+//        this....
         this.actionActiveLeaderCard.activate();
     }
 
-    public void discardLeaderCard(LeaderCard leaderCard){
-        this.discardLeaderCard.setLeaderCard(leaderCard);
+    public void discardLeaderCard(){
+//        this.discardLeaderCard.setLeaderCard(leaderCard);
         this.discardLeaderCard.activate();
     }
 
@@ -226,7 +231,7 @@ public class PlayerActionSet {
         return takeCard;
     }
 
-    public ActionActiveLeaderCard getActionActiveLeaderCard() {
+    public ActionActiveLeaderCard getActiveLeaderCard() {
         return actionActiveLeaderCard;
     }
 
@@ -242,9 +247,16 @@ public class PlayerActionSet {
         return addFinalBonus;
     }
 
+    public ActionActiveLeaderCard getActionActiveLeaderCard() {
+        return actionActiveLeaderCard;
+    }
+
+    public ActionDiscardLeaderCard getDiscardLeaderCard() {
+        return discardLeaderCard;
+    }
 
     public void resetUsedAction(){
-        this.getActionActiveLeaderCard().setUsed(false);
+        this.getActiveLeaderCard().setUsed(false);
         this.getPlaceFamilyMemberInBoard().setUsed(false);
         this.getPlaceFamilyMemberInTower().setUsed(false);
     }

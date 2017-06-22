@@ -9,33 +9,29 @@ import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
  */
 public class IntrChoiseActiveEffect implements CmdInterpreterView {
     @Override
-    public void messageInterpreter(CmdLineView terminalView, Character in) {
+    public void notGameMessageInterpreter(CmdLineView terminalView, Character in) {
 
     }
 
     @Override
-    public void messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
+    public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
-            boolean found = false;
             if (in == 'Y' || in == 'n') {
-                String string = "Comando OK";
-                terminalView.printLastEvent(string);
-                terminalView.notifyController(new VCActiveEffectChoice(true));
-                found = true;
+                terminalView.printLastEvent("Comando OK");
+                terminalView.notifyController(new VCActiveEffectChoice(terminalView.getViewId(),true));
+                return true;
             }
             if (in == 'N' || in == 'n') {
-                String string = "Comando OK";
-                terminalView.printLastEvent(string);
-                terminalView.notifyController(new VCActiveEffectChoice(false));
-                found = true;
+                terminalView.printLastEvent("Comando OK");
+                terminalView.notifyController(new VCActiveEffectChoice(terminalView.getViewId(),false));
+                return true;
             }
-            if (!found) {
-                String string = "Comando Non Riconusciuto";
-                terminalView.printLastEvent(string);
-            }
+            terminalView.printLastEvent("Comando Non Riconusciuto");
+            return false;
+
         } else {
-            String string = "Comando Non Rilevato";
-            terminalView.printLastEvent(string);
+            terminalView.printLastEvent("Comando Non Rilevato");
+            return false;
         }
     }
 }

@@ -287,8 +287,8 @@ public class Player {
         if(!playerActionSet.getPlaceFamilyMemberInBoard().isUsed()) {
             actionList.add(playerActionSet.getPlaceFamilyMemberInTower().toString());
         }
-        if(!playerActionSet.getActionActiveLeaderCard().isUsed()) {
-            actionList.add(playerActionSet.getActionActiveLeaderCard().toString());
+        if(!playerActionSet.getActiveLeaderCard().isUsed()) {
+            actionList.add(playerActionSet.getActiveLeaderCard().toString());
         }
         if (playerActionSet.getActiveEndButton().isActive()) {
             actionList.add(playerActionSet.getActiveEndButton().toString());

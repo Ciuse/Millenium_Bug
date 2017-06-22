@@ -49,4 +49,9 @@ public class ActionDiscardLeaderCard extends Action {
 
         resetLeaderCard();
     }
+
+    @Override
+    public String toString() {
+        return "DiscardLeader";
+    }
 }

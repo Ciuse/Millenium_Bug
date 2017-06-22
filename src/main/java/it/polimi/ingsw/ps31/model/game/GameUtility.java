@@ -44,8 +44,7 @@ public class GameUtility extends ModelChoices {
     private List<DevelopmentCardDeck> deckList = new ArrayList<>();
     private int playerMaxNumber;
     private static final int Max_Leader_Card = 4;
-    private long timerConnection= 120000;
-    private long timerAction = 120000;
+    private long timerAction;
 
 
     public void createDeck(){
@@ -163,19 +162,6 @@ public class GameUtility extends ModelChoices {
         }
     }
 
-    public void createTimerConnection() {
-
-        Timer timer1 = new Timer();
-        TimerTask task1 = new TimerTask() {
-            @Override
-            public void run() {
-
-                System.out.println("tempo scaduto per connetterti ");
-                timer1.cancel();
-            }
-        };
-        timer1.schedule(task1, timerConnection);
-    }
 
     public void createTimerAction(){
         Timer timer1 = new Timer();
@@ -207,7 +193,7 @@ public class GameUtility extends ModelChoices {
     }
 
     public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
-
+        super.setStateEndTurn();
     }
 
     public void leaderCardSetup() {
@@ -238,7 +224,7 @@ public class GameUtility extends ModelChoices {
                 tempModelStateForLeaderChoice.addPlayerPossibleChoide(player.getPlayerId(), leaderCardId);
                 String string = "SCEGLI CARTA LEADER: ";
                 super.setTempModelStateForLeaderChoice(tempModelStateForLeaderChoice);
-                super.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceLeaderCard(leaderCardId, leaderCardString)));
+                super.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceStartLeaderCard(leaderCardId, leaderCardString)));
             }
             super.waitAllInitialLeaderCardChosen();
             tempLeaderCardList.clear();
@@ -434,18 +420,26 @@ public class GameUtility extends ModelChoices {
     }
 
     public void setFamilyMemberDiceValue() {
-        for (int i = 0; i < playerList.size(); i++) {
-            for (int j = 0; j < playerList.get(i).getFamilyMembers().size(); j++) {
-                playerList.get(i).getFamilyMembers().get(j).setDiceValue(gameBoard.getSpecificDice(playerList.get(i).getFamilyMembers().get(j).getDiceColor()).getValue());
+        for (Player aPlayerList : playerList) {
+            for (int j = 0; j < aPlayerList.getFamilyMembers().size(); j++) {
+                aPlayerList.getFamilyMembers().get(j).setDiceValue(gameBoard.getSpecificDice(aPlayerList.getFamilyMembers().get(j).getDiceColor()).getValue());
             }
         }
 
     }
 
     public void resetFamilyMember() {
-        for (int i = 0; i < playerList.size(); i++) {
-            for (int j = 0; j < playerList.get(i).getFamilyMembers().size(); j++) {
-                playerList.get(i).getFamilyMembers().get(j).resetFamilyMember();
+        for (Player aPlayerList : playerList) {
+            for (int j = 0; j < aPlayerList.getFamilyMembers().size(); j++) {
+                aPlayerList.getFamilyMembers().get(j).resetFamilyMember();
+            }
+        }
+    }
+
+    public void resetLeaderEffect(){
+        for (Player aPlayerList : playerList) {
+            for (int j = 0; j < aPlayerList.getLeaderCardList().size(); j++) {
+                aPlayerList.getLeaderCardList().get(j).setUsedEffect1(false);
             }
         }
     }
@@ -484,6 +478,9 @@ public class GameUtility extends ModelChoices {
     }
 
 
+    public void setInformationFromNetworking(InformationFromNetworking informationFromNetworking) {
+        super.setInformationFromNetworking(informationFromNetworking);
+    }
 
     public List<DevelopmentCardDeck> getDeckList() {
         return deckList;
@@ -613,14 +610,13 @@ public class GameUtility extends ModelChoices {
         }
     }
 
-    public long getTimerConnection() {
-        return timerConnection;
-    }
 
     public void setTimerConnection(long timerConnection) {
-        this.timerConnection = timerConnection;
+        super.setTimerConnection(timerConnection);
     }
-
+    public InformationFromNetworking getInformationFromNetworking() {
+        return super.getInformationFromNetworking();
+    }
     public long getTimerAction() {
         return timerAction;
     }
@@ -660,6 +656,7 @@ public class GameUtility extends ModelChoices {
         }
         return null;
     }
+
 
 
 }

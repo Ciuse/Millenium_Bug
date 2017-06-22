@@ -11,7 +11,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.*;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceActiveEffect;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderCard;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
@@ -46,28 +46,36 @@ public class CmdLineView extends View {
 
     @Override
     public void askChoicePlayerAction(ChoiseActionToDo choiseActionToDo) {
-        this.setCmdInterpreterView(new IntrChoisePlayerAction());
-        printPlayerAction();
-        input();
-        cmdInterpreterView.messageInterpreter(this,choiseActionToDo,keyStroke.getCharacter());
+        do {
+            this.setCmdInterpreterView(new IntrChoisePlayerAction());
+            printPlayerAction();
+            StateViewPlayer player = super.getMyStateViewPlayer();
+            int numberOfChoice = player.getStringPlayerAction().size();
+            printLastEvent("Inserisci da 1 a" + numberOfChoice);
+            input();
+        }while(!cmdInterpreterView.messageInterpreter(this, choiseActionToDo, keyStroke.getCharacter()));
     }
 
     @Override
-    public void askChoiceStartLeader(ChoiceLeaderCard choiceLeaderCard) {
-        this.setCmdInterpreterView(new IntrChoiseStartLeader());
-        for (int i = 0; i < choiceLeaderCard.getLeaderName().size(); i++){
-            printLastEvent(choiceLeaderCard.getLeaderId().get(i).toString()+" "+choiceLeaderCard.getLeaderName().get(i));
-        }
-        input();
-        cmdInterpreterView.messageInterpreter(this,choiceLeaderCard,keyStroke.getCharacter());
+    public void askChoiceStartLeader(ChoiceStartLeaderCard choiceStartLeaderCard) {
+        do {
+            this.setCmdInterpreterView(new IntrChoiseStartLeader());
+            for (int i = 0; i < choiceStartLeaderCard.getLeaderName().size(); i++) {
+                printLastEvent("inserisci " + i + " per: " + choiceStartLeaderCard.getLeaderId().get(i).toString() + " " + choiceStartLeaderCard.getLeaderName().get(i));
+            }
+            input();
+        }while (!cmdInterpreterView.messageInterpreter(this, choiceStartLeaderCard,keyStroke.getCharacter()));
     }
 
     @Override
     public void askChoiceActiveEffect(ChoiceActiveEffect choiceActiveEffect) {
-        this.setCmdInterpreterView(new IntrChoiseActiveEffect());
-        printDevelopmentCard(choiceActiveEffect.getCardIdEffect());
-        input();
-        cmdInterpreterView.messageInterpreter(this,choiceActiveEffect,keyStroke.getCharacter());
+        do {
+            this.setCmdInterpreterView(new IntrChoiseActiveEffect());
+            printDevelopmentCard(choiceActiveEffect.getCardIdEffect());
+            printLastEvent("inserisci \"Y\" per attivare l'effetto permanente della carta");
+            printLastEvent("inserisci \"N\" per non attivare l'effetto permanente della carta");
+            input();
+        }while(!cmdInterpreterView.messageInterpreter(this,choiceActiveEffect,keyStroke.getCharacter()));
     }
 
     public void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView) {
@@ -89,7 +97,7 @@ public class CmdLineView extends View {
     public void input(){
         try {
             keyStroke=screen.readInput();
-            cmdInterpreterView.messageInterpreter(this,keyStroke.getCharacter());
+            cmdInterpreterView.notGameMessageInterpreter(this,keyStroke.getCharacter());
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -105,7 +113,7 @@ public class CmdLineView extends View {
             textGraphics.putString(0,4,"1 scegli rosso, 2 scegli verde");
             screen.refresh();
             keyStroke=screen.readInput();
-            cmdInterpreterView.messageInterpreter(this,keyStroke.getCharacter());
+            cmdInterpreterView.notGameMessageInterpreter(this,keyStroke.getCharacter());
             screen.refresh();
             this.setCmdInterpreterView(new IntrVisualization());
             askComand();
@@ -162,7 +170,7 @@ public class CmdLineView extends View {
                 textGraphics.drawLine(0, 4, terminal.getTerminalSize().getColumns(), 4, ' ');
                 textGraphics.putString(0 + "Last Keystroke: ".length(), 4, keyStroke.toString());
                 terminal.flush();
-                cmdInterpreterView.messageInterpreter(this, keyStroke.getCharacter());
+                cmdInterpreterView.notGameMessageInterpreter(this, keyStroke.getCharacter());
                 screen.refresh();
             }
             keyStroke = screen.pollInput();
@@ -201,6 +209,7 @@ public class CmdLineView extends View {
         }
 
     }
+
 
     @Override
     public void printTower (){

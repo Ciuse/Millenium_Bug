@@ -13,7 +13,6 @@ import java.util.Collections;
  * Created by giulia on 24/05/2017.
  */
 public class GameLogic {
-    private final InformationFromNetworking informationFromNetworking;
     private final GameUtility gameUtility = new GameUtility();
     private final static int PERIODMAXNUMBER = 3;
     private final static int ROUNDMAXNUMBER = 2;
@@ -23,8 +22,9 @@ public class GameLogic {
     private int round;
     private int action;
 
+
     public GameLogic(InformationFromNetworking informationFromNetworking) {
-        this.informationFromNetworking = informationFromNetworking;
+        gameUtility.setInformationFromNetworking(informationFromNetworking);
     }
 
     public void playGame() {
@@ -51,10 +51,14 @@ public class GameLogic {
         gameUtility.setLeaderCardList(jsonObjectReadFromFile.getLeaderCardList());
 
         //parte di connessione
+        playerMaxNumber=gameUtility.waitPlayerConnection();  //mi metto in attesa dei giocatori che si connettano
 
-        if(informationFromNetworking.getPlayerNameList().size()>2) {
-            gameUtility.createTimerConnection();
+        for(int i=0; i<playerMaxNumber; i++){
+            gameUtility.createPlayer(gameUtility.getInformationFromNetworking().getPlayerNameList().get(i));
         }
+
+        //todo CHIEDERE IL COLORE
+
 
         //viene invocato dopo lo scadere del tempo dopo che si sono connessi i primi 2 giocatori
         playerMaxNumber = gameUtility.getPlayerList().size();
@@ -92,15 +96,16 @@ public class GameLogic {
                 if (round == 2) {
                     gameUtility.vaticanReport(period);
                 }
-                gameUtility.playerOrderFromCouncil();
+                gameUtility.playerOrderFromCouncil();       //ordino i player
+                gameUtility.resetLeaderEffect();            //riattivo le abilità una volta per turno dei leader
             }//fine ciclo turno
         }//fine ciclo periodo
         //gioco finito e calcolo punteggio finale
         gameUtility.getFinalVictoryPoint();
         gameUtility.militaryTrackWinnerPoint();
         gameUtility.orderVictoryPoint();
-        //TODO metodo per stampare a video il vincitore
 
+        //TODO metodo per stampare a video il vincitore
 
     }
 
