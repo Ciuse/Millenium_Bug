@@ -4,9 +4,14 @@ import it.polimi.ingsw.ps31.messages.messageVC.VCMessageVisitor;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.ModelChoices;
+import it.polimi.ingsw.ps31.model.actions.Action;
+import it.polimi.ingsw.ps31.model.board.ActionSpace;
 import it.polimi.ingsw.ps31.model.card.LeaderCard;
+import it.polimi.ingsw.ps31.model.constants.DiceColor;
+import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.game.GameUtility;
+import it.polimi.ingsw.ps31.model.player.FamilyMember;
 import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl;
 import it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction;
@@ -66,6 +71,7 @@ public class Controller implements Observer {
 
     public void doPlayerAction(String string, PlayerId viewId) {
         boolean legitAnswer = false;
+        boolean found=false;
         StatePlayerAction statePlayerAction = (StatePlayerAction) lastModelStateForControl.getStateForControl();
         for (String actionName : statePlayerAction.getStringPlayerAction()
                 ) {
@@ -74,31 +80,92 @@ public class Controller implements Observer {
             }
         }
         if (!legitAnswer) {
-            virtualView.reSendLastMessage("Player mi hai mentito");
+            virtualView.reSendLastMessage("(controller) Player mi hai mentito");
         } else {
-            final String string1 = gameUtility.getPlayerInAction().getPlayerActionSet().getActiveEndButton().toString();
-            String string2 = gameUtility.getPlayerInAction().getPlayerActionSet().getPlaceFamilyMemberInBoard().toString();
-            String string3 = gameUtility.getPlayerInAction().getPlayerActionSet().getPlaceFamilyMemberInTower().toString();
-            String string4 = gameUtility.getPlayerInAction().getPlayerActionSet().getActiveLeaderCard().toString();
-            String string5= gameUtility.getPlayerInAction().getPlayerActionSet().getDiscardLeaderCard().toString();
-
-            if (string1.equals(string)) {
-                gameUtility.getPlayerInAction().getPlayerActionSet().activeEndButton();
+            for (Action action: gameUtility.getPlayerInAction().getPlayerActionSet().getActionList()
+                    ) {
+                if(action.toString().equals(string)){
+                    modelChoices.setActionToDo(action);
+                    found=true;
+                }
             }
-            if(string2.equals(string)){
-                gameUtility.getPlayerInAction().getPlayerActionSet().placeFamilyMemberInBoard();
-            }
-            if(string3.equals(string)){
-                gameUtility.getPlayerInAction().getPlayerActionSet().placeFamilyMemberInTower();
-            }
-            if(string4.equals(string)){
-                gameUtility.getPlayerInAction().getPlayerActionSet().activeLeaderCard();
-            }
-            if(string5.equals(string)){
-                gameUtility.getPlayerInAction().getPlayerActionSet().discardLeaderCard();
-            }
-            virtualView.reSendLastMessage("Mi dispiace non ho trovato l azione associata");
+            if(!found)
+            virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l azione associata");
         }
+    }
+
+    public void selectActionSpace(int actionSpaceId, PlayerId viewId){
+        boolean legitAnswer = true;
+        boolean found=false;
+        if(gameUtility.getPlayerMaxNumber()<=3){
+            if(actionSpaceId==24||actionSpaceId==25){           //controllo se non mi ha inserito action space coperti
+                legitAnswer=false;
+            }
+            if(gameUtility.getPlayerMaxNumber()<=2&&(actionSpaceId==19 ||actionSpaceId==21)){       //controllo se non mi ha inserito action space coperti
+                legitAnswer=false;
+            }
+        }
+        if (!legitAnswer) {
+            virtualView.reSendLastMessage("(controller) Player mi hai mentito");
+        }else {
+            if(actionSpaceId==17){
+                modelChoices.setActionSpaceChosen(gameUtility.getGameBoard().getCouncilPalace());
+                found=true;
+            }
+            if(actionSpaceId==18){
+                modelChoices.setActionSpaceChosen(gameUtility.getGameBoard().getSmallHarvest());
+                found=true;
+            }
+            if(actionSpaceId==19){
+                modelChoices.setActionSpaceChosen(gameUtility.getGameBoard().getBigHarvest());
+                found=true;
+            }
+            if(actionSpaceId==20){
+                modelChoices.setActionSpaceChosen(gameUtility.getGameBoard().getSmallProduction());
+                found=true;
+            }
+            if(actionSpaceId==21){
+                modelChoices.setActionSpaceChosen(gameUtility.getGameBoard().getBigProduction());
+                found=true;
+            }
+            if(actionSpaceId>=22&&actionSpaceId<=25){
+                for (ActionSpace actionSpace : gameUtility.getGameBoard().getMarket().getActionSpaceList()
+                        ) {
+                    if(actionSpaceId==actionSpace.getActionSpaceId()){
+                        modelChoices.setActionSpaceChosen(actionSpace);
+                        found=true;
+                    }
+                }
+            }
+            if(!found)
+                virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l actionSpace");
+        }
+    }
+
+    public void selectColor(PlayerColor playerColor, PlayerId playerId){
+        modelChoices.setPlayerColorChosen(playerColor);
+    }
+
+    public void selectFamilyMember(DiceColor familyMemberColor, PlayerId playerId){
+        boolean legitAnswer = true;
+        boolean found=false;
+        for (FamilyMember familyMember: gameUtility.getPlayerInAction().getFamilyMembers()
+             ) {
+            if (familyMember.getDiceColor().equals(familyMemberColor)) {
+                if (familyMember.isPlaced()) {
+                    legitAnswer = false;
+                }
+                else {
+                    modelChoices.setFamilyMemberChosen(familyMember);
+                    found=true;
+                }
+            }
+        }
+        if (!legitAnswer) {
+            virtualView.reSendLastMessage("(controller) Player mi hai mentito");
+        }
+        if(!found)
+            virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato il family member da piazzare");
     }
 
 }

@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
 
 import it.polimi.ingsw.ps31.client.view.CmdLineView;
+import it.polimi.ingsw.ps31.messages.messageVC.VCColorChoice;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceColor;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
@@ -9,15 +11,25 @@ import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 public class IntrChooseColor implements CmdInterpreterView {
     @Override
     public void notGameMessageInterpreter(CmdLineView cmdLineView, Character in) {
-        if(in.compareTo('1')==0)
-        if(in.compareTo('2')==0){
-        }
     }
 
     @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
-
-        return false;
+        if (in != null) {
+            ChoiceColor choiceColor = (ChoiceColor) choiceType;
+            for (int i = 1; i < choiceColor.getPlayerColorList().size()+ 1; i++) {
+                if (in == i) {
+                    terminalView.printLastEvent("Comando OK");
+                    terminalView.notifyController(new VCColorChoice(terminalView.getViewId(),choiceColor.getPlayerColorList().get(i-1)));
+                    return true;
+                }
+            }
+            terminalView.printLastEvent("Comando Non Riconusciuto");
+            return false;
+        } else {
+            terminalView.printLastEvent("Comando Non Rilevato");
+            return false;
+        }
     }
 
     @Override

@@ -4,6 +4,7 @@ import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.ModelChoices;
+import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.card.*;
 import it.polimi.ingsw.ps31.model.choiceType.*;
@@ -26,7 +27,7 @@ import java.util.*;
  * Created by giulia on 19/06/2017.
  */
 public class GameUtility extends ModelChoices {
-    private List<Player> playerList;
+    private List<Player> playerList= new ArrayList<>();
     private Player playerInAction;
     private GameBoard gameBoard;
     private VictoryPoint[] bonusVictoryPointFromTerritory;
@@ -83,16 +84,18 @@ public class GameUtility extends ModelChoices {
         this.endActionTurn(playerList.get(playerMaxNumber));
     }
 
-    public void extraPhaseActionGame(){
-        for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
-            if (playerList.get(playerMaxNumber).getFlagTurnExcommunication() == 1) {
-                this.startActionTurn(playerList.get(playerMaxNumber));
-                this.doActionTurn(playerList.get(playerMaxNumber));
-                this.endActionTurn(playerList.get(playerMaxNumber));
+    public void extraPhaseActionGame() {
+            for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
+                if (playerList.get(playerMaxNumber).getFlagTurnExcommunication() == 1) {
+                    this.startActionTurn(playerList.get(playerMaxNumber));
+                    this.doActionTurn(playerList.get(playerMaxNumber));
+                    this.endActionTurn(playerList.get(playerMaxNumber));
 
+                }
             }
         }
-    }
+
+
 
     public void playerOrderFromCouncil(){
         //aggiungo alla lista dei colori del palazzo del consiglio gli eventuali giocatori che non si sono posizionati in questo spazio azione e poi riordino la lista giocatori
@@ -186,11 +189,25 @@ public class GameUtility extends ModelChoices {
         notifyViews(new MVUpdateState(string2,player.getStatePlayerAction()));
     }
 
-    public void doActionTurn(Player player){
-        this.createTimerAction();
-        super.getLastModelStateForControl().setStateForControl(player.getStatePlayerAction());
-        String string = player.getNickname()+": Scegli l'azione";
-        notifyViews(new MVAskChoice(player.getPlayerId(),string, new ChoiceActionToDo()));
+    public void doActionTurn(Player player) {
+        super.setStateActionGame();
+        while (super.getStateModelChoices().equals("StateActionGame")) {
+            this.createTimerAction();
+            super.getLastModelStateForControl().setStateForControl(player.getStatePlayerAction());
+            String string = player.getNickname() + ": Scegli l'azione";
+            Action actionToDo =super.waitActionToDo();
+            for (Action action:player.getPlayerActionSet().getActionList()
+                 ) {
+                if(actionToDo.getClass().equals(action.getClass())){
+                    super.setStateActionGame();
+                    action.activate();
+                }
+                else{
+                    String string1 = "Non ho trovato l azione da eseguire";
+                    notifyViews(new MVStringToPrint(null,true,string1));
+                }
+            }
+        }
     }
 
     public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
@@ -257,11 +274,10 @@ public class GameUtility extends ModelChoices {
          }
      }
 
-    public Player createPlayer(String name){
+    public void createPlayer(String name){
         PlayerId[] playerId = PlayerId.values();
         PersonalBoard personalBoard = new PersonalBoard(personalBoardRequirements, playerId[playerList.size()]);
-        Player playerCreated = new Player(initialPlayerResource.get(playerList.size()), playerId[playerList.size()], name,personalBoard);
-        return playerCreated;
+        playerList.add(new Player(initialPlayerResource.get(playerList.size()), playerId[playerList.size()], name,personalBoard));
     }
 
     public void phaseChoicePersonalBonusTiles(){

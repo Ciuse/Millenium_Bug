@@ -19,7 +19,6 @@ public class GameBoard{
     private Market market;
     private CouncilPalace councilPalace;
     private SmallHarvest smallHarvest;
-
     private SmallProduction smallProduction;
     private BigHarvest bigHarvest;
     private BigProduction bigProduction;
@@ -37,6 +36,7 @@ public class GameBoard{
         for (int i = 0; i < TOWERNUMBER; i++) {
             towers.add(new Tower(towerColor[i], towerEffectList.get(i)));
         }
+        setTowerSpaceId();
 
         //creazione dadi
         DiceColor[] diceColor = DiceColor.values();
@@ -47,9 +47,13 @@ public class GameBoard{
 
         //creazione del resto
         this.councilPalace = new CouncilPalace(otherEffectList.get(0));
+        this.councilPalace.setActionSpaceId(17);
         this.smallHarvest = new SmallHarvest(1, otherEffectList.get(1));
+        this.smallHarvest.setActionSpaceId(18);
         this.smallProduction = new SmallProduction(1, otherEffectList.get(3));
+        this.smallProduction.setActionSpaceId(20);
         this.market = new Market();
+        setMarketId();
         this.market.add2PlayerMarketSpace(otherEffectList.get(5), otherEffectList.get(6));
         this.militaryPointTrack = new MilitaryPointTrack();
         this.faithPointTrack = new FaithPointTrack();
@@ -60,7 +64,9 @@ public class GameBoard{
 
     public void add3PlayerActionSpace(List<EffectList> otherEffectList){
         this.bigHarvest = new BigHarvest(-1, otherEffectList.get(2));
+        this.bigHarvest.setActionSpaceId(19);
         this.bigProduction = new BigProduction(-1, otherEffectList.get(4));
+        this.bigProduction.setActionSpaceId(21);
     }
 
     public void add4PlayerMarketSpace(List<EffectList> otherEffectList) {
@@ -71,6 +77,26 @@ public class GameBoard{
         this.market.remove4PlayerActionSpace();
     }
 
+    public void setTowerSpaceId(){
+        int i=1;
+        for (Tower tower: towers
+             ) {
+            for (TowerActionSpace towerActionSpace: tower.getTowerActionSpaceList()
+                 ) {
+                towerActionSpace.setActionSpaceId(i);
+                i++;
+            }
+        }
+    }
+
+    public void setMarketId(){
+        int i=22;
+        for (ActionSpace actionSpace:market.getActionSpaceList()
+             ) {
+            actionSpace.setActionSpaceId(i);
+            i++;
+        }
+    }
     public void rollTheDice() {
         for (Dice aDice : dice) {
             if (!aDice.getColor().equals(DiceColor.NEUTRAL)) {

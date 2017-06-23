@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model;
 
+import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
 import it.polimi.ingsw.ps31.model.board.TowerActionSpace;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
@@ -28,6 +29,7 @@ public class ModelChoices extends Model {
     private DevelopmentCard developmentCardChosen = null;
     private Boolean activeEffect = null ;
     private Boolean supportTheChurch=null;
+    private Boolean actionEnded=null;
     private PersonalBonusTiles personalBonusTilesChosen=null;
     private PlayerColor playerColorChosen=null;
     private LeaderCard leaderCardChosen=null;
@@ -40,6 +42,7 @@ public class ModelChoices extends Model {
     private FamilyMember familyMemberChosen;
     private TowerActionSpace towerActionSpaceChosen;
     private ActionSpace actionSpaceChosen;
+    private Action actionToDo=null;
 
     public synchronized int waitIntChosen(){
         setIntChosen(-1);
@@ -97,6 +100,7 @@ public class ModelChoices extends Model {
     }
     public synchronized TowerActionSpace waitTowerActionSpaceChosen(){
         setTowerActionSpaceChosen(null);
+        setStateChoice();
         while(towerActionSpaceChosen==null|| this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
@@ -110,6 +114,7 @@ public class ModelChoices extends Model {
 
     public synchronized ActionSpace waitActionSpaceChosen(){
         setActionSpaceChosen(null);
+        setStateChoice();
         while(actionSpaceChosen==null|| this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
@@ -146,6 +151,7 @@ public class ModelChoices extends Model {
     }
     public synchronized ResourceList waitResourceChosen(){
         setResourceChosen(null);
+        setStateChoice();
         while(resourceChosen==null|| this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
@@ -169,6 +175,7 @@ public class ModelChoices extends Model {
 
     public synchronized int waitNumberOfServantsToPay(){
         setNumberOfServantsToPay(-1);
+        setStateChoice();
         while(numberOfServantsToPay!=-1 || this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
@@ -203,6 +210,7 @@ public class ModelChoices extends Model {
     }
     public synchronized FamilyMember waitFamilyMemberChosen(){
         setFamilyMemberChosen(null);
+        setStateChoice();
         while(familyMemberChosen==null || this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
@@ -210,6 +218,18 @@ public class ModelChoices extends Model {
                 e.printStackTrace();
             }
         }return familyMemberChosen;
+    }
+
+    public synchronized Action waitActionToDo(){
+        setActionToDo(null);
+        setStateChoice();
+        while(actionToDo==null || this.stateModelChoices.equals("StateChoice")){
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }return actionToDo;
     }
 
     public void setActionSpaceChosen(ActionSpace actionSpaceChosen) {
@@ -256,9 +276,6 @@ public class ModelChoices extends Model {
         timer1.schedule(task1, timerConnection);
     }
 
-    public void setSupportTheChurch(boolean supportTheChurch) {
-        this.supportTheChurch = supportTheChurch;
-    }
 
     public void setLeaderCardChosen(LeaderCard leaderCardChosen) {
         this.leaderCardChosen = leaderCardChosen;
@@ -274,6 +291,22 @@ public class ModelChoices extends Model {
 
     public void setNumberOfServantsToPay(int numberOfServantsToPay) {
         this.numberOfServantsToPay = numberOfServantsToPay;
+    }
+
+    public void setActiveEffect(Boolean activeEffect) {
+        this.activeEffect = activeEffect;
+    }
+
+    public void setSupportTheChurch(Boolean supportTheChurch) {
+        this.supportTheChurch = supportTheChurch;
+    }
+
+    public void setActionEnded(Boolean actionEnded) {
+        this.actionEnded = actionEnded;
+    }
+
+    public void setActionToDo(Action actionToDo) {
+        this.actionToDo = actionToDo;
     }
 
     public void setLastModelStateForControl(LastModelStateForControl lastModelStateForControl) {
@@ -292,9 +325,6 @@ public class ModelChoices extends Model {
         this.timerConnection = timerConnection;
     }
 
-    public void setActiveEffect(boolean activeEffect) {
-        this.activeEffect = activeEffect;
-    }
 
     public void setPersonalBonusTilesChosen(PersonalBonusTiles personalBonusTilesChosen) {
         this.personalBonusTilesChosen = personalBonusTilesChosen;
@@ -333,11 +363,20 @@ public class ModelChoices extends Model {
 
     }
 
-    public void setResourceChosen(ResourceList resourceChosen) {
-        this.resourceChosen = resourceChosen;
+    public void setStateActionGame(){
+        this.stateModelChoices="StateActionGame";
     }
+
     public void setStateConnection(){
         this.stateModelChoices="StateConnection";
+    }
+
+    public String getStateModelChoices() {
+        return stateModelChoices;
+    }
+
+    public void setResourceChosen(ResourceList resourceChosen) {
+        this.resourceChosen = resourceChosen;
     }
 
 }

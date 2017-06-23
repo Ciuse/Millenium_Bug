@@ -26,4 +26,8 @@ public abstract class Action extends ModelChoices implements PlayerActions{
         actionList.add(this);
     }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

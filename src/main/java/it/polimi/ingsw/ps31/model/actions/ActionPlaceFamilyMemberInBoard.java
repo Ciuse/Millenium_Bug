@@ -48,8 +48,7 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
         } else if (super.defaultDenyActionSpaces.contains(actionSpace.getActionSpaceId())) {
             super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, "Non puoi piazzare il family member perchè hai la scomunica"));
             return;
-        }
-        else {
+        }  else {
             if (actionControlSet.placedFamilyMemberControl(familyMember)) {
                 if (actionControlSet.occupiedActionSpaceControl(actionSpace)) {
                     if (actionControlSet.diceValueVsDiceColorControl(actionSpace.getDiceCost(), familyMember.getDiceColor())) {
@@ -59,10 +58,10 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
                         super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPlacedFamilyMemberControl().getControlStringError()));
                 } else
                     super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getOccupiedActionSpaceControl().getControlStringError()));
-            }  else
+            } else
                 super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getDiceValueVsDiceColorControl().getControlStringError()));
-            super.notifyViews(new MVUpdateState("Aggiornato stato family member",familyMember.getStateFamilyMember()));
-            super.notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella board",actionSpace.getStateActionSpace()));
+            super.notifyViews(new MVUpdateState("Aggiornato stato family member", familyMember.getStateFamilyMember()));
+            super.notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella board", actionSpace.getStateActionSpace()));
         }
 
         super.setUsed(true);

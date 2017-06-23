@@ -31,6 +31,7 @@ public class PlayerActionSet {
     private final ActionActiveEndButton activeEndButton;
     private final ActionAddFinalBonus addFinalBonus;
     private final ActionGetTempResourcesFromAllEffect getTempResources;
+    private final List<Action> actionList=new ArrayList<>();
     private final Player player;
 
     /* Constructor */
@@ -53,8 +54,10 @@ public class PlayerActionSet {
         this.discardLeaderCard = new ActionDiscardLeaderCard(player, actionControlSet);
         this.getFinalResources = new ActionGetFinalResources(player, actionControlSet);
         this.activeEndButton= new ActionActiveEndButton(player, actionControlSet); //TODO IMPLEMENTARLO
-        this.addFinalBonus= new ActionAddFinalBonus(player, actionControlSet); //TODO IMPLEMENTARE
+        this.addFinalBonus= new ActionAddFinalBonus(player, actionControlSet);
         this.getTempResources = new ActionGetTempResourcesFromAllEffect(player,actionControlSet);
+
+        addActionToTheList();
     }
 
     /* Setters & Getters */
@@ -106,7 +109,6 @@ public class PlayerActionSet {
 
     public void chooseDifferentPrivilege(int numOfPrivileges, boolean isDifferent)
     {
-        //TODO: implementare
         this.chooseDifferentPrivilege.setNumberOfDifferentPrivileges(numOfPrivileges);
         this.chooseDifferentPrivilege.setAreDifferent(isDifferent);
         this.chooseDifferentPrivilege.activate();
@@ -249,8 +251,20 @@ public class PlayerActionSet {
         return discardLeaderCard;
     }
 
+    public List<Action> getActionList() {
+        return actionList;
+    }
+
     public void resetUsedAction(){
         this.getPlaceFamilyMemberInBoard().setUsed(false);
         this.getPlaceFamilyMemberInTower().setUsed(false);
+    }
+
+    public void addActionToTheList(){
+        actionList.add(this.actionActiveLeaderCard);
+        actionList.add(this.discardLeaderCard);
+        actionList.add(this.placeFamilyMemberInBoard);
+        actionList.add(this.placeFamilyMemberInTower);
+        actionList.add(this.activeEndButton);
     }
 }

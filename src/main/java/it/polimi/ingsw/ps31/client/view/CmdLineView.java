@@ -10,10 +10,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.*;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceActionSpace;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceActiveEffect;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceActionToDo;
+import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
@@ -48,14 +45,14 @@ public class CmdLineView extends View {
         do{
             this.setCmdInterpreterView(new IntrChoiceActionSpace());
             printBoardActionSpace();
-            String string="seleziona";
-            StringBuilder stringBuilder= new StringBuilder(string);
+            String string ="seleziona ";
             for (StateViewActionSpace actionSpace: getStateViewBoard().getStateViewActionSpaceList()
                  ) {
-                stringBuilder.append(actionSpace.getNumberOfActionSpace());
-                stringBuilder.append(" ");
+                string=string+valueOf(actionSpace.getNumberOfActionSpace()+" ");
             }
-        }while(true);
+            printLastEvent(string);
+        }while(!cmdInterpreterView.messageInterpreter(this, choiceActionSpace,keyStroke.getCharacter()));
+
     }
 
     @Override
@@ -92,6 +89,44 @@ public class CmdLineView extends View {
         }while(!cmdInterpreterView.messageInterpreter(this,choiceActiveEffect,keyStroke.getCharacter()));
     }
 
+    @Override
+    public void askChoiceColor(ChoiceColor choiceColor) {
+        do {
+            this.setCmdInterpreterView(new IntrChooseColor());
+            String string="Seleziona: ";
+            int i=1;
+            for (PlayerColor color:choiceColor.getPlayerColorList()
+                 ) {
+                string=string+valueOf(i)+" per: "+color.name()+". ";
+                i++;
+            }
+            printLastEvent(string);
+            input();
+        }while(!cmdInterpreterView.messageInterpreter(this,choiceColor,keyStroke.getCharacter()));
+    }
+
+    @Override
+    public void askFamilyMember(ChoiceFamilyMember choiceFamilyMember){
+        do {
+            this.setCmdInterpreterView(new IntrChooseFamilyMember());
+            printFamilyMemberInAction();
+            int j = 0;
+            for (StateViewPlayer player:super.getStateViewPlayerList()
+                    ) {
+                if(super.getStateViewGame().getPlayerIdInAction().equals(player.getPlayerId())) {
+                    for (StateViewFamilyMember family : player.getStateViewFamilyMemberList()
+                            ) {
+                        if (family.getActionSpaceId() == -1) {
+                            j++;
+                        }
+                    }
+                }
+            }
+            printLastEvent("Seleziona da 1 a "+valueOf(j)+" per selezionare uno dei family member rimasti");
+            input();
+        }while(!cmdInterpreterView.messageInterpreter(this,choiceFamilyMember,keyStroke.getCharacter()));
+    }
+
     public void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView) {
         this.cmdInterpreterView = cmdInterpreterView;
     }
@@ -117,54 +152,6 @@ public class CmdLineView extends View {
             e.printStackTrace();
         }
         printLastEvent( "Input: "+keyStroke.toString());
-    }
-
-    public void inserisciColore() {
-
-        try {
-            this.setCmdInterpreterView(new IntrChooseColor());
-            textGraphics.drawLine(0, 4, terminal.getTerminalSize().getColumns(), 4, ' ');
-            textGraphics.putString(0,4,"1 scegli rosso, 2 scegli verde");
-            screen.refresh();
-            keyStroke=screen.readInput();
-            cmdInterpreterView.notGameMessageInterpreter(this,keyStroke.getCharacter());
-            screen.refresh();
-            this.setCmdInterpreterView(new IntrVisualization());
-            askComand();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-//        PlayerColor playerColor = null;
-//        Boolean ok = false;
-//        while (ok == false) {
-//            Scanner scanner = new Scanner(System.in);
-//            String in = scanner.nextLine();
-//            if (in.equals(PlayerColor.BLUE.name())) {
-//                playerColor = PlayerColor.BLUE;
-//                ok = true;
-//            } else {
-//                if (in.equals(PlayerColor.GREEN.name())) {
-//                    playerColor = PlayerColor.GREEN;
-//                    ok = true;
-//                } else {
-//                    if (in.equals(PlayerColor.YELLOW.name())) {
-//                        playerColor = PlayerColor.YELLOW;
-//                        ok = true;
-
-//                   } else {
-//                        if (in.equals(PlayerColor.RED.name())) {
-//                            playerColor = PlayerColor.RED;
-//                            ok = true;
-//                        } else {
-//                            System.out.println("Hai sbagliato a inserire, reinserisci colore:");
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        return playerColor;
     }
 
     @Override
@@ -348,9 +335,11 @@ public class CmdLineView extends View {
                 int j=0;
                 for (StateViewFamilyMember family:player.getStateViewFamilyMemberList()
                         ) {
-                    TerminalPosition labelBoxTopLeft = new TerminalPosition(60 + j * 4, 8);
-                    printFamilyMembers(family, labelBoxTopLeft);
-                    j++;
+                    if (family.getActionSpaceId() == -1) {
+                        TerminalPosition labelBoxTopLeft = new TerminalPosition(60 + j * 4, 8);
+                        printFamilyMembers(family, labelBoxTopLeft);
+                        j++;
+                    }
                 }
             }
         }

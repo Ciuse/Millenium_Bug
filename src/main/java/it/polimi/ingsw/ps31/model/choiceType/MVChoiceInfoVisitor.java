@@ -1,9 +1,7 @@
 package it.polimi.ingsw.ps31.model.choiceType;
 
 import it.polimi.ingsw.ps31.client.view.View;
-import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrChoiseActiveEffect;
-import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrChoisePlayerAction;
-import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrChoiseStartLeader;
+import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.*;
 
 /**
  * Created by Giuseppe on 15/06/2017.
@@ -43,7 +41,8 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoiceActionSpace choiceActionSpace) {
-
+        view.setCmdInterpreterView(new IntrChoiceActionSpace());
+        view.askChoiceActionSpace(choiceActionSpace);
     }
 
     @Override
@@ -65,6 +64,7 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoiceColor choiceColor) {
+        view.setCmdInterpreterView(new IntrChooseColor());
 
     }
 
