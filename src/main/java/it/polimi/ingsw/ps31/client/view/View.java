@@ -85,10 +85,6 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void askIfActiveEffect(ChoiceActiveEffect choiceActiveEffect);
 
-    public abstract void askPlayerAction(ChoiseActionToDo choiseActionToDo);
-
-    public abstract void askChoiceActiveEffect(ChoiceActiveEffect choiceActiveEffect);
-
     public abstract void askStartLeaderToKeep(ChoiceStartLeaderCard choiceStartLeaderCard);
 
     public abstract void askPlayerColor(ChoiceColor choiceColor);
