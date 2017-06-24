@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.model.choiceType;
 
 import it.polimi.ingsw.ps31.client.view.View;
-import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.IntrChoiseActiveEffect;
+import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.*;
 
 /**
  * Created by Giuseppe on 15/06/2017.
@@ -21,7 +21,7 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
     @Override
     public void visit(ChoiceActiveEffect choiceActiveEffect) {
         view.setCmdInterpreterView(new IntrChoiseActiveEffect());
-//        view.askPlayer(choiceActiveEffect.cardIdEffect);
+        view.askChoiceActiveEffect(choiceActiveEffect);
     }
 
     @Override
@@ -41,17 +41,20 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoiceActionSpace choiceActionSpace) {
-
+        view.setCmdInterpreterView(new IntrChoiceActionSpace());
+        view.askChoiceActionSpace(choiceActionSpace);
     }
 
     @Override
-    public void visit(ChoiseActionToDo choiseActionToDo) {
-        view.askPlayerAction(choiseActionToDo);
+    public void visit(ChoiceActionToDo choiceActionToDo) {
+        view.setCmdInterpreterView(new IntrChoisePlayerAction());
+        view.askChoiceActionToDo(choiceActionToDo);
     }
 
     @Override
-    public void visit(ChoiceLeaderCard choiceLeaderCard) {
-        view.askChoiceLeader(choiceLeaderCard);
+    public void visit(ChoiceStartLeaderCard choiceStartLeaderCard) {
+        view.setCmdInterpreterView(new IntrChoiseStartLeader());
+        view.askChoiceStartLeader(choiceStartLeaderCard);
     }
 
     @Override
@@ -61,6 +64,7 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoiceColor choiceColor) {
+        view.setCmdInterpreterView(new IntrChooseColor());
 
     }
 
@@ -71,6 +75,31 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoiceIfSupportTheChurch choiceIfSupportTheChurch) {
+
+    }
+
+    @Override
+    public void visit(ChoicePrivilegeResource choicePrivilegeResource) {
+
+    }
+
+    @Override
+    public void visit(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay) {
+
+    }
+
+    @Override
+    public void visit(ChoiceLeaderToActive choiceLeaderToActive) {
+
+    }
+
+    @Override
+    public void visit(ChoiceLeaderToDiscard choiceLeaderToDiscard) {
+
+    }
+
+    @Override
+    public void visit(ChoiceTowerActionSpace choiceTowerActionSpace) {
 
     }
 }

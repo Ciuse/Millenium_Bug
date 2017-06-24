@@ -1,5 +1,8 @@
 package it.polimi.ingsw.ps31.model.effect;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceInt;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerCardSpace;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
 
@@ -29,14 +32,15 @@ public class ChangeResourceEffect extends Effect {
         return resourceToGainList;
     }
 
-    //TODO spostare la richiesta di inserimento alla view
+
     @Override
     public void activate(Player player) {
         if(resourceToGainList.size()==1&&resourceToPayList.size()==1){
             player.getPlayerActionSet().payResources(resourceToPayList.get(0));
             player.getPlayerActionSet().getTempResources(resourceToGainList.get(0));
         }else{
-          //TODO  super.notifyViews(new MVAskChoice(1,1,resourceToPayList.size()));
+            String string=player.getPlayerId()+"Quale delle due risorse vuoi pagare/guadagnare?";
+            super.notifyViews(new MVAskChoice(player.getPlayerId(),string, new ChoiceInt()));
             int listChoose = super.waitIntChosen();
             player.getPlayerActionSet().payResources(resourceToPayList.get(listChoose));
             player.getPlayerActionSet().getTempResources(resourceToGainList.get(listChoose));

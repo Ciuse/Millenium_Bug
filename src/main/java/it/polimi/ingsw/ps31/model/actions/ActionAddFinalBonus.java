@@ -4,6 +4,7 @@ package it.polimi.ingsw.ps31.model.actions;
  * Created by Giuseppe on 07/06/2017.
  */
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
 
@@ -11,7 +12,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
  * Created by Francesco on 31/05/2017.
  */
 public class ActionAddFinalBonus extends Action {
-    private ResourceList resourceList = null;
+    private ResourceList resourceList = null; //effetto permanente carte viola
 
     /* Constructor */
     public ActionAddFinalBonus(Player player, ActionControlSet actionControlSet) {
@@ -39,7 +40,8 @@ public class ActionAddFinalBonus extends Action {
     @Override
     public void activate()
     {
-        player.addFinalBonusResource(this.resourceList); //TODO IMPLEMENTARE
+        player.addFinalBonusResource(this.resourceList);
         resetResourceList();
+        super.notifyViews(new MVUpdateState("Aggiornato stato PlayerResources (effetto permanente carte viola)",player.getStatePlayerResources()));
     }
 }

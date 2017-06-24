@@ -1,6 +1,11 @@
 package it.polimi.ingsw.ps31.model.actions;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
+import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.board.TowerActionSpace;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceFamilyMember;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerActionSpace;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.player.Player;
 
@@ -24,8 +29,8 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
         return towerActionSpace;
     }
 
-    public void setTowerActionSpace(TowerActionSpace towerActionSpace) {
-        this.towerActionSpace = towerActionSpace;
+    public void setTowerActionSpaceChosen(TowerActionSpace towerActionSpaceChosen) {
+        this.towerActionSpace = towerActionSpaceChosen;
     }
 
     /* Resetters */
@@ -38,6 +43,10 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
     @Override
     public void activate()
     {
+        super.notifyViews(new MVAskChoice(player.getPlayerId(),"Quale family member vuoi usare?",new ChoiceFamilyMember()));
+        this.familyMember=super.waitFamilyMemberChosen();
+        super.notifyViews(new MVAskChoice(player.getPlayerId(),"In quale tower action space vuoi mettere il tuo family member?",new ChoiceTowerActionSpace()));
+        this.towerActionSpace=super.waitTowerActionSpaceChosen();
         //Controllo che i parametri siano settati
         if ( this.familyMember == null || this.towerActionSpace == null || !this.towerActionSpace.isTowerSpace())
         {
@@ -47,14 +56,16 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
             //Eseguo i controlli
            if ( actionControlSet.towerPlacementControl(familyMember, this.towerActionSpace.getTowerCardSpace()) )
            {
-               this.towerActionSpace.addFamilyMember(familyMember); //TODO: chi attiva gli effetti??
+               this.towerActionSpace.addFamilyMember(familyMember);
                player.setLastUsedFamilyMember(familyMember);
                if(immediateEffectsAreActivable)
                    towerActionSpace.activeEffectList(player);
-           }
+           }else  super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTowerPlacementControl().getControlStringError()));
            setUsed(true);
            resetActionSpace();
            resetFamilyMember();
+            super.notifyViews(new MVUpdateState("Aggiornato stato family member",familyMember.getStateFamilyMember()));
+            super.notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella tower",towerActionSpace.getStateActionSpace()));
         }
     }
 

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.actions;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.player.Player;
@@ -74,6 +75,8 @@ public class ActionTakeCard extends Action {
 
             resetCardColor();
             resetCardSpace();
+            super.notifyViews(new MVUpdateState("Aggiornato stato Player Personal Board",player.getPersonalBoard().getStatePersonalBoard()));
+            super.notifyViews(new MVUpdateState("Aggiornato stato tower card space",towerCardSpace.getStateTowerCardBox()));
         }
     }
 

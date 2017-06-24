@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
 
 import it.polimi.ingsw.ps31.client.view.CmdLineView;
+import it.polimi.ingsw.ps31.messages.messageVC.VCActiveEffectChoice;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
@@ -8,12 +9,29 @@ import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
  */
 public class IntrChoiseActiveEffect implements CmdInterpreterView {
     @Override
-    public void messageInterpreter(CmdLineView terminalView, Character in) {
+    public void notGameMessageInterpreter(CmdLineView terminalView, Character in) {
 
     }
 
     @Override
-    public void messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
+    public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
+        if (in != null) {
+            if (in == 'Y' || in == 'n') {
+                terminalView.printLastEvent("Comando OK");
+                terminalView.notifyController(new VCActiveEffectChoice(terminalView.getViewId(),true));
+                return true;
+            }
+            if (in == 'N' || in == 'n') {
+                terminalView.printLastEvent("Comando OK");
+                terminalView.notifyController(new VCActiveEffectChoice(terminalView.getViewId(),false));
+                return true;
+            }
+            terminalView.printLastEvent("Comando Non Riconusciuto");
+            return false;
 
+        } else {
+            terminalView.printLastEvent("Comando Non Rilevato");
+            return false;
+        }
     }
 }

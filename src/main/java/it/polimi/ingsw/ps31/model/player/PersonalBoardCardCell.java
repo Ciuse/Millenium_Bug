@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.board.PhysicalCardBox;
+import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 import it.polimi.ingsw.ps31.model.stateModel.StateCardBox;
@@ -28,6 +30,12 @@ public class PersonalBoardCardCell extends PhysicalCardBox {
         return extraPointRequired;
     }
 
+    @Override
+    public void setCard(DevelopmentCard card) {
+        super.setCard(card);
+        super.notifyViews(new MVUpdateState("Aggiornato stato del personal card box", getStatePersonalCardBox()));
+
+    }
 
     public StateCardBox getStatePersonalCardBox(){
         if(this.card!=null) {

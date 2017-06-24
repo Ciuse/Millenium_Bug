@@ -14,6 +14,10 @@ public class ChoiceColor extends ChoiceType {
         this.playerColorList = playerColorList;
     }
 
+    public List<PlayerColor> getPlayerColorList() {
+        return playerColorList;
+    }
+
     @Override
     public void acceptChoice(ChoiceVisitor choiceVisitor) {
         choiceVisitor.visit(this);

@@ -1,8 +1,11 @@
 package it.polimi.ingsw.ps31.model.card;
+import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.effect.ActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.Effect;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
+import it.polimi.ingsw.ps31.model.stateModel.StateEffect;
+import it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.List;
  * Created by Giuseppe on 22/05/2017.
  */
 public class LeaderCard extends Card implements ActiveEffect {
+    private PlayerId playerId;
     private final int leaderId;
     private final ResourceList resourceRequest;
     private final DevelopmentCardList developmentCardRequest;
@@ -80,6 +84,21 @@ public class LeaderCard extends Card implements ActiveEffect {
 
     public int getLeaderId() {
         return leaderId;
+    }
+
+    public PlayerId getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(PlayerId playerId) {
+        this.playerId = playerId;
+    }
+
+    public StateLeaderCard getStateLeaderCard() {
+        if (this.leaderId != -1) {
+            StateLeaderCard stateLeaderCard = new StateLeaderCard(playerId, leaderId, super.getName(), new StateEffect(abilityOneTimeForTurn), new StateEffect(permanentAbility), played, usedEffect1);
+            return stateLeaderCard;
+        } return null;
     }
 
     @Override

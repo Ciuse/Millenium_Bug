@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
  */
 public class IntrVisualization implements CmdInterpreterView {
     @Override
-    public void messageInterpreter(CmdLineView cmdLineView, Character in) {
+    public void notGameMessageInterpreter(CmdLineView cmdLineView, Character in) {
         if(in.compareTo('1')==0) {
 
 
@@ -18,8 +18,8 @@ public class IntrVisualization implements CmdInterpreterView {
     }
 
     @Override
-    public void messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
-
+    public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
+return false;
     }
 
     @Override

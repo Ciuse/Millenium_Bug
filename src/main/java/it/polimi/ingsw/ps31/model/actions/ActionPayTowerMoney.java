@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.actions;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.gameResource.Coin;
 import it.polimi.ingsw.ps31.model.player.Player;
 
@@ -21,15 +22,13 @@ public class ActionPayTowerMoney extends Action {
         return this.COINTOPAY;
     }
 
-    /* Resetters */
-    public void resetCoinToPay (){
-    }
-
     /* Class Methods */
     @Override
     public void activate()
     {
         Coin payment = new Coin(this.COINTOPAY);
         super.player.getPlayerActionSet().payResources(payment);
+        super.notifyViews(new MVUpdateState("Aggiornato stato player resource",player.getStatePlayerResources()));
+
     }
 }

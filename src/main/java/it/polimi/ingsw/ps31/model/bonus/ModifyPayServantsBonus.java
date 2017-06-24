@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.model.bonus;
 
-import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
@@ -9,8 +8,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
 public class ModifyPayServantsBonus extends Bonus {
     private final int servantsToPayPerUnitaryDiceValueArise;
 
-    protected ModifyPayServantsBonus(Action actionToModify, int servantsToPayPerUnitaryDiceValueArise) {
-        super(actionToModify);
+    protected ModifyPayServantsBonus(int servantsToPayPerUnitaryDiceValueArise) {
         this.servantsToPayPerUnitaryDiceValueArise = servantsToPayPerUnitaryDiceValueArise;
     }
 

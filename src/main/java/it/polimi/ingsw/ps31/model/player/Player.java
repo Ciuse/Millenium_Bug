@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.player;
 
 import it.polimi.ingsw.ps31.model.actions.ActionControlSet;
+import it.polimi.ingsw.ps31.model.board.MarkerDisc;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
@@ -9,13 +10,13 @@ import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.model.gameResource.Resource;
-import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
+import it.polimi.ingsw.ps31.model.gameResource.*;
 import it.polimi.ingsw.ps31.model.stateModel.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 
 /**
  * Created by giulia on 15/05/2017.
@@ -39,6 +40,8 @@ public class Player {
     private List<LeaderCard> leaderCardList;
     private boolean wannaEndTurn = false;
 
+    private List<LeaderCard> leaderCardList= new ArrayList<>();
+    private List<MarkerDisc> markerDiscList = new ArrayList<>();
     /* Constructor */
     public Player( ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard)
     {
@@ -55,6 +58,14 @@ public class Player {
             FamilyMember familyMember = new FamilyMember(this,diceColor[i]);
             this.familyMembers.add(familyMember);
         }
+        //creazione dei markerdisc
+        MarkerDisc markerDisc1 = new MarkerDisc(FaithPoint.class,this);
+        MarkerDisc markerDisc2 = new MarkerDisc(VictoryPoint.class,this);
+        MarkerDisc markerDisc3 = new MarkerDisc(MilitaryStrength.class,this);
+        markerDiscList.add(markerDisc1);
+        markerDiscList.add(markerDisc2);
+        markerDiscList.add(markerDisc3);
+
 
         playerResources = new PlayerResources(initialResources);
 
@@ -83,6 +94,10 @@ public class Player {
 
     public void setWannaEndTurn(boolean wannaEndTurn) {
         this.wannaEndTurn = wannaEndTurn;
+    }
+
+    public List<MarkerDisc> getMarkerDiscList() {
+        return markerDiscList;
     }
 
     public String getNickname() {
@@ -231,7 +246,7 @@ public class Player {
     {
         this.finalBonusResources.add(bonusResourcesToAdd);
     }
-    public FamilyMember getSpecificFamilyMember(DiceColor color)
+    public FamilyMember     getSpecificFamilyMember(DiceColor color)
     {
         Iterator<FamilyMember> itr = familyMembers.iterator();
 
@@ -268,8 +283,8 @@ public class Player {
         playerActionSet.getFinalResources();
     }
 
-    public StateTypePlayer getStateInfoPlayer(){
-        StateTypePlayer stateInfoPlayer = new StateTypePlayer(playerId, nickname,playerColor);
+    public StatePlayer getStateInfoPlayer(){
+        StatePlayer stateInfoPlayer = new StatePlayer(playerId, nickname,playerColor);
         return stateInfoPlayer;
     }
 
@@ -277,6 +292,7 @@ public class Player {
         return new StatePlayerResources(playerId, playerResources);
 
     }
+
 
     public StateAllFamilyMember getStateAllFamilyMember(){
         List<StateFamilyMember> stateAllFamilyMembers = new ArrayList<>();
@@ -291,16 +307,28 @@ public class Player {
     public StatePlayerAction getStatePlayerAction() {
         List<String> actionList = new ArrayList<>();
         if(!playerActionSet.getPlaceFamilyMemberInBoard().isUsed()){
-        actionList.add(playerActionSet.getPlaceFamilyMemberInBoard().toString());
+        actionList.add(playerActionSet.getPlaceFamilyMemberInBoard().toString());           //aggiungo l azione piazza fagmigliare nella board
         }
         if(!playerActionSet.getPlaceFamilyMemberInBoard().isUsed()) {
-            actionList.add(playerActionSet.getPlaceFamilyMemberInTower().toString());
+            actionList.add(playerActionSet.getPlaceFamilyMemberInTower().toString());       //aggiungo l azione piazza famigliare nella torre
         }
-        if(!playerActionSet.getActionActiveLeaderCard().isUsed()) {
-            actionList.add(playerActionSet.getActionActiveLeaderCard().toString());
+        if(leaderCardList.size()>0) {
+            actionList.add(playerActionSet.getActiveLeaderCard().toString());             //aggiungo l azione gioca leader
         }
+        if(leaderCardList.size()>0){
+            boolean found=false;
+            for (LeaderCard leaderCard:leaderCardList
+                    ) {
+                if(!leaderCard.isPlayed()){
+                    found=true;
+                }
+            }
+            if(found)
+                actionList.add(playerActionSet.getDiscardLeaderCard().toString());      //aggiungo l azione scarta leader se ne hai ancora uno in mano
+        }
+
         if (playerActionSet.getActiveEndButton().isActive()) {
-            actionList.add(playerActionSet.getActiveEndButton().toString());
+            actionList.add(playerActionSet.getActiveEndButton().toString());             //se l oggetto fine turno è attivo aggiungo l azione per finire il turno
         }
         return new StatePlayerAction(playerId,actionList);
     }

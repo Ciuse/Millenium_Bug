@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.model.bonus;
 
-import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
@@ -11,8 +10,7 @@ public class DiscountOnOccupatedTowerBox extends Bonus {
     private final int discountTowerBox;
 
 
-    protected DiscountOnOccupatedTowerBox(Action actionToModify, int[] occupatedTowers, int discountTowerBox) {
-        super(actionToModify);
+    protected DiscountOnOccupatedTowerBox(int[] occupatedTowers, int discountTowerBox) {
         this.occupatedTowers = occupatedTowers;
         this.discountTowerBox = discountTowerBox;
     }

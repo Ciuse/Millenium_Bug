@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.model.bonus;
 
-import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 import it.polimi.ingsw.ps31.model.player.Player;
 
@@ -12,8 +11,7 @@ public class LostFinalVictoryPointBonus extends  Bonus {
     private final PointResource pointResource;
 
 
-    protected LostFinalVictoryPointBonus(Action actionToModify, PointResource pointResource) {
-        super(actionToModify);
+    protected LostFinalVictoryPointBonus(PointResource pointResource) {
         this.pointResource = pointResource;
     }
 

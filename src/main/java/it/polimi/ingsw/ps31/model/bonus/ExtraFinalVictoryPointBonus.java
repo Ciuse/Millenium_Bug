@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.model.bonus;
 
-import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.player.Player;
 
@@ -11,8 +10,7 @@ public class ExtraFinalVictoryPointBonus extends Bonus {
     private final CardColor cardColor;
 
 
-    protected ExtraFinalVictoryPointBonus(Action actionToModify, CardColor cardColor) {
-        super(actionToModify);
+    protected ExtraFinalVictoryPointBonus(CardColor cardColor) {
         this.cardColor = cardColor;
     }
 

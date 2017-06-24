@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.model.bonus;
 
 import it.polimi.ingsw.ps31.model.ModelChoices;
-import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
@@ -13,7 +12,7 @@ import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 public abstract class Bonus extends ModelChoices implements BonusActivation  {
 
     protected Bonus() {}
-    protected Bonus(Action actionToModify) {}
+ //   protected Bonus(Action actionToModify) {}
 
    // private final Action actionToModify;
 

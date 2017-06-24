@@ -10,8 +10,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.*;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderCard;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiseActionToDo;
+import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
@@ -38,26 +37,96 @@ public class CmdLineView extends View {
     private CmdInterpreterView cmdInterpreterView = new IntrVisualization();
     private TerminalPosition consolePosition = new TerminalPosition (2,31);
 
+    public CmdLineView(PlayerId viewId, int playerMaxNumber) {
+        super(viewId, playerMaxNumber);
+    }
 
 
-    public CmdLineView(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoard, List<StateViewPlayer> stateViewPlayer, StateViewGame stateViewGame) {
-        super(viewId, stateViewBoard, stateViewPersonalBoard, stateViewPlayer, stateViewGame);
+    @Override
+    public void askChoiceActionSpace(ChoiceActionSpace choiceActionSpace) {
+        do{
+            this.setCmdInterpreterView(new IntrChoiceActionSpace());
+            printBoardActionSpace();
+            String string ="seleziona ";
+            for (StateViewActionSpace actionSpace: getStateViewBoard().getStateViewActionSpaceList()
+                 ) {
+                string=string+valueOf(actionSpace.getNumberOfActionSpace()+" ");
+            }
+            printLastEvent(string);
+        }while(!cmdInterpreterView.messageInterpreter(this, choiceActionSpace,keyStroke.getCharacter()));
+
     }
 
     @Override
-    public void askPlayerAction(ChoiseActionToDo choiseActionToDo) {
-        this.setCmdInterpreterView(new IntrChoisePlayerAction());
-        printPlayerAction();
+    public void askChoiceActionToDo(ChoiceActionToDo choiceActionToDo) {
+        do {
+            this.setCmdInterpreterView(new IntrChoisePlayerAction());
+            printPlayerAction();
+            StateViewPlayer player = super.getMyStateViewPlayer();
+            int numberOfChoice = player.getStringPlayerAction().size();
+            printLastEvent("Inserisci da 1 a" + numberOfChoice);
+            input();
+        }while(!cmdInterpreterView.messageInterpreter(this, choiceActionToDo, keyStroke.getCharacter()));
     }
 
     @Override
-    public void askChoiceLeader(ChoiceLeaderCard choiceLeaderCard) {
-        this.setCmdInterpreterView(new IntrChoiceLeader());
-        for (int i = 0; i < choiceLeaderCard.getLeaderName().size(); i++){
-            printLastEvent(choiceLeaderCard.getLeaderId().get(i).toString()+" "+choiceLeaderCard.getLeaderName().get(i));
-        }
-        input();
-        cmdInterpreterView.messageInterpreter(this,choiceLeaderCard,keyStroke.getCharacter());
+    public void askChoiceStartLeader(ChoiceStartLeaderCard choiceStartLeaderCard) {
+        do {
+            this.setCmdInterpreterView(new IntrChoiseStartLeader());
+            for (int i = 0; i < choiceStartLeaderCard.getLeaderName().size(); i++) {
+                printLastEvent("inserisci " + i + " per: " + choiceStartLeaderCard.getLeaderId().get(i).toString() + " " + choiceStartLeaderCard.getLeaderName().get(i));
+            }
+            input();
+        }while (!cmdInterpreterView.messageInterpreter(this, choiceStartLeaderCard,keyStroke.getCharacter()));
+    }
+
+    @Override
+    public void askChoiceActiveEffect(ChoiceActiveEffect choiceActiveEffect) {
+        do {
+            this.setCmdInterpreterView(new IntrChoiseActiveEffect());
+            printDevelopmentCard(choiceActiveEffect.getCardIdEffect());
+            printLastEvent("inserisci \"Y\" per attivare l'effetto permanente della carta");
+            printLastEvent("inserisci \"N\" per non attivare l'effetto permanente della carta");
+            input();
+        }while(!cmdInterpreterView.messageInterpreter(this,choiceActiveEffect,keyStroke.getCharacter()));
+    }
+
+    @Override
+    public void askChoiceColor(ChoiceColor choiceColor) {
+        do {
+            this.setCmdInterpreterView(new IntrChooseColor());
+            String string="Seleziona: ";
+            int i=1;
+            for (PlayerColor color:choiceColor.getPlayerColorList()
+                 ) {
+                string=string+valueOf(i)+" per: "+color.name()+". ";
+                i++;
+            }
+            printLastEvent(string);
+            input();
+        }while(!cmdInterpreterView.messageInterpreter(this,choiceColor,keyStroke.getCharacter()));
+    }
+
+    @Override
+    public void askFamilyMember(ChoiceFamilyMember choiceFamilyMember){
+        do {
+            this.setCmdInterpreterView(new IntrChooseFamilyMember());
+            printFamilyMemberInAction();
+            int j = 0;
+            for (StateViewPlayer player:super.getStateViewPlayerList()
+                    ) {
+                if(super.getStateViewGame().getPlayerIdInAction().equals(player.getPlayerId())) {
+                    for (StateViewFamilyMember family : player.getStateViewFamilyMemberList()
+                            ) {
+                        if (family.getActionSpaceId() == -1) {
+                            j++;
+                        }
+                    }
+                }
+            }
+            printLastEvent("Seleziona da 1 a "+valueOf(j)+" per selezionare uno dei family member rimasti");
+            input();
+        }while(!cmdInterpreterView.messageInterpreter(this,choiceFamilyMember,keyStroke.getCharacter()));
     }
 
     public void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView) {
@@ -79,60 +148,12 @@ public class CmdLineView extends View {
     public void input(){
         try {
             keyStroke=screen.readInput();
-            cmdInterpreterView.messageInterpreter(this,keyStroke.getCharacter());
+            cmdInterpreterView.notGameMessageInterpreter(this,keyStroke.getCharacter());
 
         } catch (IOException e) {
             e.printStackTrace();
         }
         printLastEvent( "Input: "+keyStroke.toString());
-    }
-
-    public void inserisciColore() {
-
-        try {
-            this.setCmdInterpreterView(new IntrChooseColor());
-            textGraphics.drawLine(0, 4, terminal.getTerminalSize().getColumns(), 4, ' ');
-            textGraphics.putString(0,4,"1 scegli rosso, 2 scegli verde");
-            screen.refresh();
-            keyStroke=screen.readInput();
-            cmdInterpreterView.messageInterpreter(this,keyStroke.getCharacter());
-            screen.refresh();
-            this.setCmdInterpreterView(new IntrVisualization());
-            askComand();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-//        PlayerColor playerColor = null;
-//        Boolean ok = false;
-//        while (ok == false) {
-//            Scanner scanner = new Scanner(System.in);
-//            String in = scanner.nextLine();
-//            if (in.equals(PlayerColor.BLUE.name())) {
-//                playerColor = PlayerColor.BLUE;
-//                ok = true;
-//            } else {
-//                if (in.equals(PlayerColor.GREEN.name())) {
-//                    playerColor = PlayerColor.GREEN;
-//                    ok = true;
-//                } else {
-//                    if (in.equals(PlayerColor.YELLOW.name())) {
-//                        playerColor = PlayerColor.YELLOW;
-//                        ok = true;
-
-//                   } else {
-//                        if (in.equals(PlayerColor.RED.name())) {
-//                            playerColor = PlayerColor.RED;
-//                            ok = true;
-//                        } else {
-//                            System.out.println("Hai sbagliato a inserire, reinserisci colore:");
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        return playerColor;
     }
 
     @Override
@@ -152,7 +173,7 @@ public class CmdLineView extends View {
                 textGraphics.drawLine(0, 4, terminal.getTerminalSize().getColumns(), 4, ' ');
                 textGraphics.putString(0 + "Last Keystroke: ".length(), 4, keyStroke.toString());
                 terminal.flush();
-                cmdInterpreterView.messageInterpreter(this, keyStroke.getCharacter());
+                cmdInterpreterView.notGameMessageInterpreter(this, keyStroke.getCharacter());
                 screen.refresh();
             }
             keyStroke = screen.pollInput();
@@ -192,6 +213,7 @@ public class CmdLineView extends View {
 
     }
 
+
     @Override
     public void printTower (){
         int i=1;
@@ -216,8 +238,9 @@ public class CmdLineView extends View {
     public void printPlayerInAction(){
         for (StateViewPlayer player:super.getStateViewPlayerList()
                 ) {
-          //  if(super.getViewId().equals(player.getPlayerId())){
-            if(super.getStateViewGame().getPlayerIdInACtion().equals(player.getPlayerId())){
+            //  if(super.getViewId().equals(player.getPlayerId())){
+            if(super.getStateViewGame().getPlayerIdInAction().equals(player.getPlayerId())){
+
                 TerminalPosition labelBoxTopLeft = new TerminalPosition(60,0);
                 printPlayer(player,labelBoxTopLeft);
 
@@ -237,7 +260,7 @@ public class CmdLineView extends View {
             for (StateViewPlayer player:super.getStateViewPlayerList()
                     ) {
                // if(!super.getViewId().equals(player.getPlayerId())) {
-                if(!super.getStateViewGame().getPlayerIdInACtion().equals(player.getPlayerId())){
+                if(!super.getStateViewGame().getPlayerIdInAction().equals(player.getPlayerId())){
                     TerminalPosition labelBoxTopLeft = new TerminalPosition(116, 0 + j * 9);
                     printPlayer(player, labelBoxTopLeft);
                     j++;
@@ -255,7 +278,7 @@ public class CmdLineView extends View {
         for (StateViewPlayer player:super.getStateViewPlayerList()
                 ) {
             //  if(super.getViewId().equals(player.getPlayerId())){
-            if(super.getStateViewGame().getPlayerIdInACtion().equals(player.getPlayerId())){
+            if(super.getStateViewGame().getPlayerIdInAction().equals(player.getPlayerId())){
                 TerminalPosition labelBoxTopLeft = new TerminalPosition(60,11);
                 printPlayerAction(player,labelBoxTopLeft);
             }
@@ -272,7 +295,7 @@ public class CmdLineView extends View {
         for (StateViewPersonalBoard personalBoard:super.getStateViewPersonalBoardList()
             ) {
        // if(super.getViewId().equals(personalBoard.getPlayerId())){
-            if(super.getStateViewGame().getPlayerIdInACtion().equals(personalBoard.getPlayerId())){
+            if(super.getStateViewGame().getPlayerIdInAction().equals(personalBoard.getPlayerId())){
                 TerminalPosition labelBoxTopLeft = new TerminalPosition(60, 3);
             printPersonalBoard(personalBoard,labelBoxTopLeft);
 
@@ -291,7 +314,7 @@ public class CmdLineView extends View {
         for (StateViewPersonalBoard personalBoard : super.getStateViewPersonalBoardList()
                 ) {
          //   if(!super.getViewId().equals(personalBoard.getPlayerId())){
-            if(!super.getStateViewGame().getPlayerIdInACtion().equals(personalBoard.getPlayerId())){
+            if(!super.getStateViewGame().getPlayerIdInAction().equals(personalBoard.getPlayerId())){
 
                 TerminalPosition labelBoxTopLeft = new TerminalPosition(116, 3+j*9);
                 printPersonalBoard(personalBoard,labelBoxTopLeft);
@@ -310,13 +333,15 @@ public class CmdLineView extends View {
         for (StateViewPlayer player:super.getStateViewPlayerList()
                 ) {
             //  if(super.getViewId().equals(player.getPlayerId())){
-            if(super.getStateViewGame().getPlayerIdInACtion().equals(player.getPlayerId())){
+            if(super.getStateViewGame().getPlayerIdInAction().equals(player.getPlayerId())){
                 int j=0;
                 for (StateViewFamilyMember family:player.getStateViewFamilyMemberList()
                         ) {
-                    TerminalPosition labelBoxTopLeft = new TerminalPosition(60 + j * 4, 8);
-                    printFamilyMembers(family, labelBoxTopLeft);
-                    j++;
+                    if (family.getActionSpaceId() == -1) {
+                        TerminalPosition labelBoxTopLeft = new TerminalPosition(60 + j * 4, 8);
+                        printFamilyMembers(family, labelBoxTopLeft);
+                        j++;
+                    }
                 }
             }
         }
@@ -336,14 +361,22 @@ public class CmdLineView extends View {
         printActionSpace(17,position17,actionSpaceBox3);
         TerminalPosition position18 = new TerminalPosition(1,20);
         printActionSpace(18,position18,actionSpaceBox);
-        TerminalPosition position19 = new TerminalPosition(11,20);
-        printActionSpace(19,position19,actionSpaceBox2);
+
         TerminalPosition position20 = new TerminalPosition(1,25);
         printActionSpace(20,position20,actionSpaceBox);
-        TerminalPosition position21 = new TerminalPosition(11,25);
-        printActionSpace(21,position21,actionSpaceBox2);
-
-        for (int i = 0; i <4; i++) {
+        if(getStateViewGame().getPlayerMaxNumber()>=3) {            //stampa dei big harvest/production solo se siamo in piu di 3
+            TerminalPosition position19 = new TerminalPosition(11, 20);
+            printActionSpace(19, position19, actionSpaceBox2);
+            TerminalPosition position21 = new TerminalPosition(11, 25);
+            printActionSpace(21, position21, actionSpaceBox2);
+        }
+        int numberOfMarket=0;
+        if(getStateViewGame().getPlayerMaxNumber()==4) {
+            numberOfMarket=4;
+        } else{
+            numberOfMarket=2;
+        }
+        for (int i = 0; i <numberOfMarket; i++) {
             TerminalPosition positionMarket = new TerminalPosition((28 + i * 2) + ((i * actionSpaceBox.getColumns())), (25));
             printActionSpace(22+i,positionMarket,actionSpaceBox);
         }

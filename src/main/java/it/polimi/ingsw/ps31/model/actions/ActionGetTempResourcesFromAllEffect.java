@@ -10,13 +10,15 @@ import java.util.List;
 /**
  * Created by giulia on 15/06/2017.
  */
-public class ActionGetTempResources extends Action {
+public class ActionGetTempResourcesFromAllEffect extends Action {
     private ResourceList resourcesTempToGet = null;
     private ResourceList resourceBonus = new ResourceList();
     private List<ResourceList> resourceBonusChoice = new ArrayList<>();
+    private boolean doubleActivation=false;  // bonus che viene settato dall attivazione di Santa Rita
+    private boolean fromCardEffect=false;
 
     /* Constructor */
-    public ActionGetTempResources(Player player, ActionControlSet actionControlSet)
+    public ActionGetTempResourcesFromAllEffect(Player player, ActionControlSet actionControlSet)
     {
         super(player, actionControlSet);
     }
@@ -34,28 +36,47 @@ public class ActionGetTempResources extends Action {
         this.resourcesTempToGet = null;
     }
 
+    public void resetFromCardEffect()
+    {
+        this.fromCardEffect = false;
+    }
 
-    @Override
-    public void activate() {
-        if (resourcesTempToGet == null)
-        {
+    public void setFromCardEffect(boolean fromCardEffect) {
+        this.fromCardEffect = fromCardEffect;
+    }
+
+    public void setDoubleActivation(boolean doubleActivation) {
+        this.doubleActivation = doubleActivation;
+    }
+
+    public void addTempResourceToPlayer() {
+        if (resourcesTempToGet == null) {
             //TODO: fare qualcosa (eccezione?)
-        } else
-        {//Eseguo l'azione
+        } else {//Eseguo l'azione
             List<Resource> resourcesTempToGetList = this.resourcesTempToGet.getResourceList();
-            for(Resource currentResource : resourcesTempToGetList)
-            {
+            for (Resource currentResource : resourcesTempToGetList) {
                 //Aggiungo i bonus alle risorse ottenute
                 //todo: da attivare sse le risorse provengono da carte sviluppo o spazi azione
                 //todo: attivare anche le scelte
                 Resource currentBonus = resourceBonus.getSpecificResource(currentResource.getClass());
-                if( currentBonus != null )
+                if (currentBonus != null)
                     currentResource.addValue(currentBonus.getValue());
 
                 currentResource.addTempResource(super.player);
             }
-            this.resetResourcesTempToGet();
         }
+    }
+
+    @Override
+    public void activate() {
+
+        addTempResourceToPlayer();     // se attivo l azione una volta aggiungo sempre le risorse al player
+
+        if (fromCardEffect && doubleActivation) {       //riattivo l azione di ottenere le risorse se ho la carta leader Santa Rita e le sto ottenendo da una Carta Sviluppo
+            addTempResourceToPlayer();
+        }
+        this.resetResourcesTempToGet();
+        this.resetFromCardEffect();
     }
 
     /* Modifiers */

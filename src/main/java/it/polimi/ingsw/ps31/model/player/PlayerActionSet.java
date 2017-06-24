@@ -1,10 +1,7 @@
 package it.polimi.ingsw.ps31.model.player;
 
 import it.polimi.ingsw.ps31.model.actions.*;
-import it.polimi.ingsw.ps31.model.board.ActionSpace;
-import it.polimi.ingsw.ps31.model.board.TowerActionSpace;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
-import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
@@ -33,7 +30,8 @@ public class PlayerActionSet {
     private final ActionControlSet actionControlSet;
     private final ActionActiveEndButton activeEndButton;
     private final ActionAddFinalBonus addFinalBonus;
-    private final ActionGetTempResources getTempResources;
+    private final ActionGetTempResourcesFromAllEffect getTempResources;
+    private final List<Action> actionList=new ArrayList<>();
     private final Player player;
 
     /* Constructor */
@@ -56,8 +54,10 @@ public class PlayerActionSet {
         this.discardLeaderCard = new ActionDiscardLeaderCard(player, actionControlSet);
         this.getFinalResources = new ActionGetFinalResources(player, actionControlSet);
         this.activeEndButton= new ActionActiveEndButton(player, actionControlSet); //TODO IMPLEMENTARLO
-        this.addFinalBonus= new ActionAddFinalBonus(player, actionControlSet); //TODO IMPLEMENTARE
-        this.getTempResources = new ActionGetTempResources(player,actionControlSet);
+        this.addFinalBonus= new ActionAddFinalBonus(player, actionControlSet);
+        this.getTempResources = new ActionGetTempResourcesFromAllEffect(player,actionControlSet);
+
+        addActionToTheList();
     }
 
     /* Setters & Getters */
@@ -69,7 +69,7 @@ public class PlayerActionSet {
     {
         return this.actionControlSet;
     }
-    public ActionGetTempResources getGetTempResources() {
+    public ActionGetTempResourcesFromAllEffect getGetTempResources() {
         return getTempResources;
     }
 
@@ -109,7 +109,14 @@ public class PlayerActionSet {
 
     public void chooseDifferentPrivilege(int numOfPrivileges, boolean isDifferent)
     {
-        //TODO: implementare
+        this.chooseDifferentPrivilege.setNumberOfDifferentPrivileges(numOfPrivileges);
+        this.chooseDifferentPrivilege.setAreDifferent(isDifferent);
+        this.chooseDifferentPrivilege.activate();
+    }
+
+    public void activeEndButton(){
+        //todo implementare
+        this.getActiveEndButton().activate();
     }
 
     public void getResources(ResourceList resourcesToGet)
@@ -143,17 +150,13 @@ public class PlayerActionSet {
         this.payTowerMoney.activate();
     }
 
-    public void placeFamilyMemberInTower(FamilyMember familyMember, TowerActionSpace towerActionSpace)
+    public void placeFamilyMemberInTower()
     {
-        this.placeFamilyMemberInTower.setFamilyMember(familyMember);
-        this.placeFamilyMemberInTower.setTowerActionSpace(towerActionSpace);
         this.placeFamilyMemberInTower.activate();
     }
 
-    public void placeFamilyMemberInBoard(FamilyMember familyMember, ActionSpace actionSpace)
+    public void placeFamilyMemberInBoard()
     {
-        this.placeFamilyMemberInBoard.setFamilyMember(familyMember);
-        this.placeFamilyMemberInBoard.setActionSpace(actionSpace);
         this.placeFamilyMemberInBoard.activate();
     }
 
@@ -169,14 +172,12 @@ public class PlayerActionSet {
         this.takeCard.activate();
     }
 
-    public void activeLeaderCard(LeaderCard leaderCard)
+    public void activeLeaderCard()
     {
-        this.actionActiveLeaderCard.setLeaderCard(leaderCard);
         this.actionActiveLeaderCard.activate();
     }
 
-    public void discardLeaderCard(LeaderCard leaderCard){
-        this.discardLeaderCard.setLeaderCard(leaderCard);
+    public void discardLeaderCard(){
         this.discardLeaderCard.activate();
     }
 
@@ -226,7 +227,7 @@ public class PlayerActionSet {
         return takeCard;
     }
 
-    public ActionActiveLeaderCard getActionActiveLeaderCard() {
+    public ActionActiveLeaderCard getActiveLeaderCard() {
         return actionActiveLeaderCard;
     }
 
@@ -242,10 +243,28 @@ public class PlayerActionSet {
         return addFinalBonus;
     }
 
+    public ActionActiveLeaderCard getActionActiveLeaderCard() {
+        return actionActiveLeaderCard;
+    }
+
+    public ActionDiscardLeaderCard getDiscardLeaderCard() {
+        return discardLeaderCard;
+    }
+
+    public List<Action> getActionList() {
+        return actionList;
+    }
 
     public void resetUsedAction(){
-        this.getActionActiveLeaderCard().setUsed(false);
         this.getPlaceFamilyMemberInBoard().setUsed(false);
         this.getPlaceFamilyMemberInTower().setUsed(false);
+    }
+
+    public void addActionToTheList(){
+        actionList.add(this.actionActiveLeaderCard);
+        actionList.add(this.discardLeaderCard);
+        actionList.add(this.placeFamilyMemberInBoard);
+        actionList.add(this.placeFamilyMemberInTower);
+        actionList.add(this.activeEndButton);
     }
 }

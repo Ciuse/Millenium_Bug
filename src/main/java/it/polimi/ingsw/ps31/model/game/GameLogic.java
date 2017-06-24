@@ -6,6 +6,8 @@ import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.json.CreationJson;
 import it.polimi.ingsw.ps31.model.json.JsonFile;
 import it.polimi.ingsw.ps31.model.json.JsonGameObject;
+import it.polimi.ingsw.ps31.model.player.Player;
+import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
 
 import java.util.Collections;
 
@@ -13,7 +15,6 @@ import java.util.Collections;
  * Created by giulia on 24/05/2017.
  */
 public class GameLogic {
-    private final InformationFromNetworking informationFromNetworking;
     private final GameUtility gameUtility = new GameUtility();
     private final static int PERIODMAXNUMBER = 3;
     private final static int ROUNDMAXNUMBER = 2;
@@ -23,8 +24,9 @@ public class GameLogic {
     private int round;
     private int action;
 
+
     public GameLogic(InformationFromNetworking informationFromNetworking) {
-        this.informationFromNetworking = informationFromNetworking;
+        gameUtility.setInformationFromNetworking(informationFromNetworking);
     }
 
     public void playGame() {
@@ -51,20 +53,33 @@ public class GameLogic {
         gameUtility.setLeaderCardList(jsonObjectReadFromFile.getLeaderCardList());
 
         //parte di connessione
-
-        if(informationFromNetworking.getPlayerNameList().size()>2) {
-            gameUtility.createTimerConnection();
-        }
-
-        //viene invocato dopo lo scadere del tempo dopo che si sono connessi i primi 2 giocatori
-        playerMaxNumber = gameUtility.getPlayerList().size();
+        playerMaxNumber=gameUtility.waitPlayerConnection();  //mi metto in attesa dei giocatori che si connettano
         gameUtility.setPlayerMaxNumber(playerMaxNumber);
 
 
-        //va fatto dopo aver saputo in quanti si gioca
+        for(int i=0; i<playerMaxNumber; i++){
+            gameUtility.createPlayer(gameUtility.getInformationFromNetworking().getPlayerNameList().get(i));
+        }
+
+        gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
+
+        gameUtility.phaseChoicePersonalBonusTiles(); //chiedo ai player di scegliere (in base all ordine di connessione) un personal bonus tiles e li aggiorno
+
+        gameUtility.createViews();
+
+        gameUtility.updateStartAllPlayersInformation();
+
+        gameUtility.updateStartAllPlayersResources();
+
+        gameUtility.updateStartAllPlayersFamilyMember();
+
+        gameUtility.updateStartAllPersonalBoard();
+
+        gameUtility.updateStartAllMarkerDisc();
+
+        //viene fatto dopo aver saputo in quanto si gioca (per istanziare le aree da 3 e/o 4 giocatori)
         GameBoard gameBoard = new GameBoard(jsonObjectReadFromFile.getTowerActionSpaceEffectList(), jsonObjectReadFromFile.getActionSpaceEffectList(), jsonObjectReadFromFile.getFaithTrackExtraValue());
         gameUtility.setGameBoard(gameBoard);
-
 
         gameUtility.getDevelopmentCardList().shuffleCardList();  //mischio la lista di carte
         Collections.shuffle(gameUtility.getPersonalBonusTilesList()); //mischio i personal bonus tiles
@@ -75,7 +90,7 @@ public class GameLogic {
             gameUtility.setDeckTower(period);
             for (this.round = 1; round <= ROUNDMAXNUMBER; round++) {
                 gameUtility.drawCardDeck();
-                gameUtility.resetFamilyMember();
+                gameUtility.resetFamilyMember();        //restituisco a tutti i propri famigliari
                 gameUtility.getGameBoard().rollTheDice();
                 gameUtility.setFamilyMemberDiceValue();
 
@@ -92,15 +107,16 @@ public class GameLogic {
                 if (round == 2) {
                     gameUtility.vaticanReport(period);
                 }
-                gameUtility.playerOrderFromCouncil();
+                gameUtility.playerOrderFromCouncil();       //ordino i player
+                gameUtility.resetLeaderEffect();            //riattivo le abilità una volta per turno dei leader
             }//fine ciclo turno
         }//fine ciclo periodo
         //gioco finito e calcolo punteggio finale
         gameUtility.getFinalVictoryPoint();
         gameUtility.militaryTrackWinnerPoint();
         gameUtility.orderVictoryPoint();
-        //TODO metodo per stampare a video il vincitore
 
+        //TODO metodo per stampare a video il vincitore
 
     }
 
