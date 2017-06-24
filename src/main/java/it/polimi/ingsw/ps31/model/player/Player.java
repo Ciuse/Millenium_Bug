@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.player;
 
 import it.polimi.ingsw.ps31.model.actions.ActionControlSet;
+import it.polimi.ingsw.ps31.model.board.MarkerDisc;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
@@ -9,8 +10,7 @@ import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.model.gameResource.Resource;
-import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
+import it.polimi.ingsw.ps31.model.gameResource.*;
 import it.polimi.ingsw.ps31.model.stateModel.*;
 
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class Player {
     private ProductionList productionList;
     private List<ResourceList> finalBonusResources;
     private List<LeaderCard> leaderCardList= new ArrayList<>();
-
+    private List<MarkerDisc> markerDiscList = new ArrayList<>();
     /* Constructor */
     public Player( ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard)
     {
@@ -55,6 +55,14 @@ public class Player {
             FamilyMember familyMember = new FamilyMember(this,diceColor[i]);
             this.familyMembers.add(familyMember);
         }
+        //creazione dei markerdisc
+        MarkerDisc markerDisc1 = new MarkerDisc(FaithPoint.class,this);
+        MarkerDisc markerDisc2 = new MarkerDisc(VictoryPoint.class,this);
+        MarkerDisc markerDisc3 = new MarkerDisc(MilitaryStrength.class,this);
+        markerDiscList.add(markerDisc1);
+        markerDiscList.add(markerDisc2);
+        markerDiscList.add(markerDisc3);
+
 
         playerResources = new PlayerResources(initialResources);
 
@@ -79,6 +87,10 @@ public class Player {
         //Inizializzazione harvestList e productionList
         this.harvestList = new HarvestList(this,personalBonusTiles.getHarvestEffect());
         this.productionList = new ProductionList(this, personalBonusTiles.getProductionEffect());
+    }
+
+    public List<MarkerDisc> getMarkerDiscList() {
+        return markerDiscList;
     }
 
     public String getNickname() {
@@ -260,8 +272,8 @@ public class Player {
         playerActionSet.getFinalResources();
     }
 
-    public StateTypePlayer getStateInfoPlayer(){
-        StateTypePlayer stateInfoPlayer = new StateTypePlayer(playerId, nickname,playerColor);
+    public StatePlayer getStateInfoPlayer(){
+        StatePlayer stateInfoPlayer = new StatePlayer(playerId, nickname,playerColor);
         return stateInfoPlayer;
     }
 

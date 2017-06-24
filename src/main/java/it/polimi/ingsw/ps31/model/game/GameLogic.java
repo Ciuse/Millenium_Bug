@@ -6,6 +6,8 @@ import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.json.CreationJson;
 import it.polimi.ingsw.ps31.model.json.JsonFile;
 import it.polimi.ingsw.ps31.model.json.JsonGameObject;
+import it.polimi.ingsw.ps31.model.player.Player;
+import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
 
 import java.util.Collections;
 
@@ -61,13 +63,23 @@ public class GameLogic {
 
         gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
 
-        gameUtility.phaseChoicePersonalBonusTiles(); //chiedo ai player di scegliere (in base all ordine di connessione) un personal bonus tiles
+        gameUtility.phaseChoicePersonalBonusTiles(); //chiedo ai player di scegliere (in base all ordine di connessione) un personal bonus tiles e li aggiorno
 
+        gameUtility.createViews();
+
+        gameUtility.updateStartAllPlayersInformation();
+
+        gameUtility.updateStartAllPlayersResources();
+
+        gameUtility.updateStartAllPlayersFamilyMember();
+
+        gameUtility.updateStartAllPersonalBoard();
+
+        gameUtility.updateStartAllMarkerDisc();
 
         //viene fatto dopo aver saputo in quanto si gioca (per istanziare le aree da 3 e/o 4 giocatori)
         GameBoard gameBoard = new GameBoard(jsonObjectReadFromFile.getTowerActionSpaceEffectList(), jsonObjectReadFromFile.getActionSpaceEffectList(), jsonObjectReadFromFile.getFaithTrackExtraValue());
         gameUtility.setGameBoard(gameBoard);
-
 
         gameUtility.getDevelopmentCardList().shuffleCardList();  //mischio la lista di carte
         Collections.shuffle(gameUtility.getPersonalBonusTilesList()); //mischio i personal bonus tiles

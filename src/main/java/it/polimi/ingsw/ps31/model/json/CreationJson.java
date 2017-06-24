@@ -1252,6 +1252,7 @@ public class CreationJson {
     private List<PersonalBonusTiles> createPersonalBonusTilesList() {
 
         //creazione prima PersonalBonusTiles
+        int personalBonusTilesId1=1;
         int harvestActionValue1 = 1;
         int productionActionValue1 = 1;
         ResourceList resourceHarvestEffectList1 = new ResourceList();
@@ -1267,6 +1268,7 @@ public class CreationJson {
         ProductionEffect productionEffect1 = new ProductionEffect(productionActionValue1,getResourceProductionEffect1, null,null);
 
         //creazione seconda PersonalBonusTiles
+        int personalBonusTilesId2=2;
         int harvestActionValue2 = 1;
         int productionActionValue2 = 1;
         ResourceList resourceHarvestEffectList2 = new ResourceList();
@@ -1282,6 +1284,7 @@ public class CreationJson {
         ProductionEffect productionEffect2 = new ProductionEffect(productionActionValue2,getResourceProductionEffect2,null,null);
 
         //creazione terza PersonalBonusTiles
+        int personalBonusTilesId3=3;
         int harvestActionValue3 = 1;
         int productionActionValue3 = 1;
         ResourceList resourceHarvestEffectList3 = new ResourceList();
@@ -1297,6 +1300,7 @@ public class CreationJson {
         ProductionEffect productionEffect3 = new ProductionEffect(productionActionValue3,getResourceProductionEffect3, null,null);
 
         //creazione quarta PersonalBonusTiles
+        int personalBonusTilesId4=4;
         int harvestActionValue4 = 1;
         int productionActionValue4 = 1;
         ResourceList resourceHarvestEffectList4 = new ResourceList();
@@ -1312,10 +1316,10 @@ public class CreationJson {
         ProductionEffect productionEffect4 = new ProductionEffect(productionActionValue4,getResourceProductionEffect4,null,null);
 
         List<PersonalBonusTiles> personalBonusTilesList = new ArrayList<>();
-        PersonalBonusTiles personalBonusTiles1 = new PersonalBonusTiles(harvestEffect1,productionEffect1);
-        PersonalBonusTiles personalBonusTiles2 = new PersonalBonusTiles(harvestEffect2,productionEffect2);
-        PersonalBonusTiles personalBonusTiles3 = new PersonalBonusTiles(harvestEffect3,productionEffect3);
-        PersonalBonusTiles personalBonusTiles4 = new PersonalBonusTiles(harvestEffect4,productionEffect4);
+        PersonalBonusTiles personalBonusTiles1 = new PersonalBonusTiles(personalBonusTilesId1, harvestEffect1,productionEffect1);
+        PersonalBonusTiles personalBonusTiles2 = new PersonalBonusTiles(personalBonusTilesId2, harvestEffect2,productionEffect2);
+        PersonalBonusTiles personalBonusTiles3 = new PersonalBonusTiles(personalBonusTilesId3, harvestEffect3,productionEffect3);
+        PersonalBonusTiles personalBonusTiles4 = new PersonalBonusTiles(personalBonusTilesId4, harvestEffect4,productionEffect4);
         personalBonusTilesList.add(personalBonusTiles1);
         personalBonusTilesList.add(personalBonusTiles2);
         personalBonusTilesList.add(personalBonusTiles3);

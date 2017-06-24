@@ -20,6 +20,7 @@ public class StateViewPlayer {
     private PlayerResources playerResources;
     private final List<StateViewFamilyMember> stateViewFamilyMemberList = new ArrayList<>();
     private final List<StateViewMarkerDisc> stateViewMarkerDiscList = new ArrayList<>();
+    private StateViewPersonalBonusTiles stateViewPersonalBonusTiles;
     private List<String> stringPlayerAction;
     private List<StateViewLeaderCard> stateViewLeaderCardList = new ArrayList<>();
 
@@ -32,6 +33,15 @@ public class StateViewPlayer {
         for(int i=0;i<getMax_number_Of_MarkerDisc();i++){
             stateViewMarkerDiscList.add(new StateViewMarkerDisc(this.playerId,getStringPointResourceType()[i]));
         }
+
+    }
+
+    public StateViewPersonalBonusTiles getStateViewPersonalBonusTiles() {
+        return stateViewPersonalBonusTiles;
+    }
+
+    public List<StateViewLeaderCard> getStateViewLeaderCardList() {
+        return stateViewLeaderCardList;
     }
 
     public PlayerId getPlayerId() {
@@ -63,7 +73,7 @@ public class StateViewPlayer {
     }
 
 
-    public void updateState(StateTypePlayer stateInfoPlayer){
+    public void updateState(StatePlayer stateInfoPlayer){
         if(stateInfoPlayer.getPlayerId().equals(this.playerId)) {
             if (stateInfoPlayer.getNickname() != null) {
                 this.nickname = stateInfoPlayer.getNickname();
@@ -107,13 +117,32 @@ public class StateViewPlayer {
             }
         }
     }
-    public void updateState(StateLeaderCard stateLeaderCard){
-        if(stateLeaderCard.getLeaderId()!=-1)
-        if(stateViewLeaderCardList.size()>0){
-            for (StateViewLeaderCard stateViewLeaderCard:stateViewLeaderCardList
-                 ) {
-                if(stateLeaderCard.getLeaderId()==stateViewLeaderCard.getLeaderId())
-                    stateViewLeaderCard.updateState(stateLeaderCard);
+    public void updateState(StateLeaderCard stateLeaderCard) {
+        if (stateLeaderCard.getLeaderId() != -1) {
+            boolean found = false;
+            if (stateViewLeaderCardList.size() > 0) {
+                for (StateViewLeaderCard stateViewLeaderCard : stateViewLeaderCardList
+                        ) {
+                    if (stateLeaderCard.getLeaderId() == stateViewLeaderCard.getLeaderId()) {
+                        stateViewLeaderCard.updateState(stateLeaderCard);
+                        found = true;
+                    }
+
+                }
+
+            }
+            if (found == false) {
+                StateViewLeaderCard stateViewLeaderCardNew = new StateViewLeaderCard();
+                stateViewLeaderCardNew.updateState(stateLeaderCard);
+                stateViewLeaderCardList.add(stateViewLeaderCardNew);
+            }
+        }
+    }
+
+    public void updateState(StatePersonalBonusTiles statePersonalBonusTiles){
+        if(statePersonalBonusTiles.getPersonalBonusTilesId()==-1){
+            if(this.stateViewPersonalBonusTiles==null){
+                this.stateViewPersonalBonusTiles = new StateViewPersonalBonusTiles(playerId, statePersonalBonusTiles.getPersonalBonusTilesId(),statePersonalBonusTiles.getStateEffectList());
             }
         }
     }

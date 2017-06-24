@@ -6,12 +6,12 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 /**
  * Created by giulia on 06/06/2017.
  */
-public class StateTypePlayer extends StateType {
+public class StatePlayer extends StateType {
     private final PlayerId playerId;
     private final String nickname;
     private final PlayerColor playerColor;
 
-    public StateTypePlayer(PlayerId playerId, String nickname, PlayerColor playerColor) {
+    public StatePlayer(PlayerId playerId, String nickname, PlayerColor playerColor) {
         this.playerId = playerId;
         this.nickname = nickname;
         this.playerColor = playerColor;

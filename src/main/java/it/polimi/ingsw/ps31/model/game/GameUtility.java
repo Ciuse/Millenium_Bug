@@ -1,11 +1,16 @@
 package it.polimi.ingsw.ps31.model.game;
 
+import it.polimi.ingsw.ps31.client.view.CmdLineView;
+import it.polimi.ingsw.ps31.client.view.GuiView;
+import it.polimi.ingsw.ps31.client.view.TypeOfView;
+import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.ModelChoices;
 import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
+import it.polimi.ingsw.ps31.model.board.MarkerDisc;
 import it.polimi.ingsw.ps31.model.card.*;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
@@ -18,6 +23,7 @@ import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.model.stateModel.StateGame;
 import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles;
+import it.polimi.ingsw.ps31.model.stateModel.StateType;
 import it.polimi.ingsw.ps31.model.stateModel.TempModelStateForLeaderChoice;
 
 import java.util.*;
@@ -71,6 +77,19 @@ public class GameUtility extends ModelChoices {
 
     }
 
+    public void createViews() {
+        for (Player player : playerList
+                ) {
+            for (int i = 0; i < super.getInformationFromNetworking().getPlayerNameList().size(); i++) {
+                if (player.getNickname().equals(super.getInformationFromNetworking().getPlayerNameList().get(i))) {
+                    if (super.getInformationFromNetworking().getViewChoiceList().get(i).equals(TypeOfView.CLI)) {
+                        CmdLineView viewCliPlayer = new CmdLineView(player.getPlayerId(), playerMaxNumber);
+                    }//else TODO creare la view gui
+                }
+            }
+        }
+    }
+
     public void phaseActionGame(int playerNumber,int action) {
         if (action == 1 && playerList.get(playerMaxNumber).getFlagTurnExcommunication() == 1) {
             this.endActionTurn(playerList.get(playerMaxNumber));
@@ -82,6 +101,7 @@ public class GameUtility extends ModelChoices {
         this.startActionTurn(playerList.get(playerMaxNumber));
         this.doActionTurn(playerList.get(playerMaxNumber));
         this.endActionTurn(playerList.get(playerMaxNumber));
+
     }
 
     public void extraPhaseActionGame() {
@@ -94,6 +114,54 @@ public class GameUtility extends ModelChoices {
                 }
             }
         }
+
+
+
+    public void updateStartAllPlayersInformation(){
+        for (Player player:playerList
+                ) {
+            notifyViews(new MVUpdateState("Aggiornato lo stato di ogni player",player.getStateInfoPlayer()));
+        }
+    }
+
+    public void updateStartAllPlayersResources(){
+        for (Player player:playerList
+                ) {
+            notifyViews(new MVUpdateState("Aggiornato lo stato delle risorse di ogni player",player.getStatePlayerResources()));
+        }
+    }
+
+    public void updateStartAllPlayersFamilyMember(){
+        for (Player player:playerList
+                ) {
+            notifyViews(new MVUpdateState("Aggiornato lo stato di tutti i family member di un player",player.getStateAllFamilyMember()));
+        }
+    }
+
+    public void updateStartAllPersonalBoard(){
+        for (Player player:playerList
+                ) {
+            notifyViews(new MVUpdateState("Aggiornato lo stato di ogni personal board",player.getPersonalBoard().getStatePersonalBoard()));
+        }
+    }
+
+    public void updateStartAllMarkerDisc(){
+        for (Player player:playerList
+                ) {
+            for (MarkerDisc markerDisc:player.getMarkerDiscList()
+                 ) {
+                notifyViews(new MVUpdateState("Aggiornato lo stato di ogni marker disc di ogni giocatore",markerDisc.getStateMarkerDisc()));
+            }
+
+        }
+    }
+
+    public void updateStartAllDevelopmentCard(){
+        for (DevelopmentCard developmentCard:developmentCardList.getDevelopmentCardList()
+                ) {
+                notifyViews(new MVUpdateState(null,developmentCard.getStateDevelopmentCard()));
+            }
+    }
 
 
 
@@ -291,9 +359,15 @@ public class GameUtility extends ModelChoices {
             }
             notifyViews(new MVAskChoice(player.getPlayerId(),string,new ChoicePersonalBonusTiles(statePersonalBonusTiles)));
             PersonalBonusTiles personalBonusTiles = super.waitPersonalBonusTilesChosen();
+            personalBonusTiles.setPlayerId(player.getPlayerId());
             player.setPersonalBonusTiles(removePersonalBonusTiles(personalBonusTiles));
+            notifyViews(new MVUpdateState("Aggiornato lo stato del personalBonusTiles",personalBonusTiles.getStatePersonalBonusTiles()));
+
         }
     }
+
+
+
 
     /*Metoci per Riordinare la Lista dei Player*/
     // riordina i giocatori in base all'ordine dei colori nel palazzo del concilio

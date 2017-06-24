@@ -1,18 +1,19 @@
-package it.polimi.ingsw.ps31.model.stateModel;
+package it.polimi.ingsw.ps31.client.view.stateView;
 
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import it.polimi.ingsw.ps31.model.stateModel.StateEffect;
 
 import java.util.List;
 
 /**
- * Created by giulia on 20/06/2017.
+ * Created by giulia on 23/06/2017.
  */
-public class StatePersonalBonusTiles extends StateType {
+public class StateViewPersonalBonusTiles  {
     private final PlayerId playerId;
     private final int personalBonusTilesId;
     private final List<StateEffect> stateEffectList;
 
-    public StatePersonalBonusTiles(PlayerId playerId, int personalBonusTilesId, List<StateEffect> stateEffectList) {
+    public StateViewPersonalBonusTiles(PlayerId playerId, int personalBonusTilesId, List<StateEffect> stateEffectList) {
         this.playerId = playerId;
         this.personalBonusTilesId = personalBonusTilesId;
         this.stateEffectList = stateEffectList;
@@ -28,10 +29,5 @@ public class StatePersonalBonusTiles extends StateType {
 
     public List<StateEffect> getStateEffectList() {
         return stateEffectList;
-    }
-
-    @Override
-    public void acceptState(StateVisitor stateVisitor) {
-        stateVisitor.visit(this);
     }
 }

@@ -1,12 +1,12 @@
 package it.polimi.ingsw.ps31.model.board;
 
+import it.polimi.ingsw.ps31.model.ModelChoices;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 
 /**
  * Created by Francesco on 12/05/2017.
  */
-public abstract class PhysicalCardBox implements PhysicalSpaceBehavior
-{
+public abstract class PhysicalCardBox extends ModelChoices {
     protected DevelopmentCard card;
 
     /* Constructor */

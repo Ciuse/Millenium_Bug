@@ -83,7 +83,7 @@ public abstract class View extends Observable implements Observer {
     public abstract void askComand() throws IOException;
 
 
-    public final void updateInfoPlayer(StateTypePlayer stateInfoPlayer) {
+    public final void updateInfoPlayer(StatePlayer stateInfoPlayer) {
         for (StateViewPlayer viewPlayer : stateViewPlayerList
                 ) {
             if (viewPlayer.getPlayerId().equals(stateInfoPlayer.getPlayerId()))
@@ -119,6 +119,14 @@ public abstract class View extends Observable implements Observer {
         }
         if(!firstTime)
           printFamilyMemberInAction();
+    }
+
+    public final void updatePersonalBonusTiles(StatePersonalBonusTiles statePersonalBonusTiles){
+        for (StateViewPlayer viewPlayer: stateViewPlayerList
+             ) {
+            if(viewPlayer.getPlayerId().equals(statePersonalBonusTiles.getPlayerId()))
+                viewPlayer.updateState(statePersonalBonusTiles);
+        }
     }
 
     public final void updatePersonalBoard(StatePersonalBoard statePersonalBoard) {
