@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps31.model.player;
 import it.polimi.ingsw.ps31.model.actions.*;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
+import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 
@@ -143,6 +144,11 @@ public class PlayerActionSet {
 
         this.payResources.setResourceToPay(new ResourceList(paymentAsList));
         this.payResources.activate();
+    }
+
+    public void payServants(FamilyMember familyMember){
+        this.payServants.setFamilyMember(familyMember);
+        this.payServants.activate();
     }
 
     public void payTowerMoney()

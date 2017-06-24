@@ -6,6 +6,9 @@ package it.polimi.ingsw.ps31.model.choiceType;
 public class ChoiceIfSupportTheChurch extends ChoiceType {
 
 
+    public ChoiceIfSupportTheChurch() {
+    }
+
     @Override
     public void acceptChoice(ChoiceVisitor choiceVisitor) {
         choiceVisitor.visit(this);

@@ -39,25 +39,21 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
     @Override
     public void activate() {
         super.notifyViews(new MVAskChoice(player.getPlayerId(),"Quale family member vuoi usare?",new ChoiceFamilyMember()));
-        this.familyMember=super.waitFamilyMemberChosen();
+        super.familyMember=super.waitFamilyMemberChosen();
+
         super.notifyViews(new MVAskChoice(player.getPlayerId(),"In quale action space della board vuoi mettere il tuo family member?",new ChoiceActionSpace()));
         this.actionSpace=super.waitActionSpaceChosen();
         //Controllo che i parametri siano settati
-        if (this.familyMember == null || this.actionSpace == null) {
+        if (super.familyMember == null || this.actionSpace == null) {
             //TODO: gestire (eccezione?)
         } else if (super.defaultDenyActionSpaces.contains(actionSpace.getActionSpaceId())) {
             super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, "Non puoi piazzare il family member perchè hai la scomunica"));
             return;
         }  else {
-            if (actionControlSet.placedFamilyMemberControl(familyMember)) {
-                if (actionControlSet.occupiedActionSpaceControl(actionSpace)) {
-                    if (actionControlSet.diceValueVsDiceColorControl(actionSpace.getDiceCost(), familyMember.getDiceColor())) {
-                        this.actionSpace.addFamilyMember(familyMember);
-                        super.player.setLastUsedFamilyMember(familyMember);
-                    } else
-                        super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPlacedFamilyMemberControl().getControlStringError()));
-                } else
-                    super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getOccupiedActionSpaceControl().getControlStringError()));
+            player.getPlayerActionSet().payServants(super.familyMember);
+            if (actionControlSet.diceValueVsDiceColorControl(actionSpace.getDiceCost(), familyMember.getDiceColor())) {
+                this.actionSpace.addFamilyMember(familyMember);
+                super.player.setLastUsedFamilyMember(familyMember);
             } else
                 super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getDiceValueVsDiceColorControl().getControlStringError()));
             super.notifyViews(new MVUpdateState("Aggiornato stato family member", familyMember.getStateFamilyMember()));

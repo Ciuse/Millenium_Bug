@@ -5,7 +5,11 @@ package it.polimi.ingsw.ps31.model.choiceType;
  */
 public class ChoiceActiveExcommunication extends ChoiceType {
 
+    public ChoiceActiveExcommunication() {
+    }
+
     @Override
+
     public void acceptChoice(ChoiceVisitor choiceVisitor) {
         choiceVisitor.visit(this);
     }

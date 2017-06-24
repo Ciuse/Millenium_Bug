@@ -68,17 +68,34 @@ public abstract class View extends Observable implements Observer {
         }
 
     }
-    public abstract void askChoiceActionSpace(ChoiceActionSpace choiceActionSpace);
+    public abstract void askActionSpace(ChoiceActionSpace choiceActionSpace);
 
-    public abstract void askChoiceActionToDo(ChoiceActionToDo choiceActionToDo);
+    public abstract void askActionToDo(ChoiceActionToDo choiceActionToDo);
 
-    public abstract void askChoiceActiveEffect(ChoiceActiveEffect choiceActiveEffect);
+    public abstract void askIfActiveEffect(ChoiceActiveEffect choiceActiveEffect);
 
-    public abstract void askChoiceStartLeader(ChoiceStartLeaderCard choiceStartLeaderCard);
+    public abstract void askStartLeaderToKeep(ChoiceStartLeaderCard choiceStartLeaderCard);
 
-    public abstract void askChoiceColor(ChoiceColor choiceColor);
+    public abstract void askPlayerColor(ChoiceColor choiceColor);
 
     public abstract void askFamilyMember(ChoiceFamilyMember choiceFamilyMember);
+
+    public abstract void askIfSupportChurch(ChoiceIfSupportTheChurch choiceIfSupportTheChurch);
+
+    public abstract void askListToPay(ChoiceListToPay choiceListToPay);
+
+    public abstract void askLeaderEffectToCopy(ChoiceLeaderEffectToCopy choiceLeaderEffectToCopy);
+
+    public abstract void askLeaderToActive(ChoiceLeaderToActive choiceLeaderToActive);
+
+    public abstract void askLeaderToDiscard(ChoiceLeaderToDiscard choiceLeaderToDiscard);
+
+    public abstract void askServantToPay(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay);
+
+    public abstract void askTilesToKeep(ChoicePersonalBonusTiles choicePersonalBonusTiles);
+
+    public abstract void askPrivilegeResourceChange(ChoicePrivilegeResource choicePrivilegeResource);
+
 
     public abstract void askComand() throws IOException;
 
@@ -230,6 +247,7 @@ public abstract class View extends Observable implements Observer {
     public abstract void printTextBox();
 
     public abstract void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView);
+
 
     public PlayerId getViewId() {
         return viewId;

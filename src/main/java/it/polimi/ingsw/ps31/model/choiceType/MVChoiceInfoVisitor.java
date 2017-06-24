@@ -14,14 +14,15 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
     }
 
     @Override
-    public void visit(ChoiceInt choiceInt) {
-
+    public void visit(ChoiceListToPay choiceListToPay) {
+        view.setCmdInterpreterView(new IntrChoiceListToPay());
+        view.askListToPay(choiceListToPay);
     }
 
     @Override
     public void visit(ChoiceActiveEffect choiceActiveEffect) {
-        view.setCmdInterpreterView(new IntrChoiseActiveEffect());
-        view.askChoiceActiveEffect(choiceActiveEffect);
+        view.setCmdInterpreterView(new IntrChoiceActiveEffect());
+        view.askIfActiveEffect(choiceActiveEffect);
     }
 
     @Override
@@ -36,25 +37,26 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoiceFamilyMember choiceFamilyMember) {
-
+        view.setCmdInterpreterView(new IntrChoiceFamilyMember());
+        view.askFamilyMember(choiceFamilyMember);
     }
 
     @Override
     public void visit(ChoiceActionSpace choiceActionSpace) {
         view.setCmdInterpreterView(new IntrChoiceActionSpace());
-        view.askChoiceActionSpace(choiceActionSpace);
+        view.askActionSpace(choiceActionSpace);
     }
 
     @Override
     public void visit(ChoiceActionToDo choiceActionToDo) {
-        view.setCmdInterpreterView(new IntrChoisePlayerAction());
-        view.askChoiceActionToDo(choiceActionToDo);
+        view.setCmdInterpreterView(new IntrChoicePlayerAction());
+        view.askActionToDo(choiceActionToDo);
     }
 
     @Override
     public void visit(ChoiceStartLeaderCard choiceStartLeaderCard) {
-        view.setCmdInterpreterView(new IntrChoiseStartLeader());
-        view.askChoiceStartLeader(choiceStartLeaderCard);
+        view.setCmdInterpreterView(new IntrChoiceStartLeader());
+        view.askStartLeaderToKeep(choiceStartLeaderCard);
     }
 
     @Override
@@ -64,8 +66,8 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoiceColor choiceColor) {
-        view.setCmdInterpreterView(new IntrChooseColor());
-
+        view.setCmdInterpreterView(new IntrChoiceColor());
+        view.askPlayerColor(choiceColor);
     }
 
     @Override
@@ -75,7 +77,8 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoiceIfSupportTheChurch choiceIfSupportTheChurch) {
-
+        view.setCmdInterpreterView(new IntrChoiceIfSupportChurch());
+        view.askIfSupportChurch(choiceIfSupportTheChurch);
     }
 
     @Override
@@ -85,17 +88,20 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay) {
-
+        view.setCmdInterpreterView(new IntrChoiceServantToPay());
+        view.askServantToPay(choiceNumberOfServantsToPay);
     }
 
     @Override
     public void visit(ChoiceLeaderToActive choiceLeaderToActive) {
-
+        view.setCmdInterpreterView(new IntrChoiceLeaderToActive());
+        view.askLeaderToActive(choiceLeaderToActive);
     }
 
     @Override
     public void visit(ChoiceLeaderToDiscard choiceLeaderToDiscard) {
-
+        view.setCmdInterpreterView(new IntrLeaderToDiscard());
+        view.askLeaderToDiscard(choiceLeaderToDiscard);
     }
 
     @Override

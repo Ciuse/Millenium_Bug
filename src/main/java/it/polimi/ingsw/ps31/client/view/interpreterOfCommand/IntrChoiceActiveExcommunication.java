@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 /**
  * Created by Giuseppe on 23/06/2017.
  */
-public class IntrChooseActiveExcommunication implements CmdInterpreterView {
+public class IntrChoiceActiveExcommunication implements CmdInterpreterView {
     @Override
     public void notGameMessageInterpreter(CmdLineView terminalView, Character in) {
 

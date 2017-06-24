@@ -11,13 +11,16 @@ import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.game.GameUtility;
+import it.polimi.ingsw.ps31.model.gameResource.Resource;
+import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
+import it.polimi.ingsw.ps31.model.gameResource.Servant;
 import it.polimi.ingsw.ps31.model.player.FamilyMember;
 import it.polimi.ingsw.ps31.model.player.Player;
-import it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl;
-import it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction;
-import it.polimi.ingsw.ps31.model.stateModel.TempModelStateForLeaderChoice;
+import it.polimi.ingsw.ps31.model.stateModel.*;
 import it.polimi.ingsw.ps31.server.VirtualView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -94,51 +97,59 @@ public class Controller implements Observer {
         }
     }
 
-    public void selectActionSpace(int actionSpaceId, PlayerId viewId){
+    public void selectActionSpace(int actionSpaceId, PlayerId viewId) {
         boolean legitAnswer = true;
-        boolean found=false;
-        if(gameUtility.getPlayerMaxNumber()<=3){
-            if(actionSpaceId==24||actionSpaceId==25){           //controllo se non mi ha inserito action space coperti
-                legitAnswer=false;
+        boolean found = false;
+        if (gameUtility.getPlayerMaxNumber() <= 3) {
+            if (actionSpaceId == 24 || actionSpaceId == 25) {           //controllo se non mi ha inserito action space coperti
+                legitAnswer = false;
             }
-            if(gameUtility.getPlayerMaxNumber()<=2&&(actionSpaceId==19 ||actionSpaceId==21)){       //controllo se non mi ha inserito action space coperti
-                legitAnswer=false;
+            if (gameUtility.getPlayerMaxNumber() <= 2 && (actionSpaceId == 19 || actionSpaceId == 21)) {       //controllo se non mi ha inserito action space coperti
+                legitAnswer = false;
             }
         }
         if (!legitAnswer) {
             virtualView.reSendLastMessage("(controller) Player mi hai mentito");
-        }else {
-            if(actionSpaceId==17){
-                modelChoices.setActionSpaceChosen(gameUtility.getGameBoard().getCouncilPalace());
-                found=true;
+        } else {
+            ActionSpace actionSpaceToControl=null;
+            if (actionSpaceId == 17) {
+                actionSpaceToControl = gameUtility.getGameBoard().getCouncilPalace();
+                found = true;
             }
-            if(actionSpaceId==18){
-                modelChoices.setActionSpaceChosen(gameUtility.getGameBoard().getSmallHarvest());
-                found=true;
+            if (actionSpaceId == 18) {
+                actionSpaceToControl = gameUtility.getGameBoard().getSmallHarvest();
+                found = true;
             }
-            if(actionSpaceId==19){
-                modelChoices.setActionSpaceChosen(gameUtility.getGameBoard().getBigHarvest());
-                found=true;
+            if (actionSpaceId == 19) {
+                actionSpaceToControl = gameUtility.getGameBoard().getBigHarvest();
+                found = true;
             }
-            if(actionSpaceId==20){
-                modelChoices.setActionSpaceChosen(gameUtility.getGameBoard().getSmallProduction());
-                found=true;
+            if (actionSpaceId == 20) {
+                actionSpaceToControl = gameUtility.getGameBoard().getSmallProduction();
+                found = true;
             }
-            if(actionSpaceId==21){
-                modelChoices.setActionSpaceChosen(gameUtility.getGameBoard().getBigProduction());
-                found=true;
+            if (actionSpaceId == 21) {
+                actionSpaceToControl = gameUtility.getGameBoard().getBigProduction();
+                found = true;
             }
-            if(actionSpaceId>=22&&actionSpaceId<=25){
-                for (ActionSpace actionSpace : gameUtility.getGameBoard().getMarket().getActionSpaceList()
+            if (actionSpaceId >= 22 && actionSpaceId <= 25) {
+                for (ActionSpace marketActionSpace : gameUtility.getGameBoard().getMarket().getActionSpaceList()
                         ) {
-                    if(actionSpaceId==actionSpace.getActionSpaceId()){
-                        modelChoices.setActionSpaceChosen(actionSpace);
-                        found=true;
+                    if (actionSpaceId == marketActionSpace.getActionSpaceId()) {
+                        actionSpaceToControl = marketActionSpace;
+                        found = true;
                     }
                 }
             }
-            if(!found)
+            if (found) {
+                if(gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().occupiedActionSpaceControl(actionSpaceToControl)){        //se esiste l action space controllo se posso meterci il famigliare
+                    modelChoices.setActionSpaceChosen(actionSpaceToControl);
+                }else{
+                    virtualView.reSendLastMessage(gameUtility.getPlayerInAction().getActionControlSet().getOccupiedActionSpaceControl().getControlStringError());
+                }
+            } else {
                 virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l actionSpace");
+            }
         }
     }
 
@@ -147,25 +158,68 @@ public class Controller implements Observer {
     }
 
     public void selectFamilyMember(DiceColor familyMemberColor, PlayerId playerId){
-        boolean legitAnswer = true;
-        boolean found=false;
+        boolean legitAnswer = false;
         for (FamilyMember familyMember: gameUtility.getPlayerInAction().getFamilyMembers()
              ) {
             if (familyMember.getDiceColor().equals(familyMemberColor)) {
-                if (familyMember.isPlaced()) {
-                    legitAnswer = false;
+                legitAnswer=true;
+                if (gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().placedFamilyMemberControl(familyMember)) {       //controllo se il famigliare scelto dal giocatore era già stato piazzato
+                    modelChoices.setFamilyMemberChosen(familyMember);
                 }
                 else {
-                    modelChoices.setFamilyMemberChosen(familyMember);
-                    found=true;
+                    virtualView.reSendLastMessage(gameUtility.getPlayerInAction().getActionControlSet().getPlacedFamilyMemberControl().getControlStringError());
                 }
             }
         }
         if (!legitAnswer) {
             virtualView.reSendLastMessage("(controller) Player mi hai mentito");
         }
-        if(!found)
-            virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato il family member da piazzare");
     }
 
+    public void selectIfSupportTheChurch(boolean wannaSupport, PlayerId viewId){
+        modelChoices.setSupportTheChurch(wannaSupport);
+    }
+
+    public void selectLeaderToActivate(int leaderId, PlayerId viewId) {
+        boolean found = false;
+        for (LeaderCard leaderCard : gameUtility.getPlayerInAction().getLeaderCardList()
+                ) {
+            if (leaderCard.getLeaderId() == leaderId) {
+                found = true;
+                modelChoices.setLeaderCardChosen(leaderCard);
+            }
+        }
+        if (!found)
+            virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato il leader associata");
+    }
+
+    public void selectServantToPay(int servantToPay, PlayerId viewId) {
+        List<Resource> servantsAsList = new ArrayList<>();
+        Resource servantsAsResource = new Servant(servantToPay);
+        servantsAsList.add(servantsAsResource);
+        ResourceList servantsAsResourceList = new ResourceList(servantsAsList);
+
+        if (gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().payResourceControl(servantsAsResourceList)) {
+            modelChoices.setNumberOfServantsToPay(servantToPay);
+        } else {
+            virtualView.reSendLastMessage("(controller) Non hai risorse per pagare i servitori");
+        }
+
+    }
+
+    public void selectListToPay(int listToPay, PlayerId viewId){
+        boolean found = false;
+        List<ResourceList> resourceListToControl = lastModelStateForControl.getResourceListToControl();
+        if(listToPay<=resourceListToControl.size()) {
+            if (gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().payResourceControl(resourceListToControl.get(listToPay))){
+                found = true;
+                modelChoices.setListToPay(listToPay);
+            }
+            else{
+                virtualView.reSendLastMessage("(controller) Non hai abbastanza risorse per pagare l'effetto");
+            }
+        }
+        if (!found)
+            virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato la lista associata");
+    }
 }

@@ -1,10 +1,12 @@
 package it.polimi.ingsw.ps31.model.effect;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceInt;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerCardSpace;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceListToPay;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
+import it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl;
+import it.polimi.ingsw.ps31.model.stateModel.StateDevelopmentCard;
+import it.polimi.ingsw.ps31.model.stateModel.StateEffect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +42,8 @@ public class ChangeResourceEffect extends Effect {
             player.getPlayerActionSet().getTempResources(resourceToGainList.get(0));
         }else{
             String string=player.getPlayerId()+"Quale delle due risorse vuoi pagare/guadagnare?";
-            super.notifyViews(new MVAskChoice(player.getPlayerId(),string, new ChoiceInt()));
+            getLastModelStateForControl().setResourceListToControl(resourceToPayList);
+            super.notifyViews(new MVAskChoice(player.getPlayerId(),string, new ChoiceListToPay(super.cardId)));
             int listChoose = super.waitIntChosen();
             player.getPlayerActionSet().payResources(resourceToPayList.get(listChoose));
             player.getPlayerActionSet().getTempResources(resourceToGainList.get(listChoose));

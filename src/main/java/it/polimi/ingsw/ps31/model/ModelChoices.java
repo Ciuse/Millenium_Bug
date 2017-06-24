@@ -24,7 +24,7 @@ import static java.lang.Thread.sleep;
  */
 public class ModelChoices extends Model {
     private LastModelStateForControl lastModelStateForControl=new LastModelStateForControl();
-    private int intChosen=-1;
+    private int listToPay =-1;
     private TowerCardSpace towerCardSpaceChosen=null;
     private DevelopmentCard developmentCardChosen = null;
     private Boolean activeEffect = null ;
@@ -45,9 +45,9 @@ public class ModelChoices extends Model {
     private Action actionToDo=null;
 
     public synchronized int waitIntChosen(){
-        setIntChosen(-1);
+        setListToPay(-1);
         setStateChoice();
-        while(intChosen==-1 || this.stateModelChoices.equals("StateChoice")){
+        while(listToPay ==-1 || this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -55,7 +55,7 @@ public class ModelChoices extends Model {
             }
             //TODO SISTEMARE
         }
-        return intChosen;
+        return listToPay;
     }
 
     public synchronized void waitAllInitialLeaderCardChosen() {
@@ -281,8 +281,8 @@ public class ModelChoices extends Model {
         this.leaderCardChosen = leaderCardChosen;
     }
 
-    public void setIntChosen(int choice){
-        this.intChosen=choice;
+    public void setListToPay(int choice){
+        this.listToPay =choice;
     }
 
     public LastModelStateForControl getLastModelStateForControl() {

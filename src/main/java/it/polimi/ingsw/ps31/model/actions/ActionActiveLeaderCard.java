@@ -22,7 +22,7 @@ public class ActionActiveLeaderCard extends Action {
         super.notifyViews(new MVAskChoice(player.getPlayerId(),"Quale leader vuoi attivare?",new ChoiceLeaderToActive()));
         this.leaderCard=super.waitLeaderCardChosen();
         //se la carta non è attiva, controllo che il player soddisfi i requisiti di attivazione
-        if (leaderCard.isPlayed() == false) {
+        if (!leaderCard.isPlayed()) {
             if (super.actionControlSet.leaderCardRequirementControl(leaderCard))
                 leaderCard.setPlayed(true);
             else {
@@ -30,7 +30,7 @@ public class ActionActiveLeaderCard extends Action {
             }
         }
         //se la carta è attivata (perchè lo era prima o perchè è stata appena attivata) allora attivo anche l'effetto
-        if (leaderCard.isPlayed() == true)
+        if (leaderCard.isPlayed())
             leaderCard.activeEffectList(player);
 
         resetLeaderCard();

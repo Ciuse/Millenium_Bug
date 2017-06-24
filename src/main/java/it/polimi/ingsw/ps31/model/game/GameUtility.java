@@ -176,50 +176,52 @@ public class GameUtility extends ModelChoices {
         this.orderPlayersListWithColors(colorOrder);
     }
 
-    public void vaticanReport(int period){
-        for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
+    public void vaticanReport(int period) {
+        for (Player player : playerList
+                ) {
+            setPlayerInAction(player);
 
             // il giocatore non ha abbastanza punti fede e prende la scomunica (non viene chiesto niente al giocatore)
-            if (playerList.get(playerNumber).getPlayerResources().getResourceValue(FaithPoint.class) < gameBoard.getFaithPointTrack().getTrackCell().get(2 + period).getValue()) {
+            if (player.getPlayerResources().getResourceValue(FaithPoint.class) < gameBoard.getFaithPointTrack().getTrackCell().get(2 + period).getValue()) {
                 gameBoard.getExcommunicationTilesList().get(period).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
 
                 //regola dell'ultimo turno del terzo periodo (tutti ricevono i punti vittoria )
                 if (period == 3) {
-                    int faithPointPlayer = playerList.get(playerNumber).getPlayerResources().getResourceValue(FaithPoint.class);
-                    playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
-                    playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getSpecificResource(FaithPoint.class));
+                    int faithPointPlayer = player.getPlayerResources().getResourceValue(FaithPoint.class);
+                    player.addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
+                    player.subResources(player.getPlayerResources().getSpecificResource(FaithPoint.class));
                 }
             } else {
                 //mostro il sostegno alla chiesa
                 //chiedo l'intervento della view e una volta ricevuto il messaggio di risposta true (il giocatore vuole spendere i suoi punti fede per evitare la scomunica)
-                String string = playerList.get(playerNumber).getPlayerId()+": vuoi spendere tutti i tuoi punti fede per evitare la scomunica?";
-                notifyViews(new MVAskChoice(playerList.get(playerNumber).getPlayerId(),string,new ChoiceIfSupportTheChurch()));
+                String string = player.getPlayerId() + ": vuoi spendere tutti i tuoi punti fede per evitare la scomunica?";
+                notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceIfSupportTheChurch()));
                 boolean supportTheChurch = super.waitSupportTheChurch();
-                if(supportTheChurch) {
-                    int faithPointPlayer = playerList.get(playerNumber).getPlayerResources().getResourceValue(FaithPoint.class);
-                    playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
-                    playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getSpecificResource(FaithPoint.class));
-                    for (LeaderCard leaderCard : playerList.get(playerNumber).getLeaderCardList()
+                if (supportTheChurch) {
+                    int faithPointPlayer = player.getPlayerResources().getResourceValue(FaithPoint.class);
+                    player.addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
+                    player.subResources(player.getPlayerResources().getSpecificResource(FaithPoint.class));
+                    for (LeaderCard leaderCard : player.getLeaderCardList()
                             ) {
                         if (leaderCard.getPermanentAbility() != null
                                 && leaderCard.getPermanentAbility().getBonus() != null
                                 && leaderCard.getPermanentAbility().getBonus().getExtraResourceOfVaticanReport() != null) {
-                            playerList.get(playerNumber).addResources(leaderCard.getPermanentAbility().getBonus().getExtraResourceOfVaticanReport());
+                            player.addResources(leaderCard.getPermanentAbility().getBonus().getExtraResourceOfVaticanReport());
                         }
                     }
-                }
-                else {
+                } else {
                     //il giocatore ha deciso di non mostrare il suo sostegno alla chiesa
                     gameBoard.getExcommunicationTilesList().get(period).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
                     if (period == 3) {
-                        int faithPointPlayer = playerList.get(playerNumber).getPlayerResources().getResourceValue(FaithPoint.class);
-                        playerList.get(playerNumber).addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
-                        playerList.get(playerNumber).subResources(playerList.get(playerNumber).getPlayerResources().getSpecificResource(FaithPoint.class));
+                        int faithPointPlayer = player.getPlayerResources().getResourceValue(FaithPoint.class);
+                        player.addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
+                        player.subResources(player.getPlayerResources().getSpecificResource(FaithPoint.class));
                     }
                 }
             }
         }
     }
+    
 
     public void drawCardDeck(){
         for (int towerNum = 0; towerNum < gameBoard.getTOWERNUMBER(); towerNum++) {

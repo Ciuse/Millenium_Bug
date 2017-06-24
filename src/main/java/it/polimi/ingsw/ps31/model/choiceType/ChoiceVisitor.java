@@ -4,7 +4,7 @@ package it.polimi.ingsw.ps31.model.choiceType;
  * Created by Giuseppe on 15/06/2017.
  */
 public interface ChoiceVisitor {
-    public void visit(ChoiceInt choiceInt);
+    public void visit(ChoiceListToPay choiceListToPay);
     void visit(ChoiceActiveEffect choiceActiveEffect);
     void visit(ChoiceTowerCardSpace choiceTowerCardSpace);
     void visit(ChoiceActiveExcommunication choiceActiveExcommunication);

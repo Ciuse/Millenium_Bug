@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 /**
  * Created by Giuseppe on 08/06/2017.
  */
-public class IntrChooseColor implements CmdInterpreterView {
+public class IntrChoiceColor implements CmdInterpreterView {
     @Override
     public void notGameMessageInterpreter(CmdLineView cmdLineView, Character in) {
     }
@@ -34,6 +34,6 @@ public class IntrChooseColor implements CmdInterpreterView {
 
     @Override
     public String toString() {
-        return "IntrChooseColor";
+        return "IntrChoiceColor";
     }
 }

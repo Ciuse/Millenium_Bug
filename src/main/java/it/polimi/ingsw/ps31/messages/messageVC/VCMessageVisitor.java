@@ -43,5 +43,25 @@ public class VCMessageVisitor extends GenericMessage implements VCVisitor {
         controller.selectFamilyMember(vcFamilyMemberChoice.getFamilyColor(),vcFamilyMemberChoice.getViewId());
     }
 
+    @Override
+    public void visit(VCSupportTheChurchChoice vcSupportTheChurchChoice) {
+        controller.selectIfSupportTheChurch(vcSupportTheChurchChoice.isWannaSupport(),vcSupportTheChurchChoice.getViewId());
+    }
+
+    @Override
+    public void visit(VCLeaderToActiveChoice vcLeaderToActiveChoice) {
+        controller.selectLeaderToActivate(vcLeaderToActiveChoice.getLeaderId(),vcLeaderToActiveChoice.getViewId());
+    }
+
+    @Override
+    public void visit(VCListToPayChoice vcListToPayChoice) {
+        controller.selectListToPay(vcListToPayChoice.getListChoice(),vcListToPayChoice.getViewId());
+    }
+
+    @Override
+    public void visit(VCServantToPayChoice vcServantToPayChoice) {
+        controller.selectServantToPay(vcServantToPayChoice.getServantToPay(),vcServantToPayChoice.getViewId());
+    }
+
 
 }

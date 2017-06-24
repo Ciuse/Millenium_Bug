@@ -2,12 +2,13 @@ package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
 
 import it.polimi.ingsw.ps31.client.view.CmdLineView;
 import it.polimi.ingsw.ps31.messages.messageVC.VCActiveEffectChoice;
+import it.polimi.ingsw.ps31.messages.messageVC.VCListToPayChoice;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
- * Created by Giuseppe on 15/06/2017.
+ * Created by Giuseppe on 24/06/2017.
  */
-public class IntrChoiseActiveEffect implements CmdInterpreterView {
+public class IntrChoiceListToPay implements  CmdInterpreterView {
     @Override
     public void notGameMessageInterpreter(CmdLineView terminalView, Character in) {
 
@@ -16,14 +17,14 @@ public class IntrChoiseActiveEffect implements CmdInterpreterView {
     @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
-            if (in == 'Y' || in == 'n') {
+            if (in == 1) {
                 terminalView.printLastEvent("Comando OK");
-                terminalView.notifyController(new VCActiveEffectChoice(terminalView.getViewId(),true));
+                terminalView.notifyController(new VCListToPayChoice(terminalView.getViewId(),in));
                 return true;
             }
-            if (in == 'N' || in == 'n') {
+            if (in == 2) {
                 terminalView.printLastEvent("Comando OK");
-                terminalView.notifyController(new VCActiveEffectChoice(terminalView.getViewId(),false));
+                terminalView.notifyController(new VCListToPayChoice(terminalView.getViewId(),in));
                 return true;
             }
             terminalView.printLastEvent("Comando Non Riconusciuto");
@@ -32,6 +33,5 @@ public class IntrChoiseActiveEffect implements CmdInterpreterView {
         } else {
             terminalView.printLastEvent("Comando Non Rilevato");
             return false;
-        }
-    }
+        }    }
 }

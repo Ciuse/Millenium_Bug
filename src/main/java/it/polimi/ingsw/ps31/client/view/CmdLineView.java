@@ -10,12 +10,15 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.*;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
+import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
+import it.polimi.ingsw.ps31.model.gameResource.Servant;
+import it.polimi.ingsw.ps31.server.Server;
 
 import java.io.IOException;
 
@@ -41,7 +44,7 @@ public class CmdLineView extends View {
 
 
     @Override
-    public void askChoiceActionSpace(ChoiceActionSpace choiceActionSpace) {
+    public void askActionSpace(ChoiceActionSpace choiceActionSpace) {
         do{
             this.setCmdInterpreterView(new IntrChoiceActionSpace());
             printBoardActionSpace();
@@ -56,9 +59,9 @@ public class CmdLineView extends View {
     }
 
     @Override
-    public void askChoiceActionToDo(ChoiceActionToDo choiceActionToDo) {
+    public void askActionToDo(ChoiceActionToDo choiceActionToDo) {
         do {
-            this.setCmdInterpreterView(new IntrChoisePlayerAction());
+            this.setCmdInterpreterView(new IntrChoicePlayerAction());
             printPlayerAction();
             StateViewPlayer player = super.getMyStateViewPlayer();
             int numberOfChoice = player.getStringPlayerAction().size();
@@ -68,9 +71,9 @@ public class CmdLineView extends View {
     }
 
     @Override
-    public void askChoiceStartLeader(ChoiceStartLeaderCard choiceStartLeaderCard) {
+    public void askStartLeaderToKeep(ChoiceStartLeaderCard choiceStartLeaderCard) {
         do {
-            this.setCmdInterpreterView(new IntrChoiseStartLeader());
+            this.setCmdInterpreterView(new IntrChoiceStartLeader());
             for (int i = 0; i < choiceStartLeaderCard.getLeaderName().size(); i++) {
                 printLastEvent("inserisci " + i + " per: " + choiceStartLeaderCard.getLeaderId().get(i).toString() + " " + choiceStartLeaderCard.getLeaderName().get(i));
             }
@@ -79,9 +82,9 @@ public class CmdLineView extends View {
     }
 
     @Override
-    public void askChoiceActiveEffect(ChoiceActiveEffect choiceActiveEffect) {
+    public void askIfActiveEffect(ChoiceActiveEffect choiceActiveEffect) {
         do {
-            this.setCmdInterpreterView(new IntrChoiseActiveEffect());
+            this.setCmdInterpreterView(new IntrChoiceActiveEffect());
             printDevelopmentCard(choiceActiveEffect.getCardIdEffect());
             printLastEvent("inserisci \"Y\" per attivare l'effetto permanente della carta");
             printLastEvent("inserisci \"N\" per non attivare l'effetto permanente della carta");
@@ -90,9 +93,9 @@ public class CmdLineView extends View {
     }
 
     @Override
-    public void askChoiceColor(ChoiceColor choiceColor) {
+    public void askPlayerColor(ChoiceColor choiceColor) {
         do {
-            this.setCmdInterpreterView(new IntrChooseColor());
+            this.setCmdInterpreterView(new IntrChoiceColor());
             String string="Seleziona: ";
             int i=1;
             for (PlayerColor color:choiceColor.getPlayerColorList()
@@ -106,25 +109,102 @@ public class CmdLineView extends View {
     }
 
     @Override
-    public void askFamilyMember(ChoiceFamilyMember choiceFamilyMember){
+    public void askFamilyMember(ChoiceFamilyMember choiceFamilyMember) {
         do {
-            this.setCmdInterpreterView(new IntrChooseFamilyMember());
+            this.setCmdInterpreterView(new IntrChoiceFamilyMember());
             printFamilyMemberInAction();
             int j = 0;
-            for (StateViewPlayer player:super.getStateViewPlayerList()
+            StateViewPlayer player = super.getMyStateViewPlayer();
+            for (StateViewFamilyMember family : player.getStateViewFamilyMemberList()
                     ) {
-                if(super.getStateViewGame().getPlayerIdInAction().equals(player.getPlayerId())) {
-                    for (StateViewFamilyMember family : player.getStateViewFamilyMemberList()
-                            ) {
-                        if (family.getActionSpaceId() == -1) {
-                            j++;
-                        }
-                    }
+                if (family.getActionSpaceId() == -1) {
+                    j++;
                 }
             }
-            printLastEvent("Seleziona da 1 a "+valueOf(j)+" per selezionare uno dei family member rimasti");
+            printLastEvent("Seleziona da 1 a " + valueOf(j) + " per selezionare uno dei family member rimasti");
             input();
-        }while(!cmdInterpreterView.messageInterpreter(this,choiceFamilyMember,keyStroke.getCharacter()));
+        } while (!cmdInterpreterView.messageInterpreter(this, choiceFamilyMember, keyStroke.getCharacter()));
+    }
+
+    @Override
+    public void askIfSupportChurch(ChoiceIfSupportTheChurch choiceIfSupportTheChurch) {
+        do {
+            this.setCmdInterpreterView(new IntrChoiceIfSupportChurch());
+            printPlayerInAction();
+            printLastEvent("inserisci \"Y\" per dare il supporto alla chiesa ed evitare la scomunica");
+            printLastEvent("inserisci \"N\" per non dare il support alla chiesa e prendere la scomunica");
+            input();
+        }while(!cmdInterpreterView.messageInterpreter(this,choiceIfSupportTheChurch,keyStroke.getCharacter()));
+    }
+
+    @Override
+    public void askListToPay(ChoiceListToPay choiceListToPay) {
+        do {
+            this.setCmdInterpreterView(new IntrChoiceListToPay());
+            printDevelopmentCard(choiceListToPay.getCardId());
+            printLastEvent("inserisci \"1\" per scegliere la prima lista da pagare/guadagnare");
+            printLastEvent("inserisci \"2\" per scegleire la seconda lista da pagare/guadagnare");
+            input();
+        }while(!cmdInterpreterView.messageInterpreter(this,choiceListToPay,keyStroke.getCharacter()));
+    }
+
+    @Override
+    public void askLeaderEffectToCopy(ChoiceLeaderEffectToCopy choiceLeaderEffectToCopy) {
+
+    }
+
+    @Override
+    public void askLeaderToActive(ChoiceLeaderToActive choiceLeaderToActive) {
+        do {
+            this.setCmdInterpreterView(new IntrChoiceLeaderToActive());
+            //print leader card
+            StateViewPlayer player = super.getMyStateViewPlayer();
+            printLastEvent("Seleziona da 1 a " + valueOf(player.getStateViewLeaderCardList().size()) + " per selezionare il leader da attivare");
+            input();
+        } while (!cmdInterpreterView.messageInterpreter(this, choiceLeaderToActive, keyStroke.getCharacter()));
+    }
+
+    @Override
+    public void askLeaderToDiscard(ChoiceLeaderToDiscard choiceLeaderToDiscard) {
+        do {
+            this.setCmdInterpreterView(new IntrLeaderToDiscard());
+            //print leader card
+            StateViewPlayer player = super.getMyStateViewPlayer();
+            String string="Seleziona: ";
+            int j=1;
+            for (StateViewLeaderCard leaderCard:player.getStateViewLeaderCardList()
+                 ) {
+                if (!leaderCard.isPlayed()) {
+                    string = string + "/"+valueOf(j);
+                    j++;
+                }
+            }
+            printLastEvent(string+ "per selezionare il leader da scartare");
+            input();
+        } while (!cmdInterpreterView.messageInterpreter(this, choiceLeaderToDiscard, keyStroke.getCharacter()));
+    }
+
+    @Override
+    public void askServantToPay(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay) {
+        do {
+            this.setCmdInterpreterView(new IntrChoiceServantToPay());
+            printPlayerInAction();
+            StateViewPlayer player = super.getMyStateViewPlayer();
+            int numberOfChoice = player.getPlayerResources().getSpecificResource(Servant.class).getValue();
+            printLastEvent("Inserisci da 0 a" + numberOfChoice +" per i servitori da pagare");
+            input();
+        }while(!cmdInterpreterView.messageInterpreter(this, choiceNumberOfServantsToPay, keyStroke.getCharacter()));
+
+    }
+
+    @Override
+    public void askTilesToKeep(ChoicePersonalBonusTiles choicePersonalBonusTiles) {
+
+    }
+
+    @Override
+    public void askPrivilegeResourceChange(ChoicePrivilegeResource choicePrivilegeResource) {
+
     }
 
     public void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView) {

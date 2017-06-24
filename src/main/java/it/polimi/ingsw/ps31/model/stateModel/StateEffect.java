@@ -10,7 +10,7 @@ import java.util.List;
  * Created by giulia on 13/06/2017.
  */
 public class StateEffect extends StateType {
-    private int cardId =0;
+    private int cardId =-1;
     private String nameEffect = null;
     private String resourceToGain = null;
     private List<String> resourceToGainList =null;
@@ -27,6 +27,7 @@ public class StateEffect extends StateType {
 
     public StateEffect(Effect effect) {
         if(effect!=null) {
+            this.cardId = effect.getCardId();
             this.nameEffect = effect.nameString();
             this.basicValue = effect.getBasicValue();
             this.resourceToGainList =effect.getResourceToGainListString();

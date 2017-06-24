@@ -10,4 +10,8 @@ public interface VCVisitor {
     void visit(VCActionSpace vcActionSpace);
     void visit(VCColorChoice vcColorChoice);
     void visit(VCFamilyMemberChoice vcFamilyMemberChoice);
+    void visit(VCSupportTheChurchChoice vcSupportTheChurchChoice);
+    void visit(VCLeaderToActiveChoice vcLeaderToActiveChoice);
+    void visit(VCListToPayChoice vcListToPayChoice);
+    void visit(VCServantToPayChoice vcServantToPayChoice);
 }

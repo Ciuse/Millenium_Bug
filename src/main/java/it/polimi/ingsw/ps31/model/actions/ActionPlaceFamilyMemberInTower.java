@@ -49,8 +49,13 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
     {
         super.notifyViews(new MVAskChoice(player.getPlayerId(),"Quale family member vuoi usare?",new ChoiceFamilyMember()));
         this.familyMember=super.waitFamilyMemberChosen();
+
         super.notifyViews(new MVAskChoice(player.getPlayerId(),"In quale tower action space vuoi mettere il tuo family member?",new ChoiceTowerActionSpace()));
         this.towerActionSpace=super.waitTowerActionSpaceChosen();
+
+        //chiedo se vuole pagare dei servitori
+        player.getPlayerActionSet().payServants(super.familyMember);
+
         //Controllo che i parametri siano settati
         if ( this.familyMember == null || this.towerActionSpace == null || !this.towerActionSpace.isTowerSpace())
         {
