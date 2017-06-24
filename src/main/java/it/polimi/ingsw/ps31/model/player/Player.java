@@ -37,6 +37,9 @@ public class Player {
     private HarvestList harvestList;
     private ProductionList productionList;
     private List<ResourceList> finalBonusResources;
+    private List<LeaderCard> leaderCardList;
+    private boolean wannaEndTurn = false;
+
     private List<LeaderCard> leaderCardList= new ArrayList<>();
     private List<MarkerDisc> markerDiscList = new ArrayList<>();
     /* Constructor */
@@ -87,6 +90,10 @@ public class Player {
         //Inizializzazione harvestList e productionList
         this.harvestList = new HarvestList(this,personalBonusTiles.getHarvestEffect());
         this.productionList = new ProductionList(this, personalBonusTiles.getProductionEffect());
+    }
+
+    public void setWannaEndTurn(boolean wannaEndTurn) {
+        this.wannaEndTurn = wannaEndTurn;
     }
 
     public List<MarkerDisc> getMarkerDiscList() {
@@ -172,6 +179,10 @@ public class Player {
 
     public List<LeaderCard> getLeaderCardList() {
         return leaderCardList;
+    }
+
+    public boolean isWannaEndTurn() {
+        return wannaEndTurn;
     }
 
     /* Class Methods */

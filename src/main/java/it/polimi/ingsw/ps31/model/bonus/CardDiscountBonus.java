@@ -25,7 +25,6 @@ public class CardDiscountBonus extends Bonus {
 
     @Override
     public void activate(Player player) {
-        player.getPlayerActionSet().getPlaceFamilyMemberInTower().addCardDiceBonus(cardColor, value);
-
+        player.getPlayerActionSet().getTakeCard().addCardDiceBonus(cardColor, value);
     }
 }

@@ -1,9 +1,14 @@
 package it.polimi.ingsw.ps31.server;
 
+import it.polimi.ingsw.ps31.client.view.TypeOfView;
 import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.server.serverNetworking.ConnectionInterface;
+import it.polimi.ingsw.ps31.model.game.GameLogic;
+import it.polimi.ingsw.ps31.model.game.InformationFromNetworking;
+import it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionInterface;
 import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
+
+import java.lang.reflect.Type;
 
 /**
  * Created by Francesco on 08/06/2017.
@@ -11,21 +16,29 @@ import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
 public class Match extends Thread {
     private final int MAX_PLAYER_NUMBER = PlayerId.values().length;
     private final NetworkInterface networkInterface;
-    private ConnectionInterface hostConnection; //primo client che si collega alla partita
+    private final GameLogic gameLogic; //Partita vera e propria
+    private InformationFromNetworking informationFromNetworking;
+    private ServerConnectionInterface hostConnection; //primo client che si collega alla partita
     private int id;
-    private Model model;
 
+    //Attibuti di test
+    private Model model;
     private ModelProva modelProva;
 
     //private List<Socket> sockets = new ArrayList<>();
 
     /* Constructor */
-    public Match(ConnectionInterface host, int id){
-        this.networkInterface = new NetworkInterface(this);
+    public Match(ServerConnectionInterface host, int id){
+        this.informationFromNetworking = new InformationFromNetworking();
+        this.gameLogic = new GameLogic(informationFromNetworking);
+        addConnection(host);
+
+        this.networkInterface = new NetworkInterface(this, this.gameLogic);
         this.modelProva = new ModelProva(this, networkInterface);
         this.networkInterface.setModelProva(modelProva);
         this.hostConnection = host;
         this.id = id;
+
     }
 
     /* Getters & Setters*/
@@ -42,29 +55,29 @@ public class Match extends Thread {
     @Override
     public void run()
     {
-        //Instanzia connessione con il primo client
-        this.networkInterface.addConnection(hostConnection);
-
-        //Rimane in attesa degli altri giocatori
-
+        //Metodo invocato solo alla fine della connessione di tutti i player alla partita
 
         //Avvia partita
-
-        modelProva.startModel();
+        gameLogic.playGame();
 
         //Fa cose alla fine della partita?
     }
 
-    public boolean addConnection(ConnectionInterface clientConnection)
+    public boolean addConnection(ServerConnectionInterface clientConnection)
     {
         if ( this.networkInterface.getConnectionListSize() == MAX_PLAYER_NUMBER )
         {
             //TODO: eccezione
-            return false;
+            return true; //ma sarebbe meglio gestire la cosa in modo diverso: si è tentato di aggiungere un player ad una partita già completa
         }
 
         this.networkInterface.addConnection(clientConnection);
-        boolean started = ( this.networkInterface.getConnectionListSize() == MAX_PLAYER_NUMBER );
+
+        TypeOfView tov = clientConnection.getConnectionMessage().getTypeOfView();
+        String username = clientConnection.getConnectionMessage().getUsername();
+        int playerNumber = this.informationFromNetworking.addPlayerViewChoice(tov, username);
+
+        boolean started = ( playerNumber == MAX_PLAYER_NUMBER );
 
         networkInterface.printPlayerTable();
 

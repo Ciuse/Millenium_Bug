@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.client.view;
 
+import it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewGame;
@@ -28,6 +29,7 @@ public abstract class View extends Observable implements Observer {
     private final List<StateViewPlayer> stateViewPlayerList=new ArrayList<>();
     private final List<StateViewPersonalBoard> stateViewPersonalBoardList= new ArrayList<>();
     private final StateViewGame stateViewGame;
+    private ClientNetworkInterface networkInterface;
     boolean firstTime=true;                                 // se provo a stampare senza avere tutte le informazioni la prima volta da errore (per tutti i metodi di stampa)
                                                             //la prima volta stampo solo se ho già tutto
 
@@ -52,6 +54,9 @@ public abstract class View extends Observable implements Observer {
         notifyObservers(message);
     }
 
+    public void sendMessage(VCVisitable message) {
+        networkInterface.sendToServer(message);
+    }
 
     @Override
     public void update(Observable o, Object arg) {
@@ -68,11 +73,21 @@ public abstract class View extends Observable implements Observer {
         }
 
     }
+
+    public void setNetworkInterface(ClientNetworkInterface networkInterface)
+    {
+        this.networkInterface = networkInterface;
+    }
+
     public abstract void askActionSpace(ChoiceActionSpace choiceActionSpace);
 
     public abstract void askActionToDo(ChoiceActionToDo choiceActionToDo);
 
     public abstract void askIfActiveEffect(ChoiceActiveEffect choiceActiveEffect);
+
+    public abstract void askPlayerAction(ChoiseActionToDo choiseActionToDo);
+
+    public abstract void askChoiceActiveEffect(ChoiceActiveEffect choiceActiveEffect);
 
     public abstract void askStartLeaderToKeep(ChoiceStartLeaderCard choiceStartLeaderCard);
 
@@ -247,7 +262,6 @@ public abstract class View extends Observable implements Observer {
     public abstract void printTextBox();
 
     public abstract void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView);
-
 
     public PlayerId getViewId() {
         return viewId;

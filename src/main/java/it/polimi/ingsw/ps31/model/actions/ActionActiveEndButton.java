@@ -20,6 +20,7 @@ public class ActionActiveEndButton extends Action {
 
     @Override
     public void activate() {
+        player.setWannaEndTurn(true);
     }
 
     @Override

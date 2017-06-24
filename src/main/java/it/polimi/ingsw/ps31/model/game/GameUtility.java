@@ -253,6 +253,7 @@ public class GameUtility extends ModelChoices {
     public void startActionTurn(Player player) {
         resetPlayerAction();            //riattivo le azioni che i player hanno usato il turno prima
         setPlayerInAction(player);
+        player.setWannaEndTurn(false);
         String string1 = player.getPlayerId().toString()+": INIZIO FASE AZIONE";
         notifyViews(new MVStringToPrint(null,true,string1));
         String string2 = player.getPlayerId().toString()+": Aggiornato Stato Azioni";

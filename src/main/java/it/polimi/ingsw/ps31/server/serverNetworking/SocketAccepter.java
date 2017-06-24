@@ -12,7 +12,8 @@ public class SocketAccepter{
     private static SocketAccepter ourInstance = null;
     private final int SOCKET_PORT = 2727;
     private ServerSocket socket;
-    MatchTable matchTable;
+    private MatchTable matchTable;
+    private boolean closeConnection = false;
 
     /* Singleton Methods */
     public static SocketAccepter createInstance(MatchTable matchTable)
@@ -44,7 +45,6 @@ public class SocketAccepter{
         //TODO: istruzione di test da cancellare
         System.out.println("Server avviato. In attesa di connessioni...\n");
 
-        boolean closeConnection = false;
         while( !closeConnection )
         {
             try {
@@ -57,32 +57,32 @@ public class SocketAccepter{
         }
     }
 
-    public void acceptConnection(Socket clientSocket)
+    private void acceptConnection(Socket clientSocket)
     {
         if ( clientSocket == null )
             return;
-        //Creo l'oggetto connessione relativo al tipo di connessione scelta
-        //todo: se il client passasse un oggetto ChosenConnection, si potrebbero evitare l'if seguente e l'enum
 
         //TODO: istruzione di test da cancellare
-        System.out.println("Server> Connessione in ingresso. Deviata su porta "+clientSocket.getPort()+". Associazione del client in corso...");
+        System.out.println("Server> Connessione in ingresso. Deviata su porta "+clientSocket.getPort()+".");
 
-        ConnectionInterface connectionInterface;
-      //if ( chosenConnection.equals(ConnectionType.SOCKET) )
         try {
-            connectionInterface = new SocketConnection(clientSocket);
+            SocketServerConnection connectionInterface = new SocketServerConnection(clientSocket);
+
+            //aggiungo il client alla prima partita libera
+            matchTable.addPlayer(connectionInterface);
+
         } catch (IOException e) {
             e.printStackTrace();
-            return;
         }
-        //else
-      //  connectionInterface = new RMIConnection();
 
-        //aggiungo il client alla prima partita libera
-        matchTable.addPlayer(connectionInterface);
     }
 
     public void refuseConnection() {
 
+    }
+
+    public synchronized void shutDownServer()
+    {
+        this.closeConnection = true;
     }
 }
