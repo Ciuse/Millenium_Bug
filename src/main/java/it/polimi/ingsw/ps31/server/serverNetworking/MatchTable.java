@@ -11,10 +11,10 @@ import java.util.List;
  */
 class MatchRow {
     private Match match;
-    private List<ConnectionInterface> clientList;
+    private List<ServerConnectionInterface> clientList;
     private boolean started = false;
 
-    public MatchRow(Match match, ConnectionInterface hostConnection)
+    public MatchRow(Match match, ServerConnectionInterface hostConnection)
     {
         this.match = match;
         this.clientList = new ArrayList<>();
@@ -26,13 +26,17 @@ class MatchRow {
         return this.started;
     }
 
-    public void addPlayer(ConnectionInterface client)
+    public void addPlayer(ServerConnectionInterface client)
     {
+        //aggiungo la connessione alla lista di connessioni della row
+        this.clientList.add(client);
+
         //passo il socket alla partita
         this.started = this.match.addConnection(client);
 
-        //aggiungo la connessione alla lista di connessioni della row
-        this.clientList.add(client);
+        //Se la partitia deve iniziare, avvio il match
+        if( this.started )
+            match.start();
 
         //todo aggiungere started = true allo scadere del timeout
     }
@@ -61,17 +65,17 @@ public class MatchTable {
     }
 
     /* Class Methods */
-    private Match newMatch(ConnectionInterface connectionInterface)
+    private Match newMatch(ServerConnectionInterface serverConnectionInterface)
     {
+        //TODO: istruzione di test da cancellare
+        System.out.println("Server> inizio creazione match");
+
         //Creo il match (che è un thread)
-        Match match = new Match(connectionInterface, nextMatchId);
+        Match match = new Match(serverConnectionInterface, nextMatchId);
         nextMatchId++;
 
         //Aggiungo il match alla tabella
-        this.matchTable.add(new MatchRow(match, connectionInterface));
-
-        //Avvio il match (= avvio il thread che si mette così in attesa di nuovi giocatori)
-        match.start();
+        this.matchTable.add(new MatchRow(match, serverConnectionInterface));
 
         //TODO: istruzione di test da cancellare
         System.out.println("Server> Creata nuova partita #"+match.getMatchId()+". Client associato.");
@@ -79,7 +83,7 @@ public class MatchTable {
         return match;
     }
 
-    public Match addPlayer(ConnectionInterface connection)
+    public Match addPlayer(ServerConnectionInterface connection)
     {
         //Iteratore che scorre la lista di partite
         Iterator<MatchRow> matchItr = matchTable.iterator();
@@ -102,6 +106,7 @@ public class MatchTable {
 
         //TODO: istruzione di test da cancellare
         System.out.println("Server> Client connesso alla partita #"+currentMatch.getMatch().getMatchId());
+
 
         return currentMatch.getMatch(); //todo a cosa serve??
     }

@@ -1,31 +1,36 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
 import com.google.gson.Gson;
+import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import it.polimi.ingsw.ps31.model.game.GameLogic;
 import it.polimi.ingsw.ps31.server.Match;
 import it.polimi.ingsw.ps31.server.ModelProva;
+import it.polimi.ingsw.ps31.server.Server;
 
 /**
  * Created by Francesco on 08/06/2017.
  */
 //Classe con il compito di interfacciare le varie conessioni ad una partita con l'oggetto match corrispondente
 public class NetworkInterface {
-//    private List<ConnectionInterface> connectionInterfaces = new ArrayList<>();
+//    private List<ServerConnectionInterface> connectionInterfaces = new ArrayList<>();
     private PlayerTable playerTable;
     private Match match;
     private ModelProva modelProva;
+    private GameLogic gameLogic;
 
     /* Constructor */
-    public NetworkInterface(Match match){
+    public NetworkInterface(Match match, GameLogic gameLogic){
         this.match = match;
         this.playerTable = new PlayerTable();
+        this.gameLogic = gameLogic;
 
 //        notifyModel(null, "NetworkInterface instantiated");
     }
 
     /* Class Methods */
-    public void addConnection(ConnectionInterface connection)
+    public void addConnection(ServerConnectionInterface connection)
     {
         this.playerTable.addPlayer(connection);
     }
@@ -35,34 +40,27 @@ public class NetworkInterface {
         return this.playerTable.size();
     }
 
-    public String readFromClient(PlayerId playerId)
+    public GenericMessage readFromClient(PlayerId playerId)
     {
 
-        ConnectionInterface connection = this.playerTable.playerIdToConncetion(playerId);
+        ServerConnectionInterface connection = this.playerTable.playerIdToConncetion(playerId);
 
-        String msgToReturn = connection.notifyModel();
+        GenericMessage msgToReturn = connection.notifyModel();
 
-        modelProva.setState(msgToReturn, playerId);
+        modelProva.setState(msgToReturn.update(), playerId);
         return msgToReturn;
-    }
-
-    public void sendToClient(String msg, PlayerId playerId)
-    {
-        ConnectionInterface connection = this.playerTable.playerIdToConncetion(playerId);
-        connection.notifyClient(msg);
     }
 
     public void sendToClient(GenericMessage msg, PlayerId playerId)
     {
-        //Trasformo l'oggetto in json
-        //Creo gson
-        Gson gson = new Gson();
+        ServerConnectionInterface connection = this.playerTable.playerIdToConncetion(playerId);
+        connection.notifyClient(msg);
+    }
 
-        //Serializzo l'oggetto
-        String strMsg = gson.toJson(msg);
-
-        ConnectionInterface connection = this.playerTable.playerIdToConncetion(playerId);
-        connection.notifyClient(strMsg);
+    public void sendToAll(GenericMessage msg)
+    {
+        for(ServerConnectionInterface currentConnection : playerTable.getAllConnections())
+            currentConnection.notifyClient(msg);
     }
 
     public void setModelProva(ModelProva modelProva)
@@ -80,4 +78,9 @@ public class NetworkInterface {
         return playerTable.playerIdToConncetion(playerId) != null;
     }
 
+    public void sendViewToPlayer (View view, PlayerId playerId)
+    {
+        ServerConnectionInterface connection = this.playerTable.playerIdToConncetion(playerId);
+        connection.sendView(view);
+    }
 }

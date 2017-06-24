@@ -1,19 +1,42 @@
 package it.polimi.ingsw.ps31.messages.messageNetworking;
 
-import it.polimi.ingsw.ps31.messages.GenericMessage;
+import it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface;
+import it.polimi.ingsw.ps31.client.view.TypeOfView;
 import it.polimi.ingsw.ps31.networking.ConnectionType;
 
 /**
  * Created by Francesco on 21/06/2017.
  */
-public class ConnectionMessage extends GenericMessage {
-    private ConnectionType connectionType;
-    private String username;
-    private String password;
+public class ConnectionMessage extends NetworkingMessage {
+    private final String username;
+    private final String password;
+    private final TypeOfView typeOfView;
 
-
-    public ConnectionMessage(ConnectionType connectionType, String username, String password)
+    /* Constructor */
+    public ConnectionMessage(String username, String password, TypeOfView typeOfView)
     {
+        this.username = username;
+        this.password = password;
+        this.typeOfView = typeOfView;
+
+        this.messageType = "ConnectionMessage";
+    }
+
+    /* Getters */
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public TypeOfView getTypeOfView(){
+        return this.typeOfView;
+    }
+
+    @Override
+    public void update(ClientNetworkInterface networkInterface) {
 
     }
 }

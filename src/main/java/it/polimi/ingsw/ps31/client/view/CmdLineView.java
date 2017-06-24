@@ -20,6 +20,7 @@ import it.polimi.ingsw.ps31.model.gameResource.Resource;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Observable;
 
 import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.*;
 import static java.lang.String.valueOf;
@@ -921,4 +922,8 @@ public class CmdLineView extends View {
         return characterInBackBuffer;
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+
+    }
 }

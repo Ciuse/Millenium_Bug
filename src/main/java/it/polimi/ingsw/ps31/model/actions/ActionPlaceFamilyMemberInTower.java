@@ -12,15 +12,11 @@ import java.util.Map;
  */
 public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
     private TowerActionSpace towerActionSpace;
-    private Map<CardColor, Integer> cardDiceBonuses;
     private boolean immediateEffectsAreActivable = true;
 
     public ActionPlaceFamilyMemberInTower(Player player, ActionControlSet actionControlSet)
     {
         super(player, actionControlSet);
-        this.cardDiceBonuses = new HashMap<>();
-        for (CardColor cardColor : CardColor.values())
-            this.cardDiceBonuses.put(cardColor, 0);
     }
 
     /* Getters & Setters */
@@ -68,14 +64,6 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
     }
 
     /* Modifiers */
-    public void addCardDiceBonus (CardColor cardColor, Integer bonus)
-    {
-        //bonus può anche essere negativo (es. scomuniche)
-        Integer currentBonus = this.cardDiceBonuses.get(cardColor);
-        cardDiceBonuses.put(cardColor, currentBonus+bonus);
-
-    }
-
     public void setImmediateEffectsAreActivable(boolean areActivable)
     {
         this.immediateEffectsAreActivable = areActivable;

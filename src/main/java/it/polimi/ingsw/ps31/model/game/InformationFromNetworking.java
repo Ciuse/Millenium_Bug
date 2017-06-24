@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.model.game;
 
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,6 +11,13 @@ import java.util.List;
 public class InformationFromNetworking {
     private List<String> playerNameList;
     private List<TypeOfView> viewChoiceList;
+    private int size = 0;
+
+    public InformationFromNetworking()
+    {
+        this.playerNameList = new ArrayList<>();
+        this.viewChoiceList = new ArrayList<>();
+    }
 
     public List<String> getPlayerNameList() {
         return playerNameList;
@@ -27,7 +35,11 @@ public class InformationFromNetworking {
         this.viewChoiceList = viewChoiceList;
     }
 
-    public void addPlayerViewChoice(TypeOfView typeOfView){
+    public int addPlayerViewChoice(TypeOfView typeOfView, String username){
         viewChoiceList.add(typeOfView);
+        playerNameList.add(username);
+        this.size ++;
+
+        return this.size;
     }
 }

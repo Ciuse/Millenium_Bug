@@ -1,9 +1,14 @@
 package it.polimi.ingsw.ps31.client;
 
+import it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface;
 import it.polimi.ingsw.ps31.client.clientNetworking.ClientSocketConnection;
-import it.polimi.ingsw.ps31.client.view.ViewProva;
+import it.polimi.ingsw.ps31.client.view.TypeOfView;
+import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 
 /**
  * Created by Giuseppe on 05/06/2017.
@@ -13,23 +18,84 @@ public class Client {
     private static NetworkingThread networkingThread;
     private static ViewThread viewThread;
 
+
+    private static BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
+
     public static void main(String[] args) throws IOException {
 
-        //todo: chiedere CLI/GUI
-        //todo: chiedere socket/RMI
+        String chosenView;
+        String chosenConnection;
+        String username;
+        String password;
 
-        //Creo la view (cli finchè non avremo la gui, poi if-else)
-        //todo: gestire i parametri del costruttore
-        //TerminalView terminalView = new TerminalView(null, null, null, null);
-        ViewProva viewProva = new ViewProva();
 
-        //Creo la connessione (socket finchè non avremo rmi, poi if-else)
-        ClientSocketConnection clientSocketConnection = new ClientSocketConnection(PORT);
+        //chiedo username
+        System.out.print("Inserisci nome utente: ");
+        username = console.readLine();
 
-        //Inserisco view e networking in due thread dedicati
-        viewThread = new ViewThread();
-        networkingThread = new NetworkingThread(clientSocketConnection);
+        //chiedo password
+        System.out.print("Inserisci password");
+        password = console.readLine();
 
+        boolean exitDoWhile;
+
+        //chiedo per view
+        TypeOfView typeOfView = null;
+        do{
+            exitDoWhile = true;
+
+            System.out.print("Vuoi giocare con la CLI o con la GUI? [c/g]");
+            chosenView = console.readLine();
+
+            if( chosenView.equalsIgnoreCase("c") ) {
+                typeOfView = TypeOfView.CLI;
+                System.out.println("Il gioco partirà con la CLI");
+            }
+            else if (chosenView.equalsIgnoreCase("g") ){
+                typeOfView = TypeOfView.GUI;
+                System.out.println("Il gioco partirà con la GUI");}
+            else {
+                System.out.println("Risposta non valida");
+                exitDoWhile = false;
+            }
+
+
+        } while(!exitDoWhile);
+
+
+        //Preparo il messaggio contenente le informazioni di connessione
+        ConnectionMessage connectionMessage = new ConnectionMessage(username, password, typeOfView);
+
+
+        //chiedo per connessione
+        do{
+            exitDoWhile = true;
+
+            System.out.print("Vuoi connetterti con le SOCKET o con RMI? [s/r]");
+            chosenConnection = console.readLine();
+
+            if( chosenConnection.equalsIgnoreCase("s") )
+                networkingThread = new NetworkingThread(new ClientSocketConnection(PORT, connectionMessage));
+            else if (chosenConnection.equalsIgnoreCase("r") )
+            {
+                ///networkingThread = new NetworkingThread(new clientRMIConnection());
+                System.out.println("RMI non disponibile in questa versione. Mi connetto con le socket :) ");
+                networkingThread = new NetworkingThread(new ClientSocketConnection(PORT, connectionMessage));
+            }
+            else{
+                System.out.println("Risposta non valida");
+                exitDoWhile = false;
+            }
+
+        }while(!exitDoWhile);
+
+        System.out.println("In attesa di altri giocatori. Un po' di pazienza...");
+
+        //Chiedo al networking thread di restituire la view e la inserisco in un thread
+//        while ( networkingThread. )
+//  todo      viewThread = new ViewThread(networkingThread.askServerForView(connectionMessage));
+
+        //Passo ai due thread i relativi riferimenti
         viewThread.setNetworking(networkingThread);
         networkingThread.setViewThread(viewThread);
 

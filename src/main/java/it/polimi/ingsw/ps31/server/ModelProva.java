@@ -44,7 +44,8 @@ public class ModelProva {
 
     public void notifyState(PlayerId receiver)
     {
-        networkInterface.sendToClient(this.state, receiver);
+        GenericMessage msgToSend = new GenericMessage(this.state);
+        networkInterface.sendToClient(msgToSend, receiver);
         System.out.println("Server> Risposta spedita: "+this.state+". In attesa di ulteriore comando...");
 
     }

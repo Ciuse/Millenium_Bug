@@ -50,19 +50,17 @@ public class  PayResourceListControl extends PayResourceControl{
         } else
         {
             Iterator<ResourceList> itr = this.resourceLists.iterator();
-            boolean foundError = false;
-            while (itr.hasNext() && !foundError) {
+            boolean canPayCost = true;
+            while (itr.hasNext() && canPayCost)
+            {
                 ResourceList currentResourceList = itr.next();
-
                 super.setResourceList(currentResourceList);
-                foundError = !super.execute();
+                canPayCost = super.execute();
             }
-
-            result = !foundError;
+            result = canPayCost;
         }
 
         resetResourceList();
         return result;
-
     }
 }

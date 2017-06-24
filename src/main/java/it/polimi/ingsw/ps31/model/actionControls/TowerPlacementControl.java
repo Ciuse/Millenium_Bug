@@ -83,7 +83,7 @@ public class TowerPlacementControl extends Control {
             conditions.add(controlSet.selfOccupiedTowerControl(familyMember, towerCardSpace.getTower()));
 
             //Controllo che il giocatore abbia le tre monete (se necessario)
-            conditions.add(towerCardSpace.getTower().isOccupied() &&
+            conditions.add(!towerCardSpace.getTower().isOccupied() || towerCardSpace.getTower().isOccupied() &&
                             player.getPlayerResources().getResourceValue(Coin.class) >= OCCUPIED_TOWER_COST);
 
             //Controllo che il valore del dado sia sufficiente per il piazzamento

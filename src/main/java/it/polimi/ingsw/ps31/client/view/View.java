@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.client.view;
 
+import it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewGame;
@@ -28,6 +29,7 @@ public abstract class View extends Observable implements Observer {
     private final List<StateViewPlayer> stateViewPlayerList;
     private final List<StateViewPersonalBoard> stateViewPersonalBoardList;
     private final StateViewGame stateViewGame;
+    private ClientNetworkInterface networkInterface;
 
 
     public View(PlayerId viewId, StateViewBoard stateViewBoard, List<StateViewPersonalBoard> stateViewPersonalBoardList, List<StateViewPlayer> stateViewPlayerList, StateViewGame stateViewGame) {
@@ -42,17 +44,14 @@ public abstract class View extends Observable implements Observer {
         this.addObserver(controller);
     }
 
-    public void notifyController(VCVisitable message) {
-        this.setChanged();
-        notifyObservers(message);
+    public void sendMessage(VCVisitable message) {
+        networkInterface.sendToServer(message);
     }
 
 
-    @Override
-    public void update(Observable o, Object arg) {
+    public void acceptMessage(MVVisitable message) {
         MVMessageVisitor MVMessageVisitor = new MVMessageVisitor();
         MVMessageVisitor.setView(this);
-        MVVisitable message = (MVVisitable) arg;
 
         if(message.isNotifyAll()){          //se il messaggio riguarda tutti lo accetto
             message.accept(MVMessageVisitor);
@@ -62,6 +61,12 @@ public abstract class View extends Observable implements Observer {
             }
         }
 
+    }
+
+
+    public void setNetworkInterface(ClientNetworkInterface networkInterface)
+    {
+        this.networkInterface = networkInterface;
     }
 
     public abstract void askPlayerAction(ChoiseActionToDo choiseActionToDo);

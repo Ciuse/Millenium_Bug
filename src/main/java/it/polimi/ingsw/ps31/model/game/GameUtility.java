@@ -192,6 +192,7 @@ public class GameUtility extends ModelChoices {
 
     public void startActionTurn(Player player) {
         setPlayerInAction(player);
+        player.setWannaEndTurn(false);
         String string1 = player.getPlayerId().toString()+": INIZIO FASE AZIONE";
         notifyViews(new MVStringToPrint(null,true,string1));
         String string2 = player.getPlayerId().toString()+": Aggiornato Stato Azioni";
