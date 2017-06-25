@@ -15,13 +15,18 @@ public class IntrChoiceStartLeader implements CmdInterpreterView {
     }
 
     @Override
+    public boolean messageInterpreter2(CmdLineView terminalView, ChoiceType choiceType, Character in1, Character in2) {
+        return false;
+    }
+
+    @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
             ChoiceStartLeaderCard choiceStartLeaderCard = (ChoiceStartLeaderCard) choiceType;
-            for (int i = 1; i < choiceStartLeaderCard.getLeaderId().size() + 1; i++) {
+            for (int i = 1; i < choiceStartLeaderCard.getLeaderIdList().size() + 1; i++) {
                 if (in == i) {
                     terminalView.printLastEvent("Comando OK");
-                    terminalView.notifyController(new VCStartLeaderChoice(terminalView.getViewId(),((ChoiceStartLeaderCard) choiceType).getLeaderId().get(in - 1)));
+                    terminalView.notifyController(new VCStartLeaderChoice(terminalView.getViewId(),((ChoiceStartLeaderCard) choiceType).getLeaderIdList().get(in - 1)));
                     return true;
                 }
             }

@@ -43,24 +43,35 @@ public class Controller implements Observer {
     }
 
     public void createLeader(int leaderIdToCreate, PlayerId viewId) {
+        boolean found=false;
+        boolean found1=false;
         for (int i = 0; i < tempModelStateForLeaderChoice.getPlayerPossibleChoiceList().size(); i++) {
             if (viewId == tempModelStateForLeaderChoice.getPlayerPossibleChoiceList().get(i).getPlayerId()) {
                 for (Integer leaderId : tempModelStateForLeaderChoice.getPlayerPossibleChoiceList().get(i).getLeaderId()
                         ) {
                     if (leaderId == leaderIdToCreate) {
+                        found=true;
                         for (LeaderCard leaderCard : gameUtility.getTempLeaderCardList()
                                 ) {
                             if (leaderIdToCreate == leaderCard.getLeaderId()) {
+                                found1=true;
                                 for (Player player : gameUtility.getPlayerList()
                                         ) {
                                     if (player.getPlayerId().equals(tempModelStateForLeaderChoice.getPlayerPossibleChoiceList().get(i).getPlayerId())) {
                                         player.addLeaderCard(leaderCard);
                                         gameUtility.getTempLeaderCardList().remove(leaderCard);
+                                        modelChoices.incrementLeaderChoosenCounter();
                                     }
                                 }
                             }
                         }
+                        if(!found1){
+                            virtualView.reSendLastMessageToSpecificView("non ho trovato il leader tra i possibili leader rimasti in gioco",viewId);
+                        }
                     }
+                }
+                if(!found){
+                    virtualView.reSendLastMessageToSpecificView("non ho trovato il leader tra le tue possibili scelte",viewId);
                 }
             }
         }
@@ -98,58 +109,45 @@ public class Controller implements Observer {
     }
 
     public void selectActionSpace(int actionSpaceId, PlayerId viewId) {
-        boolean legitAnswer = true;
         boolean found = false;
-        if (gameUtility.getPlayerMaxNumber() <= 3) {
-            if (actionSpaceId == 24 || actionSpaceId == 25) {           //controllo se non mi ha inserito action space coperti
-                legitAnswer = false;
-            }
-            if (gameUtility.getPlayerMaxNumber() <= 2 && (actionSpaceId == 19 || actionSpaceId == 21)) {       //controllo se non mi ha inserito action space coperti
-                legitAnswer = false;
+        ActionSpace actionSpaceToControl = null;
+        if (actionSpaceId == 17) {
+            actionSpaceToControl = gameUtility.getGameBoard().getCouncilPalace();
+            found = true;
+        }
+        if (actionSpaceId == 18) {
+            actionSpaceToControl = gameUtility.getGameBoard().getSmallHarvest();
+            found = true;
+        }
+        if (actionSpaceId == 19) {
+            actionSpaceToControl = gameUtility.getGameBoard().getBigHarvest();
+            found = true;
+        }
+        if (actionSpaceId == 20) {
+            actionSpaceToControl = gameUtility.getGameBoard().getSmallProduction();
+            found = true;
+        }
+        if (actionSpaceId == 21) {
+            actionSpaceToControl = gameUtility.getGameBoard().getBigProduction();
+            found = true;
+        }
+        if (actionSpaceId >= 22 && actionSpaceId <= 25) {
+            for (ActionSpace marketActionSpace : gameUtility.getGameBoard().getMarket().getActionSpaceList()
+                    ) {
+                if (actionSpaceId == marketActionSpace.getActionSpaceId()) {
+                    actionSpaceToControl = marketActionSpace;
+                    found = true;
+                }
             }
         }
-        if (!legitAnswer) {
-            virtualView.reSendLastMessage("(controller) Player mi hai mentito");
-        } else {
-            ActionSpace actionSpaceToControl=null;
-            if (actionSpaceId == 17) {
-                actionSpaceToControl = gameUtility.getGameBoard().getCouncilPalace();
-                found = true;
-            }
-            if (actionSpaceId == 18) {
-                actionSpaceToControl = gameUtility.getGameBoard().getSmallHarvest();
-                found = true;
-            }
-            if (actionSpaceId == 19) {
-                actionSpaceToControl = gameUtility.getGameBoard().getBigHarvest();
-                found = true;
-            }
-            if (actionSpaceId == 20) {
-                actionSpaceToControl = gameUtility.getGameBoard().getSmallProduction();
-                found = true;
-            }
-            if (actionSpaceId == 21) {
-                actionSpaceToControl = gameUtility.getGameBoard().getBigProduction();
-                found = true;
-            }
-            if (actionSpaceId >= 22 && actionSpaceId <= 25) {
-                for (ActionSpace marketActionSpace : gameUtility.getGameBoard().getMarket().getActionSpaceList()
-                        ) {
-                    if (actionSpaceId == marketActionSpace.getActionSpaceId()) {
-                        actionSpaceToControl = marketActionSpace;
-                        found = true;
-                    }
-                }
-            }
-            if (found) {
-                if(gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().occupiedActionSpaceControl(actionSpaceToControl)){        //se esiste l action space controllo se posso meterci il famigliare
-                    modelChoices.setActionSpaceChosen(actionSpaceToControl);
-                }else{
-                    virtualView.reSendLastMessage(gameUtility.getPlayerInAction().getActionControlSet().getOccupiedActionSpaceControl().getControlStringError());
-                }
+        if (found) {
+            if (gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().occupiedActionSpaceControl(actionSpaceToControl)) {        //se esiste l action space controllo se posso meterci il famigliare
+                modelChoices.setActionSpaceChosen(actionSpaceToControl);
             } else {
-                virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l actionSpace");
+                virtualView.reSendLastMessage(gameUtility.getPlayerInAction().getActionControlSet().getOccupiedActionSpaceControl().getControlStringError());
             }
+        } else {
+            virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l actionSpace");
         }
     }
 

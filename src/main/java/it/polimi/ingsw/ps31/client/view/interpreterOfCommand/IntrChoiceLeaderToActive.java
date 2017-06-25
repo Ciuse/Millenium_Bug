@@ -32,4 +32,9 @@ public class IntrChoiceLeaderToActive implements CmdInterpreterView {
 
         }
     }
+
+    @Override
+    public boolean messageInterpreter2(CmdLineView terminalView, ChoiceType choiceType, Character in1, Character in2) {
+        return false;
+    }
 }

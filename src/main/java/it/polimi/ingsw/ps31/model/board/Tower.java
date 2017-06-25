@@ -18,8 +18,8 @@ public class Tower {
 
     private final CardColor color;
     private boolean isOccupied = false;
-    private final List<TowerCardSpace> towerCardSpaceList;
     private final List<TowerActionSpace> towerActionSpaceList;
+    private final List<TowerCardSpace> towerCardSpaceList;
     private DevelopmentCardDeck deck;
 
     /* Constructor */

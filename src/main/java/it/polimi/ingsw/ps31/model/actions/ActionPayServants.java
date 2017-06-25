@@ -47,15 +47,15 @@ public class ActionPayServants extends Action {
         //Controllo che i parametri siano settati;
         if (this.familyMember == null )
         {
-            //TODO: eccezione
+            notifyViews(new MVStringToPrint(player.getPlayerId(),false,"pay servant è stata richiamata senza un servitore su cui agire"));
         } else {
+
             //chiedere al player quanti servitori vuole pagare per aumentare il valore del familiare
             String string = player.getPlayerId() + ":Quanti servitori vuoi pagare per aumentare il valore del tuo familiare?";
             notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceNumberOfServantsToPay()));
             setServantsAmount(super.waitNumberOfServantsToPay());
 
-
-            Resource servantToPay = new Servant(servantsAmount);
+            Resource servantToPay = new Servant(servantsAmount); //creo la risorsa servitore con il valore che mi ha detto il giocatore
 
             //Eseguo fisicamente l'azione
             player.subResources(servantToPay);

@@ -18,4 +18,9 @@ public class IntrChoiceActiveExcommunication implements CmdInterpreterView {
 
         return false;
     }
+
+    @Override
+    public boolean messageInterpreter2(CmdLineView terminalView, ChoiceType choiceType, Character in1, Character in2) {
+        return false;
+    }
 }

@@ -14,11 +14,11 @@ public class ChoiceStartLeaderCard extends ChoiceType {
         this.leaderName = leaderName;
     }
 
-    public List<Integer> getLeaderId() {
+    public List<Integer> getLeaderIdList() {
         return leaderId;
     }
 
-    public List<String> getLeaderName() {
+    public List<String> getLeaderNameList() {
         return leaderName;
     }
 

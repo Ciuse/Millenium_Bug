@@ -15,6 +15,7 @@ import java.util.Collections;
  * Created by giulia on 24/05/2017.
  */
 public class GameLogic {
+    //classe che contiene il metodo principale con i cicli di funzionamento del gioco / la lettura degli oggeti dal file json / l attesa di connessione dei player
     private final GameUtility gameUtility = new GameUtility();
     private final static int PERIODMAXNUMBER = 3;
     private final static int ROUNDMAXNUMBER = 2;
@@ -61,11 +62,14 @@ public class GameLogic {
             gameUtility.createPlayer(gameUtility.getInformationFromNetworking().getPlayerNameList().get(i));
         }
 
+
         gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
 
         gameUtility.phaseChoicePersonalBonusTiles(); //chiedo ai player di scegliere (in base all ordine di connessione) un personal bonus tiles e li aggiorno
 
         gameUtility.createViews();
+
+        //aggiorno lo stato iniziali degli stati della view
 
         gameUtility.updateStartAllPlayersInformation();
 
@@ -76,6 +80,9 @@ public class GameLogic {
         gameUtility.updateStartAllPersonalBoard();
 
         gameUtility.updateStartAllMarkerDisc();
+
+        gameUtility.updateStartAllDevelopmentCard();
+
 
         //viene fatto dopo aver saputo in quanto si gioca (per istanziare le aree da 3 e/o 4 giocatori)
         GameBoard gameBoard = new GameBoard(jsonObjectReadFromFile.getTowerActionSpaceEffectList(), jsonObjectReadFromFile.getActionSpaceEffectList(), jsonObjectReadFromFile.getFaithTrackExtraValue());

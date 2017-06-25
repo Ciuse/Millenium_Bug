@@ -33,6 +33,8 @@ import java.util.*;
  * Created by giulia on 19/06/2017.
  */
 public class GameUtility extends ModelChoices {
+    //classe contente tutti i riferimenti degli oggetti letti dal file Json e
+    //contiene tutti i metodi per supportare e gestire la logica del funzionamento del gioco
     private List<Player> playerList= new ArrayList<>();
     private Player playerInAction;
     private GameBoard gameBoard;
@@ -54,41 +56,8 @@ public class GameUtility extends ModelChoices {
     private static final int Max_Leader_Card = 4;
     private long timerAction;
 
-    public void createDeck(){
-        //creazione deck vuoti
-        CardColor[] cardColors = CardColor.values();
-        for (CardColor cardColor : cardColors) {
-            for (int period = 1; period <= 3; period++) {
-                deckList.add(new DevelopmentCardDeck(cardColor, period));
-            }
-        }
-        //riempimento dei deck in base al periodo e al colore delle carte
 
-        for (int i = 0; i < developmentCardList.size(); i++) {
-            for (DevelopmentCardDeck aDeckList : deckList) {
-                if (aDeckList.getCardListSize() < aDeckList.getMaxNumber()
-                        && developmentCardList.get(i).getCardColor().equals(aDeckList.getColor())
-                        && developmentCardList.get(i).getPeriod() == aDeckList.getPeriod()) {
-                    aDeckList.setCard(developmentCardList.get(i));
-                    break;
-                }
-            }
-        }
-
-    }
-
-    public void createViews() {
-        for (Player player : playerList
-                ) {
-            for (int i = 0; i < super.getInformationFromNetworking().getPlayerNameList().size(); i++) {
-                if (player.getNickname().equals(super.getInformationFromNetworking().getPlayerNameList().get(i))) {
-                    if (super.getInformationFromNetworking().getViewChoiceList().get(i).equals(TypeOfView.CLI)) {
-                        CmdLineView viewCliPlayer = new CmdLineView(player.getPlayerId(), playerMaxNumber);
-                    }//else TODO creare la view gui
-                }
-            }
-        }
-    }
+    /* metodi che riguardano il funzionamento delle principali fasi del gioco e della loro logica interna */
 
     public void phaseActionGame(int playerNumber,int action) {
         if (action == 1 && playerList.get(playerMaxNumber).getFlagTurnExcommunication() == 1) {
@@ -97,11 +66,9 @@ public class GameUtility extends ModelChoices {
         if (playerList.get(playerNumber).checkIfOnlyNEUTRALRemained() == true) {
             gameBoard.getEndActionButton().setActive(true);
         }
-        //FASE AZIONE DEL GIOCATORE
         this.startActionTurn(playerList.get(playerMaxNumber));
         this.doActionTurn(playerList.get(playerMaxNumber));
         this.endActionTurn(playerList.get(playerMaxNumber));
-
     }
 
     public void extraPhaseActionGame() {
@@ -115,7 +82,95 @@ public class GameUtility extends ModelChoices {
             }
         }
 
+    public void phaseChoicePersonalBonusTiles(){
+        for (Player player: playerList
+                ) {
+            String string = player.getPlayerId()+": Scegli il tuo personal bonus tiles";
+            List<StatePersonalBonusTiles> statePersonalBonusTiles = new ArrayList<>();
+            for (PersonalBonusTiles personalBonusTiles : personalBonusTilesList
+                    ) {
+                statePersonalBonusTiles.add(personalBonusTiles.getStatePersonalBonusTiles());
+            }
+            notifyViews(new MVAskChoice(player.getPlayerId(),string,new ChoicePersonalBonusTiles(statePersonalBonusTiles)));
+            PersonalBonusTiles personalBonusTiles = super.waitPersonalBonusTilesChosen();
+            personalBonusTiles.setPlayerId(player.getPlayerId());
+            player.setPersonalBonusTiles(removePersonalBonusTiles(personalBonusTiles));
+            notifyViews(new MVUpdateState("Aggiornato lo stato del personalBonusTiles",personalBonusTiles.getStatePersonalBonusTiles()));
 
+        }
+    }
+
+    public void leaderCardSetup() {
+        Collections.shuffle(leaderCardList);
+        tempLeaderCardList=leaderCardList;
+        for (int k = 0; k < Max_Leader_Card; k++) {
+            List<List<LeaderCard>> listList = new ArrayList<>();
+            int j = 0;
+            for (Player player : playerList
+                    ) {
+                listList.add(new ArrayList<>());
+                List<Integer> leaderCardId = new ArrayList<>();
+                List<String> leaderCardString = new ArrayList<>();
+                for (int i = 0; i < Max_Leader_Card - k; i++) {
+                    listList.get(j).add(tempLeaderCardList.get(i));
+                    leaderCardId.add(tempLeaderCardList.get(j).getLeaderId());
+                    leaderCardString.add(tempLeaderCardList.get(j).getName());
+                    j++;
+                }
+                TempModelStateForLeaderChoice tempModelStateForLeaderChoice = new TempModelStateForLeaderChoice();
+                tempModelStateForLeaderChoice.addPlayerPossibleChoide(player.getPlayerId(), leaderCardId);
+                String string = "SCEGLI CARTA LEADER: ";
+                super.setTempModelStateForLeaderChoice(tempModelStateForLeaderChoice);
+                super.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceStartLeaderCard(leaderCardId, leaderCardString)));
+            }
+            super.waitAllInitialLeaderCardChosen(playerMaxNumber);
+            //ricreo la leader card list sppostando il primo mazzo di carge in ultima posizione
+            // (simulo il fatto che ogni player passa le sue carte al player alla sua sinistra
+            tempLeaderCardList.clear();
+            for (int i=1;i<listList.size()-1;i++){
+                tempLeaderCardList.addAll(listList.get(i));
+            }
+            tempLeaderCardList.addAll(listList.get(0));
+        }
+    }
+
+    public void startActionTurn(Player player) {
+        resetPlayerAction();            //riattivo le azioni che i player hanno usato il turno prima
+        setPlayerInAction(player);
+        player.setWannaEndTurn(false);
+        String string1 = player.getPlayerId().toString()+": INIZIO FASE AZIONE";
+        notifyViews(new MVStringToPrint(null,true,string1));
+        String string2 = player.getPlayerId().toString()+": Aggiornato Stato Azioni";
+        notifyViews(new MVUpdateState(string2,player.getStatePlayerAction()));
+    }
+
+    public void doActionTurn(Player player) {
+        super.setStateActionGame();
+        while (super.getStateModelChoices().equals("StateActionGame")) {
+            this.createTimerAction();
+            super.getLastModelStateForControl().setStateForControl(player.getStatePlayerAction());
+            String string = player.getNickname() + ": Scegli l'azione";
+            Action actionToDo =super.waitActionToDo();
+            for (Action action:player.getPlayerActionSet().getActionList()
+                    ) {
+                if(actionToDo.getClass().equals(action.getClass())){
+                    super.setStateActionGame();
+                    action.activate();
+                }
+                else{
+                    String string1 = "Non ho trovato l azione da eseguire";
+                    notifyViews(new MVStringToPrint(null,true,string1));
+                }
+            }
+        }
+    }
+
+    public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
+        super.setStateEndTurn();
+    }
+
+
+    /* metodi per aggiornamento stati view iniziali*/
 
     public void updateStartAllPlayersInformation(){
         for (Player player:playerList
@@ -164,6 +219,7 @@ public class GameUtility extends ModelChoices {
     }
 
 
+    /*metodi di supporto che riguardano elementi fisici del gioco */
 
     public void playerOrderFromCouncil(){
         //aggiungo alla lista dei colori del palazzo del consiglio gli eventuali giocatori che non si sono posizionati in questo spazio azione e poi riordino la lista giocatori
@@ -221,7 +277,29 @@ public class GameUtility extends ModelChoices {
             }
         }
     }
-    
+
+    public void createDeck(){
+        //creazione deck vuoti
+        CardColor[] cardColors = CardColor.values();
+        for (CardColor cardColor : cardColors) {
+            for (int period = 1; period <= 3; period++) {
+                deckList.add(new DevelopmentCardDeck(cardColor, period));
+            }
+        }
+        //riempimento dei deck in base al periodo e al colore delle carte
+
+        for (int i = 0; i < developmentCardList.size(); i++) {
+            for (DevelopmentCardDeck aDeckList : deckList) {
+                if (aDeckList.getCardListSize() < aDeckList.getMaxNumber()
+                        && developmentCardList.get(i).getCardColor().equals(aDeckList.getColor())
+                        && developmentCardList.get(i).getPeriod() == aDeckList.getPeriod()) {
+                    aDeckList.setCard(developmentCardList.get(i));
+                    break;
+                }
+            }
+        }
+
+    }
 
     public void drawCardDeck(){
         for (int towerNum = 0; towerNum < gameBoard.getTOWERNUMBER(); towerNum++) {
@@ -236,94 +314,9 @@ public class GameUtility extends ModelChoices {
     }
 
 
-    public void createTimerAction(){
-        Timer timer1 = new Timer();
-        TimerTask task1 = new TimerTask() {
-            @Override
-            public void run() {
+    /*metodi di creazione oggetti vari */
 
-                GameUtility.super.setStateEndTurn();
-                endActionTurn(playerInAction);
-                timer1.cancel();
-            }
-        };
-        timer1.schedule(task1, timerAction);
-    }
-
-    public void startActionTurn(Player player) {
-        resetPlayerAction();            //riattivo le azioni che i player hanno usato il turno prima
-        setPlayerInAction(player);
-        player.setWannaEndTurn(false);
-        String string1 = player.getPlayerId().toString()+": INIZIO FASE AZIONE";
-        notifyViews(new MVStringToPrint(null,true,string1));
-        String string2 = player.getPlayerId().toString()+": Aggiornato Stato Azioni";
-        notifyViews(new MVUpdateState(string2,player.getStatePlayerAction()));
-    }
-
-    public void doActionTurn(Player player) {
-        super.setStateActionGame();
-        while (super.getStateModelChoices().equals("StateActionGame")) {
-            this.createTimerAction();
-            super.getLastModelStateForControl().setStateForControl(player.getStatePlayerAction());
-            String string = player.getNickname() + ": Scegli l'azione";
-            Action actionToDo =super.waitActionToDo();
-            for (Action action:player.getPlayerActionSet().getActionList()
-                 ) {
-                if(actionToDo.getClass().equals(action.getClass())){
-                    super.setStateActionGame();
-                    action.activate();
-                }
-                else{
-                    String string1 = "Non ho trovato l azione da eseguire";
-                    notifyViews(new MVStringToPrint(null,true,string1));
-                }
-            }
-        }
-    }
-
-    public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
-        super.setStateEndTurn();
-    }
-
-    public void leaderCardSetup() {
-        Collections.shuffle(leaderCardList);
-        tempLeaderCardList=leaderCardList;
-        for (int k = 0; k < Max_Leader_Card; k++) {
-            List<LeaderCard> temp1 = new ArrayList<>();
-            List<LeaderCard> temp2 = new ArrayList<>();
-            List<LeaderCard> temp3 = new ArrayList<>();
-            List<LeaderCard> temp4 = new ArrayList<>();
-            List<List<LeaderCard>> listList = new ArrayList<>();
-            listList.add(temp1);
-            listList.add(temp2);
-            listList.add(temp3);
-            listList.add(temp4);
-            int j = 0;
-            for (Player player : playerList
-                    ) {
-                List<Integer> leaderCardId = new ArrayList<>();
-                List<String> leaderCardString = new ArrayList<>();
-                for (int i = 0; i < Max_Leader_Card - k; i++) {
-                    listList.get(j).add(tempLeaderCardList.get(i));
-                    leaderCardId.add(tempLeaderCardList.get(j).getLeaderId());
-                    leaderCardString.add(tempLeaderCardList.get(j).getName());
-                    j++;
-                }
-                TempModelStateForLeaderChoice tempModelStateForLeaderChoice = new TempModelStateForLeaderChoice();
-                tempModelStateForLeaderChoice.addPlayerPossibleChoide(player.getPlayerId(), leaderCardId);
-                String string = "SCEGLI CARTA LEADER: ";
-                super.setTempModelStateForLeaderChoice(tempModelStateForLeaderChoice);
-                super.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceStartLeaderCard(leaderCardId, leaderCardString)));
-            }
-            super.waitAllInitialLeaderCardChosen();
-            tempLeaderCardList.clear();
-            tempLeaderCardList.addAll(temp2);
-            tempLeaderCardList.addAll(temp3);
-            tempLeaderCardList.addAll(temp4);
-            tempLeaderCardList.addAll(temp1);
-        }
-    }
-     public void choiseColorPlayer(){
+    public void choiseColorPlayer(){
          List<PlayerColor> playerColorList = new ArrayList<>();
          playerColorList.add(PlayerColor.GREEN);
          playerColorList.add(PlayerColor.BLUE);
@@ -351,28 +344,37 @@ public class GameUtility extends ModelChoices {
         playerList.add(new Player(initialPlayerResource.get(playerList.size()), playerId[playerList.size()], name,personalBoard));
     }
 
-    public void phaseChoicePersonalBonusTiles(){
-        for (Player player: playerList
-             ) {
-            String string = player.getPlayerId()+": Scegli il tuo personal bonus tiles";
-            List<StatePersonalBonusTiles> statePersonalBonusTiles = new ArrayList<>();
-            for (PersonalBonusTiles personalBonusTiles : personalBonusTilesList
-                    ) {
-                statePersonalBonusTiles.add(personalBonusTiles.getStatePersonalBonusTiles());
-            }
-            notifyViews(new MVAskChoice(player.getPlayerId(),string,new ChoicePersonalBonusTiles(statePersonalBonusTiles)));
-            PersonalBonusTiles personalBonusTiles = super.waitPersonalBonusTilesChosen();
-            personalBonusTiles.setPlayerId(player.getPlayerId());
-            player.setPersonalBonusTiles(removePersonalBonusTiles(personalBonusTiles));
-            notifyViews(new MVUpdateState("Aggiornato lo stato del personalBonusTiles",personalBonusTiles.getStatePersonalBonusTiles()));
+    public void createTimerAction(){
+        Timer timer1 = new Timer();
+        TimerTask task1 = new TimerTask() {
+            @Override
+            public void run() {
 
+                GameUtility.super.setStateEndTurn();
+                endActionTurn(playerInAction);
+                timer1.cancel();
+            }
+        };
+        timer1.schedule(task1, timerAction);
+    }
+
+    public void createViews() {
+        for (Player player : playerList
+                ) {
+            for (int i = 0; i < super.getInformationFromNetworking().getPlayerNameList().size(); i++) {
+                if (player.getNickname().equals(super.getInformationFromNetworking().getPlayerNameList().get(i))) {
+                    if (super.getInformationFromNetworking().getViewChoiceList().get(i).equals(TypeOfView.CLI)) {
+                        CmdLineView viewCliPlayer = new CmdLineView(player.getPlayerId(), playerMaxNumber);
+                    }//else TODO creare la view gui
+                }
+            }
         }
     }
 
 
 
-
     /*Metoci per Riordinare la Lista dei Player*/
+
     // riordina i giocatori in base all'ordine dei colori nel palazzo del concilio
     public void orderPlayersListWithColors(List<PlayerColor> colorList) {
         for (int i = 0; i < colorList.size(); i++) {
@@ -417,6 +419,7 @@ public class GameUtility extends ModelChoices {
 
 
     /*Metodi per calcolare i punti vittoria alla fine del gioco */
+
     public void finalExtraVictoryPoints1(Player player) {
         if (player.getPlayerCardList().countCardGreen() > 1) {
             VictoryPoint victoryPointToAdd = bonusVictoryPointFromTerritory[player.getPlayerCardList().countCardGreen() - 1];
@@ -439,7 +442,35 @@ public class GameUtility extends ModelChoices {
         VictoryPoint victoryPointToAdd = new VictoryPoint(value);
         player.addResources(victoryPointToAdd);
     }
+    public void militaryTrackWinnerPoint() {
+        List<Player> tempPlayerList = new ArrayList<>(orderMilitaryStrength());
+        boolean paritàTrovata = false;
+        int contatore=0;
+        for(int i=0;i<tempPlayerList.size();i++) {
+            if (tempPlayerList.get(0).getPlayerResources().getResourceValue(MilitaryStrength.class)
+                    == tempPlayerList.get(i).getPlayerResources().getResourceValue(MilitaryStrength.class)) {
+                contatore++;
+                tempPlayerList.get(i).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[0]);
+            }
+        }
+        if(contatore>1){
+            paritàTrovata=true;
+        }
+        int contatore2 =0;
+        for(int j=1;j<tempPlayerList.size();j++){
+            if (paritàTrovata==false
+                    && tempPlayerList.get(1).getPlayerResources().getResourceValue(MilitaryStrength.class)
+                    == tempPlayerList.get(j).getPlayerResources().getResourceValue(MilitaryStrength.class)) {
+                contatore2++;
+                tempPlayerList.get(j).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[1]);
+            }
+        }
+        if (contatore2>1){
+            paritàTrovata = true;
+        }
+    }
 
+    //metodo per attribuire i punti alla fine del gioco in base alle scomuniche possedute dai player
     public void getFinalVictoryPoint() {
         boolean thirdPeriodExcomunication = false;
         for (Player player : playerList
@@ -546,32 +577,18 @@ public class GameUtility extends ModelChoices {
             player.getPlayerActionSet().resetUsedAction();
         }
     }
-    public void militaryTrackWinnerPoint() {
-        List<Player> tempPlayerList = new ArrayList<>(orderMilitaryStrength());
-        boolean paritàTrovata = false;
-        int contatore=0;
-        for(int i=0;i<tempPlayerList.size();i++) {
-            if (tempPlayerList.get(0).getPlayerResources().getResourceValue(MilitaryStrength.class)
-                    == tempPlayerList.get(i).getPlayerResources().getResourceValue(MilitaryStrength.class)) {
-                contatore++;
-                tempPlayerList.get(i).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[0]);
-            }
+
+
+    public PersonalBonusTiles removePersonalBonusTiles(PersonalBonusTiles personalBonusTiles){
+        int i=0;
+        for (PersonalBonusTiles tiles:this.personalBonusTilesList
+                ) {
+            if(tiles.equals(personalBonusTiles))
+                return this.personalBonusTilesList.remove(i);
+
+            i++;
         }
-        if(contatore>1){
-            paritàTrovata=true;
-        }
-        int contatore2 =0;
-        for(int j=1;j<tempPlayerList.size();j++){
-            if (paritàTrovata==false
-                    && tempPlayerList.get(1).getPlayerResources().getResourceValue(MilitaryStrength.class)
-                    == tempPlayerList.get(j).getPlayerResources().getResourceValue(MilitaryStrength.class)) {
-                contatore2++;
-                tempPlayerList.get(j).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[1]);
-            }
-        }
-        if (contatore2>1){
-            paritàTrovata = true;
-        }
+        return null;
     }
 
     public StateGame getStateGame(int period, int round, int playerNumber){
@@ -579,7 +596,7 @@ public class GameUtility extends ModelChoices {
         return stateGame;
     }
 
-
+    /* metodi getter e setter */
     public void setInformationFromNetworking(InformationFromNetworking informationFromNetworking) {
         super.setInformationFromNetworking(informationFromNetworking);
     }
@@ -715,13 +732,14 @@ public class GameUtility extends ModelChoices {
         }
     }
 
-
     public void setTimerConnection(long timerConnection) {
         super.setTimerConnection(timerConnection);
     }
+
     public InformationFromNetworking getInformationFromNetworking() {
         return super.getInformationFromNetworking();
     }
+
     public long getTimerAction() {
         return timerAction;
     }
@@ -749,19 +767,6 @@ public class GameUtility extends ModelChoices {
     public void setTempLeaderCardList(List<LeaderCard> tempLeaderCardList) {
         this.tempLeaderCardList = tempLeaderCardList;
     }
-
-    public PersonalBonusTiles removePersonalBonusTiles(PersonalBonusTiles personalBonusTiles){
-        int i=0;
-        for (PersonalBonusTiles tiles:this.personalBonusTilesList
-             ) {
-            if(tiles.equals(personalBonusTiles))
-            return this.personalBonusTilesList.remove(i);
-
-            i++;
-        }
-        return null;
-    }
-
 
 
 }

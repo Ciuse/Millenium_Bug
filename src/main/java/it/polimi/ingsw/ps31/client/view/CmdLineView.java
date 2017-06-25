@@ -10,7 +10,6 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.*;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
-import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
@@ -18,10 +17,8 @@ import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.Servant;
-import it.polimi.ingsw.ps31.server.Server;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Observable;
 
 import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.*;
@@ -36,7 +33,8 @@ public class CmdLineView extends View {
     private Terminal terminal = null;
     private Screen screen = null;
     private TextGraphics textGraphics = null;
-    private KeyStroke keyStroke=null;
+    private KeyStroke keyStroke1 =null;
+    private KeyStroke keyStroke2 =null;
     private CmdInterpreterView cmdInterpreterView = new IntrVisualization();
     private TerminalPosition consolePosition = new TerminalPosition (2,31);
 
@@ -50,14 +48,31 @@ public class CmdLineView extends View {
         do{
             this.setCmdInterpreterView(new IntrChoiceActionSpace());
             printBoardActionSpace();
-            String string ="seleziona ";
+            String string ="Inserisci ";
             for (StateViewActionSpace actionSpace: getStateViewBoard().getStateViewActionSpaceList()
                  ) {
                 string=string+valueOf(actionSpace.getNumberOfActionSpace()+" ");
             }
             printLastEvent(string);
-        }while(!cmdInterpreterView.messageInterpreter(this, choiceActionSpace,keyStroke.getCharacter()));
+            input1();
+        }while(!cmdInterpreterView.messageInterpreter(this, choiceActionSpace, keyStroke1.getCharacter()));
 
+    }
+
+    @Override
+    public void AskTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace) {
+        do{
+            this.setCmdInterpreterView(new IntrChoiceTowerActionSpace());
+            printTower();
+            printLastEvent("Inserisci G/Y/B/P per selezionare la torre in base al colore");
+            input1();
+
+            this.setCmdInterpreterView(new IntrChoiceTowerActionSpace());
+            printTower();
+            printLastEvent("Inserisci 1/2/3/4 per selezionare il piano della torre (\"1\" si riferisce al piano terra)");
+            input2();
+
+        }while(!cmdInterpreterView.messageInterpreter2(this, choiceTowerCardSpace, keyStroke1.getCharacter(),keyStroke2.getCharacter()));
     }
 
     @Override
@@ -68,19 +83,19 @@ public class CmdLineView extends View {
             StateViewPlayer player = super.getMyStateViewPlayer();
             int numberOfChoice = player.getStringPlayerAction().size();
             printLastEvent("Inserisci da 1 a" + numberOfChoice);
-            input();
-        }while(!cmdInterpreterView.messageInterpreter(this, choiceActionToDo, keyStroke.getCharacter()));
+            input1();
+        }while(!cmdInterpreterView.messageInterpreter(this, choiceActionToDo, keyStroke1.getCharacter()));
     }
 
     @Override
     public void askStartLeaderToKeep(ChoiceStartLeaderCard choiceStartLeaderCard) {
         do {
             this.setCmdInterpreterView(new IntrChoiceStartLeader());
-            for (int i = 0; i < choiceStartLeaderCard.getLeaderName().size(); i++) {
-                printLastEvent("inserisci " + i + " per: " + choiceStartLeaderCard.getLeaderId().get(i).toString() + " " + choiceStartLeaderCard.getLeaderName().get(i));
+            for (int i = 0; i < choiceStartLeaderCard.getLeaderNameList().size(); i++) {
+                printLastEvent("inserisci " + i + " per: " + choiceStartLeaderCard.getLeaderIdList().get(i).toString() + " " + choiceStartLeaderCard.getLeaderNameList().get(i));
             }
-            input();
-        }while (!cmdInterpreterView.messageInterpreter(this, choiceStartLeaderCard,keyStroke.getCharacter()));
+            input1();
+        }while (!cmdInterpreterView.messageInterpreter(this, choiceStartLeaderCard, keyStroke1.getCharacter()));
     }
 
     @Override
@@ -90,8 +105,8 @@ public class CmdLineView extends View {
             printDevelopmentCard(choiceActiveEffect.getCardIdEffect());
             printLastEvent("inserisci \"Y\" per attivare l'effetto permanente della carta");
             printLastEvent("inserisci \"N\" per non attivare l'effetto permanente della carta");
-            input();
-        }while(!cmdInterpreterView.messageInterpreter(this,choiceActiveEffect,keyStroke.getCharacter()));
+            input1();
+        }while(!cmdInterpreterView.messageInterpreter(this,choiceActiveEffect, keyStroke1.getCharacter()));
     }
 
     @Override
@@ -106,8 +121,8 @@ public class CmdLineView extends View {
                 i++;
             }
             printLastEvent(string);
-            input();
-        }while(!cmdInterpreterView.messageInterpreter(this,choiceColor,keyStroke.getCharacter()));
+            input1();
+        }while(!cmdInterpreterView.messageInterpreter(this,choiceColor, keyStroke1.getCharacter()));
     }
 
     @Override
@@ -123,9 +138,9 @@ public class CmdLineView extends View {
                     j++;
                 }
             }
-            printLastEvent("Seleziona da 1 a " + valueOf(j) + " per selezionare uno dei family member rimasti");
-            input();
-        } while (!cmdInterpreterView.messageInterpreter(this, choiceFamilyMember, keyStroke.getCharacter()));
+            printLastEvent("Inserisci da 1 a " + valueOf(j) + " per selezionare uno dei family member rimasti");
+            input1();
+        } while (!cmdInterpreterView.messageInterpreter(this, choiceFamilyMember, keyStroke1.getCharacter()));
     }
 
     @Override
@@ -135,8 +150,8 @@ public class CmdLineView extends View {
             printPlayerInAction();
             printLastEvent("inserisci \"Y\" per dare il supporto alla chiesa ed evitare la scomunica");
             printLastEvent("inserisci \"N\" per non dare il support alla chiesa e prendere la scomunica");
-            input();
-        }while(!cmdInterpreterView.messageInterpreter(this,choiceIfSupportTheChurch,keyStroke.getCharacter()));
+            input1();
+        }while(!cmdInterpreterView.messageInterpreter(this,choiceIfSupportTheChurch, keyStroke1.getCharacter()));
     }
 
     @Override
@@ -146,8 +161,8 @@ public class CmdLineView extends View {
             printDevelopmentCard(choiceListToPay.getCardId());
             printLastEvent("inserisci \"1\" per scegliere la prima lista da pagare/guadagnare");
             printLastEvent("inserisci \"2\" per scegleire la seconda lista da pagare/guadagnare");
-            input();
-        }while(!cmdInterpreterView.messageInterpreter(this,choiceListToPay,keyStroke.getCharacter()));
+            input1();
+        }while(!cmdInterpreterView.messageInterpreter(this,choiceListToPay, keyStroke1.getCharacter()));
     }
 
     @Override
@@ -161,9 +176,9 @@ public class CmdLineView extends View {
             this.setCmdInterpreterView(new IntrChoiceLeaderToActive());
             //print leader card
             StateViewPlayer player = super.getMyStateViewPlayer();
-            printLastEvent("Seleziona da 1 a " + valueOf(player.getStateViewLeaderCardList().size()) + " per selezionare il leader da attivare");
-            input();
-        } while (!cmdInterpreterView.messageInterpreter(this, choiceLeaderToActive, keyStroke.getCharacter()));
+            printLastEvent("Inserisci da 1 a " + valueOf(player.getStateViewLeaderCardList().size()) + " per selezionare il leader da attivare");
+            input1();
+        } while (!cmdInterpreterView.messageInterpreter(this, choiceLeaderToActive, keyStroke1.getCharacter()));
     }
 
     @Override
@@ -172,7 +187,7 @@ public class CmdLineView extends View {
             this.setCmdInterpreterView(new IntrLeaderToDiscard());
             //print leader card
             StateViewPlayer player = super.getMyStateViewPlayer();
-            String string="Seleziona: ";
+            String string="Inserisci: ";
             int j=1;
             for (StateViewLeaderCard leaderCard:player.getStateViewLeaderCardList()
                  ) {
@@ -182,8 +197,8 @@ public class CmdLineView extends View {
                 }
             }
             printLastEvent(string+ "per selezionare il leader da scartare");
-            input();
-        } while (!cmdInterpreterView.messageInterpreter(this, choiceLeaderToDiscard, keyStroke.getCharacter()));
+            input1();
+        } while (!cmdInterpreterView.messageInterpreter(this, choiceLeaderToDiscard, keyStroke1.getCharacter()));
     }
 
     @Override
@@ -194,8 +209,8 @@ public class CmdLineView extends View {
             StateViewPlayer player = super.getMyStateViewPlayer();
             int numberOfChoice = player.getPlayerResources().getSpecificResource(Servant.class).getValue();
             printLastEvent("Inserisci da 0 a" + numberOfChoice +" per i servitori da pagare");
-            input();
-        }while(!cmdInterpreterView.messageInterpreter(this, choiceNumberOfServantsToPay, keyStroke.getCharacter()));
+            input1();
+        }while(!cmdInterpreterView.messageInterpreter(this, choiceNumberOfServantsToPay, keyStroke1.getCharacter()));
 
     }
 
@@ -225,23 +240,31 @@ public class CmdLineView extends View {
 
     }
 
-    public void input(){
+    public void input1(){
         try {
-            keyStroke=screen.readInput();
-            cmdInterpreterView.notGameMessageInterpreter(this,keyStroke.getCharacter());
-
+            keyStroke1 =screen.readInput();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        printLastEvent( "Input: "+keyStroke.toString());
+        printLastEvent( "Input: "+ keyStroke1.toString());
     }
+    public void input2(){
+        try {
+            keyStroke2 =screen.readInput();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        printLastEvent( "Input: "+ keyStroke2.toString());
+    }
+
+
 
     @Override
     public void askComand() throws IOException {
-        keyStroke = screen.pollInput();
+        keyStroke1 = screen.pollInput();
         while(cmdInterpreterView.toString().equals("IntrVisualization")) {
 
-             if(keyStroke !=null && (keyStroke.getKeyType() == KeyType.Escape || keyStroke.getKeyType() == KeyType.EOF)){
+             if(keyStroke1 !=null && (keyStroke1.getKeyType() == KeyType.Escape || keyStroke1.getKeyType() == KeyType.EOF)){
                  break;
             }
 //            try {
@@ -249,16 +272,16 @@ public class CmdLineView extends View {
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
-            if(keyStroke!=null && keyStroke.getKeyType() != KeyType.Escape && keyStroke.getKeyType() != KeyType.EOF) {
+            if(keyStroke1 !=null && keyStroke1.getKeyType() != KeyType.Escape && keyStroke1.getKeyType() != KeyType.EOF) {
                 textGraphics.drawLine(0, 4, terminal.getTerminalSize().getColumns(), 4, ' ');
-                textGraphics.putString(0 + "Last Keystroke: ".length(), 4, keyStroke.toString());
+                textGraphics.putString(0 + "Last Keystroke: ".length(), 4, keyStroke1.toString());
                 terminal.flush();
-                cmdInterpreterView.notGameMessageInterpreter(this, keyStroke.getCharacter());
+                cmdInterpreterView.notGameMessageInterpreter(this, keyStroke1.getCharacter());
                 screen.refresh();
             }
-            keyStroke = screen.pollInput();
+            keyStroke1 = screen.pollInput();
         }
-        if(keyStroke != null){
+        if(keyStroke1 != null){
             screen.close();
         }
 

@@ -41,37 +41,39 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
 
     /* Class Methods */
     @Override
-    public void activate()
-    {
-        super.notifyViews(new MVAskChoice(player.getPlayerId(),"Quale family member vuoi usare?",new ChoiceFamilyMember()));
-        this.familyMember=super.waitFamilyMemberChosen();
+    public void activate() {
+        boolean askAgain = true;
 
-        super.notifyViews(new MVAskChoice(player.getPlayerId(),"In quale tower action space vuoi mettere il tuo family member?",new ChoiceTowerActionSpace()));
-        this.towerActionSpace=super.waitTowerActionSpaceChosen();
+        super.notifyViews(new MVAskChoice(player.getPlayerId(), "Quale family member vuoi usare?", new ChoiceFamilyMember()));
+            this.familyMember = super.waitFamilyMemberChosen();
 
-        //chiedo se vuole pagare dei servitori
-        player.getPlayerActionSet().payServants(super.familyMember);
+            //chiedo se vuole pagare dei servitori
+            player.getPlayerActionSet().payServants(super.familyMember);
 
-        //Controllo che i parametri siano settati
-        if ( this.familyMember == null || this.towerActionSpace == null || !this.towerActionSpace.isTowerSpace())
-        {
-            //TODO: gestire (eccezione?)
-        } else
-        {
-            //Eseguo i controlli
-           if ( actionControlSet.towerPlacementControl(familyMember, this.towerActionSpace.getTowerCardSpace()) )
-           {
-               this.towerActionSpace.addFamilyMember(familyMember);
-               player.setLastUsedFamilyMember(familyMember);
-               if(immediateEffectsAreActivable)
-                   towerActionSpace.activeEffectList(player);
-           }else  super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTowerPlacementControl().getControlStringError()));
-           setUsed(true);
-           resetActionSpace();
-           resetFamilyMember();
-            super.notifyViews(new MVUpdateState("Aggiornato stato family member",familyMember.getStateFamilyMember()));
-            super.notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella tower",towerActionSpace.getStateActionSpace()));
-        }
+            do {
+                super.notifyViews(new MVAskChoice(player.getPlayerId(), "In quale tower action space vuoi mettere il tuo family member?", new ChoiceTowerActionSpace()));
+                this.towerActionSpace = super.waitTowerActionSpaceChosen();
+
+                //Eseguo i controlli
+                if (actionControlSet.towerPlacementControl(familyMember, this.towerActionSpace.getTowerCardSpace())) {
+                    this.towerActionSpace.addFamilyMember(familyMember);
+                    player.setLastUsedFamilyMember(familyMember);
+                    askAgain=false;
+                    //controllo i parametri extra che settano le scomuniche
+                    if (immediateEffectsAreActivable)
+                        towerActionSpace.activeEffectList(player);
+                } else {
+                    super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTowerPlacementControl().getControlStringError()));
+                    askAgain=true;
+                }
+            }while(askAgain);
+
+
+        setUsed(true);
+        resetActionSpace();
+        resetFamilyMember();
+        super.notifyViews(new MVUpdateState("Aggiornato stato family member", familyMember.getStateFamilyMember()));
+        super.notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella tower", towerActionSpace.getStateActionSpace()));
     }
 
     @Override

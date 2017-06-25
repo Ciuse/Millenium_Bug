@@ -23,7 +23,9 @@ import static java.lang.Thread.sleep;
  * Created by giulia on 15/06/2017.
  */
 public class ModelChoices extends Model {
+    //classe che gestisce tutti i wait del model per attendere le risposte da parte degli utenti / o per attendere che tutti siano pronti per giocare
     private LastModelStateForControl lastModelStateForControl=new LastModelStateForControl();
+    private int leaderChoosenCounter=0;
     private int listToPay =-1;
     private TowerCardSpace towerCardSpaceChosen=null;
     private DevelopmentCard developmentCardChosen = null;
@@ -44,6 +46,10 @@ public class ModelChoices extends Model {
     private ActionSpace actionSpaceChosen;
     private Action actionToDo=null;
 
+    //I metodi di wait si mettono in attesa del controller, il quale setta la risposta
+    // proveniente dalla view e in questo modo il model continua l' esecuzione
+    // delle altre funzioni ritornando l' oggetto/risposta dell utente
+
     public synchronized int waitIntChosen(){
         setListToPay(-1);
         setStateChoice();
@@ -58,12 +64,11 @@ public class ModelChoices extends Model {
         return listToPay;
     }
 
-    public synchronized void waitAllInitialLeaderCardChosen() {
+    public synchronized void waitAllInitialLeaderCardChosen(int playerMaxNumber) {
 
-        long startTime = System.currentTimeMillis();
-        while (System.currentTimeMillis() - startTime < 20000 || this.stateModelChoices.equals("StateChoice")) {  //aspetto 20 secondi per far scegliere a tutti il leader
+        while (leaderChoosenCounter<playerMaxNumber || this.stateModelChoices.equals("StateChoice")) {  //aspetto 20 secondi per far scegliere a tutti il leader
             try {
-                sleep(1);
+                sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -98,6 +103,7 @@ public class ModelChoices extends Model {
         }
         return towerCardSpaceChosen;
     }
+
     public synchronized TowerActionSpace waitTowerActionSpaceChosen(){
         setTowerActionSpaceChosen(null);
         setStateChoice();
@@ -149,6 +155,7 @@ public class ModelChoices extends Model {
             }
         }return activeEffect;
     }
+
     public synchronized ResourceList waitResourceChosen(){
         setResourceChosen(null);
         setStateChoice();
@@ -208,6 +215,7 @@ public class ModelChoices extends Model {
             }
         }return playerColorChosen;
     }
+
     public synchronized FamilyMember waitFamilyMemberChosen(){
         setFamilyMemberChosen(null);
         setStateChoice();
@@ -325,7 +333,6 @@ public class ModelChoices extends Model {
         this.timerConnection = timerConnection;
     }
 
-
     public void setPersonalBonusTilesChosen(PersonalBonusTiles personalBonusTilesChosen) {
         this.personalBonusTilesChosen = personalBonusTilesChosen;
     }
@@ -350,6 +357,16 @@ public class ModelChoices extends Model {
         this.tempModelStateForLeaderChoice = tempModelStateForLeaderChoice;
     }
 
+    public void setResourceChosen(ResourceList resourceChosen) {
+        this.resourceChosen = resourceChosen;
+    }
+
+    public void incrementLeaderChoosenCounter() {
+        this.leaderChoosenCounter++;
+    }
+
+/* stati del model choices per le attese delle scelte*/
+
     public void setStateChoice(){
         this.stateModelChoices="StateChoice";
     }
@@ -360,7 +377,6 @@ public class ModelChoices extends Model {
 
     public void setStateEndTurn(){
         this.stateModelChoices="StateEndTurn";
-
     }
 
     public void setStateActionGame(){
@@ -375,8 +391,5 @@ public class ModelChoices extends Model {
         return stateModelChoices;
     }
 
-    public void setResourceChosen(ResourceList resourceChosen) {
-        this.resourceChosen = resourceChosen;
-    }
 
 }

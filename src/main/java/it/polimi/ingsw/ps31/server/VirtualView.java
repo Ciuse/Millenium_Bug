@@ -4,6 +4,7 @@ import it.polimi.ingsw.ps31.messages.messageMV.MVMessageVisitor;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
+import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
 
 import java.util.Observable;
@@ -49,6 +50,12 @@ public class VirtualView extends Observable implements Observer {
         networkInterface.sendToClient(new MVStringToPrint(lastMessageSent.getNotifySinglePlayer(),false,string),lastMessageSent.getNotifySinglePlayer());
         networkInterface.sendToClient(lastMessageSent, lastMessageSent.getNotifySinglePlayer());
         }
+    }
+
+    public void reSendLastMessageToSpecificView(String string, PlayerId viewId){
+        networkInterface.sendToClient(new MVStringToPrint(viewId,false,string),viewId);
+        networkInterface.sendToClient(lastMessageSent, viewId);
+
     }
 
     public void setLastMessageSent(MVVisitable lastMessageSent) {

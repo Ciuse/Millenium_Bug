@@ -38,27 +38,36 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
     /* Class Methods */
     @Override
     public void activate() {
-        super.notifyViews(new MVAskChoice(player.getPlayerId(),"Quale family member vuoi usare?",new ChoiceFamilyMember()));
-        super.familyMember=super.waitFamilyMemberChosen();
+        boolean askAgain = true;
 
-        super.notifyViews(new MVAskChoice(player.getPlayerId(),"In quale action space della board vuoi mettere il tuo family member?",new ChoiceActionSpace()));
-        this.actionSpace=super.waitActionSpaceChosen();
-        //Controllo che i parametri siano settati
-        if (super.familyMember == null || this.actionSpace == null) {
-            //TODO: gestire (eccezione?)
-        } else if (super.defaultDenyActionSpaces.contains(actionSpace.getActionSpaceId())) {
-            super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, "Non puoi piazzare il family member perchè hai la scomunica"));
-            return;
-        }  else {
-            player.getPlayerActionSet().payServants(super.familyMember);
-            if (actionControlSet.diceValueVsDiceColorControl(actionSpace.getDiceCost(), familyMember.getDiceColor())) {
-                this.actionSpace.addFamilyMember(familyMember);
-                super.player.setLastUsedFamilyMember(familyMember);
-            } else
-                super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getDiceValueVsDiceColorControl().getControlStringError()));
-            super.notifyViews(new MVUpdateState("Aggiornato stato family member", familyMember.getStateFamilyMember()));
-            super.notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella board", actionSpace.getStateActionSpace()));
-        }
+        super.notifyViews(new MVAskChoice(player.getPlayerId(), "Quale family member vuoi usare?", new ChoiceFamilyMember()));
+        super.familyMember = super.waitFamilyMemberChosen();
+
+        player.getPlayerActionSet().payServants(super.familyMember); //richiamo l azione per pagare i family member
+
+        do {
+            super.notifyViews(new MVAskChoice(player.getPlayerId(), "In quale action space della board vuoi mettere il tuo family member?", new ChoiceActionSpace()));
+            this.actionSpace = super.waitActionSpaceChosen();
+
+            //controllo i parametri extra dell azione settati dalle scomuniche
+            if (super.defaultDenyActionSpaces.contains(actionSpace.getActionSpaceId())) {
+                super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, "Non puoi piazzare il family member qui perchè hai la scomunica"));
+            } else {
+
+                //Eseguo i controlli
+                if (actionControlSet.diceValueVsDiceColorControl(actionSpace.getDiceCost(), familyMember.getDiceColor())) {
+                    this.actionSpace.addFamilyMember(familyMember);
+                    super.player.setLastUsedFamilyMember(familyMember);
+                    askAgain = false;
+                } else {
+                    super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getDiceValueVsDiceColorControl().getControlStringError()));
+                    askAgain = true;
+                }
+            }
+        } while (askAgain);
+
+        super.notifyViews(new MVUpdateState("Aggiornato stato family member", familyMember.getStateFamilyMember()));
+        super.notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella board", actionSpace.getStateActionSpace()));
 
         super.setUsed(true);
         resetActionSpace();

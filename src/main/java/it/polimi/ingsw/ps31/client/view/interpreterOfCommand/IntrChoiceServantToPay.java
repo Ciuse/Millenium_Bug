@@ -16,6 +16,11 @@ public class IntrChoiceServantToPay implements CmdInterpreterView {
     }
 
     @Override
+    public boolean messageInterpreter2(CmdLineView terminalView, ChoiceType choiceType, Character in1, Character in2) {
+        return false;
+    }
+
+    @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
             for (int i = 0; i < terminalView.getMyStateViewPlayer().getPlayerResources().getSpecificResource(Servant.class).getValue(); i++) {

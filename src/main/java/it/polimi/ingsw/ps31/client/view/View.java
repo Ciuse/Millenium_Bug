@@ -81,6 +81,8 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void askActionSpace(ChoiceActionSpace choiceActionSpace);
 
+    public abstract void AskTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace);
+
     public abstract void askActionToDo(ChoiceActionToDo choiceActionToDo);
 
     public abstract void askIfActiveEffect(ChoiceActiveEffect choiceActiveEffect);

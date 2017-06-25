@@ -72,17 +72,13 @@ public class TowerPlacementControl extends Control {
         {
             ActionControlSet controlSet = player.getPlayerActionSet().getActionControlSet();
 
-
-            //Controllo che il familiare non sia già piazzato
-            conditions.add(controlSet.placedFamilyMemberControl(familyMember));
-
             //Controllo che il TowerCardSpace contenga una carta
             conditions.add(towerCardSpace.getCard() != null);
 
             //Controllo che il familiare non sarebbe il secondo familiare colorato nella torre
             conditions.add(controlSet.selfOccupiedTowerControl(familyMember, towerCardSpace.getTower()));
 
-            //Controllo che il giocatore abbia le tre monete (se necessario)
+            //Controllo che il giocatore abbia le tre monete (se necessario)            //TODO METTERLO DI lA COME ULTIMO COSI nel CASO SOTTRAGGO LE MONETE PRIMA DI FARE IL RESTO
             conditions.add(!towerCardSpace.getTower().isOccupied() || towerCardSpace.getTower().isOccupied() &&
                             player.getPlayerResources().getResourceValue(Coin.class) >= OCCUPIED_TOWER_COST);
 
