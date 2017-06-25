@@ -18,7 +18,6 @@ public class Tower {
 
     private final CardColor color;
     private boolean isOccupied = false;
-    private final List<TowerActionSpace> towerActionSpaceList;
     private final List<TowerCardSpace> towerCardSpaceList;
     private DevelopmentCardDeck deck;
 
@@ -26,12 +25,11 @@ public class Tower {
     public Tower(CardColor color, List<EffectList> effectList)
     {
         this.towerCardSpaceList = new ArrayList<>();
-        this.towerActionSpaceList = new ArrayList<>();
         for (int i = 0; i<TOWERDIMENSION; i++)
         {
             int[] diceCostList= {1,3,5,7};
-            towerActionSpaceList.add(new TowerActionSpace(diceCostList[i],1, effectList.get(i), towerCardSpaceList.get(i)));
-            towerCardSpaceList.add(new TowerCardSpace(color,towerActionSpaceList.get(i) , this, i));
+            ActionSpace actionSpace= new ActionSpace(diceCostList[i],1, effectList.get(i));
+            towerCardSpaceList.add(new TowerCardSpace(color, actionSpace, this, i));
         }
         this.color = color;
     }
@@ -54,10 +52,6 @@ public class Tower {
 
     public List<TowerCardSpace> getTowerCardSpaceList() {
         return new ArrayList<>(towerCardSpaceList);
-    }
-
-    public List<TowerActionSpace> getTowerActionSpaceList() {
-        return new ArrayList<>(towerActionSpaceList);
     }
 
     public void setDeck(List<DevelopmentCardDeck> deckList, int period) {

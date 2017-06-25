@@ -20,18 +20,13 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
     }
 
     @Override
-    public void visit(ChoiceActiveEffect choiceActiveEffect) {
-        view.setCmdInterpreterView(new IntrChoiceActiveEffect());
-        view.askIfActiveEffect(choiceActiveEffect);
+    public void visit(ChoiceIfActiveEffect choiceIfActiveEffect) {
+        view.setCmdInterpreterView(new IntrChoiceIfActiveEffect());
+        view.askIfActiveEffect(choiceIfActiveEffect);
     }
 
     @Override
     public void visit(ChoiceTowerCardSpace choiceTowerCardSpace) {
-
-    }
-
-    @Override
-    public void visit(ChoiceActiveExcommunication choiceActiveExcommunication) {
 
     }
 
@@ -61,7 +56,8 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoicePersonalBonusTiles choicePersonalBonusTiles) {
-
+        view.setCmdInterpreterView(new IntrChoicePersonalTiles());
+        view.askStartPersonalTilesToKeep(choicePersonalBonusTiles);
     }
 
     @Override
@@ -83,7 +79,8 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoicePrivilegeResource choicePrivilegeResource) {
-
+        view.setCmdInterpreterView(new IntrChoiceCouncilPrivilege());
+        view.askPrivilegeResourceChange(choicePrivilegeResource);
     }
 
     @Override

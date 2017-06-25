@@ -1,16 +1,13 @@
 package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
 
 import it.polimi.ingsw.ps31.client.view.CmdLineView;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
-import it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToDiscardChoice;
+import it.polimi.ingsw.ps31.messages.messageVC.VCActiveEffectChoice;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
-import static java.lang.String.valueOf;
-
 /**
- * Created by Giuseppe on 24/06/2017.
+ * Created by Giuseppe on 15/06/2017.
  */
-public class IntrLeaderToDiscard implements CmdInterpreterView {
+public class IntrChoiceIfActiveEffect implements CmdInterpreterView {
     @Override
     public void notGameMessageInterpreter(CmdLineView terminalView, Character in) {
 
@@ -19,18 +16,19 @@ public class IntrLeaderToDiscard implements CmdInterpreterView {
     @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
-            int i = 1;
-            for (StateViewLeaderCard leaderCard : terminalView.getMyStateViewPlayer().getStateViewLeaderCardList()
-                    ) {
-                if (in == i && !leaderCard.isPlayed()) {
-                    terminalView.printLastEvent("Comando OK");
-                    terminalView.notifyController(new VCLeaderToDiscardChoice(terminalView.getViewId(), in));
-                    return true;
-                }
-                i++;
+            if (in == 'Y' || in == 'y') {
+                terminalView.printLastEvent("Comando OK");
+                terminalView.notifyController(new VCActiveEffectChoice(terminalView.getViewId(),true));
+                return true;
+            }
+            if (in == 'N' || in == 'n') {
+                terminalView.printLastEvent("Comando OK");
+                terminalView.notifyController(new VCActiveEffectChoice(terminalView.getViewId(),false));
+                return true;
             }
             terminalView.printLastEvent("Comando Non Riconusciuto");
             return false;
+
         } else {
             terminalView.printLastEvent("Comando Non Rilevato");
             return false;

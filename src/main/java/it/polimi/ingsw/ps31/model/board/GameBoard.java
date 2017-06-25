@@ -81,9 +81,9 @@ public class GameBoard{
         int i=1;
         for (Tower tower: towers
              ) {
-            for (TowerActionSpace towerActionSpace: tower.getTowerActionSpaceList()
+            for (TowerCardSpace towerCardSpace: tower.getTowerCardSpaceList()
                  ) {
-                towerActionSpace.setActionSpaceId(i);
+                towerCardSpace.getActionSpace().setActionSpaceId(i);
                 i++;
             }
         }

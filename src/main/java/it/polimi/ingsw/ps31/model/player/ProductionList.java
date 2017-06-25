@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.model.player;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceActiveEffect;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceIfActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.ProductionEffect;
 
 import java.util.List;
@@ -43,7 +43,7 @@ public class ProductionList extends  HarvestProductionList{
                 }
                 if(currentEffect.getChangeResourceEffect()!=null){
                     String string =" Vuoi attivare questo effetto?";
-                    super.notifyViews(new MVAskChoice(super.getPlayer().getPlayerId(),string,new ChoiceActiveEffect(currentEffect.getChangeResourceEffect().getCardId())));
+                    super.notifyViews(new MVAskChoice(super.getPlayer().getPlayerId(),string,new ChoiceIfActiveEffect(currentEffect.getChangeResourceEffect().getCardId())));
                     boolean choice = super.waitActiveEffect();
                     if(choice==true) {
                         currentEffect.getChangeResourceEffect().activate(super.getPlayer());

@@ -62,12 +62,12 @@ public class CmdLineView extends View {
     @Override
     public void AskTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace) {
         do{
-            this.setCmdInterpreterView(new IntrChoiceTowerActionSpace());
+            this.setCmdInterpreterView(new IntrChoiceTowerCardSpace());
             printTower();
             printLastEvent("Inserisci G/Y/B/P per selezionare la torre in base al colore");
             input1();
 
-            this.setCmdInterpreterView(new IntrChoiceTowerActionSpace());
+            this.setCmdInterpreterView(new IntrChoiceTowerCardSpace());
             printTower();
             printLastEvent("Inserisci 1/2/3/4 per selezionare il piano della torre (\"1\" si riferisce al piano terra)");
             input2();
@@ -99,14 +99,27 @@ public class CmdLineView extends View {
     }
 
     @Override
-    public void askIfActiveEffect(ChoiceActiveEffect choiceActiveEffect) {
+    public void askStartPersonalTilesToKeep(ChoicePersonalBonusTiles choicePersonalBonusTiles) {
         do {
-            this.setCmdInterpreterView(new IntrChoiceActiveEffect());
-            printDevelopmentCard(choiceActiveEffect.getCardIdEffect());
+            this.setCmdInterpreterView(new IntrChoicePersonalTiles());
+            //print personalTiles
+            int i=choicePersonalBonusTiles.getStatePersonalBonusTilesList().size();
+            printLastEvent("inserisci da 1 a " + valueOf(i) + " per selezionare il personal bonus tiles da tenere" );
+            input1();
+
+        }while (!cmdInterpreterView.messageInterpreter(this, choicePersonalBonusTiles, keyStroke1.getCharacter()));
+    }
+
+
+    @Override
+    public void askIfActiveEffect(ChoiceIfActiveEffect choiceIfActiveEffect) {
+        do {
+            this.setCmdInterpreterView(new IntrChoiceIfActiveEffect());
+            printDevelopmentCard(choiceIfActiveEffect.getCardIdEffect());
             printLastEvent("inserisci \"Y\" per attivare l'effetto permanente della carta");
             printLastEvent("inserisci \"N\" per non attivare l'effetto permanente della carta");
             input1();
-        }while(!cmdInterpreterView.messageInterpreter(this,choiceActiveEffect, keyStroke1.getCharacter()));
+        }while(!cmdInterpreterView.messageInterpreter(this, choiceIfActiveEffect, keyStroke1.getCharacter()));
     }
 
     @Override
@@ -215,12 +228,17 @@ public class CmdLineView extends View {
     }
 
     @Override
-    public void askTilesToKeep(ChoicePersonalBonusTiles choicePersonalBonusTiles) {
-
-    }
-
-    @Override
     public void askPrivilegeResourceChange(ChoicePrivilegeResource choicePrivilegeResource) {
+        do {
+            this.setCmdInterpreterView(new IntrChoiceCouncilPrivilege());
+            String string="Inserisci: ";
+            int i=0;
+            for (String string2: choicePrivilegeResource.getResourceListToChoice()
+                 ) {
+                string=string+valueOf(i)+" per "+string2;
+            }
+            input1();
+        }while(!cmdInterpreterView.messageInterpreter(this, choicePrivilegeResource, keyStroke1.getCharacter()));
 
     }
 

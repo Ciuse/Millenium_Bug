@@ -62,12 +62,12 @@ public class GameLogic {
             gameUtility.createPlayer(gameUtility.getInformationFromNetworking().getPlayerNameList().get(i));
         }
 
+        gameUtility.createViews();
 
         gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
 
         gameUtility.phaseChoicePersonalBonusTiles(); //chiedo ai player di scegliere (in base all ordine di connessione) un personal bonus tiles e li aggiorno
 
-        gameUtility.createViews();
 
         //aggiorno lo stato iniziali degli stati della view
 

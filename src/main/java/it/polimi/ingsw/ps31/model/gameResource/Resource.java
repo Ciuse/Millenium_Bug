@@ -40,14 +40,25 @@ public abstract class Resource {
     public void subValue(int value)
     {
         if(value >= 0 )
-            if ( this.value >= value)
-                this.value = this.value-value;
-            else
+            if ( this.value >= value) {
+                this.value = this.value - value;
+
+            } else
             {
                 //TODO: gestire (eccezione?)
             }
         else
             this.addValue(Math.abs(value));
+    }
+
+    public void discountValue(int value) {
+        if (value >= 0)
+            if (this.value >= value) {
+                this.value = this.value - value;
+            }
+            else {
+                this.value = 0;
+            }
     }
 
     public void multvalue(int factor){

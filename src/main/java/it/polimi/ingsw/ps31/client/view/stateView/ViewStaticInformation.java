@@ -1,10 +1,15 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
+import com.sun.xml.internal.messaging.saaj.util.FinalArrayList;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by giulia on 08/06/2017.
@@ -36,6 +41,8 @@ public class ViewStaticInformation {
             new StateViewEffect(null,new CouncilPrivilege(2,true).toString(),+10)};
     private static int[] diceActionSpaceValue={7,5,3,1,7,5,3,1,7,5,3,1,7,5,3,1,1,1,1,1,1,1,1,1,1};
     private static String[] stringPointResourceType = {"MilitaryStrength","VictoryPoint","FaithPoint"};
+    private static List<ResourceList> resourceListFromCouncilPrivilege = Arrays.asList(new ResourceList(new Wood(1),new Stone(1)), new ResourceList(new Servant(2)),
+            new ResourceList(new Coin(2)), new ResourceList(new MilitaryStrength(2)),new ResourceList(new FaithPoint(1)));
 
 
     public static int getFamily_Member_Number() {
@@ -100,5 +107,9 @@ public class ViewStaticInformation {
 
     public static String[] getStringPointResourceType() {
         return stringPointResourceType;
+    }
+
+    public static List<ResourceList> getResourceListFromCouncilPrivilege() {
+        return resourceListFromCouncilPrivilege;
     }
 }

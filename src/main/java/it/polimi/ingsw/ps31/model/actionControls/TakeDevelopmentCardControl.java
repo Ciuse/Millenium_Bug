@@ -6,6 +6,7 @@ import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.PersonalBoardCardCell;
 import it.polimi.ingsw.ps31.model.player.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class TakeDevelopmentCardControl extends Control {
     private DevelopmentCard developmentCard = null;
-    private List<CardColor> colorListRequirementToIgnore;
+    private List<CardColor> colorListRequirementToIgnore = new ArrayList<>();
 
     /* Constructor */
     public TakeDevelopmentCardControl(Player player) {
@@ -52,18 +53,6 @@ public class TakeDevelopmentCardControl extends Control {
             return false;
         }
 
-        //Controllo che il player possa pagare il costo della carda
-        boolean costAffordable = false;
-        for (ResourceList currentCost :  developmentCard.getCostList())
-            if( currentCost.lessOrEquals(player.getPlayerResources().getPlayerResourceList()) )
-                costAffordable = true;
-
-        if (! costAffordable)
-        {
-            //todo eccezione?
-            return false;
-        }
-
         //Controllo che il player abbia spazio nella personal board per la carta in questione
         if(player.getPlayerActionSet().getActionControlSet().getPlayerCardNumberControl().execute()){
             //Controllo requisiti
@@ -74,17 +63,17 @@ public class TakeDevelopmentCardControl extends Control {
                     ignoreRequirement=true;
             }
 
-            if(ignoreRequirement==false) {
+            if(!ignoreRequirement) {
                 PersonalBoardCardCell personalBoardCardCell = super.player.getPersonalBoard().getSpecificPersonalBoardCardList(developmentCard.getCardColor()).getFirstEmptyCardCell();
                 if(personalBoardCardCell.getExtraPointRequired()!=null
                         &&!super.player.getPlayerResources().greaterThan(personalBoardCardCell.getExtraPointRequired())){
+                    resetDevelopmentCard();
                     return false;
                 }
             }
             player.addDevelopmentCard(developmentCard);
         }
-
-
+        resetDevelopmentCard();
         return true;
     }
 

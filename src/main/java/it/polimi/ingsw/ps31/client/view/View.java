@@ -85,9 +85,11 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void askActionToDo(ChoiceActionToDo choiceActionToDo);
 
-    public abstract void askIfActiveEffect(ChoiceActiveEffect choiceActiveEffect);
+    public abstract void askIfActiveEffect(ChoiceIfActiveEffect choiceIfActiveEffect);
 
     public abstract void askStartLeaderToKeep(ChoiceStartLeaderCard choiceStartLeaderCard);
+
+    public abstract void askStartPersonalTilesToKeep(ChoicePersonalBonusTiles choicePersonalBonusTiles);
 
     public abstract void askPlayerColor(ChoiceColor choiceColor);
 
@@ -104,8 +106,6 @@ public abstract class View extends Observable implements Observer {
     public abstract void askLeaderToDiscard(ChoiceLeaderToDiscard choiceLeaderToDiscard);
 
     public abstract void askServantToPay(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay);
-
-    public abstract void askTilesToKeep(ChoicePersonalBonusTiles choicePersonalBonusTiles);
 
     public abstract void askPrivilegeResourceChange(ChoicePrivilegeResource choicePrivilegeResource);
 

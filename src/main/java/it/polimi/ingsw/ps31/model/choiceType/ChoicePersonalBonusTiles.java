@@ -14,6 +14,10 @@ public class ChoicePersonalBonusTiles extends ChoiceType {
         this.statePersonalBonusTilesList = statePersonalBonusTilesList;
     }
 
+    public List<StatePersonalBonusTiles> getStatePersonalBonusTilesList() {
+        return statePersonalBonusTilesList;
+    }
+
     @Override
     public void acceptChoice(ChoiceVisitor choiceVisitor) {
         choiceVisitor.visit(this);

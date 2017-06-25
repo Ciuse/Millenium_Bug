@@ -89,8 +89,12 @@ public class ActionChooseDifferentPrivilege extends Action {
                     }
                     //fare richiesta alla view per la scelta del privilegio
                     String string = player.getPlayerId() + ":Quale risorsa del privilegio vuoi ottenere?";
+
+                    //setto la lista di risorse rimaste al player tra cui scegliere( cosi la view non può mentirmi visto che poi posso usare questa variabile per controllare la risposta ceh ricevo dalla view
+                    getLastModelStateForControl().setResourceListToControl(tempResourceChoices);
+
                     notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoicePrivilegeResource(resourceStringChoices)));
-                    choice = super.waitResourceChosen();
+                    choice = super.waitResourceChosenFromPrivilege();
 
                 } while (!tempResourceChoices.contains(choice));
 

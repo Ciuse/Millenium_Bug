@@ -57,6 +57,8 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
                 //Eseguo i controlli
                 if (actionControlSet.diceValueVsDiceColorControl(actionSpace.getDiceCost(), familyMember.getDiceColor())) {
                     this.actionSpace.addFamilyMember(familyMember);
+                    //Attivo l'effetto dello spazio azione
+                    this.actionSpace.activeEffectList(player);
                     super.player.setLastUsedFamilyMember(familyMember);
                     askAgain = false;
                 } else {

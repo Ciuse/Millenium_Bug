@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps31.model;
 
 import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
-import it.polimi.ingsw.ps31.model.board.TowerActionSpace;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.LeaderCard;
@@ -39,10 +38,9 @@ public class ModelChoices extends Model {
     private String stateModelChoices="StateDefault";
     private InformationFromNetworking informationFromNetworking;
     private long timerConnection;
-    private ResourceList resourceChosen;
+    private ResourceList resourceChosenFromPrivilege;
     private int numberOfServantsToPay;
     private FamilyMember familyMemberChosen;
-    private TowerActionSpace towerActionSpaceChosen;
     private ActionSpace actionSpaceChosen;
     private Action actionToDo=null;
 
@@ -104,20 +102,6 @@ public class ModelChoices extends Model {
         return towerCardSpaceChosen;
     }
 
-    public synchronized TowerActionSpace waitTowerActionSpaceChosen(){
-        setTowerActionSpaceChosen(null);
-        setStateChoice();
-        while(towerActionSpaceChosen==null|| this.stateModelChoices.equals("StateChoice")){
-            try {
-                sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            //TODO SISTEMARE
-        }
-        return towerActionSpaceChosen;
-    }
-
     public synchronized ActionSpace waitActionSpaceChosen(){
         setActionSpaceChosen(null);
         setStateChoice();
@@ -156,16 +140,16 @@ public class ModelChoices extends Model {
         }return activeEffect;
     }
 
-    public synchronized ResourceList waitResourceChosen(){
-        setResourceChosen(null);
+    public synchronized ResourceList waitResourceChosenFromPrivilege(){
+        setResourceChosenFromPrivilege(null);
         setStateChoice();
-        while(resourceChosen==null|| this.stateModelChoices.equals("StateChoice")){
+        while(resourceChosenFromPrivilege ==null|| this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }return resourceChosen;
+        }return resourceChosenFromPrivilege;
     }
 
     public synchronized PersonalBonusTiles waitPersonalBonusTilesChosen(){
@@ -242,10 +226,6 @@ public class ModelChoices extends Model {
 
     public void setActionSpaceChosen(ActionSpace actionSpaceChosen) {
         this.actionSpaceChosen = actionSpaceChosen;
-    }
-
-    public void setTowerActionSpaceChosen(TowerActionSpace towerActionSpaceChosen) {
-        this.towerActionSpaceChosen = towerActionSpaceChosen;
     }
 
     public void setFamilyMemberChosen(FamilyMember familyMemberChosen) {
@@ -357,8 +337,8 @@ public class ModelChoices extends Model {
         this.tempModelStateForLeaderChoice = tempModelStateForLeaderChoice;
     }
 
-    public void setResourceChosen(ResourceList resourceChosen) {
-        this.resourceChosen = resourceChosen;
+    public void setResourceChosenFromPrivilege(ResourceList resourceChosenFromPrivilege) {
+        this.resourceChosenFromPrivilege = resourceChosenFromPrivilege;
     }
 
     public void incrementLeaderChoosenCounter() {

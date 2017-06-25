@@ -30,13 +30,13 @@ public class ResourceList {
     public void addSpecificResource(Resource resource){
         boolean found=false;
 
-        for(int i=0; i<this.resourceList.size(); i++) {
-            if (this.resourceList.get(i).getClass().equals(resource.getClass()) && found == false) {
-                this.resourceList.get(i).addValue(resource.getValue());
+        for (Resource resourceList : this.resourceList) {
+            if (resourceList.getClass().equals(resource.getClass()) && !found) {
+                resourceList.addValue(resource.getValue());
                 found = true;
             }
         }
-        if(found==false){
+        if(!found){
             this.resourceList.add(resource);
         }
     }
@@ -44,17 +44,27 @@ public class ResourceList {
     {
         boolean found=false;
 
-        for(int i=0; i<this.resourceList.size(); i++) {
+        for (Resource resourceList : this.resourceList) {
 
-            if (this.resourceList.get(i).getClass().equals(resource.getClass()) && found == false) {
-                this.resourceList.get(i).subValue(resource.getValue());
+            if (resourceList.getClass().equals(resource.getClass()) && !found) {
+                resourceList.subValue(resource.getValue());
                 found = true;
             }
         }
-        if(found==false){
-            this.resourceList.add(resource);
+        if(!found){
+            // todo error:!
         }
     }
+    public void discountSpecificResource(Resource resource)
+    {
+        for (Resource resourceList : this.resourceList) {
+
+            if (resourceList.getClass().equals(resource.getClass())) {
+                resourceList.discountValue(resource.getValue());
+            }
+        }
+    }
+    
     public Resource remove(int index){
         return this.resourceList.remove(index);
     }

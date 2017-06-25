@@ -74,10 +74,8 @@ public class ActionSpace extends ModelChoices implements ActiveEffect {
 
         String string="Aggiornato ActionSpace: "+this.actionSpaceId;
         super.notifyViews(new MVUpdateState(string, getStateActionSpace()));
-
-        //Attivo l'effetto dello spazio azione
-        this.activeEffectList(familyMember.getPlayer());
     }
+
 
     public void removeFamilyMember(FamilyMember familyMember)
     {

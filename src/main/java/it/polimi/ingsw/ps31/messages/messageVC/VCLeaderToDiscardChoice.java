@@ -5,10 +5,10 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 /**
  * Created by Giuseppe on 24/06/2017.
  */
-public class VCLeaderToDiscard extends VCVisitable {
+public class VCLeaderToDiscardChoice extends VCVisitable {
     private final int leaderId;
 
-    public VCLeaderToDiscard(PlayerId viewId, int leaderId) {
+    public VCLeaderToDiscardChoice(PlayerId viewId, int leaderId) {
         super(viewId);
         this.leaderId = leaderId;
     }

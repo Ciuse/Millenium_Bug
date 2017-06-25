@@ -15,7 +15,7 @@ public class VCMessageVisitor extends GenericMessage implements VCVisitor {
 
     @Override
     public void visit(VCStartLeaderChoice vcStartLeaderChoice) {
-        controller.createLeader(vcStartLeaderChoice.getLeaderId(),vcStartLeaderChoice.getViewId());
+        controller.selectStartLeader(vcStartLeaderChoice.getLeaderId(),vcStartLeaderChoice.getViewId());
     }
 
     @Override
@@ -25,7 +25,7 @@ public class VCMessageVisitor extends GenericMessage implements VCVisitor {
 
     @Override
     public void visit(VCPlayerAction vcPlayerAction) {
-        controller.doPlayerAction(vcPlayerAction.getActionName(),vcPlayerAction.getViewId());
+        controller.selectPlayerAction(vcPlayerAction.getActionName(),vcPlayerAction.getViewId());
     }
 
     @Override
@@ -61,6 +61,21 @@ public class VCMessageVisitor extends GenericMessage implements VCVisitor {
     @Override
     public void visit(VCServantToPayChoice vcServantToPayChoice) {
         controller.selectServantToPay(vcServantToPayChoice.getServantToPay(),vcServantToPayChoice.getViewId());
+    }
+
+    @Override
+    public void visit(VCTowerCardSpaceChoice vcTowerCardSpaceChoice) {
+        controller.selectTowerCardSpace(vcTowerCardSpaceChoice.getTowerColor(),vcTowerCardSpaceChoice.getFloorNumber(),vcTowerCardSpaceChoice.getViewId());
+    }
+
+    @Override
+    public void visit(VCPersonalTilesChoice vcPersonalTilesChoice) {
+        controller.selectStartPersonalBonusTiles(vcPersonalTilesChoice.getPersonalBonusChoice(),vcPersonalTilesChoice.getViewId());
+    }
+
+    @Override
+    public void visit(VCCouncilPrivilegeChoice vcCouncilPrivilegeChoice) {
+        controller.selectCouncilPrivilige(vcCouncilPrivilegeChoice.getResourceList(),vcCouncilPrivilegeChoice.getViewId());
     }
 
 

@@ -9,6 +9,7 @@ import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
+import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.FamilyMember;
 import it.polimi.ingsw.ps31.model.player.Player;
@@ -30,7 +31,7 @@ public class ActionControlSet {
     private final ResourceRequirementsControl resourceRequirementsControl;
     private final SelfOccupiedTowerControl selfOccupiedTowerControl;
     private final TakeDevelopmentCardControl takeDevelopmentCardControl;
-    private final TowerPlacementControl towerPlacementControl;
+    private final TowerCostPlacementControl towerCostPlacementControl;
     private final LeaderCardRequirementControl leaderCardRequirementControl;
 
 
@@ -45,7 +46,7 @@ public class ActionControlSet {
         this.payResourceListControl = new PayResourceListControl(player);
         this.placedFamilyMemberControl = new PlacedFamilyMemberControl(player);
         this.playerCardNumberControl = new PlayerCardNumberControl(player);
-        this.towerPlacementControl = new TowerPlacementControl(player);
+        this.towerCostPlacementControl = new TowerCostPlacementControl(player);
         this.selfOccupiedTowerControl= new SelfOccupiedTowerControl(player);
         this.developmentCardRequirementsControl = new DevelopmentCardRequirementsControl(player);
         this.takeDevelopmentCardControl = new TakeDevelopmentCardControl(player);
@@ -83,6 +84,13 @@ public class ActionControlSet {
         return this.occupiedActionSpaceControl.execute();
     }
 
+    public boolean payResourceControl(Resource resource)
+    {
+        ResourceList resourceList= new ResourceList(resource);
+        this.payResourceControl.setResourceList(resourceList);
+        return this.payResourceControl.execute();
+    }
+
     public boolean payResourceControl(ResourceList resourceList)
     {
         this.payResourceControl.setResourceList(resourceList);
@@ -107,11 +115,10 @@ public class ActionControlSet {
         return this.playerCardNumberControl.execute();
     }
 
-    public boolean towerPlacementControl(FamilyMember familyMember, TowerCardSpace towerCardSpace)
+    public boolean towerCostPlacementControl(TowerCardSpace towerCardSpace)
     {
-        this.towerPlacementControl.setFamilyMember(familyMember);
-        this.towerPlacementControl.setTowerCardSpace(towerCardSpace);
-        return this.towerPlacementControl.execute();
+        this.towerCostPlacementControl.setTowerCardSpace(towerCardSpace);
+        return this.towerCostPlacementControl.execute();
     }
 
     public boolean takeDevelopmentCardControl(DevelopmentCard developmentCard){
@@ -175,8 +182,8 @@ public class ActionControlSet {
         return takeDevelopmentCardControl;
     }
 
-    public TowerPlacementControl getTowerPlacementControl() {
-        return towerPlacementControl;
+    public TowerCostPlacementControl getTowerCostPlacementControl() {
+        return towerCostPlacementControl;
     }
 
     public LeaderCardRequirementControl getLeaderCardRequirementControl() {
