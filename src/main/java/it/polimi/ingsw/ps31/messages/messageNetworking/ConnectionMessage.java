@@ -1,8 +1,8 @@
 package it.polimi.ingsw.ps31.messages.messageNetworking;
 
-import it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface;
+import it.polimi.ingsw.ps31.client.ClientNetworkingThread;
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
-import it.polimi.ingsw.ps31.networking.ConnectionType;
+import it.polimi.ingsw.ps31.networking.NetworkingThread;
 
 /**
  * Created by Francesco on 21/06/2017.
@@ -18,8 +18,6 @@ public class ConnectionMessage extends NetworkingMessage {
         this.username = username;
         this.password = password;
         this.typeOfView = typeOfView;
-
-        this.messageType = "ConnectionMessage";
     }
 
     /* Getters */
@@ -36,7 +34,7 @@ public class ConnectionMessage extends NetworkingMessage {
     }
 
     @Override
-    public void update(ClientNetworkInterface networkInterface) {
+    public void update(NetworkingThread clientNetworkingThread) {
 
     }
 }

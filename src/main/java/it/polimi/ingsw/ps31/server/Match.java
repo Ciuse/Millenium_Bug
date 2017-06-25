@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps31.server;
 
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
+import it.polimi.ingsw.ps31.client.view.View;
+import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
 import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.game.GameLogic;
@@ -9,6 +11,8 @@ import it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionInterface;
 import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Francesco on 08/06/2017.
@@ -31,14 +35,12 @@ public class Match extends Thread {
     public Match(ServerConnectionInterface host, int id){
         this.informationFromNetworking = new InformationFromNetworking();
         this.gameLogic = new GameLogic(informationFromNetworking);
-        addConnection(host);
-
         this.networkInterface = new NetworkInterface(this, this.gameLogic);
-        this.modelProva = new ModelProva(this, networkInterface);
         this.networkInterface.setModelProva(modelProva);
         this.hostConnection = host;
         this.id = id;
 
+        addConnection(host);
     }
 
     /* Getters & Setters*/
@@ -51,11 +53,18 @@ public class Match extends Thread {
     {
         return model;
     }
+
     /* Run() Method*/
     @Override
     public void run()
     {
         //Metodo invocato solo alla fine della connessione di tutti i player alla partita
+
+        //todo ricevere le view da playgame()
+        List<View> clientViewList = new ArrayList<>();
+        //spedisco le view ai client
+        for(int i = 0; i<4; i++)
+            networkInterface.sendToClient(new ViewMessage(clientViewList.get(i)), PlayerId.values()[i]);
 
         //Avvia partita
         gameLogic.playGame();
@@ -73,7 +82,9 @@ public class Match extends Thread {
 
         this.networkInterface.addConnection(clientConnection);
 
-        TypeOfView tov = clientConnection.getConnectionMessage().getTypeOfView();
+        TypeOfView tov = clientConnection.
+                getConnectionMessage().
+                getTypeOfView();
         String username = clientConnection.getConnectionMessage().getUsername();
         int playerNumber = this.informationFromNetworking.addPlayerViewChoice(tov, username);
 

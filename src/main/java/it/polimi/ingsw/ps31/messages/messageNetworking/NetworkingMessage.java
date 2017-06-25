@@ -6,5 +6,5 @@ import sun.java2d.loops.GeneralRenderer;
 /**
  * Created by Francesco on 21/06/2017.
  */
-public abstract class NetworkingMessage extends GenericMessage implements NetworkingVisitable{
+public abstract class NetworkingMessage extends NetworkingVisitable{
 }

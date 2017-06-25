@@ -1,13 +1,11 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
-import com.google.gson.Gson;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.game.GameLogic;
 import it.polimi.ingsw.ps31.server.Match;
 import it.polimi.ingsw.ps31.server.ModelProva;
-import it.polimi.ingsw.ps31.server.Server;
 
 /**
  * Created by Francesco on 08/06/2017.
@@ -26,7 +24,7 @@ public class NetworkInterface {
         this.playerTable = new PlayerTable();
         this.gameLogic = gameLogic;
 
-//        notifyModel(null, "NetworkInterface instantiated");
+//        readFromClient(null, "NetworkInterface instantiated");
     }
 
     /* Class Methods */
@@ -40,27 +38,27 @@ public class NetworkInterface {
         return this.playerTable.size();
     }
 
-    public GenericMessage readFromClient(PlayerId playerId)
-    {
-
-        ServerConnectionInterface connection = this.playerTable.playerIdToConncetion(playerId);
-
-        GenericMessage msgToReturn = connection.notifyModel();
-
-        modelProva.setState(msgToReturn.update(), playerId);
-        return msgToReturn;
-    }
+//    public GenericMessage readFromClient(PlayerId playerId)
+//    {
+//
+//        ServerConnectionInterface connection = this.playerTable.playerIdToConncetion(playerId);
+//
+//        GenericMessage msgToReturn = connection.readFromClient();
+//
+//        modelProva.setState(msgToReturn.update(), playerId);
+//        return msgToReturn;
+//    }
 
     public void sendToClient(GenericMessage msg, PlayerId playerId)
     {
         ServerConnectionInterface connection = this.playerTable.playerIdToConncetion(playerId);
-        connection.notifyClient(msg);
+        connection.sendToClient(msg);
     }
 
     public void sendToAll(GenericMessage msg)
     {
         for(ServerConnectionInterface currentConnection : playerTable.getAllConnections())
-            currentConnection.notifyClient(msg);
+            currentConnection.sendToClient(msg);
     }
 
     public void setModelProva(ModelProva modelProva)

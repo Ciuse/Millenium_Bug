@@ -5,9 +5,6 @@ import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
-import it.polimi.ingsw.ps31.networking.ClientNetworkingVisitor;
-
-import java.io.IOException;
 
 import static java.lang.Thread.sleep;
 
@@ -16,72 +13,64 @@ import static java.lang.Thread.sleep;
  */
 //Classe che unifica le connessioni Socket e RMI sotto un'unica interfaccia di funzionamento
 public abstract class ClientNetworkInterface {
-    private boolean viewAsked = false;
-    private final ConnectionMessage connectionMessage;
-    private final ClientNetworkingVisitor clientNetworkingVisitor;
-    private View view = null;
+    protected boolean viewReceived = false;
+    protected final ConnectionMessage connectionMessage;
 
-//    protected ClientNetworkInterface(ClientNetworkInterface son)
-//    {
-//        son.sendToServer(new ConnectionMessage());
-//    }
-
+    /* Constructor */
     public ClientNetworkInterface(ConnectionMessage connectionMessage)
     {
         this.connectionMessage = connectionMessage;
-        this.clientNetworkingVisitor = new ClientNetworkingVisitor(this);
-        initializeConnection();
-        this.view = firstConnectionProcedure(this.connectionMessage);
+        //this.view = firstConnectionProcedure(this.connectionMessage);
     }
 
-    public final View firstConnectionProcedure(ConnectionMessage connectionMessage)
-    {
-        //TODO: IMPLEMENTARE DECENTEMENTE
-
-        if( this.viewAsked )
-            return null;
-
-        //Rimango in attesa di un messaggio dal server
-        GenericMessage firstMessageFromServer = readFromServer();
-        clientNetworkingVisitor.visit(firstMessageFromServer);
-
-        //Invio le informazioni di connessione
-        sendToServer(connectionMessage);
-
-        View answerFromServer;
-        boolean exitDoWhile = false;
-        do{
-            //Aspetto la risposta
-            answerFromServer = readViewFromServer();
-
-            //Se non c'è risposta, aspetto 1 secondo prima di ciclare nuovamente
-            if ( answerFromServer == null )
-                try
-                {
-                    sleep(1000);
-                } catch (InterruptedException e)
-                {
-                    e.printStackTrace();
-                }
-
-            //se la risposta è del tipo atteso, esco dal ciclo
-            else if ( answerFromServer.getClass().equals(View.class) )
-                exitDoWhile = true;
-
-            //NB: per esclusione, le risposte diverse da quella attesa vengono scartate e implicano il rientro nel ciclo
-
-        } while ( !exitDoWhile );
-
-
-        //TODO: istruzione di test da cancellare
-        System.out.println("client> letto ok");
-
-        //impedisco che il metodo venga invocato più di una volta
-        viewAsked = true;
-
-        //todo ritornare view non nulla
-        return null;
-    }
+//    public final View firstConnectionProcedure(ConnectionMessage connectionMessage)
+//    {
+//        //TODO: IMPLEMENTARE DECENTEMENTE
+//
+//        if( this.viewAsked )
+//            return null;
+//
+//        //Rimango in attesa di un messaggio dal server
+//        GenericMessage firstMessageFromServer = readFromServer();
+//        clientNetworkingVisitor.visit(firstMessageFromServer);
+//
+//        //Invio le informazioni di connessione
+//        sendToServer(connectionMessage);
+//
+//        View answerFromServer;
+//        boolean exitDoWhile = false;
+//        do{
+//            //Aspetto la risposta
+//            answerFromServer = readViewFromServer();
+//
+//            //Se non c'è risposta, aspetto 1 secondo prima di ciclare nuovamente
+//            if ( answerFromServer == null )
+//                try
+//                {
+//                    sleep(1000);
+//                } catch (InterruptedException e)
+//                {
+//                    e.printStackTrace();
+//                }
+//
+//            //se la risposta è del tipo atteso, esco dal ciclo
+//            else if ( answerFromServer.getClass().equals(View.class) )
+//                exitDoWhile = true;
+//
+//            //NB: per esclusione, le risposte diverse da quella attesa vengono scartate e implicano il rientro nel ciclo
+//
+//        } while ( !exitDoWhile );
+//
+//
+//        //TODO: istruzione di test da cancellare
+//        System.out.println("client> letto ok");
+//
+//        //impedisco che il metodo venga invocato più di una volta
+//        viewAsked = true;
+//
+//        //todo ritornare view non nulla
+//        return null;
+//    }
 
     //invia un messaggio in un oggetto, serializzandolo
     public final void sendToServer(GenericMessage msg){
@@ -132,25 +121,12 @@ public abstract class ClientNetworkInterface {
         return strObj;
     }
 
-    /* Visitor actions */
-    public final void sendConnectionMessage()
+    public void sendConnectionMessage()
     {
         sendToServer(this.connectionMessage);
     }
 
-    public final void setView(View view)
-    {
-        this.view = view;
-    }
-
     /* Abstract Methods */
-    protected abstract void initializeConnection();
-
-    public final View getView()
-    {
-        return this.view;
-    }
-
     protected abstract void writeOnNetwork(String msgStr);
     protected abstract String readFromNetwork();
 }

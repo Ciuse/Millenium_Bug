@@ -1,21 +1,22 @@
 package it.polimi.ingsw.ps31.client;
 
-import it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface;
 import it.polimi.ingsw.ps31.client.clientNetworking.ClientSocketConnection;
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
+import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by Giuseppe on 05/06/2017.
  */
 public class Client {
     static final int PORT = 2727;
-    private static NetworkingThread networkingThread;
+    private static ClientNetworkingThread clientNetworkingThread;
     private static ViewThread viewThread;
 
 
@@ -75,12 +76,12 @@ public class Client {
             chosenConnection = console.readLine();
 
             if( chosenConnection.equalsIgnoreCase("s") )
-                networkingThread = new NetworkingThread(new ClientSocketConnection(PORT, connectionMessage));
+                clientNetworkingThread = new ClientNetworkingThread(new ClientSocketConnection(PORT, connectionMessage));
             else if (chosenConnection.equalsIgnoreCase("r") )
             {
-                ///networkingThread = new NetworkingThread(new clientRMIConnection());
+                ///clientNetworkingThread = new ClientNetworkingThread(new clientRMIConnection());
                 System.out.println("RMI non disponibile in questa versione. Mi connetto con le socket :) ");
-                networkingThread = new NetworkingThread(new ClientSocketConnection(PORT, connectionMessage));
+                clientNetworkingThread = new ClientNetworkingThread(new ClientSocketConnection(PORT, connectionMessage));
             }
             else{
                 System.out.println("Risposta non valida");
@@ -91,17 +92,31 @@ public class Client {
 
         System.out.println("In attesa di altri giocatori. Un po' di pazienza...");
 
-        //Chiedo al networking thread di restituire la view e la inserisco in un thread
-//        while ( networkingThread. )
-//  todo      viewThread = new ViewThread(networkingThread.askServerForView(connectionMessage));
+        //Faccio partire il thread del networking, in modo che rimanga sempre in ascolto del server
+        clientNetworkingThread.start();
+
+        //Rimango in ascolto del messaggio contenente la view
+        GenericMessage msgFromServer;
+        do {
+            msgFromServer = clientNetworkingThread.nextMessage();
+        }while ( msgFromServer == null );
+
+        clientNetworkingThread.extrapolateViewFromMessage(msgFromServer);
+
+//        while ( !clientNetworkingThread.isViewReceived() )
+//            try {
+//                sleep(200);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        viewThread = new ViewThread(clientNetworkingThread.moveViewFromNetworkInterface());
 
         //Passo ai due thread i relativi riferimenti
-        viewThread.setNetworking(networkingThread);
-        networkingThread.setViewThread(viewThread);
+        viewThread.setNetworking(clientNetworkingThread);
+        clientNetworkingThread.setViewThread(viewThread);
 
         //Faccio partire i thread
         viewThread.start();
-        networkingThread.start();
 
 
 

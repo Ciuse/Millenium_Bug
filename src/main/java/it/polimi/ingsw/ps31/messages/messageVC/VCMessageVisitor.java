@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps31.messages.GenericMessage;
 /**
  * Created by Giuseppe on 12/06/2017.
  */
-public class VCMessageVisitor extends GenericMessage implements VCVisitor {
+public class VCMessageVisitor implements VCVisitor {
     private Controller controller;
 
     public void setController(Controller controller) {

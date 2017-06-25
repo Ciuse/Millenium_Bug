@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps31.server.serverNetworking;
 import com.google.gson.Gson;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
-import it.polimi.ingsw.ps31.messages.messageNetworking.AskConnectionMessage;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.networking.ConnectionType;
 
@@ -13,34 +12,27 @@ import it.polimi.ingsw.ps31.networking.ConnectionType;
 
 public abstract class ServerConnectionInterface {
     private final ConnectionType connectionType;
-    protected ConnectionMessage connectionMessage;
+    protected ConnectionMessage connectionMessage = null;
 
     /* Constructor */
     public ServerConnectionInterface(ConnectionType connectionType)
     {
         this.connectionType = connectionType;
-
-        //chiedo al player di inviare la ConnectionMessage
-        notifyClient(new AskConnectionMessage());
-
-        //leggo sulla socket il ConnectionMessage
-        this.connectionMessage = deserializeCM(readFromNetwork());
-
     }
 
     public ConnectionMessage getConnectionMessage(){
         return this.connectionMessage;
     }
     protected abstract String readFromNetwork();
-    protected abstract void sendToNetwork(String msg);
+    protected abstract void writeOnNetwork(String msg);
     public abstract String getConnectionInfo();
 
-    public final void notifyClient(GenericMessage msg)
+    public final void sendToClient(GenericMessage msg)
     {
-        sendToNetwork(serialize(msg));
+        writeOnNetwork(serialize(msg));
     }
 
-    public final GenericMessage notifyModel()
+    public final GenericMessage readFromClient()
     {
         return deserialize(readFromNetwork());
     }
@@ -88,6 +80,21 @@ public abstract class ServerConnectionInterface {
         if ( view == null )
             return;
 
-        sendToNetwork(serialize(view));
+        writeOnNetwork(serialize(view));
+    }
+
+    public void setConnectionMessage(ConnectionMessage connectionMessage)
+    {
+        this.connectionMessage = connectionMessage;
+    }
+
+    public void waitForConnectionMessage()
+    {
+        setConnectionMessage(deserializeCM(readFromNetwork()));
+    }
+
+    public boolean receivedCM()
+    {
+        return ( this.connectionMessage != null );
     }
 }
