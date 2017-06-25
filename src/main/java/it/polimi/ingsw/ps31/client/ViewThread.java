@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps31.client.view.View;
  */
 public class ViewThread extends Thread {
     private final View view;
-    private NetworkingThread networkingThread;
+    private ClientNetworkingThread clientNetworkingThread;
 
 
 //    private final
@@ -25,9 +25,9 @@ public class ViewThread extends Thread {
         //view.switchOn();
     }
 
-    public void setNetworking(NetworkingThread networkingThread)
+    public void setNetworking(ClientNetworkingThread clientNetworkingThread)
     {
-        this.networkingThread = networkingThread;
-        //this.view.setNetworkInterface(networkingThread.getClientNetworkInterface());
+        this.clientNetworkingThread = clientNetworkingThread;
+        //this.view.setNetworkInterface(clientNetworkingThread.getClientNetworkInterface());
     }
 }

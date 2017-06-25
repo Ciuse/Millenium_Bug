@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
+import it.polimi.ingsw.ps31.client.view.CmdLineView;
+import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.server.Match;
 
 import java.util.ArrayList;

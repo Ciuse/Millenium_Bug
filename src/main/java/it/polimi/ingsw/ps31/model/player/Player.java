@@ -37,9 +37,10 @@ public class Player {
     private HarvestList harvestList;
     private ProductionList productionList;
     private List<ResourceList> finalBonusResources;
-    private List<LeaderCard> leaderCardList;
     private boolean wannaEndTurn = false;
     private List<MarkerDisc> markerDiscList = new ArrayList<>();
+    private List<LeaderCard> leaderCardList = new ArrayList<>();
+
     /* Constructor */
     public Player( ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard)
     {

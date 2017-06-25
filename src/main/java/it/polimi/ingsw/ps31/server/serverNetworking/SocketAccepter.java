@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Created by Francesco on 08/06/2017.
  */
@@ -67,6 +69,17 @@ public class SocketAccepter{
 
         try {
             SocketServerConnection connectionInterface = new SocketServerConnection(clientSocket);
+            ServerConnectionThread connectionThread = new ServerConnectionThread(connectionInterface);
+            connectionThread.start();
+
+            do {
+                try {
+                    sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            } while ( !connectionThread.receivedCM() );
 
             //aggiungo il client alla prima partita libera
             matchTable.addPlayer(connectionInterface);

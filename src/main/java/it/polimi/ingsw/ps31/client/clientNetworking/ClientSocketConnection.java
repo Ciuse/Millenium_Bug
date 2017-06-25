@@ -24,41 +24,43 @@ public class ClientSocketConnection extends ClientNetworkInterface {
     public ClientSocketConnection(int port, ConnectionMessage connectionMessage) throws IOException {
         super(connectionMessage);
         this.port = port;
-    }
 
-    @Override
-    protected void initializeConnection() {
-        try {
-            //TODO: istruzione di test da cancellare
-            System.out.println("Client> sto per creare la socket");
+        //TODO: istruzione di test da cancellare
+        System.out.println("Client> sto per creare la socket");
 
-            //Creo la socket e la collego al server
-            this.socket = new Socket("127.0.0.1", port);
+        //Creo la socket e la collego al server
+        this.socket = new Socket("127.0.0.1", this.port);
 
-            //TODO: istruzione di test da cancellare
-            System.out.println("client> socket creata ");
+        //TODO: istruzione di test da cancellare
+        System.out.println("client> socket creata ");
 
-            //Creo il reader da socket
-            InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
-            this.socketReader = new BufferedReader(inputStreamReader);
+        //Creo il reader da socket
+        InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
+        this.socketReader = new BufferedReader(inputStreamReader);
 
-            //creo il writer sulla socket
-            OutputStreamWriter socketOutStream = new OutputStreamWriter(socket.getOutputStream());
-            this.socketWriter = new BufferedWriter(socketOutStream);
+        //creo il writer sulla socket
+        OutputStreamWriter socketOutStream = new OutputStreamWriter(socket.getOutputStream());
+        this.socketWriter = new BufferedWriter(socketOutStream);
 
-            //Rimango in attesa di messaggi dal server
-            String firstMessage = socketReader.readLine();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //PROTOCOLLO DI INIZIALIZZAZIONE DELLA CONNESSIONE
+
+        //Attendo il "via libera" del server alla comunicazione
+        while(readFromNetwork() == null)
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        //invio al server il messaggio di connessione
+        sendConnectionMessage();
     }
 
     @Override
     protected void writeOnNetwork(String msgStr) {
         //TODO: istruzione di test da cancellare
         System.out.println("Client> sto per inviare il messaggio: " + msgStr);
-
 
         try {
 

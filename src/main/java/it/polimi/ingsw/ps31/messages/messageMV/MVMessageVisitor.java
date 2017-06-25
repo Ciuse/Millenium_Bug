@@ -1,14 +1,13 @@
 package it.polimi.ingsw.ps31.messages.messageMV;
 
 import it.polimi.ingsw.ps31.client.view.View;
-import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.model.choiceType.MVChoiceInfoVisitor;
 import it.polimi.ingsw.ps31.model.stateModel.MVStateInfoVisitor;
 
 /**
  * Created by Giuseppe on 05/06/2017.
  */
-public class MVMessageVisitor extends GenericMessage implements MVVisitor {
+public class MVMessageVisitor  implements MVVisitor {
     private View view;
 
     public void setView(View view){
@@ -35,5 +34,4 @@ public class MVMessageVisitor extends GenericMessage implements MVVisitor {
         mvChoiceInfoVisitor.setView(view);
         mvAskChoice.getChoiceType().acceptChoice(mvChoiceInfoVisitor);
     }
-
 }
