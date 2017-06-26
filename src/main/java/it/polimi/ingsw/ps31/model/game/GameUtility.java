@@ -1,9 +1,7 @@
 package it.polimi.ingsw.ps31.model.game;
 
 import it.polimi.ingsw.ps31.client.view.CmdLineView;
-import it.polimi.ingsw.ps31.client.view.GuiView;
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
-import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
@@ -23,7 +21,6 @@ import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.model.stateModel.StateGame;
 import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles;
-import it.polimi.ingsw.ps31.model.stateModel.StateType;
 import it.polimi.ingsw.ps31.model.stateModel.TempModelStateForLeaderChoice;
 
 import java.util.*;
