@@ -6,7 +6,7 @@ import java.util.List;
  * Created by giulia on 21/06/2017.
  */
 public class ChoicePrivilegeResource extends ChoiceType {
-    List<String> resourceListToChoice;
+    private List<String> resourceListToChoice;
 
     public ChoicePrivilegeResource(List<String> resourceListToChoice) {
         this.resourceListToChoice = resourceListToChoice;

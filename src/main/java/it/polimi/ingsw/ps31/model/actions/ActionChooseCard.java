@@ -2,7 +2,9 @@ package it.polimi.ingsw.ps31.model.actions;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceListToPay;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerCardSpace;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
@@ -98,11 +100,34 @@ public class ActionChooseCard extends Action {
         TowerCardSpace chosenCardSpace;
         do {
             String string = player.getPlayerId() + ": Quale carta della torre vuoi?";
-            super.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceTowerCardSpace()));
-            chosenCardSpace = super.waitTowerCardChosen();
+            player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceTowerCardSpace()));
+            chosenCardSpace = player.getModel().getModelChoices().waitTowerCardChosen();
+
         } while (!checkChosenTowerCardSpace(chosenCardSpace));
 
-        super.player.getPlayerActionSet().takeCard(chosenCardSpace);    //TODO: e se il player non può attivare l'effetto della carta?
+        int listToPay = -1;
+        if (chosenCardSpace.getCard().getCostList() != null) {
+            listToPay=0;
+            //se la carta ha almeno una lista da pagare vedo quante ne ha
+            if (chosenCardSpace.getCard().getCostList().size() > 1) {     //se la carta ha più di una lista da pagare chiedo alla view quale vuole pagare
+                do {
+                    String string = player.getPlayerId() + "Quale costo della carta vuoi pagare?";
+                    player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(chosenCardSpace.getCard().getCostList());
+                    player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceListToPay(chosenCardSpace.getCard().getCardId())));
+                    listToPay = player.getModel().getModelChoices().waitIntChosen();
+                }while(!player.getPlayerResources().greaterThan(chosenCardSpace.getCard().getCostList().get(listToPay)));   // se fallisce il pagamento glielo richiedo magari poteva pagare solo i dei due costi
+            }
+        }
+        if (listToPay != -1) {
+            //pago la carta in base alla lista che mi ha detto il giocatore se c era piu di una lsita
+            player.getPlayerActionSet().payResources(chosenCardSpace.getCard().getCostList().get(listToPay));
+        }
+
+
+        super.player.addDevelopmentCard(chosenCardSpace.takeCard());
+
+        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato Player Personal Board", player.getPersonalBoard().getStatePersonalBoard()));
+        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato tower card space", chosenCardSpace.getStateTowerCardBox()));
 
         resetAnyCardColor();
         resetCardColor();
@@ -116,20 +141,26 @@ public class ActionChooseCard extends Action {
     private boolean checkChosenTowerCardSpace(TowerCardSpace chosenTCS) {
         //Controllo esistenza carta nel tcs
         if (chosenTCS.getCard() == null) {
-            super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, "ERRORE: hai scelto uno spazio vuoto,senza carta"));
+            player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, "ERRORE: hai scelto uno spazio vuoto,senza carta"));
             return false;
         }
 
         //Controllo colore
         if (!this.anyCardColor)
             if (this.cardColor != null && !chosenTCS.getTowerColor().equals(this.cardColor)) {
-                super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, "ERRORE: hai scelto una carta del colore sbagliato"));
+                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, "ERRORE: hai scelto una carta del colore sbagliato"));
                 return false;
             }
 
+        //controllo requisiti personal board
+        if (!this.actionControlSet.takeDevelopmentCardControl(chosenTCS.getCard())) {
+            player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, "ERRORE: non puoi mettere la carta nella tua personal board"));
+            return false;
+        }
+
         //Controllo costo dado
         if (!super.actionControlSet.diceValueVsCardSpaceControl(this.diceCost, chosenTCS)) {
-            super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, "ERRORE: hai scelto una carta dal costo in dado troppo alto"));
+            player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, "ERRORE: hai scelto una carta dal costo in dado troppo alto"));
             return false;
         }
 
@@ -144,7 +175,7 @@ public class ActionChooseCard extends Action {
                 }
             }
             if (!super.actionControlSet.payResourceListControl(tempResourceListList)) {
-                super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, "ERRORE: hai scelto una carta che non puoi pagare"));
+                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, "ERRORE: hai scelto una carta che non puoi pagare"));
                 return false;
             }
         }

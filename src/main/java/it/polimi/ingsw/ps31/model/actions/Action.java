@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Francesco on 18/05/2017.
  */
-public abstract class Action extends ModelChoices implements PlayerActions{
+public abstract class Action implements PlayerActions{
     protected final Player player;
     protected final  ActionControlSet actionControlSet;
     private List<Action> actionList= new ArrayList<>();

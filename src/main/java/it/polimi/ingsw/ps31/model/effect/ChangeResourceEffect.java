@@ -42,9 +42,9 @@ public class ChangeResourceEffect extends Effect {
             player.getPlayerActionSet().getTempResources(resourceToGainList.get(0));
         }else{
             String string=player.getPlayerId()+"Quale delle due risorse vuoi pagare/guadagnare?";
-            getLastModelStateForControl().setResourceListToControl(resourceToPayList);
-            super.notifyViews(new MVAskChoice(player.getPlayerId(),string, new ChoiceListToPay(super.cardId)));
-            int listChoose = super.waitIntChosen();
+            player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(resourceToPayList);
+            player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(),string, new ChoiceListToPay(super.cardId)));
+            int listChoose = player.getModel().getModelChoices().waitIntChosen();
             player.getPlayerActionSet().payResources(resourceToPayList.get(listChoose));
             player.getPlayerActionSet().getTempResources(resourceToGainList.get(listChoose));
         }

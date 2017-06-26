@@ -5,15 +5,15 @@ import it.polimi.ingsw.ps31.model.player.Player;
 /**
  * Created by Giuseppe on 26/05/2017.
  */
-public class GenericProductionActivation extends Effect {
+public class GenericProductionEffectActivation extends Effect {
     private final int basicValue;
 
-    public GenericProductionActivation(int cardId,int basicValue) {
+    public GenericProductionEffectActivation(int cardId, int basicValue) {
         super(cardId);
         this.basicValue = basicValue;
     }
 
-    public GenericProductionActivation(int basicValue) {
+    public GenericProductionEffectActivation(int basicValue) {
         this.basicValue = basicValue;
     }
 

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.board;
 
+import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.card.ExcommunicationTiles;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
@@ -28,13 +29,16 @@ public class GameBoard{
     private static VictoryPointTrack victoryPointTrack;
     private EndActionButton endActionButton;
     private List<ExcommunicationTiles> excommunicationTilesList;
+    private final Model model;
 
-    public GameBoard(List<List<EffectList>> towerEffectList, List<EffectList> otherEffectList,VictoryPoint[] faithTrackExtraValue)
+    public GameBoard(List<List<EffectList>> towerEffectList, List<EffectList> otherEffectList, VictoryPoint[] faithTrackExtraValue, Model model)
     {
+        this.model = model;
+
         //creazione torri
         CardColor[] towerColor = CardColor.values();
         for (int i = 0; i < TOWERNUMBER; i++) {
-            towers.add(new Tower(towerColor[i], towerEffectList.get(i)));
+            towers.add(new Tower(towerColor[i], towerEffectList.get(i), model));
         }
         setTowerSpaceId();
 
@@ -154,6 +158,10 @@ public class GameBoard{
 
     public static VictoryPointTrack getVictoryPointTrack() {
         return victoryPointTrack;
+    }
+
+    public Model getModel() {
+        return model;
     }
 
     public List<ExcommunicationTiles> getExcommunicationTilesList() {

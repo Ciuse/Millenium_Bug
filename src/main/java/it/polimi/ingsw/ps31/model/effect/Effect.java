@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps31.model.effect;
 import it.polimi.ingsw.ps31.model.ModelChoices;
 import it.polimi.ingsw.ps31.model.bonus.Bonus;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
+import it.polimi.ingsw.ps31.model.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,15 +11,20 @@ import java.util.List;
 /**
  * Created by Giuseppe on 09/05/2017.
  */
-public abstract class Effect extends ModelChoices implements EffectActivation{
-    int cardId;
-    int actionSpaceId;
+public abstract class Effect implements EffectActivation{
+    protected int cardId;
+
+    public Effect(){
+    }
+
     public Effect(int cardId) {
         this.cardId = cardId;
     }
 
+    @Override
+    public void activate(Player player) {
 
-    public Effect(){}
+    }
 
     @Override
     public String toString(){
@@ -40,6 +46,7 @@ public abstract class Effect extends ModelChoices implements EffectActivation{
         return cardId;
     }
 
+    //sono i valori nulli degli effetti, e se un effetto lo sovrascrive facendo ritornare un valore "valido" posso capire di che effetto sto parlando e di conseguenza farci dei controlli mirati
     public int getCardId() {
         return cardId;
     }

@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps31.client.view.TypeOfView;
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
-import it.polimi.ingsw.ps31.model.ModelChoices;
+import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.board.MarkerDisc;
@@ -29,7 +29,7 @@ import java.util.*;
 /**
  * Created by giulia on 19/06/2017.
  */
-public class GameUtility extends ModelChoices {
+public class GameUtility{
     //classe contente tutti i riferimenti degli oggetti letti dal file Json e
     //contiene tutti i metodi per supportare e gestire la logica del funzionamento del gioco
     private List<Player> playerList= new ArrayList<>();
@@ -52,9 +52,11 @@ public class GameUtility extends ModelChoices {
     private int playerMaxNumber;
     private static final int Max_Leader_Card = 4;
     private long timerAction;
+    private  Model model;
 
-
-    /* metodi che riguardano il funzionamento delle principali fasi del gioco e della loro logica interna */
+    public GameUtility() {
+    }
+/* metodi che riguardano il funzionamento delle principali fasi del gioco e della loro logica interna */
 
     public void phaseActionGame(int playerNumber,int action) {
         if (action == 1 && playerList.get(playerMaxNumber).getFlagTurnExcommunication() == 1) {
@@ -88,11 +90,11 @@ public class GameUtility extends ModelChoices {
                     ) {
                 statePersonalBonusTiles.add(personalBonusTiles.getStatePersonalBonusTiles());
             }
-            notifyViews(new MVAskChoice(player.getPlayerId(),string,new ChoicePersonalBonusTiles(statePersonalBonusTiles)));
-            PersonalBonusTiles personalBonusTiles = super.waitPersonalBonusTilesChosen();
+            model.notifyViews(new MVAskChoice(player.getPlayerId(),string,new ChoicePersonalBonusTiles(statePersonalBonusTiles)));
+            PersonalBonusTiles personalBonusTiles = model.getModelChoices().waitPersonalBonusTilesChosen();
             personalBonusTiles.setPlayerId(player.getPlayerId());
             player.setPersonalBonusTiles(removePersonalBonusTiles(personalBonusTiles));
-            notifyViews(new MVUpdateState("Aggiornato lo stato del personalBonusTiles",personalBonusTiles.getStatePersonalBonusTiles()));
+            model.notifyViews(new MVUpdateState("Aggiornato lo stato del personalBonusTiles",personalBonusTiles.getStatePersonalBonusTiles()));
 
         }
     }
@@ -117,10 +119,10 @@ public class GameUtility extends ModelChoices {
                 TempModelStateForLeaderChoice tempModelStateForLeaderChoice = new TempModelStateForLeaderChoice();
                 tempModelStateForLeaderChoice.addPlayerPossibleChoide(player.getPlayerId(), leaderCardId);
                 String string = "SCEGLI CARTA LEADER: ";
-                super.setTempModelStateForLeaderChoice(tempModelStateForLeaderChoice);
-                super.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceStartLeaderCard(leaderCardId, leaderCardString)));
+                model.getModelChoices().setTempModelStateForLeaderChoice(tempModelStateForLeaderChoice);
+                model.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceStartLeaderCard(leaderCardId, leaderCardString)));
             }
-            super.waitAllInitialLeaderCardChosen(playerMaxNumber);
+            model.getModelChoices().waitAllInitialLeaderCardChosen(playerMaxNumber);
             //ricreo la leader card list sppostando il primo mazzo di carge in ultima posizione
             // (simulo il fatto che ogni player passa le sue carte al player alla sua sinistra
             tempLeaderCardList.clear();
@@ -136,34 +138,34 @@ public class GameUtility extends ModelChoices {
         setPlayerInAction(player);
         player.setWannaEndTurn(false);
         String string1 = player.getPlayerId().toString()+": INIZIO FASE AZIONE";
-        notifyViews(new MVStringToPrint(null,true,string1));
+        model.notifyViews(new MVStringToPrint(null,true,string1));
         String string2 = player.getPlayerId().toString()+": Aggiornato Stato Azioni";
-        notifyViews(new MVUpdateState(string2,player.getStatePlayerAction()));
+        model.notifyViews(new MVUpdateState(string2,player.getStatePlayerAction()));
     }
 
     public void doActionTurn(Player player) {
-        super.setStateActionGame();
-        while (super.getStateModelChoices().equals("StateActionGame")) {
+        model.getModelChoices().setStateActionGame();
+        while (model.getModelChoices().getStateModelChoices().equals("StateActionGame")) {
             this.createTimerAction();
-            super.getLastModelStateForControl().setStateForControl(player.getStatePlayerAction());
+            model.getModelChoices().getLastModelStateForControl().setStateForControl(player.getStatePlayerAction());
             String string = player.getNickname() + ": Scegli l'azione";
-            Action actionToDo =super.waitActionToDo();
+            Action actionToDo =model.getModelChoices().waitActionToDo();
             for (Action action:player.getPlayerActionSet().getActionList()
                     ) {
                 if(actionToDo.getClass().equals(action.getClass())){
-                    super.setStateActionGame();
+                    model.getModelChoices().setStateActionGame();
                     action.activate();
                 }
                 else{
                     String string1 = "Non ho trovato l azione da eseguire";
-                    notifyViews(new MVStringToPrint(null,true,string1));
+                    model.notifyViews(new MVStringToPrint(null,true,string1));
                 }
             }
         }
     }
 
     public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
-        super.setStateEndTurn();
+        model.getModelChoices().setStateEndTurn();
     }
 
 
@@ -172,28 +174,28 @@ public class GameUtility extends ModelChoices {
     public void updateStartAllPlayersInformation(){
         for (Player player:playerList
                 ) {
-            notifyViews(new MVUpdateState("Aggiornato lo stato di ogni player",player.getStateInfoPlayer()));
+            model.notifyViews(new MVUpdateState("Aggiornato lo stato di ogni player",player.getStateInfoPlayer()));
         }
     }
 
     public void updateStartAllPlayersResources(){
         for (Player player:playerList
                 ) {
-            notifyViews(new MVUpdateState("Aggiornato lo stato delle risorse di ogni player",player.getStatePlayerResources()));
+            model.notifyViews(new MVUpdateState("Aggiornato lo stato delle risorse di ogni player",player.getStatePlayerResources()));
         }
     }
 
     public void updateStartAllPlayersFamilyMember(){
         for (Player player:playerList
                 ) {
-            notifyViews(new MVUpdateState("Aggiornato lo stato di tutti i family member di un player",player.getStateAllFamilyMember()));
+            model.notifyViews(new MVUpdateState("Aggiornato lo stato di tutti i family member di un player",player.getStateAllFamilyMember()));
         }
     }
 
     public void updateStartAllPersonalBoard(){
         for (Player player:playerList
                 ) {
-            notifyViews(new MVUpdateState("Aggiornato lo stato di ogni personal board",player.getPersonalBoard().getStatePersonalBoard()));
+            model.notifyViews(new MVUpdateState("Aggiornato lo stato di ogni personal board",player.getPersonalBoard().getStatePersonalBoard()));
         }
     }
 
@@ -202,7 +204,7 @@ public class GameUtility extends ModelChoices {
                 ) {
             for (MarkerDisc markerDisc:player.getMarkerDiscList()
                  ) {
-                notifyViews(new MVUpdateState("Aggiornato lo stato di ogni marker disc di ogni giocatore",markerDisc.getStateMarkerDisc()));
+                model.notifyViews(new MVUpdateState("Aggiornato lo stato di ogni marker disc di ogni giocatore",markerDisc.getStateMarkerDisc()));
             }
 
         }
@@ -211,7 +213,7 @@ public class GameUtility extends ModelChoices {
     public void updateStartAllDevelopmentCard(){
         for (DevelopmentCard developmentCard:developmentCardList.getDevelopmentCardList()
                 ) {
-                notifyViews(new MVUpdateState(null,developmentCard.getStateDevelopmentCard()));
+            model.notifyViews(new MVUpdateState(null,developmentCard.getStateDevelopmentCard()));
             }
     }
 
@@ -248,8 +250,8 @@ public class GameUtility extends ModelChoices {
                 //mostro il sostegno alla chiesa
                 //chiedo l'intervento della view e una volta ricevuto il messaggio di risposta true (il giocatore vuole spendere i suoi punti fede per evitare la scomunica)
                 String string = player.getPlayerId() + ": vuoi spendere tutti i tuoi punti fede per evitare la scomunica?";
-                notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceIfSupportTheChurch()));
-                boolean supportTheChurch = super.waitSupportTheChurch();
+                model.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceIfSupportTheChurch()));
+                boolean supportTheChurch = model.getModelChoices().waitSupportTheChurch();
                 if (supportTheChurch) {
                     int faithPointPlayer = player.getPlayerResources().getResourceValue(FaithPoint.class);
                     player.addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
@@ -322,8 +324,8 @@ public class GameUtility extends ModelChoices {
          for (Player player:playerList
                  ) {
              String string = player.getPlayerId()+": scegli il tuo colore";
-             notifyViews(new MVAskChoice(player.getPlayerId(),string,new ChoiceColor(playerColorList)));
-             PlayerColor playerColor = super.waitPlayerColorChosen();
+             model.notifyViews(new MVAskChoice(player.getPlayerId(),string,new ChoiceColor(playerColorList)));
+             PlayerColor playerColor = model.getModelChoices().waitPlayerColorChosen();
              int i=0;
                  for (PlayerColor color : playerColorList
                          ) {
@@ -337,8 +339,8 @@ public class GameUtility extends ModelChoices {
 
     public void createPlayer(String name){
         PlayerId[] playerId = PlayerId.values();
-        PersonalBoard personalBoard = new PersonalBoard(personalBoardRequirements, playerId[playerList.size()]);
-        playerList.add(new Player(initialPlayerResource.get(playerList.size()), playerId[playerList.size()], name,personalBoard));
+        PersonalBoard personalBoard = new PersonalBoard(personalBoardRequirements, playerId[playerList.size()], model);
+        playerList.add(new Player(model, playerId[playerList.size()],initialPlayerResource.get(playerList.size()), name, personalBoard ));
     }
 
     public void createTimerAction(){
@@ -347,7 +349,7 @@ public class GameUtility extends ModelChoices {
             @Override
             public void run() {
 
-                GameUtility.super.setStateEndTurn();
+                model.getModelChoices().setStateEndTurn();
                 endActionTurn(playerInAction);
                 timer1.cancel();
             }
@@ -358,9 +360,9 @@ public class GameUtility extends ModelChoices {
     public void createViews() {
         for (Player player : playerList
                 ) {
-            for (int i = 0; i < super.getInformationFromNetworking().getPlayerNameList().size(); i++) {
-                if (player.getNickname().equals(super.getInformationFromNetworking().getPlayerNameList().get(i))) {
-                    if (super.getInformationFromNetworking().getViewChoiceList().get(i).equals(TypeOfView.CLI)) {
+            for (int i = 0; i < model.getModelChoices().getInformationFromNetworking().getPlayerNameList().size(); i++) {
+                if (player.getNickname().equals(model.getModelChoices().getInformationFromNetworking().getPlayerNameList().get(i))) {
+                    if (model.getModelChoices().getInformationFromNetworking().getViewChoiceList().get(i).equals(TypeOfView.CLI)) {
                         CmdLineView viewCliPlayer = new CmdLineView(player.getPlayerId(), playerMaxNumber);
                     }//else TODO creare la view gui
                 }
@@ -539,7 +541,7 @@ public class GameUtility extends ModelChoices {
             }
             finalExtraVictoryPoints4(player);
 
-            super.notifyViews(new MVUpdateState("Aggiornato lo stato delle risorse finali",player.getStatePlayerResources()));
+            model.notifyViews(new MVUpdateState("Aggiornato lo stato delle risorse finali",player.getStatePlayerResources()));
         }
     }
 
@@ -595,7 +597,7 @@ public class GameUtility extends ModelChoices {
 
     /* metodi getter e setter */
     public void setInformationFromNetworking(InformationFromNetworking informationFromNetworking) {
-        super.setInformationFromNetworking(informationFromNetworking);
+        model.getModelChoices().setInformationFromNetworking(informationFromNetworking);
     }
 
     public List<DevelopmentCardDeck> getDeckList() {
@@ -730,11 +732,11 @@ public class GameUtility extends ModelChoices {
     }
 
     public void setTimerConnection(long timerConnection) {
-        super.setTimerConnection(timerConnection);
+        model.getModelChoices().setTimerConnection(timerConnection);
     }
 
     public InformationFromNetworking getInformationFromNetworking() {
-        return super.getInformationFromNetworking();
+        return model.getModelChoices().getInformationFromNetworking();
     }
 
     public long getTimerAction() {
@@ -765,5 +767,11 @@ public class GameUtility extends ModelChoices {
         this.tempLeaderCardList = tempLeaderCardList;
     }
 
+    public Model getModel() {
+        return model;
+    }
 
+    public void setModel(Model model) {
+        this.model = model;
+    }
 }

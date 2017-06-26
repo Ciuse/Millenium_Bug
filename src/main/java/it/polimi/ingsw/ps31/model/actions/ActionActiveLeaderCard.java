@@ -19,14 +19,14 @@ public class ActionActiveLeaderCard extends Action {
 
     @Override
     public void activate() {
-        super.notifyViews(new MVAskChoice(player.getPlayerId(),"Quale leader vuoi attivare?",new ChoiceLeaderToActive()));
-        this.leaderCard=super.waitLeaderCardChosen();
+        player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(),"Quale leader vuoi attivare?",new ChoiceLeaderToActive()));
+        this.leaderCard=player.getModel().getModelChoices().waitLeaderCardChosen();
         //se la carta non è attiva, controllo che il player soddisfi i requisiti di attivazione
         if (!leaderCard.isPlayed()) {
             if (super.actionControlSet.leaderCardRequirementControl(leaderCard))
                 leaderCard.setPlayed(true);
             else {
-                super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getLeaderCardRequirementControl().getControlStringError()));
+                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getLeaderCardRequirementControl().getControlStringError()));
             }
         }
         //se la carta è attivata (perchè lo era prima o perchè è stata appena attivata) allora attivo anche l'effetto
@@ -34,7 +34,7 @@ public class ActionActiveLeaderCard extends Action {
             leaderCard.activeEffectList(player);
 
         resetLeaderCard();
-        super.notifyViews(new MVUpdateState("Aggiornato stato leader card",leaderCard.getStateLeaderCard()));
+        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato leader card",leaderCard.getStateLeaderCard()));
     }
 
     @Override

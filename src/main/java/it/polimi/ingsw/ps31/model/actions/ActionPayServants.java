@@ -47,13 +47,13 @@ public class ActionPayServants extends Action {
         //Controllo che i parametri siano settati;
         if (this.familyMember == null )
         {
-            notifyViews(new MVStringToPrint(player.getPlayerId(),false,"pay servant è stata richiamata senza un servitore su cui agire"));
+            player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(),false,"pay servant è stata richiamata senza un servitore su cui agire"));
         } else {
 
             //chiedere al player quanti servitori vuole pagare per aumentare il valore del familiare
             String string = player.getPlayerId() + ":Quanti servitori vuoi pagare per aumentare il valore del tuo familiare?";
-            notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceNumberOfServantsToPay()));
-            setServantsAmount(super.waitNumberOfServantsToPay());
+            player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceNumberOfServantsToPay()));
+            setServantsAmount(player.getModel().getModelChoices().waitNumberOfServantsToPay());
 
             Resource servantToPay = new Servant(servantsAmount); //creo la risorsa servitore con il valore che mi ha detto il giocatore
 
@@ -64,9 +64,9 @@ public class ActionPayServants extends Action {
             resetServantsAmount();
 
             //agiorno stato oggetti modificati
-            super.notifyViews(new MVUpdateState("Aggiornato stato familyMember: " + familyMember.getDiceColor().name(),
+            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato familyMember: " + familyMember.getDiceColor().name(),
                     familyMember.getStateFamilyMember()));
-            super.notifyViews(new MVUpdateState("Aggiornato stato PlayerResources", player.getStatePlayerResources()));
+            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato PlayerResources", player.getStatePlayerResources()));
 
         }
     }

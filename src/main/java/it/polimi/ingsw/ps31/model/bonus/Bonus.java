@@ -9,7 +9,7 @@ import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 /**
  * Created by Giuseppe on 27/05/2017.
  */
-public abstract class Bonus extends ModelChoices implements BonusActivation  {
+public abstract class Bonus implements BonusActivation  {
 
     protected Bonus() {}
  //   protected Bonus(Action actionToModify) {}

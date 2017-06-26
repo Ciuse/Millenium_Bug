@@ -29,7 +29,6 @@ public class VirtualView extends Observable implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        MVMessageVisitor MVMessageVisitor = new MVMessageVisitor();
         MVVisitable message = (MVVisitable) arg;
         setLastMessageSent(message);
 

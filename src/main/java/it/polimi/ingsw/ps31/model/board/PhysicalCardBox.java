@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 /**
  * Created by Francesco on 12/05/2017.
  */
-public abstract class PhysicalCardBox extends ModelChoices {
+public abstract class PhysicalCardBox {
     protected DevelopmentCard card;
 
     /* Constructor */

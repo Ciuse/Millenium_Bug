@@ -10,7 +10,6 @@ import it.polimi.ingsw.ps31.model.game.InformationFromNetworking;
 import it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionInterface;
 import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +33,7 @@ public class Match extends Thread {
     /* Constructor */
     public Match(ServerConnectionInterface host, int id){
         this.informationFromNetworking = new InformationFromNetworking();
-        this.gameLogic = new GameLogic(informationFromNetworking);
+        this.gameLogic = new GameLogic(informationFromNetworking, model);
         this.networkInterface = new NetworkInterface(this, this.gameLogic);
         this.networkInterface.setModelProva(modelProva);
         this.hostConnection = host;

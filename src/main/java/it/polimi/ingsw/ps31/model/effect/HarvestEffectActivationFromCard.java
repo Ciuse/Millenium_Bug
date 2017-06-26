@@ -5,9 +5,9 @@ import it.polimi.ingsw.ps31.model.player.Player;
 /**
  * Created by giulia on 17/05/2017.
  */
-public class HarvestActivationFromCard extends GenericHarvestActivation {
+public class HarvestEffectActivationFromCard extends GenericHarvestEffectActivation {
 
-    public HarvestActivationFromCard(int cardId,int harvestValue)// rappresenta il valore con cui viene creato l'effetto raccolto
+    public HarvestEffectActivationFromCard(int cardId, int harvestValue)// rappresenta il valore con cui viene creato l'effetto raccolto
     {super(cardId,harvestValue);
     }
 

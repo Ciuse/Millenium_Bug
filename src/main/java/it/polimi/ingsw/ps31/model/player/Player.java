@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.actions.ActionControlSet;
 import it.polimi.ingsw.ps31.model.board.MarkerDisc;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
@@ -40,10 +41,13 @@ public class Player {
     private boolean wannaEndTurn = false;
     private List<MarkerDisc> markerDiscList = new ArrayList<>();
     private List<LeaderCard> leaderCardList = new ArrayList<>();
+    private final Model model;
 
     /* Constructor */
-    public Player( ResourceList initialResources, PlayerId playerId, String nickname, PersonalBoard personalBoard)
+    public Player(Model model, PlayerId playerId, ResourceList initialResources, String nickname, PersonalBoard personalBoard)
     {
+        this.model = model;
+
         //Attributi base
         this.playerId = playerId;
         this.personalBoard = personalBoard;
@@ -180,6 +184,10 @@ public class Player {
         return leaderCardList;
     }
 
+    public Model getModel() {
+        return model;
+    }
+
     public boolean isWannaEndTurn() {
         return wannaEndTurn;
     }
@@ -216,6 +224,7 @@ public class Player {
     public void addExcommunication(ExcommunicationTiles excommunicationTiles)
     {
         this.excommunicationTiles.add(excommunicationTiles);
+        excommunicationTiles.activeBonus(this);
     }
 
     public void addDevelopmentCard(DevelopmentCard card)

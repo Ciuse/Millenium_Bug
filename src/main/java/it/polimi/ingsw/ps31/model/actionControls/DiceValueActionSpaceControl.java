@@ -9,13 +9,13 @@ import java.util.Map;
 /**
  * Created by Francesco on 24/05/2017.
  */
-public class DiceValueVsDiceColorControl extends Control {
+public class DiceValueActionSpaceControl extends Control {
     private Integer diceValue = null;
     private DiceColor diceColor = null;
     protected Map<DiceColor, Integer> bonusValues;
 
     /* Constructor */
-    public DiceValueVsDiceColorControl(Player player) {
+    public DiceValueActionSpaceControl(Player player) {
         super(player);
         this.bonusValues = new HashMap<>();
 

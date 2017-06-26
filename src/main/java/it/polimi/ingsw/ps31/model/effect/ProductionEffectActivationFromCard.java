@@ -5,9 +5,9 @@ import it.polimi.ingsw.ps31.model.player.Player;
 /**
  * Created by giulia on 17/05/2017.
  */
-public class ProductionActivationFromCard extends GenericProductionActivation {
+public class ProductionEffectActivationFromCard extends GenericProductionEffectActivation {
 
-    public ProductionActivationFromCard(int cardId,int productionValue) {// rappresenta il valore con cui viene creato l'effetto produzione
+    public ProductionEffectActivationFromCard(int cardId, int productionValue) {// rappresenta il valore con cui viene creato l'effetto produzione
         super(cardId,0);
     }
 

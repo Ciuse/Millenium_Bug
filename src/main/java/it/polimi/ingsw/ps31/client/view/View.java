@@ -30,7 +30,7 @@ public abstract class View extends Observable implements Observer {
     private final List<StateViewPersonalBoard> stateViewPersonalBoardList= new ArrayList<>();
     private final StateViewGame stateViewGame;
     private ClientNetworkInterface networkInterface;
-    boolean firstTime=true;                                 // se provo a stampare senza avere tutte le informazioni la prima volta da errore (per tutti i metodi di stampa)
+    private boolean firstTime=true;                                 // se provo a stampare senza avere tutte le informazioni la prima volta da errore (per tutti i metodi di stampa)
                                                             //la prima volta stampo solo se ho già tutto
 
 
@@ -60,15 +60,15 @@ public abstract class View extends Observable implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        MVMessageVisitor MVMessageVisitor = new MVMessageVisitor();
-        MVMessageVisitor.setView(this);
+        MVMessageVisitor mVMessageVisitor = new MVMessageVisitor();
+        mVMessageVisitor.setView(this);
         MVVisitable message = (MVVisitable) arg;
 
         if (message.isNotifyAll()) {          //se il messaggio riguarda tutti lo accetto
-            message.accept(MVMessageVisitor);
+            message.accept(mVMessageVisitor);
         } else {
             if (message.getNotifySinglePlayer().equals(this.viewId)) {  //se il messaggio notifica solo un player controllo se è la mia la View di quel Player
-                message.accept(MVMessageVisitor);
+                message.accept(mVMessageVisitor);
             }
         }
 

@@ -7,79 +7,26 @@ import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.awt.Color;
 
 /**
  * Created by Giuseppe on 07/06/2017.
  */
 public  class GuiView extends View implements ActionListener{
-    private MyIconPanel myIconPanel;
-    private ChangeCardPanel changeCardPanel;
     private JButton jButtonChangeCard;
-    private ChangeCardFrame changeCardFrame;
     private GameBoardPanel gameBoardPanel;
     private Frame frame;
 
-    public GuiView(PlayerId viewId, int playerMaxNumber,MyIconPanel myIconPanel) {
+    public GuiView(PlayerId viewId, int playerMaxNumber) {
         super(viewId, playerMaxNumber);
-        this.myIconPanel = myIconPanel;
     } //TODO TOGLIERE ABSTRACT ED IMPLEMEMTARE TUTTI I METODI
 
-    public GuiView(PlayerId viewId, int playerMaxNumber,ChangeCardPanel changeCardPanel) {
-        super(viewId, playerMaxNumber);
-        this.changeCardPanel=changeCardPanel;
-    }
-
-    public GuiView(PlayerId viewId, int playerMaxNumber, GameBoardPanel gameBoardPanel) {
-        super(viewId, playerMaxNumber);
-    }
-
     public void actionPerformed(ActionEvent ev) {
-        String name = ev.getActionCommand();
-        if (name.equals("Prendi carta"))
-            myIconPanel.setBackground(Color.red);
-        if (name.equals("Cambia carta")) {
-            ActionEvent event = (ActionEvent) ev.getSource();
 
-        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         @Override

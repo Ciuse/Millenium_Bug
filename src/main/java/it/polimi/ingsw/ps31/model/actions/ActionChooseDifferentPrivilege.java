@@ -91,10 +91,10 @@ public class ActionChooseDifferentPrivilege extends Action {
                     String string = player.getPlayerId() + ":Quale risorsa del privilegio vuoi ottenere?";
 
                     //setto la lista di risorse rimaste al player tra cui scegliere( cosi la view non può mentirmi visto che poi posso usare questa variabile per controllare la risposta ceh ricevo dalla view
-                    getLastModelStateForControl().setResourceListToControl(tempResourceChoices);
+                    player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(tempResourceChoices);
 
-                    notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoicePrivilegeResource(resourceStringChoices)));
-                    choice = super.waitResourceChosenFromPrivilege();
+                    player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoicePrivilegeResource(resourceStringChoices)));
+                    choice = player.getModel().getModelChoices().waitResourceChosenFromPrivilege();
 
                 } while (!tempResourceChoices.contains(choice));
 
@@ -106,7 +106,7 @@ public class ActionChooseDifferentPrivilege extends Action {
                 }
                 resetAreDifferent();
                 resetNumberOfDifferentPrivileges();
-                super.notifyViews(new MVUpdateState("Aggiornato stato player resources",player.getStatePlayerResources()));
+                player.getModel().notifyViews(new MVUpdateState("Aggiornato stato player resources",player.getStatePlayerResources()));
             }
         }
     }

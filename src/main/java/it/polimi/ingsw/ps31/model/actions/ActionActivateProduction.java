@@ -33,18 +33,12 @@ public class ActionActivateProduction extends Action {
 
     /* Activation Method */
     @Override
-    public void activate()
-    {
-        //Controllo che i paramatri siano settati
-        if ( this.diceValue == null )
-        {
-            //TODO: gestire
-        }
-        else
-            player.getProductionList().activate(this.diceValue+this.diceBonus);
+    public void activate() {
+
+        player.getProductionList().activate(this.diceValue + this.diceBonus);
 
         resetDiceValue();
-        super.notifyViews(new MVUpdateState("Aggiornato stato PlayerResources",player.getStatePlayerResources()));
+        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato PlayerResources", player.getStatePlayerResources()));
 
     }
 

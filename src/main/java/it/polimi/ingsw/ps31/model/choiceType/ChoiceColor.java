@@ -8,7 +8,7 @@ import java.util.List;
  * Created by giulia on 20/06/2017.
  */
 public class ChoiceColor extends ChoiceType {
-    List<PlayerColor> playerColorList;
+    private List<PlayerColor> playerColorList;
 
     public ChoiceColor(List<PlayerColor> playerColorList) {
         this.playerColorList = playerColorList;

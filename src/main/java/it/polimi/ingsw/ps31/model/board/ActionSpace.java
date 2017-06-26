@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by Francesco on 12/05/2017.
  */
-public class ActionSpace extends ModelChoices implements ActiveEffect {
+public class ActionSpace implements ActiveEffect {
     private int actionSpaceId; //utile per la stampa
     private final int diceCost;
     private final int familyMemberLimit; //Limite massimo di familiari nello spazio azione. -1 indica l'assenza di limite
@@ -73,7 +73,7 @@ public class ActionSpace extends ModelChoices implements ActiveEffect {
         this.familyMembers.add(familyMember);
 
         String string="Aggiornato ActionSpace: "+this.actionSpaceId;
-        super.notifyViews(new MVUpdateState(string, getStateActionSpace()));
+        familyMember.getPlayer().getModel().notifyViews(new MVUpdateState(string, getStateActionSpace()));
     }
 
 
@@ -83,7 +83,7 @@ public class ActionSpace extends ModelChoices implements ActiveEffect {
         this.familyMembers.remove(familyMember);
 
         String string="Aggiornato ActionSpace: "+this.actionSpaceId;
-        super.notifyViews(new MVUpdateState(string, getStateActionSpace()));
+        familyMember.getPlayer().getModel().notifyViews(new MVUpdateState(string, getStateActionSpace()));
     }
 
     public StateActionSpace getStateActionSpace(){

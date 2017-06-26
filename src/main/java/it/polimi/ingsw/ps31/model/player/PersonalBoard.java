@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardList;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
@@ -18,14 +19,15 @@ public class PersonalBoard {
     private final PlayerId playerId;
     private final List<PersonalBoardCardList> personalBoardCardList=null;
     private final static int NUM_OF_CARD_LIST =4;
-
+    private final Model model;
 
     /* Constructor */
-    public PersonalBoard(List<PointResource[]> pointResourceRequired, PlayerId playerId) {
+    public PersonalBoard(List<PointResource[]> pointResourceRequired, PlayerId playerId, Model model) {
         this.playerId = playerId;
+        this.model = model;
         CardColor[] cardColor= CardColor.values();
         for(int i = 0; i< NUM_OF_CARD_LIST; i++){
-            personalBoardCardList.add(new PersonalBoardCardList(playerId,cardColor[i]));
+            personalBoardCardList.add(new PersonalBoardCardList(playerId,cardColor[i],model));
             personalBoardCardList.get(i).setExtraResourceRequired(pointResourceRequired.get(i));
         }
 

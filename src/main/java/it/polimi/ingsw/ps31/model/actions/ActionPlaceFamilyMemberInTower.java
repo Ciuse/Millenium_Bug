@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceFamilyMember;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceListToPay;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerActionSpace;
 import it.polimi.ingsw.ps31.model.player.Player;
 
@@ -41,19 +42,19 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
     public void activate() {
         boolean askAgain = true;
 
-        super.notifyViews(new MVAskChoice(player.getPlayerId(), "Quale family member vuoi usare?", new ChoiceFamilyMember()));
-        this.familyMember = super.waitFamilyMemberChosen();
+        player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "Quale family member vuoi usare?", new ChoiceFamilyMember()));
+        this.familyMember = player.getModel().getModelChoices().waitFamilyMemberChosen();
 
         //chiedo se vuole pagare dei servitori
         player.getPlayerActionSet().payServants(super.familyMember);
 
         do {
-            super.notifyViews(new MVAskChoice(player.getPlayerId(), "In quale tower action space vuoi mettere il tuo family member?", new ChoiceTowerActionSpace()));
-            this.towerCardSpace = super.waitTowerCardChosen();
+            player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "In quale tower action space vuoi mettere il tuo family member?", new ChoiceTowerActionSpace()));
+            this.towerCardSpace = player.getModel().getModelChoices().waitTowerCardChosen();
 
             //Eseguo i controlli
             if (actionControlSet.selfOccupiedTowerControl(familyMember, towerCardSpace.getTower())) {
-                if (actionControlSet.diceValueVsDiceColorControl(towerCardSpace.getActionSpace().getDiceCost(), familyMember.getDiceColor())) {
+                if (actionControlSet.diceValueVsCardSpaceControl(familyMember.getTotalValue(), towerCardSpace)) {
                     if (actionControlSet.towerCostPlacementControl(towerCardSpace)) {
                         if(actionControlSet.takeDevelopmentCardControl(towerCardSpace.getCard())) {
                             //TODO SIMULARE L ATTIVAZIONE IN CATENA DEGLI EFFETI
@@ -70,10 +71,16 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
                                 towerCardSpace.getActionSpace().activeEffectList(player);
 
                             int listToPay = -1;
-                            if (towerCardSpace.getCard().getCostList() != null) {      //se la carta ha almeno una lista da pagare vedo quante ne ha
+                            if (towerCardSpace.getCard().getCostList() != null) {
+                                listToPay=0;
+                                //se la carta ha almeno una lista da pagare vedo quante ne ha
                                 if (towerCardSpace.getCard().getCostList().size() > 1) {     //se la carta ha più di una lista da pagare chiedo alla view quale vuole pagare
-                                    //notify
-                                    //TODO FARE LA RICHIESTA DI QUALE LISTA PAGARE listToPay=wait...
+                                    do {
+                                        String string = player.getPlayerId() + "Quale costo della carta vuoi pagare?";
+                                        player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(towerCardSpace.getCard().getCostList());
+                                        player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceListToPay(towerCardSpace.getCard().getCardId())));
+                                        listToPay = player.getModel().getModelChoices().waitIntChosen();
+                                    }while(!player.getPlayerResources().greaterThan(towerCardSpace.getCard().getCostList().get(listToPay))); // se fallisce il pagamento glielo richiedo magari poteva pagare solo i dei due costi
                                 }
                             }
                             if (listToPay != -1) {
@@ -81,19 +88,20 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
                                 player.getPlayerActionSet().payResources(towerCardSpace.getCard().getCostList().get(listToPay));
                             }
                             //prendo la carta
-                            player.getPlayerActionSet().takeCard(towerCardSpace);
+                            super.player.addDevelopmentCard(this.towerCardSpace.takeCard());
+                            towerCardSpace.getTower().setOccupied(true);
                         }else{      //TODO FARE OVERRIDE DEI GET CONTROL ERROR SPECIFICI
-                            super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTakeDevelopmentCardControl().getControlStringError()));
+                            player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTakeDevelopmentCardControl().getControlStringError()));
                         }
                     } else{
-                        super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTowerCostPlacementControl().getControlStringError()));
+                        player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTowerCostPlacementControl().getControlStringError()));
                     }
                 } else {
-                    super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getDiceValueVsDiceColorControl().getControlStringError()));
+                    player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getDiceValueActionSpaceControl().getControlStringError()));
                     askAgain = true;
                 }
             } else {
-                super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getSelfOccupiedTowerControl().getControlStringError()));
+                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getSelfOccupiedTowerControl().getControlStringError()));
                 askAgain = true;
             }
         } while (askAgain);
@@ -102,8 +110,8 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
         setUsed(true);
         resetTowerCardSpace();
         resetFamilyMember();
-        super.notifyViews(new MVUpdateState("Aggiornato stato family member", familyMember.getStateFamilyMember()));
-        super.notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella tower", towerCardSpace.getActionSpace().getStateActionSpace()));
+        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato family member", familyMember.getStateFamilyMember()));
+        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella tower", towerCardSpace.getActionSpace().getStateActionSpace()));
     }
 
     @Override

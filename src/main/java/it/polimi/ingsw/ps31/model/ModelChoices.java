@@ -44,7 +44,11 @@ public class ModelChoices extends Model {
     private ActionSpace actionSpaceChosen;
     private Action actionToDo=null;
 
-    //I metodi di wait si mettono in attesa del controller, il quale setta la risposta
+    public ModelChoices() {
+
+    }
+
+//I metodi di wait si mettono in attesa del controller, il quale setta la risposta
     // proveniente dalla view e in questo modo il model continua l' esecuzione
     // delle altre funzioni ritornando l' oggetto/risposta dell utente
 

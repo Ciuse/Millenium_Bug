@@ -1,12 +1,13 @@
 package it.polimi.ingsw.ps31.model.card;
 
+import it.polimi.ingsw.ps31.model.bonus.ActiveBonus;
 import it.polimi.ingsw.ps31.model.bonus.Bonus;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 15/05/2017.
  */
-public class ExcommunicationTiles{
+public class ExcommunicationTiles implements ActiveBonus{
     private final int period;
     private final Bonus permanentMalus;
     private final boolean endGame;
@@ -31,5 +32,10 @@ public class ExcommunicationTiles{
 
     public Bonus getPermanentMalus() {
         return permanentMalus;
+    }
+
+    @Override
+    public void activeBonus(Player player) {
+        permanentMalus.activate(player);
     }
 }

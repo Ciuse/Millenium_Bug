@@ -40,18 +40,18 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
     public void activate() {
         boolean askAgain = true;
 
-        super.notifyViews(new MVAskChoice(player.getPlayerId(), "Quale family member vuoi usare?", new ChoiceFamilyMember()));
-        super.familyMember = super.waitFamilyMemberChosen();
+        player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "Quale family member vuoi usare?", new ChoiceFamilyMember()));
+        super.familyMember = player.getModel().getModelChoices().waitFamilyMemberChosen();
 
         player.getPlayerActionSet().payServants(super.familyMember); //richiamo l azione per pagare i family member
 
         do {
-            super.notifyViews(new MVAskChoice(player.getPlayerId(), "In quale action space della board vuoi mettere il tuo family member?", new ChoiceActionSpace()));
-            this.actionSpace = super.waitActionSpaceChosen();
+            player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "In quale action space della board vuoi mettere il tuo family member?", new ChoiceActionSpace()));
+            this.actionSpace = player.getModel().getModelChoices().waitActionSpaceChosen();
 
             //controllo i parametri extra dell azione settati dalle scomuniche
             if (super.defaultDenyActionSpaces.contains(actionSpace.getActionSpaceId())) {
-                super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, "Non puoi piazzare il family member qui perchè hai la scomunica"));
+                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, "Non puoi piazzare il family member qui perchè hai la scomunica"));
             } else {
 
                 //Eseguo i controlli
@@ -62,14 +62,14 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
                     super.player.setLastUsedFamilyMember(familyMember);
                     askAgain = false;
                 } else {
-                    super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getDiceValueVsDiceColorControl().getControlStringError()));
+                    player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getDiceValueActionSpaceControl().getControlStringError()));
                     askAgain = true;
                 }
             }
         } while (askAgain);
 
-        super.notifyViews(new MVUpdateState("Aggiornato stato family member", familyMember.getStateFamilyMember()));
-        super.notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella board", actionSpace.getStateActionSpace()));
+        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato family member", familyMember.getStateFamilyMember()));
+        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella board", actionSpace.getStateActionSpace()));
 
         super.setUsed(true);
         resetActionSpace();

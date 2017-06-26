@@ -27,7 +27,7 @@ public class ActionPayTowerMoney extends Action {
     public void activate()
     {
         super.player.getPlayerActionSet().payResources(COINTOPAY);
-        super.notifyViews(new MVUpdateState("Aggiornato stato player resource",player.getStatePlayerResources()));
+        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato player resource",player.getStatePlayerResources()));
 
     }
 }

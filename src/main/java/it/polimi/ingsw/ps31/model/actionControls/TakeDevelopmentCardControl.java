@@ -54,24 +54,23 @@ public class TakeDevelopmentCardControl extends Control {
         }
 
         //Controllo che il player abbia spazio nella personal board per la carta in questione
-        if(player.getPlayerActionSet().getActionControlSet().getPlayerCardNumberControl().execute()){
+        if(player.getPlayerActionSet().getActionControlSet().getPlayerCardNumberControl().execute()) {
             //Controllo requisiti
-            boolean ignoreRequirement=false;
-            for (CardColor cardColor :colorListRequirementToIgnore
+            boolean ignoreRequirement = false;
+            for (CardColor cardColor : colorListRequirementToIgnore
                     ) {
-                if(developmentCard.getCardColor().equals(cardColor))
-                    ignoreRequirement=true;
+                if (developmentCard.getCardColor().equals(cardColor))
+                    ignoreRequirement = true;
             }
 
-            if(!ignoreRequirement) {
+            if (!ignoreRequirement) {
                 PersonalBoardCardCell personalBoardCardCell = super.player.getPersonalBoard().getSpecificPersonalBoardCardList(developmentCard.getCardColor()).getFirstEmptyCardCell();
-                if(personalBoardCardCell.getExtraPointRequired()!=null
-                        &&!super.player.getPlayerResources().greaterThan(personalBoardCardCell.getExtraPointRequired())){
+                if (personalBoardCardCell.getExtraPointRequired() != null
+                        && !super.player.getPlayerResources().greaterThan(personalBoardCardCell.getExtraPointRequired())) {
                     resetDevelopmentCard();
                     return false;
                 }
             }
-            player.addDevelopmentCard(developmentCard);
         }
         resetDevelopmentCard();
         return true;

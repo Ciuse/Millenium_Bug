@@ -16,7 +16,7 @@ public class AddValueNeutralFamilyMemberBonus extends Bonus {
 
     @Override
     public void activate(Player player) {
-        player.getActionControlSet().getDiceValueVsDiceColorControl().
+        player.getActionControlSet().getDiceValueActionSpaceControl().
                 addPermanentValueAtSpecificMember(DiceColor.NEUTRAL, bonusNeutralFamilyMember);
     }
 }

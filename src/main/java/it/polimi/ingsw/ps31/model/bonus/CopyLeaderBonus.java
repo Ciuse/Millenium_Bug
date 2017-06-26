@@ -25,8 +25,8 @@ public class CopyLeaderBonus extends Bonus {
         for (LeaderCard leaderCard : player.getLeaderCardList()) {
             if(leaderCard.getLeaderId()==leaderCardId){
                 String string = player.getPlayerId()+": Scegli l'effetto di un'altra carta leader in gioco di un altro giocatore";
-                notifyViews(new MVAskChoice(player.getPlayerId(),string,new ChoiceLeaderEffectToCopy(leaderCardId)));
-                LeaderCard leaderCardChosen = super.waitLeaderCardChosen(); //aspetto che il controller crei la nuova carta leader con l'id di lorenzo de medici
+                player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(),string,new ChoiceLeaderEffectToCopy(leaderCardId)));
+                LeaderCard leaderCardChosen = player.getModel().getModelChoices().waitLeaderCardChosen(); //aspetto che il controller crei la nuova carta leader con l'id di lorenzo de medici
                 player.removeLeaderCard(leaderCard);
                 player.addLeaderCard(leaderCardChosen);
             }

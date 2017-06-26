@@ -5,15 +5,15 @@ import it.polimi.ingsw.ps31.model.player.Player;
 /**
  * Created by Giuseppe on 26/05/2017.
  */
-public class GenericHarvestActivation extends Effect { //è l'effetto generico presente sul tabellone
+public class GenericHarvestEffectActivation extends Effect { //è l'effetto generico presente sul tabellone
     private final int basicValue;
 
-    public  GenericHarvestActivation(int cardId,int basicValue){
+    public GenericHarvestEffectActivation(int cardId, int basicValue){
         super(cardId);
         this.basicValue = basicValue;
     }
 
-    public GenericHarvestActivation(int basicValue) {
+    public GenericHarvestEffectActivation(int basicValue) {
         this.basicValue = basicValue;
     }
 

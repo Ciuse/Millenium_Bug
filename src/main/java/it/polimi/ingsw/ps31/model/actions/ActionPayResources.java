@@ -50,11 +50,11 @@ public class ActionPayResources extends Action{
                 resetResourceToPay();
             } else
             {
-                super.notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPayResourceControl().getControlStringError()));
+                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPayResourceControl().getControlStringError()));
             }
 
             resetResourceToPay();
-            super.notifyViews(new MVUpdateState("Aggiornato stato player resource",player.getStatePlayerResources()));
+            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato player resource",player.getStatePlayerResources()));
         }
     }
 }

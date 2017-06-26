@@ -10,7 +10,6 @@ import java.util.List;
  */
 public abstract class Control{
     protected final Player player;
-    protected List<Boolean> conditions = new ArrayList<>();
 
     public abstract boolean execute();
 

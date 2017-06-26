@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
@@ -15,14 +16,14 @@ public class PersonalBoardCardList {
     private PlayerId playerId;
     private final static int MAX_CARD_OF_SAME_COLOR = 6 ;
     private final CardColor cardColor;
-    PointResource[] extraResourceRequired;
+    private PointResource[] extraResourceRequired;
     private final List<PersonalBoardCardCell> personalBoardCardCellList=new ArrayList<>();
 
-    public PersonalBoardCardList(PlayerId playerId,CardColor cardColor) {
+    public PersonalBoardCardList(PlayerId playerId,CardColor cardColor, Model model) {
         this.playerId=playerId;
         this.cardColor = cardColor;
         for(int i = 0; i< MAX_CARD_OF_SAME_COLOR; i++){
-            personalBoardCardCellList.add(new PersonalBoardCardCell(playerId,i,extraResourceRequired[i]));
+            personalBoardCardCellList.add(new PersonalBoardCardCell(playerId,i,extraResourceRequired[i],model));
         }
     }
 
@@ -36,6 +37,10 @@ public class PersonalBoardCardList {
 
     public PointResource[] getExtraResourceRequired() {
         return extraResourceRequired.clone();
+    }
+
+    public PlayerId getPlayerId() {
+        return playerId;
     }
 
     public void setExtraResourceRequired(PointResource[] extraResourceRequired) {

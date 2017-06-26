@@ -969,7 +969,7 @@ public class CreationJson {
         resourceList21.clear();
         resourceList21.addSpecificResource(new FaithPoint(2));
         immediateEffectBlue21.add(new GetResourceEffect(69,resourceList21));
-        immediateEffectBlue21.add(new HarvestActivationFromCard(69,4));
+        immediateEffectBlue21.add(new HarvestEffectActivationFromCard(69,4));
         immediateEffectBlueList.add(20, immediateEffectBlue21);  //aggiunta effetto alla lista principale
 
         //effetto immediato ventiduesima carta
@@ -977,7 +977,7 @@ public class CreationJson {
         resourceList22.clear();
         resourceList22.addSpecificResource(new FaithPoint(1));
         immediateEffectBlue22.add(new GetResourceEffect(70,resourceList22));
-        immediateEffectBlue22.add(new ProductionActivationFromCard(70,4));
+        immediateEffectBlue22.add(new ProductionEffectActivationFromCard(70,4));
         immediateEffectBlueList.add(21, immediateEffectBlue22);  //aggiunta effetto alla lista principale
 
         //effetto immediato ventitreesima carta
@@ -1146,22 +1146,22 @@ public class CreationJson {
         effectListToReturn.add(effectList1);
 
         EffectList effectList2 = new EffectList();
-        GenericHarvestActivation smallHarvest = new GenericHarvestActivation(0); //EFFETTO SMALL HARVEST
+        GenericHarvestEffectActivation smallHarvest = new GenericHarvestEffectActivation(0); //EFFETTO SMALL HARVEST
         effectList2.add(smallHarvest);
         effectListToReturn.add(effectList2);
 
         EffectList effectList3 = new EffectList();
-        GenericHarvestActivation bigHarvest1 = new GenericHarvestActivation(-3); //EFFETTO BIG HARVEST
+        GenericHarvestEffectActivation bigHarvest1 = new GenericHarvestEffectActivation(-3); //EFFETTO BIG HARVEST
         effectList3.add(bigHarvest1);
         effectListToReturn.add(effectList3);
 
         EffectList effectList4 = new EffectList();
-        GenericProductionActivation smallProduction = new GenericProductionActivation(0); //EFFETTO SMALL PRODUCTION
+        GenericProductionEffectActivation smallProduction = new GenericProductionEffectActivation(0); //EFFETTO SMALL PRODUCTION
         effectList4.add(smallProduction);
         effectListToReturn.add(effectList4);
 
         EffectList effectList5 = new EffectList();
-        GenericProductionActivation bigProduction = new GenericProductionActivation(-3); //EFFETTO BIG PRODUCTION
+        GenericProductionEffectActivation bigProduction = new GenericProductionEffectActivation(-3); //EFFETTO BIG PRODUCTION
         effectList5.add(bigProduction);
         effectListToReturn.add(effectList5);
 

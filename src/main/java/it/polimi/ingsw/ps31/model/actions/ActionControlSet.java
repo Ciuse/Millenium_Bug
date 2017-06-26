@@ -21,8 +21,8 @@ import java.util.List;
  */
 public class ActionControlSet {
     private final DevelopmentCardRequirementsControl developmentCardRequirementsControl;
-    private final DiceValueVsDiceColorControl diceValueVsDiceColorControl;
-    private final DiceValueVsCardSpaceControl diceValueVsCardSpaceControl;
+    private final DiceValueActionSpaceControl diceValueActionSpaceControl;
+    private final DiceValueCardSpaceControl diceValueCardSpaceControl;
     private final OccupiedActionSpaceControl occupiedActionSpaceControl;
     private final PayResourceControl payResourceControl;
     private final PayResourceListControl payResourceListControl;
@@ -39,8 +39,8 @@ public class ActionControlSet {
     public ActionControlSet(Player player)
     {
         this.resourceRequirementsControl = new ResourceRequirementsControl(player);
-        this.diceValueVsDiceColorControl = new DiceValueVsDiceColorControl(player);
-        this.diceValueVsCardSpaceControl = new DiceValueVsCardSpaceControl(player);
+        this.diceValueActionSpaceControl = new DiceValueActionSpaceControl(player);
+        this.diceValueCardSpaceControl = new DiceValueCardSpaceControl(player);
         this.occupiedActionSpaceControl = new OccupiedActionSpaceControl(player);
         this.payResourceControl = new PayResourceControl(player);
         this.payResourceListControl = new PayResourceListControl(player);
@@ -66,16 +66,16 @@ public class ActionControlSet {
 
     public boolean diceValueVsDiceColorControl(Integer diceValue, DiceColor diceColor)
     {
-        this.diceValueVsDiceColorControl.setDiceValue(diceValue);
-        this.diceValueVsDiceColorControl.setDiceColor(diceColor);
-        return this.diceValueVsDiceColorControl.execute();
+        this.diceValueActionSpaceControl.setDiceValue(diceValue);
+        this.diceValueActionSpaceControl.setDiceColor(diceColor);
+        return this.diceValueActionSpaceControl.execute();
     }
 
     public boolean diceValueVsCardSpaceControl (Integer diceValue, TowerCardSpace towerCardSpace)
     {
-        this.diceValueVsCardSpaceControl.setDiceValue(diceValue);
-        this.diceValueVsCardSpaceControl.setTowerCardSpace(towerCardSpace);
-        return this.diceValueVsCardSpaceControl.execute();
+        this.diceValueCardSpaceControl.setDiceValue(diceValue);
+        this.diceValueCardSpaceControl.setTowerCardSpace(towerCardSpace);
+        return this.diceValueCardSpaceControl.execute();
     }
 
     public boolean occupiedActionSpaceControl(ActionSpace actionSpace)
@@ -142,12 +142,12 @@ public class ActionControlSet {
         return developmentCardRequirementsControl;
     }
 
-    public DiceValueVsDiceColorControl getDiceValueVsDiceColorControl() {
-        return diceValueVsDiceColorControl;
+    public DiceValueActionSpaceControl getDiceValueActionSpaceControl() {
+        return diceValueActionSpaceControl;
     }
 
-    public DiceValueVsCardSpaceControl getDiceValueVsCardSpaceControl() {
-        return diceValueVsCardSpaceControl;
+    public DiceValueCardSpaceControl getDiceValueCardSpaceControl() {
+        return diceValueCardSpaceControl;
     }
 
     public OccupiedActionSpaceControl getOccupiedActionSpaceControl() {

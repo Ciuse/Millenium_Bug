@@ -7,6 +7,6 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public interface ActiveBonus {
 
-    public void activeBonus(Player player);
+    void activeBonus(Player player);
 
 }

@@ -1,18 +1,27 @@
 package it.polimi.ingsw.ps31.model.actionControls;
 
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
+import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.player.Player;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Francesco on 28/05/2017.
  */
-public class DiceValueVsCardSpaceControl extends Control {
+public class DiceValueCardSpaceControl extends Control {
     private Integer diceValue = null;
     private TowerCardSpace towerCardSpace = null;
+    private Map<CardColor, Integer> cardDiceBonuses;
+
 
     /* Constructor */
-    public DiceValueVsCardSpaceControl(Player player) {
+    public DiceValueCardSpaceControl(Player player) {
         super(player);
+        this.cardDiceBonuses = new HashMap<>();
+        for (CardColor cardColor : CardColor.values())
+            this.cardDiceBonuses.put(cardColor, 0);
     }
 
     @Override
@@ -62,16 +71,25 @@ public class DiceValueVsCardSpaceControl extends Control {
             result = false; //Altrimenti non compila
         } else
         {
-            //Controllo che il costo del dado del towerCardSpace sia minore del valore del dado indicato
-            if ( towerCardSpace.getActionSpace().getDiceCost() > diceValue.intValue() )
-                result = false;
-            else
+            //Controllo che il valore dell azione più i vari bonus sia maggiore al costro del dado dell action space associato al tower card space TODO METTERE I BONUS
+            if ( diceValue+cardDiceBonuses.get(towerCardSpace.getTowerColor())>towerCardSpace.getActionSpace().getDiceCost())
                 result = true;
+            else
+                result = false;
         }
 
         resetDiceValue();
         resetTowerCardSpace();
         return result;
+
+    }
+
+    /* Modifiers */
+    public void addCardDiceBonus (CardColor cardColor, Integer bonus)
+    {
+        //bonus può anche essere negativo (es. scomuniche)
+        Integer currentBonus = this.cardDiceBonuses.get(cardColor);
+        cardDiceBonuses.put(cardColor, currentBonus+bonus);
 
     }
 }

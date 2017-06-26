@@ -2,12 +2,11 @@ package it.polimi.ingsw.ps31.model.game;
 
 import com.google.gson.Gson;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
+import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.json.CreationJson;
 import it.polimi.ingsw.ps31.model.json.JsonFile;
 import it.polimi.ingsw.ps31.model.json.JsonGameObject;
-import it.polimi.ingsw.ps31.model.player.Player;
-import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
 
 import java.util.Collections;
 
@@ -20,13 +19,17 @@ public class GameLogic {
     private final static int PERIODMAXNUMBER = 3;
     private final static int ROUNDMAXNUMBER = 2;
     private final static int ACTIONMAXNUMBER = 4;
-    int playerMaxNumber;
+    private final Model model;
+    private int playerMaxNumber;
     private int period;
     private int round;
     private int action;
 
 
-    public GameLogic(InformationFromNetworking informationFromNetworking) {
+    public GameLogic(InformationFromNetworking informationFromNetworking, Model model) {
+        this.model = model;
+
+        gameUtility.setModel(this.model);
         gameUtility.setInformationFromNetworking(informationFromNetworking);
     }
 
@@ -54,7 +57,7 @@ public class GameLogic {
         gameUtility.setLeaderCardList(jsonObjectReadFromFile.getLeaderCardList());
 
         //parte di connessione
-        playerMaxNumber=gameUtility.waitPlayerConnection();  //mi metto in attesa dei giocatori che si connettano
+        playerMaxNumber=gameUtility.getModel().getModelChoices().waitPlayerConnection();  //mi metto in attesa dei giocatori che si connettano
         gameUtility.setPlayerMaxNumber(playerMaxNumber);
 
 
@@ -85,7 +88,7 @@ public class GameLogic {
 
 
         //viene fatto dopo aver saputo in quanto si gioca (per istanziare le aree da 3 e/o 4 giocatori)
-        GameBoard gameBoard = new GameBoard(jsonObjectReadFromFile.getTowerActionSpaceEffectList(), jsonObjectReadFromFile.getActionSpaceEffectList(), jsonObjectReadFromFile.getFaithTrackExtraValue());
+        GameBoard gameBoard = new GameBoard(jsonObjectReadFromFile.getTowerActionSpaceEffectList(), jsonObjectReadFromFile.getActionSpaceEffectList(), jsonObjectReadFromFile.getFaithTrackExtraValue(), model);
         gameUtility.setGameBoard(gameBoard);
 
         gameUtility.getDevelopmentCardList().shuffleCardList();  //mischio la lista di carte
@@ -104,7 +107,7 @@ public class GameLogic {
                 for (this.action = 1; action <= ACTIONMAXNUMBER; action++) {
                     for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
                         String string = "Aggiornato stato del gioco";
-                        gameUtility.notifyViews(new MVUpdateState(string,gameUtility.getStateGame(this.period,this.round,playerNumber)));
+                        gameUtility.getModel().notifyViews(new MVUpdateState(string,gameUtility.getStateGame(this.period,this.round,playerNumber)));
                         gameUtility.phaseActionGame(playerNumber,action);
                     }
                 }

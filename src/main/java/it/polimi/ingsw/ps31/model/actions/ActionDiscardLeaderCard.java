@@ -38,8 +38,8 @@ public class ActionDiscardLeaderCard extends Action {
     @Override
     public void activate()
     {
-        super.notifyViews(new MVAskChoice(player.getPlayerId(),"Quale leader non giocato vuoi scartare?",new ChoiceLeaderToDiscard()));
-        this.leaderCard=super.waitLeaderCardChosen();
+        player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(),"Quale leader non giocato vuoi scartare?",new ChoiceLeaderToDiscard()));
+        this.leaderCard=player.getModel().getModelChoices().waitLeaderCardChosen();
         //Controllo che i parametri siano settati
         if (this.leaderCard == null)
         {
@@ -55,7 +55,7 @@ public class ActionDiscardLeaderCard extends Action {
         }
 
         resetLeaderCard();
-        super.notifyViews(new MVUpdateState("Aggiornato stato leader card",leaderCard.getStateLeaderCard()));
+        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato leader card",leaderCard.getStateLeaderCard()));
     }
 
     @Override

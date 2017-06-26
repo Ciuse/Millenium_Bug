@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.board;
 
+import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCardDeck;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
@@ -20,10 +21,13 @@ public class Tower {
     private boolean isOccupied = false;
     private final List<TowerCardSpace> towerCardSpaceList;
     private DevelopmentCardDeck deck;
+    private final Model model;
 
     /* Constructor */
-    public Tower(CardColor color, List<EffectList> effectList)
+    public Tower(CardColor color, List<EffectList> effectList, Model model)
     {
+        this.model = model;
+
         this.towerCardSpaceList = new ArrayList<>();
         for (int i = 0; i<TOWERDIMENSION; i++)
         {
@@ -52,6 +56,10 @@ public class Tower {
 
     public List<TowerCardSpace> getTowerCardSpaceList() {
         return new ArrayList<>(towerCardSpaceList);
+    }
+
+    public Model getModel() {
+        return model;
     }
 
     public void setDeck(List<DevelopmentCardDeck> deckList, int period) {

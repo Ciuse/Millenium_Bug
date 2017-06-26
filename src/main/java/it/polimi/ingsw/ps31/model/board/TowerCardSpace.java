@@ -44,14 +44,14 @@ public class TowerCardSpace extends PhysicalCardBox {
     public void setCard(DevelopmentCard card) {
 
         super.setCard(card);
-        super.notifyViews(new MVUpdateState("Aggiornato stato del tower card box", getStateTowerCardBox()));
+        tower.getModel().notifyViews(new MVUpdateState("Aggiornato stato del tower card box", getStateTowerCardBox()));
 
     }
 
     @Override
     public DevelopmentCard takeCard() {
         DevelopmentCard takenCard=super.takeCard();
-        super.notifyViews(new MVUpdateState("Aggiornato stato del tower card box",getStateTowerCardBox()));
+        tower.getModel().notifyViews(new MVUpdateState("Aggiornato stato del tower card box",getStateTowerCardBox()));
         return takenCard;
     }
 

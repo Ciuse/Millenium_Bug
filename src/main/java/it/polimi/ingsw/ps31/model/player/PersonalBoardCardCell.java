@@ -1,11 +1,14 @@
 package it.polimi.ingsw.ps31.model.player;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
+import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.board.PhysicalCardBox;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 import it.polimi.ingsw.ps31.model.stateModel.StateCardBox;
+
+import javax.jws.WebParam;
 
 /**
  * Created by Francesco on 12/05/2017.
@@ -14,9 +17,11 @@ public class PersonalBoardCardCell extends PhysicalCardBox {
     private PlayerId playerId;
     private final int value;
     private final PointResource extraPointRequired; // sono i requisiti per poter mettere una carta sulla personal board
+    private final Model model;
 
-    public PersonalBoardCardCell(PlayerId playerId, int value, PointResource extraPointRequired) {
+    public PersonalBoardCardCell(PlayerId playerId, int value, PointResource extraPointRequired, Model model) {
         super();
+        this.model=model;
         this.playerId=playerId;
         this.value = value;
         this.extraPointRequired = extraPointRequired;
@@ -33,7 +38,7 @@ public class PersonalBoardCardCell extends PhysicalCardBox {
     @Override
     public void setCard(DevelopmentCard card) {
         super.setCard(card);
-        super.notifyViews(new MVUpdateState("Aggiornato stato del personal card box", getStatePersonalCardBox()));
+        model.notifyViews(new MVUpdateState("Aggiornato stato del personal card box", getStatePersonalCardBox()));
 
     }
 

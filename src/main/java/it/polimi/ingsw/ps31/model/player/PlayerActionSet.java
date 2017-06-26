@@ -24,7 +24,6 @@ public class PlayerActionSet {
     private final ActionPayTowerMoney payTowerMoney;
     private final ActionPlaceFamilyMemberInTower placeFamilyMemberInTower;
     private final ActionPlaceFamilyMemberInBoard placeFamilyMemberInBoard;
-    private final ActionTakeCard takeCard;
     private final ActionActiveLeaderCard actionActiveLeaderCard;
     private final ActionDiscardLeaderCard discardLeaderCard;
     private final ActionGetFinalResources getFinalResources;
@@ -50,7 +49,6 @@ public class PlayerActionSet {
         this.payTowerMoney = new ActionPayTowerMoney(player, actionControlSet);
         this.placeFamilyMemberInTower = new ActionPlaceFamilyMemberInTower(player, actionControlSet);
         this.placeFamilyMemberInBoard = new ActionPlaceFamilyMemberInBoard(player, actionControlSet);
-        this.takeCard = new ActionTakeCard(player, actionControlSet);
         this.actionActiveLeaderCard = new ActionActiveLeaderCard(player, actionControlSet);
         this.discardLeaderCard = new ActionDiscardLeaderCard(player, actionControlSet);
         this.getFinalResources = new ActionGetFinalResources(player, actionControlSet);
@@ -172,12 +170,6 @@ public class PlayerActionSet {
         this.getFinalResources.activate();
     }
 
-    public void takeCard(TowerCardSpace towerCardSpace)
-    {
-        this.takeCard.setCardSpace(towerCardSpace);
-        this.takeCard.activate();
-    }
-
     public void activeLeaderCard()
     {
         this.actionActiveLeaderCard.activate();
@@ -227,10 +219,6 @@ public class PlayerActionSet {
 
     public ActionPlaceFamilyMemberInBoard getPlaceFamilyMemberInBoard() {
         return placeFamilyMemberInBoard;
-    }
-
-    public ActionTakeCard getTakeCard() {
-        return takeCard;
     }
 
     public ActionActiveLeaderCard getActiveLeaderCard() {
