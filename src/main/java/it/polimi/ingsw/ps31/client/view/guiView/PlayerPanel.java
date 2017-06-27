@@ -22,10 +22,6 @@ public class PlayerPanel extends JPanel implements ActionListener {
 
 
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-// Disegno l'immagine sul pannello alle coordinate (0,0)
-        //g.drawRect(1, 1, 400, 400);
-       // g.drawImage(image, 600, 0, this);
     }
 
     public void addComponentsToPane(Container pane) throws IOException {
@@ -52,10 +48,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         jPersonalBonusTilesPanel.attach(this);
 
 
-        BufferedImage originalImage2 = ImageIO.read(new File("C:\\Users\\giulia\\Desktop\\progetto java\\personalBoard.jpg"));
-        int type2 = originalImage2.getType();
-        BufferedImage resizeImage = resizeImage(originalImage2, type2, 400, 300);
-        PersonalBoardPanel jPersonalBoardPanel = new PersonalBoardPanel(resizeImage);
+        PersonalBoardPanel jPersonalBoardPanel = new PersonalBoardPanel();
 
         c.gridx = 1;
         c.gridy = 0;

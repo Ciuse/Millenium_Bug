@@ -1,22 +1,20 @@
 package it.polimi.ingsw.ps31.client.view.guiView;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 /**
  * Created by giulia on 25/06/2017.
  */
-public class GameBoardPanel extends JPanel implements ActionListener {
-    private Image image;
+public class GameBoardPanel extends PaintBackgroundPanel implements ActionListener {
 
-
-    public GameBoardPanel(Image image) {
-        this.image = image;
-        addComponentsToPane(this);
+    public GameBoardPanel() {
     }
-
 
     public void addComponentsToPane(Container pane){
         //griglia 4*5
@@ -61,8 +59,8 @@ public class GameBoardPanel extends JPanel implements ActionListener {
         c.gridheight = 1;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        jPanel3.setBackground(Color.YELLOW);
-        //jPanel3.setOpaque(false);
+//        jPanel3.setBackground(Color.YELLOW);
+        jPanel3.setOpaque(false);
         jPanel3.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel3, c);
         jPanel3.attach(this);
@@ -73,8 +71,8 @@ public class GameBoardPanel extends JPanel implements ActionListener {
         c.gridheight = 1;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        jPanel4.setBackground(Color.GREEN);
-        //jPanel4.setOpaque(false);
+//        jPanel4.setBackground(Color.GREEN);
+        jPanel4.setOpaque(false);
         jPanel4.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel4, c);
         jPanel4.attach(this);
@@ -86,8 +84,8 @@ public class GameBoardPanel extends JPanel implements ActionListener {
         c.gridheight = 1;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        jPanel5.setBackground(Color.YELLOW);
-        //jPanel5.setOpaque(false);
+//        jPanel5.setBackground(Color.YELLOW);
+        jPanel5.setOpaque(false);
         jPanel5.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel5, c);
         jPanel5.attach(this);
@@ -98,8 +96,8 @@ public class GameBoardPanel extends JPanel implements ActionListener {
         c.gridheight = 1;
         c.gridwidth = 3;
         c.fill = GridBagConstraints.BOTH;
-        jPanel6.setBackground(Color.PINK);
-        //jPanel6.setOpaque(false);
+//        jPanel6.setBackground(Color.PINK);
+        jPanel6.setOpaque(false);
         jPanel6.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel6, c);
         jPanel6.attach(this);
@@ -110,8 +108,8 @@ public class GameBoardPanel extends JPanel implements ActionListener {
         c.gridheight = 3;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        jPanel7.setBackground(Color.black);
-       // jPanel7.setOpaque(false);
+//        jPanel7.setBackground(Color.black);
+        jPanel7.setOpaque(false);
         jPanel7.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel7, c);
         jPanel7.attach(this);
@@ -122,23 +120,20 @@ public class GameBoardPanel extends JPanel implements ActionListener {
         c.gridheight = 3;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        jPanel8.setBackground(Color.RED);
-        //jPanel8.setOpaque(false);
+//        jPanel8.setBackground(Color.RED);
+        jPanel8.setOpaque(false);
         jPanel8.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel8, c);
         jPanel8.attach(this);
-
-
 
     }
 
 
     public void paintComponent(Graphics g) {
+        super.imageToLoad("/gameboard_f_c.png");
         super.paintComponent(g);
-// Disegno l'immagine sul pannello alle coordinate (0,0)
-        //g.drawRect(1, 1, 400, 400);
-        g.drawImage(image, 0, 0, this);
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -9,14 +9,9 @@ import java.awt.event.ActionListener;
  */
 public class PersonalBoardPanel extends JPanel {
     ActionListener listener;
-    private Image image;
 
-
-    public PersonalBoardPanel(Image image) {
-        this.image = image;
-
+    public PersonalBoardPanel() {
     }
-
 
     public void attach (ActionListener listener){
         this.listener=listener;
