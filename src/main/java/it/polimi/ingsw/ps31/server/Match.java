@@ -39,19 +39,23 @@ public class Match extends Thread{
 
     /* Constructor */
     public Match(ServerConnectionThread host, int id, MatchTable matchTable){
+        System.out.println("Match: init> Match in costuzione");
         this.informationFromNetworking = new InformationFromNetworking();
+        this.model = new Model();
         this.gameLogic = new GameLogic(informationFromNetworking, model, this);
         this.networkInterface = new NetworkInterface(this, matchTable, this.gameLogic);
-        this.networkInterface.setModelProva(modelProva);
+        //this.networkInterface.setModelProva(modelProva);
         this.hostConnection = host;
         this.id = id;
-//        gameLogic.run();
-
         addConnection(host);
+        start();
     }
 
     public void run()
     {
+        gameLogic.startConnection();
+        //gameLogic.playGame();
+
         //Ciclo in attesa di messaggi sulle socket
         while ( listenNetworkInterfaces )
         {
@@ -81,13 +85,20 @@ public class Match extends Thread{
 
     public void sendViews(Map<PlayerId, View> clientViewList)
     {
+        System.out.println("Match : sendViews()> VIEW PARTENZA!!!");
+
         //spedisco le view ai client
         for(Map.Entry<PlayerId, View> currentPair : clientViewList.entrySet())
         {
+            System.out.println("Match : sendViews()> entrato nel ciclo!");
             PlayerId currentPlayerId = currentPair.getKey();
             View currentView = currentPair.getValue();
+            System.out.println("Match : sendViews()> Player: " + currentPlayerId + ";\tview: "+currentView);
             networkInterface.sendToClient(new ViewMessage(currentView), currentPlayerId);
+
         }
+        System.out.println("Match : sendViews()> fuori dal ciclo");
+
     }
 
     public boolean addConnection(ServerConnectionThread clientConnection)

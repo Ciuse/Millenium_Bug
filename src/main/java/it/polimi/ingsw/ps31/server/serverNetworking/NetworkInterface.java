@@ -100,6 +100,7 @@ public class NetworkInterface {
 
     public void sendToClient(GenericMessage msg, PlayerId playerId)
     {
+        System.out.println("NetworkInterface : sendtoClient()> player: "+playerId+"; msg: "+msg.toString());
         ServerConnectionThread connection = this.playerTable.playerIdToConnection(playerId);
         connection.sendToClient(msg);
     }
@@ -125,11 +126,6 @@ public class NetworkInterface {
         return playerTable.playerIdToConnection(playerId) != null;
     }
 
-    public void sendViewToPlayer (View view, PlayerId playerId)
-    {
-        ServerConnectionThread connection = this.playerTable.playerIdToConnection(playerId);
-        connection.sendView(view);
-    }
 
     public void disconnectPlayer(PlayerId playerId)
     {

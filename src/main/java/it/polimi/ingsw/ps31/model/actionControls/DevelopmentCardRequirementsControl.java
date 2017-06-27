@@ -42,8 +42,8 @@ public class DevelopmentCardRequirementsControl extends Control{
     {
         //controllo che i parametri siano settati
         if ( this.requirement == null )
-        {
-            //TODO: gestire
+        {            //TODO: gestire
+
             return false;
         }
         else

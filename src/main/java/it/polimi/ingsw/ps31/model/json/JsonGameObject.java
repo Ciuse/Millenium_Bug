@@ -93,9 +93,6 @@ public class JsonGameObject {
             bonusAdapterFactory.registerSubtype(ResourceBonus.class, "ResourceBonus");
 
 
-            //TODO MANCANO I LEADER EFFECT
-
-
 //Creazione del builder adatto a riconoscere tutti gli oggetti polimorfi
             GsonBuilder builder = new GsonBuilder();
             builder.setPrettyPrinting().serializeNulls().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)

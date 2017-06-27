@@ -16,9 +16,7 @@ import java.util.List;
 
 public class ClientNetworkingThread extends NetworkingThread {
     private ClientNetworkInterface clientNetworkInterface;
-    private ViewThread viewThread;
     private boolean closeClientNetworkingInterface = false;
-    protected final ClientNetworkingVisitor clientNetworkingVisitor;
     protected View view = null;
 
 
@@ -26,7 +24,26 @@ public class ClientNetworkingThread extends NetworkingThread {
     public ClientNetworkingThread(ClientNetworkInterface clientNetworkInterface)
     {
         this.clientNetworkInterface = clientNetworkInterface;
-        this.clientNetworkingVisitor = new ClientNetworkingVisitor(this);
+
+
+        System.out.println("In attesa di altri giocatori. Un po' di pazienza...");
+
+        //Rimango in attesa della view dal server
+        GenericMessage msgFromServer;
+        do {
+
+            try
+            {
+                sleep(400);
+            } catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
+
+            msgFromServer = nextMessage();
+        }while ( msgFromServer == null );
+
+        System.out.println("VIEW RICEVUTA!!!");
     }
 
     @Override
@@ -36,15 +53,15 @@ public class ClientNetworkingThread extends NetworkingThread {
         {
             GenericMessage msgFromServer = clientNetworkInterface.readFromServer();
             if( msgFromServer != null )
-                bufferizeMessage(msgFromServer);
 
             try { sleep(700); } catch (InterruptedException e) { e.printStackTrace(); }
         }
     }
 
-    public void setViewThread(ViewThread viewThread)
-    {
-        this.viewThread = viewThread;
+    @Override
+    public void bufferizeMessage(GenericMessage msg) {
+        super.buffer.add(msg);
+
     }
 
     public ClientNetworkInterface getClientNetworkInterface()
@@ -62,17 +79,7 @@ public class ClientNetworkingThread extends NetworkingThread {
         return super.readMessage();
     }
 
-    //Tecnicamente inutile, si usa solo all'inizio per i messaggi di connessione con il server
-    public void visitMessage(NetworkingMessage msg)
-    {
-        clientNetworkingVisitor.visit(msg);
-    }
 
-    public View extrapolateViewFromMessage(GenericMessage msg)
-    {
-        clientNetworkingVisitor.visit(msg);
-        return this.view;
-    }
 
     /* Visitor actions */
     public void setView(View view)

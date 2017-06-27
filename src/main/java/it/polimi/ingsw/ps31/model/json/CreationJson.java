@@ -32,8 +32,7 @@ public class CreationJson {
         this.jsonGameObject.setPersonalBonusTilesList(createPersonalBonusTilesList());
         this.jsonGameObject.setPlayerConnectionTimer(createPlayerConnectionTimer());
         this.jsonGameObject.setPlayerActionTimer(createPlayerActionTimer());
-
-        //this.jsonGameObject.setExcommunicationTilesTiles(createExcommunicationTiles); //TODO rimuovere commento
+        this.jsonGameObject.setExcommunicationTiles(createExcommunicationTiles()); //TODO DA SCRIVERE
 
     }
 
@@ -1079,7 +1078,7 @@ public class CreationJson {
     }           //TODO FINIRE DI SCRIVERE LE CARTE
     public List<LeaderCard> createLeaderCardList(){
         List<LeaderCard> leaderCardList = new ArrayList<>();
-        return leaderCardList;
+        return new ArrayList<>(leaderCardList);
     }          //TODO SCRIVERE LE CARTE LEADER
     //TODO INSERIRE ANCHE LE TESSERE SCOMUNICA
 //    public List<ExcommunicationTiles> createExcommunicationTiles(){
@@ -1335,7 +1334,10 @@ public class CreationJson {
         long playerConnectionTimer=120000;
         return playerConnectionTimer;
     }
-
+    private List<ExcommunicationTiles> createExcommunicationTiles(){
+        List<ExcommunicationTiles> excommunicationTilesList = new ArrayList<>();
+        return new ArrayList<>(excommunicationTilesList);
+    }
     public JsonGameObject getJsonGameObject() {
         return jsonGameObject;
     }

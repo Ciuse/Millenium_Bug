@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
-import com.sun.xml.internal.messaging.saaj.util.FinalArrayList;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;

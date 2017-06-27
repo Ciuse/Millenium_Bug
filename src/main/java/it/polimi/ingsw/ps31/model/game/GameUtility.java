@@ -53,7 +53,7 @@ public class GameUtility{
     private int playerMaxNumber;
     private static final int Max_Leader_Card = 4;
     private long timerAction;
-    private  Model model;
+    private Model model;
 
     public GameUtility() {
     }
@@ -359,19 +359,27 @@ public class GameUtility{
     }
 
     public Map<PlayerId, View> createViews() {
-        Map<PlayerId, View> views = new HashMap();
+        Map<PlayerId, View> views = new TreeMap<>();
 
-        for (Player player : playerList
-                ) {
-            for (int i = 0; i < model.getModelChoices().getInformationFromNetworking().getPlayerNameList().size(); i++) {
-                if (player.getNickname().equals(model.getModelChoices().getInformationFromNetworking().getPlayerNameList().get(i))) {
-                    if (model.getModelChoices().getInformationFromNetworking().getViewChoiceList().get(i).equals(TypeOfView.CLI)) {
-                        CmdLineView viewCliPlayer = new CmdLineView(player.getPlayerId(), playerMaxNumber);
-                        views.put(player.getPlayerId(), viewCliPlayer);
-                    }//else TODO creare la view gui
-                }
-            }
+//        for (Player player : playerList
+//                ) {
+//            for (int i = 0; i < model.getModelChoices().getInformationFromNetworking().getPlayerNameList().size(); i++) {
+//                if (player.getNickname().equals(model.getModelChoices().getInformationFromNetworking().getPlayerNameList().get(i))) {
+//                    if (model.getModelChoices().getInformationFromNetworking().getViewChoiceList().get(i).equals(TypeOfView.CLI)) {
+
+        for(int i=0;i<2;i++){
+            System.out.println("GameUtitlity : createViews()> creo view: ");
+            CmdLineView viewCliPlayer = new CmdLineView(PlayerId.values()[i], playerMaxNumber);
+            views.put(PlayerId.values()[i], viewCliPlayer);
+
         }
+//                    }//else TODO creare la view gui
+//                }
+//            }
+//        }
+        String l;
+//        for ()
+        System.out.println("GameUtitlity : createViews()> Lista restituita: ");
         return views;
     }
 
@@ -602,7 +610,10 @@ public class GameUtility{
 
     /* metodi getter e setter */
     public void setInformationFromNetworking(InformationFromNetworking informationFromNetworking) {
-        model.getModelChoices().setInformationFromNetworking(informationFromNetworking);
+        model.
+                getModelChoices().
+                setInformationFromNetworking(
+                        informationFromNetworking);
     }
 
     public List<DevelopmentCardDeck> getDeckList() {

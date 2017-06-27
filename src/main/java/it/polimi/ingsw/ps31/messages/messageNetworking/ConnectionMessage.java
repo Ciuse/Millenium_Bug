@@ -49,11 +49,6 @@ public class ConnectionMessage extends NetworkingMessage {
     }
 
     @Override
-    public void update(NetworkingThread clientNetworkingThread) {
-
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ConnectionMessage)) return false;

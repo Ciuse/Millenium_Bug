@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.networking;
 
 import it.polimi.ingsw.ps31.messages.GenericMessage;
-import it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingVisitable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
  * Created by Francesco on 25/06/2017.
 */
 public abstract class NetworkingThread extends Thread {
-    private List<GenericMessage> buffer;
+    protected List<GenericMessage> buffer;
 
     /* Constructor */
     public NetworkingThread()
@@ -23,10 +22,8 @@ public abstract class NetworkingThread extends Thread {
         loop();
     }
 
-    public void bufferizeMessage(GenericMessage msg)
-    {
-        buffer.add(msg);
-    }
+    public abstract void bufferizeMessage(GenericMessage msg);
+
 
     public GenericMessage readMessage()
     {
@@ -37,10 +34,5 @@ public abstract class NetworkingThread extends Thread {
 
     protected abstract void loop();
 
-    public void forward(GenericMessage msgToForward)
-    {
-        //Il messaggio non è per il networking, dunque lo inserisco nel buffer di messaggi per la view
-        bufferizeMessage(msgToForward);
-    }
 
 }

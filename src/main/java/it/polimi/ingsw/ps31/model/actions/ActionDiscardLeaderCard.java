@@ -36,26 +36,19 @@ public class ActionDiscardLeaderCard extends Action {
 
     /* Activation Method*/
     @Override
-    public void activate()
-    {
-        player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(),"Quale leader non giocato vuoi scartare?",new ChoiceLeaderToDiscard()));
-        this.leaderCard=player.getModel().getModelChoices().waitLeaderCardChosen();
+    public void activate() {
+        player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "Quale leader non giocato vuoi scartare?", new ChoiceLeaderToDiscard()));
+        this.leaderCard = player.getModel().getModelChoices().waitLeaderCardChosen();
         //Controllo che i parametri siano settati
-        if (this.leaderCard == null)
-        {
-            //todo: eccezione
-        }
-        else
-        {
-            if(!leaderCard.isPlayed()){
+
+        if (!leaderCard.isPlayed()) {
             player.removeLeaderCard(leaderCard);
             //attivo la ricompensa (1 privilegio del consiglio)
-            player.getPlayerActionSet().getResources(new ResourceList(new CouncilPrivilege(1,false)));
-            }
+            player.getPlayerActionSet().getResources(new ResourceList(new CouncilPrivilege(1, false)));
         }
 
         resetLeaderCard();
-        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato leader card",leaderCard.getStateLeaderCard()));
+        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato leader card", leaderCard.getStateLeaderCard()));
     }
 
     @Override

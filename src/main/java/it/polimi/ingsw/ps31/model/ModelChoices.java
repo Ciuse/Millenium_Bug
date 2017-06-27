@@ -21,7 +21,7 @@ import static java.lang.Thread.sleep;
 /**
  * Created by giulia on 15/06/2017.
  */
-public class ModelChoices extends Model {
+public class ModelChoices {
     //classe che gestisce tutti i wait del model per attendere le risposte da parte degli utenti / o per attendere che tutti siano pronti per giocare
     private LastModelStateForControl lastModelStateForControl=new LastModelStateForControl();
     private int leaderChoosenCounter=0;
@@ -37,12 +37,13 @@ public class ModelChoices extends Model {
     private TempModelStateForLeaderChoice tempModelStateForLeaderChoice=new TempModelStateForLeaderChoice();
     private String stateModelChoices="StateDefault";
     private InformationFromNetworking informationFromNetworking;
-    private long timerConnection;
+    private long timerConnection=120000;
     private ResourceList resourceChosenFromPrivilege;
     private int numberOfServantsToPay;
     private FamilyMember familyMemberChosen;
     private ActionSpace actionSpaceChosen;
     private Action actionToDo=null;
+    Timer timer1 = new Timer();
 
     public ModelChoices() {
 
@@ -237,6 +238,7 @@ public class ModelChoices extends Model {
     }
 
     public int waitPlayerConnection(){
+
         boolean timerStarted=false;
         setStateConnection();
         while(informationFromNetworking.getPlayerNameList().size()<4&&stateModelChoices.equals("StateConnection")){     //continuo a ciclare finchè non si connettono 4 player o il tempo scade
@@ -249,13 +251,24 @@ public class ModelChoices extends Model {
                 createTimerConnection();
                 timerStarted=true;
             }
-        }return informationFromNetworking.getPlayerNameList().size();
+        }
+        for (String string: informationFromNetworking.getPlayerNameList()
+             ) {
+            System.out.println(string);
+        }
+
+        timer1.purge();
+        timer1.cancel();
+
+        return informationFromNetworking.getPlayerNameList().size();
+
+
     }
 
 
     public void createTimerConnection() {
 
-        Timer timer1 = new Timer();
+
         TimerTask task1 = new TimerTask() {
             @Override
             public void run() {

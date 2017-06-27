@@ -16,11 +16,6 @@ public abstract class Action implements PlayerActions{
 
     public Action(Player player, ActionControlSet actionControlSet)
     {
-        if(player == null)
-        {
-            //TODO: fare qualcosa (eccezione?)
-        }
-
         this.player = player;
         this.actionControlSet = actionControlSet;
         actionList.add(this);

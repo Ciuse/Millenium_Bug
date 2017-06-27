@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
+import it.polimi.ingsw.ps31.networking.JsonNetworking;
+import javafx.scene.input.GestureEvent;
 
 import static java.lang.Thread.sleep;
 
@@ -100,13 +102,13 @@ public abstract class ClientNetworkInterface {
 //        return view;
 //    }
 
-    private final String serialize(Object obj)
+    private final String serialize(GenericMessage genericMessage)
     {
         //Creo gson
-        Gson gson = new Gson();
+        Gson gson = JsonNetworking.networkingBuilder();
 
         //Serializzo l'oggetto
-        String strObj = gson.toJson(obj);
+        String strObj = gson.toJson(genericMessage);
 
 
         return strObj;
@@ -114,7 +116,7 @@ public abstract class ClientNetworkInterface {
 
     private final GenericMessage deserialize(String msg){
         //Creo gson
-        Gson gson = new Gson();
+        Gson gson = JsonNetworking.networkingBuilder();
 
         //Deserializzo l'oggetto
         GenericMessage strObj = gson.fromJson(msg, GenericMessage.class);

@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.networking.ConnectionType;
+import it.polimi.ingsw.ps31.networking.JsonNetworking;
 
 import java.io.IOException;
 
@@ -39,13 +40,13 @@ public abstract class ServerConnectionInterface {
         return deserialize(readFromNetwork());
     }
 
-    public String serialize(Object obj) {
+    public String serialize(GenericMessage genericMessage) {
 
         //Creo gson
-        Gson gson = new Gson();
+        Gson gson = JsonNetworking.networkingBuilder();
 
         //Serializzo l'oggetto
-        String strObj = gson.toJson(obj);
+        String strObj = gson.toJson(genericMessage);
 
         return strObj;
     }
@@ -55,9 +56,10 @@ public abstract class ServerConnectionInterface {
             return null;
 
         //Creo gson
-        Gson gson = new Gson();
+        Gson gson = JsonNetworking.networkingBuilder();
 
         //Deserializzo l'oggetto
+
         GenericMessage strObj = gson.fromJson(msg, GenericMessage.class);
 
         return strObj;
@@ -65,11 +67,11 @@ public abstract class ServerConnectionInterface {
 
     //todo eliminare dopo aver messo il gson builder
     public ConnectionMessage deserializeCM(String msg) {
-        if ( msg == null )
+        if (msg == null)
             return null;
 
         //Creo gson
-        Gson gson = new Gson();
+        Gson gson = JsonNetworking.networkingBuilder();
 
         //Deserializzo l'oggetto
         ConnectionMessage strObj = gson.fromJson(msg, ConnectionMessage.class);
@@ -77,13 +79,6 @@ public abstract class ServerConnectionInterface {
         return strObj;
     }
 
-    public void sendView(View view)
-    {
-        if ( view == null )
-            return;
-
-        writeOnNetwork(serialize(view));
-    }
 
     public void setConnectionMessage(ConnectionMessage connectionMessage)
     {

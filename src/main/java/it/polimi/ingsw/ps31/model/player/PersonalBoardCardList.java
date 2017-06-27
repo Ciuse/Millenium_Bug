@@ -23,7 +23,7 @@ public class PersonalBoardCardList {
         this.playerId=playerId;
         this.cardColor = cardColor;
         for(int i = 0; i< MAX_CARD_OF_SAME_COLOR; i++){
-            personalBoardCardCellList.add(new PersonalBoardCardCell(playerId,i,extraResourceRequired[i],model));
+                personalBoardCardCellList.add(new PersonalBoardCardCell(playerId,i,extraResourceRequired[i],model));
         }
     }
 

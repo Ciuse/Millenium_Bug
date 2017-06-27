@@ -32,7 +32,7 @@ public class ClientSocketConnection extends ClientNetworkInterface {
         this.socket = new Socket("127.0.0.1", this.port);
 
         //TODO: istruzione di test da cancellare
-        System.out.println("client> socket creata ");
+        System.out.println("Client> socket creata ");
 
         //Creo il reader da socket
         InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
@@ -46,13 +46,17 @@ public class ClientSocketConnection extends ClientNetworkInterface {
         //PROTOCOLLO DI INIZIALIZZAZIONE DELLA CONNESSIONE
 
         //Attendo il "via libera" del server alla comunicazione
-        while(readFromNetwork() == null)
+        String s = null;
+        while(s == null)
+        {
+            s = readFromNetwork();
             try {
                 sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
+        }
+        System.out.println("Client> "+s);
         //invio al server il messaggio di connessione
         sendConnectionMessage();
 

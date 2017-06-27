@@ -40,6 +40,19 @@ public class GameLogic {
         this.match = match;
     }
 
+    public void startConnection() {
+        //parte di connessione
+        playerMaxNumber=gameUtility.getModel().getModelChoices().waitPlayerConnection();  //mi metto in attesa dei giocatori che si connettano
+        gameUtility.setPlayerMaxNumber(playerMaxNumber);
+
+//        for(int i=0; i<playerMaxNumber; i++){
+//            gameUtility.createPlayer(gameUtility.getInformationFromNetworking().getPlayerNameList().get(i));
+//        }
+
+        match.sendViews(gameUtility.createViews());
+
+    }
+
     public void playGame() {
         CreationJson creationJson = new CreationJson();
         creationJson.createJsonFile();          //Creazione file json se non è già presente
@@ -62,19 +75,6 @@ public class GameLogic {
         gameUtility.setTimerAction(jsonObjectReadFromFile.getPlayerActionTimer());
         gameUtility.setTimerConnection(jsonObjectReadFromFile.getPlayerConnectionTimer());
         gameUtility.setLeaderCardList(jsonObjectReadFromFile.getLeaderCardList());
-
-        //parte di connessione
-        playerMaxNumber=gameUtility.getModel().getModelChoices().waitPlayerConnection();  //mi metto in attesa dei giocatori che si connettano
-        gameUtility.setPlayerMaxNumber(playerMaxNumber);
-
-
-        for(int i=0; i<playerMaxNumber; i++){
-            gameUtility.createPlayer(gameUtility.getInformationFromNetworking().getPlayerNameList().get(i));
-        }
-
-        gameUtility.createViews();
-
-        match.sendViews(gameUtility.createViews());
 
         gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
 

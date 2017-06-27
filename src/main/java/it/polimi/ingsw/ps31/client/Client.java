@@ -17,7 +17,6 @@ import static java.lang.Thread.sleep;
 public class Client {
     static final int PORT = 2727;
     private static ClientNetworkingThread clientNetworkingThread;
-    private static ViewThread viewThread;
 
 
     private static BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
@@ -90,19 +89,9 @@ public class Client {
 
         }while(!exitDoWhile);
 
-        System.out.println("In attesa di altri giocatori. Un po' di pazienza...");
-
         //Faccio partire il thread del networking, in modo che rimanga sempre in ascolto del server
         clientNetworkingThread.start();
 
-        //Rimango in ascolto del messaggio contenente la view
-        GenericMessage msgFromServer;
-        do {
-            msgFromServer = clientNetworkingThread.nextMessage();
-        }while ( msgFromServer == null );
-
-
-        viewThread = new ViewThread(clientNetworkingThread.extrapolateViewFromMessage(msgFromServer));
 
 //        while ( !clientNetworkingThread.isViewReceived() )
 //            try {
@@ -113,17 +102,17 @@ public class Client {
 //        viewThread = new ViewThread(clientNetworkingThread.moveViewFromNetworkInterface());
 
         //Passo ai due thread i relativi riferimenti
-        viewThread.setNetworking(clientNetworkingThread);
-        clientNetworkingThread.setViewThread(viewThread);
-
-        //Faccio partire i thread
-        viewThread.start();
-
-
-
-
-
-
+//        viewThread.setNetworking(clientNetworkingThread);
+//        clientNetworkingThread.setViewThread(viewThread);
+//
+//        //Faccio partire i thread
+//        viewThread.start();
+//
+//
+//
+//
+//
+//
 
 
 
