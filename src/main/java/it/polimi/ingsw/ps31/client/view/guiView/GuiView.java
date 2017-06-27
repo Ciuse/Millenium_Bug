@@ -18,7 +18,7 @@ import java.io.IOException;
 public  class GuiView extends View implements ActionListener{
     private JButton jButtonChangeCard;
     private GameBoardPanel gameBoardPanel;
-    private Frame frame;
+
 
     public GuiView(PlayerId viewId, int playerMaxNumber) {
         super(viewId, playerMaxNumber);
