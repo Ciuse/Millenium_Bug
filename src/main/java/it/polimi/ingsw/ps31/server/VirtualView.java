@@ -33,7 +33,7 @@ public class VirtualView extends Observable implements Observer {
         setLastMessageSent(message);
 
         if (message.isNotifyAll()) { //se il messaggio riguarda tutti lo inoltro a tutti i client
-//            networkInterface.sendToAll(message);
+            networkInterface.sendToAll(message);
 
         } else {  //se il messaggio notifica solo un controller lo mando solo a lui
             networkInterface.sendToClient(message, message.getNotifySinglePlayer());
@@ -42,8 +42,8 @@ public class VirtualView extends Observable implements Observer {
 
     public void reSendLastMessage(String string){
         if (lastMessageSent.isNotifyAll()) { //se il messaggio riguarda tutti lo inoltro a tutti i client
-//            networkInterface.sentToAll(new MVStringToPrint(null,true,string));
-//            networkInterface.sendToAll(lastMessageSent);
+            networkInterface.sendToAll(new MVStringToPrint(null,true,string));
+            networkInterface.sendToAll(lastMessageSent);
         }
         else {  //se il messaggio notifica solo un controller lo mando solo a lui
         networkInterface.sendToClient(new MVStringToPrint(lastMessageSent.getNotifySinglePlayer(),false,string),lastMessageSent.getNotifySinglePlayer());

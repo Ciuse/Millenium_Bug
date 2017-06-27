@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.model.game;
 
 import it.polimi.ingsw.ps31.client.view.CmdLineView;
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
+import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
@@ -357,17 +358,21 @@ public class GameUtility{
         timer1.schedule(task1, timerAction);
     }
 
-    public void createViews() {
+    public Map<PlayerId, View> createViews() {
+        Map<PlayerId, View> views = new HashMap();
+
         for (Player player : playerList
                 ) {
             for (int i = 0; i < model.getModelChoices().getInformationFromNetworking().getPlayerNameList().size(); i++) {
                 if (player.getNickname().equals(model.getModelChoices().getInformationFromNetworking().getPlayerNameList().get(i))) {
                     if (model.getModelChoices().getInformationFromNetworking().getViewChoiceList().get(i).equals(TypeOfView.CLI)) {
                         CmdLineView viewCliPlayer = new CmdLineView(player.getPlayerId(), playerMaxNumber);
+                        views.put(player.getPlayerId(), viewCliPlayer);
                     }//else TODO creare la view gui
                 }
             }
         }
+        return views;
     }
 
 

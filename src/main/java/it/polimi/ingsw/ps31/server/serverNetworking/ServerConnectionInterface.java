@@ -6,6 +6,8 @@ import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.networking.ConnectionType;
 
+import java.io.IOException;
+
 /**
  * Created by Francesco on 08/06/2017.
 */
@@ -23,7 +25,7 @@ public abstract class ServerConnectionInterface {
     public ConnectionMessage getConnectionMessage(){
         return this.connectionMessage;
     }
-    protected abstract String readFromNetwork();
+    protected abstract String readFromNetwork() throws IOException;
     protected abstract void writeOnNetwork(String msg);
     public abstract String getConnectionInfo();
 
@@ -32,7 +34,7 @@ public abstract class ServerConnectionInterface {
         writeOnNetwork(serialize(msg));
     }
 
-    public final GenericMessage readFromClient()
+    public final GenericMessage readFromClient() throws IOException
     {
         return deserialize(readFromNetwork());
     }
@@ -88,13 +90,25 @@ public abstract class ServerConnectionInterface {
         this.connectionMessage = connectionMessage;
     }
 
+    public abstract void disconnect();
+
     public void waitForConnectionMessage()
     {
-        setConnectionMessage(deserializeCM(readFromNetwork()));
+        try {
+            setConnectionMessage(deserializeCM(readFromNetwork()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean receivedCM()
     {
         return ( this.connectionMessage != null );
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        return ( this==o );
     }
 }

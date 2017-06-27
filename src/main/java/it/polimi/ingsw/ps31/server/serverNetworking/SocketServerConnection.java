@@ -31,17 +31,9 @@ public class SocketServerConnection extends ServerConnectionInterface {
 
 
     @Override
-    protected String readFromNetwork()
-    {
+    protected String readFromNetwork() throws IOException {
         String msgToReturn = null;
-
-        try
-        {
-            msgToReturn = socketReader.readLine();
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        msgToReturn = socketReader.readLine();
 
         return msgToReturn;
     }
@@ -62,5 +54,19 @@ public class SocketServerConnection extends ServerConnectionInterface {
     public String getConnectionInfo() {
         Integer boh = (Integer)socket.getPort();
         return boh.toString();
+    }
+
+    @Override
+    public void disconnect()
+    {
+        try
+        {
+            this.socket.close();
+            this.socketWriter.close();
+            this.socketReader.close();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

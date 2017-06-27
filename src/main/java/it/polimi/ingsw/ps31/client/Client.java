@@ -101,7 +101,8 @@ public class Client {
             msgFromServer = clientNetworkingThread.nextMessage();
         }while ( msgFromServer == null );
 
-        clientNetworkingThread.extrapolateViewFromMessage(msgFromServer);
+
+        viewThread = new ViewThread(clientNetworkingThread.extrapolateViewFromMessage(msgFromServer));
 
 //        while ( !clientNetworkingThread.isViewReceived() )
 //            try {

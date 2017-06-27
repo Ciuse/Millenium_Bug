@@ -7,7 +7,11 @@ import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.json.CreationJson;
 import it.polimi.ingsw.ps31.model.json.JsonFile;
 import it.polimi.ingsw.ps31.model.json.JsonGameObject;
+import it.polimi.ingsw.ps31.model.player.Player;
+import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
+import it.polimi.ingsw.ps31.server.Match;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 /**
@@ -24,13 +28,16 @@ public class GameLogic {
     private int period;
     private int round;
     private int action;
+    private boolean started;
+    private Match match;
 
 
-    public GameLogic(InformationFromNetworking informationFromNetworking, Model model) {
+    public GameLogic(InformationFromNetworking informationFromNetworking, Model model, Match match) {
         this.model = model;
 
         gameUtility.setModel(this.model);
         gameUtility.setInformationFromNetworking(informationFromNetworking);
+        this.match = match;
     }
 
     public void playGame() {
@@ -66,6 +73,8 @@ public class GameLogic {
         }
 
         gameUtility.createViews();
+
+        match.sendViews(gameUtility.createViews());
 
         gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
 

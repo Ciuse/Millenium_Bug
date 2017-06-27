@@ -1,8 +1,11 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
+import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.List;
 
 import static java.lang.Thread.sleep;
 
@@ -69,7 +72,7 @@ public class SocketAccepter{
 
         try {
             SocketServerConnection connectionInterface = new SocketServerConnection(clientSocket);
-            ServerConnectionThread connectionThread = new ServerConnectionThread(connectionInterface);
+            ServerConnectionThread connectionThread = new ServerConnectionThread(connectionInterface, matchTable);
             connectionThread.start();
 
             do {
@@ -82,7 +85,7 @@ public class SocketAccepter{
             } while ( !connectionThread.receivedCM() );
 
             //aggiungo il client alla prima partita libera
-            matchTable.addPlayer(connectionInterface);
+            matchTable.addPlayer(connectionThread);
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -7,22 +7,29 @@ import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.game.GameLogic;
 import it.polimi.ingsw.ps31.model.game.InformationFromNetworking;
+import it.polimi.ingsw.ps31.model.player.Player;
+import it.polimi.ingsw.ps31.server.serverNetworking.MatchTable;
 import it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionInterface;
 import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
+import it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionThread;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Francesco on 08/06/2017.
  */
-public class Match extends Thread {
+public class Match extends Thread{
     private final int MAX_PLAYER_NUMBER = PlayerId.values().length;
     private final NetworkInterface networkInterface;
     private final GameLogic gameLogic; //Partita vera e propria
     private InformationFromNetworking informationFromNetworking;
-    private ServerConnectionInterface hostConnection; //primo client che si collega alla partita
+    private ServerConnectionThread hostConnection; //primo client che si collega alla partita
     private int id;
+    private boolean listenNetworkInterfaces = true;
 
     //Attibuti di test
     private Model model;
@@ -31,15 +38,32 @@ public class Match extends Thread {
     //private List<Socket> sockets = new ArrayList<>();
 
     /* Constructor */
-    public Match(ServerConnectionInterface host, int id){
+    public Match(ServerConnectionThread host, int id, MatchTable matchTable){
         this.informationFromNetworking = new InformationFromNetworking();
-        this.gameLogic = new GameLogic(informationFromNetworking, model);
-        this.networkInterface = new NetworkInterface(this, this.gameLogic);
+        this.gameLogic = new GameLogic(informationFromNetworking, model, this);
+        this.networkInterface = new NetworkInterface(this, matchTable, this.gameLogic);
         this.networkInterface.setModelProva(modelProva);
         this.hostConnection = host;
         this.id = id;
+//        gameLogic.run();
 
         addConnection(host);
+    }
+
+    public void run()
+    {
+        //Ciclo in attesa di messaggi sulle socket
+        while ( listenNetworkInterfaces )
+        {
+            for ( PlayerId playerId : networkInterface.getPlayerIdList() )
+                networkInterface.readFromClient(playerId);
+
+//            try {
+//                sleep(700);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+        }
     }
 
     /* Getters & Setters*/
@@ -54,24 +78,19 @@ public class Match extends Thread {
     }
 
     /* Run() Method*/
-    @Override
-    public void run()
+
+    public void sendViews(Map<PlayerId, View> clientViewList)
     {
-        //Metodo invocato solo alla fine della connessione di tutti i player alla partita
-
-        //todo ricevere le view da playgame()
-        List<View> clientViewList = new ArrayList<>();
         //spedisco le view ai client
-        for(int i = 0; i<4; i++)
-            networkInterface.sendToClient(new ViewMessage(clientViewList.get(i)), PlayerId.values()[i]);
-
-        //Avvia partita
-        gameLogic.playGame();
-
-        //Fa cose alla fine della partita?
+        for(Map.Entry<PlayerId, View> currentPair : clientViewList.entrySet())
+        {
+            PlayerId currentPlayerId = currentPair.getKey();
+            View currentView = currentPair.getValue();
+            networkInterface.sendToClient(new ViewMessage(currentView), currentPlayerId);
+        }
     }
 
-    public boolean addConnection(ServerConnectionInterface clientConnection)
+    public boolean addConnection(ServerConnectionThread clientConnection)
     {
         if ( this.networkInterface.getConnectionListSize() == MAX_PLAYER_NUMBER )
         {
@@ -81,9 +100,7 @@ public class Match extends Thread {
 
         this.networkInterface.addConnection(clientConnection);
 
-        TypeOfView tov = clientConnection.
-                getConnectionMessage().
-                getTypeOfView();
+        TypeOfView tov = clientConnection.getConnectionMessage().getTypeOfView();
         String username = clientConnection.getConnectionMessage().getUsername();
         int playerNumber = this.informationFromNetworking.addPlayerViewChoice(tov, username);
 
@@ -93,6 +110,23 @@ public class Match extends Thread {
 
         return started;
     }
+
+    public void setListenNetworkInterfaces( boolean listenNetworkInterfaces )
+    {
+        this.listenNetworkInterfaces = listenNetworkInterfaces;
+    }
+
+    public void disconnectPlayer(PlayerId playerId)
+    {
+        networkInterface.disconnectPlayer(playerId);
+    }
+
+    public void reconnectPlayer(ServerConnectionThread connectionThread, PlayerId playerId)
+    {
+        this.networkInterface.reconnectPlayer(connectionThread, playerId);
+
+    }
+
 
     @Override
     public boolean equals(Object o) {

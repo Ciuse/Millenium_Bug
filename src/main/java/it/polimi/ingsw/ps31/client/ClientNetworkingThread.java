@@ -37,6 +37,8 @@ public class ClientNetworkingThread extends NetworkingThread {
             GenericMessage msgFromServer = clientNetworkInterface.readFromServer();
             if( msgFromServer != null )
                 bufferizeMessage(msgFromServer);
+
+            try { sleep(700); } catch (InterruptedException e) { e.printStackTrace(); }
         }
     }
 
@@ -54,21 +56,7 @@ public class ClientNetworkingThread extends NetworkingThread {
     {
         this.closeClientNetworkingInterface = haveToClose;
     }
-//
-//    public View askServerForView(ConnectionMessage connectionMessage)
-//    {
-//        return clientNetworkInterface.firstConnectionProcedure(connectionMessage);
-//    }
-//    public boolean isViewReceived()
-//    {
-//        return clientNetworkInterface.isViewReceived();
-//    }
-//
-//    public View moveViewFromNetworkInterface()
-//    {
-//       return clientNetworkInterface.dumpView();
-//    }
-//
+
     public GenericMessage nextMessage()
     {
         return super.readMessage();

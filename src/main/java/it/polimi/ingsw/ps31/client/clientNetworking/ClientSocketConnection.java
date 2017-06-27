@@ -55,6 +55,7 @@ public class ClientSocketConnection extends ClientNetworkInterface {
 
         //invio al server il messaggio di connessione
         sendConnectionMessage();
+
     }
 
     @Override

@@ -87,18 +87,18 @@ public abstract class ClientNetworkInterface {
         return deserialize(readFromNetwork());
     }
 
-    //Metodo che riceve la view dal server
-    public final View readViewFromServer(){
-        String serializedMsg = readFromNetwork();
-
-        //Creo gson
-        Gson gson = new Gson();
-
-        //Deserializzo l'oggetto
-        View view = gson.fromJson(serializedMsg, View.class);
-
-        return view;
-    }
+//    //Metodo che riceve la view dal server
+//    public final View readViewFromServer(){
+//        String serializedMsg = readFromNetwork();
+//
+//        //Creo gson
+//        Gson gson = new Gson();
+//
+//        //Deserializzo l'oggetto
+//        View view = gson.fromJson(serializedMsg, View.class);
+//
+//        return view;
+//    }
 
     private final String serialize(Object obj)
     {
@@ -107,6 +107,7 @@ public abstract class ClientNetworkInterface {
 
         //Serializzo l'oggetto
         String strObj = gson.toJson(obj);
+
 
         return strObj;
     }

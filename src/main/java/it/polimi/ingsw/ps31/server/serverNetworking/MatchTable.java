@@ -2,21 +2,23 @@ package it.polimi.ingsw.ps31.server.serverNetworking;
 
 import it.polimi.ingsw.ps31.client.view.CmdLineView;
 import it.polimi.ingsw.ps31.client.view.View;
+import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
+import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.server.Match;
+import it.polimi.ingsw.ps31.server.Server;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Francesco on 08/06/2017.
  */
 class MatchRow {
     private Match match;
-    private List<ServerConnectionInterface> clientList;
+    private List<ServerConnectionThread> clientList;
     private boolean started = false;
 
-    public MatchRow(Match match, ServerConnectionInterface hostConnection)
+    public MatchRow(Match match, ServerConnectionThread hostConnection)
     {
         this.match = match;
         this.clientList = new ArrayList<>();
@@ -28,7 +30,7 @@ class MatchRow {
         return this.started;
     }
 
-    public void addPlayer(ServerConnectionInterface client)
+    public void addPlayer(ServerConnectionThread client)
     {
         //aggiungo la connessione alla lista di connessioni della row
         this.clientList.add(client);
@@ -36,11 +38,6 @@ class MatchRow {
         //passo il socket alla partita
         this.started = this.match.addConnection(client);
 
-        //Se la partitia deve iniziare, avvio il match
-        if( this.started )
-            match.start();
-
-        //todo aggiungere started = true allo scadere del timeout
     }
 
     public Match getMatch()
@@ -50,10 +47,41 @@ class MatchRow {
 
 }
 
+class DisconnectedClient{
+    private ConnectionMessage connectionMessage;
+    private Match match;
+    private PlayerId playerId;
+
+    /* Constructor */
+    public DisconnectedClient(ConnectionMessage connectionMessage, Match match, PlayerId playerId)
+    {
+        this.connectionMessage = connectionMessage;
+        this.match = match;
+        this.playerId = playerId;
+    }
+
+    public ConnectionMessage getConnectionMessage()
+    {
+        return connectionMessage;
+    }
+
+    public Match getMatch()
+    {
+        return match;
+    }
+
+    public PlayerId getPlayerId()
+    {
+        return this.playerId;
+    }
+
+}
+
 public class MatchTable {
     /* Singleton */
     private List<MatchRow> matchTable = new ArrayList<>();
     private int nextMatchId;
+    private List<DisconnectedClient> disconnections = new ArrayList<>();
 
     /* Singleton Methods */
     private static MatchTable ourInstance = new MatchTable();
@@ -67,17 +95,17 @@ public class MatchTable {
     }
 
     /* Class Methods */
-    private Match newMatch(ServerConnectionInterface serverConnectionInterface)
+    private Match newMatch(ServerConnectionThread serverConnectionThread)
     {
         //TODO: istruzione di test da cancellare
         System.out.println("Server> inizio creazione match");
 
         //Creo il match (che è un thread)
-        Match match = new Match(serverConnectionInterface, nextMatchId);
+        Match match = new Match(serverConnectionThread, nextMatchId, this);
         nextMatchId++;
 
         //Aggiungo il match alla tabella
-        this.matchTable.add(new MatchRow(match, serverConnectionInterface));
+        this.matchTable.add(new MatchRow(match, serverConnectionThread));
 
         //TODO: istruzione di test da cancellare
         System.out.println("Server> Creata nuova partita #"+match.getMatchId()+". Client associato.");
@@ -85,8 +113,32 @@ public class MatchTable {
         return match;
     }
 
-    public Match addPlayer(ServerConnectionInterface connection)
+    public Match addPlayer(ServerConnectionThread connection)
     {
+        //Controllo se la connessione corrisponde a un client disconnesso in precedenza
+        boolean found = false;
+        int i = 0;
+        DisconnectedClient currentDisconnection = null;
+        while( i < disconnections.size() && !found)
+        {
+            currentDisconnection = disconnections.get(i);
+            if (currentDisconnection.getConnectionMessage().equals(connection.getConnectionMessage()))
+            {
+                found = true;
+                disconnections.remove(i);
+            }
+            else
+                i++;
+        }
+        if( found )
+        {
+            System.out.println("MatchTable : addPlayer>\t\triconnessione in corso");
+            PlayerId disconnectedPlayerId = currentDisconnection.getPlayerId();
+            currentDisconnection.getMatch().reconnectPlayer(connection, disconnectedPlayerId);
+            return currentDisconnection.getMatch();
+        }
+
+
         //Iteratore che scorre la lista di partite
         Iterator<MatchRow> matchItr = matchTable.iterator();
 
@@ -111,6 +163,12 @@ public class MatchTable {
 
 
         return currentMatch.getMatch(); //todo a cosa serve??
+    }
+
+    public void disconnectClient (ServerConnectionInterface connection, Match match, PlayerId playerId)
+    {
+        this.disconnections.add(new DisconnectedClient(connection.getConnectionMessage(), match, playerId));
+        match.disconnectPlayer(playerId);
     }
 
     //global = 3;
