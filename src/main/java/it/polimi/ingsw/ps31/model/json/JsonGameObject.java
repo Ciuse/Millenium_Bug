@@ -1,15 +1,15 @@
 package it.polimi.ingsw.ps31.model.json;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 import it.polimi.ingsw.ps31.model.bonus.*;
 import it.polimi.ingsw.ps31.model.card.*;
 import it.polimi.ingsw.ps31.model.card.Character;
 import it.polimi.ingsw.ps31.model.effect.*;
 import it.polimi.ingsw.ps31.model.gameResource.*;
 import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
+import javafx.scene.effect.SepiaTone;
 
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +48,18 @@ public class JsonGameObject {
             resourceAdapterFactory.registerSubtype(MilitaryStrength.class, "MilitaryStrength");
             resourceAdapterFactory.registerSubtype(VictoryPoint.class, "VictoryPoint");
             resourceAdapterFactory.registerSubtype(CouncilPrivilege.class, "CouncilPrivilege");
+
+            RuntimeTypeAdapterFactory<PointResource> pointResourceRuntimeTypeAdapterFactory= RuntimeTypeAdapterFactory.of(PointResource.class,"PointResource");
+            pointResourceRuntimeTypeAdapterFactory.registerSubtype(FaithPoint.class, "FaithPoint");
+            pointResourceRuntimeTypeAdapterFactory.registerSubtype(MilitaryStrength.class, "MilitaryStrength");
+            pointResourceRuntimeTypeAdapterFactory.registerSubtype(VictoryPoint.class, "VictoryPoint");
+
+            RuntimeTypeAdapterFactory<PhysicalResource> physicalResourceRuntimeTypeAdapterFactory= RuntimeTypeAdapterFactory.of(PhysicalResource.class,"PhysicalResource");
+            physicalResourceRuntimeTypeAdapterFactory.registerSubtype(Coin.class, "Coin");
+            physicalResourceRuntimeTypeAdapterFactory.registerSubtype(Servant.class, "Servant");
+            physicalResourceRuntimeTypeAdapterFactory.registerSubtype(Wood.class, "Wood");
+            physicalResourceRuntimeTypeAdapterFactory.registerSubtype(Stone.class, "Stone");
+
 
             RuntimeTypeAdapterFactory<DevelopmentCard> developementCardAdapterFactory = RuntimeTypeAdapterFactory.of(DevelopmentCard.class, "CardType");
             developementCardAdapterFactory.registerSubtype(Territory.class, "Territory");
@@ -95,11 +107,14 @@ public class JsonGameObject {
 
 //Creazione del builder adatto a riconoscere tutti gli oggetti polimorfi
             GsonBuilder builder = new GsonBuilder();
-            builder.setPrettyPrinting().serializeNulls().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+            builder.setPrettyPrinting().serializeNulls()
                     .registerTypeAdapterFactory(resourceAdapterFactory)
                     .registerTypeAdapterFactory(developementCardAdapterFactory)
                     .registerTypeAdapterFactory(effectAdapterFactory)
-                    .registerTypeAdapterFactory(bonusAdapterFactory);
+                    .registerTypeAdapterFactory(bonusAdapterFactory)
+                    .registerTypeAdapterFactory(pointResourceRuntimeTypeAdapterFactory)
+                    .registerTypeAdapterFactory(physicalResourceRuntimeTypeAdapterFactory);
+
             Gson gson = builder.create();
 
             return gson;
@@ -115,7 +130,7 @@ public class JsonGameObject {
     public void setDevelopementCardList(DevelopmentCardList developementCardList) {
         this.developementCardList = developementCardList;
     }
-
+//
     public List<LeaderCard> getLeaderCardList() {
         return new ArrayList<>(leaderCardList);
     }

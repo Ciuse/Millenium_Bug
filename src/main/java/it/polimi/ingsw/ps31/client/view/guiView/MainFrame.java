@@ -39,7 +39,7 @@ public class MainFrame extends JFrame {
                     gbl.columnWidths = new int[]{0, 0, 0, 0};
                     gbl.rowHeights = new int[]{0, 0, 0};
 
-                    gbl.columnWeights = new double[]{0.379271, 0.1154, 0.5476, Double.MIN_VALUE};
+                    gbl.columnWeights = new double[]{0.479271, 0.0154, 0.5476, Double.MIN_VALUE};
                     gbl.rowWeights = new double[]{0.4767, 0.489, Double.MIN_VALUE};
                     frame.getContentPane().setLayout(gbl);
 
@@ -65,8 +65,8 @@ public class MainFrame extends JFrame {
                     gbc.gridy = 0;
                     gbc.gridheight = 1;
                     gbc.gridwidth = 1;
-                    //gbc.fill = GridBagConstraints.BOTH;
-                    //gbc.anchor = GridBagConstraints.WEST;
+                    gbc.fill = GridBagConstraints.BOTH;
+                    gbc.anchor = GridBagConstraints.WEST;
                     jPlayerPanel.setPreferredSize(new Dimension(10, 10));
                     frame.add(jPlayerPanel, gbc);
 

@@ -252,10 +252,6 @@ public class ModelChoices {
                 timerStarted=true;
             }
         }
-        for (String string: informationFromNetworking.getPlayerNameList()
-             ) {
-            System.out.println(string);
-        }
 
         timer1.purge();
         timer1.cancel();

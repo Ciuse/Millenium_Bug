@@ -8,7 +8,6 @@ import it.polimi.ingsw.ps31.model.player.Player;
  * Created by Giuseppe on 15/05/2017.
  */
 public class MilitaryStrength extends PointResource{
-    private  MilitaryPointTrack militaryTrack= GameBoard.getMilitaryPointTrack();
     private int valueRequest=0;
 
     public MilitaryStrength(int value) {
@@ -28,17 +27,17 @@ public class MilitaryStrength extends PointResource{
         this.valueRequest = valueRequest;
     }
 
-    @Override
-    public void addResource(Player player){
-        if(this.valueRequest!=0 && player.getPlayerResources().getResourceValue(MilitaryStrength.class)<this.valueRequest) {
-            //TODO NON PUOI AGGIUNGERLE
-        }
-        else{
-            MarkerDisc markerDiscToMove=militaryTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(MilitaryStrength.class)).unSetMarkerDisc(player);
-            player.addResources(this);
-            militaryTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(MilitaryStrength.class)).setMarkerDisc(markerDiscToMove);
-        }
-    }
+//    @Override
+//    public void addResource(Player player){
+//        if(this.valueRequest!=0 && player.getPlayerResources().getResourceValue(MilitaryStrength.class)<this.valueRequest) {
+//            //TODO NON PUOI AGGIUNGERLE
+//        }
+//        else{
+//            MarkerDisc markerDiscToMove=militaryTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(MilitaryStrength.class)).unSetMarkerDisc(player);
+//            player.addResources(this);
+//            militaryTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(MilitaryStrength.class)).setMarkerDisc(markerDiscToMove);
+//        }
+//    }
 
     @Override
     public String toString(){

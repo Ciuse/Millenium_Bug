@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView;
 
+import com.sun.org.apache.regexp.internal.RE;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -54,7 +56,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         c.gridy = 0;
         c.gridheight = 2;
         c.gridwidth = 1;
-        c.fill = GridBagConstraints.WEST;
+//        c.fill = GridBagConstraints.BOTH;
         jPersonalBoardPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(jPersonalBoardPanel, c);
         jPersonalBoardPanel.attach(this);
@@ -66,6 +68,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         c.gridheight = 1;
         c.gridwidth = 1;
         //c.fill = GridBagConstraints.BOTH;
+        jFamilyMemberPanel.setBackground(Color.RED);
         jFamilyMemberPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(jFamilyMemberPanel, c);
         jFamilyMemberPanel.attach(this);

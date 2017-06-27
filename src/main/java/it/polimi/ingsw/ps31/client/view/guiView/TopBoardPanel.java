@@ -38,9 +38,9 @@ public class TopBoardPanel extends JPanel {
         c.gridy = 0;
         c.gridheight = 1;
         c.gridwidth = 1;
-        jPanel1.setOpaque(false);
-//        jPanel1.setBackground(Color.RED);
-//        c.fill = GridBagConstraints.BOTH;
+//        jPanel1.setOpaque(false);
+        jPanel1.setBackground(Color.RED);
+        c.fill = GridBagConstraints.BOTH;
         jPanel1.setPreferredSize(new Dimension(10, 10));
         pane.add(jPanel1, c);
         jPanel1.attach(this.listener);
@@ -50,8 +50,8 @@ public class TopBoardPanel extends JPanel {
         c.gridy = 1;
         c.gridheight = 1;
         c.gridwidth = 1;
-        jPanel2.setOpaque(false);
-        //c.fill = GridBagConstraints.BOTH;
+//        jPanel2.setOpaque(false);
+        c.fill = GridBagConstraints.BOTH;
         jPanel2.setPreferredSize(new Dimension(10, 10));
         pane.add(jPanel2, c);
         jPanel2.attach(this.listener);

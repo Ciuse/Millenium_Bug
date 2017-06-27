@@ -7,19 +7,14 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public abstract class Resource {
     private int value;
-    private int malusValue;
 
     public Resource(int value) {
-//        if(value > 0)
-//            this.value=value;
-//        else
-//        {
-//            //TODO: eccezione
-//            //this.value = Math.abs(value);
-//        }
+        this.value=value;
 
     }
 
+    public Resource() {
+    }
 
     public void addResource(Player player){
         player.addResources(this);

@@ -996,15 +996,6 @@ public class CreationJson {
 
 
 
-
-
-
-
-
-
-
-
-
         // creazione di tutte le carte
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 8; j++) {
@@ -1020,27 +1011,27 @@ public class CreationJson {
                 cardList.add(new Territory(cardNumber1, name, period, costListGreen, immediateEffectGreenList.get(cardNumber1-1), permanentEffectGreenList.get(cardNumber1-1)));
                 //creazione della carta giallo
                 int cardNumber2 = i * 8 + j + 24+1;
-                System.out.println("scrivi il costo della carta gialla numero : " + cardNumber2);
+//                System.out.println("scrivi il costo della carta gialla numero : " + cardNumber2);
                 // inserimento costi nelle carte gialle
                 List<ResourceList> costListYellow = new ArrayList<>();
                 ResourceList costYellow = new ResourceList();
-                costYellow.setCoin();
-                costYellow.setWood();
-                costYellow.setStone();
-                costYellow.setServant();
-                costListYellow.add(costYellow);
+//                costYellow.setCoin();
+//                costYellow.setWood();
+//                costYellow.setStone();
+//                costYellow.setServant();
+//                costListYellow.add(costYellow);
                 //inserimento altri parametri
                 int period2 = i + 1;
                 String name2 = yellowCardName[contatore];
                 cardList.add(new Building(cardNumber2, name2, period2, costListYellow, null, null));
                 // creazione carte blu
                 int cardNumber3 = i * 8 + j + 48+1;
-                System.out.println("scrivi il costo della carta blu numero : " + cardNumber3);
+//                System.out.println("scrivi il costo della carta blu numero : " + cardNumber3);
                 //inserimento costi nelle carte blu
                 List<ResourceList> costListBlue = new ArrayList<>();
                 ResourceList costBlue = new ResourceList();
-                costBlue.setCoin();
-                costListBlue.add(costBlue);
+//                costBlue.setCoin();
+//                costListBlue.add(costBlue);
                 //inserimento altri parametri
                 int period3 = i + 1;
                 String name3 = blueCardName[contatore];
@@ -1048,20 +1039,20 @@ public class CreationJson {
 
                 //creazione delle carte viola
                 int cardNumber4 = i * 8 + j + 72+1;
-                System.out.println("scrivi il costo della carta viola numero : " + cardNumber4);
-                System.out.println("quanti possibili costi ha la carta? : ");
-                Scanner scanner = new Scanner(System.in);
-                int numberCosts = scanner.nextByte();
+//                System.out.println("scrivi il costo della carta viola numero : " + cardNumber4);
+//                System.out.println("quanti possibili costi ha la carta? : ");
+//                Scanner scanner = new Scanner(System.in);
+                int numberCosts = 1;
                 //inserimento costi nelle carte viola
                 List<ResourceList> costListPurple = new ArrayList<>();
                 for (int k = 0; k < numberCosts; k++) {
                     ResourceList costPurple = new ResourceList();
-                    costPurple.setCoin();
-                    costPurple.setWood();
-                    costPurple.setStone();
-                    costPurple.setServant();
-                    costPurple.setMilitaryStrength();
-                    costListPurple.add(costPurple);
+//                    costPurple.setCoin();
+//                    costPurple.setWood();
+//                    costPurple.setStone();
+//                    costPurple.setServant();
+//                    costPurple.setMilitaryStrength();
+//                    costListPurple.add(costPurple);
                 }
 
                 //inserimento altri parametri
@@ -1347,9 +1338,9 @@ public class CreationJson {
 
     public void createJsonFile(){
 
-        JsonFile.newFile("JsonFile.json");
+        JsonFile.newFile("JsonObject.json");
         Gson gson = JsonGameObject.gsonGameBuilder();
         String jsonString = gson.toJson(this.jsonGameObject);
-        JsonFile.saveJsonToFile(jsonString,"JsonFile.json");
+        JsonFile.saveJsonToFile(jsonString,"JsonObject.json");
     }
 }

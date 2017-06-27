@@ -45,15 +45,15 @@ public class GameLogic {
         playerMaxNumber=gameUtility.getModel().getModelChoices().waitPlayerConnection();  //mi metto in attesa dei giocatori che si connettano
         gameUtility.setPlayerMaxNumber(playerMaxNumber);
 
-//        for(int i=0; i<playerMaxNumber; i++){
-//            gameUtility.createPlayer(gameUtility.getInformationFromNetworking().getPlayerNameList().get(i));
-//        }
+        for(int i=0; i<playerMaxNumber; i++){
+            gameUtility.createPlayer(gameUtility.getInformationFromNetworking().getPlayerNameList().get(i));
+        }
 
         match.sendViews(gameUtility.createViews());
 
     }
 
-    public void playGame() {
+    public void createJson(){
         CreationJson creationJson = new CreationJson();
         creationJson.createJsonFile();          //Creazione file json se non è già presente
         Gson gson = JsonGameObject.gsonGameBuilder();
@@ -75,6 +75,9 @@ public class GameLogic {
         gameUtility.setTimerAction(jsonObjectReadFromFile.getPlayerActionTimer());
         gameUtility.setTimerConnection(jsonObjectReadFromFile.getPlayerConnectionTimer());
         gameUtility.setLeaderCardList(jsonObjectReadFromFile.getLeaderCardList());
+    }
+    public void playGame() {
+
 
         gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
 
@@ -97,7 +100,7 @@ public class GameLogic {
 
 
         //viene fatto dopo aver saputo in quanto si gioca (per istanziare le aree da 3 e/o 4 giocatori)
-        GameBoard gameBoard = new GameBoard(jsonObjectReadFromFile.getTowerActionSpaceEffectList(), jsonObjectReadFromFile.getActionSpaceEffectList(), jsonObjectReadFromFile.getFaithTrackExtraValue(), model);
+        GameBoard gameBoard = new GameBoard(gameUtility.getTowerActionSpaceEffectList(), gameUtility.getActionSpaceEffectList(), gameUtility.getFaithTrackExtraValue(), model);
         gameUtility.setGameBoard(gameBoard);
 
         gameUtility.getDevelopmentCardList().shuffleCardList();  //mischio la lista di carte

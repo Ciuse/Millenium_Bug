@@ -7,11 +7,10 @@ import it.polimi.ingsw.ps31.model.player.Player;
 /**
  * Created by giulia on 18/05/2017.
  */
-public class BonusAndMalusEffect extends Effect implements ActiveBonus{
+public class BonusAndMalusEffect extends Effect  implements ActiveBonus{
     private final Bonus bonus;
 
     public BonusAndMalusEffect(int cardId,Bonus bonus) {
-        super(cardId);
         this.bonus = bonus;
     }
 
@@ -19,7 +18,7 @@ public class BonusAndMalusEffect extends Effect implements ActiveBonus{
         return bonus;
     }
 
-    @Override
+
     public void activate(Player player) {
         activeBonus(player);
     }
@@ -27,7 +26,7 @@ public class BonusAndMalusEffect extends Effect implements ActiveBonus{
     public void activeBonus(Player player) {
         bonus.activate(player);
     }
-    @Override
+
     public String nameString() {
         return null;
     }

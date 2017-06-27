@@ -16,6 +16,11 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
     public GameBoardPanel() {
     }
 
+    public void paintComponent(Graphics g) {
+        super.imageToLoad("/gameboard_f_c.png");
+        super.paintComponent(g);
+    }
+
     public void addComponentsToPane(Container pane){
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
@@ -36,7 +41,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
         jPanel1.setBackground(Color.CYAN);
-        //jPanel1.setOpaque(false);
+//        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel1, c);
         jPanel1.attach(this);
@@ -59,8 +64,8 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridheight = 1;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-//        jPanel3.setBackground(Color.YELLOW);
-        jPanel3.setOpaque(false);
+        jPanel3.setBackground(Color.YELLOW);
+//        jPanel3.setOpaque(false);
         jPanel3.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel3, c);
         jPanel3.attach(this);
@@ -108,8 +113,8 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridheight = 3;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-//        jPanel7.setBackground(Color.black);
-        jPanel7.setOpaque(false);
+        jPanel7.setBackground(Color.black);
+//        jPanel7.setOpaque(false);
         jPanel7.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel7, c);
         jPanel7.attach(this);
@@ -120,7 +125,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridheight = 3;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-//        jPanel8.setBackground(Color.RED);
+        jPanel8.setBackground(Color.RED);
         jPanel8.setOpaque(false);
         jPanel8.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel8, c);
@@ -129,10 +134,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
     }
 
 
-    public void paintComponent(Graphics g) {
-        super.imageToLoad("/gameboard_f_c.png");
-        super.paintComponent(g);
-    }
+
 
 
     @Override
