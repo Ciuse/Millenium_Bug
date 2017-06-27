@@ -57,7 +57,7 @@ public class GameLogic {
         CreationJson creationJson = new CreationJson();
         creationJson.createJsonFile();          //Creazione file json se non è già presente
         Gson gson = JsonGameObject.gsonGameBuilder();
-        String jsonStringReadFromFile = JsonFile.readJsonFromFile("card.json");         //lettura file json
+        String jsonStringReadFromFile = JsonFile.readJsonFromFile("JsonObject.json");         //lettura file json
         JsonGameObject jsonObjectReadFromFile = gson.fromJson(jsonStringReadFromFile, JsonGameObject.class);        //salvataggio stringa json letta
 
         //salvo tutti gli oggetti letti dal file json
@@ -76,6 +76,7 @@ public class GameLogic {
         gameUtility.setTimerConnection(jsonObjectReadFromFile.getPlayerConnectionTimer());
         gameUtility.setLeaderCardList(jsonObjectReadFromFile.getLeaderCardList());
     }
+
     public void playGame() {
 
 

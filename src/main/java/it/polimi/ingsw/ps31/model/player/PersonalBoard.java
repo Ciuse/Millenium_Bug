@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class PersonalBoard {
     private final PlayerId playerId;
-    private final List<PersonalBoardCardList> personalBoardCardList=null;
+    private final List<PersonalBoardCardList> personalBoardCardList= new ArrayList<>();
     private final static int NUM_OF_CARD_LIST =4;
     private final Model model;
 
@@ -27,8 +27,7 @@ public class PersonalBoard {
         this.model = model;
         CardColor[] cardColor= CardColor.values();
         for(int i = 0; i< NUM_OF_CARD_LIST; i++){
-            personalBoardCardList.add(new PersonalBoardCardList(playerId,cardColor[i],model));
-            personalBoardCardList.get(i).setExtraResourceRequired(pointResourceRequired.get(i));
+            personalBoardCardList.add(new PersonalBoardCardList(playerId,cardColor[i],model,pointResourceRequired.get(i)));
         }
 
     }

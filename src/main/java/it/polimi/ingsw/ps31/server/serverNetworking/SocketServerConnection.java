@@ -42,8 +42,6 @@ public class SocketServerConnection extends ServerConnectionInterface {
     protected void writeOnNetwork(String msg)
     {
         try {
-            System.out.println("VIEW PARTITA!!!");
-
             socketWriter.write(msg+ "\n");
             socketWriter.flush();
 

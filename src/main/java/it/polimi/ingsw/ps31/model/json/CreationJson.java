@@ -33,6 +33,7 @@ public class CreationJson {
         this.jsonGameObject.setPlayerConnectionTimer(createPlayerConnectionTimer());
         this.jsonGameObject.setPlayerActionTimer(createPlayerActionTimer());
         this.jsonGameObject.setExcommunicationTiles(createExcommunicationTiles()); //TODO DA SCRIVERE
+        this.jsonGameObject.setLeaderCardList(createLeaderCardList());
 
     }
 
@@ -1212,11 +1213,11 @@ public class CreationJson {
         return victoryPoint;
     }
     private List<PointResource[]> listOfRequirements(){
-        PointResource[] yellowRequired = {null,null,null,null,null,null};
+        PointResource[] yellowRequired = {new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0)};
         MilitaryStrength[] greenRequired = {new MilitaryStrength(0),new MilitaryStrength(0),new MilitaryStrength(3),
                 new MilitaryStrength(7),new MilitaryStrength(12),new MilitaryStrength(18)};
-        PointResource[] purpleRequired = {null,null,null,null,null,null};
-        PointResource[] blueRequired = {null,null,null,null,null,null};
+        PointResource[] purpleRequired = {new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0)};
+        PointResource[] blueRequired = {new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0)};
         List<PointResource[]> listToReturn = new ArrayList<>();
         listToReturn.add(yellowRequired);
         listToReturn.add(greenRequired);

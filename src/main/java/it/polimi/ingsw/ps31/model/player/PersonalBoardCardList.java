@@ -19,11 +19,11 @@ public class PersonalBoardCardList {
     private PointResource[] extraResourceRequired;
     private final List<PersonalBoardCardCell> personalBoardCardCellList=new ArrayList<>();
 
-    public PersonalBoardCardList(PlayerId playerId,CardColor cardColor, Model model) {
+    public PersonalBoardCardList(PlayerId playerId,CardColor cardColor, Model model,PointResource[] pointResourcesRequired) {
         this.playerId=playerId;
         this.cardColor = cardColor;
         for(int i = 0; i< MAX_CARD_OF_SAME_COLOR; i++){
-                personalBoardCardCellList.add(new PersonalBoardCardCell(playerId,i,extraResourceRequired[i],model));
+                personalBoardCardCellList.add(new PersonalBoardCardCell(playerId,i,pointResourcesRequired[i],model));
         }
     }
 
