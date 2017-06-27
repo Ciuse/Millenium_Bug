@@ -43,7 +43,7 @@ public class MainFrame extends JFrame {
                     gbl.rowWeights = new double[]{0.4767,0.489,Double.MIN_VALUE};
                     frame.getContentPane().setLayout(gbl);
 
-                    BufferedImage originalImage = ImageIO.read(new File("C:\\Users\\giulia\\Desktop\\progetto java\\gameboard_f_c.png"));
+                    BufferedImage originalImage = ImageIO.read(new File("C:\\Users\\giulia\\Desktop\\progetto java\\Millenium_Bug\\images\\gameboard_f_c.png"));
                     int type = originalImage.getType();
                     BufferedImage resizeImage = resizeImage(originalImage, type, 500, 700);
 
