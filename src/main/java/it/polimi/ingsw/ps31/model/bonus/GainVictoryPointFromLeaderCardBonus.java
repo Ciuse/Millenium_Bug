@@ -19,6 +19,7 @@ public class GainVictoryPointFromLeaderCardBonus extends Bonus {
 
     @Override
     public void activate(Player player) {
-
+        //viene attivata nel momento in cui facciamo il get del bonus e quest'ultimo risulta diverso da null poichè vuol dire che abbiamo
+        //una scomunica o un leader che va ad influenzare le condizioni del ciclo dei rapporti con il vaticano che assegna i punti fede
     }
 }

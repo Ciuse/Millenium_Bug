@@ -27,7 +27,7 @@ public class TopBoardPanel extends JPanel {
         gbl.rowHeights = new int[]{0,0,0};
 
         gbl.columnWeights = new double[]{1, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.6543, 0.346, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.8843, 0.286, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints c = new GridBagConstraints();
@@ -38,8 +38,8 @@ public class TopBoardPanel extends JPanel {
         c.gridy = 0;
         c.gridheight = 1;
         c.gridwidth = 1;
-//        jPanel1.setOpaque(false);
-        jPanel1.setBackground(Color.RED);
+        jPanel1.setOpaque(false);
+       //jPanel1.setBackground(Color.RED);
         c.fill = GridBagConstraints.BOTH;
         jPanel1.setPreferredSize(new Dimension(10, 10));
         pane.add(jPanel1, c);
@@ -50,8 +50,9 @@ public class TopBoardPanel extends JPanel {
         c.gridy = 1;
         c.gridheight = 1;
         c.gridwidth = 1;
-//        jPanel2.setOpaque(false);
-        c.fill = GridBagConstraints.BOTH;
+        jPanel2.setOpaque(false);
+        //c.fill = GridBagConstraints.BOTH;
+        //jPanel2.setBackground(Color.green);
         jPanel2.setPreferredSize(new Dimension(10, 10));
         pane.add(jPanel2, c);
         jPanel2.attach(this.listener);

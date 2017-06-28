@@ -8,13 +8,22 @@ import java.awt.event.ActionListener;
  * Created by giulia on 25/06/2017.
  */
 public class GameBoardPanel extends PaintBackgroundPanel implements ActionListener {
-
-    public GameBoardPanel() {
-    }
+    VictoryPointTrackFirstColumnPanel jPanel1;
+    VictoryPointTrackFirstRowPanel jPanel2;
+    TopBoardPanel jPanel3;
+    FaithPointTrackPanel jPanel4;
+    BottomBoardPanel jPanel5;
+    VictoryPointTrackSecondRowPanel jPanel6;
+    MilitaryTrackPanel jPanel7;
+    VicttoryPointTrackSecondColumnPanel jPanel8;
 
     public void paintComponent(Graphics g) {
         super.imageToLoad("/gameboard_f_c.png");
         super.paintComponent(g);
+    }
+
+    public GameBoardPanel() {
+        addComponentsToPane(this);
     }
 
     public void addComponentsToPane(Container pane){
@@ -24,7 +33,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         gbl.rowHeights = new int[]{0,0,0,0,0,0};
 
         gbl.columnWeights = new double[]{0.04,0.999999,0.08,0.044,Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.02,0.9743,0.06,0.2745,0.0999989898,Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.04,0.9999993,0.022,0.2845,0.0399989898,Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints c = new GridBagConstraints();
@@ -36,8 +45,8 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridheight = 4;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        jPanel1.setBackground(Color.CYAN);
-//        jPanel1.setOpaque(false);
+        //jPanel1.setBackground(Color.CYAN);
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel1, c);
         jPanel1.attach(this);
@@ -48,8 +57,8 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridheight = 1;
         c.gridwidth = 4;
         c.fill = GridBagConstraints.BOTH;
-        jPanel2.setBackground(Color.BLUE);
-        //jPanel2.setOpaque(false);
+        //jPanel2.setBackground(Color.BLUE);
+        jPanel2.setOpaque(false);
         jPanel2.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel2, c);
         jPanel2.attach(this);
@@ -59,9 +68,9 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridy = 1;
         c.gridheight = 1;
         c.gridwidth = 1;
-        c.fill = GridBagConstraints.BOTH;
-        jPanel3.setBackground(Color.YELLOW);
-//        jPanel3.setOpaque(false);
+        //c.fill = GridBagConstraints.BOTH;
+        //jPanel3.setBackground(Color.YELLOW);
+        jPanel3.setOpaque(false);
         jPanel3.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel3, c);
         jPanel3.attach(this);
@@ -72,7 +81,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridheight = 1;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-//        jPanel4.setBackground(Color.GREEN);
+        jPanel4.setBackground(Color.GREEN);
         jPanel4.setOpaque(false);
         jPanel4.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel4, c);
@@ -85,7 +94,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridheight = 1;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-//        jPanel5.setBackground(Color.YELLOW);
+       //jPanel5.setBackground(Color.YELLOW);
         jPanel5.setOpaque(false);
         jPanel5.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel5, c);
@@ -97,7 +106,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridheight = 1;
         c.gridwidth = 3;
         c.fill = GridBagConstraints.BOTH;
-//        jPanel6.setBackground(Color.PINK);
+        //jPanel6.setBackground(Color.PINK);
         jPanel6.setOpaque(false);
         jPanel6.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel6, c);
@@ -109,8 +118,8 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridheight = 3;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        jPanel7.setBackground(Color.black);
-//        jPanel7.setOpaque(false);
+        //jPanel7.setBackground(Color.black);
+        jPanel7.setOpaque(false);
         jPanel7.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel7, c);
         jPanel7.attach(this);
@@ -121,14 +130,13 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridheight = 3;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        jPanel8.setBackground(Color.RED);
+        //jPanel8.setBackground(Color.RED);
         jPanel8.setOpaque(false);
         jPanel8.setPreferredSize(new Dimension(10,10));
         pane.add(jPanel8, c);
         jPanel8.attach(this);
 
     }
-
 
 
 

@@ -11,6 +11,7 @@ import java.io.IOException;
  */
 public class PaintBackgroundPanel extends JPanel {
     private BufferedImage backgroundPanel;
+    private BufferedImage backgroundJbutton;
 
     @Override
     public void paintComponent(Graphics g){
@@ -26,5 +27,16 @@ public class PaintBackgroundPanel extends JPanel {
         }catch (IOException e){
             System.err.println("Errore");
         } backgroundPanel=resizedImage;
+    }
+
+    public void paintJButton(JButton jButton,String string) {
+        BufferedImage resizedImage = null;
+        try{
+            resizedImage = ImageIO.read(getClass().getResource(string));
+        }catch (IOException e){
+            System.err.println("Errore");
+        }backgroundJbutton=resizedImage;
+        ImageIcon imageIcon = new ImageIcon(resizedImage);
+         jButton = new JButton(imageIcon);
     }
 }

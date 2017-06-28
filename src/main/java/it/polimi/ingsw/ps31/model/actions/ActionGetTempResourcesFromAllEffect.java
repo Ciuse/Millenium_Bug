@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.model.actions;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceListToPay;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
@@ -12,8 +14,7 @@ import java.util.List;
  */
 public class ActionGetTempResourcesFromAllEffect extends Action {
     private ResourceList resourcesTempToGet = null;
-    private ResourceList resourceBonus = new ResourceList();
-    private List<ResourceList> resourceBonusChoice = new ArrayList<>();
+    private List<ResourceList> resourceMalus = new ArrayList<>();
     private boolean doubleActivation=false;  // bonus che viene settato dall attivazione di Santa Rita
     private boolean fromCardEffect=false;
 
@@ -54,14 +55,25 @@ public class ActionGetTempResourcesFromAllEffect extends Action {
             //TODO: fare qualcosa (eccezione?)
         } else {//Eseguo l'azione
             List<Resource> resourcesTempToGetList = this.resourcesTempToGet.getResourceList();
+            int listToPay=0;
+            if(resourceMalus.size()>1){
+                player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(resourceMalus);
+                String string = player.getPlayerId() + ": quale risorsa non vuoi ottenere?";
+                player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string,new ChoiceListToPay(0)));
+                listToPay = player.getModel().getModelChoices().waitIntListToPay();
+            }
+            listToPay=0;
             for (Resource currentResource : resourcesTempToGetList) {
                 //Aggiungo i bonus alle risorse ottenute
                 //todo: da attivare sse le risorse provengono da carte sviluppo o spazi azione
                 //todo: attivare anche le scelte
-                Resource currentBonus = resourceBonus.getSpecificResource(currentResource.getClass());
-                if (currentBonus != null)
-                    currentResource.addValue(currentBonus.getValue());
+                for (Resource resource:resourceMalus.get(listToPay).getResourceList()
+                     ) {
 
+                        currentResource.addValue(resource.getValue());
+
+
+                }
                 currentResource.addTempResource(super.player);
             }
         }
@@ -80,13 +92,8 @@ public class ActionGetTempResourcesFromAllEffect extends Action {
     }
 
     /* Modifiers */
-    public void addResourceBonus (Resource resourceBonus)
+    public void addResourceMalus(ResourceList resourceBonusChoice)
     {
-       this.resourceBonus.addSpecificResource(resourceBonus);
-    }
-
-    public void addResourceBonusChoice(ResourceList resourceBonusChoice)
-    {
-        this.resourceBonusChoice.add(resourceBonusChoice);
+        this.resourceMalus.add(resourceBonusChoice);
     }
 }

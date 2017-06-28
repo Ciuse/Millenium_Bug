@@ -53,7 +53,7 @@ public class ModelChoices {
     // proveniente dalla view e in questo modo il model continua l' esecuzione
     // delle altre funzioni ritornando l' oggetto/risposta dell utente
 
-    public synchronized int waitIntChosen(){
+    public synchronized int waitIntListToPay(){
         setListToPay(-1);
         setStateChoice();
         while(listToPay ==-1 || this.stateModelChoices.equals("StateChoice")){

@@ -79,7 +79,7 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
                                         String string = player.getPlayerId() + "Quale costo della carta vuoi pagare?";
                                         player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(towerCardSpace.getCard().getCostList());
                                         player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceListToPay(towerCardSpace.getCard().getCardId())));
-                                        listToPay = player.getModel().getModelChoices().waitIntChosen();
+                                        listToPay = player.getModel().getModelChoices().waitIntListToPay();
                                     }while(!player.getPlayerResources().greaterThan(towerCardSpace.getCard().getCostList().get(listToPay))); // se fallisce il pagamento glielo richiedo magari poteva pagare solo i dei due costi
                                 }
                             }

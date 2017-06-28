@@ -13,7 +13,7 @@ public class FamilyMember {
     private final DiceColor diceColor;
     private int diceValue;
     private int additionalValue;
-    private int permanentAdditionalValue;
+    private int permanentAdditionalValue=0;
     private ActionSpace actionSpace;
     private Integer fixedValue;
 
@@ -53,6 +53,9 @@ public class FamilyMember {
         this.additionalValue = this.additionalValue+additionalValue;
     }
 
+    public void addPermanentAdditionalValue(int bonus){
+        this.permanentAdditionalValue = this.permanentAdditionalValue+bonus;
+    }
     public void resetFamilyMember() {
         this.diceValue = 0;
         this.additionalValue = 0;
@@ -63,7 +66,7 @@ public class FamilyMember {
     public int getTotalValue()
     {
         if( this.fixedValue == null )
-            return this.diceValue + this.additionalValue;
+            return this.diceValue + this.additionalValue+this.permanentAdditionalValue;
         else
             return this.fixedValue;
     }

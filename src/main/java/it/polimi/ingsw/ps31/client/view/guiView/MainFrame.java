@@ -1,22 +1,29 @@
 package it.polimi.ingsw.ps31.client.view.guiView;
 
+import javax.imageio.ImageIO;
+import javax.rmi.CORBA.Util;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 /**
  * Created by giulia on 25/06/2017.
  */
-public class MainFrame extends JFrame {
-    private JLabel label1, label2, label3, label4;
+public class MainFrame extends JFrame implements ActionListener {
     private GameBoardPanel gameBoardPanel;
     private PlayerPanel playerPanel;
+    private UtilityPanel utilityPanel;
 
     public MainFrame(GameBoardPanel gameBoardPanel, PlayerPanel playerPanel) throws HeadlessException {
         this.gameBoardPanel = gameBoardPanel;
         this.playerPanel = playerPanel;
     }
+
+
 
     public static void main(String[] v) {
 
@@ -29,7 +36,7 @@ public class MainFrame extends JFrame {
                 frame.setResizable(false);
                 frame.setVisible(true);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+                frame.getContentPane().setBackground(new Color(45,55,105));
 
                 try {
 
@@ -37,8 +44,8 @@ public class MainFrame extends JFrame {
                     gbl.columnWidths = new int[]{0, 0, 0, 0};
                     gbl.rowHeights = new int[]{0, 0, 0};
 
-                    gbl.columnWeights = new double[]{0.479271, 0.0154, 0.5476, Double.MIN_VALUE};
-                    gbl.rowWeights = new double[]{0.4767, 0.489, Double.MIN_VALUE};
+                    gbl.columnWeights = new double[]{0.50, 0.014, 0.481, Double.MIN_VALUE};
+                    gbl.rowWeights = new double[]{0.5267, 0.469, Double.MIN_VALUE};
                     frame.getContentPane().setLayout(gbl);
 
 
@@ -47,6 +54,8 @@ public class MainFrame extends JFrame {
                     PlayerPanel jPlayerPanel = new PlayerPanel();
 
                     UtilityPanel jUtilityPanel = new UtilityPanel();
+
+
 
                     GridBagConstraints gbc = new GridBagConstraints();
 
@@ -59,16 +68,16 @@ public class MainFrame extends JFrame {
                     frame.add(jGameBoardPanel1, gbc);
 
 
-                    gbc.gridx = 1;
+                    gbc.gridx = 2;
                     gbc.gridy = 0;
                     gbc.gridheight = 1;
                     gbc.gridwidth = 1;
                     gbc.fill = GridBagConstraints.BOTH;
-                    gbc.anchor = GridBagConstraints.WEST;
+                    //gbc.anchor = GridBagConstraints.WEST;
                     jPlayerPanel.setPreferredSize(new Dimension(10, 10));
                     frame.add(jPlayerPanel, gbc);
 
-                    gbc.gridx = 1;
+                    gbc.gridx = 2;
                     gbc.gridy = 1;
                     gbc.gridheight = 1;
                     gbc.gridwidth = 1;
@@ -92,12 +101,17 @@ public class MainFrame extends JFrame {
 
     }
 
-    private static BufferedImage resizeImage(BufferedImage originalImage, int type, int width, int height) {
-        BufferedImage resizedImage = new BufferedImage(width, height, type);
-        Graphics2D g = resizedImage.createGraphics();
-        g.drawImage(originalImage, 0, 0, width, height, null);
-        g.dispose();
-        return resizedImage;
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
+
+    // private static BufferedImage resizeImage(BufferedImage originalImage, int type, int width, int height) {
+     //   BufferedImage resizedImage = new BufferedImage(width, height, type);
+       // Graphics2D g = resizedImage.createGraphics();
+        //g.drawImage(originalImage, 0, 0, width, height, null);
+        //g.dispose();
+        //return resizedImage;
+    //}
 
 }
