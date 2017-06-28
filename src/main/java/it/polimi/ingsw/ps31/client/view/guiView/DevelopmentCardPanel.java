@@ -1,25 +1,14 @@
 package it.polimi.ingsw.ps31.client.view.guiView;
 
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewTower;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.StringReader;
 
 /**
  * Created by giulia on 28/06/2017.
  */
-public class DevelopmentCardPanel extends PaintBackgroundPanel {
+public class DevelopmentCardPanel extends JPanel {
     ActionListener listener;
-    private GuiView guiView;
-    private String string;
-
-    public DevelopmentCardPanel(String string) {
-        this.string=string;
-        addComponentsToPane(this);
-    }
 
     public DevelopmentCardPanel() {
         addComponentsToPane(this);
@@ -49,9 +38,9 @@ public class DevelopmentCardPanel extends PaintBackgroundPanel {
         jButtonPanel.setBackground(Color.GREEN);
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(jButtonPanel,gbc);
-       super.paintJButton(jButtonPanel,string);
+
+
+
 
     }
-
-
 }

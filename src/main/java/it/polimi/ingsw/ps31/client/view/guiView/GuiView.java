@@ -1,14 +1,13 @@
 package it.polimi.ingsw.ps31.client.view.guiView;
 
+import it.polimi.ingsw.ps31.*;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewTower;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
 import it.polimi.ingsw.ps31.model.choiceType.*;
-import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -16,10 +15,9 @@ import java.io.IOException;
 /**
  * Created by Giuseppe on 07/06/2017.
  */
-public class GuiView extends View implements ActionListener{
+public  class GuiView extends View implements ActionListener{
     private JButton jButtonChangeCard;
     private GameBoardPanel gameBoardPanel;
-    private DevelopmentCardPanel developmentCardPanel;
 
 
     public GuiView(PlayerId viewId, int playerMaxNumber) {
@@ -119,27 +117,8 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void printTower() {
-            int i=1;
-            for (StateViewTower tower:super.getStateViewBoard().getStateViewTowerList()
-                    ) {
-                for (StateViewTowerCardBox floor:tower.getStateViewTowerCardBox()
-                        ) {
-                    floor.getName();
-                    i++;
-                }
-            }
-    }
-    private void printTowerCardBox(CardColor towerColor, int towerFloor){
-        int i=0;
-        for (StateViewTower tower:super.getStateViewBoard().getStateViewTowerList()
-                ) {
-            if(tower.getTowerColor().equals(towerColor)){
-                int j=3;
-                for (StateViewTowerCardBox floor:tower.getStateViewTowerCardBox()
-                        ) {
 
-                    if(floor.getTowerFloor()==towerFloor) {
-                    }}}}}
+    }
 
     @Override
     public void printLastEvent(String string) {
@@ -195,6 +174,7 @@ public class GuiView extends View implements ActionListener{
     public void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView) {
 
     }
+
 
 
 

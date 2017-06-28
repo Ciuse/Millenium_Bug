@@ -5,13 +5,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * Created by giulia on 27/06/2017.
  */
 public class PaintBackgroundPanel extends JPanel {
     private BufferedImage backgroundPanel;
-    private BufferedImage backgroundJbutton;
 
     @Override
     public void paintComponent(Graphics g){
@@ -27,16 +27,5 @@ public class PaintBackgroundPanel extends JPanel {
         }catch (IOException e){
             System.err.println("Errore");
         } backgroundPanel=resizedImage;
-    }
-
-    public void paintJButton(JButton jButton,String string) {
-        BufferedImage resizedImage = null;
-        try{
-            resizedImage = ImageIO.read(getClass().getResource(string));
-        }catch (IOException e){
-            System.err.println("Errore");
-        }backgroundJbutton=resizedImage;
-        ImageIcon imageIcon = new ImageIcon(resizedImage);
-         jButton = new JButton(imageIcon);
     }
 }
