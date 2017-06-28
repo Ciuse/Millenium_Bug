@@ -17,10 +17,10 @@ public class IntrChoiceCouncilPrivilege implements CmdInterpreterView {
     @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
-            for (int i = 1; i < getResourceListFromCouncilPrivilege().size()+1; i++) {
-                if (in == i) {
+            for (Integer i = 1; i < getResourceListFromCouncilPrivilege().size()+1; i++) {
+                if (in.compareTo(i.toString().charAt(0))==0) {
                     terminalView.printLastEvent("Comando OK");
-                    terminalView.notifyController(new VCCouncilPrivilegeChoice(terminalView.getViewId(),getResourceListFromCouncilPrivilege().get(in - 1)));
+                    terminalView.notifyController(new VCCouncilPrivilegeChoice(terminalView.getViewId(),getResourceListFromCouncilPrivilege().get(i - 1)));
                     return true;
                 }
             }

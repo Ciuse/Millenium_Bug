@@ -19,18 +19,16 @@ public class OccupiedActionSpaceControl extends Control {
         this.defaultAllowedActionSpaces = new ArrayList<>();
     }
 
+
+
+    /* Getters & Setters */
+    public void setActionSpace(ActionSpace actionSpace) {
+        this.actionSpace = actionSpace;
+    }
+
     @Override
     public String getControlStringError() {
         return "Non puoi mettere il tuo familyMember in questo actionSpace perchè è già occupato";
-    }
-
-    /* Getters & Setters */
-    public ActionSpace getActionSpace() {
-        return actionSpace;
-    }
-
-    public void setActionSpace(ActionSpace actionSpace) {
-        this.actionSpace = actionSpace;
     }
 
     public void resetActionSpace() {

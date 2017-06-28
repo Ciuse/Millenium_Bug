@@ -18,10 +18,10 @@ public class IntrChoicePersonalTiles implements CmdInterpreterView {
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
             ChoicePersonalBonusTiles choicePersonalBonusTiles = (ChoicePersonalBonusTiles) choiceType;
-            for (int i = 1; i < choicePersonalBonusTiles.getStatePersonalBonusTilesList().size() + 1; i++) {
-                if (in == i) {
+            for (Integer i = 1; i < choicePersonalBonusTiles.getStatePersonalBonusTilesList().size() + 1; i++) {
+                if (in.compareTo(i.toString().charAt(0))==0) {
                     terminalView.printLastEvent("Comando OK");
-                    terminalView.notifyController(new VCPersonalTilesChoice(terminalView.getViewId(),in-1));
+                    terminalView.notifyController(new VCPersonalTilesChoice(terminalView.getViewId(),i-1));
                     return true;
                 }
             }

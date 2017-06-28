@@ -24,26 +24,12 @@ public abstract class Resource {
         player.addTempResources(this);
     }
 
-    public void addValue(int value)
-    {
-        if (value >= 0)
-            this.value = this.value+value;
-        else
-            this.subValue(Math.abs(value));
+    public void addValue(int value) {
+        this.value = this.value + value;
     }
 
-    public void subValue(int value)
-    {
-        if(value >= 0 )
-            if ( this.value >= value) {
-                this.value = this.value - value;
-
-            } else
-            {
-                //TODO: gestire (eccezione?)
-            }
-        else
-            this.addValue(Math.abs(value));
+    public void subValue(int value) {
+        this.value = this.value - value;
     }
 
     public void discountValue(int value) {
@@ -56,12 +42,17 @@ public abstract class Resource {
             }
     }
 
-    public void multvalue(int factor){
+    public void multValue(int factor){
 
         this.value=this.value*factor;
     }
 
-/*Getters*/
+    public abstract int getPhysicalResourceValue();
+
+    public abstract int getPointResourceValue();
+
+
+    /*Getters*/
     public int getValue(){
         return this.value;
     }
@@ -80,10 +71,6 @@ public abstract class Resource {
 
         return value == resource.value;
     }
-
-    public abstract int getPhysicalResourceValue();
-    public abstract int getPointResourceValue();
-
 
 
     @Override

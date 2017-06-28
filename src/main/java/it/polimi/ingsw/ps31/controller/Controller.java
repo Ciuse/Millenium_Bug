@@ -72,12 +72,12 @@ public class Controller implements Observer {
                             }
                         }
                         if (!found1) {
-                            virtualView.reSendLastMessageToSpecificView("non ho trovato il leader tra i possibili leader rimasti in gioco", viewId);
+                                virtualView.reSendLastMessageToSpecificView("non ho trovato il leader tra i possibili leader rimasti in gioco", viewId);
                         }
                     }
                 }
                 if (!found) {
-                    virtualView.reSendLastMessageToSpecificView("non ho trovato il leader tra le tue possibili scelte", viewId);
+                        virtualView.reSendLastMessageToSpecificView("non ho trovato il leader tra le tue possibili scelte", viewId);
                 }
             }
         }
@@ -89,11 +89,13 @@ public class Controller implements Observer {
                 ) {
             if (numberOfChoice == personalBonusTiles.getPersonalBonusTilesId()) {
                 found = true;
-                modelChoices.setPersonalBonusTilesChosen(personalBonusTiles);
+                if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                    modelChoices.setPersonalBonusTilesChosen(personalBonusTiles);
             }
         }
         if (!found)
-            virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l azione associata");
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l azione associata");
     }
 
     public void activeEffect(boolean isToActive, PlayerId viewId) {
@@ -111,17 +113,20 @@ public class Controller implements Observer {
             }
         }
         if (!legitAnswer) {
-            virtualView.reSendLastMessage("(controller) Player mi hai mentito");
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                virtualView.reSendLastMessage("(controller) Player mi hai mentito");
         } else {
             for (Action action : gameUtility.getPlayerInAction().getPlayerActionSet().getActionList()
                     ) {
                 if (action.toString().equals(string)) {
-                    modelChoices.setActionToDo(action);
                     found = true;
+                    if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                        modelChoices.setActionToDo(action);
                 }
             }
             if (!found)
-                virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l azione associata");
+                if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                    virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l azione associata");
         }
     }
 
@@ -159,16 +164,19 @@ public class Controller implements Observer {
         }
         if (found) {
             if (gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().occupiedActionSpaceControl(actionSpaceToControl)) {        //se esiste l action space controllo se posso meterci il famigliare
-                modelChoices.setActionSpaceChosen(actionSpaceToControl);
+                if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                    modelChoices.setActionSpaceChosen(actionSpaceToControl);
             } else {
-                virtualView.reSendLastMessage(gameUtility.getPlayerInAction().getActionControlSet().getOccupiedActionSpaceControl().getControlStringError());
+                if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                    virtualView.reSendLastMessage(gameUtility.getPlayerInAction().getActionControlSet().getOccupiedActionSpaceControl().getControlStringError());
             }
         } else {
-            virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l actionSpace");
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l actionSpace");
         }
     }
 
-    public void selectTowerCardSpace(CardColor towerColor, int floorNumber, PlayerId playerId) {
+    public void selectTowerCardSpace(CardColor towerColor, int floorNumber, PlayerId viewId) {
         boolean found = false;
         for (Tower tower : gameUtility.getGameBoard().getTowers()
                 ) {
@@ -179,45 +187,54 @@ public class Controller implements Observer {
                         if (towerCardSpace.getCard() != null) {     //controllo se vi è una carta
                             if (gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().occupiedActionSpaceControl(towerCardSpace.getActionSpace())) {     //controllo se l action space associato alla carta è già occupato
                                 found = true;
-                                modelChoices.setTowerCardSpaceChosen(towerCardSpace);
+                                if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                                    modelChoices.setTowerCardSpaceChosen(towerCardSpace);
                             } else {
-                                virtualView.reSendLastMessage("L'Action space associato alla carta è già occuapto");
+                                if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                                    virtualView.reSendLastMessage("L'Action space associato alla carta è già occuapto");
                             }
                         } else {
-                            virtualView.reSendLastMessage("Il tower Card Space selezionato non ha una carta");
+                            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                                virtualView.reSendLastMessage("Il tower Card Space selezionato non ha una carta");
                         }
                     }
                 }
             }
         }
         if (!found)
-            virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l azione associata");
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l azione associata");
     }
 
-    public void selectColor(PlayerColor playerColor, PlayerId playerId) {
-        modelChoices.setPlayerColorChosen(playerColor);
+    public void selectColor(PlayerColor playerColor, PlayerId viewId) {
+        if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+            modelChoices.setPlayerColorChosen(playerColor);
     }
 
-    public void selectFamilyMember(DiceColor familyMemberColor, PlayerId playerId) {
+    public void selectFamilyMember(DiceColor familyMemberColor, PlayerId viewId) {
         boolean legitAnswer = false;
         for (FamilyMember familyMember : gameUtility.getPlayerInAction().getFamilyMembers()
                 ) {
             if (familyMember.getDiceColor().equals(familyMemberColor)) {
                 legitAnswer = true;
                 if (gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().placedFamilyMemberControl(familyMember)) {       //controllo se il famigliare scelto dal giocatore era già stato piazzato
-                    modelChoices.setFamilyMemberChosen(familyMember);
+                    if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                        modelChoices.setFamilyMemberChosen(familyMember);
                 } else {
-                    virtualView.reSendLastMessage(gameUtility.getPlayerInAction().getActionControlSet().getPlacedFamilyMemberControl().getControlStringError());
+                    if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                        virtualView.reSendLastMessage(gameUtility.getPlayerInAction().getActionControlSet().getPlacedFamilyMemberControl().getControlStringError());
                 }
             }
         }
         if (!legitAnswer) {
-            virtualView.reSendLastMessage("(controller) Player mi hai mentito");
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                virtualView.reSendLastMessage("(controller) Player mi hai mentito");
         }
     }
 
     public void selectIfSupportTheChurch(boolean wannaSupport, PlayerId viewId) {
-        modelChoices.setSupportTheChurch(wannaSupport);
+        if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+            modelChoices.setSupportTheChurch(wannaSupport);
     }
 
     public void selectLeaderToActivate(int leaderId, PlayerId viewId) {
@@ -226,11 +243,13 @@ public class Controller implements Observer {
                 ) {
             if (leaderCard.getLeaderId() == leaderId) {
                 found = true;
-                modelChoices.setLeaderCardChosen(leaderCard);
+                if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                    modelChoices.setLeaderCardChosen(leaderCard);
             }
         }
         if (!found)
-            virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato il leader associata");
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato il leader associata");
     }
 
     public void selectServantToPay(int servantToPay, PlayerId viewId) {
@@ -240,9 +259,11 @@ public class Controller implements Observer {
         ResourceList servantsAsResourceList = new ResourceList(servantsAsList);
 
         if (gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().payResourceControl(servantsAsResourceList)) {
-            modelChoices.setNumberOfServantsToPay(servantToPay);
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                modelChoices.setNumberOfServantsToPay(servantToPay);
         } else {
-            virtualView.reSendLastMessage("(controller) Non hai risorse per pagare i servitori");
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                virtualView.reSendLastMessage("(controller) Non hai risorse per pagare i servitori");
         }
 
     }
@@ -250,25 +271,25 @@ public class Controller implements Observer {
     public void selectListToPay(int listToPay, PlayerId viewId) {
         boolean found = false;
         List<ResourceList> resourceListToControl = lastModelStateForControl.getResourceListToControl();
-        if (listToPay <= resourceListToControl.size()) {
-            if (gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().payResourceControl(resourceListToControl.get(listToPay))) {
-                found = true;
+        if (listToPay < resourceListToControl.size()) {
+            found = true;
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
                 modelChoices.setListToPay(listToPay);
-            } else {
-                virtualView.reSendLastMessage("(controller) Non hai abbastanza risorse per pagare l'effetto");
-            }
         }
         if (!found)
-            virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato la lista associata");
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato la lista associata");
     }
 
     public void selectCouncilPrivilige(ResourceList resourceList, PlayerId viewId) {
         //TODO CREARE DA JSON I COUNCIL OF PRIVILEGE POSSIBILI
         List<ResourceList> resourceListToControl = lastModelStateForControl.getResourceListToControl();
         if (resourceList.equals(resourceListToControl)) {
-            modelChoices.setResourceChosenFromPrivilege(resourceList);
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                modelChoices.setResourceChosenFromPrivilege(resourceList);
         } else {
-            virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato la lista di risorse con cui scambiare il privilegio");
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato la lista di risorse con cui scambiare il privilegio");
         }
     }
 

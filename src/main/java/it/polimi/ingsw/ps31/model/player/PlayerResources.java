@@ -18,28 +18,15 @@ public class PlayerResources {
     /* Setters & Getters */
     public void addResources(Resource resourceToAdd)
     {
-        //controllo che il valore sia positivo
-        if(resourceToAdd.getValue() < 0)
-        {
-            //todo eccezione
-        }else
-        {
-            //Aggiungo la risorsa
-            this.playerResourceList.addSpecificResource(resourceToAdd);
-        }
+        //Aggiungo la risorsa
+        this.playerResourceList.addSpecificResource(resourceToAdd);
 
     }
 
     public void subResources(Resource resourceToSub)
     {
-        if(resourceToSub.getValue() < 0)
-        {
-            //todo eccezione
-        }else
-        {
-            //Aggiungo la risorsa
-            this.playerResourceList.subSpecificResource(resourceToSub);
-        }
+        //Aggiungo la risorsa
+        this.playerResourceList.subSpecificResource(resourceToSub);
     }
 
     public int getResourceValue(Class<? extends Resource> resourceClass) throws NullPointerException{

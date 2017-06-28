@@ -17,12 +17,12 @@ public class IntrLeaderToDiscard implements CmdInterpreterView {
     @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
-            int i = 1;
+            Integer i = 1;
             for (StateViewLeaderCard leaderCard : terminalView.getMyStateViewPlayer().getStateViewLeaderCardList()
                     ) {
-                if (in == i && !leaderCard.isPlayed()) {
+                if (in.compareTo(i.toString().charAt(0))==0 && !leaderCard.isPlayed()) {
                     terminalView.printLastEvent("Comando OK");
-                    terminalView.notifyController(new VCLeaderToDiscardChoice(terminalView.getViewId(), in));
+                    terminalView.notifyController(new VCLeaderToDiscardChoice(terminalView.getViewId(), i));
                     return true;
                 }
                 i++;

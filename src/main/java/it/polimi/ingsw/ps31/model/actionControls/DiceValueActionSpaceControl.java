@@ -12,21 +12,12 @@ import java.util.Map;
 public class DiceValueActionSpaceControl extends Control {
     private Integer diceValue = null;
     private DiceColor diceColor = null;
-    protected Map<DiceColor, Integer> bonusValues;
 
     /* Constructor */
     public DiceValueActionSpaceControl(Player player) {
         super(player);
-        this.bonusValues = new HashMap<>();
-
-        for(DiceColor currentColor : DiceColor.values())
-            this.bonusValues.put(currentColor, new Integer(0));
     }
 
-    @Override
-    public String getControlStringError() {
-        return  "booooh";
-    }
 
     /* Setters & Getters */
     public void setDiceValue(Integer diceValue)
@@ -34,18 +25,16 @@ public class DiceValueActionSpaceControl extends Control {
         this.diceValue = diceValue;
     }
     public void setDiceColor(DiceColor diceColor)
+
     {
         this.diceColor = diceColor;
     }
 
-    public Integer getDiceValue()
-    {
-        return this.diceValue;
+    @Override
+    public String getControlStringError() {
+        return  "Il valore del famigliare è inferiore a quello dell action space";
     }
-    public DiceColor getDiceColor()
-    {
-        return this.diceColor;
-    }
+
 
     /* Resetters */
     public void resetDiceValue()
@@ -59,29 +48,18 @@ public class DiceValueActionSpaceControl extends Control {
 
     /* Class Methods */
     @Override
-    public boolean execute()
-    {
-        if ( this.diceValue == null || this.diceColor == null )
-        {
+    public boolean execute() {
+        if (this.diceValue == null || this.diceColor == null) {
             //TODO: gestire
             return false;
         }
 
-            boolean ret =   player.getSpecificFamilyMember(diceColor).getDiceValue()+
-                            this.bonusValues.get(diceColor) >= this.diceValue;
-            resetDiceColor();
-            resetDiceValue();
+        boolean ret = player.getSpecificFamilyMember(diceColor).getTotalValue() >= this.diceValue;
+        resetDiceColor();
+        resetDiceValue();
 
-            return ret;
+        return ret;
 
     }
-
-    /* Modifiers */
-    public void addPermanentValueAtSpecificMember(DiceColor memberColor, Integer valueToAdd)
-    {
-        Integer currentValue = bonusValues.get(memberColor);
-        bonusValues.put(memberColor, currentValue+valueToAdd);
-    }
-
 
 }

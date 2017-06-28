@@ -24,16 +24,17 @@ public class  PayResourceListControl extends PayResourceControl{
         this.resourceLists = resourceLists;
     }
 
-    public List<ResourceList> getResourceLists()
-    {
-        return resourceLists;
+    @Override
+    public String getControlStringError() {
+        return "Non puoi pagare nessuna delle liste di costo";
     }
 
     /* Resetters */
-    public void restResourceList()
+    public void resetResourceList()
     {
         this.resourceLists = null;
     }
+
 
 
 

@@ -70,25 +70,13 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
                                 //attivo gli effetti immediati degli action space
                                 towerCardSpace.getActionSpace().activeEffectList(player);
 
-                            int listToPay = -1;
-                            if (towerCardSpace.getCard().getCostList() != null) {
-                                listToPay=0;
-                                //se la carta ha almeno una lista da pagare vedo quante ne ha
-                                if (towerCardSpace.getCard().getCostList().size() > 1) {     //se la carta ha più di una lista da pagare chiedo alla view quale vuole pagare
-                                    do {
-                                        String string = player.getPlayerId() + "Quale costo della carta vuoi pagare?";
-                                        player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(towerCardSpace.getCard().getCostList());
-                                        player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceListToPay(towerCardSpace.getCard().getCardId())));
-                                        listToPay = player.getModel().getModelChoices().waitIntListToPay();
-                                    }while(!player.getPlayerResources().greaterThan(towerCardSpace.getCard().getCostList().get(listToPay))); // se fallisce il pagamento glielo richiedo magari poteva pagare solo i dei due costi
-                                }
-                            }
-                            if (listToPay != -1) {
-                                //pago la carta in base alla lista che mi ha detto il giocatore se c era piu di una lsita
-                                player.getPlayerActionSet().payResources(towerCardSpace.getCard().getCostList().get(listToPay));
-                            }
+                            //pago la carta
+                            super.player.getPlayerActionSet().payCard(towerCardSpace.getCard(),null);
+
                             //prendo la carta
                             super.player.addDevelopmentCard(this.towerCardSpace.takeCard());
+
+                            //metto la torre come occupata
                             towerCardSpace.getTower().setOccupied(true);
                         }else{      //TODO FARE OVERRIDE DEI GET CONTROL ERROR SPECIFICI
                             player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTakeDevelopmentCardControl().getControlStringError()));

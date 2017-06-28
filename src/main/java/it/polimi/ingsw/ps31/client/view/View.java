@@ -110,7 +110,7 @@ public abstract class View extends Observable implements Observer {
     public abstract void askPrivilegeResourceChange(ChoicePrivilegeResource choicePrivilegeResource);
 
 
-    public abstract void askComand() throws IOException;
+    public abstract void askVisualizzationComand();
 
 
     public final void updateInfoPlayer(StatePlayer stateInfoPlayer) {

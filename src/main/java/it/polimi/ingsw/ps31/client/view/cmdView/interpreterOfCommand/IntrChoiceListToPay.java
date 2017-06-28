@@ -16,14 +16,14 @@ public class IntrChoiceListToPay implements  CmdInterpreterView {
     @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
-            if (in == 1) {
+            if (in.compareTo('1')==0) {
                 terminalView.printLastEvent("Comando OK");
-                terminalView.notifyController(new VCListToPayChoice(terminalView.getViewId(),in));
+                terminalView.notifyController(new VCListToPayChoice(terminalView.getViewId(),0));
                 return true;
             }
-            if (in == 2) {
+            if (in.compareTo('2')==0) {
                 terminalView.printLastEvent("Comando OK");
-                terminalView.notifyController(new VCListToPayChoice(terminalView.getViewId(),in));
+                terminalView.notifyController(new VCListToPayChoice(terminalView.getViewId(),1));
                 return true;
             }
             terminalView.printLastEvent("Comando Non Riconusciuto");

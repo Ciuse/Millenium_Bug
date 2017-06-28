@@ -196,22 +196,15 @@ public class Player {
     /* Class Methods */
     public void addResources(Resource resourcesToAdd)
     {
-        if (resourcesToAdd.getValue() >= 0)
-            this.playerResources.addResources(resourcesToAdd);
-        else
-            this.playerResources.subResources(resourcesToAdd);
+        this.playerResources.addResources(resourcesToAdd);
     }
 
     public void subResources (Resource resourcesToSub)
     {
-        if (resourcesToSub.getValue() >= 0)
-            this.playerResources.subResources(resourcesToSub);
-        else
-            this.playerResources.addResources(resourcesToSub);
+        this.playerResources.subResources(resourcesToSub);
     }
 
     public void addTempResources(Resource tempResourceToAdd){
-        if(tempResourceToAdd.getValue() >=0)
             this.tempPlayerResourcesToGain.addSpecificResource(tempResourceToAdd);
     }
 

@@ -24,7 +24,7 @@ public class GetResourceEffect extends Effect {
 
     @Override
     public void activate(Player player) {
-        if(super.getCardId()!=0) {
+        if(super.getCardId()!=0) {          // se l effetto ha un id associato vuol dire che proviene da una carta e quindi nel caso posso attivare il bonus di santa rita
             player.getPlayerActionSet().getGetTempResources().setFromCardEffect(true);
         }
         player.getPlayerActionSet().getTempResources(this.resources);

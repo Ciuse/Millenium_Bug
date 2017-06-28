@@ -15,14 +15,15 @@ public class PayResourceControl extends Control {
         super(player);
     }
 
-    @Override
-    public String getControlStringError() {
-        return "Non hai abbastanza risorse per poter pagare";
-    }
 
     /* Setters & Getters */
     public ResourceList getResourceList() {
         return resourceList;
+    }
+
+    @Override
+    public String getControlStringError() {
+        return "Non hai abbastanza risorse per poter pagare";
     }
 
     public void setResourceList(ResourceList resourceList) {

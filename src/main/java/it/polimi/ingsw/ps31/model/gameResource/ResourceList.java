@@ -27,14 +27,6 @@ public class ResourceList {
 
     //metodi tipici delle liste
 
-    public void addResourceList(ResourceList resourceList) {
-        for (Resource resource : resourceList.getResourceList()) {
-            addSpecificResource(resource);
-        }
-    }
-
-
-
     public void addSpecificResource(Resource resource){
         boolean found=false;
 
@@ -62,7 +54,9 @@ public class ResourceList {
         if(!found){
             // todo error:!
         }
+
     }
+
     public void discountSpecificResource(Resource resource)
     {
         for (Resource resourceList : this.resourceList) {
@@ -72,7 +66,16 @@ public class ResourceList {
             }
         }
     }
-    
+
+
+    public void discountResourceList(ResourceList resourceList) {
+        for (Resource resource : resourceList.getResourceList()) {
+            discountSpecificResource(resource);
+        }
+    }
+
+
+
     public Resource remove(int index){
         return this.resourceList.remove(index);
     }
@@ -93,7 +96,7 @@ public class ResourceList {
     public void multiplyResourceList(int factor){
 
         for(int i=0; i<this.resourceList.size(); i++) {
-            this.resourceList.get(i).multvalue(factor);
+            this.resourceList.get(i).multValue(factor);
         }
     }
     public Resource getSpecificResource(Class<? extends Resource> resourceClass) throws NullPointerException{

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.player;
 
 import it.polimi.ingsw.ps31.model.actions.*;
+import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
@@ -29,6 +30,7 @@ public class PlayerActionSet {
     private final ActionActiveEndButton activeEndButton;
     private final ActionAddFinalBonus addFinalBonus;
     private final ActionGetTempResourcesFromAllEffect getTempResources;
+    private final ActionPayCard payCard;
     private final List<Action> actionList=new ArrayList<>();
     private final Player player;
 
@@ -53,6 +55,7 @@ public class PlayerActionSet {
         this.activeEndButton= new ActionActiveEndButton(player, actionControlSet); //TODO IMPLEMENTARLO
         this.addFinalBonus= new ActionAddFinalBonus(player, actionControlSet);
         this.getTempResources = new ActionGetTempResourcesFromAllEffect(player,actionControlSet);
+        this.payCard= new ActionPayCard(player,actionControlSet);
 
         addActionToTheList();
     }
@@ -85,6 +88,12 @@ public class PlayerActionSet {
     {
         this.activateProduction.setDiceValue(diceValue);
         this.activateProduction.activate();
+    }
+
+    public void payCard(DevelopmentCard card, ResourceList resourceList){
+        this.payCard.setCardToPay(card);
+        this.payCard.setResourceListDiscount(resourceList);
+        this.payCard.activate();
     }
 
     public void chooseCard(CardColor cardColor, int diceCost,boolean anyCardColor,ResourceList resourceDiscount)
@@ -237,6 +246,10 @@ public class PlayerActionSet {
 
     public ActionActiveLeaderCard getActionActiveLeaderCard() {
         return actionActiveLeaderCard;
+    }
+
+    public ActionPayCard getPayCard() {
+        return payCard;
     }
 
     public ActionDiscardLeaderCard getDiscardLeaderCard() {

@@ -53,11 +53,7 @@ public class CmdLineView extends View {
         do{
             this.setCmdInterpreterView(new IntrChoiceActionSpace());
             printBoardActionSpace();
-            String string ="Inserisci ";
-            for (StateViewActionSpace actionSpace: getStateViewBoard().getStateViewActionSpaceList()
-                 ) {
-                string=string+valueOf(actionSpace.getNumberOfActionSpace()+" ");
-            }
+            String string ="Inserisci 1 per il Council, 2 per SmallHarvest, 3 perBigHarvest, 4 per SmallProduction, 5 per BigProduction, 6/7/8/9 per le caselle del Market";
             printLastEvent(string);
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this, choiceActionSpace, keyStroke1.getCharacter()));
@@ -275,6 +271,7 @@ public class CmdLineView extends View {
         }
         printLastEvent( "Input: "+ keyStroke1.toString());
     }
+
     public void input2(){
         try {
             keyStroke2 =screen.readInput();
@@ -287,27 +284,34 @@ public class CmdLineView extends View {
 
 
     @Override
-    public void askComand() throws IOException {
-        keyStroke1 = screen.pollInput();
-        while(cmdInterpreterView.toString().equals("IntrVisualization")) {
+    public void askVisualizzationComand(){
+        try {
 
-             if(keyStroke1 !=null && (keyStroke1.getKeyType() == KeyType.Escape || keyStroke1.getKeyType() == KeyType.EOF)){
-                 break;
-            }
-//            try {
-//                Thread.sleep(2000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-            if(keyStroke1 !=null && keyStroke1.getKeyType() != KeyType.Escape && keyStroke1.getKeyType() != KeyType.EOF) {
-                terminal.flush();
-                cmdInterpreterView.notGameMessageInterpreter(this, keyStroke1.getCharacter());
-                screen.refresh();
-            }
             keyStroke1 = screen.pollInput();
-        }
-        if(keyStroke1 != null){
-            screen.close();
+            while(cmdInterpreterView.toString().equals("IntrVisualization")) {
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                 if(keyStroke1 !=null && (keyStroke1.getKeyType() == KeyType.Escape || keyStroke1.getKeyType() == KeyType.EOF)){
+                     break;
+                }
+
+                if(keyStroke1 !=null && keyStroke1.getKeyType() != KeyType.Escape && keyStroke1.getKeyType() != KeyType.EOF) {
+                    terminal.flush();
+                    cmdInterpreterView.notGameMessageInterpreter(this, keyStroke1.getCharacter());
+                    screen.refresh();
+                }
+                keyStroke1 = screen.pollInput();
+
+            }
+            if(keyStroke1 != null){
+                screen.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }

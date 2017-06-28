@@ -14,10 +14,6 @@ public class DevelopmentCardRequirementsControl extends Control{
         super(player);
     }
 
-    @Override
-    public String getControlStringError() {
-        return "Non hai abbastanza requisiti per poter prendere la carta";
-    }
 
     /* Setters & Getters */
     public void setRequirements(DevelopmentCardList requirement)
@@ -25,9 +21,9 @@ public class DevelopmentCardRequirementsControl extends Control{
         this.requirement = requirement;
     }
 
-    public DevelopmentCardList getRequirement()
-    {
-        return this.requirement;
+    @Override
+    public String getControlStringError() {
+        return "Non hai abbastanza requisiti per poter prendere la carta";
     }
 
     /* Resetters */
@@ -38,20 +34,11 @@ public class DevelopmentCardRequirementsControl extends Control{
 
     /* Class Methods */
     @Override
-    public boolean execute()
-    {
-        //controllo che i parametri siano settati
-        if ( this.requirement == null )
-        {            //TODO: gestire
-
-            return false;
-        }
-        else
-        {
-            boolean result = player.getPlayerCardList().lessOrEquals(this.requirement);
-            resetRequirements();
-            return result;
-        }
+    public boolean execute() {
+        boolean result = player.getPlayerCardList().lessOrEquals(this.requirement);
+        resetRequirements();
+        return result;
     }
+
 
 }

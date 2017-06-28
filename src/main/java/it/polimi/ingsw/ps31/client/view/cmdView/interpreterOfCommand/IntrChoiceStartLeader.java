@@ -23,10 +23,10 @@ public class IntrChoiceStartLeader implements CmdInterpreterView {
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
             ChoiceStartLeaderCard choiceStartLeaderCard = (ChoiceStartLeaderCard) choiceType;
-            for (int i = 1; i < choiceStartLeaderCard.getLeaderIdList().size() + 1; i++) {
-                if (in == i) {
+            for (Integer i = 1; i < choiceStartLeaderCard.getLeaderIdList().size() + 1; i++) {
+                if (in.compareTo(i.toString().charAt(0))==0) {
                     terminalView.printLastEvent("Comando OK");
-                    terminalView.notifyController(new VCStartLeaderChoice(terminalView.getViewId(),((ChoiceStartLeaderCard) choiceType).getLeaderIdList().get(in - 1)));
+                    terminalView.notifyController(new VCStartLeaderChoice(terminalView.getViewId(),((ChoiceStartLeaderCard) choiceType).getLeaderIdList().get(i - 1)));
                     return true;
                 }
             }

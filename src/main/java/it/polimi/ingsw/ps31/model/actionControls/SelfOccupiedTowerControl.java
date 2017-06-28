@@ -18,25 +18,12 @@ public class SelfOccupiedTowerControl extends Control {
         super(player);
     }
 
-    @Override
-    public String getControlStringError() {
-        return "non puoi mettere due family member non neutri nella stessa torre"+tower.getColor().name();
-    }
+
 
     /*Getters & Setters */
-    public Tower getTower()
-    {
-        return tower;
-    }
-
     public void setTower(Tower tower)
     {
         this.tower = tower;
-    }
-
-    public FamilyMember getFamilyMember()
-    {
-        return familyMember;
     }
 
     public void setFamilyMember(FamilyMember familyMember)
@@ -44,6 +31,12 @@ public class SelfOccupiedTowerControl extends Control {
         this.familyMember = familyMember;
     }
 
+    @Override
+    public String getControlStringError() {
+        return "non puoi mettere due family member non neutri nella torre di colore " + tower.getColor().name();
+    }
+
+    /*Reset Method*/
     public void resetFamilyMember()
     {
         this.familyMember = null;
@@ -77,6 +70,8 @@ public class SelfOccupiedTowerControl extends Control {
                     azionePossibile = false;
             }
 
+            resetFamilyMember();
+            resetTowerCardSpace();
             return azionePossibile;
         }
     }

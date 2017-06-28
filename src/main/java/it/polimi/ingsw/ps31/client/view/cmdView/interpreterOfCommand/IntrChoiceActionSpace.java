@@ -4,6 +4,8 @@ import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.messages.messageVC.VCActionSpace;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
+import javax.swing.*;
+
 /**
  * Created by Giuseppe on 22/06/2017.
  */
@@ -16,11 +18,10 @@ public class IntrChoiceActionSpace implements CmdInterpreterView{
     @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
-            for (int i = 17; i < terminalView.getStateViewBoard().getStateViewActionSpaceList().size() + 17 + 1; i++) {
-                if (in == i) {
+            for (Integer i = 1; i < terminalView.getStateViewBoard().getStateViewActionSpaceList().size() + 1; i++) {
+                if (in.compareTo(i.toString().charAt(0))==0) {
                     terminalView.printLastEvent("Comando OK");
-                    terminalView.notifyController(new VCActionSpace(terminalView.getViewId(),terminalView.getStateViewBoard().getStateViewActionSpaceList().get(in - 1).getNumberOfActionSpace()));
-                    return true;
+                    terminalView.notifyController(new VCActionSpace(terminalView.getViewId(),terminalView.getStateViewBoard().getStateViewActionSpaceList().get(i - 1).getNumberOfActionSpace()));
                 }
             }
             terminalView.printLastEvent("Comando Non Riconusciuto");

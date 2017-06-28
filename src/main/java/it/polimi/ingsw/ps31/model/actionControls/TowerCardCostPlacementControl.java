@@ -27,10 +27,6 @@ public class TowerCardCostPlacementControl extends Control {
             this.cardResourceDiscount.put(cardColor, null);
     }
 
-    @Override
-    public String getControlStringError() {
-        return "non puoi piazzare il familiare";
-    }
 
     /* Setters & Getters */
     public void setTowerCardSpace(TowerCardSpace towerCardSpace)
@@ -38,9 +34,9 @@ public class TowerCardCostPlacementControl extends Control {
         this.towerCardSpace = towerCardSpace;
     }
 
-    public TowerCardSpace getTowerCardSpace()
-    {
-        return towerCardSpace;
+    @Override
+    public String getControlStringError() {
+        return "non puoi piazzare il familiare";
     }
 
     /* Resetters */
@@ -97,7 +93,7 @@ public class TowerCardCostPlacementControl extends Control {
     public void addCardResourceDiscount(CardColor cardColor, ResourceList discountList)
     {
         ResourceList currentDiscount = this.cardResourceDiscount.get(cardColor);
-        currentDiscount.addResourceList(discountList);
+        currentDiscount.discountResourceList(discountList);
         cardResourceDiscount.put(cardColor, currentDiscount );
 
     }

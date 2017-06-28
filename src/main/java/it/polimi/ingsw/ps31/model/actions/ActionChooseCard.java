@@ -105,25 +105,11 @@ public class ActionChooseCard extends Action {
 
         } while (!checkChosenTowerCardSpace(chosenCardSpace));
 
-        int listToPay = -1;
-        if (chosenCardSpace.getCard().getCostList() != null) {
-            listToPay=0;
-            //se la carta ha almeno una lista da pagare vedo quante ne ha
-            if (chosenCardSpace.getCard().getCostList().size() > 1) {     //se la carta ha più di una lista da pagare chiedo alla view quale vuole pagare
-                do {
-                    String string = player.getPlayerId() + "Quale costo della carta vuoi pagare?";
-                    player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(chosenCardSpace.getCard().getCostList());
-                    player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceListToPay(chosenCardSpace.getCard().getCardId())));
-                    listToPay = player.getModel().getModelChoices().waitIntListToPay();
-                }while(!player.getPlayerResources().greaterThan(chosenCardSpace.getCard().getCostList().get(listToPay)));   // se fallisce il pagamento glielo richiedo magari poteva pagare solo i dei due costi
-            }
-        }
-        if (listToPay != -1) {
-            //pago la carta in base alla lista che mi ha detto il giocatore se c era piu di una lsita
-            player.getPlayerActionSet().payResources(chosenCardSpace.getCard().getCostList().get(listToPay));
-        }
 
+        //pago la carta
+        super.player.getPlayerActionSet().payCard(chosenCardSpace.getCard(), resourceDiscount);
 
+        //prendo la carta
         super.player.addDevelopmentCard(chosenCardSpace.takeCard());
 
         player.getModel().notifyViews(new MVUpdateState("Aggiornato stato Player Personal Board", player.getPersonalBoard().getStatePersonalBoard()));
@@ -165,6 +151,8 @@ public class ActionChooseCard extends Action {
         }
 
         //Controllo costo risorse
+
+        //sommo sconto immediato
         if (resourceDiscount != null) {
             List<ResourceList> tempResourceListList = new ArrayList<>(chosenTCS.getCard().getCostList());
             for (ResourceList list: tempResourceListList
@@ -174,6 +162,14 @@ public class ActionChooseCard extends Action {
                     list.discountSpecificResource(resource);
                 }
             }
+            //sommo sconto permanente
+            if(player.getPlayerActionSet().getPayCard().getCardResourceDiscount().get(chosenTCS.getCard().getCardColor())!=null){
+                for (ResourceList list: tempResourceListList
+                        ) {
+                    list.discountResourceList(player.getPlayerActionSet().getPayCard().getCardResourceDiscount().get(chosenTCS.getCard().getCardColor()));
+                    }
+            }
+
             if (!super.actionControlSet.payResourceListControl(tempResourceListList)) {
                 player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, "ERRORE: hai scelto una carta che non puoi pagare"));
                 return false;

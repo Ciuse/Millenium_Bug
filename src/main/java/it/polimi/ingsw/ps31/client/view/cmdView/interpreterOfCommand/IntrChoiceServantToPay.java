@@ -23,10 +23,10 @@ public class IntrChoiceServantToPay implements CmdInterpreterView {
     @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
-            for (int i = 0; i < terminalView.getMyStateViewPlayer().getPlayerResources().getSpecificResource(Servant.class).getValue(); i++) {
-                if (in == i) {
+            for (Integer i = 0; i < terminalView.getMyStateViewPlayer().getPlayerResources().getSpecificResource(Servant.class).getValue(); i++) {
+                if (in.compareTo(i.toString().charAt(0))==0) {
                     terminalView.printLastEvent("Comando OK");
-                    terminalView.notifyController(new VCServantToPayChoice(terminalView.getViewId(), in));
+                    terminalView.notifyController(new VCServantToPayChoice(terminalView.getViewId(), i));
                     return true;
                 }
             }

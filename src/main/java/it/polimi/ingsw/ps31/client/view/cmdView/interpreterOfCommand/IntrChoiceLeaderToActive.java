@@ -16,10 +16,10 @@ public class IntrChoiceLeaderToActive implements CmdInterpreterView {
     @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
-            for (int i = 1; i < terminalView.getMyStateViewPlayer().getStateViewLeaderCardList().size()+ 1; i++) {
-                if (in == i) {
+            for (Integer i = 1; i < terminalView.getMyStateViewPlayer().getStateViewLeaderCardList().size()+ 1; i++) {
+                if (in.compareTo(i.toString().charAt(0))==0) {
                         terminalView.printLastEvent("Comando OK");
-                        terminalView.notifyController(new VCLeaderToActiveChoice(terminalView.getViewId(),in));
+                        terminalView.notifyController(new VCLeaderToActiveChoice(terminalView.getViewId(),i));
                         return true;
                 }
             }

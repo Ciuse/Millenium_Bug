@@ -24,28 +24,20 @@ public class DiceValueCardSpaceControl extends Control {
             this.cardDiceBonuses.put(cardColor, 0);
     }
 
-    @Override
-    public String getControlStringError() {
-        return "Il costo del dado del towerCardSpace non è minore del valore del dado ";
-    }
-
     /* Setters & Getters */
     public void setDiceValue(Integer diceValue)
     {
         this.diceValue = diceValue;
     }
+
     public void setTowerCardSpace(TowerCardSpace towerCardSpace)
     {
         this.towerCardSpace = towerCardSpace;
     }
 
-    public Integer getDiceValue()
-    {
-        return diceValue;
-    }
-    public TowerCardSpace getTowerCardSpace()
-    {
-        return towerCardSpace;
+    @Override
+    public String getControlStringError() {
+        return "Il costo del dado della carta è maggiore del valore dell azione con cui la stai prendendo ";
     }
 
     /* Resetters */
@@ -53,6 +45,7 @@ public class DiceValueCardSpaceControl extends Control {
     {
         this.diceValue = null;
     }
+
     public void resetTowerCardSpace()
     {
         this.towerCardSpace = null;

@@ -20,10 +20,6 @@ public class TakeDevelopmentCardControl extends Control {
         super(player);
     }
 
-    @Override
-    public String getControlStringError() {
-        return "non puoi prendere la carta: "+developmentCard.getCardId()+" "+developmentCard.getName()+ "perchè non hai abbastanza risorse";
-    }
 
     /* Setters & Getters */
     public void setDevelopmentCard(DevelopmentCard developmentCard)
@@ -31,9 +27,9 @@ public class TakeDevelopmentCardControl extends Control {
         this.developmentCard = developmentCard;
     }
 
-    public DevelopmentCard getDevelopmentCard()
-    {
-        return this.developmentCard;
+    @Override
+    public String getControlStringError() {
+        return "non puoi prendere la carta: "+developmentCard.getCardId()+" "+developmentCard.getName()+ "perchè non soddisfi i requisiti della personal board";
     }
 
     /* Resetters */
@@ -53,7 +49,7 @@ public class TakeDevelopmentCardControl extends Control {
         }
 
         //Controllo che il player abbia spazio nella personal board per la carta in questione
-        if(player.getPlayerActionSet().getActionControlSet().getPlayerCardNumberControl().execute()) {
+        if(player.getPlayerActionSet().getActionControlSet().playerCardNumberControl(developmentCard.getCardColor())) {
             //Controllo requisiti
             boolean ignoreRequirement = false;
             for (CardColor cardColor : colorListRequirementToIgnore

@@ -106,9 +106,10 @@ public  class GuiView extends View implements ActionListener{
     }
 
     @Override
-    public void askComand() throws IOException {
+    public void askVisualizzationComand() {
 
     }
+
 
     @Override
     public void runTerminal() throws IOException {

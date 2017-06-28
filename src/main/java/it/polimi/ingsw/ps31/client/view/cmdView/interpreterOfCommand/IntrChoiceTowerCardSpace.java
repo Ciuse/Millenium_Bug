@@ -15,16 +15,16 @@ public class IntrChoiceTowerCardSpace implements CmdInterpreterView{
         CardColor towerChoosen = null;
         int floorChoosen = 0;
         if (in1 != null && in2 != null) {
-            if (in1 == 'G' || in1 == 'g') {
+            if (in1.compareTo('G')==0 || in1.compareTo('g')==0) {
                 towerChoosen = CardColor.GREEN;
             }
-            if (in1 == 'Y' || in1 == 'y') {
+            if (in1.compareTo('Y')==0 || in1.compareTo('y')==0) {
                 towerChoosen = CardColor.YELLOW;
             }
-            if (in1 == 'B' || in1 == 'b') {
+            if (in1.compareTo('B')==0 || in1.compareTo('b')==0) {
                 towerChoosen = CardColor.BLUE;
             }
-            if (in1 == 'P' || in1 == 'p') {
+            if (in1.compareTo('P')==0 || in1.compareTo('p')==0) {
                 towerChoosen = CardColor.PURPLE;
             }
             if (towerChoosen == null) {
@@ -33,8 +33,9 @@ public class IntrChoiceTowerCardSpace implements CmdInterpreterView{
             }
             for (StateViewTowerCardBox towerCardBox : terminalView.getStateViewBoard().getStateViewTowerList().get(0).getStateViewTowerCardBox()
                     ) {
-                if (in2 == towerCardBox.getTowerFloor()) {
-                    floorChoosen = in2;
+                Integer floor= towerCardBox.getTowerFloor();
+                if (in2.compareTo(floor.toString().charAt(0))==0) {
+                    floorChoosen = floor;
                     terminalView.notifyController(new VCTowerCardSpaceChoice(terminalView.getViewId(), towerChoosen, floorChoosen));
                     return true;
                 }
