@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps31.model.json;
 
 import com.google.gson.Gson;
+import com.sun.corba.se.impl.corba.CORBAObjectImpl;
+import it.polimi.ingsw.ps31.model.bonus.*;
 import it.polimi.ingsw.ps31.model.card.*;
 import it.polimi.ingsw.ps31.model.card.Character;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
@@ -997,6 +999,503 @@ public class CreationJson {
 
 
 
+
+        //creazione effetti permanenti carte blue
+        List<EffectList> permanentEffectBlueList = new ArrayList<>();  //Creazione lista principale
+
+        //creazione permBlueEffect permanente prima carta
+        EffectList permanentEffectBlue1 = new EffectList();         //creazione  permBlueEffect
+        Bonus bonus1 = new CardDiscountBonus(2,CardColor.GREEN);
+        BonusAndMalusEffect permBlueEffect1 = new BonusAndMalusEffect(49,bonus1);
+        permanentEffectBlue1.add(permBlueEffect1);
+        permanentEffectBlueList.add(0, permanentEffectBlue1);//aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente seconda carta
+        EffectList permanentEffectBlue2 = new EffectList();         //creazione  permBlueEffect
+        ResourceList resourceListBlue2=new ResourceList(new Wood(1),new Stone(2));
+        Bonus bonus2 = new CardDiscountBonus(2,CardColor.YELLOW,resourceListBlue2);
+        BonusAndMalusEffect permBlueEffect2= new BonusAndMalusEffect(50,bonus2);
+        permanentEffectBlue2.add(permBlueEffect2);
+        permanentEffectBlueList.add(1, permanentEffectBlue2);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente terza cart
+        EffectList permanentEffectBlue3 = new EffectList();         //creazione  permBlueEffect
+        ResourceList resourceListBlue3=new ResourceList(new Coin(1));
+        Bonus bonus3 = new CardDiscountBonus(2,CardColor.BLUE,resourceListBlue3);
+        BonusAndMalusEffect permBlueEffect3= new BonusAndMalusEffect(51,bonus3);
+        permanentEffectBlue3.add(permBlueEffect3);
+        permanentEffectBlueList.add(2, permanentEffectBlue3);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente quarta carta
+        EffectList permanentEffectBlue4 = new EffectList();         //creazione  permBlueEffect
+        Bonus bonus4 = new CardDiscountBonus(2,CardColor.PURPLE);
+        BonusAndMalusEffect permBlueEffect4= new BonusAndMalusEffect(52,bonus4);
+        permanentEffectBlue4.add(permBlueEffect4);
+        permanentEffectBlueList.add(3, permanentEffectBlue4);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente quinta carta
+        EffectList permanentEffectBlue5 = new EffectList();         //creazione  permBlueEffect
+        Bonus bonus5 = new HarvestBonus(2);
+        BonusAndMalusEffect permBlueEffect5 = new BonusAndMalusEffect(53,bonus5);
+        permanentEffectBlue5.add(permBlueEffect5);
+        permanentEffectBlueList.add(4, permanentEffectBlue5);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente sesta carta
+        EffectList permanentEffectBlue6 = new EffectList();         //creazione  permBlueEffect
+        Bonus bonus6= new ProductionBonus(2);
+        BonusAndMalusEffect permBlueEffect6 = new BonusAndMalusEffect(54,bonus6);
+        permanentEffectBlue6.add(permBlueEffect6);
+        permanentEffectBlueList.add(5, permanentEffectBlue6);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente settima carta
+        EffectList permanentEffectBlue7 = new EffectList();         //creazione  permBlueEffect
+        Bonus bonus7= new NoImmediateEffectBonus();
+        BonusAndMalusEffect permBlueEffect7 = new BonusAndMalusEffect(55,bonus7);
+        permanentEffectBlue7.add(permBlueEffect7);
+        permanentEffectBlueList.add(6, permanentEffectBlue7);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente ottava carta
+        EffectList permanentEffectBlue8 = new EffectList();         //creazione  permBlueEffect
+        permanentEffectBlue8.add(null);
+        permanentEffectBlueList.add(7, permanentEffectBlue8);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente nona carta
+        EffectList permanentEffectBlue9 = new EffectList();         //creazione  permBlueEffect
+        permanentEffectBlue9.add(null);
+        permanentEffectBlueList.add(8, permanentEffectBlue9);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente decima carta
+        EffectList permanentEffectBlue10 = new EffectList();         //creazione  permBlueEffect
+        permanentEffectBlue10.add(null);
+        permanentEffectBlueList.add(9, permanentEffectBlue10);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente undicesima carta
+        EffectList permanentEffectBlue11 = new EffectList();         //creazione  permBlueEffect
+        permanentEffectBlue11.add(null);
+        permanentEffectBlueList.add(10, permanentEffectBlue11);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente dodicesima carta
+        EffectList permanentEffectBlue12 = new EffectList();         //creazione  permBlueEffect
+        permanentEffectBlue12.add(null);
+        permanentEffectBlueList.add(11, permanentEffectBlue12);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente tredicesima carta
+        EffectList permanentEffectBlue13 = new EffectList();         //creazione  permBlueEffect
+        Bonus bonus13 = new HarvestBonus(3);
+        BonusAndMalusEffect permBlueEffect13 = new BonusAndMalusEffect(61,bonus13);
+        permanentEffectBlue13.add(permBlueEffect13);
+        permanentEffectBlueList.add(12, permanentEffectBlue13);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente quattordicesima carta
+        EffectList permanentEffectBlue14 = new EffectList();         //creazione  permBlueEffect
+        Bonus bonus14 = new ProductionBonus(3);
+        BonusAndMalusEffect permBlueEffect14 = new BonusAndMalusEffect(62,bonus14);
+        permanentEffectBlue14.add(permBlueEffect14);
+        permanentEffectBlueList.add(13, permanentEffectBlue14);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente quindicesima carta
+        EffectList permanentEffectBlue15 = new EffectList();         //creazione  permBlueEffect
+        permanentEffectBlue15.add(null);
+        permanentEffectBlueList.add(14, permanentEffectBlue15);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente sedicesima carta
+        EffectList permanentEffectBlue16 = new EffectList();//creazione permBlueEffect
+        permanentEffectBlue16.add(null);
+        permanentEffectBlueList.add(15, permanentEffectBlue16);  //aggiunta permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente diciassettesima carta
+        EffectList permanentEffectBlue17 = new EffectList();//creazione permBlueEffect
+        permanentEffectBlue17.add(null);
+        permanentEffectBlueList.add(16, permanentEffectBlue17);  //aggiunta permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente diciottesima carta
+        EffectList permanentEffectBlue18 = new EffectList();         //creazione  permBlueEffect
+        permanentEffectBlue18.add(null);
+        permanentEffectBlueList.add(17, permanentEffectBlue18);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente diciannovesima carta
+        EffectList permanentEffectBlue19 = new EffectList();//creazione permBlueEffect
+        permanentEffectBlue19.add(null);
+        permanentEffectBlueList.add(18, permanentEffectBlue19);  //aggiunta permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente ventesima carta
+        EffectList permanentEffectBlue20 = new EffectList();//creazione permBlueEffect
+        permanentEffectBlue20.add(null);
+        permanentEffectBlueList.add(19, permanentEffectBlue20);  //aggiunta permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente ventunesima carta
+        EffectList permanentEffectBlue21 = new EffectList();         //creazione  permBlueEffect
+        permanentEffectBlue21.add(null);
+        permanentEffectBlueList.add(20, permanentEffectBlue21);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente ventiduesima carta
+        EffectList permanentEffectBlue22 = new EffectList();         //creazione  permBlueEffect
+        permanentEffectBlue22.add(null);
+        permanentEffectBlueList.add(21, permanentEffectBlue22);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente ventitrresima carta
+        EffectList permanentEffectBlue23 = new EffectList();         //creazione  permBlueEffect
+        permanentEffectBlue23.add(null);
+        permanentEffectBlueList.add(22, permanentEffectBlue23);      //aggiunta  permBlueEffect alla lista principale
+
+        //creazione permBlueEffect permanente ventiquattresima carta
+        EffectList permanentEffectBlue24 = new EffectList();//creazione permBlueEffect
+        permanentEffectBlue24.add(null);
+        permanentEffectBlueList.add(23, permanentEffectBlue24);  //aggiunta permBlueEffect alla lista principale
+
+
+
+
+
+
+        //creazione effetti immediati carte Viola
+        List<EffectList> immediateEffectPurpleList = new ArrayList<>();  //Creazione lista principale
+
+        //effetto immediato prima carta
+        EffectList immediateEffectPurple1 = new EffectList();//creazione  effetto
+        resourceList1.clear();
+        resourceList1.addSpecificResource(new MilitaryStrength(5));
+        immediateEffectPurple1.add(new GetResourceEffect(73,resourceList1));
+        immediateEffectPurpleList.add(0, immediateEffectPurple1);  //aggiunta effetto alla lista principale
+        //effetto immediato seconda carta
+        EffectList immediateEffectPurple2 = new EffectList();//creazione effetto
+        resourceList2.clear();
+        resourceList2.addSpecificResource(new FaithPoint(1));
+        immediateEffectPurple2.add(new GetResourceEffect(74,resourceList2));
+        immediateEffectPurpleList.add(1, immediateEffectPurple2);  //aggiunta effetto alla lista principale
+        //effetto immediato terza carta
+        EffectList immediateEffectPurple3 = new EffectList();//creazione effetto
+        resourceList3.clear();
+        resourceList3.addSpecificResource(new MilitaryStrength(2));
+        resourceList3.addSpecificResource(new CouncilPrivilege(1,false));
+        immediateEffectPurple3.add(new GetResourceEffect(75,resourceList3));
+        immediateEffectPurpleList.add(2, immediateEffectPurple3);  //aggiunta effetto alla lista principale
+        //effetto immediato quarta carta
+        EffectList immediateEffectPurple4 = new EffectList();//creazione effetto
+        resourceList4.clear();
+        resourceList4.addSpecificResource(new CouncilPrivilege(2,true));
+        immediateEffectPurple4.add(new GetResourceEffect(76,resourceList4));
+        immediateEffectPurpleList.add(3, immediateEffectPurple4);  //aggiunta effetto alla lista principale
+        //effetto immediato quinta carta
+        EffectList immediateEffectPurple5 = new EffectList();//creazione effetto
+        resourceList5.clear();
+        resourceList5.addSpecificResource(new Coin(3));
+        immediateEffectPurple5.add(new GetResourceEffect(77,resourceList5));
+        immediateEffectPurpleList.add(4, immediateEffectPurple5);  //aggiunta effetto alla lista principale
+        //effetto immediato sesta carta
+        EffectList immediateEffectPurple6 = new EffectList();//creazione effetto
+        resourceList6.clear();
+        resourceList6.addSpecificResource(new Servant(4));
+        immediateEffectPurple6.add(new GetResourceEffect(78,resourceList6));
+        immediateEffectPurpleList.add(5, immediateEffectPurple6);  //aggiunta effetto alla lista principale
+        //effetto immediato settima carta
+        EffectList immediateEffectPurple7 = new EffectList();//creazione effetto
+        resourceList7.clear();
+        resourceList7.addSpecificResource(new FaithPoint(2));
+        immediateEffectPurple7.add(new GetResourceEffect(79,resourceList7));
+        immediateEffectPurpleList.add(6, immediateEffectPurple7);  //aggiunta effetto alla lista principale
+        //effetto immediato ottava carta
+        EffectList immediateEffectPurple8 = new EffectList();//creazione effetto
+        resourceList8.clear();
+        resourceList8.addSpecificResource(new FaithPoint(3));
+        immediateEffectPurple8.add(new GetResourceEffect(80,resourceList8));
+        immediateEffectPurpleList.add(7, immediateEffectPurple8);  //aggiunta effetto alla lista principale
+        //effetto immediato nona carta
+        EffectList immediateEffectPurple9 = new EffectList();//creazione effetto
+        resourceList9.clear();
+        resourceList9.addSpecificResource(new MilitaryStrength(6));
+        immediateEffectPurple9.add(new GetResourceEffect(81,resourceList9));
+        immediateEffectPurpleList.add(8, immediateEffectPurple9);  //aggiunta effetto alla lista principale
+        //effetto immediato decima carta
+        EffectList immediateEffectPurple10 = new EffectList();//creazione effetto
+        resourceList10.clear();
+        resourceList10.addSpecificResource(new FaithPoint(2));
+        immediateEffectPurple10.add(new GetResourceEffect(82,resourceList10));
+        immediateEffectPurpleList.add(9, immediateEffectPurple10);  //aggiunta effetto alla lista principale
+        //effetto immediato undicesima carta
+        EffectList immediateEffectPurple11 = new EffectList();//creazione effetto
+        resourceList11.clear();
+        resourceList11.addSpecificResource(new MilitaryStrength(3));
+        resourceList11.addSpecificResource(new CouncilPrivilege(1,false));
+        immediateEffectPurple11.add(new GetResourceEffect(83,resourceList11));
+        immediateEffectPurpleList.add(10, immediateEffectPurple11);  //aggiunta effetto alla lista principale
+        //effetto immediato dodicesima carta
+        EffectList immediateEffectPurple12 = new EffectList();//creazione effetto
+        resourceList12.clear();
+        resourceList12.addSpecificResource(new Coin(5));
+        resourceList12.addSpecificResource(new CouncilPrivilege(1,false));
+        immediateEffectPurple12.add(new GetResourceEffect(84,resourceList12));
+        immediateEffectPurpleList.add(11, immediateEffectPurple12);  //aggiunta effetto alla lista principale
+        //effetto immediato tredicesima carta
+        EffectList immediateEffectPurple13 = new EffectList();//creazione effetto
+        resourceList13.clear();
+        immediateEffectPurple13.add(new HarvestEffectActivationFromCard(85,4));
+        immediateEffectPurpleList.add(12, immediateEffectPurple13);  //aggiunta effetto alla lista principale
+        //effetto immediato quattordicesima carta
+        EffectList immediateEffectPurple14 = new EffectList();//creazione effetto
+        resourceList14.clear();
+        resourceList14.addSpecificResource(new Servant(5));
+        immediateEffectPurple14.add(new GetResourceEffect(86,resourceList14));
+        immediateEffectPurpleList.add(13, immediateEffectPurple14);  //aggiunta effetto alla lista principale
+        //effetto immediato quindicesima carta
+        EffectList immediateEffectPurple15 = new EffectList();//creazione effetto
+        resourceList15.clear();
+        resourceList15.addSpecificResource(new Coin(5));
+        resourceList15.addSpecificResource(new FaithPoint(1));
+        immediateEffectPurple15.add(new GetResourceEffect(87,resourceList15));
+        immediateEffectPurpleList.add(14, immediateEffectPurple15);  //aggiunta effetto alla lista principale
+        //effetto immediato sedicesima carta
+        EffectList immediateEffectPurple16 = new EffectList();//creazione effetto
+        resourceList16.clear();
+        resourceList16.addSpecificResource(new FaithPoint(3));
+        immediateEffectPurple16.add(new GetResourceEffect(88,resourceList16));
+        immediateEffectPurpleList.add(15, immediateEffectPurple16);  //aggiunta effetto alla lista principale
+        //effetto immediato diciassettesima carta
+        EffectList immediateEffectPurple17 = new EffectList();//creazione effetto
+        resourceList17.clear();
+        resourceList17.addSpecificResource(new MilitaryStrength(7));
+        immediateEffectPurple17.add(new GetResourceEffect(89,resourceList17));
+        immediateEffectPurpleList.add(16, immediateEffectPurple17);  //aggiunta effetto alla lista principale
+        //effetto immediato diciottesima carta
+        EffectList immediateEffectPurple18 = new EffectList();//creazione effetto
+        resourceList18.clear();
+        resourceList18.addSpecificResource(new FaithPoint(1));
+        immediateEffectPurple18.add(new ChooseCardEffect(90,null,7,true));
+        immediateEffectPurple18.add(new GetResourceEffect(90,resourceList18));
+        immediateEffectPurpleList.add(17, immediateEffectPurple18);  //aggiunta effetto alla lista principale
+        //effetto immediato diciannovesima carta
+        EffectList immediateEffectPurple19 = new EffectList();//creazione effetto
+        resourceList19.clear();
+        resourceList19.addSpecificResource(new MilitaryStrength(4));
+        resourceList19.addSpecificResource(new CouncilPrivilege(1,false));
+        immediateEffectPurple19.add(new GetResourceEffect(91,resourceList19));
+        immediateEffectPurpleList.add(18, immediateEffectPurple19);  //aggiunta effetto alla lista principale
+        //effetto immediato ventesima carta
+        EffectList immediateEffectPurple20 = new EffectList();//creazione effetto
+        resourceList20.clear();
+        resourceList20.addSpecificResource(new FaithPoint(3));
+        immediateEffectPurple20.add(new GetResourceEffect(92,resourceList20));
+        immediateEffectPurpleList.add(19, immediateEffectPurple20);  //aggiunta effetto alla lista principale
+        //effetto immediato ventunesima carta
+        EffectList immediateEffectPurple21 = new EffectList();//creazione effetto
+        resourceList21.clear();
+        resourceList21.addSpecificResource(new Wood(3));
+        resourceList21.addSpecificResource(new Stone(3));
+        resourceList21.addSpecificResource(new Coin(3));
+        immediateEffectPurple21.add(new GetResourceEffect(93,resourceList21));
+        immediateEffectPurpleList.add(20, immediateEffectPurple21);  //aggiunta effetto alla lista principale
+        //effetto immediato ventiduesima carta
+        EffectList immediateEffectPurple22 = new EffectList();//creazione effetto
+        resourceList22.clear();
+        immediateEffectPurple22.add(new ProductionEffectActivationFromCard(94,3));
+        immediateEffectPurpleList.add(21, immediateEffectPurple22);  //aggiunta effetto alla lista principale
+        //effetto immediato ventritreesima carta
+        EffectList immediateEffectPurple23 = new EffectList();//creazione effetto
+        resourceList23.clear();
+        resourceList23.addSpecificResource(new FaithPoint(4));
+        immediateEffectPurple23.add(new GetResourceEffect(95,resourceList23));
+        immediateEffectPurpleList.add(22, immediateEffectPurple23);  //aggiunta effetto alla lista principale
+        //effetto immediato ventiquattresima carta
+        EffectList immediateEffectPurple24 = new EffectList();//creazione effetto
+        resourceList24.clear();
+        resourceList24.addSpecificResource(new FaithPoint(2));
+        immediateEffectPurple24.add(new GetResourceEffect(96,resourceList24));
+        immediateEffectPurpleList.add(23, immediateEffectPurple24);  //aggiunta effetto alla lista principale
+
+
+
+
+
+
+
+
+
+        //creazione effetti permanenti carte Viola
+        List<EffectList> permanentEffectPurpleList = new ArrayList<>();  //Creazione lista principale
+
+        //creazione permPurpleEffect permanente prima carta
+        EffectList permanentEffectPurple1 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP1= new ResourceList(new VictoryPoint(4));
+        GetResourcesAtTheEndEffect permPurpleEffect1 = new GetResourcesAtTheEndEffect(73,resourceListP1);
+        permanentEffectPurple1.add(permPurpleEffect1);
+        permanentEffectPurpleList.add(0, permanentEffectPurple1);//aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente seconda carta
+        EffectList permanentEffectPurple2 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP2= new ResourceList(new VictoryPoint(5));
+        GetResourcesAtTheEndEffect permPurpleEffect2= new GetResourcesAtTheEndEffect(74,resourceListP2);
+        permanentEffectPurple2.add(permPurpleEffect2);
+        permanentEffectPurpleList.add(1, permanentEffectPurple2);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente terza cart
+        EffectList permanentEffectPurple3 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP3= new ResourceList(new VictoryPoint(3));
+        GetResourcesAtTheEndEffect permPurpleEffect3= new GetResourcesAtTheEndEffect(75,resourceListP3);
+        permanentEffectPurple3.add(permPurpleEffect3);
+        permanentEffectPurpleList.add(2, permanentEffectPurple3);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente quarta carta
+        EffectList permanentEffectPurple4 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP4= new ResourceList(new VictoryPoint(4));
+
+        GetResourcesAtTheEndEffect permPurpleEffect4= new GetResourcesAtTheEndEffect(76,resourceListP4);
+        permanentEffectPurple4.add(permPurpleEffect4);
+        permanentEffectPurpleList.add(3, permanentEffectPurple4);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente quinta carta
+        EffectList permanentEffectPurple5 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP5= new ResourceList(new VictoryPoint(5));
+        GetResourcesAtTheEndEffect permPurpleEffect5 = new GetResourcesAtTheEndEffect(77,resourceListP5);
+        permanentEffectPurple5.add(permPurpleEffect5);
+        permanentEffectPurpleList.add(4, permanentEffectPurple5);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente sesta carta
+        EffectList permanentEffectPurple6 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP6= new ResourceList(new VictoryPoint(4));
+        GetResourcesAtTheEndEffect permPurpleEffect6 = new GetResourcesAtTheEndEffect(78,resourceListP6);
+        permanentEffectPurple6.add(permPurpleEffect6);
+        permanentEffectPurpleList.add(5, permanentEffectPurple6);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente settima carta
+        EffectList permanentEffectPurple7 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP7= new ResourceList(new VictoryPoint(5));
+        GetResourcesAtTheEndEffect permPurpleEffect7 = new GetResourcesAtTheEndEffect(79,resourceListP7);
+        permanentEffectPurple7.add(permPurpleEffect7);
+        permanentEffectPurpleList.add(6, permanentEffectPurple7);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente ottava carta
+        EffectList permanentEffectPurple8 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP8= new ResourceList(new VictoryPoint(1));
+        GetResourcesAtTheEndEffect permPurpleEffect8 = new GetResourcesAtTheEndEffect(80,resourceListP8);
+        permanentEffectPurple8.add(permPurpleEffect8);
+        permanentEffectPurpleList.add(7, permanentEffectPurple8);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente nona carta
+        EffectList permanentEffectPurple9 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP9= new ResourceList(new VictoryPoint(5));
+        GetResourcesAtTheEndEffect permPurpleEffect9 = new GetResourcesAtTheEndEffect(81,resourceListP9);
+        permanentEffectPurple9.add(permPurpleEffect9);
+        permanentEffectPurpleList.add(8, permanentEffectPurple9);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente decima carta
+        EffectList permanentEffectPurple10 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP10= new ResourceList(new VictoryPoint(6));
+        GetResourcesAtTheEndEffect permPurpleEffect10 = new GetResourcesAtTheEndEffect(82,resourceListP10);
+        permanentEffectPurple10.add(permPurpleEffect10);      
+        permanentEffectPurpleList.add(9, permanentEffectPurple10);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente undicesima carta
+        EffectList permanentEffectPurple11 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP11= new ResourceList(new VictoryPoint(2));
+        GetResourcesAtTheEndEffect permPurpleEffect11 = new GetResourcesAtTheEndEffect(83,resourceListP11);
+        permanentEffectPurple11.add(permPurpleEffect11);
+        permanentEffectPurpleList.add(10, permanentEffectPurple11);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente dodicesima carta
+        EffectList permanentEffectPurple12 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP12= new ResourceList(new VictoryPoint(3));
+        GetResourcesAtTheEndEffect permPurpleEffect12 = new GetResourcesAtTheEndEffect(84,resourceListP12);
+        permanentEffectPurple12.add(permPurpleEffect12);
+        permanentEffectPurpleList.add(11, permanentEffectPurple12);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente tredicesima carta
+        EffectList permanentEffectPurple13 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP13= new ResourceList(new VictoryPoint(5));
+        GetResourcesAtTheEndEffect permPurpleEffect13 = new GetResourcesAtTheEndEffect(85,resourceListP13);
+        permanentEffectPurple13.add(permPurpleEffect13);
+        permanentEffectPurpleList.add(12, permanentEffectPurple13);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente quattordicesima carta
+        EffectList permanentEffectPurple14 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP14= new ResourceList(new VictoryPoint(4));
+        GetResourcesAtTheEndEffect permPurpleEffect14 = new GetResourcesAtTheEndEffect(86,resourceListP14);
+        permanentEffectPurple14.add(permPurpleEffect14);
+        permanentEffectPurpleList.add(13, permanentEffectPurple14);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente quindicesima carta
+        EffectList permanentEffectPurple15 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP15= new ResourceList(new VictoryPoint(5));
+        GetResourcesAtTheEndEffect permPurpleEffect15 = new GetResourcesAtTheEndEffect(87,resourceListP15);
+        permanentEffectPurple15.add(permPurpleEffect15);
+        permanentEffectPurpleList.add(14, permanentEffectPurple15);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente sedicesima carta
+        EffectList permanentEffectPurple16 = new EffectList();//creazione permPurpleEffect
+        ResourceList resourceListP16= new ResourceList(new VictoryPoint(4));
+        GetResourcesAtTheEndEffect permPurpleEffect16 = new GetResourcesAtTheEndEffect(88,resourceListP16);
+        permanentEffectPurple16.add(permPurpleEffect16);
+        permanentEffectPurpleList.add(15, permanentEffectPurple16);  //aggiunta permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente diciassettesima carta
+        EffectList permanentEffectPurple117 = new EffectList();//creazione permPurpleEffect
+        ResourceList resourceListP17= new ResourceList(new VictoryPoint(6));
+        GetResourcesAtTheEndEffect permPurpleEffect17 = new GetResourcesAtTheEndEffect(89,resourceListP17);
+        permanentEffectPurple117.add(permPurpleEffect17);
+        permanentEffectPurpleList.add(16, permanentEffectPurple117);  //aggiunta permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente diciottesima carta
+        EffectList permanentEffectPurple18 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP18= new ResourceList(new VictoryPoint(5));
+        GetResourcesAtTheEndEffect permPurpleEffect18 = new GetResourcesAtTheEndEffect(90,resourceListP18);
+        permanentEffectPurple18.add(permPurpleEffect18);
+        permanentEffectPurpleList.add(17, permanentEffectPurple18);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente diciannovesima carta
+        EffectList permanentEffectPurple19 = new EffectList();//creazione permPurpleEffect
+        ResourceList resourceListP19= new ResourceList(new VictoryPoint(4));
+        GetResourcesAtTheEndEffect permPurpleEffect19 = new GetResourcesAtTheEndEffect(91,resourceListP19);
+        permanentEffectPurple19.add(permPurpleEffect19);
+        permanentEffectPurpleList.add(18, permanentEffectPurple19);  //aggiunta permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente ventesima carta
+        EffectList permanentEffectPurple20 = new EffectList();//creazione permPurpleEffect
+        ResourceList resourceListP20= new ResourceList(new VictoryPoint(3));
+        GetResourcesAtTheEndEffect permPurpleEffect20 = new GetResourcesAtTheEndEffect(92,resourceListP20);
+        permanentEffectPurple20.add(permPurpleEffect20);
+        permanentEffectPurpleList.add(19, permanentEffectPurple20);  //aggiunta permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente ventunesima carta
+        EffectList permanentEffectPurple21 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP21= new ResourceList(new VictoryPoint(7));
+        GetResourcesAtTheEndEffect permPurpleEffect21 = new GetResourcesAtTheEndEffect(93,resourceListP21);
+        permanentEffectPurple21.add(permPurpleEffect21);
+        permanentEffectPurpleList.add(20, permanentEffectPurple21);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente ventiduesima carta
+        EffectList permanentEffectPurple22 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP22= new ResourceList(new VictoryPoint(5));
+        GetResourcesAtTheEndEffect permPurpleEffect22 = new GetResourcesAtTheEndEffect(94,resourceListP22);
+        permanentEffectPurple22.add(permPurpleEffect22);
+        permanentEffectPurpleList.add(21, permanentEffectPurple22);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente ventitrresima carta
+        EffectList permanentEffectPurple23 = new EffectList();         //creazione  permPurpleEffect
+        ResourceList resourceListP23= new ResourceList(new VictoryPoint(8));
+        GetResourcesAtTheEndEffect permPurpleEffect23 = new GetResourcesAtTheEndEffect(95,resourceListP23);
+        permanentEffectPurple23.add(permPurpleEffect23);
+        permanentEffectPurpleList.add(22, permanentEffectPurple23);      //aggiunta  permPurpleEffect alla lista principale
+
+        //creazione permPurpleEffect permanente ventiquattresima carta
+        EffectList permanentEffectPurple24 = new EffectList();//creazione permPurpleEffect
+        ResourceList resourceListP24= new ResourceList(new VictoryPoint(10));
+        GetResourcesAtTheEndEffect permPurpleEffect24 = new GetResourcesAtTheEndEffect(96,resourceListP24);
+        permanentEffectPurple24.add(permPurpleEffect24);
+        permanentEffectPurpleList.add(23, permanentEffectPurple24);  //aggiunta permPurpleEffect alla lista principale
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // creazione di tutte le carte
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 8; j++) {
@@ -1024,7 +1523,7 @@ public class CreationJson {
                 //inserimento altri parametri
                 int period2 = i + 1;
                 String name2 = yellowCardName[contatore];
-                cardList.add(new Building(cardNumber2, name2, period2, costListYellow, null, null));
+                cardList.add(new Building(cardNumber2, name2, period2, costListYellow, immediateEffectYellowList.get(cardNumber1-1), permanentEffectYellowList.get(cardNumber1-1)));
                 // creazione carte blu
                 int cardNumber3 = i * 8 + j + 48+1;
 //                System.out.println("scrivi il costo della carta blu numero : " + cardNumber3);
@@ -1036,7 +1535,7 @@ public class CreationJson {
                 //inserimento altri parametri
                 int period3 = i + 1;
                 String name3 = blueCardName[contatore];
-                cardList.add(new Character(cardNumber3, name3, period3, costListBlue, null, null));
+                cardList.add(new Character(cardNumber3, name3, period3, costListBlue, immediateEffectBlueList.get(cardNumber1-1), permanentEffectBlueList.get(cardNumber1-1)));
 
                 //creazione delle carte viola
                 int cardNumber4 = i * 8 + j + 72+1;
@@ -1059,7 +1558,7 @@ public class CreationJson {
                 //inserimento altri parametri
                 int period4 = i + 1;
                 String name4 = purpleCardName[contatore];
-                cardList.add(new Venture(cardNumber4, name4, period4, costListPurple, null, null));
+                cardList.add(new Venture(cardNumber4, name4, period4, costListPurple, immediateEffectPurpleList.get(cardNumber1-1), permanentEffectPurpleList.get(cardNumber1-1)));
 
                 contatore++;
             }

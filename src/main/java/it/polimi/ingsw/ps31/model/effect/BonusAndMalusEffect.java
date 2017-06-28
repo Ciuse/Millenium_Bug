@@ -11,6 +11,7 @@ public class BonusAndMalusEffect extends Effect  implements ActiveBonus{
     private final Bonus bonus;
 
     public BonusAndMalusEffect(int cardId,Bonus bonus) {
+        super(cardId);
         this.bonus = bonus;
     }
 

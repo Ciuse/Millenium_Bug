@@ -10,7 +10,7 @@ public class ExtraFinalVictoryPointBonus extends Bonus {
     private final CardColor cardColor;
 
 
-    protected ExtraFinalVictoryPointBonus(CardColor cardColor) {
+    public ExtraFinalVictoryPointBonus(CardColor cardColor) {
         this.cardColor = cardColor;
     }
 

@@ -11,7 +11,7 @@ public class CantPlaceInActionSpace extends Bonus{
     private List<Integer> actionSpaceIdList;
 
     /* Constructor */
-    protected CantPlaceInActionSpace(List<Integer> actionSpaceIdList){
+    public CantPlaceInActionSpace(List<Integer> actionSpaceIdList){
         super();
         this.actionSpaceIdList = actionSpaceIdList;
     }

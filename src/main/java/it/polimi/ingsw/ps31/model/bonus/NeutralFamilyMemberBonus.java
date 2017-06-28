@@ -6,10 +6,10 @@ import it.polimi.ingsw.ps31.model.player.Player;
 /**
  * Created by giulia on 16/06/2017.
  */
-public class AddValueNeutralFamilyMemberBonus extends Bonus {
+public class NeutralFamilyMemberBonus extends Bonus {
     private final int bonusNeutralFamilyMember;
 
-    protected AddValueNeutralFamilyMemberBonus(int bonusNeutralFamilyMember) {
+    public NeutralFamilyMemberBonus(int bonusNeutralFamilyMember) {
         super();
         this.bonusNeutralFamilyMember = bonusNeutralFamilyMember;
     }

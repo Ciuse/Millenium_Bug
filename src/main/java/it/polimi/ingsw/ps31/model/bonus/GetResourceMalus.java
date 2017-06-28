@@ -6,11 +6,11 @@ import it.polimi.ingsw.ps31.model.player.Player;
 /**
  * Created by giulia on 16/06/2017.
  */
-public class ResourceBonus extends Bonus{
+public class GetResourceMalus extends Bonus{
     private final Resource resourceToSub1;
     private final Resource resourceToSub2;
 
-    protected ResourceBonus(Resource resourceToSub1, Resource resourceToSub2) {
+    public GetResourceMalus(Resource resourceToSub1, Resource resourceToSub2) {
         super();
         this.resourceToSub1 = resourceToSub1;
         this.resourceToSub2 = resourceToSub2;

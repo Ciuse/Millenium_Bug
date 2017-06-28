@@ -9,7 +9,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
 public class LostFinalVictoryPointFromPlayerResources extends Bonus {
     private final String string = "LostFinalVictoryPointFromPlayerResources";
 
-    protected LostFinalVictoryPointFromPlayerResources(ResourceList resourceFinalPersonalBoardList, int lostPoint) {
+    public LostFinalVictoryPointFromPlayerResources(ResourceList resourceFinalPersonalBoardList, int lostPoint) {
        
     }
 

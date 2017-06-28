@@ -8,12 +8,12 @@ import java.util.List;
 /**
  * Created by Francesco on 19/06/2017.
  */
-public class FixedFamilyMemberValueChange extends Bonus {
+public class StaticFamilyMemberValueBonus extends Bonus {
     private final int modifyValueColoredFamilyMember;//(carta leader Ludovico il Moro)i familiari colorati assumeranno un nuovo valore indipendentemente dal valore dei dadi
     private List<DiceColor> membersToModify;
 
     /* Constructor */
-    public FixedFamilyMemberValueChange(int modifyValueColoredFamilyMember, List<DiceColor> membersToModify){
+    public StaticFamilyMemberValueBonus(int modifyValueColoredFamilyMember, List<DiceColor> membersToModify){
         this.modifyValueColoredFamilyMember = modifyValueColoredFamilyMember;
         this.membersToModify = membersToModify;
     }

@@ -7,9 +7,7 @@ import it.polimi.ingsw.ps31.model.card.Character;
 import it.polimi.ingsw.ps31.model.effect.*;
 import it.polimi.ingsw.ps31.model.gameResource.*;
 import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
-import javafx.scene.effect.SepiaTone;
 
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,16 +82,16 @@ public class JsonGameObject {
             effectAdapterFactory.registerSubtype(ProductionEffect.class, "ProductionEffect");
 
             RuntimeTypeAdapterFactory<Bonus> bonusAdapterFactory = RuntimeTypeAdapterFactory.of(Bonus.class, "BonusType");
-            bonusAdapterFactory.registerSubtype(AddValueNeutralFamilyMemberBonus.class, "AddValueNeutralFamilyMemberBonus");
+            bonusAdapterFactory.registerSubtype(NeutralFamilyMemberBonus.class, "NeutralFamilyMemberBonus");
             bonusAdapterFactory.registerSubtype(CanPlaceInOccupiedActionSpace.class, "CanPlaceInOccupiedActionSpace");
             bonusAdapterFactory.registerSubtype(CantPlaceInActionSpace.class, "CantPlaceInActionSpace");
             bonusAdapterFactory.registerSubtype(CardDiscountBonus.class, "CardDiscountBonus");
             bonusAdapterFactory.registerSubtype(ColoredFamilyMembersBonus.class, "ColoredFamilyMembersBonus");
             bonusAdapterFactory.registerSubtype(CopyLeaderBonus.class, "CopyLeaderBonus");
-            bonusAdapterFactory.registerSubtype(DiscountOnOccupatedTowerBox.class, "DiscountOnOccupatedTowerBox");
+            bonusAdapterFactory.registerSubtype(NoTowerPayment.class, "NoTowerPayment");
             bonusAdapterFactory.registerSubtype(ExtraFinalVictoryPointBonus.class, "ExtraFinalVictoryPointBonus");
-            bonusAdapterFactory.registerSubtype(FixedFamilyMemberValueChange.class, "FixedFamilyMemberValueChange");
-            bonusAdapterFactory.registerSubtype(FixedMilitaryPointRequiredToTakeTerritoryCard.class, "FixedMilitaryPointRequiredToTakeTerritoryCard");
+            bonusAdapterFactory.registerSubtype(StaticFamilyMemberValueBonus.class, "StaticFamilyMemberValueBonus");
+            bonusAdapterFactory.registerSubtype(NoBoardRequirementControl.class, "NoBoardRequirementControl");
             bonusAdapterFactory.registerSubtype(GainVictoryPointFromLeaderCardBonus.class, "GainVictoryPointFromLeaderCardBonus");
             bonusAdapterFactory.registerSubtype(LostFinalVictoryPointBonus.class, "LostFinalVictoryPointBonus");
             bonusAdapterFactory.registerSubtype(LostFinalVictoryPointFromCardCosts.class, "LostFinalVictoryPointFromCardCosts");
@@ -102,7 +100,7 @@ public class JsonGameObject {
             bonusAdapterFactory.registerSubtype(HarvestBonus.class, "HarvestBonus");
             bonusAdapterFactory.registerSubtype(NoImmediateEffectBonus.class, "NoImmediateEffectBonus");
             bonusAdapterFactory.registerSubtype(ProductionBonus.class, "ProductionBonus");
-            bonusAdapterFactory.registerSubtype(ResourceBonus.class, "ResourceBonus");
+            bonusAdapterFactory.registerSubtype(GetResourceMalus.class, "GetResourceMalus");
 
 
 //Creazione del builder adatto a riconoscere tutti gli oggetti polimorfi

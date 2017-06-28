@@ -27,12 +27,21 @@ public class ResourceList {
     public ResourceList(){}
 
     //metodi tipici delle liste
+
+    public void addResourceList(ResourceList resourceList) {
+        for (Resource resource : resourceList.getResourceList()) {
+            addSpecificResource(resource);
+        }
+    }
+
+
+
     public void addSpecificResource(Resource resource){
         boolean found=false;
 
-        for (Resource resourceList : this.resourceList) {
-            if (resourceList.getClass().equals(resource.getClass()) && !found) {
-                resourceList.addValue(resource.getValue());
+        for (Resource resourceOfList : this.resourceList) {
+            if (resourceOfList.getClass().equals(resource.getClass()) && !found) {
+                resourceOfList.addValue(resource.getValue());
                 found = true;
             }
         }

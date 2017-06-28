@@ -94,7 +94,7 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
                             player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTakeDevelopmentCardControl().getControlStringError()));
                         }
                     } else{
-                        player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTowerCostPlacementControl().getControlStringError()));
+                        player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTowerCardCostPlacementControl().getControlStringError()));
                     }
                 } else {
                     player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getDiceValueActionSpaceControl().getControlStringError()));

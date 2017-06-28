@@ -1,22 +1,30 @@
 package it.polimi.ingsw.ps31.model.actionControls;
 
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
+import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.effect.GetResourceEffect;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.model.player.PlayerResources;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Francesco on 26/05/2017.
  */
-public class TowerCostPlacementControl extends Control {
+public class TowerCardCostPlacementControl extends Control {
     private TowerCardSpace towerCardSpace = null;
+    private Map<CardColor, ResourceList> cardResourceDiscount;
 
     /* Constructor */
-    public TowerCostPlacementControl(Player player)
+    public TowerCardCostPlacementControl(Player player)
     {
         super(player);
+        this.cardResourceDiscount = new HashMap<>();
+        for (CardColor cardColor : CardColor.values())
+            this.cardResourceDiscount.put(cardColor, null);
     }
 
     @Override
@@ -49,12 +57,14 @@ public class TowerCostPlacementControl extends Control {
 
         PlayerResources tempPlayerResources = new PlayerResources(player.getPlayerResources().getPlayerResourceList());
 
+        //simulo il poter pagare o no la torre
         if (!towerCardSpace.getTower().isOccupied()) {
-
         } else {
-            if (player.getPlayerActionSet().getActionControlSet().payResourceControl(player.getPlayerActionSet().getPayTowerMoney().getCOINTOPAY())) {
-                tempPlayerResources.subResources(player.getPlayerActionSet().getPayTowerMoney().getCOINTOPAY());
-                costAffordable = true;
+            if (player.getPlayerActionSet().getPayTowerMoney().isToPay()) {
+                if (player.getPlayerActionSet().getActionControlSet().payResourceControl(player.getPlayerActionSet().getPayTowerMoney().getCOINTOPAY())) {
+                    tempPlayerResources.subResources(player.getPlayerActionSet().getPayTowerMoney().getCOINTOPAY());
+                    costAffordable = true;
+                }
             } else {
                 costAffordable = false;
             }
@@ -71,6 +81,7 @@ public class TowerCostPlacementControl extends Control {
             }
         }
 
+        //simulo il dover pagare la carta
         if (towerCardSpace.getCard().getCostList() == null)
             costAffordable = true;
         else
@@ -83,4 +94,11 @@ public class TowerCostPlacementControl extends Control {
         return costAffordable;
     }
 
+    public void addCardResourceDiscount(CardColor cardColor, ResourceList discountList)
+    {
+        ResourceList currentDiscount = this.cardResourceDiscount.get(cardColor);
+        currentDiscount.addResourceList(discountList);
+        cardResourceDiscount.put(cardColor, currentDiscount );
+
+    }
 }

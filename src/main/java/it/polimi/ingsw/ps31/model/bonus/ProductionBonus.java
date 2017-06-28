@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
 public class ProductionBonus extends Bonus {
     private final int value;
 
-    protected ProductionBonus(int value) {
+    public ProductionBonus(int value) {
         this.value = value;
     }
 

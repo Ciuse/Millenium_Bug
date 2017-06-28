@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
 public class HarvestBonus extends Bonus {
     private final int value;
 
-    protected HarvestBonus( int value) {
+    public HarvestBonus( int value) {
         super();
         this.value = value;
     }

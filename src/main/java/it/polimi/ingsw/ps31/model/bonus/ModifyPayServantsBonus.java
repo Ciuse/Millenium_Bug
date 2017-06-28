@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
 public class ModifyPayServantsBonus extends Bonus {
     private final int servantsToPayPerUnitaryDiceValueArise;
 
-    protected ModifyPayServantsBonus(int servantsToPayPerUnitaryDiceValueArise) {
+    public ModifyPayServantsBonus(int servantsToPayPerUnitaryDiceValueArise) {
         this.servantsToPayPerUnitaryDiceValueArise = servantsToPayPerUnitaryDiceValueArise;
     }
 

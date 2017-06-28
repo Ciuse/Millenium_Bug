@@ -12,7 +12,7 @@ public class CanPlaceInOccupiedActionSpace extends Bonus {
 //    private final int[] occupatedActionSpace;
 
     /* Constructor */
-    protected CanPlaceInOccupiedActionSpace(List<Integer> actionSpaceIdList){
+    public CanPlaceInOccupiedActionSpace(List<Integer> actionSpaceIdList){
         super();
         this.actionSpaceIdList = actionSpaceIdList;
     }

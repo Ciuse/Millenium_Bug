@@ -13,6 +13,7 @@ public class FamilyMember {
     private final DiceColor diceColor;
     private int diceValue;
     private int additionalValue;
+    private int permanentAdditionalValue;
     private ActionSpace actionSpace;
     private Integer fixedValue;
 

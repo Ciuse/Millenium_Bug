@@ -31,7 +31,7 @@ public class ActionControlSet {
     private final ResourceRequirementsControl resourceRequirementsControl;
     private final SelfOccupiedTowerControl selfOccupiedTowerControl;
     private final TakeDevelopmentCardControl takeDevelopmentCardControl;
-    private final TowerCostPlacementControl towerCostPlacementControl;
+    private final TowerCardCostPlacementControl towerCardCostPlacementControl;
     private final LeaderCardRequirementControl leaderCardRequirementControl;
 
 
@@ -46,7 +46,7 @@ public class ActionControlSet {
         this.payResourceListControl = new PayResourceListControl(player);
         this.placedFamilyMemberControl = new PlacedFamilyMemberControl(player);
         this.playerCardNumberControl = new PlayerCardNumberControl(player);
-        this.towerCostPlacementControl = new TowerCostPlacementControl(player);
+        this.towerCardCostPlacementControl = new TowerCardCostPlacementControl(player);
         this.selfOccupiedTowerControl= new SelfOccupiedTowerControl(player);
         this.developmentCardRequirementsControl = new DevelopmentCardRequirementsControl(player);
         this.takeDevelopmentCardControl = new TakeDevelopmentCardControl(player);
@@ -117,8 +117,8 @@ public class ActionControlSet {
 
     public boolean towerCostPlacementControl(TowerCardSpace towerCardSpace)
     {
-        this.towerCostPlacementControl.setTowerCardSpace(towerCardSpace);
-        return this.towerCostPlacementControl.execute();
+        this.towerCardCostPlacementControl.setTowerCardSpace(towerCardSpace);
+        return this.towerCardCostPlacementControl.execute();
     }
 
     public boolean takeDevelopmentCardControl(DevelopmentCard developmentCard){
@@ -182,8 +182,8 @@ public class ActionControlSet {
         return takeDevelopmentCardControl;
     }
 
-    public TowerCostPlacementControl getTowerCostPlacementControl() {
-        return towerCostPlacementControl;
+    public TowerCardCostPlacementControl getTowerCardCostPlacementControl() {
+        return towerCardCostPlacementControl;
     }
 
     public LeaderCardRequirementControl getLeaderCardRequirementControl() {
