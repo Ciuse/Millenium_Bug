@@ -56,23 +56,21 @@ public class ClientSocketConnection extends ClientNetworkInterface {
                 e.printStackTrace();
             }
         }
-        System.out.println("Client> "+s);
-        //invio al server il messaggio di connessione
-        sendConnectionMessage();
+        System.out.println("Client> Message frome server: "+s);
 
     }
 
     @Override
     protected void writeOnNetwork(String msgStr) {
         //TODO: istruzione di test da cancellare
-        System.out.println("Client> sto per inviare il messaggio: " + msgStr);
+        System.out.println("ClientSocketConnection : writeOnNetwork> sto per inviare il messaggio: " + msgStr);
 
         try {
 
             socketWriter.write(msgStr + "\n");
             socketWriter.flush();
             //TODO: istruzione di test da cancellare
-            System.out.println("Client> messaggio inviato");
+            System.out.println("ClientSocketConnection : writeOnNetwork> messaggio inviato");
             //socketWriter.close();
 
         } catch (IOException e) {

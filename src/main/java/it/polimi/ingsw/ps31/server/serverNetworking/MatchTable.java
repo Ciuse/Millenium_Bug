@@ -167,8 +167,11 @@ public class MatchTable {
 
     public void disconnectClient (ServerConnectionInterface connection, Match match, PlayerId playerId)
     {
+        System.out.println("MatchTable : disconnectClient()> disconnetto client "+connection.getConnectionInfo()+
+                            " dal match "+match.getMatchId());
         this.disconnections.add(new DisconnectedClient(connection.getConnectionMessage(), match, playerId));
         match.disconnectPlayer(playerId);
+
     }
 
     //global = 3;

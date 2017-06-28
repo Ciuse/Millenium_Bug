@@ -49,7 +49,7 @@ public class GameLogic {
             gameUtility.createPlayer(gameUtility.getInformationFromNetworking().getPlayerNameList().get(i));
         }
 
-        match.sendViews(gameUtility.createViews());
+        match.sendViews(gameUtility.getPlayerMaxNumber());
 
     }
 

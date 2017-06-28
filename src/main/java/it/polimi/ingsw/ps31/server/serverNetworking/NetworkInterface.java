@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.server.serverNetworking;
 
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
+import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.game.GameLogic;
 import it.polimi.ingsw.ps31.model.player.Player;
@@ -105,7 +106,7 @@ public class NetworkInterface {
         connection.sendToClient(msg);
     }
 
-    public void sendToAll(GenericMessage msg)
+    public void sendToAll(MVVisitable msg)
     {
         for(ServerConnectionThread currentConnection : playerTable.getAllConnections())
             currentConnection.sendToClient(msg);

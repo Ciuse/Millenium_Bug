@@ -1,13 +1,11 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
-import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
+import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
+import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.networking.NetworkingThread;
-import it.polimi.ingsw.ps31.server.Server;
-import it.polimi.ingsw.ps31.server.ServerNetworkInterface;
 
 import java.io.IOException;
 import java.net.SocketException;
@@ -19,15 +17,17 @@ import java.util.List;
  */
 
 
-public class ServerConnectionThread extends NetworkingThread {
+public class ServerConnectionThread extends Thread {
     private ServerConnectionInterface serverConnectionInterface;
     private boolean closeConnection = false;
     private MatchTable matchTable;
     private NetworkInterface networkInterface;
     private PlayerId playerId;
+    protected List<VCVisitable> buffer;
 
     /* Constructor */
     public ServerConnectionThread(ServerConnectionInterface serverConnectionInterface, MatchTable matchTable) {
+        this.buffer = new ArrayList<>();
         this.serverConnectionInterface = serverConnectionInterface;
         this.matchTable = matchTable;
         this.playerId = null;
@@ -39,20 +39,19 @@ public class ServerConnectionThread extends NetworkingThread {
         this.playerId = playerId;
     }
 
-    @Override
-    public void bufferizeMessage(GenericMessage msg) {
+    public void bufferizeMessage(VCVisitable msg) {
 
         buffer.add(msg);
     }
 
     @Override
-    public void loop()
+    public void run()
     {
         //Istruzioni di instaurazione della connessione
         initializeConnection();
 
         while (!closeConnection) {
-            GenericMessage msgFromClient = null;
+            VCVisitable msgFromClient = null;
             try {
                 msgFromClient = serverConnectionInterface.readFromClient();
             } catch (SocketException se)
@@ -79,6 +78,13 @@ public class ServerConnectionThread extends NetworkingThread {
         }*/
     }
 
+    public VCVisitable readMessage()
+    {
+        if( buffer.isEmpty())
+            return null;
+        return buffer.remove(0);
+    }
+
     protected final void initializeConnection() {
         //Invio al server una stringa per comunicare che la connessione è avvenuta con successo
         serverConnectionInterface.writeOnNetwork("Connection ok");
@@ -99,7 +105,7 @@ public class ServerConnectionThread extends NetworkingThread {
         return serverConnectionInterface.getConnectionMessage();
     }
 
-    public GenericMessage readFromClient() throws IOException
+    public VCVisitable readFromClient() throws IOException
     {
         return serverConnectionInterface.readFromClient();
     }

@@ -1,22 +1,35 @@
 package it.polimi.ingsw.ps31.messages.messageNetworking;
 
 import it.polimi.ingsw.ps31.client.view.View;
+import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 /**
  * Created by Francesco on 24/06/2017.
  */
 public class ViewMessage extends NetworkingMessage{
-    private final View view;
+    private PlayerId playerId;
+    private int maxPlayerNumber;
 
-    /* Constructor */
-    public ViewMessage(View view)
+    public ViewMessage(PlayerId playerId, int maxPlayerNumber)
     {
-        this.view = view;
+        this.playerId = playerId;
+        this.maxPlayerNumber = maxPlayerNumber;
     }
 
-    public View getView()
+    public PlayerId getPlayerId()
     {
-        return view;
+        return playerId;
+    }
+
+    public int getMaxPlayerNumber()
+    {
+        return maxPlayerNumber;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "[VIEW_MESSAGE| PlayerId="+playerId+"; maxPlayerNumber="+maxPlayerNumber+"]";
     }
 
 }

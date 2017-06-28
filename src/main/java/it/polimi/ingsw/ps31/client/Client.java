@@ -15,12 +15,14 @@ import static java.lang.Thread.sleep;
  * Created by Giuseppe on 05/06/2017.
  */
 public class Client {
-    static final int PORT = 2727;
+    private static final int PORT = 2727;
     private static ClientNetworkingThread clientNetworkingThread;
-
+    private static ClientViewThread clientViewThread;
 
     private static BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
 
+
+    /* Main */
     public static void main(String[] args) throws IOException {
 
         String chosenView;
@@ -62,6 +64,8 @@ public class Client {
 
         } while(!exitDoWhile);
 
+        //Creo il thread che deve contenere la view
+        clientViewThread = new ClientViewThread(typeOfView);
 
         //Preparo il messaggio contenente le informazioni di connessione
         ConnectionMessage connectionMessage = new ConnectionMessage(username, password, typeOfView);
@@ -75,12 +79,12 @@ public class Client {
             chosenConnection = console.readLine();
 
             if( chosenConnection.equalsIgnoreCase("s") )
-                clientNetworkingThread = new ClientNetworkingThread(new ClientSocketConnection(PORT, connectionMessage));
+                clientNetworkingThread = new ClientNetworkingThread(new ClientSocketConnection(PORT, connectionMessage), clientViewThread);
             else if (chosenConnection.equalsIgnoreCase("r") )
             {
                 ///clientNetworkingThread = new ClientNetworkingThread(new clientRMIConnection());
                 System.out.println("RMI non disponibile in questa versione. Mi connetto con le socket :) ");
-                clientNetworkingThread = new ClientNetworkingThread(new ClientSocketConnection(PORT, connectionMessage));
+                clientNetworkingThread = new ClientNetworkingThread(new ClientSocketConnection(PORT, connectionMessage), clientViewThread);
             }
             else{
                 System.out.println("Risposta non valida");

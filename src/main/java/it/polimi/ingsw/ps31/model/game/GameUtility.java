@@ -358,22 +358,22 @@ public class GameUtility{
         timer1.schedule(task1, timerAction);
     }
 
-    public Map<PlayerId, View> createViews() {
-        Map<PlayerId, View> views = new TreeMap<>();
-
-        for (Player player : playerList
-                ) {
-            for (int i = 0; i < model.getModelChoices().getInformationFromNetworking().getPlayerNameList().size(); i++) {
-                if (player.getNickname().equals(model.getModelChoices().getInformationFromNetworking().getPlayerNameList().get(i))) {
-                    if (model.getModelChoices().getInformationFromNetworking().getViewChoiceList().get(i).equals(TypeOfView.CLI)) {
-                        CmdLineView viewCliPlayer = new CmdLineView(PlayerId.values()[i], playerMaxNumber);
-                        views.put(PlayerId.values()[i], viewCliPlayer);
-                    }//else TODO creare la view gui
-                }
-            }
-        }
-        return views;
-    }
+//    public List<PlayerId> createViews() {
+//        List<PlayerId> playerIds = new ArrayList<>();
+//
+//        for (Player player : playerList
+//                ) {
+//            for (int i = 0; i < model.getModelChoices().getInformationFromNetworking().getPlayerNameList().size(); i++) {
+//                if (player.getNickname().equals(model.getModelChoices().getInformationFromNetworking().getPlayerNameList().get(i))) {
+//                    if (model.getModelChoices().getInformationFromNetworking().getViewChoiceList().get(i).equals(TypeOfView.CLI)) {
+//                        CmdLineView viewCliPlayer = new CmdLineView(PlayerId.values()[i], playerMaxNumber);
+//                        views.put(PlayerId.values()[i], viewCliPlayer);
+//                    }//else TODO creare la view gui
+//                }
+//            }
+//        }
+//        return views;
+//    }
 
 
 

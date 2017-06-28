@@ -37,6 +37,8 @@ class PlayerConnectionRow{
     public void disconnect()
     {
        this.disconnected = true;
+       serverConnectionThread.closeConnection();
+
     }
 
     public void reconnect(ServerConnectionThread serverConnectionThread)
@@ -138,7 +140,7 @@ public class PlayerTable {
         System.out.println("Tabella della partita #"+match.getMatchId());
         System.out.println("========================");
         for(PlayerConnectionRow currentRow : playerConnectionRows)
-            System.out.println("Player "+currentRow.getPlayerId()+"\t : "+currentRow.getServerConnectionThread().toString());
+            System.out.println("Player "+currentRow.getPlayerId()+"\t\t : "+currentRow.getServerConnectionThread().toString());
 
         System.out.println("\n");
     }

@@ -11,7 +11,8 @@ import java.net.Socket;
 /**
  * Created by Francesco on 21/06/2017.
  */
-public class ConnectionMessage extends NetworkingMessage {
+public class
+ConnectionMessage extends NetworkingMessage {
     private final String username;
     private final String password;
     private final TypeOfView typeOfView;

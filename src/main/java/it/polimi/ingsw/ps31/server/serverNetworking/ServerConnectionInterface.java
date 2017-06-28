@@ -3,7 +3,9 @@ package it.polimi.ingsw.ps31.server.serverNetworking;
 import com.google.gson.Gson;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
+import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
+import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.networking.ConnectionType;
 import it.polimi.ingsw.ps31.networking.JsonNetworking;
 
@@ -35,7 +37,7 @@ public abstract class ServerConnectionInterface {
         writeOnNetwork(serialize(msg));
     }
 
-    public final GenericMessage readFromClient() throws IOException
+    public final VCVisitable readFromClient() throws IOException
     {
         return deserialize(readFromNetwork());
     }
@@ -51,7 +53,7 @@ public abstract class ServerConnectionInterface {
         return strObj;
     }
 
-    public GenericMessage deserialize(String msg) {
+    public VCVisitable deserialize(String msg) {
         if ( msg == null )
             return null;
 
@@ -60,12 +62,11 @@ public abstract class ServerConnectionInterface {
 
         //Deserializzo l'oggetto
 
-        GenericMessage strObj = gson.fromJson(msg, GenericMessage.class);
+        VCVisitable strObj = gson.fromJson(msg, VCVisitable.class);
 
         return strObj;
     }
 
-    //todo eliminare dopo aver messo il gson builder
     public ConnectionMessage deserializeCM(String msg) {
         if (msg == null)
             return null;
