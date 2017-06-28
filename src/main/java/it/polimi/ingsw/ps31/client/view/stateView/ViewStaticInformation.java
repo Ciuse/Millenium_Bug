@@ -6,7 +6,6 @@ import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

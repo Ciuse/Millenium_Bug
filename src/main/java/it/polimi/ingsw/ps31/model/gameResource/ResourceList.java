@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps31.model.gameResource;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by Giuseppe on 10/05/2017.

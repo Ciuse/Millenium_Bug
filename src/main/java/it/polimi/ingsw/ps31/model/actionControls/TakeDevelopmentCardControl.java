@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps31.model.actionControls;
 
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
-import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.PersonalBoardCardCell;
 import it.polimi.ingsw.ps31.model.player.Player;
 

@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.model.bonus;
 
 import it.polimi.ingsw.ps31.model.constants.CardColor;
-import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 /**

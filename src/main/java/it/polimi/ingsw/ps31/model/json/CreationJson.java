@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.model.json;
 
 import com.google.gson.Gson;
-import com.sun.corba.se.impl.corba.CORBAObjectImpl;
 import it.polimi.ingsw.ps31.model.bonus.*;
 import it.polimi.ingsw.ps31.model.card.*;
 import it.polimi.ingsw.ps31.model.card.Character;
@@ -12,7 +11,6 @@ import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by giulia on 16/05/2017.

@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps31.client;
 
 import it.polimi.ingsw.ps31.client.clientNetworking.ClientMessageHistory;
 import it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface;
-import it.polimi.ingsw.ps31.client.view.CmdLineView;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;

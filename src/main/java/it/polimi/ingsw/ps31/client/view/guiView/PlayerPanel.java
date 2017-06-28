@@ -1,14 +1,10 @@
 package it.polimi.ingsw.ps31.client.view.guiView;
 
-import com.sun.org.apache.regexp.internal.RE;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 /**

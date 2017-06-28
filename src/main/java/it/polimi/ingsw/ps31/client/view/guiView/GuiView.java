@@ -1,13 +1,11 @@
 package it.polimi.ingsw.ps31.client.view.guiView;
 
-import it.polimi.ingsw.ps31.*;
 import it.polimi.ingsw.ps31.client.view.View;
-import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.CmdInterpreterView;
+import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -15,7 +13,7 @@ import java.io.IOException;
 /**
  * Created by Giuseppe on 07/06/2017.
  */
-public  class GuiView extends View implements ActionListener{
+public class GuiView extends View implements ActionListener{
     private JButton jButtonChangeCard;
     private GameBoardPanel gameBoardPanel;
 

@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.client.view;
 
 import it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface;
-import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.CmdInterpreterView;
+import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewGame;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;

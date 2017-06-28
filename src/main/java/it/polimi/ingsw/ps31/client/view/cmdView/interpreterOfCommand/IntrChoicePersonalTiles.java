@@ -1,16 +1,14 @@
-package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
+package it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand;
 
-import it.polimi.ingsw.ps31.client.view.CmdLineView;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
-import it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToDiscardChoice;
+import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
+import it.polimi.ingsw.ps31.messages.messageVC.VCPersonalTilesChoice;
+import it.polimi.ingsw.ps31.model.choiceType.ChoicePersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
-import static java.lang.String.valueOf;
-
 /**
- * Created by Giuseppe on 24/06/2017.
+ * Created by Giuseppe on 25/06/2017.
  */
-public class IntrLeaderToDiscard implements CmdInterpreterView {
+public class IntrChoicePersonalTiles implements CmdInterpreterView {
     @Override
     public void notGameMessageInterpreter(CmdLineView terminalView, Character in) {
 
@@ -19,15 +17,13 @@ public class IntrLeaderToDiscard implements CmdInterpreterView {
     @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
-            int i = 1;
-            for (StateViewLeaderCard leaderCard : terminalView.getMyStateViewPlayer().getStateViewLeaderCardList()
-                    ) {
-                if (in == i && !leaderCard.isPlayed()) {
+            ChoicePersonalBonusTiles choicePersonalBonusTiles = (ChoicePersonalBonusTiles) choiceType;
+            for (int i = 1; i < choicePersonalBonusTiles.getStatePersonalBonusTilesList().size() + 1; i++) {
+                if (in == i) {
                     terminalView.printLastEvent("Comando OK");
-                    terminalView.notifyController(new VCLeaderToDiscardChoice(terminalView.getViewId(), in));
+                    terminalView.notifyController(new VCPersonalTilesChoice(terminalView.getViewId(),in-1));
                     return true;
                 }
-                i++;
             }
             terminalView.printLastEvent("Comando Non Riconusciuto");
             return false;

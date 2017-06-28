@@ -1,14 +1,12 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
-import it.polimi.ingsw.ps31.client.view.CmdLineView;
-import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.server.Match;
-import it.polimi.ingsw.ps31.server.Server;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Francesco on 08/06/2017.

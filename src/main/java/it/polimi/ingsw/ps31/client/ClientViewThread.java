@@ -1,9 +1,9 @@
 package it.polimi.ingsw.ps31.client;
 
 import it.polimi.ingsw.ps31.client.clientNetworking.ClientMessageHistory;
-import it.polimi.ingsw.ps31.client.view.CmdLineView;
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
 import it.polimi.ingsw.ps31.client.view.View;
+import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
 

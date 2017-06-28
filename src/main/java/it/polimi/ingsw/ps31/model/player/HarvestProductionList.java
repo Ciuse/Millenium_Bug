@@ -1,7 +1,5 @@
 package it.polimi.ingsw.ps31.model.player;
 
-import it.polimi.ingsw.ps31.model.ModelChoices;
-
 /**
  * Created by Francesco on 28/05/2017.
  */

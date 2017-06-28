@@ -1,13 +1,13 @@
-package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
+package it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand;
 
-import it.polimi.ingsw.ps31.client.view.CmdLineView;
-import it.polimi.ingsw.ps31.messages.messageVC.VCSupportTheChurchChoice;
+import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
+import it.polimi.ingsw.ps31.messages.messageVC.VCActiveEffectChoice;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
- * Created by Giuseppe on 24/06/2017.
+ * Created by Giuseppe on 15/06/2017.
  */
-public class IntrChoiceIfSupportChurch implements CmdInterpreterView {
+public class IntrChoiceIfActiveEffect implements CmdInterpreterView {
     @Override
     public void notGameMessageInterpreter(CmdLineView terminalView, Character in) {
 
@@ -18,12 +18,12 @@ public class IntrChoiceIfSupportChurch implements CmdInterpreterView {
         if (in != null) {
             if (in == 'Y' || in == 'y') {
                 terminalView.printLastEvent("Comando OK");
-                terminalView.notifyController(new VCSupportTheChurchChoice(terminalView.getViewId(),true));
+                terminalView.notifyController(new VCActiveEffectChoice(terminalView.getViewId(),true));
                 return true;
             }
             if (in == 'N' || in == 'n') {
                 terminalView.printLastEvent("Comando OK");
-                terminalView.notifyController(new VCSupportTheChurchChoice(terminalView.getViewId(),false));
+                terminalView.notifyController(new VCActiveEffectChoice(terminalView.getViewId(),false));
                 return true;
             }
             terminalView.printLastEvent("Comando Non Riconusciuto");

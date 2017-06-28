@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.json;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.ps31.model.bonus.*;
 import it.polimi.ingsw.ps31.model.card.*;
 import it.polimi.ingsw.ps31.model.card.Character;

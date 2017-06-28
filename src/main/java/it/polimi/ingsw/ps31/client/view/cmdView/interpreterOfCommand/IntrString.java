@@ -1,19 +1,15 @@
-package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
+package it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand;
 
-import it.polimi.ingsw.ps31.client.view.CmdLineView;
+import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
  * Created by Giuseppe on 08/06/2017.
  */
-public class IntrVisualization implements CmdInterpreterView {
+public class IntrString implements CmdInterpreterView {
+
     @Override
-    public void notGameMessageInterpreter(CmdLineView cmdLineView, Character in) {
-        if(in.compareTo('1')==0) {
-
-
-            //manda il messaggi al controller che stampa dalla terminal view.
-        }
+    public void notGameMessageInterpreter(CmdLineView terminalView, Character in) {
 
     }
 
@@ -29,6 +25,7 @@ return false;
 
     @Override
     public String toString() {
-        return "IntrVisualization";
+        return "IntrString";
     }
+
 }

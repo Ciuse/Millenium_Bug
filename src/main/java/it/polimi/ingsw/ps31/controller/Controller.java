@@ -8,7 +8,6 @@ import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
 import it.polimi.ingsw.ps31.model.board.Tower;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
-import it.polimi.ingsw.ps31.model.card.Card;
 import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
@@ -21,7 +20,9 @@ import it.polimi.ingsw.ps31.model.gameResource.Servant;
 import it.polimi.ingsw.ps31.model.player.FamilyMember;
 import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.player.Player;
-import it.polimi.ingsw.ps31.model.stateModel.*;
+import it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl;
+import it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction;
+import it.polimi.ingsw.ps31.model.stateModel.TempModelStateForLeaderChoice;
 import it.polimi.ingsw.ps31.server.VirtualView;
 
 import java.util.ArrayList;

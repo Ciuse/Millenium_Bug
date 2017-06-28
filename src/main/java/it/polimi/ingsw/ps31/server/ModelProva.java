@@ -1,9 +1,5 @@
 package it.polimi.ingsw.ps31.server;
 
-import it.polimi.ingsw.ps31.messages.GenericMessage;
-import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
-
 /**
  * Created by Francesco on 10/06/2017.
  */

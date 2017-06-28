@@ -8,8 +8,6 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 import it.polimi.ingsw.ps31.model.stateModel.StateCardBox;
 
-import javax.jws.WebParam;
-
 /**
  * Created by Francesco on 12/05/2017.
  */

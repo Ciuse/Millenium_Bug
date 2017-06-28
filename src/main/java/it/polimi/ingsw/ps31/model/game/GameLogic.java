@@ -7,11 +7,8 @@ import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.json.CreationJson;
 import it.polimi.ingsw.ps31.model.json.JsonFile;
 import it.polimi.ingsw.ps31.model.json.JsonGameObject;
-import it.polimi.ingsw.ps31.model.player.Player;
-import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
 import it.polimi.ingsw.ps31.server.Match;
 
-import java.util.ArrayList;
 import java.util.Collections;
 
 /**

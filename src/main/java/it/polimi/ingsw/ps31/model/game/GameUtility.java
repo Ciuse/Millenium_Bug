@@ -1,8 +1,8 @@
 package it.polimi.ingsw.ps31.model.game;
 
-import it.polimi.ingsw.ps31.client.view.CmdLineView;
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
 import it.polimi.ingsw.ps31.client.view.View;
+import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
@@ -11,7 +11,10 @@ import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.board.MarkerDisc;
 import it.polimi.ingsw.ps31.model.card.*;
-import it.polimi.ingsw.ps31.model.choiceType.*;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceColor;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceIfSupportTheChurch;
+import it.polimi.ingsw.ps31.model.choiceType.ChoicePersonalBonusTiles;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;

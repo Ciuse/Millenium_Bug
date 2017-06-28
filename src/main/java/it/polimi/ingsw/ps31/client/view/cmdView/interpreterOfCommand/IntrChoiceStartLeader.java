@@ -1,6 +1,6 @@
-package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
+package it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand;
 
-import it.polimi.ingsw.ps31.client.view.CmdLineView;
+import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.messages.messageVC.VCStartLeaderChoice;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;

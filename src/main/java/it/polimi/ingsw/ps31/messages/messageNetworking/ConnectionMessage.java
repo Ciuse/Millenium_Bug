@@ -1,12 +1,7 @@
 package it.polimi.ingsw.ps31.messages.messageNetworking;
 
-import it.polimi.ingsw.ps31.client.ClientNetworkingThread;
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
-import it.polimi.ingsw.ps31.networking.NetworkingThread;
 import it.polimi.ingsw.ps31.server.Match;
-import it.polimi.ingsw.ps31.server.serverNetworking.SocketServerConnection;
-
-import java.net.Socket;
 
 /**
  * Created by Francesco on 21/06/2017.

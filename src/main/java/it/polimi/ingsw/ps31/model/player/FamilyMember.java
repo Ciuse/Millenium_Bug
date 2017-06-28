@@ -68,6 +68,14 @@ public class FamilyMember {
             return this.fixedValue;
     }
 
+    public int getPermanentAdditionalValue() {
+        return permanentAdditionalValue;
+    }
+
+    public void setPermanentAdditionalValue(int permanentAdditionalValue) {
+        this.permanentAdditionalValue = permanentAdditionalValue;
+    }
+
     public ActionSpace getActionSpace()
     {
         return this.actionSpace;

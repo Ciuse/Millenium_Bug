@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31.client.view;
+package it.polimi.ingsw.ps31.client.view.cmdView;
 
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -8,7 +8,8 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
-import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.*;
+import it.polimi.ingsw.ps31.client.view.View;
+import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.*;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
@@ -40,6 +41,10 @@ public class CmdLineView extends View {
 
     public CmdLineView(PlayerId viewId, int playerMaxNumber) {
         super(viewId, playerMaxNumber);
+        runTerminal();
+        printTower();
+        printBoardActionSpace();
+        printTextBox();
     }
 
 
@@ -247,14 +252,18 @@ public class CmdLineView extends View {
     }
 
     @Override
-    public void runTerminal() throws IOException {
-        defaultTerminalFactory.setInitialTerminalSize(terminalSize);
-        terminal = defaultTerminalFactory.createTerminal();
-        screen = new TerminalScreen(terminal);
-        screen.setCursorPosition(null);
-        screen.startScreen();
-        textGraphics = screen.newTextGraphics();
-        screen.refresh();
+    public void runTerminal(){
+        try {
+            defaultTerminalFactory.setInitialTerminalSize(terminalSize);
+            terminal = defaultTerminalFactory.createTerminal();
+            screen = new TerminalScreen(terminal);
+            screen.setCursorPosition(null);
+            screen.startScreen();
+            textGraphics = screen.newTextGraphics();
+            screen.refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -291,8 +300,6 @@ public class CmdLineView extends View {
 //                e.printStackTrace();
 //            }
             if(keyStroke1 !=null && keyStroke1.getKeyType() != KeyType.Escape && keyStroke1.getKeyType() != KeyType.EOF) {
-                textGraphics.drawLine(0, 4, terminal.getTerminalSize().getColumns(), 4, ' ');
-                textGraphics.putString(0 + "Last Keystroke: ".length(), 4, keyStroke1.toString());
                 terminal.flush();
                 cmdInterpreterView.notGameMessageInterpreter(this, keyStroke1.getCharacter());
                 screen.refresh();
@@ -395,6 +402,7 @@ public class CmdLineView extends View {
         }
     }
 
+    @Override
     public void printPlayerAction(){
         for (StateViewPlayer player:super.getStateViewPlayerList()
                 ) {
@@ -632,10 +640,12 @@ public class CmdLineView extends View {
                         textGraphics.drawLine(labelBoxTopRightCorner.withRelativeRow(1),labelBoxTopRightCorner.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_VERTICAL);
                         textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
 
-                        screen.setCharacter(labelBoxTopLeft.withRelative(1, 1), getCardColorCharatcter(labelBoxTopLeft,towerColor));
-                        textGraphics.putString(labelBoxTopLeft.withRelative(2, 1), "27");
-                        textGraphics.putString(labelBoxTopLeft.withRelative(1, 2), "F.");
+                        if(floor.getCardId()!=0) {
+                            screen.setCharacter(labelBoxTopLeft.withRelative(1, 1), getCardColorCharatcter(labelBoxTopLeft, towerColor));
+                            textGraphics.putString(labelBoxTopLeft.withRelative(2, 1), valueOf(floor.getCardId()));
+                        }
 
+                        textGraphics.putString(labelBoxTopLeft.withRelative(1, 2), "F.");
                         textGraphics.putString(labelBoxTopLeft.withRelative(3, 2), valueOf(floor.getTowerFloor()));
 
                     }j--;
@@ -719,7 +729,7 @@ public class CmdLineView extends View {
                     textGraphics.putString(labelBoxTopLeft.withRelative(2 + effect.getNameEffect().length(), 1), valueOf(effect.getBasicValue()));
                     textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 2), Symbols.INVERSE_WHITE_CIRCLE);
                     textGraphics.putString(labelBoxTopLeft.withRelative(2, 2), valueOf(getDiceActionSpaceValue()[actionSpaceId - 1]));
-                    textGraphics.drawLine(labelBoxTopLeft.withRelativeColumn(3).withRelativeRow(2),labelBoxTopLeft.withColumn(6).withRelativeRow(2),Symbols.BLOCK_SPARSE);
+                    textGraphics.drawLine(labelBoxTopLeft.withRelativeColumn(3).withRelativeRow(2),labelBoxTopLeft.withColumn(7).withRelativeRow(2),Symbols.BLOCK_SPARSE);
                     for (StateViewActionSpace actionSpace : super.getStateViewBoard().getStateViewActionSpaceList()
                             ) {
                         if (actionSpace.getStateFamilyMemberList() != null && actionSpace.getNumberOfActionSpace() == actionSpaceId) {
@@ -955,29 +965,29 @@ public class CmdLineView extends View {
         int j=0;
         for (StateViewPersonalCardBox box : personalBoard.getStateViewPersonalCardBoxListGreen()
                 ) {
-            screen.setCharacter(labelBoxTopLeft.withRelative(1+j*4, 1), getCardColorCharatcter(labelBoxTopLeft, CardColor.GREEN));
-            textGraphics.putString(labelBoxTopLeft.withRelative(2+j*4, 1), "27");
+            screen.setCharacter(labelBoxTopLeft.withRelative(1+j*4, 1), getCardColorCharatcter(labelBoxTopLeft, box.getCardColor()));
+            textGraphics.putString(labelBoxTopLeft.withRelative(2+j*4, 1), valueOf(box.getCardId()));
             j++;
         }
         j=0;
         for (StateViewPersonalCardBox box : personalBoard.getStateViewPersonalCardBoxListBlue()
                 ) {
-            screen.setCharacter(labelBoxTopLeft.withRelative(personalBoardBox.getColumns()/2+1+j*4, 1), getCardColorCharatcter(labelBoxTopLeft, CardColor.BLUE));
-            textGraphics.putString(labelBoxTopLeft.withRelative(personalBoardBox.getColumns()/2+2+j*4, 1), "27");
+            screen.setCharacter(labelBoxTopLeft.withRelative(personalBoardBox.getColumns()/2+1+j*4, 1), getCardColorCharatcter(labelBoxTopLeft, box.getCardColor()));
+            textGraphics.putString(labelBoxTopLeft.withRelative(personalBoardBox.getColumns()/2+2+j*4, 1), valueOf(box.getCardId()));
             j++;
         }
         j=0;
         for (StateViewPersonalCardBox box : personalBoard.getStateViewPersonalCardBoxListYellow()
                 ) {
-            screen.setCharacter(labelBoxTopLeft.withRelative(1+j*4, personalBoardBox.getRows()/2+1), getCardColorCharatcter(labelBoxTopLeft, CardColor.YELLOW));
-            textGraphics.putString(labelBoxTopLeft.withRelative(2+j*4, personalBoardBox.getRows()/2+1), "27");
+            screen.setCharacter(labelBoxTopLeft.withRelative(1+j*4, personalBoardBox.getRows()/2+1), getCardColorCharatcter(labelBoxTopLeft, box.getCardColor()));
+            textGraphics.putString(labelBoxTopLeft.withRelative(2+j*4, personalBoardBox.getRows()/2+1), valueOf(box.getCardId()));
             j++;
         }
         j=0;
         for (StateViewPersonalCardBox box : personalBoard.getStateViewPersonalCardBoxListPurple()
                 ) {
-            screen.setCharacter(labelBoxTopLeft.withRelative(personalBoardBox.getColumns()/2+1+j*4, personalBoardBox.getRows()/2+1), getCardColorCharatcter(labelBoxTopLeft, CardColor.PURPLE));
-            textGraphics.putString(labelBoxTopLeft.withRelative(personalBoardBox.getColumns()/2+2+j*4, personalBoardBox.getRows()/2+1), "27");
+            screen.setCharacter(labelBoxTopLeft.withRelative(personalBoardBox.getColumns()/2+1+j*4, personalBoardBox.getRows()/2+1), getCardColorCharatcter(labelBoxTopLeft, box.getCardColor()));
+            textGraphics.putString(labelBoxTopLeft.withRelative(personalBoardBox.getColumns()/2+2+j*4, personalBoardBox.getRows()/2+1), valueOf(box.getCardId()));
             j++;
         }
 

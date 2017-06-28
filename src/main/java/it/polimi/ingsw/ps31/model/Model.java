@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.model;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
-import it.polimi.ingsw.ps31.model.effect.Effect;
 import it.polimi.ingsw.ps31.server.VirtualView;
 
 import java.util.Observable;

@@ -4,9 +4,6 @@ import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceListToPay;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
-import it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl;
-import it.polimi.ingsw.ps31.model.stateModel.StateDevelopmentCard;
-import it.polimi.ingsw.ps31.model.stateModel.StateEffect;
 
 import java.util.ArrayList;
 import java.util.List;

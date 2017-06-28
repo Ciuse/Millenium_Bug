@@ -1,14 +1,13 @@
-package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
+package it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand;
 
-import it.polimi.ingsw.ps31.client.view.CmdLineView;
-import it.polimi.ingsw.ps31.messages.messageVC.VCPersonalTilesChoice;
-import it.polimi.ingsw.ps31.model.choiceType.ChoicePersonalBonusTiles;
+import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
+import it.polimi.ingsw.ps31.messages.messageVC.VCActionSpace;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
- * Created by Giuseppe on 25/06/2017.
+ * Created by Giuseppe on 22/06/2017.
  */
-public class IntrChoicePersonalTiles implements CmdInterpreterView {
+public class IntrChoiceActionSpace implements CmdInterpreterView{
     @Override
     public void notGameMessageInterpreter(CmdLineView terminalView, Character in) {
 
@@ -17,11 +16,10 @@ public class IntrChoicePersonalTiles implements CmdInterpreterView {
     @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
-            ChoicePersonalBonusTiles choicePersonalBonusTiles = (ChoicePersonalBonusTiles) choiceType;
-            for (int i = 1; i < choicePersonalBonusTiles.getStatePersonalBonusTilesList().size() + 1; i++) {
+            for (int i = 17; i < terminalView.getStateViewBoard().getStateViewActionSpaceList().size() + 17 + 1; i++) {
                 if (in == i) {
                     terminalView.printLastEvent("Comando OK");
-                    terminalView.notifyController(new VCPersonalTilesChoice(terminalView.getViewId(),in-1));
+                    terminalView.notifyController(new VCActionSpace(terminalView.getViewId(),terminalView.getStateViewBoard().getStateViewActionSpaceList().get(in - 1).getNumberOfActionSpace()));
                     return true;
                 }
             }

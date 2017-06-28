@@ -1,13 +1,14 @@
-package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
+package it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand;
 
-import it.polimi.ingsw.ps31.client.view.CmdLineView;
-import it.polimi.ingsw.ps31.messages.messageVC.VCPlayerAction;
+import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
+import it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToDiscardChoice;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
- * Created by Giuseppe on 18/06/2017.
+ * Created by Giuseppe on 24/06/2017.
  */
-public class IntrChoicePlayerAction implements CmdInterpreterView {
+public class IntrLeaderToDiscard implements CmdInterpreterView {
     @Override
     public void notGameMessageInterpreter(CmdLineView terminalView, Character in) {
 
@@ -16,12 +17,15 @@ public class IntrChoicePlayerAction implements CmdInterpreterView {
     @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
-            for (int i = 1; i < terminalView.getMyStateViewPlayer().getStringPlayerAction().size() + 1; i++) {
-                if (in == i) {
+            int i = 1;
+            for (StateViewLeaderCard leaderCard : terminalView.getMyStateViewPlayer().getStateViewLeaderCardList()
+                    ) {
+                if (in == i && !leaderCard.isPlayed()) {
                     terminalView.printLastEvent("Comando OK");
-                    terminalView.notifyController(new VCPlayerAction(terminalView.getViewId(),terminalView.getMyStateViewPlayer().getStringPlayerAction().get(in - 1)));
+                    terminalView.notifyController(new VCLeaderToDiscardChoice(terminalView.getViewId(), in));
                     return true;
                 }
+                i++;
             }
             terminalView.printLastEvent("Comando Non Riconusciuto");
             return false;

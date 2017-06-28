@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.model.choiceType;
 
 import it.polimi.ingsw.ps31.client.view.View;
-import it.polimi.ingsw.ps31.client.view.interpreterOfCommand.*;
+import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.*;
 
 /**
  * Created by Giuseppe on 15/06/2017.

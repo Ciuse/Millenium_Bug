@@ -1,10 +1,8 @@
-package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
+package it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand;
 
-import it.polimi.ingsw.ps31.client.view.CmdLineView;
+import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
-import it.polimi.ingsw.ps31.messages.messageVC.VCActionSpace;
 import it.polimi.ingsw.ps31.messages.messageVC.VCTowerCardSpaceChoice;
-import it.polimi.ingsw.ps31.model.board.Tower;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 

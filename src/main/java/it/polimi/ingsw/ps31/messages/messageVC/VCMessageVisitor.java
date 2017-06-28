@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.messages.messageVC;
 
 import it.polimi.ingsw.ps31.controller.Controller;
-import it.polimi.ingsw.ps31.messages.GenericMessage;
 
 /**
  * Created by Giuseppe on 12/06/2017.

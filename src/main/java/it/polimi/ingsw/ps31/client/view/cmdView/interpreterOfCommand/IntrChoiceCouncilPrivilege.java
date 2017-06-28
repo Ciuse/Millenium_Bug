@@ -1,8 +1,6 @@
-package it.polimi.ingsw.ps31.client.view.interpreterOfCommand;
+package it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand;
 
-import it.polimi.ingsw.ps31.client.view.CmdLineView;
-import it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation;
-import it.polimi.ingsw.ps31.messages.messageVC.VCColorChoice;
+import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.messages.messageVC.VCCouncilPrivilegeChoice;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 

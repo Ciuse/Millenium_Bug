@@ -2,14 +2,11 @@ package it.polimi.ingsw.ps31.client;
 
 import it.polimi.ingsw.ps31.client.clientNetworking.ClientSocketConnection;
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
-import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
-import static java.lang.Thread.sleep;
 
 /**
  * Created by Giuseppe on 05/06/2017.
