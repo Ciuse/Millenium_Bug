@@ -1,8 +1,10 @@
 package it.polimi.ingsw.ps31.messages.messageMV;
 
 
+import it.polimi.ingsw.ps31.messages.ConcreteEnvelope;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import it.polimi.ingsw.ps31.networking.DeliverableMessageType;
 
 /**
  * Created by giulia on 01/06/2017.
@@ -12,6 +14,7 @@ public abstract class MVVisitable extends GenericMessage{
     boolean notifyAll =false;
 
     public MVVisitable() {
+//        super(DeliverableMessageType.MV_VISITABLE);
     }
 
     public void setNotifySinglePlayer(PlayerId notifySinglePlayer) {
@@ -31,5 +34,10 @@ public abstract class MVVisitable extends GenericMessage{
     }
 
     public abstract void accept(MVVisitor mvVisitor);
+
+    public final ConcreteEnvelope wrap()
+    {
+        return new ConcreteEnvelope(this);
+    }
 
 }

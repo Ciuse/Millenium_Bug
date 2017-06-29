@@ -81,6 +81,8 @@ public class ClientNetworkingThread extends Thread {
 
     public void setCloseClientNetworkingInterface (boolean haveToClose)
     {
+
+
         this.closeClientNetworkingInterface = haveToClose;
     }
 

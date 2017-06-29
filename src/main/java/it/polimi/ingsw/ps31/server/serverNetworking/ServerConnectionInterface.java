@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
 import com.google.gson.Gson;
+import it.polimi.ingsw.ps31.messages.ConcreteEnvelope;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
@@ -42,41 +43,37 @@ public abstract class ServerConnectionInterface {
     }
 
     public String serialize(GenericMessage genericMessage) {
+        //Imbusto il messaggio
+        ConcreteEnvelope envelope = genericMessage.wrap();
 
         //Creo gson
         Gson gson = JsonNetworking.networkingBuilder();
 
-        //Serializzo l'oggetto
-        String strObj = gson.toJson(genericMessage);
+        //Serializzo l'oggetto e ritorno il risultato
+        return gson.toJson(envelope);
+    }
 
-        return strObj;
+    private ConcreteEnvelope deserializeEnvelope(String msg)
+    {
+        //Creo gson
+        Gson gson = JsonNetworking.networkingBuilder();
+
+        //Deserializzo e ritorno la busta
+        return gson.fromJson(msg, ConcreteEnvelope.class);
     }
 
     public VCVisitable deserialize(String msg) {
-        if ( msg == null )
+        if(msg == null)
             return null;
 
-        //Creo gson
-        Gson gson = JsonNetworking.networkingBuilder();
-
-        //Deserializzo l'oggetto
-
-        VCVisitable strObj = gson.fromJson(msg, VCVisitable.class);
-
-        return strObj;
+        return deserializeEnvelope(msg).getVcVisitable();
     }
 
     public ConnectionMessage deserializeCM(String msg) {
-        if (msg == null)
+        if(msg == null)
             return null;
 
-        //Creo gson
-        Gson gson = JsonNetworking.networkingBuilder();
-
-        //Deserializzo l'oggetto
-        ConnectionMessage strObj = gson.fromJson(msg, ConnectionMessage.class);
-
-        return strObj;
+        return deserializeEnvelope(msg).getConnectionMessage();
     }
 
 

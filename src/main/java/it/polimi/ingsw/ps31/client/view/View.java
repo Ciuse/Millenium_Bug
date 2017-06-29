@@ -74,9 +74,10 @@ public abstract class View extends Observable implements Observer {
             if (message.getNotifySinglePlayer().equals(this.viewId)) {  //se il messaggio notifica solo un player controllo se è la mia la View di quel Player
                 System.out.println("View:update> Messaggio indirizzato a me: accettato");
                 message.accept(mVMessageVisitor);
-            }
+            } else
+                System.out.println("ClientMessageHistory:newMessage> Ricevuto nuovo messagio da bufferizzare e notificare");
         }
-        System.out.println("View:update> Messaggio non indirizzato a me: rifiutato");
+
     }
 
 //    public void setNetworkInterface(ClientNetworkInterface networkInterface)

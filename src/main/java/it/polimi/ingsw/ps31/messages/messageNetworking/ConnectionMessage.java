@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps31.messages.messageNetworking;
 
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
+import it.polimi.ingsw.ps31.messages.ConcreteEnvelope;
+import it.polimi.ingsw.ps31.networking.DeliverableMessageType;
 import it.polimi.ingsw.ps31.server.Match;
 
 /**
@@ -43,6 +45,15 @@ ConnectionMessage extends NetworkingMessage {
     {
         //this.disconnectedFrom = match;
     }
+
+
+    /* Abstract methods implementation */
+    public ConcreteEnvelope wrap()
+    {
+        return new ConcreteEnvelope(this);
+    }
+
+
 
     @Override
     public boolean equals(Object o) {
