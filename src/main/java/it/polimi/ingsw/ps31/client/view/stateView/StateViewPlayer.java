@@ -64,7 +64,7 @@ public class StateViewPlayer {
         return stateViewFamilyMemberList;
     }
 
-    public List<String> getStringPlayerAction() {
+    public List<String>getStringPlayerAction() {
         return stringPlayerAction;
     }
 
@@ -142,7 +142,15 @@ public class StateViewPlayer {
     public void updateState(StatePersonalBonusTiles statePersonalBonusTiles){
         if(statePersonalBonusTiles.getPersonalBonusTilesId()==-1){
             if(this.stateViewPersonalBonusTiles==null){
-                this.stateViewPersonalBonusTiles = new StateViewPersonalBonusTiles(playerId, statePersonalBonusTiles.getPersonalBonusTilesId(),statePersonalBonusTiles.getStateEffectList());
+                List<StateViewEffect> personalTilesEffectList = new ArrayList<>();
+                int i=0;
+                for (StateEffect effect:statePersonalBonusTiles.getStateEffectList()
+                     ) {
+                    personalTilesEffectList.add(new StateViewEffect());
+                    personalTilesEffectList.get(i).updateState(effect);
+                    i++;
+                }
+                this.stateViewPersonalBonusTiles = new StateViewPersonalBonusTiles(playerId, statePersonalBonusTiles.getPersonalBonusTilesId(),personalTilesEffectList);
             }
         }
     }

@@ -11,6 +11,8 @@ import com.googlecode.lanterna.terminal.Terminal;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.*;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
+import it.polimi.ingsw.ps31.model.bonus.Bonus;
+import it.polimi.ingsw.ps31.model.bonus.GetResourceMalus;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
@@ -18,6 +20,7 @@ import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.Servant;
+import it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction;
 
 import java.io.IOException;
 import java.util.Observable;
@@ -29,6 +32,7 @@ import static java.lang.String.valueOf;
  * Created by Giuseppe on 07/06/2017.
  */
 public class CmdLineView extends View {
+    private AskCommandThread askCommandThread;
     private DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
     private TerminalSize terminalSize = new TerminalSize(168, 46);
     private Terminal terminal = null;
@@ -45,6 +49,7 @@ public class CmdLineView extends View {
         printTower();
         printBoardActionSpace();
         printTextBox();
+        askVisualizationCommand();
     }
 
 
@@ -261,7 +266,7 @@ public class CmdLineView extends View {
             e.printStackTrace();
         }
 
-        printLastEvent("BENVENUTO IN LORENZO IL MAGNIFICO");
+        printLastEvent("BENVENUTO IN LORENZO IL MAGNIFICO GIOCATORE: "+super.getViewId());
 
     }
 
@@ -271,7 +276,7 @@ public class CmdLineView extends View {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        printLastEvent( "Input: "+ keyStroke1.toString());
+        printLastEvent( "Input>: "+ keyStroke1.getCharacter().toString());
     }
 
     public void input2(){
@@ -280,43 +285,58 @@ public class CmdLineView extends View {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        printLastEvent( "Input: "+ keyStroke2.toString());
+        printLastEvent( "Input>: "+ keyStroke2.getCharacter().toString());
     }
 
 
-
     @Override
-    public void askVisualizationCommand(){
-        try {
+    public void askVisualizationCommand() {
+        Thread t = new Thread() {
+            public void run() {
 
-            keyStroke1=null;
-            keyStroke1 = screen.pollInput();
-            while(cmdInterpreterView.toString().equals("IntrVisualization")) {
-                printLastEvent("Inserisci 1: per vusualizzare le carte");
+                printVisualizationMenu();
                 try {
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
+
+                    keyStroke1=null;
+                    keyStroke1 = screen.pollInput();
+                    while(cmdInterpreterView.toString().equals("IntrVisualization")) {
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        if(keyStroke1 !=null && (keyStroke1.getKeyType() == KeyType.Escape || keyStroke1.getKeyType() == KeyType.EOF)){
+                            break;
+                        }
+
+                        if(keyStroke1 !=null && keyStroke1.getKeyType() != KeyType.Escape && keyStroke1.getKeyType() != KeyType.EOF) {
+                            terminal.flush();
+                            printLastEvent( "Input>: "+ keyStroke1.getCharacter().toString());
+                            cmdInterpreterView.notGameMessageInterpreter(CmdLineView.this, keyStroke1.getCharacter());
+                            screen.refresh();
+                        }
+                        keyStroke1 = screen.pollInput();
+                    }
+                    if(keyStroke1 != null){
+                        screen.close();
+                    }
+                } catch (IOException e) {
                     e.printStackTrace();
-                }
+                }            }
+        };
+        t.start();
 
-                 if(keyStroke1 !=null && (keyStroke1.getKeyType() == KeyType.Escape || keyStroke1.getKeyType() == KeyType.EOF)){
-                     break;
-                }
 
-                if(keyStroke1 !=null && keyStroke1.getKeyType() != KeyType.Escape && keyStroke1.getKeyType() != KeyType.EOF) {
-                    terminal.flush();
-                    printLastEvent( "Input: "+ keyStroke1.toString());
-                    cmdInterpreterView.notGameMessageInterpreter(this, keyStroke1.getCharacter());
-                    screen.refresh();
-                }
-                keyStroke1 = screen.pollInput();
-            }
-            if(keyStroke1 != null){
-                screen.close();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+    }
+
+    public void printVisualizationMenu(){
+
+        printLastEvent("Inserisci 1: per vusualizzare una carta specifica");
+        printLastEvent("Inserisic 2: per scrivere i leader");
+        printLastEvent("inserisci 3: per scrivere il tuo personal bonus tiles");
+        printLastEvent("");
 
     }
 
@@ -339,10 +359,10 @@ public class CmdLineView extends View {
             e.printStackTrace();
         }
         if(keyStroke!=null) {
-            printLastEvent( "Input: "+ keyStroke.toString());
+            printLastEvent( "Input>: "+ keyStroke.getCharacter().toString());
             return keyStroke.getCharacter();
         }
-        printLastEvent( "Input: null");
+        printLastEvent( "Input>: null");
         return null;
     }
 
@@ -363,7 +383,7 @@ public class CmdLineView extends View {
                 consolePosition = consolePosition.withRelative(0, -13);
             }
             try {
-                Thread.sleep(300);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -581,9 +601,13 @@ public class CmdLineView extends View {
     
     @Override
     public void printDevelopmentCard(int cardId){
+
         TerminalSize cardBox = new TerminalSize(31, 21);
         TerminalPosition labelBoxTopLeft = new TerminalPosition (80,8);
         TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 1);
+        for(int i=0;i<21;i++) {
+            textGraphics.drawLine(labelBoxTopLeft.getColumn(), labelBoxTopLeft.getRow()+i, 111, labelBoxTopLeft.getRow()+i, ' ');
+        }
         textGraphics.drawLine(
                 labelBoxTopLeft.withRelativeColumn(1),
                 labelBoxTopLeft.withRelativeColumn(cardBox.getColumns() - 2),
@@ -602,8 +626,8 @@ public class CmdLineView extends View {
                 ) {
             if(developmentCard.getCardId()==cardId){
                 textGraphics.putString(labelBoxTopLeft.withRelative(1,1),developmentCard.getCardName());
-                screen.setCharacter(labelBoxTopLeft.withRelative(cardBox.getColumns()-3,1),getCardColorCharatcter(labelBoxTopLeft,developmentCard.getCardColor()));
-                textGraphics.putString(labelBoxTopLeft.withRelative(cardBox.getColumns()-2,1),valueOf(developmentCard.getCardId()));
+                screen.setCharacter(labelBoxTopLeft.withRelative(cardBox.getColumns()-4,1),getCardColorCharatcter(labelBoxTopLeft,developmentCard.getCardColor()));
+                textGraphics.putString(labelBoxTopLeft.withRelative(cardBox.getColumns()-3,1),valueOf(developmentCard.getCardId()));
                 textGraphics.drawLine(labelBoxTopLeft.withRelative(1,2),labelBoxTopLeft.withRelative(cardBox.getColumns()-2,2),Symbols.SINGLE_LINE_HORIZONTAL);
 
                 textGraphics.putString(labelBoxTopLeft.withRelative(1,3),"Cost: ");
@@ -821,95 +845,96 @@ public class CmdLineView extends View {
 
     private int printCardEffect(TerminalPosition labelBoxTopLeft, StateViewEffect effect,int j){
         int length=0;
-
-        textGraphics.putString(labelBoxTopLeft.withRelative(1,6+j),effect.getNameEffect()+": ");
-        if(effect.getNameEffect().equals("ResAtTheEnd")){
-            textGraphics.setCharacter(labelBoxTopLeft.withRelative(3+ effect.getNameEffect().length(), 6 + j), Symbols.ARROW_RIGHT);
-            textGraphics.putString(labelBoxTopLeft.withRelative(3+ effect.getNameEffect().length()+1, 6 + j), effect.getResourceToGain());
-            length++;
-        }else {
-            if (effect.getNameEffect().equals("GetRes")) {
-                textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), effect.getResourceToGain());
+        if(effect.getNameEffect()!=null) {
+            textGraphics.putString(labelBoxTopLeft.withRelative(1, 6 + j), effect.getNameEffect() + ": ");
+            if (effect.getNameEffect().equals("ResAtTheEnd")) {
+                textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), Symbols.ARROW_RIGHT);
+                textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 1, 6 + j), effect.getResourceToGain());
                 length++;
-
             } else {
-                if (effect.getResourceToPayList().size() == 0 && effect.getResourceToGain() != null && effect.getRequiredResource() == null) { //getResFromCardColor
+                if (effect.getNameEffect().equals("GetRes")) {
                     textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), effect.getResourceToGain());
-                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + effect.getResourceToGain().length() + 1, 6 + j + length), "X");
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + effect.getResourceToGain().length() + 3, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, effect.getCardColor()));
                     length++;
-                }
-                if (effect.getResourceToPayList().size() == 0 && effect.getResourceToGain() != null && effect.getRequiredResource() != null) { //get res from res
-                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), effect.getResourceToGain());
-                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + effect.getResourceToGain().length() + 1, 6 + j + length), "X");
-                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + effect.getResourceToGain().length() + 3, 6 + j + length), effect.getRequiredResource());
-                    length++;
-                }
-                if (effect.getResourceToPayList().size() != 0) { //change resources
-                    int i = 0;
-                    for (String gain : effect.getResourceToGainList()
-                            ) {
-                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j + length), gain);
-                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + gain.length() + 1, 6 + j + length), Symbols.ARROW_RIGHT);
-                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + gain.length() + 3, 6 + j + length), effect.getResourceToPayList().get(i));
+
+                } else {
+                    if (effect.getResourceToPayList().size() == 0 && effect.getResourceToGain() != null && effect.getRequiredResource() == null) { //getResFromCardColor
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), effect.getResourceToGain());
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + effect.getResourceToGain().length() + 1, 6 + j + length), "X");
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + effect.getResourceToGain().length() + 3, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, effect.getCardColor()));
                         length++;
-                        i++;
                     }
-                }
-                if (effect.getCardColor() != null && effect.getDiceValue() != -1 && effect.isAnyColor() == false) { //choose card
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j + length), Symbols.INVERSE_WHITE_CIRCLE);
-                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 1, 6 + j + length), valueOf(effect.getDiceValue()));
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 3, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, effect.getCardColor()));
-                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 5, 6 + j + length), effect.getResourceDiscount());
-                    length++;
-
-
-                }
-                if (effect.getCardColor() == null && effect.getDiceValue() != -1 && effect.isAnyColor() == true) { //choose AnyCard
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j + length), Symbols.INVERSE_WHITE_CIRCLE);
-                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 1, 6 + j + length), valueOf(effect.getDiceValue()));
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 3, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, CardColor.GREEN));
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 4, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, CardColor.YELLOW));
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 5, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, CardColor.BLUE));
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 6, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, CardColor.PURPLE));
-                    length++;
-                }
-
-                if(effect.getStateEffect1()!=null){ //Harvest
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), Symbols.INVERSE_WHITE_CIRCLE);
-                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length()+1, 6 + j), valueOf(effect.getDiceValue()));
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 7 + j),Symbols.DIAMOND);
-                    textGraphics.putString(labelBoxTopLeft.withRelative(2, 7 + j), effect.getStateEffect1().getNameEffect()+": ");
-                    textGraphics.putString(labelBoxTopLeft.withRelative(4 + effect.getStateEffect1().getNameEffect().length(), 7 + j), effect.getStateEffect1().getResourceToGain());
-                    length++;
-                    length++;
-                }
-                if(effect.getStateEffect2()!=null){ // Prod 1
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), Symbols.INVERSE_WHITE_CIRCLE);
-                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length()+1, 6 + j), valueOf(effect.getDiceValue()));
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 7 + j),Symbols.DIAMOND);
-                    textGraphics.putString(labelBoxTopLeft.withRelative(2, 7 + j), effect.getStateEffect2().getNameEffect()+": ");
-                    int i = 0;
-                    for (String gain : effect.getStateEffect2().getResourceToGainList()
-                            ) {
-                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getStateEffect2().getNameEffect().length(), 7 + j + length), gain);
-                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getStateEffect2().getNameEffect().length() + gain.length() + 1, 7 + j + length), Symbols.ARROW_RIGHT);
-                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getStateEffect2().getNameEffect().length() + gain.length() + 3, 7 + j + length), effect.getStateEffect2().getResourceToPayList().get(i));
+                    if (effect.getResourceToPayList().size() == 0 && effect.getResourceToGain() != null && effect.getRequiredResource() != null) { //get res from res
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), effect.getResourceToGain());
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + effect.getResourceToGain().length() + 1, 6 + j + length), "X");
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + effect.getResourceToGain().length() + 3, 6 + j + length), effect.getRequiredResource());
                         length++;
-                        i++;
                     }
-                    length++;
-                }
-                if(effect.getStateEffect3()!=null){ //Prod 2
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), Symbols.INVERSE_WHITE_CIRCLE);
-                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length()+1, 6 + j), valueOf(effect.getDiceValue()));
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 7 + j),Symbols.DIAMOND);
-                    textGraphics.putString(labelBoxTopLeft.withRelative(2, 7 + j), effect.getStateEffect3().getNameEffect()+": ");
-                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getStateEffect3().getNameEffect().length(), 7 + j), effect.getStateEffect3().getResourceToGain());
-                    textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getStateEffect3().getNameEffect().length() + effect.getStateEffect3().getResourceToGain().length() + 1, 7 + j + length), "X");
-                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getStateEffect3().getNameEffect().length() + effect.getStateEffect3().getResourceToGain().length() + 3, 7 + j + length), getCardColorCharatcter(labelBoxTopLeft, effect.getStateEffect3().getCardColor()));
-                    length++;
-                    length++;
+                    if (effect.getResourceToPayList().size() != 0) { //change resources
+                        int i = 0;
+                        for (String gain : effect.getResourceToGainList()
+                                ) {
+                            textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j + length), gain);
+                            textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + gain.length() + 1, 6 + j + length), Symbols.ARROW_RIGHT);
+                            textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + gain.length() + 3, 6 + j + length), effect.getResourceToPayList().get(i));
+                            length++;
+                            i++;
+                        }
+                    }
+                    if (effect.getCardColor() != null && effect.getDiceValue() != -1 && effect.isAnyColor() == false) { //choose card
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j + length), Symbols.INVERSE_WHITE_CIRCLE);
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 1, 6 + j + length), valueOf(effect.getDiceValue()));
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 3, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, effect.getCardColor()));
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 5, 6 + j + length), effect.getResourceDiscount());
+                        length++;
+
+
+                    }
+                    if (effect.getCardColor() == null && effect.getDiceValue() != -1 && effect.isAnyColor() == true) { //choose AnyCard
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j + length), Symbols.INVERSE_WHITE_CIRCLE);
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 1, 6 + j + length), valueOf(effect.getDiceValue()));
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 3, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, CardColor.GREEN));
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 4, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, CardColor.YELLOW));
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 5, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, CardColor.BLUE));
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 6, 6 + j + length), getCardColorCharatcter(labelBoxTopLeft, CardColor.PURPLE));
+                        length++;
+                    }
+
+                    if (effect.getStateEffect1() != null) { //Harvest
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), Symbols.INVERSE_WHITE_CIRCLE);
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 1, 6 + j), valueOf(effect.getDiceValue()));
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 7 + j), Symbols.DIAMOND);
+                        textGraphics.putString(labelBoxTopLeft.withRelative(2, 7 + j), effect.getStateEffect1().getNameEffect() + ": ");
+                        textGraphics.putString(labelBoxTopLeft.withRelative(4 + effect.getStateEffect1().getNameEffect().length(), 7 + j), effect.getStateEffect1().getResourceToGain());
+                        length++;
+                        length++;
+                    }
+                    if (effect.getStateEffect2() != null) { // Prod 1
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), Symbols.INVERSE_WHITE_CIRCLE);
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 1, 6 + j), valueOf(effect.getDiceValue()));
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 7 + j), Symbols.DIAMOND);
+                        textGraphics.putString(labelBoxTopLeft.withRelative(2, 7 + j), effect.getStateEffect2().getNameEffect() + ": ");
+                        int i = 0;
+                        for (String gain : effect.getStateEffect2().getResourceToGainList()
+                                ) {
+                            textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getStateEffect2().getNameEffect().length(), 7 + j + length), gain);
+                            textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getStateEffect2().getNameEffect().length() + gain.length() + 1, 7 + j + length), Symbols.ARROW_RIGHT);
+                            textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getStateEffect2().getNameEffect().length() + gain.length() + 3, 7 + j + length), effect.getStateEffect2().getResourceToPayList().get(i));
+                            length++;
+                            i++;
+                        }
+                        length++;
+                    }
+                    if (effect.getStateEffect3() != null) { //Prod 2
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length(), 6 + j), Symbols.INVERSE_WHITE_CIRCLE);
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getNameEffect().length() + 1, 6 + j), valueOf(effect.getDiceValue()));
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 7 + j), Symbols.DIAMOND);
+                        textGraphics.putString(labelBoxTopLeft.withRelative(2, 7 + j), effect.getStateEffect3().getNameEffect() + ": ");
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getStateEffect3().getNameEffect().length(), 7 + j), effect.getStateEffect3().getResourceToGain());
+                        textGraphics.putString(labelBoxTopLeft.withRelative(3 + effect.getStateEffect3().getNameEffect().length() + effect.getStateEffect3().getResourceToGain().length() + 1, 7 + j + length), "X");
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3 + effect.getStateEffect3().getNameEffect().length() + effect.getStateEffect3().getResourceToGain().length() + 3, 7 + j + length), getCardColorCharatcter(labelBoxTopLeft, effect.getStateEffect3().getCardColor()));
+                        length++;
+                        length++;
+                    }
                 }
             }
         }
@@ -1054,7 +1079,7 @@ public class CmdLineView extends View {
                 textGraphics.setCharacter(labelBoxTopRightCorner, Symbols.DOUBLE_LINE_TOP_RIGHT_CORNER);
                 textGraphics.drawLine(labelBoxTopRightCorner.withRelativeRow(1), labelBoxTopRightCorner.withRelativeRow(familyMemberBox.getRows() - 1), Symbols.DOUBLE_LINE_VERTICAL);
                 textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(familyMemberBox.getRows() - 1), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
-                textGraphics.putString(labelBoxTopLeft.withRelative(1, 1), ((Integer) familyMember.getDiceValue()).toString());
+                textGraphics.putString(labelBoxTopLeft.withRelative(1, 1), (valueOf(familyMember.getDiceValue())));
                 screen.setCharacter(labelBoxTopLeft.withRelative(2, 1),getDiceColorCharacter(labelBoxTopLeft,familyMember.getDiceColor()));
 
             }
@@ -1130,6 +1155,29 @@ public class CmdLineView extends View {
     }
 
 
+
+    public final void updatePlayerAction(StatePlayerAction statePlayerAction) {
+        for (StateViewPlayer viewPlayer : super.getStateViewPlayerList()
+                ) {
+            if (viewPlayer.getPlayerId().equals(statePlayerAction.getPlayerId()))
+                viewPlayer.updateState(statePlayerAction);
+        }
+        if(firstTime) {
+            setFirstTime(false);        //TODO PROBABILMENTE é DA SPOSTATE ( CMQ LE AZIONI PER ORA DEVONO ESSERE STAMPATE PER ULTIME)
+            printTower();
+            printFamilyMemberInAction();
+            printAllPersonalBoard();
+            printPlayerInAction();
+            printAllPlayer();
+            printPlayerAction();
+        }
+
+        if (!super.firstTime) {
+            printPlayerAction();
+        }
+
+    }
+
     public KeyStroke getKeyStroke1() {
         return keyStroke1;
     }
@@ -1137,4 +1185,30 @@ public class CmdLineView extends View {
     public KeyStroke getKeyStroke2() {
         return keyStroke2;
     }
+
+    public Screen getScreen() {
+        return screen;
+    }
+
+    public TextGraphics getTextGraphics() {
+        return textGraphics;
+    }
+
+    public CmdInterpreterView getCmdInterpreterView() {
+        return cmdInterpreterView;
+    }
+
+    public Terminal getTerminal() {
+        return terminal;
+    }
+
+
+    public void setKeyStroke1(KeyStroke keyStroke1) {
+        this.keyStroke1 = keyStroke1;
+    }
+
+    public void setKeyStroke2(KeyStroke keyStroke2) {
+        this.keyStroke2 = keyStroke2;
+    }
 }
+

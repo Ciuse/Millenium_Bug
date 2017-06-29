@@ -78,10 +78,12 @@ public class StateViewPersonalBoard {
 
     public void updateState(StatePersonalBoard statePersonalBoard) {
         if (statePersonalBoard.getPlayerId().equals(this.playerId)) {
-            if (statePersonalBoard.getStateCardBoxes() != null) {
+            if (!statePersonalBoard.getStateCardBoxes().isEmpty()) {
                 for (StateCardBox stateCardBox : statePersonalBoard.getStateCardBoxes()
                         ) {
-                    updateState(stateCardBox);
+                    if (stateCardBox != null) {
+                        updateState(stateCardBox);
+                    }
                 }
             }
         }

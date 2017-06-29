@@ -17,7 +17,7 @@ public class GetResourcesAtTheEndEffect extends GetResourceEffect {
     }
 
     @Override
-    public String nameString(){
+    public String getNameString(){
         return "ResAtTheEnd";
     }
 }

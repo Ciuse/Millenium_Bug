@@ -74,8 +74,6 @@ public class ResourceList {
         }
     }
 
-
-
     public Resource remove(int index){
         return this.resourceList.remove(index);
     }
@@ -99,7 +97,7 @@ public class ResourceList {
             this.resourceList.get(i).multValue(factor);
         }
     }
-    public Resource getSpecificResource(Class<? extends Resource> resourceClass) throws NullPointerException{
+    public Resource getSpecificResource(Class<? extends Resource> resourceClass){
         for(int i=0; i<this.resourceList.size();i++){
             if(resourceClass.equals(resourceList.get(i).getClass())){
                 return resourceList.get(i);

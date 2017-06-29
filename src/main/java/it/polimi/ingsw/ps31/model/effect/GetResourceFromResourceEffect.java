@@ -25,7 +25,7 @@ public class GetResourceFromResourceEffect extends GetResourceEffect { //per ogn
         return requiredResource.toString();
     }
 
-    public String nameString(){
+    public String getNameString(){
         return "ResFromRes";
     }
 }

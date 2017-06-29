@@ -17,7 +17,7 @@ public class ChooseCardEffectWithDiscount extends ChooseCardEffect {
     public void activate(Player player) {
         player.getPlayerActionSet().chooseCard(super.getCardColor(),super.getDiceValue(),super.isAnyColor(),this.resourcesDiscount);
     }
-    public String nameString(){
+    public String getNameString(){
         return "ChooseCard+D";
     }
 

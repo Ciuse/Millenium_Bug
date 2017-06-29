@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand;
 
 import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewDevelopmentCard;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
@@ -22,22 +23,39 @@ public class IntrVisualization implements CmdInterpreterView {
                     stringBuilder.append(character2);
 
 
-                    int cardNumber =Integer.parseInt(stringBuilder.toString());
+                    int cardNumber = Integer.parseInt(stringBuilder.toString());
                     System.out.println(cardNumber);
 
-                    for (StateViewDevelopmentCard cardToPrint:cmdLineView.getStateViewGame().getStateViewDevelopmentCardList()
-                         ) {
-                        if(cardToPrint.getCardId()==cardNumber){
-                            cmdLineView.printDevelopmentCard(cardNumber);
+                    if (cardNumber > 0 && cardNumber <= 96) {
+                        for (StateViewDevelopmentCard cardToPrint : cmdLineView.getStateViewGame().getStateViewDevelopmentCardList()
+                                ) {
+                            if (cardToPrint.getCardId() == cardNumber) {
+                                cmdLineView.printDevelopmentCard(cardNumber);
+                            }
                         }
                     }
+                    else {
+                        cmdLineView.printLastEvent("hai inserito un cardId non valido");
+                    }
                 }
-                else cmdLineView.printLastEvent("Non hai inserito un numero");
+                else {
+                    cmdLineView.printLastEvent("Non hai inserito un numero");
+                }
             }
             else cmdLineView.printLastEvent("Non hai inserito un numero");
         }
 
         if(in.compareTo('2')==0) {
+            String leaderName = "Possiedi";
+
+            if (!cmdLineView.getMyStateViewPlayer().getStateViewLeaderCardList().isEmpty()) {
+                for (StateViewLeaderCard leaderCard : cmdLineView.getMyStateViewPlayer().getStateViewLeaderCardList()
+                        ) {
+                    leaderName = leaderName + leaderCard.getLeaderName() + "/ ";
+                }
+                cmdLineView.printLastEvent(leaderName);
+            }
+            else cmdLineView.printLastEvent("Non possiedi Leader");
         }
 
         if(in.compareTo('3')==0) {
@@ -48,6 +66,7 @@ public class IntrVisualization implements CmdInterpreterView {
 
         if(in.compareTo('5')==0) {
         }
+        cmdLineView.printVisualizationMenu();
 
     }
 

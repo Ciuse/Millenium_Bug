@@ -21,7 +21,9 @@ public class MVMessageVisitor  implements MVVisitor {
 
     @Override
     public void visit(MVUpdateState mvUpdateState) {
-        view.printLastEvent(mvUpdateState.getStringToPrint()+" ");
+        if(mvUpdateState.getStringToPrint()!=null) {
+            view.printLastEvent(mvUpdateState.getStringToPrint() + " ");
+        }
         MVStateInfoVisitor mvStateInfoVisitor =new MVStateInfoVisitor();
         mvStateInfoVisitor.setView(view);
         mvUpdateState.getStateType().acceptState(mvStateInfoVisitor);

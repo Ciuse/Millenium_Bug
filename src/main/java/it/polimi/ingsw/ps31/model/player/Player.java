@@ -248,7 +248,9 @@ public class Player {
     {
         this.finalBonusResources.add(bonusResourcesToAdd);
     }
-    public FamilyMember     getSpecificFamilyMember(DiceColor color)
+
+
+    public FamilyMember getSpecificFamilyMember(DiceColor color)
     {
         Iterator<FamilyMember> itr = familyMembers.iterator();
 
@@ -261,19 +263,29 @@ public class Player {
         return itrMember;
     }
 
+    public MarkerDisc getSpecificMarkerDisc(Class<? extends PointResource> resourceType){
+        for (MarkerDisc markerDisc : markerDiscList
+                ) {
+            if (markerDisc.getResourceType().equals(resourceType)){
+                return markerDisc;
+            }
+        }
+        return null;
+    }
+
     public DevelopmentCardList getColorCardList (CardColor cardColor)
     {
         return new DevelopmentCardList(this.personalBoard.getPlayerCardList().getSpecificCardList(cardColor));
     }
 
     public boolean checkIfOnlyNEUTRALRemained(){
-        if(this.getSpecificFamilyMember(DiceColor.NEUTRAL).isPlaced()==true){
+        if(this.getSpecificFamilyMember(DiceColor.NEUTRAL).isPlaced()){
             return false;
         }
         else{
-            if(this.getSpecificFamilyMember(DiceColor.BLACK).isPlaced()==true
-                    &&this.getSpecificFamilyMember(DiceColor.ORANGE).isPlaced()==true
-                    &&this.getSpecificFamilyMember(DiceColor.WHITE).isPlaced()==true){
+            if(this.getSpecificFamilyMember(DiceColor.BLACK).isPlaced()
+                    &&this.getSpecificFamilyMember(DiceColor.ORANGE).isPlaced()
+                    &&this.getSpecificFamilyMember(DiceColor.WHITE).isPlaced()){
                 return true;
             }
         }
@@ -286,8 +298,7 @@ public class Player {
     }
 
     public StatePlayer getStateInfoPlayer(){
-        StatePlayer stateInfoPlayer = new StatePlayer(playerId, nickname,playerColor);
-        return stateInfoPlayer;
+        return new StatePlayer(playerId, nickname,playerColor);
     }
 
     public StatePlayerResources getStatePlayerResources(){

@@ -59,8 +59,10 @@ public class FamilyMember {
     public void resetFamilyMember() {
         this.diceValue = 0;
         this.additionalValue = 0;
-        this.actionSpace.removeFamilyMember(this);
-        this.actionSpace = null;
+        if (actionSpace != null) {
+            this.actionSpace.removeFamilyMember(this);
+            this.actionSpace = null;
+        }
     }
 
     public int getTotalValue()

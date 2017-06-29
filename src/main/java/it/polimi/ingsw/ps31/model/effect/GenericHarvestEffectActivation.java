@@ -26,7 +26,7 @@ public class GenericHarvestEffectActivation extends Effect { //è l'effetto gene
         int diceValue = player.getLastUsedFamilyMember().getTotalValue()+basicValue;
         player.getPlayerActionSet().activateHarvest(diceValue);
     }
-    public String nameString(){
+    public String getNameString(){
         return "ActHarvest";
     }
 

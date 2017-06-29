@@ -26,7 +26,7 @@ public class GetResourceEffectFromCard extends GetResourceEffect {
     }
 
     @Override
-    public String nameString(){
+    public String getNameString(){
         return "ResFromCard";
     }
 

@@ -28,7 +28,7 @@ public class BonusAndMalusEffect extends Effect  implements ActiveBonus{
         bonus.activate(player);
     }
 
-    public String nameString() {
+    public String getNameString() {
         return null;
     }
 

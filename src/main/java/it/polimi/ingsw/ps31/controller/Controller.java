@@ -33,7 +33,7 @@ import java.util.Observer;
 /**
  * Created by Giuseppe on 05/06/2017.
  */
-public class Controller implements Observer {
+public class Controller extends Thread implements Observer {
     private Model model;
     private ModelChoices modelChoices;
     private VirtualView virtualView;
@@ -41,11 +41,26 @@ public class Controller implements Observer {
     private TempModelStateForLeaderChoice tempModelStateForLeaderChoice;
     private GameUtility gameUtility;
 
+
+    public Controller(Model model, VirtualView virtualView, GameUtility gameUtility) {
+        this.model = model;
+        this.modelChoices=model.getModelChoices();
+        this.lastModelStateForControl=model.getModelChoices().getLastModelStateForControl();
+        this.tempModelStateForLeaderChoice=model.getModelChoices().getTempModelStateForLeaderChoice();
+        this.virtualView = virtualView;
+        this.gameUtility = gameUtility;
+    }
+
     public void update(Observable o, Object arg) {
         VCMessageVisitor messageVisitor = new VCMessageVisitor();
         messageVisitor.setController(this);
         VCVisitable message = (VCVisitable) arg;
         message.accept(messageVisitor);
+    }
+
+    @Override
+    public void run() {
+
     }
 
     public void selectStartLeader(int leaderIdToCreate, PlayerId viewId) {

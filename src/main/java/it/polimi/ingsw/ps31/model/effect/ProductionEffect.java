@@ -54,7 +54,7 @@ public class ProductionEffect extends Effect {
         return getResourceEffect;
     }
 
-    public String nameString(){
+    public String getNameString(){
         return "ProdEffect";
     }
 

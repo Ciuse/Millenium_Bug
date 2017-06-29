@@ -19,7 +19,7 @@ public class HarvestEffectActivationFromCard extends GenericHarvestEffectActivat
     }
 
     @Override
-    public String nameString(){
+    public String getNameString(){
         return "HarvFromCard";
     }
 }

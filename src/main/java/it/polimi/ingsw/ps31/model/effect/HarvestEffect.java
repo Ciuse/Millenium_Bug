@@ -38,7 +38,7 @@ public class HarvestEffect extends Effect {
         player.getPlayerActionSet().activateHarvest(harvestActionValue);
     }
 
-    public String nameString(){
+    public String getNameString(){
         return "HarvEffect";
     }
 

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.server;
 
+import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
@@ -18,6 +19,10 @@ public class VirtualView extends Observable implements Observer {
 
     public VirtualView(NetworkInterface networkInterface) {
         this.networkInterface = networkInterface;
+    }
+
+    public void addController(Controller controller) {
+        this.addObserver(controller);
     }
 
 

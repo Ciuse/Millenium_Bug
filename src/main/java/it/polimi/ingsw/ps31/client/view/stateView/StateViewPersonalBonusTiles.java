@@ -11,9 +11,9 @@ import java.util.List;
 public class StateViewPersonalBonusTiles  {
     private final PlayerId playerId;
     private final int personalBonusTilesId;
-    private final List<StateEffect> stateEffectList;
+    private final List<StateViewEffect> stateEffectList;
 
-    public StateViewPersonalBonusTiles(PlayerId playerId, int personalBonusTilesId, List<StateEffect> stateEffectList) {
+    public StateViewPersonalBonusTiles(PlayerId playerId, int personalBonusTilesId, List<StateViewEffect> stateEffectList) {
         this.playerId = playerId;
         this.personalBonusTilesId = personalBonusTilesId;
         this.stateEffectList = stateEffectList;
@@ -27,7 +27,7 @@ public class StateViewPersonalBonusTiles  {
         return personalBonusTilesId;
     }
 
-    public List<StateEffect> getStateEffectList() {
+    public List<StateViewEffect> getStateEffectList() {
         return stateEffectList;
     }
 }

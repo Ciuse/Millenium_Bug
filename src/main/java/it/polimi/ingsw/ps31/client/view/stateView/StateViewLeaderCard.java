@@ -9,8 +9,8 @@ import it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard;
 public class StateViewLeaderCard  {
     private int leaderId;
     private String leaderName;
-    private StateEffect abilityOneTimeForTurnString;
-    private StateEffect permanentAbilityString;
+    private StateViewEffect abilityOneTimeForTurnString;
+    private StateViewEffect permanentAbilityString;
     private boolean played;
     private boolean usedEffect1;
 
@@ -22,11 +22,11 @@ public class StateViewLeaderCard  {
         return leaderName;
     }
 
-    public StateEffect getAbilityOneTimeForTurnString() {
+    public StateViewEffect getAbilityOneTimeForTurnString() {
         return abilityOneTimeForTurnString;
     }
 
-    public StateEffect getPermanentAbilityString() {
+    public StateViewEffect getPermanentAbilityString() {
         return permanentAbilityString;
     }
 
@@ -43,8 +43,8 @@ public class StateViewLeaderCard  {
             this.leaderId = stateLeaderCard.getLeaderId();
             if (stateLeaderCard.getLeaderName() != null)
                 this.leaderName = stateLeaderCard.getLeaderName();
-            this.abilityOneTimeForTurnString = stateLeaderCard.getAbilityOneTimeForTurnString();
-            this.permanentAbilityString = stateLeaderCard.getPermanentAbilityString();
+            this.abilityOneTimeForTurnString.updateState(stateLeaderCard.getAbilityOneTimeForTurnString());
+            this.permanentAbilityString.updateState(stateLeaderCard.getPermanentAbilityString());
             this.played = stateLeaderCard.isPlayed();
             this.usedEffect1 = stateLeaderCard.isUsedEffect1();
         }

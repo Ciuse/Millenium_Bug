@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.game;
 
 import com.google.gson.Gson;
+import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
@@ -82,30 +83,30 @@ public class GameLogic {
         System.out.println("GameLogic:playGame> Tutte le impostazioni correttamente caricate. Faccio partire il gioco");
 
 
-        gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
-
-        gameUtility.phaseChoicePersonalBonusTiles(); //chiedo ai player di scegliere (in base all ordine di connessione) un personal bonus tiles e li aggiorno
+//        gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
+//
+//        gameUtility.phaseChoicePersonalBonusTiles(); //chiedo ai player di scegliere (in base all ordine di connessione) un personal bonus tiles e li aggiorno
 
 
         //aggiorno lo stato iniziali degli stati della view
+
+        GameBoard gameBoard = new GameBoard(gameUtility.getTowerActionSpaceEffectList(), gameUtility.getActionSpaceEffectList(), gameUtility.getFaithTrackExtraValue(), model);
+        gameUtility.setGameBoard(gameBoard);
+
+        //viene fatto dopo aver saputo in quanto si gioca (per istanziare le aree da 3 e/o 4 giocatori)
 
         System.out.println("GameLogic:playGame> invio stato giocatori");
         gameUtility.updateStartAllPlayersInformation();
         System.out.println("GameLogic:playGame> invio risorse giocatori");
         gameUtility.updateStartAllPlayersResources();
-        System.out.println("GameLogic:playGame> invio stato familiari");
-        gameUtility.updateStartAllPlayersFamilyMember();
         System.out.println("GameLogic:playGame> invio personal board");
         gameUtility.updateStartAllPersonalBoard();
         System.out.println("GameLogic:playGame> invio marker disc");
         gameUtility.updateStartAllMarkerDisc();
-        System.out.println("GameLogic:playGame> invio carte sviluppo");
-        gameUtility.updateStartAllDevelopmentCard();
+//        System.out.println("GameLogic:playGame> invio carte sviluppo");
+//        gameUtility.updateStartAllDevelopmentCard();
+//
 
-
-        //viene fatto dopo aver saputo in quanto si gioca (per istanziare le aree da 3 e/o 4 giocatori)
-        GameBoard gameBoard = new GameBoard(gameUtility.getTowerActionSpaceEffectList(), gameUtility.getActionSpaceEffectList(), gameUtility.getFaithTrackExtraValue(), model);
-        gameUtility.setGameBoard(gameBoard);
 
         gameUtility.getDevelopmentCardList().shuffleCardList();  //mischio la lista di carte
         Collections.shuffle(gameUtility.getPersonalBonusTilesList()); //mischio i personal bonus tiles
@@ -146,4 +147,7 @@ public class GameLogic {
 
     }
 
+    public GameUtility getGameUtility() {
+        return gameUtility;
+    }
 }

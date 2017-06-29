@@ -48,7 +48,7 @@ public class ChangeResourceEffect extends Effect {
     }
 
 
-    public String nameString(){
+    public String getNameString(){
         return "Change";
     }
 

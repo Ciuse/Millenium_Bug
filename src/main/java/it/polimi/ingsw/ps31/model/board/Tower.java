@@ -70,7 +70,7 @@ public class Tower {
     }
 
     public void drawCardFromDeck(){
-        for(int cardSpaceNum=0;cardSpaceNum<=TOWERDIMENSION;cardSpaceNum++) {
+        for(int cardSpaceNum=0;cardSpaceNum<TOWERDIMENSION;cardSpaceNum++) {
             towerCardSpaceList.get(cardSpaceNum).setCard(deck.draw());
         }
 

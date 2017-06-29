@@ -24,9 +24,11 @@ public class MarkerDisc {
     public Class<? extends PointResource> getResourceType(){
         return resourceType;
     }
-    public void setTrackCell(){
-        if(trackCell.getResourceType().equals(this.getResourceType()))
-        trackCell.setMarkerDisc(this);
+    public void setTrackCell(TrackCell trackCell){
+        if(trackCell.getResourceType().equals(this.getResourceType())){
+            this.trackCell=trackCell;
+            trackCell.setMarkerDisc(this);
+        }
     }
     //TODO FINIRE ANCORA LA CLASSE CON I SET PER LE TRACK CELL
 

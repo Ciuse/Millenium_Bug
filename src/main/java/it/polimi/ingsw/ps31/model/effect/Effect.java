@@ -50,7 +50,7 @@ public abstract class Effect implements EffectActivation{
         return cardId;
     }
 
-    public String nameString(){
+    public String getNameString(){
         return null;
     }
 

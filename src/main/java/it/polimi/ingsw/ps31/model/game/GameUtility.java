@@ -63,23 +63,23 @@ public class GameUtility{
 /* metodi che riguardano il funzionamento delle principali fasi del gioco e della loro logica interna */
 
     public void phaseActionGame(int playerNumber,int action) {
-        if (action == 1 && playerList.get(playerMaxNumber).getFlagTurnExcommunication() == 1) {
-            this.endActionTurn(playerList.get(playerMaxNumber));
+        if (action == 1 && playerList.get(playerNumber).getFlagTurnExcommunication() == 1) {
+            this.endActionTurn(playerList.get(playerNumber));
         }
         if (playerList.get(playerNumber).checkIfOnlyNEUTRALRemained() == true) {
             gameBoard.getEndActionButton().setActive(true);
         }
-        this.startActionTurn(playerList.get(playerMaxNumber));
-        this.doActionTurn(playerList.get(playerMaxNumber));
-        this.endActionTurn(playerList.get(playerMaxNumber));
+        this.startActionTurn(playerList.get(playerNumber));
+        this.doActionTurn(playerList.get(playerNumber));
+        this.endActionTurn(playerList.get(playerNumber));
     }
 
     public void extraPhaseActionGame() {
             for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
-                if (playerList.get(playerMaxNumber).getFlagTurnExcommunication() == 1) {
-                    this.startActionTurn(playerList.get(playerMaxNumber));
-                    this.doActionTurn(playerList.get(playerMaxNumber));
-                    this.endActionTurn(playerList.get(playerMaxNumber));
+                if (playerList.get(playerNumber).getFlagTurnExcommunication() == 1) {
+                    this.startActionTurn(playerList.get(playerNumber));
+                    this.doActionTurn(playerList.get(playerNumber));
+                    this.endActionTurn(playerList.get(playerNumber));
 
                 }
             }
@@ -316,6 +316,14 @@ public class GameUtility{
         }
     }
 
+    public void setMarkerDisc(){
+        for (Player player: playerList
+                ) {
+            player.getSpecificMarkerDisc(FaithPoint.class).setTrackCell(gameBoard.getFaithPointTrack().getTrackCell().get(0));
+            player.getSpecificMarkerDisc(MilitaryStrength.class).setTrackCell(gameBoard.getMilitaryPointTrack().getTrackCell().get(0));
+            player.getSpecificMarkerDisc(VictoryPoint.class).setTrackCell(gameBoard.getVictoryPointTrack().getTrackCell().get(0));
+        }
+    }
 
     /*metodi di creazione oggetti vari */
 
@@ -559,7 +567,7 @@ public class GameUtility{
                 aPlayerList.getFamilyMembers().get(j).setDiceValue(gameBoard.getSpecificDice(aPlayerList.getFamilyMembers().get(j).getDiceColor()).getValue());
             }
         }
-
+        updateStartAllPlayersFamilyMember();
     }
 
     public void resetFamilyMember() {
@@ -740,6 +748,7 @@ public class GameUtility{
         {
             this.gameBoard.add4PlayerMarketSpace(actionSpaceEffectList);
         }
+        setMarkerDisc();
     }
 
     public void setTimerConnection(long timerConnection) {

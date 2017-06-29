@@ -24,9 +24,9 @@ public class GameBoard{
     private BigHarvest bigHarvest;
     private BigProduction bigProduction;
     private List<Dice> dice = new ArrayList<>();
-    private static MilitaryPointTrack militaryPointTrack;
-    private static FaithPointTrack faithPointTrack;
-    private static VictoryPointTrack victoryPointTrack;
+    private MilitaryPointTrack militaryPointTrack;
+    private FaithPointTrack faithPointTrack;
+    private VictoryPointTrack victoryPointTrack;
     private EndActionButton endActionButton;
     private List<ExcommunicationTiles> excommunicationTilesList;
     private final Model model;
@@ -148,15 +148,15 @@ public class GameBoard{
         return new ArrayList<>(dice);
     }
 
-    public static MilitaryPointTrack getMilitaryPointTrack() {
+    public MilitaryPointTrack getMilitaryPointTrack() {
         return militaryPointTrack;
     }
 
-    public static FaithPointTrack getFaithPointTrack() {
+    public FaithPointTrack getFaithPointTrack() {
         return faithPointTrack;
     }
 
-    public static VictoryPointTrack getVictoryPointTrack() {
+    public VictoryPointTrack getVictoryPointTrack() {
         return victoryPointTrack;
     }
 

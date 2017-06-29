@@ -24,6 +24,7 @@ import static java.lang.Thread.sleep;
 public class ModelChoices {
     //classe che gestisce tutti i wait del model per attendere le risposte da parte degli utenti / o per attendere che tutti siano pronti per giocare
     private LastModelStateForControl lastModelStateForControl=new LastModelStateForControl();
+    private TempModelStateForLeaderChoice tempModelStateForLeaderChoice=new TempModelStateForLeaderChoice();
     private int leaderChoosenCounter=0;
     private int listToPay =-1;
     private TowerCardSpace towerCardSpaceChosen=null;
@@ -34,7 +35,6 @@ public class ModelChoices {
     private PersonalBonusTiles personalBonusTilesChosen=null;
     private PlayerColor playerColorChosen=null;
     private LeaderCard leaderCardChosen=null;
-    private TempModelStateForLeaderChoice tempModelStateForLeaderChoice=new TempModelStateForLeaderChoice();
     private String stateModelChoices="StateDefault";
     private InformationFromNetworking informationFromNetworking;
     private long timerConnection=120000;
@@ -241,7 +241,7 @@ public class ModelChoices {
 
         boolean timerStarted=false;
         setStateConnection();
-        while(informationFromNetworking.getPlayerNameList().size()<4&&stateModelChoices.equals("StateConnection")){     //continuo a ciclare finchè non si connettono 4 player o il tempo scade
+        while(informationFromNetworking.getPlayerNameList().size()<1&&stateModelChoices.equals("StateConnection")){     //continuo a ciclare finchè non si connettono 4 player o il tempo scade
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {

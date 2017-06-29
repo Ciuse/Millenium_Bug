@@ -28,7 +28,7 @@ public class StateEffect extends StateType {
     public StateEffect(Effect effect) {
         if(effect!=null) {
             this.cardId = effect.getCardId();
-            this.nameEffect = effect.nameString();
+            this.nameEffect = effect.getNameString();
             this.basicValue = effect.getBasicValue();
             this.resourceToGainList =effect.getResourceToGainListString();
             this.resourceToPayList =effect.getResourceToPayListString();

@@ -2,8 +2,10 @@ package it.polimi.ingsw.ps31.server;
 
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
 import it.polimi.ingsw.ps31.client.view.View;
+import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
 import it.polimi.ingsw.ps31.model.Model;
+import it.polimi.ingsw.ps31.model.actionControls.Control;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.game.GameLogic;
 import it.polimi.ingsw.ps31.model.game.InformationFromNetworking;
@@ -24,10 +26,8 @@ public class Match extends Thread{
     private ServerConnectionThread hostConnection; //primo client che si collega alla partita
     private int id;
     private boolean listenNetworkInterfaces = true;
-
-    //Attibuti di test
     private Model model;
-    private ModelProva modelProva;
+    private VirtualView virtualView;
 
     //private List<Socket> sockets = new ArrayList<>();
 
@@ -47,8 +47,12 @@ public class Match extends Thread{
 
     public void run()
     {
+        this.virtualView=new VirtualView(networkInterface);
+        Controller controller = new Controller(model,virtualView,gameLogic.getGameUtility());
+        virtualView.addController(controller);
+        controller.start();
         gameLogic.createJson();
-        gameLogic.startConnection(new VirtualView(networkInterface));
+        gameLogic.startConnection(virtualView);
         gameLogic.playGame();
 
         System.out.println("Match:run> ");

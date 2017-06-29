@@ -2,10 +2,7 @@ package it.polimi.ingsw.ps31.client.view;
 
 import it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewGame;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
+import it.polimi.ingsw.ps31.client.view.stateView.*;
 import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.messages.messageMV.MVMessageVisitor;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
@@ -30,7 +27,7 @@ public abstract class View extends Observable implements Observer {
     private final List<StateViewPersonalBoard> stateViewPersonalBoardList= new ArrayList<>();
     private final StateViewGame stateViewGame;
     //private ClientNetworkInterface networkInterface;
-    private boolean firstTime=true; // se provo a stampare senza avere tutte le informazioni la prima volta da errore (per alcuni metodi di stampa)
+    protected boolean firstTime=true; // se provo a stampare senza avere tutte le informazioni la prima volta da errore (per alcuni metodi di stampa)
                                     // la prima volta stampo solo se ho già tutto
 
 
@@ -176,11 +173,21 @@ public abstract class View extends Observable implements Observer {
     }
 
     public final void updateCardBox(StateCardBox stateCardBox) {
-        for (StateViewPersonalBoard viewPersonalBoard : stateViewPersonalBoardList
-                ) {
-            if (viewPersonalBoard.getPlayerId().equals(stateCardBox.getPlayerId()))
-                viewPersonalBoard.updateState(stateCardBox);
+
+        if(stateCardBox.getValue()!=-1) {
+            for (StateViewPersonalBoard viewPersonalBoard : stateViewPersonalBoardList
+                    ) {
+                if (viewPersonalBoard.getPlayerId().equals(stateCardBox.getPlayerId()))
+                    viewPersonalBoard.updateState(stateCardBox);
+            }
         }
+        if(stateCardBox.getTowerFloor()!=-1){
+            for (StateViewTower tower: getStateViewBoard().getStateViewTowerList()
+                 ) {
+                tower.updateState(stateCardBox);
+            }
+        }
+        if(!firstTime)
         printPersonalBoardInAction();
     }
 
@@ -203,7 +210,7 @@ public abstract class View extends Observable implements Observer {
         }
     }
 
-    public final void updatePlayerAction(StatePlayerAction statePlayerAction) {
+    public  void updatePlayerAction(StatePlayerAction statePlayerAction) {
         for (StateViewPlayer viewPlayer : stateViewPlayerList
                 ) {
             if (viewPlayer.getPlayerId().equals(statePlayerAction.getPlayerId()))

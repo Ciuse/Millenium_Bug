@@ -23,7 +23,7 @@ public class ChooseCardEffect extends Effect{
     public void activate(Player player) {
         player.getPlayerActionSet().chooseCard(this.cardColor,this.diceValue,this.anyColor);
     }
-    public String nameString(){
+    public String getNameString(){
         return "ChooseCard";
     }
 

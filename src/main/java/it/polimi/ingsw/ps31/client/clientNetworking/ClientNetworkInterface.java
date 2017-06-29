@@ -1,16 +1,13 @@
 package it.polimi.ingsw.ps31.client.clientNetworking;
 
 import com.google.gson.Gson;
-import com.sun.xml.internal.messaging.saaj.soap.Envelope;
 import it.polimi.ingsw.ps31.messages.ConcreteEnvelope;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
-import it.polimi.ingsw.ps31.networking.DeliverableMessageType;
 import it.polimi.ingsw.ps31.networking.JsonNetworking;
-import org.omg.CORBA.StringHolder;
 
 /**
  * Created by Francesco on 10/06/2017.

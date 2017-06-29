@@ -34,7 +34,7 @@ public class GetResourceEffect extends Effect {
         return resources.toString();
     }
 
-    public String nameString(){
+    public String getNameString(){
         return "GetRes";
     }
 
