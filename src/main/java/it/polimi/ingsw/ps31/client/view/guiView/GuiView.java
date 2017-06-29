@@ -106,7 +106,7 @@ public  class GuiView extends View implements ActionListener{
     }
 
     @Override
-    public void askVisualizzationComand() {
+    public void askVisualizationCommand() {
 
     }
 

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Created by giulia on 26/06/2017.
  */
 public class TowerPanel extends JPanel implements ActionListener {
-    ActionListener listener;
+    private ActionListener listener;
 
 
     public void attach (ActionListener listener){

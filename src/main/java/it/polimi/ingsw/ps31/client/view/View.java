@@ -30,8 +30,8 @@ public abstract class View extends Observable implements Observer {
     private final List<StateViewPersonalBoard> stateViewPersonalBoardList= new ArrayList<>();
     private final StateViewGame stateViewGame;
     //private ClientNetworkInterface networkInterface;
-    private boolean firstTime=true;                                 // se provo a stampare senza avere tutte le informazioni la prima volta da errore (per tutti i metodi di stampa)
-                                                            //la prima volta stampo solo se ho già tutto
+    private boolean firstTime=true; // se provo a stampare senza avere tutte le informazioni la prima volta da errore (per alcuni metodi di stampa)
+                                    // la prima volta stampo solo se ho già tutto
 
 
     public View(PlayerId viewId, int playerMaxNumber) {
@@ -115,7 +115,7 @@ public abstract class View extends Observable implements Observer {
     public abstract void askPrivilegeResourceChange(ChoicePrivilegeResource choicePrivilegeResource);
 
 
-    public abstract void askVisualizzationComand();
+    public abstract void askVisualizationCommand();
 
 
     public final void updateInfoPlayer(StatePlayer stateInfoPlayer) {
@@ -180,20 +180,17 @@ public abstract class View extends Observable implements Observer {
             if (viewPersonalBoard.getPlayerId().equals(stateCardBox.getPlayerId()))
                 viewPersonalBoard.updateState(stateCardBox);
         }
-        if(!firstTime)
-            printPersonalBoardInAction();
+        printPersonalBoardInAction();
     }
 
     public final void updateActionSpace(StateActionSpace stateActionSpace) {
         stateViewBoard.updateState(stateActionSpace);
-        if(!firstTime)
-            printBoardActionSpace();
+        printBoardActionSpace();
     }
 
     public final void updateTower(StateTower stateTower) {
         stateViewBoard.updateState(stateTower);
-        if(!firstTime)
-            printTower();
+        printTower();
     }
 
     public final void updateMarkerDisc(StateMarkerDisc stateMarkerDisc) {

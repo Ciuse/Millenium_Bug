@@ -1,21 +1,19 @@
 package it.polimi.ingsw.ps31.client.view.guiView;
 
-import it.polimi.ingsw.ps31.*;
-//import it.polimi.ingsw.ps31.Frame;
 
-import javax.imageio.ImageIO;
+import javafx.scene.shape.Circle;
+import javafx.stage.Screen;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 /**
  * Created by giulia on 28/06/2017.
  */
 public class DevelopmentCardPanel extends JPanel implements ActionListener{
-    ActionListener listener;
+    private ActionListener listener;
 
     public DevelopmentCardPanel() {
         addComponentsToPane(this);
@@ -63,11 +61,14 @@ public class DevelopmentCardPanel extends JPanel implements ActionListener{
         ButtonCard buttonCardToEnlarge = new ButtonCard(jButton.getName());
         c.add(buttonCardToEnlarge);
         frame.setSize(350,500);
+        Dimension screenSize= Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setLocation((int)screenSize.getWidth()/8,(int)screenSize.getHeight()/16);
         frame.setVisible(true);
+        frame.setAlwaysOnTop(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         buttonCardToEnlarge.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
-                ButtonCard buttonCard = (ButtonCard)ev.getSource();
+                ButtonCard buttonCard = (ButtonCard)ev.getSource();     //si può togliere
                 frame.setVisible(false);
 
             }

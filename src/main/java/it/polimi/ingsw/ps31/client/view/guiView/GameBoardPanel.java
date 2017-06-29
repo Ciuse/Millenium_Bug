@@ -8,14 +8,14 @@ import java.awt.event.ActionListener;
  * Created by giulia on 25/06/2017.
  */
 public class GameBoardPanel extends PaintBackgroundPanel implements ActionListener {
-    VictoryPointTrackFirstColumnPanel jPanel1;
-    VictoryPointTrackFirstRowPanel jPanel2;
-    TopBoardPanel jPanel3;
-    FaithPointTrackPanel jPanel4;
-    BottomBoardPanel jPanel5;
-    VictoryPointTrackSecondRowPanel jPanel6;
-    MilitaryTrackPanel jPanel7;
-    VicttoryPointTrackSecondColumnPanel jPanel8;
+    private VictoryPointTrackFirstColumnPanel jPanel1;
+    private VictoryPointTrackFirstRowPanel jPanel2;
+    private TopBoardPanel jPanel3;
+    private FaithPointTrackPanel jPanel4;
+    private BottomBoardPanel jPanel5;
+    private VictoryPointTrackSecondRowPanel jPanel6;
+    private MilitaryTrackPanel jPanel7;
+    private VicttoryPointTrackSecondColumnPanel jPanel8;
 
     public void paintComponent(Graphics g) {
         super.imageToLoad("/gameboard_f_c.png");
@@ -39,7 +39,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         GridBagConstraints c = new GridBagConstraints();
 
 
-        VictoryPointTrackFirstColumnPanel jPanel1 = new VictoryPointTrackFirstColumnPanel();
+        jPanel1 = new VictoryPointTrackFirstColumnPanel();
         c.gridx = 0;
         c.gridy = 1;
         c.gridheight = 4;
@@ -51,7 +51,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         pane.add(jPanel1, c);
         jPanel1.attach(this);
 
-        VictoryPointTrackFirstRowPanel jPanel2 = new VictoryPointTrackFirstRowPanel();
+        jPanel2 = new VictoryPointTrackFirstRowPanel();
         c.gridx = 0;
         c.gridy = 0;
         c.gridheight = 1;
@@ -63,7 +63,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         pane.add(jPanel2, c);
         jPanel2.attach(this);
 
-        TopBoardPanel jPanel3 = new TopBoardPanel();
+        jPanel3 = new TopBoardPanel();
         c.gridx = 1;
         c.gridy = 1;
         c.gridheight = 1;
@@ -75,7 +75,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         pane.add(jPanel3, c);
         jPanel3.attach(this);
 
-        FaithPointTrackPanel jPanel4 = new FaithPointTrackPanel();
+        jPanel4 = new FaithPointTrackPanel();
         c.gridx = 1;
         c.gridy = 2;
         c.gridheight = 1;
@@ -87,7 +87,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         pane.add(jPanel4, c);
         jPanel4.attach(this);
 
-        BottomBoardPanel jPanel5 = new BottomBoardPanel();
+        jPanel5 = new BottomBoardPanel();
         jPanel5.attach(this);
         c.gridx = 1;
         c.gridy = 3;
@@ -100,7 +100,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         pane.add(jPanel5, c);
         jPanel5.attach(this);
 
-        VictoryPointTrackSecondRowPanel jPanel6 = new VictoryPointTrackSecondRowPanel();
+        jPanel6 = new VictoryPointTrackSecondRowPanel();
         c.gridx = 1;
         c.gridy = 4;
         c.gridheight = 1;
@@ -112,7 +112,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         pane.add(jPanel6, c);
         jPanel6.attach(this);
 
-        MilitaryTrackPanel jPanel7 = new MilitaryTrackPanel();
+        jPanel7 = new MilitaryTrackPanel();
         c.gridx = 2;
         c.gridy = 1;
         c.gridheight = 3;
@@ -124,7 +124,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         pane.add(jPanel7, c);
         jPanel7.attach(this);
 
-        VicttoryPointTrackSecondColumnPanel jPanel8 = new VicttoryPointTrackSecondColumnPanel();
+        jPanel8 = new VicttoryPointTrackSecondColumnPanel();
         c.gridx = 3;
         c.gridy = 1;
         c.gridheight = 3;
@@ -137,8 +137,6 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         jPanel8.attach(this);
 
     }
-
-
 
 
     @Override

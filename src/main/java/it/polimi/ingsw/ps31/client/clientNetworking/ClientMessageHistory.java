@@ -27,6 +27,7 @@ public class ClientMessageHistory extends Observable{
     public void newMessage(MVVisitable msg)
     {
         System.out.println("ClientMessageHistory:newMessage> Ricevuto nuovo messagio da bufferizzare e notificare");
+        this.setChanged();
         notifyObservers(msg);
         history.add(msg);
     }

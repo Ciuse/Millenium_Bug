@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
  * Created by giulia on 25/06/2017.
  */
 public class VictoryPointTrackFirstColumnPanel extends JPanel {
-    ActionListener listener;
+    private ActionListener listener;
 
 
     public void attach (ActionListener listener){

@@ -261,6 +261,8 @@ public class CmdLineView extends View {
             e.printStackTrace();
         }
 
+        printLastEvent("BENVENUTO IN LORENZO IL MAGNIFICO");
+
     }
 
     public void input1(){
@@ -284,11 +286,13 @@ public class CmdLineView extends View {
 
 
     @Override
-    public void askVisualizzationComand(){
+    public void askVisualizationCommand(){
         try {
 
+            keyStroke1=null;
             keyStroke1 = screen.pollInput();
             while(cmdInterpreterView.toString().equals("IntrVisualization")) {
+                printLastEvent("Inserisci 1: per vusualizzare le carte");
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
@@ -301,11 +305,11 @@ public class CmdLineView extends View {
 
                 if(keyStroke1 !=null && keyStroke1.getKeyType() != KeyType.Escape && keyStroke1.getKeyType() != KeyType.EOF) {
                     terminal.flush();
+                    printLastEvent( "Input: "+ keyStroke1.toString());
                     cmdInterpreterView.notGameMessageInterpreter(this, keyStroke1.getCharacter());
                     screen.refresh();
                 }
                 keyStroke1 = screen.pollInput();
-
             }
             if(keyStroke1 != null){
                 screen.close();
@@ -315,6 +319,33 @@ public class CmdLineView extends View {
         }
 
     }
+
+    public Character inputVis1() {
+
+        KeyStroke keyStroke=null;
+        try {
+
+            keyStroke = screen.pollInput();
+            while (keyStroke == null && cmdInterpreterView.toString().equals("IntrVisualization")) {
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                keyStroke = screen.pollInput();
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(keyStroke!=null) {
+            printLastEvent( "Input: "+ keyStroke.toString());
+            return keyStroke.getCharacter();
+        }
+        printLastEvent( "Input: null");
+        return null;
+    }
+
 
     @Override
     public void printLastEvent(String string) {
@@ -969,30 +1000,38 @@ public class CmdLineView extends View {
         int j=0;
         for (StateViewPersonalCardBox box : personalBoard.getStateViewPersonalCardBoxListGreen()
                 ) {
-            screen.setCharacter(labelBoxTopLeft.withRelative(1+j*4, 1), getCardColorCharatcter(labelBoxTopLeft, box.getCardColor()));
-            textGraphics.putString(labelBoxTopLeft.withRelative(2+j*4, 1), valueOf(box.getCardId()));
-            j++;
+            if(box.getCardId()!=0) {
+                screen.setCharacter(labelBoxTopLeft.withRelative(1 + j * 4, 1), getCardColorCharatcter(labelBoxTopLeft, box.getCardColor()));
+                textGraphics.putString(labelBoxTopLeft.withRelative(2 + j * 4, 1), valueOf(box.getCardId()));
+                j++;
+            }
         }
         j=0;
         for (StateViewPersonalCardBox box : personalBoard.getStateViewPersonalCardBoxListBlue()
                 ) {
-            screen.setCharacter(labelBoxTopLeft.withRelative(personalBoardBox.getColumns()/2+1+j*4, 1), getCardColorCharatcter(labelBoxTopLeft, box.getCardColor()));
-            textGraphics.putString(labelBoxTopLeft.withRelative(personalBoardBox.getColumns()/2+2+j*4, 1), valueOf(box.getCardId()));
-            j++;
+            if(box.getCardId()!=0) {
+                screen.setCharacter(labelBoxTopLeft.withRelative(personalBoardBox.getColumns() / 2 + 1 + j * 4, 1), getCardColorCharatcter(labelBoxTopLeft, box.getCardColor()));
+                textGraphics.putString(labelBoxTopLeft.withRelative(personalBoardBox.getColumns() / 2 + 2 + j * 4, 1), valueOf(box.getCardId()));
+                j++;
+            }
         }
         j=0;
         for (StateViewPersonalCardBox box : personalBoard.getStateViewPersonalCardBoxListYellow()
                 ) {
-            screen.setCharacter(labelBoxTopLeft.withRelative(1+j*4, personalBoardBox.getRows()/2+1), getCardColorCharatcter(labelBoxTopLeft, box.getCardColor()));
-            textGraphics.putString(labelBoxTopLeft.withRelative(2+j*4, personalBoardBox.getRows()/2+1), valueOf(box.getCardId()));
-            j++;
+            if(box.getCardId()!=0) {
+                screen.setCharacter(labelBoxTopLeft.withRelative(1 + j * 4, personalBoardBox.getRows() / 2 + 1), getCardColorCharatcter(labelBoxTopLeft, box.getCardColor()));
+                textGraphics.putString(labelBoxTopLeft.withRelative(2 + j * 4, personalBoardBox.getRows() / 2 + 1), valueOf(box.getCardId()));
+                j++;
+            }
         }
         j=0;
         for (StateViewPersonalCardBox box : personalBoard.getStateViewPersonalCardBoxListPurple()
                 ) {
-            screen.setCharacter(labelBoxTopLeft.withRelative(personalBoardBox.getColumns()/2+1+j*4, personalBoardBox.getRows()/2+1), getCardColorCharatcter(labelBoxTopLeft, box.getCardColor()));
-            textGraphics.putString(labelBoxTopLeft.withRelative(personalBoardBox.getColumns()/2+2+j*4, personalBoardBox.getRows()/2+1), valueOf(box.getCardId()));
-            j++;
+            if(box.getCardId()!=0) {
+                screen.setCharacter(labelBoxTopLeft.withRelative(personalBoardBox.getColumns() / 2 + 1 + j * 4, personalBoardBox.getRows() / 2 + 1), getCardColorCharatcter(labelBoxTopLeft, box.getCardColor()));
+                textGraphics.putString(labelBoxTopLeft.withRelative(personalBoardBox.getColumns() / 2 + 2 + j * 4, personalBoardBox.getRows() / 2 + 1), valueOf(box.getCardId()));
+                j++;
+            }
         }
 
     }
@@ -1090,8 +1129,12 @@ public class CmdLineView extends View {
         return characterInBackBuffer;
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
 
+    public KeyStroke getKeyStroke1() {
+        return keyStroke1;
+    }
+
+    public KeyStroke getKeyStroke2() {
+        return keyStroke2;
     }
 }

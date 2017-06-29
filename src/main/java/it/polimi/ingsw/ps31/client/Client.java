@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 /**
  * Created by Giuseppe on 05/06/2017.
  */
-public class Client {
+public class Client extends Thread {
     private static final int PORT = 2727;
     private static ClientNetworkingThread clientNetworkingThread;
     private static ClientViewThread clientViewThread;
@@ -92,9 +92,6 @@ public class Client {
 
         //Faccio partire il thread del networking, in modo che rimanga sempre in ascolto del server
         clientNetworkingThread.start();
-
-        //Faccio partire il thread della view, che attiverà la view stessa
-        clientViewThread.start();
 
 
 //        while ( !clientNetworkingThread.isViewReceived() )

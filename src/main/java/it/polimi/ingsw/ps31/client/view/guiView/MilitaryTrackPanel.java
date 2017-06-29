@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
  * Created by giulia on 26/06/2017.
  */
 public class MilitaryTrackPanel extends JPanel {
-    ActionListener listener;
+    private ActionListener listener;
 
 
     public void attach (ActionListener listener){

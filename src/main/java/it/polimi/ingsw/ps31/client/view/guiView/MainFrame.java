@@ -18,7 +18,7 @@ public class MainFrame extends JFrame implements ActionListener {
     private PlayerPanel playerPanel;
     private UtilityPanel utilityPanel;
 
-    public MainFrame(GameBoardPanel gameBoardPanel, PlayerPanel playerPanel) throws HeadlessException {
+    public MainFrame(GameBoardPanel gameBoardPanel, PlayerPanel playerPanel){
         this.gameBoardPanel = gameBoardPanel;
         this.playerPanel = playerPanel;
     }
