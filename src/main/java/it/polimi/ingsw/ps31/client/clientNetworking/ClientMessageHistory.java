@@ -20,11 +20,13 @@ public class ClientMessageHistory extends Observable{
     }
 
     public void addView(View view) {
+        System.out.println("ClientMessageHistory:addView> Aggiungo la view agli osservatori");
         this.addObserver(view);
     }
 
     public void newMessage(MVVisitable msg)
     {
+        System.out.println("ClientMessageHistory:newMessage> Ricevuto nuovo messagio da bufferizzare e notificare");
         notifyObservers(msg);
         history.add(msg);
     }

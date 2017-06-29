@@ -40,11 +40,11 @@ public class JsonNetworking {
         networkingMessageAdapterFactory.registerSubtype(ConnectionMessage.class, "ConnectionMessage");
         networkingMessageAdapterFactory.registerSubtype(ViewMessage.class, "ViewMessage");
 
-        RuntimeTypeAdapterFactory<MVVisitable> mVVisitableAdapterFactory = RuntimeTypeAdapterFactory.of(MVVisitable.class, "MVVisitable");
+   /*     RuntimeTypeAdapterFactory<MVVisitable> mVVisitableAdapterFactory = RuntimeTypeAdapterFactory.of(MVVisitable.class, "MVVisitable");
         mVVisitableAdapterFactory.registerSubtype(MVAskChoice.class, "MVAskChoice");
         mVVisitableAdapterFactory.registerSubtype(MVStringToPrint.class, "MVStringToPrint");
         mVVisitableAdapterFactory.registerSubtype(MVUpdateState.class, "MVUpdateState");
-
+*//*
         RuntimeTypeAdapterFactory<VCVisitable> vCVisitableAdapterFactory = RuntimeTypeAdapterFactory.of(VCVisitable.class, "VCVisitable");
         vCVisitableAdapterFactory.registerSubtype(VCActionSpace.class, "VCActionSpace");
         vCVisitableAdapterFactory.registerSubtype(VCActiveEffectChoice.class, "VCActiveEffectChoice");
@@ -60,7 +60,7 @@ public class JsonNetworking {
         vCVisitableAdapterFactory.registerSubtype(VCStartLeaderChoice.class, "VCStartLeaderChoice");
         vCVisitableAdapterFactory.registerSubtype(VCSupportTheChurchChoice.class, "VCSupportTheChurchChoice");
         vCVisitableAdapterFactory.registerSubtype(VCTowerCardSpaceChoice.class, "VCTowerCardSpaceChoice");
-
+*/
 
         RuntimeTypeAdapterFactory<View> viewAdapterFactory = RuntimeTypeAdapterFactory.of(View.class, "View");
         viewAdapterFactory.registerSubtype(CmdLineView.class, "CmdLineView");
@@ -70,8 +70,8 @@ public class JsonNetworking {
         GsonBuilder builder = new GsonBuilder();
         builder.serializeNulls()./*registerTypeAdapterFactory(genericMessageAdapterFactory).*/
                 registerTypeAdapterFactory(networkingMessageAdapterFactory).
-                registerTypeAdapterFactory(mVVisitableAdapterFactory).
-                registerTypeAdapterFactory(vCVisitableAdapterFactory).
+               // registerTypeAdapterFactory(mVVisitableAdapterFactory).
+                //registerTypeAdapterFactory(vCVisitableAdapterFactory).
                 registerTypeAdapterFactory(viewAdapterFactory);
 
         Gson gson = builder.create();

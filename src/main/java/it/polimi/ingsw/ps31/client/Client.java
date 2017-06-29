@@ -93,6 +93,9 @@ public class Client {
         //Faccio partire il thread del networking, in modo che rimanga sempre in ascolto del server
         clientNetworkingThread.start();
 
+        //Faccio partire il thread della view, che attiverà la view stessa
+        clientViewThread.start();
+
 
 //        while ( !clientNetworkingThread.isViewReceived() )
 //            try {

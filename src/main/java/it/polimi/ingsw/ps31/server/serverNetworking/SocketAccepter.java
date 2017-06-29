@@ -65,11 +65,12 @@ public class SocketAccepter{
             return;
 
         //TODO: istruzione di test da cancellare
-        System.out.println("Server> Connessione in ingresso. Deviata su porta "+clientSocket.getPort()+".");
+        System.out.println("SocketAccepter:acceptConnection> Connessione in ingresso. Deviata su porta "+clientSocket.getPort()+".");
 
         try {
             SocketServerConnection connectionInterface = new SocketServerConnection(clientSocket);
             ServerConnectionThread connectionThread = new ServerConnectionThread(connectionInterface, matchTable);
+            System.out.println("SocketAccepter:acceptConnection> Debug 1");
             connectionThread.start();
 
             do {

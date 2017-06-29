@@ -47,6 +47,8 @@ public class ServerConnectionThread extends Thread {
     @Override
     public void run()
     {
+        System.out.println("ServerConnectionThread:run> thread avviato. inizializzo connessione");
+
         //Istruzioni di instaurazione della connessione
         initializeConnection();
 

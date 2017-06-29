@@ -60,18 +60,23 @@ public abstract class View extends Observable implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        System.out.println("View:update> Update invocato");
         MVMessageVisitor mVMessageVisitor = new MVMessageVisitor();
+        System.out.println("View:update> Debug1");
         mVMessageVisitor.setView(this);
+        System.out.println("View:update> Debug2");
         MVVisitable message = (MVVisitable) arg;
-
+        System.out.println("View:update> Messaggio ricevuto");
         if (message.isNotifyAll()) {          //se il messaggio riguarda tutti lo accetto
+            System.out.println("View:update> Messaggio broadcast: accettato");
             message.accept(mVMessageVisitor);
         } else {
             if (message.getNotifySinglePlayer().equals(this.viewId)) {  //se il messaggio notifica solo un player controllo se è la mia la View di quel Player
+                System.out.println("View:update> Messaggio indirizzato a me: accettato");
                 message.accept(mVMessageVisitor);
             }
         }
-
+        System.out.println("View:update> Messaggio non indirizzato a me: rifiutato");
     }
 
 //    public void setNetworkInterface(ClientNetworkInterface networkInterface)

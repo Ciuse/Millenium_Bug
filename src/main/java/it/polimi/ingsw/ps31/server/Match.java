@@ -48,10 +48,10 @@ public class Match extends Thread{
     public void run()
     {
         gameLogic.createJson();
-        gameLogic.startConnection();
+        gameLogic.startConnection(new VirtualView(networkInterface));
         gameLogic.playGame();
 
-
+        System.out.println("Match:run> ");
         //Ciclo in attesa di messaggi sulle socket
         while ( listenNetworkInterfaces )
         {

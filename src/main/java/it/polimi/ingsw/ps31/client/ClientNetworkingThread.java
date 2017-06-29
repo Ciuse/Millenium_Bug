@@ -59,6 +59,7 @@ public class ClientNetworkingThread extends Thread {
     @Override
     public void run()
     {
+        System.out.println("ClientNetworkingThread:run> Inizio ascolto socket. Booleano closeClientNetworkInterface = " + closeClientNetworkingInterface);
         while(!closeClientNetworkingInterface)
         {
             MVVisitable msgFromServer = clientNetworkInterface.readFromServer();

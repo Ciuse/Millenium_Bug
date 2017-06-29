@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView;
 
 import it.polimi.ingsw.ps31.*;
-import it.polimi.ingsw.ps31.Frame;
+//import it.polimi.ingsw.ps31.Frame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

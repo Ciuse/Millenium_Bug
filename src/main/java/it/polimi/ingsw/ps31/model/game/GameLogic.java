@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps31.model.json.CreationJson;
 import it.polimi.ingsw.ps31.model.json.JsonFile;
 import it.polimi.ingsw.ps31.model.json.JsonGameObject;
 import it.polimi.ingsw.ps31.server.Match;
+import it.polimi.ingsw.ps31.server.VirtualView;
 
 import java.util.Collections;
 
@@ -37,7 +38,7 @@ public class GameLogic {
         this.match = match;
     }
 
-    public void startConnection() {
+    public void startConnection(VirtualView virtualView) {
         //parte di connessione
         playerMaxNumber=gameUtility.getModel().getModelChoices().waitPlayerConnection();  //mi metto in attesa dei giocatori che si connettano
         gameUtility.setPlayerMaxNumber(playerMaxNumber);
@@ -47,6 +48,8 @@ public class GameLogic {
         }
 
         match.sendViews(gameUtility.getPlayerMaxNumber());
+        System.out.println("GameLogic:startConnection> View inviate. Aggiungo la virtualView al model");
+        model.addVirtualView(virtualView);
 
     }
 
@@ -76,6 +79,8 @@ public class GameLogic {
 
     public void playGame() {
 
+        System.out.println("GameLogic:playGame> Tutte le impostazioni correttamente caricate. Faccio partire il gioco");
+
 
         gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
 
@@ -84,16 +89,17 @@ public class GameLogic {
 
         //aggiorno lo stato iniziali degli stati della view
 
+        System.out.println("GameLogic:playGame> invio stato giocatori");
         gameUtility.updateStartAllPlayersInformation();
-
+        System.out.println("GameLogic:playGame> invio risorse giocatori");
         gameUtility.updateStartAllPlayersResources();
-
+        System.out.println("GameLogic:playGame> invio stato familiari");
         gameUtility.updateStartAllPlayersFamilyMember();
-
+        System.out.println("GameLogic:playGame> invio personal board");
         gameUtility.updateStartAllPersonalBoard();
-
+        System.out.println("GameLogic:playGame> invio marker disc");
         gameUtility.updateStartAllMarkerDisc();
-
+        System.out.println("GameLogic:playGame> invio carte sviluppo");
         gameUtility.updateStartAllDevelopmentCard();
 
 

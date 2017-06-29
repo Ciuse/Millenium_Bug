@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 /**
  * Created by giulia on 01/06/2017.
  */
-public abstract class MVVisitable extends GenericMessage{
+public /*abstract*/ class MVVisitable extends GenericMessage{
     PlayerId notifySinglePlayer=null;
     boolean notifyAll =false;
 
@@ -27,6 +27,6 @@ public abstract class MVVisitable extends GenericMessage{
         return notifyAll;
     }
 
-    public abstract void accept(MVVisitor mvVisitor);
+    public /*abstract*/ void accept(MVVisitor mvVisitor){}//;
 
 }

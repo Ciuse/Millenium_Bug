@@ -22,13 +22,13 @@ public class ClientSocketConnection extends ClientNetworkInterface {
         this.port = port;
 
         //TODO: istruzione di test da cancellare
-        System.out.println("Client> sto per creare la socket");
+        System.out.println("ClientSocketConnection:init> sto per creare la socket");
 
         //Creo la socket e la collego al server
         this.socket = new Socket("127.0.0.1", this.port);
 
         //TODO: istruzione di test da cancellare
-        System.out.println("Client> socket creata ");
+        System.out.println("ClientSocketConnection:init> socket creata ");
 
         //Creo il reader da socket
         InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
@@ -52,7 +52,7 @@ public class ClientSocketConnection extends ClientNetworkInterface {
                 e.printStackTrace();
             }
         }
-        System.out.println("Client> Message frome server: "+s);
+        System.out.println("ClientSocketConnection:init> Message frome server: "+s);
 
     }
 
