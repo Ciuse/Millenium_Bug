@@ -222,7 +222,11 @@ public class Controller extends Thread implements Observer {
     }
 
     public void selectColor(PlayerColor playerColor, PlayerId viewId) {
-        if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+        if(gameUtility.
+                getPlayerInAction().
+                getPlayerId().
+                equals(
+                        viewId))
             modelChoices.setPlayerColorChosen(playerColor);
     }
 

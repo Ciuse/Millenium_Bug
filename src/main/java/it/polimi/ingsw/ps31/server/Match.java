@@ -4,6 +4,7 @@ import it.polimi.ingsw.ps31.client.view.TypeOfView;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
+import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.actionControls.Control;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
@@ -26,6 +27,9 @@ public class Match extends Thread{
     private PlayerCommunicationInterface hostConnection; //primo client che si collega alla partita
     private int id;
     private boolean listenNetworkInterfaces = true;
+    private PlayerId playerToQuery;
+
+    private final Object playerToQueryLock = new Object();
 
     //Attibuti di test
     private Model model;
@@ -44,10 +48,10 @@ public class Match extends Thread{
         this.hostConnection = host;
         this.id = id;
         addConnection(host);
-        start();
+        initializeGame();
     }
 
-    public void start()
+    public void initializeGame()
     {
         System.out.println("Match:run> entrato nello start");
         this.virtualView=new VirtualView(networkInterface);
@@ -56,7 +60,8 @@ public class Match extends Thread{
         controller.start();
         gameLogic.createJson();
         gameLogic.startConnection(virtualView);
-        super.start();
+        this.playerToQuery = PlayerId.ONE;
+        start();
         gameLogic.playGame();
     }
 
@@ -67,8 +72,11 @@ public class Match extends Thread{
         while ( listenNetworkInterfaces )
         {
             System.out.println("Match:run> ascolto. Timestamp="+System.currentTimeMillis());
-            for ( PlayerId playerId : networkInterface.getPlayerIdList() )
-                networkInterface.readFromClient(playerId);
+
+            //todo: cambiare, dal model, il playerId da ascoltare
+            VCVisitable vcVisitable = networkInterface.readFromClient(playerToQuery);
+            if( vcVisitable != null)
+                virtualView.notifyController(vcVisitable);
 
             try {
                 sleep(1000);
