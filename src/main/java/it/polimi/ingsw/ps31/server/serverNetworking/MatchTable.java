@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.server.serverNetworking;
 
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.server.Match;
 
 import java.util.ArrayList;
@@ -13,10 +14,10 @@ import java.util.List;
  */
 class MatchRow {
     private Match match;
-    private List<ServerConnectionThread> clientList;
+    private List<PlayerCommunicationInterface> clientList;
     private boolean started = false;
 
-    public MatchRow(Match match, ServerConnectionThread hostConnection)
+    public MatchRow(Match match, PlayerCommunicationInterface hostConnection)
     {
         this.match = match;
         this.clientList = new ArrayList<>();
@@ -28,7 +29,7 @@ class MatchRow {
         return this.started;
     }
 
-    public void addPlayer(ServerConnectionThread client)
+    public void addPlayer(PlayerCommunicationInterface client)
     {
         //aggiungo la connessione alla lista di connessioni della row
         this.clientList.add(client);
@@ -93,17 +94,17 @@ public class MatchTable {
     }
 
     /* Class Methods */
-    private Match newMatch(ServerConnectionThread serverConnectionThread)
+    private Match newMatch(PlayerCommunicationInterface playerCommunicationInterface)
     {
         //TODO: istruzione di test da cancellare
         System.out.println("Server> inizio creazione match");
 
         //Creo il match (che è un thread)
-        Match match = new Match(serverConnectionThread, nextMatchId, this);
+        Match match = new Match(playerCommunicationInterface, nextMatchId, this);
         nextMatchId++;
 
         //Aggiungo il match alla tabella
-        this.matchTable.add(new MatchRow(match, serverConnectionThread));
+        this.matchTable.add(new MatchRow(match, playerCommunicationInterface));
 
         //TODO: istruzione di test da cancellare
         System.out.println("Server> Creata nuova partita #"+match.getMatchId()+". Client associato.");
@@ -111,7 +112,7 @@ public class MatchTable {
         return match;
     }
 
-    public Match addPlayer(ServerConnectionThread connection)
+    public Match addPlayer(PlayerCommunicationInterface connection)
     {
         //Controllo se la connessione corrisponde a un client disconnesso in precedenza
         boolean found = false;

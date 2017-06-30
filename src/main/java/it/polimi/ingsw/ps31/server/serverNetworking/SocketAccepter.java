@@ -69,9 +69,8 @@ public class SocketAccepter{
 
         try {
             SocketServerConnection connectionInterface = new SocketServerConnection(clientSocket);
-            ServerConnectionThread connectionThread = new ServerConnectionThread(connectionInterface, matchTable);
+            PlayerCommunicationInterface playerCommunicationInterface = new PlayerCommunicationInterface(connectionInterface);
             System.out.println("SocketAccepter:acceptConnection> Debug 1");
-            connectionThread.start();
 
             do {
                 try {
@@ -80,10 +79,10 @@ public class SocketAccepter{
                     e.printStackTrace();
                 }
 
-            } while ( !connectionThread.receivedCM() );
+            } while ( !playerCommunicationInterface.receivedCM() );
 
             //aggiungo il client alla prima partita libera
-            matchTable.addPlayer(connectionThread);
+            matchTable.addPlayer(playerCommunicationInterface);
 
         } catch (IOException e) {
             e.printStackTrace();

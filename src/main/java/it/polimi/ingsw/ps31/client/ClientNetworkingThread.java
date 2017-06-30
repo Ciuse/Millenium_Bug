@@ -12,6 +12,7 @@ import it.polimi.ingsw.ps31.networking.NetworkingThread;
 
 import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 /**
  * Created by Francesco on 11/06/2017.
@@ -23,24 +24,33 @@ public class ClientNetworkingThread extends Thread {
     private boolean closeClientNetworkingInterface = false;
     protected View view = null;
     private ClientMessageHistory clientMessageHistory;
-    protected java.util.List<MVVisitable> buffer;
+    private List<VCVisitable> bufferVC;   //inboundBuffer di uscita VCVisitable
+    private List<NetworkingMessage> bufferNetworking;   //inboundBuffer di uscita NetworkingMessage
+
+    final private Object outgoingVCBufferLock = new Object();
+    final private Object outgoingNetworkingBufferLock = new Object();
 
 
     /* Constructor */
     public ClientNetworkingThread(ClientNetworkInterface clientNetworkInterface, ClientViewThread clientViewThread) {
 
-        this.buffer = new ArrayList<>();
+        this.bufferVC = new ArrayList<>();
+        this.bufferNetworking = new ArrayList<>();
 
         this.clientNetworkInterface = clientNetworkInterface;
         this.clientViewThread = clientViewThread;
 
         //invio al server il messaggio di connessione
+        //try {sleep(10000);} catch (InterruptedException e) {e.printStackTrace();}
         clientNetworkInterface.sendConnectionMessage();
 
         System.out.println("In attesa di altri giocatori. Un po' di pazienza...");
 
         //Rimango in attesa della view dal server
         GenericMessage msgFromServer = clientNetworkInterface.readViewMessageFromServer();
+        System.out.println("COSE?");
+
+
         while (msgFromServer == null) {
             System.out.println("ClientNetworkingThread : init() >Aspetto...");
             try {
@@ -49,7 +59,7 @@ public class ClientNetworkingThread extends Thread {
                 e.printStackTrace();
             }
 
-            msgFromServer = clientNetworkInterface.readFromServer();
+            msgFromServer = clientNetworkInterface.readFromServer(true);
         }
 
         System.out.println("VIEW RICEVUTA!!!");
@@ -62,16 +72,48 @@ public class ClientNetworkingThread extends Thread {
         System.out.println("ClientNetworkingThread:run> Inizio ascolto socket. Booleano closeClientNetworkInterface = " + closeClientNetworkingInterface);
         while(!closeClientNetworkingInterface)
         {
-            MVVisitable msgFromServer = clientNetworkInterface.readFromServer();
+            //Controllo eventuali messaggi sulla rete
+            MVVisitable msgFromServer = clientNetworkInterface.readFromServer(true);
             if( msgFromServer != null )
-                    clientMessageHistory.newMessage(msgFromServer);
+                clientMessageHistory.newMessage(msgFromServer);
+            //Controllo eventuali messaggi nei inboundBuffer
+            while( !bufferVC.isEmpty() )
+            {
+                synchronized (this.outgoingVCBufferLock){
+                    clientNetworkInterface.sendToServer(bufferVC.remove(0));
+                }
+            }
+            while( !bufferNetworking.isEmpty() )
+            {
+                synchronized (this.outgoingNetworkingBufferLock){
+                    clientNetworkInterface.sendToServer(bufferNetworking.remove(0));
+                }
+            }
+
             try { sleep(700); } catch (InterruptedException e) { e.printStackTrace(); }
         }
     }
 
-    public void bufferizeMessage(MVVisitable msg) {
-        buffer.add(msg);
+    private void bufferizeMessage(VCVisitable msg) {
+        synchronized (this.outgoingVCBufferLock) {
+            bufferVC.add(msg);
+        }
+    }
 
+    private void bufferizeMessage(NetworkingMessage msg) {
+        synchronized (this.outgoingNetworkingBufferLock) {
+            bufferNetworking.add(msg);
+        }
+    }
+
+    public void sendMessage (VCVisitable message)
+    {
+        bufferizeMessage(message);
+    }
+
+    public void sendMessage (NetworkingMessage message)
+    {
+        bufferizeMessage(message);
     }
 
     public ClientNetworkInterface getClientNetworkInterface()
@@ -81,27 +123,7 @@ public class ClientNetworkingThread extends Thread {
 
     public void setCloseClientNetworkingInterface (boolean haveToClose)
     {
-
-
         this.closeClientNetworkingInterface = haveToClose;
     }
-
-    public MVVisitable nextMessage()
-    {
-        return readMessage();
-    }
-
-    public MVVisitable readMessage()
-    {
-        if( buffer.isEmpty())
-            return null;
-        return buffer.remove(0);
-    }
-
-    public void sendMessage (VCVisitable message)
-    {
-        this.clientNetworkInterface.sendToServer(message);
-    }
-
 
 }

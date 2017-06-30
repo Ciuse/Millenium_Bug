@@ -6,6 +6,7 @@ import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
+import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 
 import java.io.IOException;
 
@@ -14,14 +15,14 @@ import java.io.IOException;
  */
 public class ClientViewThread {
     private ClientMessageHistory clientMessageHistory;
-    private ClientNetworkingThread clientNetworkingThread;  //TODO metodo per mandare messaggi dalla view al model
+    private ClientNetworkingThread clientNetworkingThread;
     private View view;
     private final TypeOfView typeOfView;
 
     public ClientViewThread(TypeOfView typeOfView)
     {
         this.typeOfView = typeOfView;
-        this.clientMessageHistory = new ClientMessageHistory();
+        this.clientMessageHistory = new ClientMessageHistory(this);
     }
 
     public ClientMessageHistory initView(ViewMessage viewMessage)
@@ -40,7 +41,18 @@ public class ClientViewThread {
 
         }
         clientMessageHistory.addView(view);
+        view.addController(clientMessageHistory);
 
         return clientMessageHistory;
+    }
+
+    public void setClientNetworkingThread(ClientNetworkingThread networkingThread)
+    {
+        this.clientNetworkingThread = networkingThread;
+    }
+
+    public void sendMessage(VCVisitable message)
+    {
+        clientNetworkingThread.sendMessage(message);
     }
 }

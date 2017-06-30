@@ -90,6 +90,14 @@ public class Client extends Thread {
 
         }while(!exitDoWhile);
 
+        System.out.println("Client:main> netThread passato al viewThread");
+
+
+        //Passo al viewThread il riferimento del networkingThread
+        clientViewThread.setClientNetworkingThread(clientNetworkingThread);
+
+        System.out.println("Client:main> netThread passato al viewThread");
+
         //Faccio partire il thread del networking, in modo che rimanga sempre in ascolto del server
         clientNetworkingThread.start();
 

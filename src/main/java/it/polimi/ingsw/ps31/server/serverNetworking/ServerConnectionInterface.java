@@ -10,6 +10,7 @@ import it.polimi.ingsw.ps31.networking.ConnectionType;
 import it.polimi.ingsw.ps31.networking.JsonNetworking;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 /**
  * Created by Francesco on 08/06/2017.
@@ -34,6 +35,7 @@ public abstract class ServerConnectionInterface {
 
     public final void sendToClient(GenericMessage msg)
     {
+        System.out.println("ServerConnectionInterface:sendToClient> invio messaggio: "+msg.toString());
         writeOnNetwork(serialize(msg));
     }
 
@@ -42,7 +44,7 @@ public abstract class ServerConnectionInterface {
         return deserialize(readFromNetwork());
     }
 
-    public String serialize(GenericMessage genericMessage) {
+    private String serialize(GenericMessage genericMessage) {
         //Imbusto il messaggio
         ConcreteEnvelope envelope = genericMessage.wrap();
 
@@ -62,14 +64,14 @@ public abstract class ServerConnectionInterface {
         return gson.fromJson(msg, ConcreteEnvelope.class);
     }
 
-    public VCVisitable deserialize(String msg) {
+    private VCVisitable deserialize(String msg) {
         if(msg == null)
             return null;
 
         return deserializeEnvelope(msg).getVcVisitable();
     }
 
-    public ConnectionMessage deserializeCM(String msg) {
+    private ConnectionMessage deserializeCM(String msg) {
         if(msg == null)
             return null;
 
@@ -77,21 +79,24 @@ public abstract class ServerConnectionInterface {
     }
 
 
-    public void setConnectionMessage(ConnectionMessage connectionMessage)
+    public ConnectionMessage waitForConnectionMessage()
     {
-        this.connectionMessage = connectionMessage;
+        ConnectionMessage connectionMessage = null;
+        try {
+            System.out.println("ServerConnectionInterface:waitForConnectionMessage> inizio attesa: "+ System.currentTimeMillis());
+            connectionMessage = deserializeCM(readFromNetwork());
+            System.out.println("ServerConnectionInterface:waitForConnectionMessage> fine attesa: "+ System.currentTimeMillis());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return connectionMessage;
     }
 
     public abstract void disconnect();
 
-    public void waitForConnectionMessage()
-    {
-        try {
-            setConnectionMessage(deserializeCM(readFromNetwork()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     public boolean receivedCM()
     {

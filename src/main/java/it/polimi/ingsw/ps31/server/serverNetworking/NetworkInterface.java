@@ -2,6 +2,8 @@ package it.polimi.ingsw.ps31.server.serverNetworking;
 
 import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
+import it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage;
+import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.game.GameLogic;
 import it.polimi.ingsw.ps31.server.Match;
@@ -61,10 +63,9 @@ public class NetworkInterface {
     }
 
     /* Class Methods */
-    public void addConnection(ServerConnectionThread connection)
+    public void addConnection(PlayerCommunicationInterface connection)
     {
         this.playerTable.addPlayer(connection);
-        connection.setNetworkInterface(this);
     }
 
     public List<PlayerId> getPlayerIdList()
@@ -77,35 +78,42 @@ public class NetworkInterface {
         return this.playerTable.size();
     }
 
-    public GenericMessage readFromClient(PlayerId playerId)
+    public VCVisitable readFromClient(PlayerId playerId)
     {
 
-        ServerConnectionThread connection = this.playerTable.playerIdToConnection(playerId);
+        PlayerCommunicationInterface communicationInterface = this.playerTable.playerIdToConnection(playerId);
 
-        GenericMessage msgToReturn = null;
-        try {
-            msgToReturn = connection.readFromClient();
-        } catch (IOException e) {
-            //matchTable.disconnectClient(connection, match);
-            e.printStackTrace();//todo disconnetti client
-        }
-
-//        modelProva.setState(msgToReturn.update(), playerId);
+        VCVisitable msgToReturn = null;
+        if( communicationInterface.newMessages() )
+            msgToReturn = communicationInterface.nextMessage();
 
         return msgToReturn;
     }
 
-    public void sendToClient(GenericMessage msg, PlayerId playerId)
+    public void sendToClient(MVVisitable msg, PlayerId playerId)
     {
         System.out.println("NetworkInterface : sendtoClient()> player: "+playerId+"; msg: "+msg.toString());
-        ServerConnectionThread connection = this.playerTable.playerIdToConnection(playerId);
-        connection.sendToClient(msg);
+        PlayerCommunicationInterface connection = this.playerTable.playerIdToConnection(playerId);
+        connection.send(msg);
+    }
+
+    public void sendToClient(NetworkingMessage msg, PlayerId playerId)
+    {
+        System.out.println("NetworkInterface : sendtoClient()> player: "+playerId+"; msg: "+msg.toString());
+        PlayerCommunicationInterface connection = this.playerTable.playerIdToConnection(playerId);
+        connection.send(msg);
     }
 
     public void sendToAll(MVVisitable msg)
     {
-        for(ServerConnectionThread currentConnection : playerTable.getAllConnections())
-            currentConnection.sendToClient(msg);
+        for(PlayerCommunicationInterface currentConnection : playerTable.getAllConnections())
+            currentConnection.send(msg);
+    }
+
+    public void sendToAll(NetworkingMessage msg)
+    {
+        for(PlayerCommunicationInterface currentConnection : playerTable.getAllConnections())
+            currentConnection.send(msg);
     }
 
     public void setModelProva(ModelProva modelProva)
@@ -126,17 +134,15 @@ public class NetworkInterface {
 
     public void disconnectPlayer(PlayerId playerId)
     {
-        ServerConnectionThread serverConnectionInterface = playerTable.playerIdToConnection(playerId);
-        String username = serverConnectionInterface.
-                getConnectionMessage().
-                getUsername();
+        PlayerCommunicationInterface serverConnectionInterface = playerTable.playerIdToConnection(playerId);
+        String username = serverConnectionInterface.getConnectionMessage().getUsername();
         String password = serverConnectionInterface.getConnectionMessage().getPassword();
 
         disconnectedPlayers.add(new DisconnectedPlayer(playerId, username, password));
         playerTable.disconnectPlayer(playerId);
     }
 
-    public boolean reconnectPlayer(ServerConnectionThread connection, PlayerId playerId)
+    public boolean reconnectPlayer(PlayerCommunicationInterface connection, PlayerId playerId)
     {
         if ( disconnectedPlayers.isEmpty() )
             return false;
@@ -165,8 +171,8 @@ public class NetworkInterface {
         return match;
     }
 
-    public PlayerId connectionToPlayerId(ServerConnectionThread serverConnectionThread)
+    public PlayerId connectionToPlayerId(PlayerCommunicationInterface playerCommunicationInterface)
     {
-        return playerTable.connectionToPlayerId(serverConnectionThread);
+        return playerTable.connectionToPlayerId(playerCommunicationInterface);
     }
 }

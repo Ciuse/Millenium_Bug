@@ -45,7 +45,7 @@ public class ClientSocketConnection extends ClientNetworkInterface {
         String s = null;
         while(s == null)
         {
-            s = readFromNetwork();
+            s = readFromNetwork(true);
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -75,15 +75,17 @@ public class ClientSocketConnection extends ClientNetworkInterface {
     }
 
     @Override
-    protected String readFromNetwork() {
+    protected String readFromNetwork(boolean returnIfNull) {
         String msg = null;
-
+        System.out.println("ClientSocketConnection:readFromNetwork> leggo da socket");
         try {
-            msg = socketReader.readLine();
+            System.out.println("ClientSocketConnection:readFromNetwork> Entro nel try. Reader pronto: "+ socketReader.ready());
+            if( !returnIfNull || socketReader.ready() )
+                msg = socketReader.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        System.out.println("ClientSocketConnection:readFromNetwork> ritorno risultato");
         return msg;
     }
 }

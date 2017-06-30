@@ -1,22 +1,31 @@
 package it.polimi.ingsw.ps31.client.clientNetworking;
 
+import it.polimi.ingsw.ps31.client.ClientNetworkingThread;
+import it.polimi.ingsw.ps31.client.ClientViewThread;
 import it.polimi.ingsw.ps31.client.view.View;
-import it.polimi.ingsw.ps31.messages.GenericMessage;
+import it.polimi.ingsw.ps31.messages.messageMV.MVMessageVisitor;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
+import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
+import it.polimi.ingsw.ps31.networking.NetworkingThread;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by Giuseppe on 27/06/2017.
  */
-public class ClientMessageHistory extends Observable{
-    private List<MVVisitable> history;
+public class ClientMessageHistory extends Observable implements Observer{
+    private List<MVVisitable> inboundHistory;
+    private List<VCVisitable> outgoingHistory;
+    private ClientViewThread viewThread;
 
-    public ClientMessageHistory()
+    public ClientMessageHistory(ClientViewThread viewThread)
     {
-        this.history = new ArrayList<>();
+        this.inboundHistory = new ArrayList<>();
+        this.outgoingHistory = new ArrayList<>();
+        this.viewThread = viewThread;
     }
 
     public void addView(View view) {
@@ -30,26 +39,33 @@ public class ClientMessageHistory extends Observable{
         this.setChanged();
         notifyObservers(msg);
         System.out.println("ClientMessageHistory:newMessage> Messaggio notificato. Aggiungo alla cronologia");
-        history.add(msg);
+        inboundHistory.add(msg);
     }
 
     public boolean isEmpty()
     {
-        return history.isEmpty();
+        return inboundHistory.isEmpty();
     }
 
-    public List<MVVisitable> getHistory() {
-        return history;
+    public List<MVVisitable> getInboundHistory() {
+        return inboundHistory;
     }
 
-    public String printHistory()
+    public String printInboundHistory()
     {
         int i =1;
         String h = "CRONOLOGIA MESSAGGI RICEVUTI\n"+
                    "=============================\n\n";
-        for (MVVisitable currentMsg : history)
+        for (MVVisitable currentMsg : inboundHistory)
             h += i +"\t:" + currentMsg.toString() +"\n";
 
         return h;
-    } 
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        VCVisitable msg = (VCVisitable) arg;
+        this.outgoingHistory.add(msg);
+        viewThread.sendMessage(msg);
+    }
 }

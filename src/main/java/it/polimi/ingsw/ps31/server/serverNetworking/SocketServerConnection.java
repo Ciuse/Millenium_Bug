@@ -33,7 +33,8 @@ public class SocketServerConnection extends ServerConnectionInterface {
     @Override
     protected String readFromNetwork() throws IOException {
         String msgToReturn = null;
-        msgToReturn = socketReader.readLine();
+        //if(socketReader.ready())
+            msgToReturn = socketReader.readLine();
 
         return msgToReturn;
     }

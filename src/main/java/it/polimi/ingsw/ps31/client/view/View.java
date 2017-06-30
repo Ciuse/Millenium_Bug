@@ -47,6 +47,11 @@ public abstract class View extends Observable implements Observer {
         this.addObserver(controller);
     }
 
+    public void addController(Observer observer)
+    {
+        this.addObserver(observer);
+    }
+
     public void notifyController(VCVisitable message) {
         this.setChanged();
         notifyObservers(message);

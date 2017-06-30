@@ -9,11 +9,11 @@ import it.polimi.ingsw.ps31.model.actionControls.Control;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.game.GameLogic;
 import it.polimi.ingsw.ps31.model.game.InformationFromNetworking;
+import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.server.serverNetworking.MatchTable;
 import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
-import it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionThread;
-
-import java.util.Map;
+import it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface;
+import it.polimi.ingsw.ps31.server.serverNetworking.ServerListeningThread;
 
 /**
  * Created by Francesco on 08/06/2017.
@@ -23,16 +23,18 @@ public class Match extends Thread{
     private final NetworkInterface networkInterface;
     private final GameLogic gameLogic; //Partita vera e propria
     private InformationFromNetworking informationFromNetworking;
-    private ServerConnectionThread hostConnection; //primo client che si collega alla partita
+    private PlayerCommunicationInterface hostConnection; //primo client che si collega alla partita
     private int id;
     private boolean listenNetworkInterfaces = true;
+
+    //Attibuti di test
     private Model model;
     private VirtualView virtualView;
 
     //private List<Socket> sockets = new ArrayList<>();
 
     /* Constructor */
-    public Match(ServerConnectionThread host, int id, MatchTable matchTable){
+    public Match(PlayerCommunicationInterface host, int id, MatchTable matchTable){
         System.out.println("Match: init> Match in costruzione");
         this.informationFromNetworking = new InformationFromNetworking();
         this.model = new Model();
@@ -99,7 +101,7 @@ public class Match extends Thread{
 
     }
 
-    public boolean addConnection(ServerConnectionThread clientConnection)
+    public boolean addConnection(PlayerCommunicationInterface clientConnection)
     {
         if ( this.networkInterface.getConnectionListSize() == MAX_PLAYER_NUMBER )
         {
@@ -130,7 +132,7 @@ public class Match extends Thread{
         networkInterface.disconnectPlayer(playerId);
     }
 
-    public void reconnectPlayer(ServerConnectionThread connectionThread, PlayerId playerId)
+    public void reconnectPlayer(PlayerCommunicationInterface connectionThread, PlayerId playerId)
     {
         this.networkInterface.reconnectPlayer(connectionThread, playerId);
 

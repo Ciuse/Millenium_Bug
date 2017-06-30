@@ -156,7 +156,7 @@ public class JsonNetworking {
 
 
         RuntimeTypeAdapterFactory<Bonus> bonusAdapterFactory = RuntimeTypeAdapterFactory.of(Bonus.class, "Bonus");
-        bonusAdapterFactory.registerSubtype(CanPlaceInOccupiedActionSpace.class, "CanPlaceInOccupiedActionSpace");
+        bonusAdapterFactory.registerSubtype(CanPlaceInOccupiedActionSpace.class);
         bonusAdapterFactory.registerSubtype(CantPlaceInActionSpace.class);
         bonusAdapterFactory.registerSubtype(CardDiscountBonus.class);
         bonusAdapterFactory.registerSubtype(ColoredFamilyMembersBonus.class);
@@ -177,6 +177,7 @@ public class JsonNetworking {
         bonusAdapterFactory.registerSubtype(NoTowerPayment.class);
         bonusAdapterFactory.registerSubtype(ProductionBonus.class);
         bonusAdapterFactory.registerSubtype(StaticFamilyMemberValueBonus.class);
+
 
 
         RuntimeTypeAdapterFactory<Card> cardAdapterFactory = RuntimeTypeAdapterFactory.of(Card.class, "Card");

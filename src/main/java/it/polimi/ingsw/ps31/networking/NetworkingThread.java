@@ -18,9 +18,9 @@ public abstract class NetworkingThread extends Thread {
 /*
     public GenericMessage readMessage()
     {
-        if( buffer.isEmpty())
+        if( inboundBuffer.isEmpty())
             return null;
-        return buffer.remove(0);
+        return inboundBuffer.remove(0);
     }
 */
     protected abstract void loop();
