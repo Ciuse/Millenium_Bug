@@ -49,7 +49,7 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
 
         ButtonCard buttonCardBluePanel = new ButtonCard();
         buttonCardBluePanel.addActionListener(this);
-        buttonCardPurplePanel.setName("BlueCard");
+        buttonCardBluePanel.setName("BlueCard");
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridheight = 1;

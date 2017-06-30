@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
  */
 public class PersonalLeaderCardsPanel extends JPanel implements ActionListener {
     private ActionListener listener;
+    DevelopmentCardOnPersonalBoardPanel developmentCardOnPersonalBoardPanel;
 
 
 
@@ -77,6 +78,8 @@ public class PersonalLeaderCardsPanel extends JPanel implements ActionListener {
             gbc.gridwidth = 1;
             gbc.fill = GridBagConstraints.BOTH;
             pane.add(jButtonPanel4, gbc);
+
+
         }
 
         @Override

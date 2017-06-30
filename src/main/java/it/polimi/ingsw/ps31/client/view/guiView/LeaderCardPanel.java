@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by giulia on 27/06/2017.
  */
-public class LeaderCardPanel extends PaintBackgroundPanel implements  ActionListener {
+public class LeaderCardPanel extends JPanel implements  ActionListener {
     private ActionListener listener;
     ButtonCard buttonCard;
 
@@ -40,26 +40,30 @@ public class LeaderCardPanel extends PaintBackgroundPanel implements  ActionList
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         //buttonCard.setOpaque(false);
-        buttonCard.setBackground(Color.green);
-        pane.add(buttonCard, gbc);
+        buttonCard.setBackground(Color.red);
+        buttonCard.addActionListener(this);
+        pane.add(buttonCard,gbc);
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        ButtonCard jButton=(ButtonCard)e.getSource();
+        JButton jButton=(JButton)e.getSource();
         String nameButton=jButton.getName();
         if(nameButton.equals("LeaderCard")){
-        JFrame frame = new JFrame(nameButton);
-        frame.setSize(300,500);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setLocation((int)screenSize.getHeight()/8,(int)screenSize.getWidth()/16);
-        frame.setAlwaysOnTop(true);
-        frame.setSize(screenSize.width/2,screenSize.height/2);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //Container c = frame.getContentPane();
-        //PersonalLeaderCardsPanel personalLeaderCardsPanel = new PersonalLeaderCardsPanel();
-        //c.add(personalLeaderCardsPanel);
+            PersonalLeaderCardsPanel personalLeaderCardsPanel = new PersonalLeaderCardsPanel();
+            JFrame frame = new JFrame(nameButton);
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            frame.setLocation((int)screenSize.getHeight()/8,(int)screenSize.getWidth()/16);
+            frame.setAlwaysOnTop(true);
+            frame.setSize(screenSize.width/2,screenSize.height/2);
+            frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            Container c = frame.getContentPane();
+            c.add(personalLeaderCardsPanel);
         }
+
+
+
     }
 }

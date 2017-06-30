@@ -17,13 +17,13 @@ public class PlayerPanel extends JPanel implements ActionListener {
     }
 
 
-    public void addComponentsToPane(Container pane){
+    public void addComponentsToPane(Container pane) {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
-        gbl.columnWidths = new int[]{0, 0, 0, 0, 0,0,0};
+        gbl.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
         gbl.rowHeights = new int[]{0, 0, 0, 0, 0};
 
-        gbl.columnWeights = new double[]{0.07324, 0.486, 0.4867, 0.156,0.18,0.019, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.07324, 0.486, 0.4867, 0.156, 0.18, 0.019, Double.MIN_VALUE};
         gbl.rowWeights = new double[]{0.024, 0.5352, 0.6452, 0.1724, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
@@ -75,10 +75,12 @@ public class PlayerPanel extends JPanel implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        jLeaderCardPanel.setBackground(Color.pink);
+        //jLeaderCardPanel.setBackground(Color.pink);
+        jLeaderCardPanel.setOpaque(false);
         jLeaderCardPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(jLeaderCardPanel, gbc);
         jLeaderCardPanel.attach(this);
+
 
         FamilyMemberPanel jFamilyMemberPanel = new FamilyMemberPanel();
 
@@ -98,11 +100,4 @@ public class PlayerPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
     }
-//    private static BufferedImage resizeImage(BufferedImage originalImage, int type, int width, int height) {
-//        BufferedImage resizedImage = new BufferedImage(width,height,type);
-//        Graphics2D g = resizedImage.createGraphics();
-//        g.drawImage(originalImage,0,0,width,height,null);
-//        g.dispose();
-//        return resizedImage;
-//    }
 }
