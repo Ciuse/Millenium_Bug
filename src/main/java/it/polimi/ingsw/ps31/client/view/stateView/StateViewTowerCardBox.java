@@ -17,6 +17,24 @@ public class StateViewTowerCardBox {
         this.towerFloor = towerFloor;
     }
 
+
+    public int getCardColorAsNumber(){
+        if(cardColor.equals(CardColor.GREEN)){
+            return 0;
+        }
+        if(cardColor.equals(CardColor.YELLOW)){
+            return 1;
+        }
+        if(cardColor.equals(CardColor.BLUE)){
+            return 2;
+        }
+        if(cardColor.equals(CardColor.PURPLE)){
+            return 3;
+        }
+        return -1;
+    }
+
+
     public int getTowerFloor() {
         return towerFloor;
     }

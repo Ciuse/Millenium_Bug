@@ -242,7 +242,7 @@ public class GameUtility{
 
             // il giocatore non ha abbastanza punti fede e prende la scomunica (non viene chiesto niente al giocatore)
             if (player.getPlayerResources().getResourceValue(FaithPoint.class) < gameBoard.getFaithPointTrack().getTrackCell().get(2 + period).getValue()) {
-                gameBoard.getExcommunicationTilesList().get(period).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
+                gameBoard.getExcommunicationTilesList().get(period-1).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
 
                 //regola dell'ultimo turno del terzo periodo (tutti ricevono i punti vittoria )
                 if (period == 3) {
@@ -270,7 +270,7 @@ public class GameUtility{
                     }
                 } else {
                     //il giocatore ha deciso di non mostrare il suo sostegno alla chiesa
-                    gameBoard.getExcommunicationTilesList().get(period).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
+                    gameBoard.getExcommunicationTilesList().get(period-1).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
                     if (period == 3) {
                         int faithPointPlayer = player.getPlayerResources().getResourceValue(FaithPoint.class);
                         player.addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
@@ -525,7 +525,7 @@ public class GameUtility{
                         }
 
                     }
-                    if (excommunicationTiles.getPermanentMalus().getResourceList() != null) {// il giocatore ha una scomunica che in base ai costi di legno e pietra delle carte gialle
+                    if (excommunicationTiles.getPermanentMalus().getResourceList() != null) {// il giocatore ha una scomunica che sottrae punti vittoria in base ai costi di legno e pietra delle carte gialle
                         int costToPay = 0;
                         for (Resource resource:excommunicationTiles.getPermanentMalus().getResourceList().getResourceList()
                                 ) {

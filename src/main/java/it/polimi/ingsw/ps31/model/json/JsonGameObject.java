@@ -48,10 +48,12 @@ public class JsonGameObject {
             resourceAdapterFactory.registerSubtype(VictoryPoint.class, "VictoryPoint");
             resourceAdapterFactory.registerSubtype(CouncilPrivilege.class, "CouncilPrivilege");
 
+
             RuntimeTypeAdapterFactory<PointResource> pointResourceRuntimeTypeAdapterFactory= RuntimeTypeAdapterFactory.of(PointResource.class,"PointResource");
             pointResourceRuntimeTypeAdapterFactory.registerSubtype(FaithPoint.class, "FaithPoint");
             pointResourceRuntimeTypeAdapterFactory.registerSubtype(MilitaryStrength.class, "MilitaryStrength");
             pointResourceRuntimeTypeAdapterFactory.registerSubtype(VictoryPoint.class, "VictoryPoint");
+
 
             RuntimeTypeAdapterFactory<PhysicalResource> physicalResourceRuntimeTypeAdapterFactory= RuntimeTypeAdapterFactory.of(PhysicalResource.class,"PhysicalResource");
             physicalResourceRuntimeTypeAdapterFactory.registerSubtype(Coin.class, "Coin");
@@ -65,6 +67,7 @@ public class JsonGameObject {
             developementCardAdapterFactory.registerSubtype(Building.class, "Building");
             developementCardAdapterFactory.registerSubtype(Character.class, "Character");
             developementCardAdapterFactory.registerSubtype(Venture.class, "Venture");
+
 
             RuntimeTypeAdapterFactory<Effect> effectAdapterFactory = RuntimeTypeAdapterFactory.of(Effect.class, "EffectType");
             effectAdapterFactory.registerSubtype(BonusAndMalusEffect.class, "BonusAndMalusEffect");
@@ -82,6 +85,7 @@ public class JsonGameObject {
             effectAdapterFactory.registerSubtype(ProductionEffectActivationFromCard.class, "ProductionEffectActivationFromCard");
             effectAdapterFactory.registerSubtype(ProductionEffect.class, "ProductionEffect");
 
+
             RuntimeTypeAdapterFactory<Bonus> bonusAdapterFactory = RuntimeTypeAdapterFactory.of(Bonus.class, "BonusType");
             bonusAdapterFactory.registerSubtype(NeutralFamilyMemberBonus.class, "NeutralFamilyMemberBonus");
             bonusAdapterFactory.registerSubtype(CanPlaceInOccupiedActionSpace.class, "CanPlaceInOccupiedActionSpace");
@@ -89,17 +93,18 @@ public class JsonGameObject {
             bonusAdapterFactory.registerSubtype(CardDiscountBonus.class, "CardDiscountBonus");
             bonusAdapterFactory.registerSubtype(ColoredFamilyMembersBonus.class, "ColoredFamilyMembersBonus");
             bonusAdapterFactory.registerSubtype(CopyLeaderBonus.class, "CopyLeaderBonus");
-            bonusAdapterFactory.registerSubtype(NoTowerPayment.class, "NoTowerPayment");
-            bonusAdapterFactory.registerSubtype(LostExtraFinalVictoryPointBonus.class, "LostExtraFinalVictoryPointBonus");
             bonusAdapterFactory.registerSubtype(StaticFamilyMemberValueBonus.class, "StaticFamilyMemberValueBonus");
-            bonusAdapterFactory.registerSubtype(NoBoardRequirementControl.class, "NoBoardRequirementControl");
             bonusAdapterFactory.registerSubtype(GainVictoryPointFromLeaderCardBonus.class, "GainVictoryPointFromLeaderCardBonus");
+            bonusAdapterFactory.registerSubtype(LostExtraFinalVictoryPointBonus.class, "LostExtraFinalVictoryPointBonus");
             bonusAdapterFactory.registerSubtype(LostFinalVictoryPointBonus.class, "LostFinalVictoryPointBonus");
             bonusAdapterFactory.registerSubtype(LostFinalVictoryPointFromCardCosts.class, "LostFinalVictoryPointFromCardCosts");
             bonusAdapterFactory.registerSubtype(LostFinalVictoryPointFromPlayerResources.class, "LostFinalVictoryPointFromPlayerResources");
             bonusAdapterFactory.registerSubtype(ModifyPayServantsBonus.class, "ModifyPayServantsBonus");
             bonusAdapterFactory.registerSubtype(HarvestBonus.class, "HarvestBonus");
             bonusAdapterFactory.registerSubtype(NoImmediateEffectBonus.class, "NoImmediateEffectBonus");
+            bonusAdapterFactory.registerSubtype(NoTowerPayment.class, "NoTowerPayment");
+            bonusAdapterFactory.registerSubtype(NoBoardRequirementControl.class, "NoBoardRequirementControl");
+            bonusAdapterFactory.registerSubtype(NoFirstActionTurn.class,"NoFirstActionTurn");
             bonusAdapterFactory.registerSubtype(ProductionBonus.class, "ProductionBonus");
             bonusAdapterFactory.registerSubtype(GetResourceMalus.class, "GetResourceMalus");
 

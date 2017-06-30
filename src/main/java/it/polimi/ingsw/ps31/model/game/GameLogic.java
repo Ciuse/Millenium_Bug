@@ -103,9 +103,9 @@ public class GameLogic {
         gameUtility.updateStartAllPersonalBoard();
         System.out.println("GameLogic:playGame> invio marker disc");
         gameUtility.updateStartAllMarkerDisc();
-//        System.out.println("GameLogic:playGame> invio carte sviluppo");
-//        gameUtility.updateStartAllDevelopmentCard();
-//
+        System.out.println("GameLogic:playGame> invio carte sviluppo");
+        gameUtility.updateStartAllDevelopmentCard();
+
 
 
         gameUtility.getDevelopmentCardList().shuffleCardList();  //mischio la lista di carte

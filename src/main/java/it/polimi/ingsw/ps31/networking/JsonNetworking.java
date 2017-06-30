@@ -162,16 +162,17 @@ public class JsonNetworking {
         bonusAdapterFactory.registerSubtype(ColoredFamilyMembersBonus.class);
         bonusAdapterFactory.registerSubtype(CopyLeaderBonus.class);
         bonusAdapterFactory.registerSubtype(DoubleResourceFromCardBonus.class);
-        bonusAdapterFactory.registerSubtype(ExtraFinalVictoryPointBonus.class);
         bonusAdapterFactory.registerSubtype(GainVictoryPointFromLeaderCardBonus.class);
         bonusAdapterFactory.registerSubtype(GetResourceMalus.class);
         bonusAdapterFactory.registerSubtype(HarvestBonus.class);
+        bonusAdapterFactory.registerSubtype(LostExtraFinalVictoryPointBonus.class);
         bonusAdapterFactory.registerSubtype(LostFinalVictoryPointBonus.class);
         bonusAdapterFactory.registerSubtype(LostFinalVictoryPointFromCardCosts.class);
         bonusAdapterFactory.registerSubtype(LostFinalVictoryPointFromPlayerResources.class);
         bonusAdapterFactory.registerSubtype(ModifyPayServantsBonus.class);
         bonusAdapterFactory.registerSubtype(NeutralFamilyMemberBonus.class);
         bonusAdapterFactory.registerSubtype(NoBoardRequirementControl.class);
+        bonusAdapterFactory.registerSubtype(NoFirstActionTurn.class);
         bonusAdapterFactory.registerSubtype(NoImmediateEffectBonus.class);
         bonusAdapterFactory.registerSubtype(NoTowerPayment.class);
         bonusAdapterFactory.registerSubtype(ProductionBonus.class);

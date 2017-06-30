@@ -1,16 +1,9 @@
 package it.polimi.ingsw.ps31.client.view.guiView;
 
-import it.polimi.ingsw.ps31.*;
-import it.polimi.ingsw.ps31.Frame;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 /**
  * Created by giulia on 28/06/2017.
@@ -38,7 +31,7 @@ public class DevelopmentCardOnTowerPanel extends JPanel implements ActionListene
         gbl.rowHeights = new int[]{0,0,0,0};
 
         gbl.columnWeights = new double[]{0.52,0.48,Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.30,0.454,0.156,Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.20,0.554,0.156,Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();

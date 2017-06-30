@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.client.view.guiView;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +8,14 @@ import java.awt.event.ActionListener;
  * Created by giulia on 27/06/2017.
  */
 public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionListener{
-    ActionListener listener;
+    private ActionListener listener;
+
+
+    public void paintComponent(Graphics g) {
+        super.imageToLoad("/personalBoard.jpg");
+        super.paintComponent(g);
+    }
+
 
     public PersonalBoardPanel() {
         addComponentsToPane(this);
@@ -69,14 +75,6 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
         jPanel3.attach(this);
 
 
-    }
-
-
-
-
-    public void paintComponent(Graphics g) {
-        super.imageToLoad("/personalBoard.jpg");
-        super.paintComponent(g);
     }
 
     @Override

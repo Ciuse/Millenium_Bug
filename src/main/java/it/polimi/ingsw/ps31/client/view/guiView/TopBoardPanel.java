@@ -9,10 +9,10 @@ import java.awt.event.ActionListener;
  */
 public class TopBoardPanel extends JPanel {
     private ActionListener listener;
-    private GuiView guiView;
+    private TowerPanel towerPanel;
+    private CouncilPanel councilPanel;
 
-    public TopBoardPanel(GuiView guiView) {
-        this.guiView= guiView;
+    public TopBoardPanel() {
         addComponentsToPane(this);
     }
 
@@ -35,28 +35,34 @@ public class TopBoardPanel extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
 
 
-        TowerPanel jPanel1 = new TowerPanel(guiView);
+
+        towerPanel = new TowerPanel();
         c.gridx = 0;
         c.gridy = 0;
         c.gridheight = 1;
         c.gridwidth = 1;
-        jPanel1.setOpaque(false);
-       //jPanel1.setBackground(Color.RED);
+        towerPanel.setOpaque(false);
+       //towerPanel.setBackground(Color.RED);
         c.fill = GridBagConstraints.BOTH;
-        jPanel1.setPreferredSize(new Dimension(10, 10));
-        pane.add(jPanel1, c);
-        jPanel1.attach(this.listener);
+        towerPanel.setPreferredSize(new Dimension(10, 10));
+        pane.add(towerPanel, c);
+        towerPanel.attach(this.listener);
 
-        CouncilPanel jPanel2 = new CouncilPanel();
+        councilPanel = new CouncilPanel();
         c.gridx = 0;
         c.gridy = 1;
         c.gridheight = 1;
         c.gridwidth = 1;
-        jPanel2.setOpaque(false);
+        councilPanel.setOpaque(false);
         //c.fill = GridBagConstraints.BOTH;
-        //jPanel2.setBackground(Color.green);
-        jPanel2.setPreferredSize(new Dimension(10, 10));
-        pane.add(jPanel2, c);
-        jPanel2.attach(this.listener);
+        //councilPanel.setBackground(Color.green);
+        councilPanel.setPreferredSize(new Dimension(10, 10));
+        pane.add(councilPanel, c);
+        councilPanel.attach(this.listener);
     }
+
+    public TowerPanel getTowerPanel() {
+        return towerPanel;
+    }
+
 }

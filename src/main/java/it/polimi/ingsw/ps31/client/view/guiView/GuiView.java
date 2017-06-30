@@ -1,27 +1,34 @@
 package it.polimi.ingsw.ps31.client.view.guiView;
 
-import it.polimi.ingsw.ps31.*;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
 import it.polimi.ingsw.ps31.model.choiceType.*;
+import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import sun.applet.Main;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 /**
  * Created by Giuseppe on 07/06/2017.
  */
-public  class GuiView extends View implements ActionListener{
-
+public class GuiView extends View implements ActionListener{
+    private MainFrame mainFrame;
 
     public GuiView(PlayerId viewId, int playerMaxNumber) {
         super(viewId, playerMaxNumber);
-    } //TODO TOGLIERE ABSTRACT ED IMPLEMEMTARE TUTTI I METODI
+        this.mainFrame=new MainFrame();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                runTerminal();
+//                printTower();
+            }
+        });
+
+    }
 
     public void actionPerformed(ActionEvent ev) {
 
@@ -112,12 +119,17 @@ public  class GuiView extends View implements ActionListener{
 
     @Override
     public void runTerminal() {
-        MainFrame mainFrame=new MainFrame(this);
         mainFrame.startMainFrame();
     }
 
     @Override
     public void printTower() {
+        mainFrame.getGameBoardPanel().getTopBoardPanel().getTowerPanel().printTower(getStateViewBoard());
+    }
+
+    @Override
+    public void printTowerCardBox(StateViewTowerCardBox stateViewTowerCardBox) {
+        mainFrame.getGameBoardPanel().getTopBoardPanel().getTowerPanel().printSingleCardBox(stateViewTowerCardBox);
 
     }
 

@@ -58,17 +58,11 @@ public class ActionGetTempResourcesFromAllEffect extends Action {
                 player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string,new ChoiceListToPay(0)));
                 listToPay = player.getModel().getModelChoices().waitIntListToPay();
             }
-            listToPay=0;
             for (Resource currentResource : resourcesTempToGetList) {
-                //Aggiungo i bonus alle risorse ottenute
                 //todo: da attivare sse le risorse provengono da carte sviluppo o spazi azione
-                //todo: attivare anche le scelte
                 for (Resource resource:resourceMalus.get(listToPay).getResourceList()
                      ) {
-
-                        currentResource.addValue(resource.getValue());
-
-
+                    currentResource.addValue(resource.getValue());
                 }
                 currentResource.addTempResource(super.player);
             }

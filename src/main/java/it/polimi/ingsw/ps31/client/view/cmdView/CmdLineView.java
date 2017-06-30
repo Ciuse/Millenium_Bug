@@ -402,9 +402,9 @@ public class CmdLineView extends View {
         int i=1;
         for (StateViewTower tower:super.getStateViewBoard().getStateViewTowerList()
                 ) {
-                for (StateViewTowerCardBox floor:tower.getStateViewTowerCardBox()
+                for (StateViewTowerCardBox stateViewTowerCardBox:tower.getStateViewTowerCardBox()
                         ) {
-                    printTowerCardBox(tower.getTowerColor(),floor.getTowerFloor());
+                    printTowerCardBox(stateViewTowerCardBox);
                     printTowerActionSpace(i);
                     i++;
                 }
@@ -670,16 +670,16 @@ public class CmdLineView extends View {
     }
     
 
-    private void printTowerCardBox(CardColor towerColor, int towerFloor){
+    public void printTowerCardBox(StateViewTowerCardBox stateViewTowerCardBox){
         int i=0;
         for (StateViewTower tower:super.getStateViewBoard().getStateViewTowerList()
              ) {
-            if(tower.getTowerColor().equals(towerColor)){
+            if(tower.getTowerColor().equals(stateViewTowerCardBox.getCardColor())){
                 int j=3;
                 for (StateViewTowerCardBox floor:tower.getStateViewTowerCardBox()
                      ) {
 
-                    if(floor.getTowerFloor()==towerFloor){
+                    if(floor.getTowerFloor()==stateViewTowerCardBox.getTowerFloor()){
 
                         TerminalSize cardBox = new TerminalSize(6, 4);
                         TerminalPosition labelBoxTopLeft = new TerminalPosition((1 + i * 8) + ((i * cardBox.getColumns())), (1 * j) + (j * cardBox.getRows()));
@@ -700,7 +700,7 @@ public class CmdLineView extends View {
                         textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
 
                         if(floor.getCardId()!=0) {
-                            screen.setCharacter(labelBoxTopLeft.withRelative(1, 1), getCardColorCharatcter(labelBoxTopLeft, towerColor));
+                            screen.setCharacter(labelBoxTopLeft.withRelative(1, 1), getCardColorCharatcter(labelBoxTopLeft, stateViewTowerCardBox.getCardColor()));
                             textGraphics.putString(labelBoxTopLeft.withRelative(2, 1), valueOf(floor.getCardId()));
                         }
 
@@ -1156,27 +1156,6 @@ public class CmdLineView extends View {
 
 
 
-    public final void updatePlayerAction(StatePlayerAction statePlayerAction) {
-        for (StateViewPlayer viewPlayer : super.getStateViewPlayerList()
-                ) {
-            if (viewPlayer.getPlayerId().equals(statePlayerAction.getPlayerId()))
-                viewPlayer.updateState(statePlayerAction);
-        }
-        if(firstTime) {
-            setFirstTime(false);        //TODO PROBABILMENTE é DA SPOSTATE ( CMQ LE AZIONI PER ORA DEVONO ESSERE STAMPATE PER ULTIME)
-            printTower();
-            printFamilyMemberInAction();
-            printAllPersonalBoard();
-            printPlayerInAction();
-            printAllPlayer();
-            printPlayerAction();
-        }
-
-        if (!super.firstTime) {
-            printPlayerAction();
-        }
-
-    }
 
     public KeyStroke getKeyStroke1() {
         return keyStroke1;

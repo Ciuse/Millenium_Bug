@@ -1,13 +1,9 @@
 package it.polimi.ingsw.ps31.client.view.guiView;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by giulia on 25/06/2017.
@@ -15,13 +11,13 @@ import java.io.IOException;
 public class PlayerPanel extends JPanel implements ActionListener {
 
 
-    public PlayerPanel() throws IOException {
+    public PlayerPanel() {
         this.setBackground(new Color(45,55,105));
         addComponentsToPane(this);
     }
 
 
-    public void addComponentsToPane(Container pane) throws IOException {
+    public void addComponentsToPane(Container pane){
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0, 0, 0, 0, 0,0};

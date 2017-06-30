@@ -38,8 +38,8 @@ public class ButtonCard extends JButton {
     public void setString(String string) {
         this.string = string;
         imageToLoad(string);
-        invalidate();
         repaint();
+        revalidate();
     }
 
     public String getString() {
