@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import sun.applet.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,8 +17,6 @@ import java.io.IOException;
  * Created by Giuseppe on 07/06/2017.
  */
 public  class GuiView extends View implements ActionListener{
-    private JButton jButtonChangeCard;
-    private GameBoardPanel gameBoardPanel;
 
 
     public GuiView(PlayerId viewId, int playerMaxNumber) {
@@ -112,8 +111,9 @@ public  class GuiView extends View implements ActionListener{
 
 
     @Override
-    public void runTerminal() throws IOException {
-
+    public void runTerminal() {
+        MainFrame mainFrame=new MainFrame(this);
+        mainFrame.startMainFrame();
     }
 
     @Override

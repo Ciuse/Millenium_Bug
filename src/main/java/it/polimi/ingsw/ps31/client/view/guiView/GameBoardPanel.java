@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static java.lang.String.valueOf;
+
 /**
  * Created by giulia on 25/06/2017.
  */
@@ -16,13 +18,15 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
     private VictoryPointTrackSecondRowPanel jPanel6;
     private MilitaryTrackPanel jPanel7;
     private VicttoryPointTrackSecondColumnPanel jPanel8;
+    private GuiView guiView;
 
     public void paintComponent(Graphics g) {
-        super.imageToLoad("/gameboard_f_c.png");
+        super.imageToLoad("/gameboard1_f_c.png");
         super.paintComponent(g);
     }
 
-    public GameBoardPanel() {
+    public GameBoardPanel(GuiView guiView) {
+        this.guiView=guiView;
         addComponentsToPane(this);
     }
 
@@ -63,7 +67,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         pane.add(jPanel2, c);
         jPanel2.attach(this);
 
-        jPanel3 = new TopBoardPanel();
+        jPanel3 = new TopBoardPanel(guiView);
         c.gridx = 1;
         c.gridy = 1;
         c.gridheight = 1;

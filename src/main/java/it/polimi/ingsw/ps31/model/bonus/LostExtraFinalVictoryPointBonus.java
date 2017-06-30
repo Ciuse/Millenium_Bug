@@ -6,11 +6,11 @@ import it.polimi.ingsw.ps31.model.player.Player;
 /**
  * Created by giulia on 16/06/2017.
  */
-public class ExtraFinalVictoryPointBonus extends Bonus {
+public class LostExtraFinalVictoryPointBonus extends Bonus {
     private final CardColor cardColor;
 
 
-    public ExtraFinalVictoryPointBonus(CardColor cardColor) {
+    public LostExtraFinalVictoryPointBonus(CardColor cardColor) {
         this.cardColor = cardColor;
     }
 

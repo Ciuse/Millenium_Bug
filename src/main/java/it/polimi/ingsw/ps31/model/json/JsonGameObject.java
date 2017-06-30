@@ -90,7 +90,7 @@ public class JsonGameObject {
             bonusAdapterFactory.registerSubtype(ColoredFamilyMembersBonus.class, "ColoredFamilyMembersBonus");
             bonusAdapterFactory.registerSubtype(CopyLeaderBonus.class, "CopyLeaderBonus");
             bonusAdapterFactory.registerSubtype(NoTowerPayment.class, "NoTowerPayment");
-            bonusAdapterFactory.registerSubtype(ExtraFinalVictoryPointBonus.class, "ExtraFinalVictoryPointBonus");
+            bonusAdapterFactory.registerSubtype(LostExtraFinalVictoryPointBonus.class, "LostExtraFinalVictoryPointBonus");
             bonusAdapterFactory.registerSubtype(StaticFamilyMemberValueBonus.class, "StaticFamilyMemberValueBonus");
             bonusAdapterFactory.registerSubtype(NoBoardRequirementControl.class, "NoBoardRequirementControl");
             bonusAdapterFactory.registerSubtype(GainVictoryPointFromLeaderCardBonus.class, "GainVictoryPointFromLeaderCardBonus");

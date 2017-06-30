@@ -245,7 +245,7 @@ public abstract class View extends Observable implements Observer {
         this.firstTime = firstTime;
     }
 
-    public abstract void runTerminal() throws IOException;
+    public abstract void runTerminal();
 
     public abstract void printTower();
 

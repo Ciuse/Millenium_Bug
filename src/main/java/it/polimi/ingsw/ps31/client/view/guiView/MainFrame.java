@@ -14,18 +14,14 @@ import java.io.IOException;
  * Created by giulia on 25/06/2017.
  */
 public class MainFrame extends JFrame implements ActionListener {
-    private GameBoardPanel gameBoardPanel;
-    private PlayerPanel playerPanel;
-    private UtilityPanel utilityPanel;
+    private GuiView guiView=null;
 
-    public MainFrame(GameBoardPanel gameBoardPanel, PlayerPanel playerPanel){
-        this.gameBoardPanel = gameBoardPanel;
-        this.playerPanel = playerPanel;
+    public MainFrame(GuiView guiView) {
+        this.guiView=guiView;
     }
 
 
-
-    public static void main(String[] v) {
+    public void startMainFrame() {
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         SwingUtilities.invokeLater(new Runnable() {
@@ -36,7 +32,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 frame.setResizable(false);
                 frame.setVisible(true);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.getContentPane().setBackground(new Color(45,55,105));
+                frame.getContentPane().setBackground(new Color(45, 55, 105));
 
                 try {
 
@@ -49,12 +45,11 @@ public class MainFrame extends JFrame implements ActionListener {
                     frame.getContentPane().setLayout(gbl);
 
 
-                    GameBoardPanel jGameBoardPanel1 = new GameBoardPanel();
+                    GameBoardPanel jGameBoardPanel1 = new GameBoardPanel(guiView);
 
                     PlayerPanel jPlayerPanel = new PlayerPanel();
 
                     UtilityPanel jUtilityPanel = new UtilityPanel();
-
 
 
                     GridBagConstraints gbc = new GridBagConstraints();

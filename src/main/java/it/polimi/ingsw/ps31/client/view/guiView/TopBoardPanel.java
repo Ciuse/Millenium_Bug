@@ -9,8 +9,10 @@ import java.awt.event.ActionListener;
  */
 public class TopBoardPanel extends JPanel {
     private ActionListener listener;
+    private GuiView guiView;
 
-    public TopBoardPanel() {
+    public TopBoardPanel(GuiView guiView) {
+        this.guiView= guiView;
         addComponentsToPane(this);
     }
 
@@ -33,7 +35,7 @@ public class TopBoardPanel extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
 
 
-        TowerPanel jPanel1 = new TowerPanel();
+        TowerPanel jPanel1 = new TowerPanel(guiView);
         c.gridx = 0;
         c.gridy = 0;
         c.gridheight = 1;

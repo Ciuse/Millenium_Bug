@@ -34,11 +34,6 @@ public class PlayerPanel extends JPanel implements ActionListener {
         GridBagConstraints gbc = new GridBagConstraints();
 
         PersonalBonusTilesPanel jPersonalBonusTilesPanel = new PersonalBonusTilesPanel();
-
-
-
-
-
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridheight = 3;
@@ -57,7 +52,8 @@ public class PlayerPanel extends JPanel implements ActionListener {
         gbc.gridheight = 3;
         gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.BOTH;
-        jPersonalBoardPanel.setBackground(Color.BLUE);
+        //jPersonalBoardPanel.setBackground(Color.BLUE);
+        //jPersonalBoardPanel.setOpaque(false);
         jPersonalBoardPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(jPersonalBoardPanel, gbc);
         jPersonalBoardPanel.attach(this);
@@ -69,7 +65,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //jFamilyMemberPanel.setBackground(Color.green);
+        jFamilyMemberPanel.setBackground(Color.green);
         jFamilyMemberPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(jFamilyMemberPanel, gbc);
         jFamilyMemberPanel.attach(this);

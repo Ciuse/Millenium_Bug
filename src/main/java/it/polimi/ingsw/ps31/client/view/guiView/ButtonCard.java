@@ -14,11 +14,12 @@ public class ButtonCard extends JButton {
     private BufferedImage backgroundPanel;
 
     @Override
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        imageToLoad(string);
         Dimension dimension = getSize();
-        g.drawImage(backgroundPanel,0,0,dimension.width,dimension.height,0,0,backgroundPanel.getWidth(),backgroundPanel.getHeight(),null);
+        if (backgroundPanel != null) {
+            g.drawImage(backgroundPanel, 0, 0, dimension.width, dimension.height, 0, 0, backgroundPanel.getWidth(), backgroundPanel.getHeight(), null);
+        }
     }
 
     public void imageToLoad(String stringPath){
@@ -30,11 +31,16 @@ public class ButtonCard extends JButton {
         } backgroundPanel=resizedImage;
     }
 
-    public ButtonCard(String string) {
+    public ButtonCard() {
         this.string = string;
-        imageToLoad(string);
     }
 
+    public void setString(String string) {
+        this.string = string;
+        imageToLoad(string);
+        invalidate();
+        repaint();
+    }
 
     public String getString() {
         return string;
