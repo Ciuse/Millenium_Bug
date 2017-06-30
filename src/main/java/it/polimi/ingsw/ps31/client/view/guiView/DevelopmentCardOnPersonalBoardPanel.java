@@ -31,7 +31,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        JButton jButtonPanel1 = new ButtonCard();
+        ButtonCard jButtonPanel1 = new ButtonCard();
         jButtonPanel1.setName("1");
         jButtonPanel1.addActionListener(this);
         gbc.gridx = 0;
@@ -41,7 +41,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(jButtonPanel1,gbc);
 
-        JButton jButtonPanel2 = new ButtonCard();
+        ButtonCard jButtonPanel2 = new ButtonCard();
         jButtonPanel2.setName("2");
         jButtonPanel2.addActionListener(this);
         gbc.gridx = 1;
@@ -51,7 +51,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(jButtonPanel2,gbc);
 
-        JButton jButtonPanel3 = new ButtonCard();
+        ButtonCard jButtonPanel3 = new ButtonCard();
         jButtonPanel3.setName("3");
         jButtonPanel3.addActionListener(this);
         gbc.gridx = 2;
@@ -61,7 +61,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(jButtonPanel3,gbc);
 
-        JButton jButtonPanel4 = new ButtonCard();
+        ButtonCard jButtonPanel4 = new ButtonCard();
         jButtonPanel4.setName("4");
         jButtonPanel4.addActionListener(this);
         gbc.gridx = 3;
@@ -71,7 +71,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(jButtonPanel4,gbc);
 
-        JButton jButtonPanel5 = new ButtonCard();
+        ButtonCard jButtonPanel5 = new ButtonCard();
         jButtonPanel5.setName("5");
         jButtonPanel5.addActionListener(this);
         gbc.gridx = 4;
@@ -81,7 +81,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(jButtonPanel5,gbc);
 
-        JButton jButtonPanel6 = new ButtonCard();
+        ButtonCard jButtonPanel6 = new ButtonCard();
         jButtonPanel6.setName("6");
         jButtonPanel6.addActionListener(this);
         gbc.gridx = 5;

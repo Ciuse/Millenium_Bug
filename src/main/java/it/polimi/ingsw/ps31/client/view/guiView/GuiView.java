@@ -124,12 +124,12 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void printTower() {
-        mainFrame.getGameBoardPanel().getTopBoardPanel().getTowerPanel().printTower(getStateViewBoard());
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getTowerPanel().printTower(getStateViewBoard());
     }
 
     @Override
     public void printTowerCardBox(StateViewTowerCardBox stateViewTowerCardBox) {
-        mainFrame.getGameBoardPanel().getTopBoardPanel().getTowerPanel().printSingleCardBox(stateViewTowerCardBox);
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getTowerPanel().printSingleCardBox(stateViewTowerCardBox);
 
     }
 

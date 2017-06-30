@@ -12,7 +12,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
 
 
     public PlayerPanel() {
-        this.setBackground(new Color(45,55,105));
+
         addComponentsToPane(this);
     }
 
@@ -20,11 +20,11 @@ public class PlayerPanel extends JPanel implements ActionListener {
     public void addComponentsToPane(Container pane){
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
-        gbl.columnWidths = new int[]{0, 0, 0, 0, 0,0};
+        gbl.columnWidths = new int[]{0, 0, 0, 0, 0,0,0};
         gbl.rowHeights = new int[]{0, 0, 0, 0, 0};
 
-        gbl.columnWeights = new double[]{0.07324, 0.656, 0.2267, 0.216,0.019, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.024, 0.7152, 0.3552, 0.1724, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.07324, 0.486, 0.4867, 0.156,0.18,0.019, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.024, 0.5352, 0.6452, 0.1724, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -54,30 +54,43 @@ public class PlayerPanel extends JPanel implements ActionListener {
         pane.add(jPersonalBoardPanel, gbc);
         jPersonalBoardPanel.attach(this);
 
-        FamilyMemberPanel jFamilyMemberPanel = new FamilyMemberPanel();
+        ExtraCardPanel extraCardPanel = new ExtraCardPanel();
 
         gbc.gridx = 3;
+        gbc.gridy = 1;
+        gbc.gridheight = 3;
+        gbc.gridwidth = 1;
+        gbc.fill = GridBagConstraints.BOTH;
+        //extraCardPanel.setBackground(Color.green);
+        extraCardPanel.setOpaque(false);
+        extraCardPanel.setPreferredSize(new Dimension(10, 10));
+        pane.add(extraCardPanel, gbc);
+        extraCardPanel.attach(this);
+
+
+        LeaderCardPanel jLeaderCardPanel = new LeaderCardPanel();
+
+        gbc.gridx = 4;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        jFamilyMemberPanel.setBackground(Color.green);
-        jFamilyMemberPanel.setPreferredSize(new Dimension(10, 10));
-        pane.add(jFamilyMemberPanel, gbc);
-        jFamilyMemberPanel.attach(this);
-
-        LeaderCardPanel jLeaderCardPanel = new LeaderCardPanel();
-
-        gbc.gridx = 3;
-        gbc.gridy = 2;
-        gbc.gridheight = 2;
-        gbc.gridwidth = 1;
-        gbc.fill = GridBagConstraints.BOTH;
-        //jLeaderCardPanel.setBackground(Color.pink);
+        jLeaderCardPanel.setBackground(Color.pink);
         jLeaderCardPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(jLeaderCardPanel, gbc);
         jLeaderCardPanel.attach(this);
 
+        FamilyMemberPanel jFamilyMemberPanel = new FamilyMemberPanel();
+
+        gbc.gridx = 4;
+        gbc.gridy = 2;
+        gbc.gridheight = 2;
+        gbc.gridwidth = 1;
+        gbc.fill = GridBagConstraints.BOTH;
+        jFamilyMemberPanel.setBackground(Color.red);
+        jFamilyMemberPanel.setPreferredSize(new Dimension(10, 10));
+        pane.add(jFamilyMemberPanel, gbc);
+        jFamilyMemberPanel.attach(this);
 
     }
 
