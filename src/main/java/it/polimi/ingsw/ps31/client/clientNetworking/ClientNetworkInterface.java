@@ -1,6 +1,9 @@
 package it.polimi.ingsw.ps31.client.clientNetworking;
 
 import com.google.gson.Gson;
+import it.polimi.ingsw.ps31.client.Client;
+import it.polimi.ingsw.ps31.client.ClientReadingThread;
+import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.ConcreteEnvelope;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
@@ -17,12 +20,24 @@ import it.polimi.ingsw.ps31.networking.JsonNetworking;
 public abstract class ClientNetworkInterface {
     protected boolean viewReceived = false;
     protected final ConnectionMessage connectionMessage;
+    private ClientReadingThread clientReadingThread;
+    private ClientMessageHistory clientMessageHistory;
 
     /* Constructor */
     public ClientNetworkInterface(ConnectionMessage connectionMessage)
     {
         this.connectionMessage = connectionMessage;
-        //this.view = firstConnectionProcedure(this.connectionMessage);
+    }
+
+    public void setClientMessageHistory(ClientMessageHistory clientMessageHistory)
+    {
+        this.clientMessageHistory = clientMessageHistory;
+    }
+
+    public void startReading()
+    {
+        this.clientReadingThread = new ClientReadingThread(this, clientMessageHistory);
+        clientReadingThread.start();
     }
 
     //invia un messaggio in un oggetto, serializzandolo
@@ -89,6 +104,11 @@ public abstract class ClientNetworkInterface {
     public void sendConnectionMessage()
     {
         sendToServer(this.connectionMessage);
+    }
+
+    public void setClientReadingThread(ClientReadingThread clientReadingThread)
+    {
+        this.clientReadingThread = clientReadingThread;
     }
 
     /* Abstract Methods */

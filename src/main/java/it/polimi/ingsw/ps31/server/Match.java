@@ -47,28 +47,34 @@ public class Match extends Thread{
         start();
     }
 
-    public void run()
+    public void start()
     {
+        System.out.println("Match:run> entrato nello start");
         this.virtualView=new VirtualView(networkInterface);
         Controller controller = new Controller(model,virtualView,gameLogic.getGameUtility());
         virtualView.addController(controller);
         controller.start();
         gameLogic.createJson();
         gameLogic.startConnection(virtualView);
+        super.start();
         gameLogic.playGame();
+    }
 
-        System.out.println("Match:run> ");
+    public void run()
+    {
+        System.out.println("Match:run> Entro nel run");
         //Ciclo in attesa di messaggi sulle socket
         while ( listenNetworkInterfaces )
         {
+            System.out.println("Match:run> ascolto. Timestamp="+System.currentTimeMillis());
             for ( PlayerId playerId : networkInterface.getPlayerIdList() )
                 networkInterface.readFromClient(playerId);
 
-//            try {
-//                sleep(700);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

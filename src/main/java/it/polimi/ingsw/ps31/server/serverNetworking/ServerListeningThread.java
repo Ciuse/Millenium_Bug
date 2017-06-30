@@ -31,6 +31,7 @@ public class ServerListeningThread extends Thread {
 
     public void run()
     {
+        System.out.println("ServerListeningThread:run> inizio ascolto da socket");
         while (!closeConnection)
         {
             VCVisitable msgFromNetwork = null;
@@ -40,6 +41,8 @@ public class ServerListeningThread extends Thread {
             {
                 closeConnection = true; //Esce dal ciclo e disconnette il client
             }
+
+            System.out.println("ServerListeningThread:run> messaggio letto. Bufferizzo");
 
             serverInputBuffer.bufferizeMessage(msgFromNetwork);
         }

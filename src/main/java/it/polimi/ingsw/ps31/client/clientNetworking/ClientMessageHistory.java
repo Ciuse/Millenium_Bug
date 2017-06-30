@@ -1,12 +1,9 @@
 package it.polimi.ingsw.ps31.client.clientNetworking;
 
-import it.polimi.ingsw.ps31.client.ClientNetworkingThread;
 import it.polimi.ingsw.ps31.client.ClientViewThread;
 import it.polimi.ingsw.ps31.client.view.View;
-import it.polimi.ingsw.ps31.messages.messageMV.MVMessageVisitor;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
-import it.polimi.ingsw.ps31.networking.NetworkingThread;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +16,13 @@ import java.util.Observer;
 public class ClientMessageHistory extends Observable implements Observer{
     private List<MVVisitable> inboundHistory;
     private List<VCVisitable> outgoingHistory;
-    private ClientViewThread viewThread;
+    private ClientNetworkInterface clientNetworkInterface;
 
-    public ClientMessageHistory(ClientViewThread viewThread)
+    public ClientMessageHistory(ClientNetworkInterface networkInterface)
     {
         this.inboundHistory = new ArrayList<>();
         this.outgoingHistory = new ArrayList<>();
-        this.viewThread = viewThread;
+        this.clientNetworkInterface = networkInterface;
     }
 
     public void addView(View view) {
@@ -66,6 +63,6 @@ public class ClientMessageHistory extends Observable implements Observer{
     public void update(Observable o, Object arg) {
         VCVisitable msg = (VCVisitable) arg;
         this.outgoingHistory.add(msg);
-        viewThread.sendMessage(msg);
+        clientNetworkInterface.sendToServer(msg);
     }
 }
