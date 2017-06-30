@@ -9,10 +9,12 @@ import java.awt.event.ActionListener;
  * Created by giulia on 25/06/2017.
  */
 public class MainFrame extends JFrame implements ActionListener {
+    private GuiView guiView;
     private BackgroundMainFramePanel backgroundMainFramePanel;
 
 
-    public MainFrame() {
+    public MainFrame(GuiView guiView) {
+        this.guiView=guiView;
     }
 
     public void startMainFrame() {
@@ -37,7 +39,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        backgroundMainFramePanel = new BackgroundMainFramePanel();
+        backgroundMainFramePanel = new BackgroundMainFramePanel(guiView);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 1;

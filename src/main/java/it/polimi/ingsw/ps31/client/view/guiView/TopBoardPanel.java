@@ -2,12 +2,13 @@ package it.polimi.ingsw.ps31.client.view.guiView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
  * Created by giulia on 26/06/2017.
  */
-public class TopBoardPanel extends JPanel {
+public class TopBoardPanel extends JPanel implements ActionListener {
     private ActionListener listener;
     private TowerPanel towerPanel;
     private CouncilPanel councilPanel;
@@ -35,7 +36,6 @@ public class TopBoardPanel extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
 
 
-
         towerPanel = new TowerPanel();
         c.gridx = 0;
         c.gridy = 0;
@@ -46,7 +46,9 @@ public class TopBoardPanel extends JPanel {
         c.fill = GridBagConstraints.BOTH;
         towerPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(towerPanel, c);
-        towerPanel.attach(this.listener);
+        towerPanel.attach(this);
+
+
 
         councilPanel = new CouncilPanel();
         c.gridx = 0;
@@ -58,11 +60,15 @@ public class TopBoardPanel extends JPanel {
         //councilPanel.setBackground(Color.green);
         councilPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(councilPanel, c);
-        councilPanel.attach(this.listener);
+        councilPanel.attach(this);
     }
 
     public TowerPanel getTowerPanel() {
         return towerPanel;
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        listener.actionPerformed(e);
+    }
 }

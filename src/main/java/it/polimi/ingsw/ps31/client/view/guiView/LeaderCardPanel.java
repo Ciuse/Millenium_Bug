@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
  */
 public class LeaderCardPanel extends JPanel implements  ActionListener {
     private ActionListener listener;
-    ButtonCard buttonCard;
+    ButtonCard buttonOpenLeaderCard;
 
     public LeaderCardPanel() {
         addComponentsToPane(this);
@@ -32,38 +32,43 @@ public class LeaderCardPanel extends JPanel implements  ActionListener {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        buttonCard = new ButtonCard();
-        buttonCard.setName("LeaderCard");
+        buttonOpenLeaderCard = new ButtonCard();
+        buttonOpenLeaderCard.setName("LeaderCard");
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //buttonCard.setOpaque(false);
-        buttonCard.setBackground(Color.red);
-        buttonCard.addActionListener(this);
-        pane.add(buttonCard,gbc);
+        //buttonOpenLeaderCard.setOpaque(false);
+        buttonOpenLeaderCard.setBackground(Color.red);
+        buttonOpenLeaderCard.addActionListener(this);
+        pane.add(buttonOpenLeaderCard,gbc);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JButton jButton=(JButton)e.getSource();
-        String nameButton=jButton.getName();
-        if(nameButton.equals("LeaderCard")){
+        JButton jButton = (JButton) e.getSource();
+        String nameButton = jButton.getName();
+        if (nameButton.equals("LeaderCard")) {
             PersonalLeaderCardsPanel personalLeaderCardsPanel = new PersonalLeaderCardsPanel();
             JFrame frame = new JFrame(nameButton);
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-            frame.setLocation((int)screenSize.getHeight()/8,(int)screenSize.getWidth()/16);
+            frame.setLocation((int) screenSize.getHeight() / (18 / 6), (int) screenSize.getWidth() / 10);
             frame.setAlwaysOnTop(true);
-            frame.setSize(screenSize.width/2,screenSize.height/2);
+            frame.setSize(screenSize.width / 2, screenSize.height / (12 / 4));
             frame.setVisible(true);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             Container c = frame.getContentPane();
             c.add(personalLeaderCardsPanel);
         }
+    }
 
+    public ButtonCard getButtonOpenLeaderCard() {
+        return buttonOpenLeaderCard;
+    }
 
-
+    public void setButtonOpenLeaderCard(ButtonCard buttonOpenLeaderCard) {
+        this.buttonOpenLeaderCard = buttonOpenLeaderCard;
     }
 }

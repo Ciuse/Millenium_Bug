@@ -1,8 +1,11 @@
 package it.polimi.ingsw.ps31.client.view.guiView;
 
+import it.polimi.ingsw.ps31.model.actions.*;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -10,6 +13,7 @@ import java.io.IOException;
  * Created by giulia on 28/06/2017.
  */
 public class ButtonCard extends JButton {
+    private ActionListener listener;
     private String string;
     private BufferedImage backgroundPanel;
 
@@ -35,7 +39,7 @@ public class ButtonCard extends JButton {
         this.string = string;
     }
 
-    public void setString(String string) {
+    public void imageToReprint(String string) {
         this.string = string;
         imageToLoad(string);
         repaint();
@@ -45,4 +49,13 @@ public class ButtonCard extends JButton {
     public String getString() {
         return string;
     }
+
+    public BufferedImage getBackgroundPanel() {
+        return backgroundPanel;
+    }
+
+    public void attach (ActionListener listener){
+        this.listener=listener;
+    }
+
 }

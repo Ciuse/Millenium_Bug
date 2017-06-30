@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
  */
 public class BlueCardPanel extends JPanel implements ActionListener {
     private ActionListener listener;
-    DevelopmentCardOnPersonalBoardPanel developmentCardOnPersonalBoardPanel;
+    private DevelopmentCardOnPersonalBoardPanel developmentCardOnPersonalBoardPanel;
 
     public BlueCardPanel() {
         addComponentsToPane(this);
@@ -39,6 +39,7 @@ public class BlueCardPanel extends JPanel implements ActionListener {
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(developmentCardOnPersonalBoardPanel,gbc);
+        developmentCardOnPersonalBoardPanel.attach(this);
     }
 
 

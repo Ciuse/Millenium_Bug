@@ -9,10 +9,10 @@ import java.awt.event.ActionListener;
  * Created by giulia on 25/06/2017.
  */
 public class PlayerPanel extends JPanel implements ActionListener {
+    private GuiView guiView;
 
-
-    public PlayerPanel() {
-
+    public PlayerPanel(GuiView guiView) {
+        this.guiView = guiView;
         addComponentsToPane(this);
     }
 

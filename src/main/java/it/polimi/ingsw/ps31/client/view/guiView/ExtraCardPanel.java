@@ -10,9 +10,8 @@ import java.awt.event.ActionListener;
  */
 public class ExtraCardPanel extends JPanel implements ActionListener {
     private ActionListener listener;
-    private JButton buttonCardPurplePanel;
-    private JButton buttonCardBluePanel;
-
+    private ButtonCard buttonCardPurplePanel;
+    private ButtonCard buttonCardBluePanel;
 
     public void attach (ActionListener listener){
         this.listener=listener;
@@ -35,7 +34,7 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        ButtonCard buttonCardPurplePanel = new ButtonCard();
+        buttonCardPurplePanel = new ButtonCard();
         buttonCardPurplePanel.addActionListener(this);
         buttonCardPurplePanel.setName("PurpleCard");
         gbc.gridx = 0;
@@ -47,7 +46,7 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
         buttonCardPurplePanel.setBackground(Color.green);
         pane.add(buttonCardPurplePanel,gbc);
 
-        ButtonCard buttonCardBluePanel = new ButtonCard();
+        buttonCardBluePanel = new ButtonCard();
         buttonCardBluePanel.addActionListener(this);
         buttonCardBluePanel.setName("BlueCard");
         gbc.gridx = 0;
@@ -63,25 +62,25 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JButton jButton=(JButton)e.getSource();
-        String nameButton=jButton.getName();
+        JButton jButton = (JButton) e.getSource();
+        String nameButton = jButton.getName();
         JFrame frame = new JFrame(nameButton);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setLocation((int)screenSize.getHeight()/8,(int)screenSize.getWidth()/16);
+        frame.setLocation((int) screenSize.getHeight() / (18/6), (int) screenSize.getWidth() / 10);
         frame.setAlwaysOnTop(true);
-        frame.setSize(screenSize.width/2,screenSize.height/2);
+        frame.setSize(screenSize.width / 2, screenSize.height / (12/4));
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container c = frame.getContentPane();
-        if(nameButton.equals("PurpleCard")){
-        PurpleCardPanel purpleCardPanel = new PurpleCardPanel();
-        c.add(purpleCardPanel);
+        if (nameButton.equals("PurpleCard")) {
+            PurpleCardPanel purpleCardPanel = new PurpleCardPanel();
+            c.add(purpleCardPanel);
         }
-        if(nameButton.equals("BlueCard")){
+        if (nameButton.equals("BlueCard")) {
             BlueCardPanel blueCardPanel = new BlueCardPanel();
             c.add(blueCardPanel);
         }
 
-        }
+    }
     }
 

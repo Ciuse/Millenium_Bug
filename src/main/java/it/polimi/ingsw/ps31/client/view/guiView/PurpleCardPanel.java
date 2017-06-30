@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
  */
 public class PurpleCardPanel extends JPanel implements ActionListener {
     private ActionListener listener;
-    DevelopmentCardOnPersonalBoardPanel developmentCardOnPersonalBoardPanel;
+    private DevelopmentCardOnPersonalBoardPanel developmentCardOnPersonalBoardPanel;
 
     public PurpleCardPanel() {
         addComponentsToPane(this);

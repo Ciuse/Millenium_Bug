@@ -4,7 +4,6 @@ import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
 import it.polimi.ingsw.ps31.model.choiceType.*;
-import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import javax.swing.*;
@@ -19,7 +18,7 @@ public class GuiView extends View implements ActionListener{
 
     public GuiView(PlayerId viewId, int playerMaxNumber) {
         super(viewId, playerMaxNumber);
-        this.mainFrame=new MainFrame();
+        this.mainFrame=new MainFrame(this);
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -42,7 +41,7 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void AskTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace) {
-
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getTowerPanel().setSendNextClick(true);
     }
 
     @Override

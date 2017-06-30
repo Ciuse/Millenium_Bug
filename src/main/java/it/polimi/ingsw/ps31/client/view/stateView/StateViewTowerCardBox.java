@@ -22,10 +22,10 @@ public class StateViewTowerCardBox {
         if(cardColor.equals(CardColor.GREEN)){
             return 0;
         }
-        if(cardColor.equals(CardColor.YELLOW)){
+        if(cardColor.equals(CardColor.BLUE)){
             return 1;
         }
-        if(cardColor.equals(CardColor.BLUE)){
+        if(cardColor.equals(CardColor.YELLOW)){
             return 2;
         }
         if(cardColor.equals(CardColor.PURPLE)){

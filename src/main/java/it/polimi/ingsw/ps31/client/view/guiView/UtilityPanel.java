@@ -9,10 +9,11 @@ import java.awt.event.ActionListener;
  * Created by giulia on 26/06/2017.
  */
 public class UtilityPanel extends JPanel implements ActionListener {
+    private GuiView guiView;
 
-    public UtilityPanel() {
+    public UtilityPanel(GuiView guiView) {
+        this.guiView=guiView;
         this.setBackground(new Color(45,55,105));
-
     }
 
     @Override

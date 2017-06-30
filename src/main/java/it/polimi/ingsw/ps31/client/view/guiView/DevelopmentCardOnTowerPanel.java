@@ -17,6 +17,7 @@ public class DevelopmentCardOnTowerPanel extends JPanel implements ActionListene
 
     public DevelopmentCardOnTowerPanel(String numberOfActionSpace) {
         this.numberOfActionSpace = numberOfActionSpace;
+        addComponentsToPane();
     }
 
     public void attach (ActionListener listener){
@@ -31,7 +32,7 @@ public class DevelopmentCardOnTowerPanel extends JPanel implements ActionListene
         gbl.rowHeights = new int[]{0,0,0,0};
 
         gbl.columnWeights = new double[]{0.52,0.48,Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.20,0.554,0.156,Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.20,0.454,0.156,Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -60,7 +61,7 @@ public class DevelopmentCardOnTowerPanel extends JPanel implements ActionListene
         return actionSpacePanel;
     }
 
-    public String getNumberOfActionSpace() {
+    public String getNumberStringOfActionSpace() {
         return numberOfActionSpace;
     }
 

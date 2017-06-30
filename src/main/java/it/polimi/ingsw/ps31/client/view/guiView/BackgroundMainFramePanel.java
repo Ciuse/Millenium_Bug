@@ -12,13 +12,15 @@ public class BackgroundMainFramePanel extends PaintBackgroundPanel implements Ac
     private GameBoardPanel gameBoardPanel;
     private PlayerPanel playerPanel;
     private UtilityPanel utilityPanel;
+    private GuiView guiView;
 
     public void paintComponent(Graphics g) {
         super.imageToLoad("/punchboard_b_c_04.jpg");
         super.paintComponent(g);
     }
 
-    public BackgroundMainFramePanel() {
+    public BackgroundMainFramePanel(GuiView guiView) {
+        this.guiView=guiView;
         addComponentsToPane(this);
     }
 
@@ -37,7 +39,7 @@ public class BackgroundMainFramePanel extends PaintBackgroundPanel implements Ac
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        gameBoardPanel=new GameBoardPanel();
+        gameBoardPanel=new GameBoardPanel(guiView);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 2;
@@ -46,7 +48,7 @@ public class BackgroundMainFramePanel extends PaintBackgroundPanel implements Ac
         gameBoardPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(gameBoardPanel, gbc);
 
-        playerPanel = new PlayerPanel();
+        playerPanel = new PlayerPanel(guiView);
         gbc.gridx = 2;
         gbc.gridy = 0;
         gbc.gridheight = 1;
@@ -57,7 +59,7 @@ public class BackgroundMainFramePanel extends PaintBackgroundPanel implements Ac
         playerPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(playerPanel, gbc);
 
-        utilityPanel = new UtilityPanel();
+        utilityPanel = new UtilityPanel(guiView);
         gbc.gridx = 2;
         gbc.gridy = 1;
         gbc.gridheight = 1;

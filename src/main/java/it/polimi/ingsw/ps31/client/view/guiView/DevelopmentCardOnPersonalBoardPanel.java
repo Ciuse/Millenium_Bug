@@ -5,11 +5,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static java.lang.String.valueOf;
+
 /**
  * Created by giulia on 29/06/2017.
  */
 public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements ActionListener {
-    ActionListener listener;
+    private ActionListener listener;
+    private ButtonCard buttonCard1;
+    private ButtonCard buttonCard2;
+    private ButtonCard buttonCard3;
+    private ButtonCard buttonCard4;
+    private ButtonCard buttonCard5;
+    private ButtonCard buttonCard6;
+
 
     public DevelopmentCardOnPersonalBoardPanel() {
         addComponentsToPane(this);
@@ -31,88 +40,122 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        ButtonCard jButtonPanel1 = new ButtonCard();
-        jButtonPanel1.setName("1");
-        jButtonPanel1.addActionListener(this);
+        buttonCard1 = new ButtonCard();
+        buttonCard1.setName("1");
+        buttonCard1.addActionListener(this);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        pane.add(jButtonPanel1,gbc);
+        pane.add(buttonCard1,gbc);
 
-        ButtonCard jButtonPanel2 = new ButtonCard();
-        jButtonPanel2.setName("2");
-        jButtonPanel2.addActionListener(this);
+        buttonCard2 = new ButtonCard();
+        buttonCard2.setName("2");
+        buttonCard2.addActionListener(this);
         gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        pane.add(jButtonPanel2,gbc);
+        pane.add(buttonCard2,gbc);
 
-        ButtonCard jButtonPanel3 = new ButtonCard();
-        jButtonPanel3.setName("3");
-        jButtonPanel3.addActionListener(this);
+        buttonCard3 = new ButtonCard();
+        buttonCard3.setName("3");
+        buttonCard3.addActionListener(this);
         gbc.gridx = 2;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        pane.add(jButtonPanel3,gbc);
+        pane.add(buttonCard3,gbc);
 
-        ButtonCard jButtonPanel4 = new ButtonCard();
-        jButtonPanel4.setName("4");
-        jButtonPanel4.addActionListener(this);
+        buttonCard4 = new ButtonCard();
+        buttonCard4.setName("4");
+        buttonCard4.addActionListener(this);
         gbc.gridx = 3;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        pane.add(jButtonPanel4,gbc);
+        pane.add(buttonCard4,gbc);
 
-        ButtonCard jButtonPanel5 = new ButtonCard();
-        jButtonPanel5.setName("5");
-        jButtonPanel5.addActionListener(this);
+        buttonCard5 = new ButtonCard();
+        buttonCard5.setName("5");
+        buttonCard5.addActionListener(this);
         gbc.gridx = 4;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        pane.add(jButtonPanel5,gbc);
+        pane.add(buttonCard5,gbc);
 
-        ButtonCard jButtonPanel6 = new ButtonCard();
-        jButtonPanel6.setName("6");
-        jButtonPanel6.addActionListener(this);
+        buttonCard6 = new ButtonCard();
+        buttonCard6.setName("6");
+        buttonCard6.addActionListener(this);
         gbc.gridx = 5;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        pane.add(jButtonPanel6,gbc);
+        pane.add(buttonCard6,gbc);
 
         }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JButton jButton=(JButton)e.getSource();
-        String nameButton=jButton.getName();
-        JFrame frame = new JFrame(nameButton);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setLocation((int)screenSize.getHeight()/8,(int)screenSize.getWidth()/16);
-        frame.setAlwaysOnTop(true);
-        frame.setSize(screenSize.width/8,screenSize.height/3);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        Container c = frame.getContentPane();
-        ButtonCard buttonCardToEnlarge = new ButtonCard();
-        c.add(buttonCardToEnlarge);
-        buttonCardToEnlarge.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ev) {
-                ButtonCard buttonCard = (ButtonCard)ev.getSource();
-                frame.setVisible(false);
+        ButtonCard buttonCard = (ButtonCard) e.getSource();
+        String nameButton = buttonCard.getName();
 
-            }
-        });
+//        if (buttonOpenLeaderCard.getString() != null) {
+            for (int i = 1; i <= 6; i++) {
+                    if (nameButton.equals(valueOf(i))) {
+                        JFrame frame = new JFrame(nameButton);
+                        frame.setLocation((int) screenSize.getHeight()/(13/5), (int) screenSize.getWidth() / 8);
+                        frame.setAlwaysOnTop(true);
+                        frame.setSize(screenSize.width / (37 / 6), screenSize.height / (32 / 12));
+                        frame.setVisible(true);
+                        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        Container c = frame.getContentPane();
+                        ButtonCard frameButton = new ButtonCard();
+                        frameButton.imageToReprint(buttonCard.getString());
+                        c.add(frameButton);
+                        frameButton.addActionListener(new ActionListener() {
+                            public void actionPerformed(ActionEvent ev) {
+                                frame.setVisible(false);
+                            }
+                        });
+                    }
+                }
+//        }
+    }
+
+    public ActionListener getListener() {
+        return listener;
+    }
+
+    public ButtonCard getButtonCard1() {
+        return buttonCard1;
+    }
+
+    public ButtonCard getButtonCard2() {
+        return buttonCard2;
+    }
+
+    public ButtonCard getButtonCard3() {
+        return buttonCard3;
+    }
+
+    public ButtonCard getButtonCard4() {
+        return buttonCard4;
+    }
+
+    public ButtonCard getButtonCard5() {
+        return buttonCard5;
+    }
+
+    public ButtonCard getButtonCard6() {
+        return buttonCard6;
     }
 }
