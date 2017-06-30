@@ -247,6 +247,7 @@ public class JsonNetworking {
         stateTypeAdapterFactory.registerSubtype(StatePlayerAction.class);
         stateTypeAdapterFactory.registerSubtype(StatePlayerResources.class);
         stateTypeAdapterFactory.registerSubtype(StateTower.class);
+        stateTypeAdapterFactory.registerSubtype(StateAllDevelopmentCard.class);
 
 
 

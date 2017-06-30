@@ -2,6 +2,8 @@ package it.polimi.ingsw.ps31.model.card;
 
 
 import it.polimi.ingsw.ps31.model.constants.CardColor;
+import it.polimi.ingsw.ps31.model.stateModel.StateAllDevelopmentCard;
+import it.polimi.ingsw.ps31.model.stateModel.StateDevelopmentCard;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -91,6 +93,16 @@ public class DevelopmentCardList {
         }
         return specificCardList;
     }
+
+    public StateAllDevelopmentCard getStateAllCard(){
+        List<StateDevelopmentCard> stateDevelopmentCardList = new ArrayList<>();
+        for (DevelopmentCard developmentCard:developmentCardList
+             ) {
+
+            stateDevelopmentCardList.add(developmentCard.getStateDevelopmentCard());
+        }return new StateAllDevelopmentCard(stateDevelopmentCardList);
+    }
+
 
     public void shuffleCardList(){
         Collections.shuffle(developmentCardList);

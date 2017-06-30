@@ -138,6 +138,16 @@ public abstract class View extends Observable implements Observer {
             printPlayerInAction();
     }
 
+   public final void updateAllDevelopmentCard(StateAllDevelopmentCard stateAllDevelopmentCard){
+       for (StateDevelopmentCard stateDevelopmentCard :stateAllDevelopmentCard.getStateDevelopmentCardList()
+               ) {
+           stateViewGame.updateState(stateDevelopmentCard);
+       }
+
+   }
+
+
+
     public final void updateAllFamilyMember(StateAllFamilyMember stateAllFamilyMember) {
         for (StateViewPlayer viewPlayer : stateViewPlayerList
                 ) {

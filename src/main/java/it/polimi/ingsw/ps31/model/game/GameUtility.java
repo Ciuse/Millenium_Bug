@@ -215,10 +215,7 @@ public class GameUtility{
     }
 
     public void updateStartAllDevelopmentCard(){
-        for (DevelopmentCard developmentCard:developmentCardList.getDevelopmentCardList()
-                ) {
-            model.notifyViews(new MVUpdateState(null,developmentCard.getStateDevelopmentCard()));
-            }
+        model.notifyViews(new MVUpdateState(null,developmentCardList.getStateAllCard()));
     }
 
 
