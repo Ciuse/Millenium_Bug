@@ -24,18 +24,19 @@ public class LeaderCardPanel extends JPanel implements  ActionListener {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0, 0};
-        gbl.rowHeights = new int[]{0, 0};
+        gbl.rowHeights = new int[]{0,0,0,0};
 
         gbl.columnWeights = new double[]{0.999999, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.99999, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.14,0.75,0.12, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
 
         buttonOpenLeaderCard = new ButtonCard();
         buttonOpenLeaderCard.setName("LeaderCard");
+        buttonOpenLeaderCard.imageToLoad("/sfondoleader.jpg");
         gbc.gridx = 0;
-        gbc.gridy = 0;
+        gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
@@ -44,6 +45,14 @@ public class LeaderCardPanel extends JPanel implements  ActionListener {
         buttonOpenLeaderCard.addActionListener(this);
         pane.add(buttonOpenLeaderCard,gbc);
 
+    }
+
+    public ActionListener getListener() {
+        return listener;
+    }
+
+    public ButtonCard getButtonCard() {
+        return buttonOpenLeaderCard;
     }
 
     @Override

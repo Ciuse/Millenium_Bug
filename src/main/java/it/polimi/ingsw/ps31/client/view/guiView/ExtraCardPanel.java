@@ -22,6 +22,12 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
 
     }
 
+    public ActionListener getListener() {
+        return listener;
+    }
+
+
+
     public void addComponentsToPane(Container pane){
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
@@ -37,6 +43,7 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
         buttonCardPurplePanel = new ButtonCard();
         buttonCardPurplePanel.addActionListener(this);
         buttonCardPurplePanel.setName("PurpleCard");
+        buttonCardPurplePanel.imageToLoad("/sfondoviola.jpg");
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridheight = 1;
@@ -49,6 +56,7 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
         buttonCardBluePanel = new ButtonCard();
         buttonCardBluePanel.addActionListener(this);
         buttonCardBluePanel.setName("BlueCard");
+        buttonCardBluePanel.imageToLoad("/sfondoblue.jpg");
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridheight = 1;
@@ -58,6 +66,14 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
         buttonCardBluePanel.setBackground(Color.BLUE);
         pane.add(buttonCardBluePanel,gbc);
 
+    }
+
+    public ButtonCard getButtonCardPurplePanel() {
+        return buttonCardPurplePanel;
+    }
+
+    public ButtonCard getButtonCardBluePanel() {
+        return buttonCardBluePanel;
     }
 
     @Override
