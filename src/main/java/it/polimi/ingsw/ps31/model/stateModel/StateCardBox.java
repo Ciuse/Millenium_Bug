@@ -31,7 +31,6 @@ public class StateCardBox extends StateType {
         this.towerFloor = towerFloor;
     }
 
-
     public String getName() {
         return name;
     }

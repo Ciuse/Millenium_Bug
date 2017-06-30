@@ -35,6 +35,7 @@ public class StateViewTower {
             if (stateCardBox.getCardColor().equals(this.towerColor)) {
                 for (StateViewTowerCardBox stateViewTowerCardBox : stateViewTowerCardBox
                         ) {
+                    if (stateCardBox.getTowerFloor() == stateViewTowerCardBox.getTowerFloor())
                         stateViewTowerCardBox.updateState(stateCardBox);
                 }
             }

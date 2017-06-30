@@ -105,7 +105,7 @@ public class TowerPanel extends JPanel implements ActionListener {
         if (stateViewTowerCardBox.getCardId() != 0) {
             panels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().setString("/devCard/devcards_f_en_c_" + valueOf(stateViewTowerCardBox.getCardId()) + ".png");
         }
-        else panels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().setVisible(false);
+        else panels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().setOpaque(false);
 
     }
 

@@ -187,12 +187,12 @@ public abstract class View extends Observable implements Observer {
             for (StateViewTower tower: getStateViewBoard().getStateViewTowerList()
                  ) {
                 tower.updateState(stateCardBox);
-                for (StateViewTowerCardBox stateViewTowerCardBox: tower.getStateViewTowerCardBox()
-                     ) {
-                    if(stateCardBox.getTowerFloor()==stateCardBox.getTowerFloor()){
-                        printTowerCardBox(stateViewTowerCardBox);
-                    }
-                }
+//                for (StateViewTowerCardBox stateViewTowerCardBox: tower.getStateViewTowerCardBox()
+//                     ) {
+//                    if(stateCardBox.getTowerFloor()==stateViewTowerCardBox.getTowerFloor()){
+//                        printTowerCardBox(stateViewTowerCardBox);
+//                    }
+//                }
             }
         }
         if(!firstTime)
