@@ -29,7 +29,7 @@ public class ExcommunicationPanel extends JPanel implements ActionListener {
         gbl.columnWidths = new int[]{0, 0,0,0};
         gbl.rowHeights = new int[]{0, 0, 0, 0};
 
-        gbl.columnWeights = new double[]{0.33,0.33,0.33, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.333333,0.333333,0.333333, Double.MIN_VALUE};
         gbl.rowWeights = new double[]{0.11,0.59,0.30, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
@@ -37,13 +37,13 @@ public class ExcommunicationPanel extends JPanel implements ActionListener {
 
         buttonExcommunication1 = new ButtonCard();
         buttonExcommunication1.setName("ExcommunicationFirstPeriod");
-        //buttonExcommunication1.imageToLoad("/excomm_1_1.png");
+        buttonExcommunication1.imageToLoad("/excommunications/excomm_back_1.png");
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        buttonExcommunication1.setBackground(Color.green);
+        //buttonExcommunication1.setBackground(Color.green);
         buttonExcommunication1.addActionListener(this);
         //buttonExcommunication1.setOpaque(false);
         pane.add(buttonExcommunication1,gbc);
@@ -52,26 +52,26 @@ public class ExcommunicationPanel extends JPanel implements ActionListener {
 
         buttonExcommunication2 = new ButtonCard();
         buttonExcommunication2.setName("ExcommunicationSecondPeriod");
-        //buttonExcommunication2.imageToLoad("/excomm_1_2.png");
+        buttonExcommunication2.imageToLoad("/excommunications/excomm_back_2.png");
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        buttonExcommunication2.setBackground(Color.red);
+        //buttonExcommunication2.setBackground(Color.red);
         buttonExcommunication2.addActionListener(this);
         //buttonExcommunication2.setOpaque(false);
         pane.add(buttonExcommunication2,gbc);
 
         buttonExcommunication3 = new ButtonCard();
         buttonExcommunication3.setName("ExcommunicationThirdPeriod");
-        //buttonExcommunication3.imageToLoad("/excomm_1_3.png");
+        buttonExcommunication3.imageToLoad("/excommunications/excomm_back_3.png");
         gbc.gridx = 2;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        buttonExcommunication3.setBackground(Color.yellow);
+        //buttonExcommunication3.setBackground(Color.yellow);
         buttonExcommunication3.addActionListener(this);
         //buttonExcommunication3.setOpaque(false);
         pane.add(buttonExcommunication3,gbc);
