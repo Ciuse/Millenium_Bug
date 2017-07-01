@@ -26,7 +26,7 @@ public class PlacedFamilyMemberControl extends Control {
     }
 
     public String getControlStringError(FamilyMember familyMember) {
-        return "Non puoi usare il tuo family member "+this.familyMember.getDiceColor().name();
+        return "Non puoi usare il tuo family member "+familyMember.getDiceColor().name();
     }
 
     /* Resetters */

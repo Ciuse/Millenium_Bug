@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.model.player;
 
-import it.polimi.ingsw.ps31.client.view.guiView.PersonalBoardPanel;
 import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;

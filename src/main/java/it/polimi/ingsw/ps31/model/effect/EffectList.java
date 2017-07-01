@@ -42,9 +42,11 @@ public class EffectList {
     }
     public boolean isNotNull(){
         if(effectList!=null){
-            return true;
+            if(effectList.get(0)!=null) {
+                return true;
+            }
         }
-        else return false;
+        return false;
     }
     /*Getters & Setters*/
     public List<Effect> getEffectList(){

@@ -33,7 +33,7 @@ public class SelfOccupiedTowerControl extends Control {
 
     @Override
     public String getControlStringError() {
-        return "non puoi mettere due family member non neutri nella torre di colore " + tower.getColor().name();
+        return "non puoi mettere due family member non neutri nella torre di colore ";
     }
 
     /*Reset Method*/

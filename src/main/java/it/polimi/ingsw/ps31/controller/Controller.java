@@ -237,16 +237,27 @@ public class Controller extends Thread implements Observer {
             if (familyMember.getDiceColor().equals(familyMemberColor)) {
                 legitAnswer = true;
                 if (!gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().placedFamilyMemberControl(familyMember)) {       //controllo se il famigliare scelto dal giocatore era già stato piazzato
-                    if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
-                        modelChoices.setFamilyMemberChosen(familyMember);
+                    if (gameUtility.getPlayerInAction().getPlayerId().equals(viewId)) {
+                        if (familyMemberColor.equals(DiceColor.NEUTRAL)) {
+                            if (gameUtility.getPlayerInAction().getPlayerResources().getSpecificResource(Servant.class).getValue() > 0){
+                                if (gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                                    modelChoices.setFamilyMemberChosen(familyMember);
+                            }else{
+                                virtualView.reSendLastMessage(gameUtility.getPlayerInAction().getActionControlSet().getPlacedFamilyMemberControl().getControlStringError(familyMember));
+                            }
+                        } else {
+                            if (gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                                modelChoices.setFamilyMemberChosen(familyMember);
+                        }
+                    }
                 } else {
-                    if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                    if (gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
                         virtualView.reSendLastMessage(gameUtility.getPlayerInAction().getActionControlSet().getPlacedFamilyMemberControl().getControlStringError(familyMember));
                 }
             }
         }
         if (!legitAnswer) {
-            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+            if (gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
                 virtualView.reSendLastMessage("(controller) Player mi hai mentito");
         }
     }

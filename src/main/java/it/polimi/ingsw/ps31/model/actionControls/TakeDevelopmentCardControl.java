@@ -29,7 +29,7 @@ public class TakeDevelopmentCardControl extends Control {
 
     @Override
     public String getControlStringError() {
-        return "non puoi prendere la carta: "+developmentCard.getCardId()+" "+developmentCard.getName()+ "perchè non soddisfi i requisiti della personal board";
+        return "non puoi prendere la carta perchè non soddisfi i requisiti della personal board";
     }
 
     /* Resetters */
