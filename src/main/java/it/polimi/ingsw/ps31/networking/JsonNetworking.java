@@ -92,7 +92,6 @@ public class JsonNetworking {
         choiceTypeAdapterFactory.registerSubtype(ChoicePersonalBonusTiles.class, "ChoicePersonalBonusTiles");
         choiceTypeAdapterFactory.registerSubtype(ChoicePrivilegeResource.class, "ChoicePrivilegeResource");
         choiceTypeAdapterFactory.registerSubtype(ChoiceStartLeaderCard.class, "ChoiceStartLeaderCard");
-        choiceTypeAdapterFactory.registerSubtype(ChoiceTowerActionSpace.class, "ChoiceTowerActionSpace");
         choiceTypeAdapterFactory.registerSubtype(ChoiceTowerCardSpace.class, "ChoiceTowerCardSpace");
 
 

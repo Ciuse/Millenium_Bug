@@ -22,6 +22,7 @@ public class IntrChoiceActionSpace implements CmdInterpreterView{
                 if (in.compareTo(i.toString().charAt(0))==0) {
                     terminalView.printLastEvent("Comando OK");
                     terminalView.notifyController(new VCActionSpace(terminalView.getViewId(),terminalView.getStateViewBoard().getStateViewActionSpaceList().get(i - 1).getNumberOfActionSpace()));
+                    return true;
                 }
             }
             terminalView.printLastEvent("Comando Non Riconusciuto");

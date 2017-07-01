@@ -48,23 +48,32 @@ public class ActionGetTempResourcesFromAllEffect extends Action {
 
     public void addTempResourceToPlayer() {
         if (resourcesTempToGet == null) {
-            //TODO: fare qualcosa (eccezione?)
+            return;
         } else {//Eseguo l'azione
+
+
             List<Resource> resourcesTempToGetList = this.resourcesTempToGet.getResourceList();
-            int listToPay=0;
-            if(resourceMalus.size()>1){
-                player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(resourceMalus);
-                String string = player.getPlayerId() + ": quale risorsa non vuoi ottenere?";
-                player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string,new ChoiceListToPay(0)));
-                listToPay = player.getModel().getModelChoices().waitIntListToPay();
-            }
-            for (Resource currentResource : resourcesTempToGetList) {
-                //todo: da attivare sse le risorse provengono da carte sviluppo o spazi azione
-                for (Resource resource:resourceMalus.get(listToPay).getResourceList()
-                     ) {
-                    currentResource.addValue(resource.getValue());
+            int listToPay = 0;
+            if (!resourceMalus.isEmpty()) {
+                if (resourceMalus.size() > 1) {
+                    player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(resourceMalus);
+                    String string = player.getPlayerId() + ": quale risorsa non vuoi ottenere?";
+                    player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceListToPay(0)));
+                    listToPay = player.getModel().getModelChoices().waitIntListToPay();
                 }
-                currentResource.addTempResource(super.player);
+                for (Resource currentResource : resourcesTempToGetList) {
+                    //todo: da attivare sse le risorse provengono da carte sviluppo o spazi azione
+                    for (Resource resource : resourceMalus.get(listToPay).getResourceList()
+                            ) {
+                        currentResource.addValue(resource.getValue());
+                    }
+                    currentResource.addTempResource(super.player);
+                }
+            } else {
+                for (Resource currentResource : resourcesTempToGetList) {
+                    //todo: da attivare sse le risorse provengono da carte sviluppo o spazi azione
+                    currentResource.addTempResource(super.player);
+                }
             }
         }
     }

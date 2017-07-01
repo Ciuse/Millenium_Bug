@@ -49,6 +49,7 @@ public class GameUtility{
     private List<PointResource[]> personalBoardRequirements;
     private List<ResourceList> initialPlayerResource;
     private List<PersonalBonusTiles> personalBonusTilesList;
+    private List<ResourceList> councilPrivilegeResChoice;
     private List<DevelopmentCardDeck> deckList = new ArrayList<>();
     private int playerMaxNumber;
     private static final int Max_Leader_Card = 4;
@@ -154,9 +155,11 @@ public class GameUtility{
             Action actionToDo =model.getModelChoices().waitActionToDo();
             for (Action action:player.getPlayerActionSet().getActionList()
                     ) {
-                if(actionToDo!=null && actionToDo.getClass().equals(action.getClass())){
-                    model.getModelChoices().setStateActionGame();
-                    action.activate();
+                if(actionToDo!=null){
+                    if(actionToDo.getClass().equals(action.getClass())) {
+                        model.getModelChoices().setStateActionGame();
+                        action.activate();
+                    }
                 }
                 else{
                     String string1 = "Non ho trovato l azione da eseguire";
@@ -730,6 +733,14 @@ public class GameUtility{
         this.personalBonusTilesList = personalBonusTilesList;
     }
 
+    public List<ResourceList> getCouncilPrivilegeResChoice() {
+        return councilPrivilegeResChoice;
+    }
+
+    public void setCouncilPrivilegeResChoice(List<ResourceList> councilPrivilegeResChoice) {
+        this.councilPrivilegeResChoice = councilPrivilegeResChoice;
+    }
+
     public Player getPlayerInAction() {
         return playerInAction;
     }
@@ -747,6 +758,7 @@ public class GameUtility{
         {
             this.gameBoard.add4PlayerMarketSpace(actionSpaceEffectList);
         }
+        this.gameBoard.setMarketId();
         setMarkerDisc();
     }
 

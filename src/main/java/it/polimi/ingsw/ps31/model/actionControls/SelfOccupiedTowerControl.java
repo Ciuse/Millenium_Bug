@@ -49,30 +49,29 @@ public class SelfOccupiedTowerControl extends Control {
 
     /* Class Methods */
     @Override
-    public boolean execute()
-    {
-        //Controllo che i parametri siano settati
-        if ( this.tower == null || this.familyMember == null )
-        {
-            //TODO: eccezione
-            return false;
-        }else
-        {
-            if(this.familyMember.getDiceColor() == DiceColor.NEUTRAL)
-                return true;
+    public boolean execute() {
+        if (this.familyMember.getDiceColor() == DiceColor.NEUTRAL)
+            return true;
 
-            Player fmOwner = this.familyMember.getPlayer();
-            boolean azionePossibile = true;
-            for (TowerCardSpace tcs : this.tower.getTowerCardSpaceList())
-            {
-                FamilyMember currentFamilyMember = tcs.getActionSpace().getFamilyMemberIndex(0);
-                if(!currentFamilyMember.getDiceColor().equals(DiceColor.NEUTRAL) && currentFamilyMember.getPlayer().equals(fmOwner))
+        Player fmOwner = familyMember.getPlayer();
+        boolean azionePossibile = true;
+
+        for (TowerCardSpace tcs : tower.getTowerCardSpaceList()) {
+            for (FamilyMember family : tcs.getActionSpace().getFamilyMemberList()
+                    ) {
+                if (!family
+                        .getDiceColor()
+                        .equals(DiceColor.NEUTRAL)
+                        && family
+                        .getPlayer()
+                        .equals(fmOwner))
                     azionePossibile = false;
             }
 
-            resetFamilyMember();
-            resetTowerCardSpace();
-            return azionePossibile;
         }
+
+        resetFamilyMember();
+        resetTowerCardSpace();
+        return azionePossibile;
     }
 }

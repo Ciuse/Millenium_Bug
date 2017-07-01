@@ -42,8 +42,8 @@ public class PersonalBoardCardCell extends PhysicalCardBox {
 
     public StateCardBox getStatePersonalCardBox(){
         if(this.card!=null) {
-            StateCardBox stateCardBox = new StateCardBox(playerId,super.card.getName(), super.card.getCardId(), super.card.getCardColor(),this.value,this.extraPointRequired.getValue());
-            return stateCardBox;
+
+            return new StateCardBox(playerId,super.card.getName(), super.card.getCardId(), super.card.getCardColor(),this.value,this.extraPointRequired.getValue());
         }
         return null;
     }

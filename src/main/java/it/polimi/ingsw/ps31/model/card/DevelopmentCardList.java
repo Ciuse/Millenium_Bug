@@ -44,32 +44,32 @@ public class DevelopmentCardList {
 
     public int countCardGreen() {
         int contatore = 0;
-        for (int i = 0; i < this.developmentCardList.size(); i++) {
-            if(developmentCardList.get(i).getClass().equals(Territory.class))
-            contatore = contatore + 1;
+        for (DevelopmentCard aDevelopmentCardList : this.developmentCardList) {
+            if (aDevelopmentCardList.getClass().equals(Territory.class))
+                contatore = contatore + 1;
         }
         return contatore;
     }
     public int countCardYellow() {
         int contatore = 0;
-        for (int i = 0; i < this.developmentCardList.size(); i++) {
-            if(developmentCardList.get(i).getClass().equals(Building.class))
+        for (DevelopmentCard aDevelopmentCardList : this.developmentCardList) {
+            if (aDevelopmentCardList.getClass().equals(Building.class))
                 contatore = contatore + 1;
         }
         return contatore;
     }
     public int countCardBlue() {
         int contatore = 0;
-        for (int i = 0; i < this.developmentCardList.size(); i++) {
-            if(developmentCardList.get(i).getClass().equals(Character.class))
+        for (DevelopmentCard aDevelopmentCardList : this.developmentCardList) {
+            if (aDevelopmentCardList.getClass().equals(Character.class))
                 contatore = contatore + 1;
         }
         return contatore;
     }
     public int countCardPurple() {
         int contatore = 0;
-        for (int i = 0; i < this.developmentCardList.size(); i++) {
-            if(developmentCardList.get(i).getClass().equals(Venture.class))
+        for (DevelopmentCard aDevelopmentCardList : this.developmentCardList) {
+            if (aDevelopmentCardList.getClass().equals(Venture.class))
                 contatore = contatore + 1;
         }
         return contatore;
@@ -77,8 +77,8 @@ public class DevelopmentCardList {
     //in base al colore conto le carte di quel colore
     public int countSpecificCardColor(CardColor cardColor) {
         int contatore = 0;
-        for (int i = 0; i < this.developmentCardList.size(); i++) {
-            if(developmentCardList.get(i).getCardColor().equals(cardColor))
+        for (DevelopmentCard aDevelopmentCardList : this.developmentCardList) {
+            if (aDevelopmentCardList.getCardColor().equals(cardColor))
                 contatore = contatore + 1;
         }
         return contatore;
@@ -86,9 +86,12 @@ public class DevelopmentCardList {
     public List<DevelopmentCard> getSpecificCardList(CardColor cardColor){
 
         List<DevelopmentCard> specificCardList = new ArrayList<>();
-        for(int i=0; i<this.developmentCardList.size();i++){
-            if(this.developmentCardList.get(i).getCardColor().equals(cardColor)){
-                specificCardList.add(this.developmentCardList.get(i));
+        for (DevelopmentCard aDevelopmentCardList : this.developmentCardList) {
+
+            if (aDevelopmentCardList
+                    .getCardColor()
+                    .equals(cardColor)) {
+                specificCardList.add(aDevelopmentCardList);
             }
         }
         return specificCardList;

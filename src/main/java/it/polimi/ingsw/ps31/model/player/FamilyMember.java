@@ -70,7 +70,7 @@ public class FamilyMember {
         if( this.fixedValue == null )
             return this.diceValue + this.additionalValue+this.permanentAdditionalValue;
         else
-            return this.fixedValue;
+            return this.fixedValue+this.additionalValue+this.permanentAdditionalValue;
     }
 
     public int getPermanentAdditionalValue() {

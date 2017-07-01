@@ -41,7 +41,9 @@ public class ActionAddFinalBonus extends Action {
     public void activate()
     {
         player.addFinalBonusResource(this.resourceList);
-        resetResourceList();
+
         player.getModel().notifyViews(new MVUpdateState("Aggiornato stato PlayerResources (effetto permanente carte viola)",player.getStatePlayerResources()));
+
+        resetResourceList();
     }
 }

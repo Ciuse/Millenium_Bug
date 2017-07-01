@@ -90,7 +90,7 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void askActionSpace(ChoiceActionSpace choiceActionSpace);
 
-    public abstract void AskTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace);
+    public abstract void askTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace);
 
     public abstract void askActionToDo(ChoiceActionToDo choiceActionToDo);
 
@@ -152,7 +152,6 @@ public abstract class View extends Observable implements Observer {
    }
 
 
-
     public final void updateAllFamilyMember(StateAllFamilyMember stateAllFamilyMember) {
         for (StateViewPlayer viewPlayer : stateViewPlayerList
                 ) {
@@ -191,7 +190,9 @@ public abstract class View extends Observable implements Observer {
 
     public final void updateCardBox(StateCardBox stateCardBox) {
 
+
         if(stateCardBox.getValue()!=-1) {
+
             for (StateViewPersonalBoard viewPersonalBoard : stateViewPersonalBoardList
                     ) {
                 if (viewPersonalBoard.getPlayerId().equals(stateCardBox.getPlayerId()))
@@ -201,11 +202,13 @@ public abstract class View extends Observable implements Observer {
         if(stateCardBox.getTowerFloor()!=-1){
             for (StateViewTower tower: getStateViewBoard().getStateViewTowerList()
                  ) {
-                tower.updateState(stateCardBox);
-                for (StateViewTowerCardBox stateViewTowerCardBox: tower.getStateViewTowerCardBox()
-                     ) {
-                    if(stateCardBox.getTowerFloor()==stateViewTowerCardBox.getTowerFloor()){
-                        printTowerCardBox(stateViewTowerCardBox);
+                if (tower.getTowerColor().equals(stateCardBox.getCardColor())) {
+                    tower.updateState(stateCardBox);
+                    for (StateViewTowerCardBox stateViewTowerCardBox : tower.getStateViewTowerCardBox()
+                            ) {
+                        if (stateCardBox.getTowerFloor() == stateViewTowerCardBox.getTowerFloor()) {
+                            printTowerCardBox(stateViewTowerCardBox);
+                        }
                     }
                 }
             }
@@ -243,11 +246,12 @@ public abstract class View extends Observable implements Observer {
         if(firstTime) {
             setFirstTime(false);        //TODO PROBABILMENTE é DA SPOSTATE ( CMQ LE AZIONI PER ORA DEVONO ESSERE STAMPATE PER ULTIME)
             printTower();
-//            printFamilyMemberInAction();
-//            printAllPersonalBoard();
-//            printPlayerInAction();
-//            printAllPlayer();
-//            printPlayerAction();
+            printPlayerInAction();
+            printPersonalBoardInAction();
+            printFamilyMemberInAction();
+            printAllPersonalBoard();
+            printAllPlayer();
+            printPlayerAction();
         }
 
         if (!firstTime) {

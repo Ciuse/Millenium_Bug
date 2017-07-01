@@ -27,7 +27,8 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoiceTowerCardSpace choiceTowerCardSpace) {
-
+        view.setCmdInterpreterView(new IntrChoiceTowerCardSpace());
+        view.askTowerCardSpace(choiceTowerCardSpace);
     }
 
     @Override
@@ -99,10 +100,5 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
     public void visit(ChoiceLeaderToDiscard choiceLeaderToDiscard) {
         view.setCmdInterpreterView(new IntrLeaderToDiscard());
         view.askLeaderToDiscard(choiceLeaderToDiscard);
-    }
-
-    @Override
-    public void visit(ChoiceTowerActionSpace choiceTowerActionSpace) {
-
     }
 }

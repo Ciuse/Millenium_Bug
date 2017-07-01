@@ -40,6 +40,12 @@ public class EffectList {
     public void clear(){
         this.effectList.clear();
     }
+    public boolean isNotNull(){
+        if(effectList!=null){
+            return true;
+        }
+        else return false;
+    }
     /*Getters & Setters*/
     public List<Effect> getEffectList(){
         return new ArrayList<>(this.effectList);

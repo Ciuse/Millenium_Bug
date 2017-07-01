@@ -47,8 +47,9 @@ public class ActionDiscardLeaderCard extends Action {
             player.getPlayerActionSet().getResources(new ResourceList(new CouncilPrivilege(1, false)));
         }
 
-        resetLeaderCard();
         player.getModel().notifyViews(new MVUpdateState("Aggiornato stato leader card", leaderCard.getStateLeaderCard()));
+
+        resetLeaderCard();
     }
 
     @Override

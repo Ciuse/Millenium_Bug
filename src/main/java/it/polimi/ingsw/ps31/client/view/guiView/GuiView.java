@@ -40,7 +40,7 @@ public class GuiView extends View implements ActionListener{
     }
 
     @Override
-    public void AskTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace) {
+    public void askTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace) {
         mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getTowerPanel().setSendNextClick(true);
     }
 

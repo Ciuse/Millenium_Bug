@@ -63,6 +63,8 @@ public class ResourceList {
         for (Resource resourceList : this.resourceList) {
 
             if (resourceList.getClass().equals(resource.getClass()) && !found) {
+
+                System.out.println("RISORSA SOTRTATTA"+resource.toString()+resource.getValue());
                 resourceList.subValue(resource.getValue());
                 found = true;
             }

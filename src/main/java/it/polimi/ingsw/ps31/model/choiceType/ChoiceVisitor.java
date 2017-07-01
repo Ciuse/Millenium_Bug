@@ -19,5 +19,4 @@ public interface ChoiceVisitor {
     void visit(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay);
     void visit(ChoiceLeaderToActive choiceLeaderToActive);
     void visit(ChoiceLeaderToDiscard choiceLeaderToDiscard);
-    void visit(ChoiceTowerActionSpace choiceTowerActionSpace);
 }

@@ -77,6 +77,8 @@ public class PersonalBoard {
                 developmentCardList.add(cell.getCard());
             }
         }
+
+        System.out.println("LISTA"+developmentCardList);
         return developmentCardList;
     }
 

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.client.view.guiView.PersonalBoardPanel;
 import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
@@ -70,6 +71,17 @@ public class PersonalBoardCardList {
             }
         }
         return true;
+    }
+
+    public int numberOfCard(){
+        int i=0;
+        for (PersonalBoardCardCell cell : personalBoardCardCellList
+                ) {
+            if(cell.getCard()!=null) {
+                i++;
+            }
+        }
+        return i;
     }
 
     public void addCard(DevelopmentCard card){

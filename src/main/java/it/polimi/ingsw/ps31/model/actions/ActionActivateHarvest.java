@@ -37,9 +37,9 @@ public class ActionActivateHarvest extends Action {
 
         player.getHarvestList().activate(this.diceValue + this.diceBonus);
 
-        resetDiceValue();
         player.getModel().notifyViews(new MVUpdateState("Aggiornato stato PlayerResources", player.getStatePlayerResources()));
 
+        resetDiceValue();
     }
 
     /* Modifiers */

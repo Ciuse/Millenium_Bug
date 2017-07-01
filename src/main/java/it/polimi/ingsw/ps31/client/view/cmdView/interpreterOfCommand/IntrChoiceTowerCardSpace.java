@@ -13,7 +13,9 @@ public class IntrChoiceTowerCardSpace implements CmdInterpreterView{
     @Override
     public boolean messageInterpreter2(CmdLineView terminalView, ChoiceType choiceType, Character in1, Character in2) {
         CardColor towerChoosen = null;
-        int floorChoosen = 0;
+        int floorChoosen;
+
+
         if (in1 != null && in2 != null) {
             if (in1.compareTo('G')==0 || in1.compareTo('g')==0) {
                 towerChoosen = CardColor.GREEN;
@@ -33,9 +35,9 @@ public class IntrChoiceTowerCardSpace implements CmdInterpreterView{
             }
             for (StateViewTowerCardBox towerCardBox : terminalView.getStateViewBoard().getStateViewTowerList().get(0).getStateViewTowerCardBox()
                     ) {
-                Integer floor= towerCardBox.getTowerFloor();
+                Integer floor= towerCardBox.getTowerFloor()+1;
                 if (in2.compareTo(floor.toString().charAt(0))==0) {
-                    floorChoosen = floor;
+                    floorChoosen = floor-1;
                     terminalView.notifyController(new VCTowerCardSpaceChoice(terminalView.getViewId(), towerChoosen, floorChoosen));
                     return true;
                 }

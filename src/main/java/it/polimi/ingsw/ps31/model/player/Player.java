@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.player;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.actions.ActionControlSet;
 import it.polimi.ingsw.ps31.model.board.MarkerDisc;
@@ -44,8 +45,7 @@ public class Player {
     private final Model model;
 
     /* Constructor */
-    public Player(Model model, PlayerId playerId, ResourceList initialResources, String nickname, PersonalBoard personalBoard)
-    {
+    public Player(Model model, PlayerId playerId, ResourceList initialResources, String nickname, PersonalBoard personalBoard) {
         this.model = model;
 
         //Attributi base
@@ -54,17 +54,27 @@ public class Player {
         this.nickname = nickname;
         this.permanentBonus = new PermanentBonus();
         this.excommunicationTiles = new ArrayList<>(); //TODO: serve davvero??
-        this.tempPlayerResourcesToGain=null;
+
+        ResourceList resourceListToAdd = new ResourceList();
+        resourceListToAdd.addSpecificResource(new Wood(0));
+        resourceListToAdd.addSpecificResource(new Stone(0));
+        resourceListToAdd.addSpecificResource(new Servant(0));
+        resourceListToAdd.addSpecificResource(new Coin(0));
+        resourceListToAdd.addSpecificResource(new MilitaryStrength(0));
+        resourceListToAdd.addSpecificResource(new FaithPoint(0));
+        resourceListToAdd.addSpecificResource(new VictoryPoint(0));
+        this.tempPlayerResourcesToGain = resourceListToAdd;
+
         //creazione lista dei famigliari
         DiceColor[] diceColor = {DiceColor.WHITE, DiceColor.ORANGE, DiceColor.BLACK, DiceColor.NEUTRAL};
-        for(int i =0 ;i<diceColor.length;i++){
-            FamilyMember familyMember = new FamilyMember(this,diceColor[i]);
+        for (int i = 0; i < diceColor.length; i++) {
+            FamilyMember familyMember = new FamilyMember(this, diceColor[i]);
             this.familyMembers.add(familyMember);
         }
         //creazione dei markerdisc
-        MarkerDisc markerDisc1 = new MarkerDisc(FaithPoint.class,this);
-        MarkerDisc markerDisc2 = new MarkerDisc(VictoryPoint.class,this);
-        MarkerDisc markerDisc3 = new MarkerDisc(MilitaryStrength.class,this);
+        MarkerDisc markerDisc1 = new MarkerDisc(FaithPoint.class, this);
+        MarkerDisc markerDisc2 = new MarkerDisc(VictoryPoint.class, this);
+        MarkerDisc markerDisc3 = new MarkerDisc(MilitaryStrength.class, this);
         markerDiscList.add(markerDisc1);
         markerDiscList.add(markerDisc2);
         markerDiscList.add(markerDisc3);
@@ -212,6 +222,7 @@ public class Player {
         for(int i = 0;i<tempPlayerResourcesToGain.size();i++){
             playerResources.addResources(tempPlayerResourcesToGain.get(i));
         }
+        model.notifyViews(new MVUpdateState("Aggiornato stato PlayerResources", getStatePlayerResources()));
         this.tempPlayerResourcesToGain.clear();
     }
 
@@ -223,15 +234,15 @@ public class Player {
 
     public void addDevelopmentCard(DevelopmentCard card)
     {
-        if ( this.personalBoard.getPlayerCardList().getSpecificCardList(card.getCardColor()).size() <PersonalBoardCardList.getMaxCardOfSameColor())
-            this.personalBoard.addCard(card);
-        else
-        {
-            //TODO: eccezione
-        }
 
-        //Attivo gli effetti della carta
-        card.activeEffectList(this);
+        if ( this.personalBoard.getSpecificPersonalBoardCardList(card.getCardColor()).numberOfCard() <PersonalBoardCardList.getMaxCardOfSameColor()) {
+
+            this.personalBoard.addCard(card);
+
+
+            //Attivo gli effetti della carta
+            card.activeEffectList(this);
+        }
     }
 
     public void addLeaderCard(LeaderCard leaderCard)

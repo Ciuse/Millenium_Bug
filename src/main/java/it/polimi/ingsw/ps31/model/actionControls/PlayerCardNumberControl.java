@@ -40,7 +40,7 @@ public class PlayerCardNumberControl extends Control {
             return false;
         }
 
-        boolean ret = this.player.getPlayerCardList().getSpecificCardList(cardColor).size() < MAX_CARD_NUMBER;
+        boolean ret = this.player.getPersonalBoard().getSpecificPersonalBoardCardList(cardColor).numberOfCard() < MAX_CARD_NUMBER;
         resetCardColor();
 
         return ret;

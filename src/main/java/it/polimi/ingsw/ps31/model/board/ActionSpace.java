@@ -26,7 +26,6 @@ public class ActionSpace implements ActiveEffect {
         this.diceCost = diceCost;
         this.familyMemberLimit = familyMemberLimit;
         this.immediateEffectList = immediateEffectList;
-        this.familyMembers = null;
     }
 
     /* Getters & Setters */
@@ -42,15 +41,7 @@ public class ActionSpace implements ActiveEffect {
 
     public List<FamilyMember> getFamilyMemberList()
     {
-        return this.familyMembers;
-    }
-
-    public FamilyMember getFamilyMemberIndex(int index)
-    {
-        if ( index >= this.familyMembers.size())
-            return null; //Indice maggiore della dimensione della lista
-        else
-            return this.familyMembers.get(index);
+        return new ArrayList<>(familyMembers);
     }
 
     public int getActionSpaceId() {
@@ -69,8 +60,8 @@ public class ActionSpace implements ActiveEffect {
     public void addFamilyMember(FamilyMember familyMember)
     {
         //Aggiungo il familiare alla lista dello spazio azione
+        familyMember.setActionSpace(this);
         this.familyMembers.add(familyMember);
-
         String string="Aggiornato ActionSpace: "+this.actionSpaceId;
         familyMember.getPlayer().getModel().notifyViews(new MVUpdateState(string, getStateActionSpace()));
     }
@@ -98,11 +89,14 @@ public class ActionSpace implements ActiveEffect {
 
     @Override
     public void activeEffectList(Player player) {
-        if(this.immediateEffectList!=null){
-            for(int i=0; i<this.immediateEffectList.size();i++){
-                this.immediateEffectList.get(i).activate(player);
+
+        if (this.immediateEffectList != null) {
+            if (immediateEffectList.isNotNull()) {
+                for (int i = 0; i < this.immediateEffectList.size(); i++) {
+                    this.immediateEffectList.get(i).activate(player);
+                }
             }
+            player.addTempResoucesToPlayerResources();
         }
-        player.addTempResoucesToPlayerResources();
     }
 }

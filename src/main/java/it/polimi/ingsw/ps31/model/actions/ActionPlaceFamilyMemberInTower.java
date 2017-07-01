@@ -5,8 +5,7 @@ import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceFamilyMember;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceListToPay;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerActionSpace;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerCardSpace;
 import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
@@ -44,19 +43,24 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
 
         player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "Quale family member vuoi usare?", new ChoiceFamilyMember()));
         this.familyMember = player.getModel().getModelChoices().waitFamilyMemberChosen();
+        player.setLastUsedFamilyMember(familyMember);
 
         //chiedo se vuole pagare dei servitori
         player.getPlayerActionSet().payServants(super.familyMember);
 
         do {
-            player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "In quale tower action space vuoi mettere il tuo family member?", new ChoiceTowerActionSpace()));
+            player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "In quale tower card space vuoi mettere il tuo family member?", new ChoiceTowerCardSpace()));
             this.towerCardSpace = player.getModel().getModelChoices().waitTowerCardChosen();
 
             //Eseguo i controlli
             if (actionControlSet.selfOccupiedTowerControl(familyMember, towerCardSpace.getTower())) {
+
                 if (actionControlSet.diceValueVsCardSpaceControl(familyMember.getTotalValue(), towerCardSpace)) {
+
                     if (actionControlSet.towerCostPlacementControl(towerCardSpace)) {
+
                         if(actionControlSet.takeDevelopmentCardControl(towerCardSpace.getCard())) {
+
                             //TODO SIMULARE L ATTIVAZIONE IN CATENA DEGLI EFFETI
                             //pago la torre
                             player.getPlayerActionSet().payTowerMoney();
@@ -96,10 +100,12 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
 
 
         setUsed(true);
-        resetTowerCardSpace();
-        resetFamilyMember();
+
         player.getModel().notifyViews(new MVUpdateState("Aggiornato stato family member", familyMember.getStateFamilyMember()));
         player.getModel().notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella tower", towerCardSpace.getActionSpace().getStateActionSpace()));
+
+        resetTowerCardSpace();
+        resetFamilyMember();
     }
 
     @Override

@@ -29,6 +29,7 @@ public class JsonGameObject {
     private List<ResourceList> initialResourcePlayer;
     private List<ExcommunicationTiles> excommunicationTiles;
     private List<PersonalBonusTiles> personalBonusTilesList;
+    private List<ResourceList> councilPrivilegeResChoice;
     private long playerConnectionTimer;
     private long playerActionTimer;
 
@@ -229,6 +230,14 @@ public class JsonGameObject {
 
     public void setPersonalBonusTilesList(List<PersonalBonusTiles> personalBonusTilesList) {
         this.personalBonusTilesList = personalBonusTilesList;
+    }
+
+    public List<ResourceList> getCouncilPrivilegeResChoice() {
+        return councilPrivilegeResChoice;
+    }
+
+    public void setCouncilPrivilegeResChoice(List<ResourceList> councilPrivilegeResChoice) {
+        this.councilPrivilegeResChoice = councilPrivilegeResChoice;
     }
 
     public long getPlayerConnectionTimer() {

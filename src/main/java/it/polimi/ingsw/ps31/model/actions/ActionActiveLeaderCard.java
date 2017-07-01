@@ -33,8 +33,9 @@ public class ActionActiveLeaderCard extends Action {
         if (leaderCard.isPlayed())
             leaderCard.activeEffectList(player);
 
-        resetLeaderCard();
         player.getModel().notifyViews(new MVUpdateState("Aggiornato stato leader card",leaderCard.getStateLeaderCard()));
+
+        resetLeaderCard();
     }
 
     @Override

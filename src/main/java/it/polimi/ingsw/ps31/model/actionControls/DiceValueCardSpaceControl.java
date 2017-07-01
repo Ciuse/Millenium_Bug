@@ -65,7 +65,7 @@ public class DiceValueCardSpaceControl extends Control {
         } else
         {
             //Controllo che il valore dell azione più i vari bonus sia maggiore al costro del dado dell action space associato al tower card space
-            if ( diceValue+cardDiceBonuses.get(towerCardSpace.getTowerColor())>towerCardSpace.getActionSpace().getDiceCost())
+            if ( diceValue+cardDiceBonuses.get(towerCardSpace.getTowerColor())>=towerCardSpace.getActionSpace().getDiceCost())
                 result = true;
             else
                 result = false;

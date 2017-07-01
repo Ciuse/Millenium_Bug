@@ -46,9 +46,11 @@ public class ActionPayServants extends Action {
         } else {
 
             //chiedere al player quanti servitori vuole pagare per aumentare il valore del familiare
-            String string = player.getPlayerId() + ":Quanti servitori vuoi pagare per aumentare il valore del tuo familiare?";
-            player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceNumberOfServantsToPay()));
-            setServantsAmount(player.getModel().getModelChoices().waitNumberOfServantsToPay());
+            do {
+                String string = player.getPlayerId() + ":Quanti servitori vuoi pagare per aumentare il valore del tuo familiare?";
+                player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceNumberOfServantsToPay()));
+                setServantsAmount(player.getModel().getModelChoices().waitNumberOfServantsToPay());
+            }while(Math.floorDiv(servantsAmount, servantsToPayPerUnitaryDiceValueArise)+familyMember.getTotalValue()<=0);
 
             Resource servantToPay = new Servant(servantsAmount); //creo la risorsa servitore con il valore che mi ha detto il giocatore
 
@@ -56,13 +58,12 @@ public class ActionPayServants extends Action {
             player.subResources(servantToPay);
             familyMember.addAdditionalValue(Math.floorDiv(servantsAmount, servantsToPayPerUnitaryDiceValueArise));
 
-            resetServantsAmount();
 
             //agiorno stato oggetti modificati
-            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato familyMember: " + familyMember.getDiceColor().name(),
-                    familyMember.getStateFamilyMember()));
+            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato familyMember: " + familyMember.getDiceColor().name(), familyMember.getStateFamilyMember()));
             player.getModel().notifyViews(new MVUpdateState("Aggiornato stato PlayerResources", player.getStatePlayerResources()));
 
+            resetServantsAmount();
         }
     }
 

@@ -96,7 +96,7 @@ public class ModelChoices {
     public synchronized TowerCardSpace waitTowerCardChosen(){
         setTowerCardSpaceChosen(null);
         setStateChoice();
-        while(towerCardSpaceChosen==null&& this.stateModelChoices.equals("StateChoice")){
+        while(towerCardSpaceChosen==null && this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -172,7 +172,7 @@ public class ModelChoices {
     public synchronized int waitNumberOfServantsToPay(){
         setNumberOfServantsToPay(-1);
         setStateChoice();
-        while(numberOfServantsToPay!=-1 && this.stateModelChoices.equals("StateChoice")){
+        while(numberOfServantsToPay==-1 && this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {

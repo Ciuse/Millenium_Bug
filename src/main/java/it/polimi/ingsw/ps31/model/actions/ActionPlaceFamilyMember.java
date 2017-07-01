@@ -23,12 +23,7 @@ public abstract class ActionPlaceFamilyMember extends Action{
     /* Getters & Setters */
     public void setFamilyMember(FamilyMember familyMember)
     {
-        if( familyMember.isPlaced() )
-        {
-            //TODO: gestire (eccezione?)
-        }
-        else
-            this.familyMember = familyMember;
+        this.familyMember = familyMember;
     }
 
     public void resetFamilyMember()

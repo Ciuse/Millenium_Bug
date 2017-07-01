@@ -54,7 +54,7 @@ public class ActionPayCard extends Action {
         int listToPay=-1;
         ResourceList listDiscounted=null;
         boolean canPayMilitaryStrength=true;
-        if (cardToPay.getCostList() != null) {
+        if (!cardToPay.getCostList().isEmpty()) {
             if(cardToPay.getCostList().size()==1) {
                 listToPay = 0;
                 listDiscounted = cardToPay.getCostList().get(listToPay);

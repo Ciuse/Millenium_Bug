@@ -2,6 +2,8 @@ package it.polimi.ingsw.ps31.model.gameResource;
 
 import it.polimi.ingsw.ps31.model.player.Player;
 
+import javax.annotation.PostConstruct;
+
 /**
  * Created by giulia on 17/05/2017.
  *
@@ -24,6 +26,11 @@ public class CouncilPrivilege extends Resource {
 
     public void setDifferent(Boolean different){
         this.different=different;
+    }
+
+    @Override
+    public void addTempResource(Player player){
+        player.getPlayerActionSet().chooseDifferentPrivilege(this.getValue(),this.isDifferent());
     }
 
     @Override

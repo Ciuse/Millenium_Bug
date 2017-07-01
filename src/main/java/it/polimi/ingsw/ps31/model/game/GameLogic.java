@@ -76,6 +76,7 @@ public class GameLogic {
         gameUtility.setTimerAction(jsonObjectReadFromFile.getPlayerActionTimer());
         gameUtility.setTimerConnection(jsonObjectReadFromFile.getPlayerConnectionTimer());
         gameUtility.setLeaderCardList(jsonObjectReadFromFile.getLeaderCardList());
+        gameUtility.setCouncilPrivilegeResChoice(jsonObjectReadFromFile.getCouncilPrivilegeResChoice());
     }
 
     public void playGame() {

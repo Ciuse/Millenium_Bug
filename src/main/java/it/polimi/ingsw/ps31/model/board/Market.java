@@ -57,6 +57,6 @@ public class Market {
     }
 
     public List<ActionSpace> getActionSpaceList(){
-        return new ArrayList<>(actionSpaceList);
+        return actionSpaceList;
     }
 }

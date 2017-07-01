@@ -34,6 +34,7 @@ public class CreationJson {
         this.jsonGameObject.setPlayerActionTimer(createPlayerActionTimer());
         this.jsonGameObject.setExcommunicationTiles(createExcommunicationTiles());
         this.jsonGameObject.setLeaderCardList(createLeaderCardList());
+        this.jsonGameObject.setCouncilPrivilegeResChoice(createCouncilPrivilegeResChoice());
 
     }
 
@@ -1501,8 +1502,6 @@ public class CreationJson {
                 int cardNumber1 = i * 8 + j +1;
                 //inserimento costi nulli alle carti verdi
                 List<ResourceList> costListGreen = new ArrayList<>();
-                ResourceList costGreen = new ResourceList();
-                costListGreen.add(costGreen);
                 //inserimento altri parametri
                 int period = i + 1;
                 String name = greenCardName[contatore];
@@ -1512,7 +1511,6 @@ public class CreationJson {
 //                System.out.println("scrivi il costo della carta gialla numero : " + cardNumber2);
                 // inserimento costi nelle carte gialle
                 List<ResourceList> costListYellow = new ArrayList<>();
-                ResourceList costYellow = new ResourceList();
 //                costYellow.setCoin();
 //                costYellow.setWood();
 //                costYellow.setStone();
@@ -1527,7 +1525,6 @@ public class CreationJson {
 //                System.out.println("scrivi il costo della carta blu numero : " + cardNumber3);
                 //inserimento costi nelle carte blu
                 List<ResourceList> costListBlue = new ArrayList<>();
-                ResourceList costBlue = new ResourceList();
 //                costBlue.setCoin();
 //                costListBlue.add(costBlue);
                 //inserimento altri parametri
@@ -1543,15 +1540,6 @@ public class CreationJson {
                 int numberCosts = 1;
                 //inserimento costi nelle carte viola
                 List<ResourceList> costListPurple = new ArrayList<>();
-                for (int k = 0; k < numberCosts; k++) {
-                    ResourceList costPurple = new ResourceList();
-//                    costPurple.setCoin();
-//                    costPurple.setWood();
-//                    costPurple.setStone();
-//                    costPurple.setServant();
-//                    costPurple.setMilitaryStrength();
-//                    costListPurple.add(costPurple);
-                }
 
                 //inserimento altri parametri
                 int period4 = i + 1;
@@ -1904,6 +1892,23 @@ public class CreationJson {
 
         return new ArrayList<>(excommunicationTilesList);
     }
+
+    private List<ResourceList> createCouncilPrivilegeResChoice(){
+        List<ResourceList> resourceList = new ArrayList<>();
+
+        resourceList.add(new ResourceList(new Wood(1), new Stone(1)));
+
+        resourceList.add(new ResourceList(new Servant(2)));
+
+        resourceList.add(new ResourceList(new Coin(2)));
+
+        resourceList.add(new ResourceList(new MilitaryStrength(2)));
+
+        resourceList.add(new ResourceList(new FaithPoint(1)));
+
+        return resourceList;
+    }
+
     public JsonGameObject getJsonGameObject() {
         return jsonGameObject;
     }

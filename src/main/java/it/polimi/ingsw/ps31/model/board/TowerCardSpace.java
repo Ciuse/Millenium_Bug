@@ -52,6 +52,7 @@ public class TowerCardSpace extends PhysicalCardBox {
     public DevelopmentCard takeCard() {
         DevelopmentCard takenCard=super.takeCard();
         tower.getModel().notifyViews(new MVUpdateState("Aggiornato stato del tower card box",getStateTowerCardBox()));
+
         return takenCard;
     }
 
@@ -60,7 +61,7 @@ public class TowerCardSpace extends PhysicalCardBox {
             StateCardBox stateTowerCardBox = new StateCardBox(super.getCard().getName(), super.getCard().getCardId(), towerColor, this.towerFloor);
             return stateTowerCardBox;
         }
-        StateCardBox stateCardBox = new StateCardBox(null, -1, null,this.towerFloor);
+        StateCardBox stateCardBox = new StateCardBox(null, 0, this.towerColor,this.towerFloor);
         return stateCardBox;
     }
 

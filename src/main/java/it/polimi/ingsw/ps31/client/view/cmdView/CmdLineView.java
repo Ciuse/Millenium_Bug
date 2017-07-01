@@ -66,11 +66,11 @@ public class CmdLineView extends View {
     }
 
     @Override
-    public void AskTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace) {
+    public void askTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace) {
         do{
             this.setCmdInterpreterView(new IntrChoiceTowerCardSpace());
             printTower();
-            printLastEvent("Inserisci G/Y/B/P per selezionare la torre in base al colore");
+            printLastEvent("Inserisci G/B/Y/P per selezionare la torre in base al colore");
             input1();
 
             this.setCmdInterpreterView(new IntrChoiceTowerCardSpace());
@@ -147,17 +147,20 @@ public class CmdLineView extends View {
     @Override
     public void askFamilyMember(ChoiceFamilyMember choiceFamilyMember) {
         do {
+            String string="Inserisci ";
             this.setCmdInterpreterView(new IntrChoiceFamilyMember());
             printFamilyMemberInAction();
-            int j = 0;
+            int j = 1;
             StateViewPlayer player = super.getMyStateViewPlayer();
             for (StateViewFamilyMember family : player.getStateViewFamilyMemberList()
                     ) {
                 if (family.getActionSpaceId() == -1) {
-                    j++;
+                    string=string+valueOf(j) + "/";
                 }
+                j++;
             }
-            printLastEvent("Inserisci da 1 a " + valueOf(j) + " per selezionare uno dei family member rimasti");
+            string=string+" per selezionare uno dei family member rimasti";
+            printLastEvent(string);
             input1();
         } while (!cmdInterpreterView.messageInterpreter(this, choiceFamilyMember, keyStroke1.getCharacter()));
     }
@@ -227,7 +230,7 @@ public class CmdLineView extends View {
             printPlayerInAction();
             StateViewPlayer player = super.getMyStateViewPlayer();
             int numberOfChoice = player.getPlayerResources().getSpecificResource(Servant.class).getValue();
-            printLastEvent("Inserisci da 0 a" + numberOfChoice +" per i servitori da pagare");
+            printLastEvent("Inserisci da 0 a " + numberOfChoice +" per i servitori da pagare");
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this, choiceNumberOfServantsToPay, keyStroke1.getCharacter()));
 
@@ -237,12 +240,14 @@ public class CmdLineView extends View {
     public void askPrivilegeResourceChange(ChoicePrivilegeResource choicePrivilegeResource) {
         do {
             this.setCmdInterpreterView(new IntrChoiceCouncilPrivilege());
-            String string="Inserisci: ";
-            int i=0;
+            String string="Inserisci:";
+            int i=1;
             for (String string2: choicePrivilegeResource.getResourceListToChoice()
                  ) {
-                string=string+valueOf(i)+" per "+string2;
+                string=string+" "+valueOf(i)+": per "+string2;
+                i++;
             }
+            printLastEvent(string);
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this, choicePrivilegeResource, keyStroke1.getCharacter()));
 
@@ -266,7 +271,7 @@ public class CmdLineView extends View {
             e.printStackTrace();
         }
 
-        printLastEvent("BENVENUTO IN LORENZO IL MAGNIFICO GIOCATORE: "+super.getViewId());
+        printLastEvent("BENVENUTO IN LORENZO IL MAGNIFICO GIOCATORE: "+super.getViewId().name());
 
     }
 
@@ -374,13 +379,14 @@ public class CmdLineView extends View {
             if (consolePosition.getRow() < 44) {
                 textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns() - 3, consolePosition.getRow(), ' ');
                 textGraphics.putString(consolePosition.getColumn(), consolePosition.getRow(), string);
-                textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow() + 1, terminalSize.getColumns() - 3, consolePosition.getRow() + 1, ' ');
                 consolePosition = consolePosition.withRelative(0, 1);
+                textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns() - 3, consolePosition.getRow(), ' ');
 
             } else {
                 textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns() - 3, consolePosition.getRow(), ' ');
                 textGraphics.putString(consolePosition.getColumn(), consolePosition.getRow(), string);
                 consolePosition = consolePosition.withRelative(0, -13);
+                textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns() - 3, consolePosition.getRow(), ' ');
             }
             try {
                 Thread.sleep(100);
@@ -521,11 +527,9 @@ public class CmdLineView extends View {
                 int j=0;
                 for (StateViewFamilyMember family:player.getStateViewFamilyMemberList()
                         ) {
-                    if (family.getActionSpaceId() == -1) {
                         TerminalPosition labelBoxTopLeft = new TerminalPosition(60 + j * 4, 8);
                         printFamilyMembers(family, labelBoxTopLeft);
                         j++;
-                    }
                 }
             }
         }
@@ -700,8 +704,15 @@ public class CmdLineView extends View {
                         textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(cardBox.getRows()-1), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
 
                         if(floor.getCardId()!=0) {
+
                             screen.setCharacter(labelBoxTopLeft.withRelative(1, 1), getCardColorCharatcter(labelBoxTopLeft, stateViewTowerCardBox.getCardColor()));
                             textGraphics.putString(labelBoxTopLeft.withRelative(2, 1), valueOf(floor.getCardId()));
+                        }
+                        if(floor.getCardId()==0){
+
+                            textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 1),' ');
+                            textGraphics.setCharacter(labelBoxTopLeft.withRelative(2, 1),' ');
+
                         }
 
                         textGraphics.putString(labelBoxTopLeft.withRelative(1, 2), "F.");
@@ -777,7 +788,7 @@ public class CmdLineView extends View {
                             ) {
                         if (actionSpace.getStateFamilyMemberList() != null && actionSpace.getNumberOfActionSpace() == actionSpaceId) {
                             for (int i = 0; i < actionSpace.getStateFamilyMemberList().size(); i++) {
-                                screen.setCharacter(labelBoxTopLeft.withRelative(5 + i, 2), getPlayerColorCharatcter(labelBoxTopLeft, actionSpace.getStateFamilyMemberList().get(i).getPlayerColor()));
+                                screen.setCharacter(labelBoxTopLeft.withRelative(5 + i*2, 2), getPlayerColorCharatcter(labelBoxTopLeft, actionSpace.getStateFamilyMemberList().get(i).getPlayerColor()));
                             }
 
                         }
@@ -793,7 +804,7 @@ public class CmdLineView extends View {
                             ) {
                         if (actionSpace.getStateFamilyMemberList() != null && actionSpace.getNumberOfActionSpace() == actionSpaceId) {
                             for (int i = 0; i < actionSpace.getStateFamilyMemberList().size(); i++) {
-                                screen.setCharacter(labelBoxTopLeft.withRelative(5 + i, 2), getPlayerColorCharatcter(labelBoxTopLeft, actionSpace.getStateFamilyMemberList().get(i).getPlayerColor()));
+                                screen.setCharacter(labelBoxTopLeft.withRelative(7 + i, 2), getPlayerColorCharatcter(labelBoxTopLeft, actionSpace.getStateFamilyMemberList().get(i).getPlayerColor()));
                             }
                         }
                     }
@@ -807,7 +818,7 @@ public class CmdLineView extends View {
                             ) {
                         if (actionSpace.getStateFamilyMemberList() != null && actionSpace.getNumberOfActionSpace() == actionSpaceId) {
                             for (int i = 0; i < actionSpace.getStateFamilyMemberList().size(); i++) {
-                                screen.setCharacter(labelBoxTopLeft.withRelative(4 + i, 2), getPlayerColorCharatcter(labelBoxTopLeft, actionSpace.getStateFamilyMemberList().get(i).getPlayerColor()));
+                                screen.setCharacter(labelBoxTopLeft.withRelative(4 + i*2, 2), getPlayerColorCharatcter(labelBoxTopLeft, actionSpace.getStateFamilyMemberList().get(i).getPlayerColor()));
                             }
                         }
                     }
@@ -827,7 +838,7 @@ public class CmdLineView extends View {
                         ) {
                     if (actionSpace.getStateFamilyMemberList() != null && actionSpace.getNumberOfActionSpace() == actionSpaceId) {
                         for (int i = 0; i < actionSpace.getStateFamilyMemberList().size(); i++) {
-                            screen.setCharacter(labelBoxTopLeft.withRelative(4 + i, 2), getPlayerColorCharatcter(labelBoxTopLeft, actionSpace.getStateFamilyMemberList().get(i).getPlayerColor()));
+                            screen.setCharacter(labelBoxTopLeft.withRelative(7 + i, 2), getPlayerColorCharatcter(labelBoxTopLeft, actionSpace.getStateFamilyMemberList().get(i).getPlayerColor()));
                         }
                     }
 
@@ -1082,9 +1093,23 @@ public class CmdLineView extends View {
                 textGraphics.putString(labelBoxTopLeft.withRelative(1, 1), (valueOf(familyMember.getDiceValue())));
                 screen.setCharacter(labelBoxTopLeft.withRelative(2, 1),getDiceColorCharacter(labelBoxTopLeft,familyMember.getDiceColor()));
 
-            }
-            if(familyMember.getActionSpaceId()!=1){
-
+            }else {
+                textGraphics.drawLine(
+                        labelBoxTopLeft.withRelativeColumn(1),
+                        labelBoxTopLeft.withRelativeColumn(familyMemberBox.getColumns() - 2),
+                        ' ');
+                textGraphics.drawLine(
+                        labelBoxTopLeft.withRelativeRow(familyMemberBox.getRows() - 1).withRelativeColumn(1),
+                        labelBoxTopLeft.withRelativeRow(familyMemberBox.getRows() - 1).withRelativeColumn(familyMemberBox.getColumns() - 2),
+                        ' ');
+                textGraphics.setCharacter(labelBoxTopLeft, ' ');
+                textGraphics.drawLine(labelBoxTopLeft.withRelativeRow(1), labelBoxTopLeft.withRelativeRow(familyMemberBox.getRows() - 1), ' ');
+                textGraphics.setCharacter(labelBoxTopLeft.withRelativeRow(familyMemberBox.getRows() - 1), ' ');
+                textGraphics.setCharacter(labelBoxTopRightCorner, ' ');
+                textGraphics.drawLine(labelBoxTopRightCorner.withRelativeRow(1), labelBoxTopRightCorner.withRelativeRow(familyMemberBox.getRows() - 1), ' ');
+                textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(familyMemberBox.getRows() - 1), ' ');
+                textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 1), ' ');
+                textGraphics.setCharacter(labelBoxTopLeft.withRelative(2, 1),' ');
             }
     }
     

@@ -21,7 +21,7 @@ public class IntrChoicePersonalTiles implements CmdInterpreterView {
             for (Integer i = 1; i < choicePersonalBonusTiles.getStatePersonalBonusTilesList().size() + 1; i++) {
                 if (in.compareTo(i.toString().charAt(0))==0) {
                     terminalView.printLastEvent("Comando OK");
-                    terminalView.notifyController(new VCPersonalTilesChoice(terminalView.getViewId(),i-1));
+                    terminalView.notifyController(new VCPersonalTilesChoice(terminalView.getViewId(),i));
                     return true;
                 }
             }

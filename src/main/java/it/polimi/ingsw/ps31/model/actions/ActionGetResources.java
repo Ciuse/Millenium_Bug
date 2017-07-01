@@ -51,7 +51,7 @@ public class ActionGetResources extends Action {
             {
                 currentResource.addResource(super.player);
             }
-            this.resetResourcesToGet();
+            resetResourcesToGet();
         }
     }
 }

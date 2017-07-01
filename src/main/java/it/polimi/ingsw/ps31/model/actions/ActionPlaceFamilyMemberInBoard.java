@@ -42,6 +42,8 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
 
         player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "Quale family member vuoi usare?", new ChoiceFamilyMember()));
         super.familyMember = player.getModel().getModelChoices().waitFamilyMemberChosen();
+        player.setLastUsedFamilyMember(familyMember);
+
 
         player.getPlayerActionSet().payServants(super.familyMember); //richiamo l azione per pagare i family member
 
@@ -68,10 +70,11 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
             }
         } while (askAgain);
 
+        super.setUsed(true);
+
         player.getModel().notifyViews(new MVUpdateState("Aggiornato stato family member", familyMember.getStateFamilyMember()));
         player.getModel().notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella board", actionSpace.getStateActionSpace()));
 
-        super.setUsed(true);
         resetActionSpace();
         resetFamilyMember();
     }

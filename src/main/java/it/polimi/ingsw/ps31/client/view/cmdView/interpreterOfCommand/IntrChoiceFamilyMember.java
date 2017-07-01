@@ -18,9 +18,9 @@ public class IntrChoiceFamilyMember implements CmdInterpreterView {
         if (in != null) {
             for (Integer i = 1; i < terminalView.getMyStateViewPlayer().getStateViewFamilyMemberList().size()+ 1; i++) {
                 if (in.compareTo(i.toString().charAt(0))==0) {
-                    if (terminalView.getMyStateViewPlayer().getStateViewFamilyMemberList().get(i).getActionSpaceId() == -1) {
+                    if (terminalView.getMyStateViewPlayer().getStateViewFamilyMemberList().get(i-1).getActionSpaceId() == -1) {
                         terminalView.printLastEvent("Comando OK");
-                        terminalView.notifyController(new VCFamilyMemberChoice(terminalView.getViewId(),terminalView.getMyStateViewPlayer().getStateViewFamilyMemberList().get(i).getDiceColor()));
+                        terminalView.notifyController(new VCFamilyMemberChoice(terminalView.getViewId(),terminalView.getMyStateViewPlayer().getStateViewFamilyMemberList().get(i-1).getDiceColor()));
                         return true;
                     }
                 }

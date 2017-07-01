@@ -57,7 +57,6 @@ public class GameBoard{
         this.smallProduction = new SmallProduction(1, otherEffectList.get(3));
         this.smallProduction.setActionSpaceId(20);
         this.market = new Market();
-        setMarketId();
         this.market.add2PlayerMarketSpace(otherEffectList.get(5), otherEffectList.get(6));
         this.militaryPointTrack = new MilitaryPointTrack();
         this.faithPointTrack = new FaithPointTrack();

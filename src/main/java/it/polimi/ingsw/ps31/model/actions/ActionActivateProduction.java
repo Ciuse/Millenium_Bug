@@ -37,8 +37,9 @@ public class ActionActivateProduction extends Action {
 
         player.getProductionList().activate(this.diceValue + this.diceBonus);
 
-        resetDiceValue();
         player.getModel().notifyViews(new MVUpdateState("Aggiornato stato PlayerResources", player.getStatePlayerResources()));
+
+        resetDiceValue();
 
     }
 

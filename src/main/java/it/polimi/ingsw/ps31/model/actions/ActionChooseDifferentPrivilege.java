@@ -13,51 +13,29 @@ import java.util.List;
  * Created by Francesco on 18/05/2017.
  */
 public class ActionChooseDifferentPrivilege extends Action {
-    private Integer numberOfDifferentPrivileges = null;
+    private int numberOfDifferentPrivileges;
     private Boolean areDifferent=null;
-    private final List<ResourceList> choices;
+    private final List<ResourceList> choices=new ArrayList<>();
 
     /* Constructor */
     public ActionChooseDifferentPrivilege(Player player, ActionControlSet actionControlSet) {
         super(player, actionControlSet);
 
         //Creo la lista di possibili scelte per i privilegi
-        this.choices = new ArrayList<>();
+        choices.add(new ResourceList(new Wood(1), new Stone(1)));
+        choices.add(new ResourceList(new Servant(2)));
+        choices.add(new ResourceList(new Coin(2)));
+        choices.add(new ResourceList(new MilitaryStrength(2)));
+        choices.add(new ResourceList(new FaithPoint(1)));;
 
-        List<Resource> resources = new ArrayList<>();
-
-        resources.add(new Wood(1));
-        resources.add(new Stone(1));
-        this.choices.add(new ResourceList(resources));
-
-        resources.clear();
-        resources.add(new Servant(2));
-        this.choices.add(new ResourceList(resources));
-
-        resources.clear();
-        resources.add(new Coin(2));
-        this.choices.add(new ResourceList(resources));
-
-        resources.clear();
-        resources.add(new MilitaryStrength(2));
-        this.choices.add(new ResourceList(resources));
-
-        resources.clear();
-        resources.add(new FaithPoint(1));
-        this.choices.add(new ResourceList(resources));
     }
 
     /* Setters & Getters */
-    public Integer getNumberOfDifferentPrivileges()
-    {
-        return numberOfDifferentPrivileges;
-    }
-
     public void setAreDifferent(boolean areDifferent) {
         this.areDifferent = areDifferent;
     }
 
-    public void setNumberOfDifferentPrivileges(Integer numberOfDifferentPrivileges)
+    public void setNumberOfDifferentPrivileges(int numberOfDifferentPrivileges)
     {
         this.numberOfDifferentPrivileges = numberOfDifferentPrivileges;
     }
@@ -65,49 +43,45 @@ public class ActionChooseDifferentPrivilege extends Action {
         this.areDifferent=null;
     }
     public void resetNumberOfDifferentPrivileges(){
-        this.numberOfDifferentPrivileges=null;
+        this.numberOfDifferentPrivileges=0;
     }
 
     /* Class Methods */
     @Override
-    public void activate()
-    {
-        List<ResourceList> tempResourceChoices= new ArrayList<>(choices);
-        //Controllo che i parametri siano settati
-        if ( this.numberOfDifferentPrivileges == null || this.numberOfDifferentPrivileges < 0)
-        {
-            //TODO:gestire
-        }else
-        {
-            ResourceList choice;
-            for (Integer i = 0; i < this.numberOfDifferentPrivileges; i++) {
-                do {
-                    List<String> resourceStringChoices= new ArrayList<>();
-                    for (ResourceList resourcelist:tempResourceChoices
-                         ) {
-                        resourceStringChoices.add(resourcelist.toString());
-                    }
-                    //fare richiesta alla view per la scelta del privilegio
-                    String string = player.getPlayerId() + ":Quale risorsa del privilegio vuoi ottenere?";
+    public void activate() {
+        List<ResourceList> tempResourceChoices = new ArrayList<>(choices);
+        ResourceList choice;
 
-                    //setto la lista di risorse rimaste al player tra cui scegliere( cosi la view non può mentirmi visto che poi posso usare questa variabile per controllare la risposta ceh ricevo dalla view
-                    player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(tempResourceChoices);
-
-                    player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoicePrivilegeResource(resourceStringChoices)));
-                    choice = player.getModel().getModelChoices().waitResourceChosenFromPrivilege();
-
-                } while (!tempResourceChoices.contains(choice));
-
-                if (areDifferent) {
-                    super.player.getPlayerActionSet().getResources(choice);
-                    tempResourceChoices.remove(choice);
-                } else {
-                    super.player.getPlayerActionSet().getResources(choice);
+        for (int i = 0; i < numberOfDifferentPrivileges; i++) {
+            do {
+                List<String> resourceStringChoices = new ArrayList<>();
+                for (ResourceList resourcelist : tempResourceChoices
+                        ) {
+                    resourceStringChoices.add(resourcelist.toString());
                 }
-                resetAreDifferent();
-                resetNumberOfDifferentPrivileges();
-                player.getModel().notifyViews(new MVUpdateState("Aggiornato stato player resources",player.getStatePlayerResources()));
+
+                //fare richiesta alla view per la scelta del privilegio
+                String string = player.getPlayerId() + ":Quale risorsa del privilegio vuoi ottenere?";
+
+                //setto la lista di risorse rimaste al player tra cui scegliere( cosi la view non può mentirmi visto che poi posso usare questa variabile per controllare la risposta ceh ricevo dalla view
+                player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(tempResourceChoices);
+
+                player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoicePrivilegeResource(resourceStringChoices)));
+                choice = player.getModel().getModelChoices().waitResourceChosenFromPrivilege();
+
+            } while (!tempResourceChoices.contains(choice));
+
+            if (areDifferent) {
+                super.player.getPlayerActionSet().getTempResources(choice);
+                tempResourceChoices.remove(choice);
+            } else {
+                super.player.getPlayerActionSet().getTempResources(choice);
             }
+            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato player resources", player.getStatePlayerResources()));
+
+            resetAreDifferent();
+            resetNumberOfDifferentPrivileges();
+
         }
     }
 }

@@ -38,23 +38,35 @@ public class OccupiedActionSpaceControl extends Control {
     /* Class Methods */
     @Override
     public boolean execute() {
-        if ( this.actionSpace == null )
-        {
+        if (this.actionSpace == null) {
             //TODO: gestire
             return false;
         }
         //Ritorna true se l'action space è nella lista degli a.s. da non controllare
-        if( defaultAllowedActionSpaces.contains(this.actionSpace.getActionSpaceId()) )
+        if (defaultAllowedActionSpaces.contains(this.actionSpace.getActionSpaceId())) {
+            resetActionSpace();
             return true;
+        }
+
 
         //Ritorna true se c'è almeno un posto libero nell'action space
-        boolean ret = (actionSpace.
-                getFamilyMemberList().size()
-                < actionSpace.
-                getFamilyMemberLimit());
-        resetActionSpace();
+        if (actionSpace.getFamilyMemberLimit() != -1) {
+            if (!actionSpace.getFamilyMemberList().isEmpty()) {
+                if (actionSpace.getFamilyMemberList().size() < actionSpace.getFamilyMemberLimit()) {
+                    resetActionSpace();
+                    return true;
+                } else {
+                    resetActionSpace();
+                    return false;
+                }
 
-        return ret;
+            } else {
+                resetActionSpace();
+                return true;
+            }
+        }
+        resetActionSpace();
+        return true;
     }
 
     /* Modifiers */

@@ -148,30 +148,30 @@ public class Controller extends Thread implements Observer {
     public void selectActionSpace(int actionSpaceId, PlayerId viewId) {
         boolean found = false;
         ActionSpace actionSpaceToControl = null;
-        if (actionSpaceId == 17) {
+        if (actionSpaceId == 1) {
             actionSpaceToControl = gameUtility.getGameBoard().getCouncilPalace();
             found = true;
         }
-        if (actionSpaceId == 18) {
+        if (actionSpaceId == 2) {
             actionSpaceToControl = gameUtility.getGameBoard().getSmallHarvest();
             found = true;
         }
-        if (actionSpaceId == 19) {
+        if (actionSpaceId == 3) {
             actionSpaceToControl = gameUtility.getGameBoard().getBigHarvest();
             found = true;
         }
-        if (actionSpaceId == 20) {
+        if (actionSpaceId == 4) {
             actionSpaceToControl = gameUtility.getGameBoard().getSmallProduction();
             found = true;
         }
-        if (actionSpaceId == 21) {
+        if (actionSpaceId == 5) {
             actionSpaceToControl = gameUtility.getGameBoard().getBigProduction();
             found = true;
         }
-        if (actionSpaceId >= 22 && actionSpaceId <= 25) {
+        if (actionSpaceId >= 6 && actionSpaceId <= 9) {
             for (ActionSpace marketActionSpace : gameUtility.getGameBoard().getMarket().getActionSpaceList()
                     ) {
-                if (actionSpaceId == marketActionSpace.getActionSpaceId()) {
+                if ((actionSpaceId+16) == marketActionSpace.getActionSpaceId()) {
                     actionSpaceToControl = marketActionSpace;
                     found = true;
                 }
@@ -301,13 +301,17 @@ public class Controller extends Thread implements Observer {
     }
 
     public void selectCouncilPrivilige(ResourceList resourceList, PlayerId viewId) {
-        //TODO CREARE DA JSON I COUNCIL OF PRIVILEGE POSSIBILI
-        List<ResourceList> resourceListToControl = lastModelStateForControl.getResourceListToControl();
-        if (resourceList.equals(resourceListToControl)) {
-            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+        boolean found = false;
+        for (ResourceList resourceListToControl : gameUtility.getCouncilPrivilegeResChoice()
+                ) {
+            if (resourceList.equals(resourceListToControl)) {
+                if (gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                    found = true;
                 modelChoices.setResourceChosenFromPrivilege(resourceList);
-        } else {
-            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+            }
+        }
+        if (!found) {
+            if (gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
                 virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato la lista di risorse con cui scambiare il privilegio");
         }
     }
