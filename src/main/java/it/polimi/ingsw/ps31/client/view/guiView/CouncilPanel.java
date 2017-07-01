@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class CouncilPanel extends JPanel implements ActionListener{
     private ActionListener listener;
     private ExcommunicationPanel excommunicationPanel;
-    private ActionSpaceOfCouncilPanel actionSpaceOfCouncilPanel;
+    private SingleBigActionSpace actionSpaceCouncilPanel;
 
 
     public void attach (ActionListener listener){
@@ -28,7 +28,7 @@ public class CouncilPanel extends JPanel implements ActionListener{
         gbl.columnWidths = new int[]{0, 0,0,0,0,0};
         gbl.rowHeights = new int[]{0, 0, 0, 0};
 
-        gbl.columnWeights = new double[]{0.212,0.147,0.046,0.34,0.2499, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.222,0.11,0.088,0.3508,0.2299, Double.MIN_VALUE};
         gbl.rowWeights = new double[]{0.24, 0.11, 0.65, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
@@ -44,15 +44,15 @@ public class CouncilPanel extends JPanel implements ActionListener{
         //excommunicationPanel.setBackground(Color.RED);
         pane.add(excommunicationPanel,gbc);
 
-        actionSpaceOfCouncilPanel = new ActionSpaceOfCouncilPanel();
+        actionSpaceCouncilPanel = new SingleBigActionSpace();
         gbc.gridx = 3;
         gbc.gridy = 0;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //actionSpaceOfCouncilPanel.setOpaque(false);
-        actionSpaceOfCouncilPanel.setBackground(Color.green);
-        pane.add(actionSpaceOfCouncilPanel,gbc);
+        //actionSpaceCouncilPanel.setOpaque(false);
+        actionSpaceCouncilPanel.setBackground(Color.green);
+        pane.add(actionSpaceCouncilPanel,gbc);
 
     }
 

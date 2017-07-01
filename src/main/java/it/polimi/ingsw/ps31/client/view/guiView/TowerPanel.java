@@ -68,12 +68,12 @@ public class TowerPanel extends JPanel implements ActionListener {
                         int numberOfFamilyMember = stateViewActionSpace.getStateFamilyMemberList().size();
                         if (numberOfFamilyMember == 1) {
                             PlayerColor singlePlayerColor = stateViewActionSpace.getStateFamilyMemberList().get(0).getPlayerColor();
-                            developmentCardOnTowerPanels[i][j].actionSpacePanel.printFamilyMember(elementNumber, singlePlayerColor);
+                            developmentCardOnTowerPanels[i][j].towerActionSpacePanel.printFamilyMember(elementNumber, singlePlayerColor);
                         } else {
                             PlayerColor firstPlayerColor = stateViewActionSpace.getStateFamilyMemberList().get(0).getPlayerColor();
                             PlayerColor secondPlayerColor = stateViewActionSpace.getStateFamilyMemberList().get(1).getPlayerColor();
-                            developmentCardOnTowerPanels[i][j].actionSpacePanel.printFamilyMember(elementNumber, firstPlayerColor);
-                            developmentCardOnTowerPanels[i][j].actionSpacePanel.printFamilyMember(elementNumber, secondPlayerColor);
+                            developmentCardOnTowerPanels[i][j].towerActionSpacePanel.printFamilyMember(elementNumber, firstPlayerColor);
+                            developmentCardOnTowerPanels[i][j].towerActionSpacePanel.printFamilyMember(elementNumber, secondPlayerColor);
                         }
                     }
                 }

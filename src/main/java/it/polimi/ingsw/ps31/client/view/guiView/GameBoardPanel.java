@@ -21,7 +21,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
     private BottomBoardPanel bottomBoardPanel;
     private VictoryPointTrackSecondRowPanel victoryPointTrackSecondRowPanel;
     private MilitaryTrackPanel militaryTrackPanel;
-    private VicttoryPointTrackSecondColumnPanel victtoryPointTrackSecondColumnPanel;
+    private VictoryPointTrackSecondColumnPanel victoryPointTrackSecondColumnPanel;
     private GuiView guiView;
 
     public void paintComponent(Graphics g) {
@@ -40,8 +40,8 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         gbl.columnWidths = new int[]{0, 0, 0, 0, 0};
         gbl.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
 
-        gbl.columnWeights = new double[]{0.04, 0.999999, 0.08, 0.044, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.04, 0.9999993, 0.022, 0.2845, 0.0399989898, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.04, 0.83, 0.08, 0.044, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.04, 0.710, 0.015, 0.202, 0.033, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints c = new GridBagConstraints();
@@ -76,7 +76,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridy = 1;
         c.gridheight = 1;
         c.gridwidth = 1;
-        //c.fill = GridBagConstraints.BOTH;
+        c.fill = GridBagConstraints.BOTH; //toglierlo edopo
         //topBoardPanel.setBackground(Color.YELLOW);
         topBoardPanel.setOpaque(false);
         topBoardPanel.setPreferredSize(new Dimension(10, 10));
@@ -89,7 +89,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridheight = 1;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        faithPointTrackPanel.setBackground(Color.GREEN);
+        //faithPointTrackPanel.setBackground(Color.red);
         faithPointTrackPanel.setOpaque(false);
         faithPointTrackPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(faithPointTrackPanel, c);
@@ -132,17 +132,17 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         pane.add(militaryTrackPanel, c);
         militaryTrackPanel.attach(this);
 
-        victtoryPointTrackSecondColumnPanel = new VicttoryPointTrackSecondColumnPanel();
+        victoryPointTrackSecondColumnPanel = new VictoryPointTrackSecondColumnPanel();
         c.gridx = 3;
         c.gridy = 1;
         c.gridheight = 3;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        //victtoryPointTrackSecondColumnPanel.setBackground(Color.RED);
-        victtoryPointTrackSecondColumnPanel.setOpaque(false);
-        victtoryPointTrackSecondColumnPanel.setPreferredSize(new Dimension(10, 10));
-        pane.add(victtoryPointTrackSecondColumnPanel, c);
-        victtoryPointTrackSecondColumnPanel.attach(this);
+        //victoryPointTrackSecondColumnPanel.setBackground(Color.RED);
+        victoryPointTrackSecondColumnPanel.setOpaque(false);
+        victoryPointTrackSecondColumnPanel.setPreferredSize(new Dimension(10, 10));
+        pane.add(victoryPointTrackSecondColumnPanel, c);
+        victoryPointTrackSecondColumnPanel.attach(this);
 
     }
 
@@ -174,8 +174,8 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         return militaryTrackPanel;
     }
 
-    public VicttoryPointTrackSecondColumnPanel getVicttoryPointTrackSecondColumnPanel() {
-        return victtoryPointTrackSecondColumnPanel;
+    public VictoryPointTrackSecondColumnPanel getVictoryPointTrackSecondColumnPanel() {
+        return victoryPointTrackSecondColumnPanel;
     }
 
     @Override

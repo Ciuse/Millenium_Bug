@@ -12,7 +12,7 @@ public class DevelopmentCardOnTowerPanel extends JPanel implements ActionListene
     private ActionListener listener;
     private String numberOfActionSpace;
     ButtonCard jButtonPanel = new ButtonCard();
-    ActionSpacePanel actionSpacePanel = new ActionSpacePanel();
+    TowerActionSpacePanel towerActionSpacePanel = new TowerActionSpacePanel();
 
 
     public DevelopmentCardOnTowerPanel(String numberOfActionSpace) {
@@ -52,13 +52,13 @@ public class DevelopmentCardOnTowerPanel extends JPanel implements ActionListene
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //actionSpacePanel.setBackground(Color.green);
-        actionSpacePanel.setOpaque(false);
-        pane.add(actionSpacePanel,gbc);
+        //towerActionSpacePanel.setBackground(Color.green);
+        towerActionSpacePanel.setOpaque(false);
+        pane.add(towerActionSpacePanel,gbc);
     }
 
-    public ActionSpacePanel getActionSpacePanel() {
-        return actionSpacePanel;
+    public TowerActionSpacePanel getTowerActionSpacePanel() {
+        return towerActionSpacePanel;
     }
 
     public String getNumberStringOfActionSpace() {

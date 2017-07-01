@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by giulia on 26/06/2017.
  */
-public class VicttoryPointTrackSecondColumnPanel extends JPanel {
+public class VictoryPointTrackSecondColumnPanel extends JPanel {
     private ActionListener listener;
 
 

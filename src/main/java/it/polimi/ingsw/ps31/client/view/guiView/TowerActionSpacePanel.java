@@ -9,12 +9,12 @@ import java.awt.event.ActionListener;
 /**
  * Created by giulia on 29/06/2017.
  */
-public class ActionSpacePanel extends JPanel  {
+public class TowerActionSpacePanel extends JPanel  {
     private ActionListener listener;
     private JPanel[] familyMemberPanel = new JPanel[2];
 
 
-    public ActionSpacePanel() {
+    public TowerActionSpacePanel() {
         addComponentsToPane(this);
     }
 
