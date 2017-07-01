@@ -56,7 +56,7 @@ public class TopBoardPanel extends JPanel implements ActionListener {
         c.gridheight = 1;
         c.gridwidth = 1;
         councilPanel.setOpaque(false);
-        //c.fill = GridBagConstraints.BOTH;
+        c.fill = GridBagConstraints.BOTH;
         //councilPanel.setBackground(Color.green);
         councilPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(councilPanel, c);

@@ -108,7 +108,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
         ButtonCard buttonCard = (ButtonCard) e.getSource();
         String nameButton = buttonCard.getName();
 
-//        if (buttonOpenLeaderCard.getString() != null) {
+        if (buttonCard.getString() != null) {
             for (int i = 1; i <= 6; i++) {
                     if (nameButton.equals(valueOf(i))) {
                         JFrame frame = new JFrame(nameButton);
@@ -128,7 +128,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
                         });
                     }
                 }
-//        }
+        }
     }
 
     public ActionListener getListener() {
