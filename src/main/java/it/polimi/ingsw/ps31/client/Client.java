@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps31.client.clientNetworking.ClientSocketConnection;
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.GuiView;
+import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
 

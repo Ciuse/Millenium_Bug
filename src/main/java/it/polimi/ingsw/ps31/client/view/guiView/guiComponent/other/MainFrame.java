@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other;
 
+import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

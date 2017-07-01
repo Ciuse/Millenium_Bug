@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.GuiView;
+import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 
 import javax.swing.*;
 import java.awt.*;
