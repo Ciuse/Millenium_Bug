@@ -729,6 +729,7 @@ public class GameUtility{
     }
 
     public Player getPlayerInAction() {
+        System.out.println("GameUtility:getPlayerInAction> playerInAction="+playerInAction);
         return playerInAction;
     }
 

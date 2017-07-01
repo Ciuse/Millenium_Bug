@@ -4,6 +4,7 @@ import it.polimi.ingsw.ps31.client.view.TypeOfView;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
+import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.Model;
 import it.polimi.ingsw.ps31.model.actionControls.Control;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
@@ -26,6 +27,9 @@ public class Match extends Thread{
     private PlayerCommunicationInterface hostConnection; //primo client che si collega alla partita
     private int id;
     private boolean listenNetworkInterfaces = true;
+    private PlayerId playerToQuery;
+
+    private final Object playerToQueryLock = new Object();
 
     //Attibuti di test
     private Model model;
@@ -44,31 +48,41 @@ public class Match extends Thread{
         this.hostConnection = host;
         this.id = id;
         addConnection(host);
-        start();
+        initializeGame();
     }
 
-    public void run()
+    public void initializeGame()
     {
+        System.out.println("Match:run> entrato nello start");
         this.virtualView=new VirtualView(networkInterface);
         Controller controller = new Controller(model,virtualView,gameLogic.getGameUtility());
         virtualView.addController(controller);
         controller.start();
         gameLogic.createJson();
         gameLogic.startConnection(virtualView);
+        this.playerToQuery = PlayerId.ONE;
+        start();
         gameLogic.playGame();
+    }
 
-        System.out.println("Match:run> ");
+    public void run()
+    {
+        System.out.println("Match:run> Entro nel run");
         //Ciclo in attesa di messaggi sulle socket
         while ( listenNetworkInterfaces )
         {
-            for ( PlayerId playerId : networkInterface.getPlayerIdList() )
-                networkInterface.readFromClient(playerId);
+            System.out.println("Match:run> ascolto. Timestamp="+System.currentTimeMillis());
 
-//            try {
-//                sleep(700);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+            //todo: cambiare, dal model, il playerId da ascoltare
+            VCVisitable vcVisitable = networkInterface.readFromClient(playerToQuery);
+            if( vcVisitable != null)
+                virtualView.notifyController(vcVisitable);
+
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

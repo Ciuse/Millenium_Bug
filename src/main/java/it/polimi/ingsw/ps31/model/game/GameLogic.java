@@ -83,9 +83,9 @@ public class GameLogic {
         System.out.println("GameLogic:playGame> Tutte le impostazioni correttamente caricate. Faccio partire il gioco");
 
 
-//        gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
-//
-//        gameUtility.phaseChoicePersonalBonusTiles(); //chiedo ai player di scegliere (in base all ordine di connessione) un personal bonus tiles e li aggiorno
+        gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
+
+        gameUtility.phaseChoicePersonalBonusTiles(); //chiedo ai player di scegliere (in base all ordine di connessione) un personal bonus tiles e li aggiorno
 
 
         //aggiorno lo stato iniziali degli stati della view
