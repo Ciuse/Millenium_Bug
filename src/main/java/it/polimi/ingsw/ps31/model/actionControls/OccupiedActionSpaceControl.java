@@ -48,7 +48,10 @@ public class OccupiedActionSpaceControl extends Control {
             return true;
 
         //Ritorna true se c'è almeno un posto libero nell'action space
-        boolean ret = (actionSpace.getFamilyMemberList().size() < actionSpace.getFamilyMemberLimit());
+        boolean ret = (actionSpace.
+                getFamilyMemberList().size()
+                < actionSpace.
+                getFamilyMemberLimit());
         resetActionSpace();
 
         return ret;

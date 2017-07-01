@@ -5,11 +5,17 @@ import java.util.List;
 
 /**
  * Created by Giuseppe on 10/05/2017.
+ * Contiene una generica lista di Risorse e i metodi per gestirle e crearle in modo ottimale
+ * @see Resource
+ * @see List
  */
 public class ResourceList {
-    private List<Resource> resourceList = new ArrayList<>();           //TODO da provare/verificare come funziona
+    private List<Resource> resourceList = new ArrayList<>();
 
-    /* Constructor */
+    /** Constructor
+     * alcuni servono per facilitare il compito di scrittura dei costi delle carte o delle risorse degli effetti
+     */
+    public ResourceList(){}
     public ResourceList(List<Resource> resourceList) {
         this.resourceList = resourceList;
     }
@@ -17,16 +23,21 @@ public class ResourceList {
     {
         this.resourceList.add(resource);
     }
-    public ResourceList(Resource resource1,Resource resource2)
-    {
+    public ResourceList(Resource resource1,Resource resource2) {
         this.resourceList.add(resource1);
         this.resourceList.add(resource2);
     }
+    public ResourceList(Resource resource1,Resource resource2,Resource resource3) {
+        this.resourceList.add(resource1);
+        this.resourceList.add(resource2);
+        this.resourceList.add(resource3);
+    }
 
-    public ResourceList(){}
 
-    //metodi tipici delle liste
-
+    /**aggiunge una risorsa alla lista di risorse se non presenta
+     * se già presente aggiunge semplicemente il valore associato alla risorsa
+     * @param resource risorsa da aggiungere alla lista
+     */
     public void addSpecificResource(Resource resource){
         boolean found=false;
 
@@ -40,6 +51,11 @@ public class ResourceList {
             this.resourceList.add(resource);
         }
     }
+
+    /**sottrae una risorsa alla lista di risorse se presente
+     * se non presente l'aggiungo sottraendo due volte il suo valore a se stessa per simulare il fatto che la sto aggiungendo in modo negativo
+     * @param resource risorsa da aggiungere alla lista
+     */
     public void subSpecificResource(Resource resource)
     {
         boolean found=false;
@@ -52,11 +68,15 @@ public class ResourceList {
             }
         }
         if(!found){
-            // todo error:!
+            resource.subValue(resource.getValue()*2);
+            this.resourceList.add(resource);
         }
-
     }
 
+    /**sconta una risorsa della lista di risorse se presente
+     * se non presente ignoro
+     * @param resource risorsa da aggiungere alla lista
+     */
     public void discountSpecificResource(Resource resource)
     {
         for (Resource resourceList : this.resourceList) {
@@ -67,13 +87,45 @@ public class ResourceList {
         }
     }
 
-
+    /**sconto la lista corrente passando un altra lista
+     * @param resourceList lista contenente tutte le risorse da scontare alla lista corrente
+     */
     public void discountResourceList(ResourceList resourceList) {
         for (Resource resource : resourceList.getResourceList()) {
             discountSpecificResource(resource);
         }
     }
 
+
+    /**ottengo tutte le risorse di tipo Physical dalla lista di risorse* */
+    public int getPhysicalResource(){
+        int physicalResource =0;
+        for(int i=0;i<resourceList.size();i++){
+            physicalResource= physicalResource + resourceList.get(i).getPhysicalResourceValue();
+        }
+        return physicalResource;
+    }
+
+    /**ottengo tutte le risorse di tipo Point dalla lista di risorse* */
+    public int getPointResource(){
+        int pointResource =0;
+        for(int i=0;i<resourceList.size();i++){
+            pointResource= pointResource + resourceList.get(i).getPointResourceValue();
+        }
+        return pointResource;
+    }
+
+    /**moltiplico ogni risorsa della lista
+     * @param factor fattore di moltiplicazione
+     */
+    public void multiplyResourceList(int factor){
+
+        for(int i=0; i<this.resourceList.size(); i++) {
+            this.resourceList.get(i).multiplyValue(factor);
+        }
+    }
+
+    /**metodi tipici delle liste*/
     public Resource remove(int index){
         return this.resourceList.remove(index);
     }
@@ -91,12 +143,9 @@ public class ResourceList {
         return new ArrayList<>(this.resourceList);
     }
 
-    public void multiplyResourceList(int factor){
-
-        for(int i=0; i<this.resourceList.size(); i++) {
-            this.resourceList.get(i).multValue(factor);
-        }
-    }
+    /**ritorna una risorsa contenuta nella lista o null nel caso non ci sia
+     * @param resourceClass tipo della risorse che si vuole ottenere
+     * */
     public Resource getSpecificResource(Class<? extends Resource> resourceClass){
         for(int i=0; i<this.resourceList.size();i++){
             if(resourceClass.equals(resourceList.get(i).getClass())){
@@ -143,21 +192,6 @@ public class ResourceList {
         }
 
         return false;
-    }
-
-   public int getPhysicalResource(){
-        int physicalResource =0;
-        for(int i=0;i<resourceList.size();i++){
-            physicalResource= physicalResource + resourceList.get(i).getPhysicalResourceValue();
-        }
-        return physicalResource;
-   }
-    public int getPointResource(){
-        int pointResource =0;
-        for(int i=0;i<resourceList.size();i++){
-            pointResource= pointResource + resourceList.get(i).getPointResourceValue();
-        }
-        return pointResource;
     }
 
     @Override

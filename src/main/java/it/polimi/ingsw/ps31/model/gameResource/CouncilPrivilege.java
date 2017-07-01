@@ -4,8 +4,13 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by giulia on 17/05/2017.
+ *
+ * Classe raffigurante la risorsa CouncilPrivilege
+ * @see Resource
  */
+
 public class CouncilPrivilege extends Resource {
+    /*booleano che indica se i CouncilPrivilege sono diversi tra di loro o uguali*/
     private boolean different;
 
     public CouncilPrivilege(int value, boolean different) {
@@ -38,7 +43,7 @@ public class CouncilPrivilege extends Resource {
 
     @Override
     public String toString(){
-        if(this.different==true) {
+        if(this.different) {
             return "CP"+"!="+this.getValue();
         }
         else  return "CP"+"="+this.getValue();

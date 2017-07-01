@@ -4,13 +4,14 @@ import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceIfActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.ProductionEffect;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Francesco on 27/05/2017.
  */
 public class ProductionList extends  HarvestProductionList{
-    private List<ProductionEffect> effectList;
+    private List<ProductionEffect> effectList= new ArrayList<>();
 
     /* Constructor */
     public ProductionList(Player player, ProductionEffect firstProduction) {

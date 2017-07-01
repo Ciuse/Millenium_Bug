@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps31.client.view.View;
  * Created by Giuseppe on 06/06/2017.
  */
 public class MVStateInfoVisitor implements StateVisitor {
-    View view;
+    private View view;
 
     public void setView(View view){
         this.view=view;

@@ -225,9 +225,9 @@ public class Controller extends Thread implements Observer {
         if(gameUtility.
                 getPlayerInAction().
                 getPlayerId().
-                equals(
-                        viewId))
+                equals(viewId)) {
             modelChoices.setPlayerColorChosen(playerColor);
+        }
     }
 
     public void selectFamilyMember(DiceColor familyMemberColor, PlayerId viewId) {
@@ -236,12 +236,12 @@ public class Controller extends Thread implements Observer {
                 ) {
             if (familyMember.getDiceColor().equals(familyMemberColor)) {
                 legitAnswer = true;
-                if (gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().placedFamilyMemberControl(familyMember)) {       //controllo se il famigliare scelto dal giocatore era già stato piazzato
+                if (!gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().placedFamilyMemberControl(familyMember)) {       //controllo se il famigliare scelto dal giocatore era già stato piazzato
                     if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
                         modelChoices.setFamilyMemberChosen(familyMember);
                 } else {
                     if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
-                        virtualView.reSendLastMessage(gameUtility.getPlayerInAction().getActionControlSet().getPlacedFamilyMemberControl().getControlStringError());
+                        virtualView.reSendLastMessage(gameUtility.getPlayerInAction().getActionControlSet().getPlacedFamilyMemberControl().getControlStringError(familyMember));
                 }
             }
         }

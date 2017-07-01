@@ -37,7 +37,7 @@ public class ModelChoices {
     private LeaderCard leaderCardChosen=null;
     private String stateModelChoices="StateDefault";
     private InformationFromNetworking informationFromNetworking;
-    private long timerConnection=120000;
+    private long timerConnection;
     private ResourceList resourceChosenFromPrivilege;
     private int numberOfServantsToPay;
     private FamilyMember familyMemberChosen;
@@ -56,7 +56,7 @@ public class ModelChoices {
     public synchronized int waitIntListToPay(){
         setListToPay(-1);
         setStateChoice();
-        while(listToPay ==-1 || this.stateModelChoices.equals("StateChoice")){
+        while(listToPay ==-1 && this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -69,7 +69,7 @@ public class ModelChoices {
 
     public synchronized void waitAllInitialLeaderCardChosen(int playerMaxNumber) {
 
-        while (leaderChoosenCounter<playerMaxNumber || this.stateModelChoices.equals("StateChoice")) {  //aspetto 20 secondi per far scegliere a tutti il leader
+        while (leaderChoosenCounter<playerMaxNumber && this.stateModelChoices.equals("StateChoice")) {  //aspetto 20 secondi per far scegliere a tutti il leader
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -82,7 +82,7 @@ public class ModelChoices {
     public synchronized LeaderCard waitLeaderCardChosen(){
         setLeaderCardChosen(null);
         setStateChoice();
-        while(leaderCardChosen==null || this.stateModelChoices.equals("StateChoice")){
+        while(leaderCardChosen==null && this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -96,7 +96,7 @@ public class ModelChoices {
     public synchronized TowerCardSpace waitTowerCardChosen(){
         setTowerCardSpaceChosen(null);
         setStateChoice();
-        while(towerCardSpaceChosen==null|| this.stateModelChoices.equals("StateChoice")){
+        while(towerCardSpaceChosen==null&& this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -110,7 +110,7 @@ public class ModelChoices {
     public synchronized ActionSpace waitActionSpaceChosen(){
         setActionSpaceChosen(null);
         setStateChoice();
-        while(actionSpaceChosen==null|| this.stateModelChoices.equals("StateChoice")){
+        while(actionSpaceChosen==null&& this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -124,7 +124,7 @@ public class ModelChoices {
     public synchronized DevelopmentCard waitDevelopmentCardChosen(){
         setDevelopmentCardChosen(null);
         setStateChoice();
-        while(developmentCardChosen==null|| this.stateModelChoices.equals("StateChoice")){
+        while(developmentCardChosen==null&& this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -136,7 +136,7 @@ public class ModelChoices {
     public synchronized boolean waitActiveEffect(){
         setActiveEffect(false);
         setStateChoice();
-        while(activeEffect==null|| this.stateModelChoices.equals("StateChoice")){
+        while(activeEffect==null&& this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -148,7 +148,7 @@ public class ModelChoices {
     public synchronized ResourceList waitResourceChosenFromPrivilege(){
         setResourceChosenFromPrivilege(null);
         setStateChoice();
-        while(resourceChosenFromPrivilege ==null|| this.stateModelChoices.equals("StateChoice")){
+        while(resourceChosenFromPrivilege ==null&& this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -160,7 +160,7 @@ public class ModelChoices {
     public synchronized PersonalBonusTiles waitPersonalBonusTilesChosen(){
         setPersonalBonusTilesChosen(null);
         setStateChoice();
-        while(personalBonusTilesChosen==null || this.stateModelChoices.equals("StateChoice")){
+        while(personalBonusTilesChosen==null && this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -172,7 +172,7 @@ public class ModelChoices {
     public synchronized int waitNumberOfServantsToPay(){
         setNumberOfServantsToPay(-1);
         setStateChoice();
-        while(numberOfServantsToPay!=-1 || this.stateModelChoices.equals("StateChoice")){
+        while(numberOfServantsToPay!=-1 && this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -184,7 +184,7 @@ public class ModelChoices {
     public synchronized boolean waitSupportTheChurch(){
         setSupportTheChurch(false);
         setStateChoice();
-        while(supportTheChurch==null || this.stateModelChoices.equals("StateChoice")){
+        while(supportTheChurch==null && this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -196,19 +196,22 @@ public class ModelChoices {
     public synchronized PlayerColor waitPlayerColorChosen(){
         setPlayerColorChosen(null);
         setStateChoice();
-        while(playerColorChosen==null || this.stateModelChoices.equals("StateChoice")){
+        while(playerColorChosen==null && this.stateModelChoices.equals("StateChoice")){
+
             try {
                 sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }return playerColorChosen;
+
+        }
+        return playerColorChosen;
     }
 
     public synchronized FamilyMember waitFamilyMemberChosen(){
         setFamilyMemberChosen(null);
         setStateChoice();
-        while(familyMemberChosen==null || this.stateModelChoices.equals("StateChoice")){
+        while(familyMemberChosen==null && this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -220,7 +223,7 @@ public class ModelChoices {
     public synchronized Action waitActionToDo(){
         setActionToDo(null);
         setStateChoice();
-        while(actionToDo==null || this.stateModelChoices.equals("StateChoice")){
+        while(actionToDo==null&& this.stateModelChoices.equals("StateChoice")){
             try {
                 sleep(200);
             } catch (InterruptedException e) {
@@ -241,7 +244,7 @@ public class ModelChoices {
 
         boolean timerStarted=false;
         setStateConnection();
-        while(informationFromNetworking.getPlayerNameList().size()<1&&stateModelChoices.equals("StateConnection")){     //continuo a ciclare finchè non si connettono 4 player o il tempo scade
+        while(informationFromNetworking.getPlayerNameList().size()<1 && stateModelChoices.equals("StateConnection")){     //continuo a ciclare finchè non si connettono 4 player o il tempo scade
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {

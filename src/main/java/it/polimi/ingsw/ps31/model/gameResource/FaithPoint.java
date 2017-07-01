@@ -2,6 +2,9 @@ package it.polimi.ingsw.ps31.model.gameResource;
 
 /**
  * Created by Giuseppe on 15/05/2017.
+ *
+ * Classe raffigurante la risorsa FaithPoint
+ * @see Resource
  */
 public class FaithPoint extends PointResource{
 

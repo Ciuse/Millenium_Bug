@@ -15,7 +15,7 @@ public class BackgroundMainFramePanel extends PaintBackgroundPanel implements Ac
     private GuiView guiView;
 
     public void paintComponent(Graphics g) {
-        super.imageToLoad("/punchboard_b_c_04.jpg");
+        super.imageToLoad("/punchboard_b_c_4.jpg");
         super.paintComponent(g);
     }
 

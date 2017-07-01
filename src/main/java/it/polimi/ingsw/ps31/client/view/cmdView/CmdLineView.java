@@ -88,7 +88,7 @@ public class CmdLineView extends View {
             printPlayerAction();
             StateViewPlayer player = super.getMyStateViewPlayer();
             int numberOfChoice = player.getStringPlayerAction().size();
-            printLastEvent("Inserisci da 1 a" + numberOfChoice);
+            printLastEvent("Inserisci da 1 a " + numberOfChoice);
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this, choiceActionToDo, keyStroke1.getCharacter()));
     }

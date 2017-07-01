@@ -44,7 +44,7 @@ public class PlayerResources {
         int contatore=0;
         for(int i=0; i<this.playerResourceList.size();i++){
             for(int j=0; j<that.size();j++){
-                if(that.get(i).lessOrEquals(this.playerResourceList.get(j))){// confronto i vari elementi della lista con il metodo che ho implementato nel confronto tra risorse
+                if(that.get(j).lessOrEquals(this.playerResourceList.get(i))){// confronto i vari elementi della lista con il metodo che ho implementato nel confronto tra risorse
                     contatore++;
                 }
             }

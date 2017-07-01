@@ -11,10 +11,7 @@ import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.board.MarkerDisc;
 import it.polimi.ingsw.ps31.model.card.*;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceColor;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceIfSupportTheChurch;
-import it.polimi.ingsw.ps31.model.choiceType.ChoicePersonalBonusTiles;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard;
+import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
@@ -153,10 +150,11 @@ public class GameUtility{
             this.createTimerAction();
             model.getModelChoices().getLastModelStateForControl().setStateForControl(player.getStatePlayerAction());
             String string = player.getNickname() + ": Scegli l'azione";
+            model.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceActionToDo()));
             Action actionToDo =model.getModelChoices().waitActionToDo();
             for (Action action:player.getPlayerActionSet().getActionList()
                     ) {
-                if(actionToDo.getClass().equals(action.getClass())){
+                if(actionToDo!=null && actionToDo.getClass().equals(action.getClass())){
                     model.getModelChoices().setStateActionGame();
                     action.activate();
                 }
@@ -332,17 +330,21 @@ public class GameUtility{
          playerColorList.add(PlayerColor.YELLOW);
          for (Player player:playerList
                  ) {
+             setPlayerInAction(player);
              String string = player.getPlayerId()+": scegli il tuo colore";
              model.notifyViews(new MVAskChoice(player.getPlayerId(),string,new ChoiceColor(playerColorList)));
              PlayerColor playerColor = model.getModelChoices().waitPlayerColorChosen();
+             System.out.println(playerColor);
              int i=0;
                  for (PlayerColor color : playerColorList
                          ) {
-                     if(color.equals(playerColor))
-                         player.setPlayerColor(playerColorList.remove(i));
-
+                     if(color.equals(playerColor)) {
+                         player.setPlayerColor(color);
+                         return;
+                     }
                      i++;
                  }
+             playerColorList.remove(i);
          }
      }
 
@@ -729,7 +731,6 @@ public class GameUtility{
     }
 
     public Player getPlayerInAction() {
-        System.out.println("GameUtility:getPlayerInAction> playerInAction="+playerInAction);
         return playerInAction;
     }
 

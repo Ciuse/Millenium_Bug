@@ -4,8 +4,11 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Giuseppe on 09/05/2017.
+ *
+ * Classe astratta che rappresenta le risorse generiche
  */
 public abstract class Resource {
+    /**valore associato alla risorsa*/
     private int value;
 
     public Resource(int value) {
@@ -16,10 +19,12 @@ public abstract class Resource {
     public Resource() {
     }
 
+    /**aggiunge al player la risorsa nella sua lista di risorse*/
     public void addResource(Player player){
         player.addResources(this);
     }
 
+    /**aggiunge al player la risorsa nella sua lista di risorse temporanee*/
     public void addTempResource(Player player){
         player.addTempResources(this);
     }
@@ -32,6 +37,7 @@ public abstract class Resource {
         this.value = this.value - value;
     }
 
+    /**simile alla sottrazione ma impedisce di andare a valori negativi in quanto uno sconto non può farti perdere risorse*/
     public void discountValue(int value) {
         if (value >= 0)
             if (this.value >= value) {
@@ -42,7 +48,7 @@ public abstract class Resource {
             }
     }
 
-    public void multValue(int factor){
+    public void multiplyValue(int factor){
 
         this.value=this.value*factor;
     }
@@ -50,7 +56,6 @@ public abstract class Resource {
     public abstract int getPhysicalResourceValue();
 
     public abstract int getPointResourceValue();
-
 
     /*Getters*/
     public int getValue(){
@@ -72,7 +77,6 @@ public abstract class Resource {
         return value == resource.value;
     }
 
-
     @Override
     public int hashCode() {
         return value;
@@ -86,9 +90,4 @@ public abstract class Resource {
 
         return value <= resource.value;
     }
-
-    public final String toStringName() {
-        return this.getClass().getSimpleName();
-    }
-
 }

@@ -18,7 +18,7 @@ public class ActionSpace implements ActiveEffect {
     private int actionSpaceId; //utile per la stampa
     private final int diceCost;
     private final int familyMemberLimit; //Limite massimo di familiari nello spazio azione. -1 indica l'assenza di limite
-    private List<FamilyMember> familyMembers;
+    private List<FamilyMember> familyMembers = new ArrayList<>();
     private final EffectList immediateEffectList;
 
     /* Constructor */

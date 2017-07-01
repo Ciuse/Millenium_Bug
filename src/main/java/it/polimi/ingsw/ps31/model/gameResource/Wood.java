@@ -2,6 +2,8 @@ package it.polimi.ingsw.ps31.model.gameResource;
 
 /**
  * Created by Giuseppe on 10/05/2017.
+ * Classe raffigurante la risorsa Wood
+ * @see Resource
  */
 public class Wood extends PhysicalResource {
 

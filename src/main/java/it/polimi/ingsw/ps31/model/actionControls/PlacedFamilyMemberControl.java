@@ -14,6 +14,10 @@ public class PlacedFamilyMemberControl extends Control {
         super(player);
     }
 
+    @Override
+    public String getControlStringError() {
+        return null;
+    }
 
 
     /* Getters & Setters */
@@ -21,8 +25,7 @@ public class PlacedFamilyMemberControl extends Control {
         this.familyMember = familyMember;
     }
 
-    @Override
-    public String getControlStringError() {
+    public String getControlStringError(FamilyMember familyMember) {
         return "Non puoi usare il tuo family member "+this.familyMember.getDiceColor().name();
     }
 

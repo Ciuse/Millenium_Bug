@@ -28,7 +28,7 @@ public class CouncilPanel extends JPanel implements ActionListener{
         gbl.columnWidths = new int[]{0, 0,0,0,0,0};
         gbl.rowHeights = new int[]{0, 0, 0, 0};
 
-        gbl.columnWeights = new double[]{0.22,0.11,0.08,0.34,0.25, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.212,0.147,0.046,0.34,0.2499, Double.MIN_VALUE};
         gbl.rowWeights = new double[]{0.24, 0.11, 0.65, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
