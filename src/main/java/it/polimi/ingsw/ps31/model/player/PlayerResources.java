@@ -25,7 +25,7 @@ public class PlayerResources {
 
     public void subResources(Resource resourceToSub)
     {
-        //Aggiungo la risorsa
+        //Sottraggo la risorsa
         this.playerResourceList.subSpecificResource(resourceToSub);
     }
 
@@ -37,7 +37,8 @@ public class PlayerResources {
         return playerResourceList.getSpecificResource(resourceClass);
     }
     public ResourceList getPlayerResourceList(){
-        return this.playerResourceList;
+        return new ResourceList(this.playerResourceList.getResourceList());
+        //return this.playerResourceList;
     }
 
     public boolean greaterThan(ResourceList that){

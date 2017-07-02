@@ -13,6 +13,8 @@ public class ServerInputBuffer {
     private List<VCVisitable> vcVisitableBuffer;
     private PlayerCommunicationInterface playerCommunicationInterface;
 
+    private final Object bufferLock = new Object();
+
     /* Constructor */
     public ServerInputBuffer(PlayerCommunicationInterface playerCommunicationInterface)
     {
@@ -24,7 +26,10 @@ public class ServerInputBuffer {
     public void bufferizeMessage(VCVisitable msg)
     {
         if (msg != null ) {
-            this.vcVisitableBuffer.add(msg);
+            synchronized (bufferLock)
+            {
+                this.vcVisitableBuffer.add(msg);
+            }
             playerCommunicationInterface.notifyNewMessages();
         }
     }
@@ -34,9 +39,13 @@ public class ServerInputBuffer {
     {
         System.out.println("ServerInputBuffer:readVC> Leggo da buffer. Stato="+vcVisitableBuffer.isEmpty());
 
+        VCVisitable ret = null;
         if ( !this.vcVisitableBuffer.isEmpty() )
-            return vcVisitableBuffer.remove(0);
-        return null;
+            synchronized (bufferLock)
+            {
+                ret = vcVisitableBuffer.remove(0);
+            }
+        return ret;
     }
 
     public boolean isEmpty()

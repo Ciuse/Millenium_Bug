@@ -60,17 +60,16 @@ public class ResourceList {
     {
         boolean found=false;
 
-        for (Resource resourceList : this.resourceList) {
+        for (Resource resourceOfList : this.resourceList) {
 
-            if (resourceList.getClass().equals(resource.getClass()) && !found) {
+            if (resourceOfList.getClass().equals(resource.getClass()) && !found) {
 
-                System.out.println("RISORSA SOTRTATTA"+resource.toString()+resource.getValue());
-                resourceList.subValue(resource.getValue());
+                resourceOfList.subValue(resource.getValue());
                 found = true;
             }
         }
         if(!found){
-            resource.subValue(resource.getValue()*2);
+            resource.multiplyValue(-1);
             this.resourceList.add(resource);
         }
     }
