@@ -43,7 +43,7 @@ public class PayResourceControl extends Control {
             return false;
         }
 
-        boolean ret = player.getPlayerResources().greaterThan(this.resourceList);
+        boolean ret = this.resourceList.lessOrEquals(player.getPlayerResources());
         resetResourceList();
         return ret;
     }

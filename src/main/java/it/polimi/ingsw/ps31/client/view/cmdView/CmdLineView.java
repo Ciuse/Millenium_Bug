@@ -11,8 +11,6 @@ import com.googlecode.lanterna.terminal.Terminal;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.*;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
-import it.polimi.ingsw.ps31.model.bonus.Bonus;
-import it.polimi.ingsw.ps31.model.bonus.GetResourceMalus;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
@@ -20,19 +18,18 @@ import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.Servant;
-import it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction;
 
 import java.io.IOException;
-import java.util.Observable;
 
 import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.*;
+import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getTower_Identical_Box_Max;
 import static java.lang.String.valueOf;
+import static java.lang.Thread.sleep;
 
 /**
  * Created by Giuseppe on 07/06/2017.
  */
 public class CmdLineView extends View {
-    private AskCommandThread askCommandThread;
     private DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
     private TerminalSize terminalSize = new TerminalSize(168, 46);
     private Terminal terminal = null;
@@ -40,8 +37,12 @@ public class CmdLineView extends View {
     private TextGraphics textGraphics = null;
     private KeyStroke keyStroke1 =null;
     private KeyStroke keyStroke2 =null;
+    private KeyStroke keyStroke3 =null;
     private CmdInterpreterView cmdInterpreterView = new IntrVisualization();
+    private CmdInterpreterView lastInterpreterView=null;
     private TerminalPosition consolePosition = new TerminalPosition (2,31);
+    private TerminalPosition consolePosition2 = new TerminalPosition (105,31);
+    private String lastAsk="";
 
     public CmdLineView(PlayerId viewId, int playerMaxNumber) {
         super(viewId, playerMaxNumber);
@@ -49,7 +50,6 @@ public class CmdLineView extends View {
         printTower();
         printBoardActionSpace();
         printTextBox();
-        askVisualizationCommand();
     }
 
 
@@ -58,8 +58,8 @@ public class CmdLineView extends View {
         do{
             this.setCmdInterpreterView(new IntrChoiceActionSpace());
             printBoardActionSpace();
-            String string ="Inserisci 1 per il Council, 2 per SmallHarvest, 3 perBigHarvest, 4 per SmallProduction, 5 per BigProduction, 6/7/8/9 per le caselle del Market";
-            printLastEvent(string);
+            String string ="Inserisci 1->Council 2->S.Harvest 3->B.Harvest 4->S.Product. 5->B.Product. 6/7/8/9->Market";
+            printLastEventAndMemorize(string);
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this, choiceActionSpace, keyStroke1.getCharacter()));
 
@@ -69,13 +69,11 @@ public class CmdLineView extends View {
     public void askTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace) {
         do{
             this.setCmdInterpreterView(new IntrChoiceTowerCardSpace());
-            printTower();
-            printLastEvent("Inserisci G/B/Y/P per selezionare la torre in base al colore");
+            printLastEventAndMemorize("Inserisci G/B/Y/P per selezionare la torre in base al colore");
             input1();
 
             this.setCmdInterpreterView(new IntrChoiceTowerCardSpace());
-            printTower();
-            printLastEvent("Inserisci 1/2/3/4 per selezionare il piano della torre (\"1\" si riferisce al piano terra)");
+            printLastEventAndMemorize("Inserisci 1/2/3/4 per selezionare il piano della torre (\"1\" si riferisce al piano terra)");
             input2();
 
         }while(!cmdInterpreterView.messageInterpreter2(this, choiceTowerCardSpace, keyStroke1.getCharacter(),keyStroke2.getCharacter()));
@@ -88,7 +86,7 @@ public class CmdLineView extends View {
             printPlayerAction();
             StateViewPlayer player = super.getMyStateViewPlayer();
             int numberOfChoice = player.getStringPlayerAction().size();
-            printLastEvent("Inserisci da 1 a " + numberOfChoice);
+            printLastEventAndMemorize("Inserisci da 1 a " + numberOfChoice+" per scegliere l azione");
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this, choiceActionToDo, keyStroke1.getCharacter()));
     }
@@ -98,7 +96,7 @@ public class CmdLineView extends View {
         do {
             this.setCmdInterpreterView(new IntrChoiceStartLeader());
             for (int i = 0; i < choiceStartLeaderCard.getLeaderNameList().size(); i++) {
-                printLastEvent("inserisci " + i + " per: " + choiceStartLeaderCard.getLeaderIdList().get(i).toString() + " " + choiceStartLeaderCard.getLeaderNameList().get(i));
+                printLastEventAndMemorize("inserisci " + i + " per: " + choiceStartLeaderCard.getLeaderIdList().get(i).toString() + " " + choiceStartLeaderCard.getLeaderNameList().get(i));
             }
             input1();
         }while (!cmdInterpreterView.messageInterpreter(this, choiceStartLeaderCard, keyStroke1.getCharacter()));
@@ -110,7 +108,7 @@ public class CmdLineView extends View {
             this.setCmdInterpreterView(new IntrChoicePersonalTiles());
             //print personalTiles
             int i=choicePersonalBonusTiles.getStatePersonalBonusTilesList().size();
-            printLastEvent("inserisci da 1 a " + valueOf(i) + " per selezionare il personal bonus tiles da tenere" );
+            printLastEventAndMemorize("inserisci da 1 a " + valueOf(i) + " per selezionare il personal bonus tiles da tenere" );
             input1();
 
         }while (!cmdInterpreterView.messageInterpreter(this, choicePersonalBonusTiles, keyStroke1.getCharacter()));
@@ -122,8 +120,8 @@ public class CmdLineView extends View {
         do {
             this.setCmdInterpreterView(new IntrChoiceIfActiveEffect());
             printDevelopmentCard(choiceIfActiveEffect.getCardIdEffect());
-            printLastEvent("inserisci \"Y\" per attivare l'effetto permanente della carta");
-            printLastEvent("inserisci \"N\" per non attivare l'effetto permanente della carta");
+            printLastEventAndMemorize("inserisci \"Y\" per attivare l'effetto permanente della carta");
+            printLastEventAndMemorize("inserisci \"N\" per non attivare l'effetto permanente della carta");
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this, choiceIfActiveEffect, keyStroke1.getCharacter()));
     }
@@ -139,7 +137,7 @@ public class CmdLineView extends View {
                 string=string+valueOf(i)+" per: "+color.name()+". ";
                 i++;
             }
-            printLastEvent(string);
+            printLastEventAndMemorize(string);
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this,choiceColor, keyStroke1.getCharacter()));
     }
@@ -160,7 +158,7 @@ public class CmdLineView extends View {
                 j++;
             }
             string=string+" per selezionare uno dei family member rimasti";
-            printLastEvent(string);
+            printLastEventAndMemorize(string);
             input1();
         } while (!cmdInterpreterView.messageInterpreter(this, choiceFamilyMember, keyStroke1.getCharacter()));
     }
@@ -170,8 +168,8 @@ public class CmdLineView extends View {
         do {
             this.setCmdInterpreterView(new IntrChoiceIfSupportChurch());
             printPlayerInAction();
-            printLastEvent("inserisci \"Y\" per dare il supporto alla chiesa ed evitare la scomunica");
-            printLastEvent("inserisci \"N\" per non dare il support alla chiesa e prendere la scomunica");
+            printLastEventAndMemorize("inserisci \"Y\" per dare il supporto alla chiesa ed evitare la scomunica");
+            printLastEventAndMemorize("inserisci \"N\" per non dare il support alla chiesa e prendere la scomunica");
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this,choiceIfSupportTheChurch, keyStroke1.getCharacter()));
     }
@@ -181,8 +179,8 @@ public class CmdLineView extends View {
         do {
             this.setCmdInterpreterView(new IntrChoiceListToPay());
             printDevelopmentCard(choiceListToPay.getCardId());
-            printLastEvent("inserisci \"1\" per scegliere la prima lista da pagare/guadagnare");
-            printLastEvent("inserisci \"2\" per scegleire la seconda lista da pagare/guadagnare");
+            printLastEventAndMemorize("inserisci \"1\" per scegliere la prima lista da pagare/guadagnare");
+            printLastEventAndMemorize("inserisci \"2\" per scegleire la seconda lista da pagare/guadagnare");
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this,choiceListToPay, keyStroke1.getCharacter()));
     }
@@ -198,7 +196,7 @@ public class CmdLineView extends View {
             this.setCmdInterpreterView(new IntrChoiceLeaderToActive());
             //print leader card
             StateViewPlayer player = super.getMyStateViewPlayer();
-            printLastEvent("Inserisci da 1 a " + valueOf(player.getStateViewLeaderCardList().size()) + " per selezionare il leader da attivare");
+            printLastEventAndMemorize("Inserisci da 1 a " + valueOf(player.getStateViewLeaderCardList().size()) + " per selezionare il leader da attivare");
             input1();
         } while (!cmdInterpreterView.messageInterpreter(this, choiceLeaderToActive, keyStroke1.getCharacter()));
     }
@@ -218,7 +216,7 @@ public class CmdLineView extends View {
                     j++;
                 }
             }
-            printLastEvent(string+ "per selezionare il leader da scartare");
+            printLastEventAndMemorize(string+ "per selezionare il leader da scartare");
             input1();
         } while (!cmdInterpreterView.messageInterpreter(this, choiceLeaderToDiscard, keyStroke1.getCharacter()));
     }
@@ -230,7 +228,7 @@ public class CmdLineView extends View {
             printPlayerInAction();
             StateViewPlayer player = super.getMyStateViewPlayer();
             int numberOfChoice = player.getPlayerResources().getSpecificResource(Servant.class).getValue();
-            printLastEvent("Inserisci da 0 a " + numberOfChoice +" per i servitori da pagare");
+            printLastEventAndMemorize("Inserisci da 0 a " + numberOfChoice +" per i servitori da pagare");
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this, choiceNumberOfServantsToPay, keyStroke1.getCharacter()));
 
@@ -247,7 +245,7 @@ public class CmdLineView extends View {
                 string=string+" "+valueOf(i)+": per "+string2;
                 i++;
             }
-            printLastEvent(string);
+            printLastEventAndMemorize(string);
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this, choicePrivilegeResource, keyStroke1.getCharacter()));
 
@@ -277,11 +275,20 @@ public class CmdLineView extends View {
 
     public void input1(){
         try {
+
             keyStroke1 =screen.readInput();
+            if(keyStroke1.getCharacter().compareTo('h')==0){
+                setLastInterpreterView(cmdInterpreterView);
+                setCmdInterpreterView(new IntrVisualization());
+                askVisualizationCommand();
+                printLastEvent("");
+                printLastEvent(lastAsk);
+                input1();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        printLastEvent( "Input>: "+ keyStroke1.getCharacter().toString());
+//        printLastEvent( "Input>: "+ keyStroke1.getCharacter().toString());
     }
 
     public void input2(){
@@ -290,47 +297,46 @@ public class CmdLineView extends View {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        printLastEvent( "Input>: "+ keyStroke2.getCharacter().toString());
+//        printLastEvent( "Input>: "+ keyStroke2.getCharacter().toString());
     }
 
 
     @Override
     public void askVisualizationCommand() {
-        Thread t = new Thread() {
-            public void run() {
+        printVisualizationMenu();
+//        Thread t = new Thread() {
+//            public void run() {
 
-                printVisualizationMenu();
                 try {
+                    keyStroke3=null;
+                    keyStroke3 = screen.readInput();
+//                    while(cmdInterpreterView.toString().equals("IntrVisualization")) {
+//                        try {
+//                            Thread.sleep(200);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                        if(keyStroke3 !=null && (keyStroke3.getKeyType() == KeyType.Escape || keyStroke3.getKeyType() == KeyType.EOF)){
+//                            break;
+//                        }
 
-                    keyStroke1=null;
-                    keyStroke1 = screen.pollInput();
-                    while(cmdInterpreterView.toString().equals("IntrVisualization")) {
-                        try {
-                            Thread.sleep(200);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        if(keyStroke1 !=null && (keyStroke1.getKeyType() == KeyType.Escape || keyStroke1.getKeyType() == KeyType.EOF)){
-                            break;
-                        }
-
-                        if(keyStroke1 !=null && keyStroke1.getKeyType() != KeyType.Escape && keyStroke1.getKeyType() != KeyType.EOF) {
+                        if(keyStroke3 !=null && keyStroke3.getKeyType() != KeyType.Escape && keyStroke3.getKeyType() != KeyType.EOF) {
                             terminal.flush();
-                            printLastEvent( "Input>: "+ keyStroke1.getCharacter().toString());
-                            cmdInterpreterView.notGameMessageInterpreter(CmdLineView.this, keyStroke1.getCharacter());
+                            cmdInterpreterView.notGameMessageInterpreter(CmdLineView.this, keyStroke3.getCharacter());
                             screen.refresh();
                         }
-                        keyStroke1 = screen.pollInput();
-                    }
-                    if(keyStroke1 != null){
-                        screen.close();
-                    }
+//                        keyStroke3 = screen.pollInput();
+//                    }
+//                    if(keyStroke3 != null){
+//                        screen.close();
+//                    }
                 } catch (IOException e) {
                     e.printStackTrace();
-                }            }
-        };
-        t.start();
+                }
+//            }
+//        };
+//        t.start();
 
 
 
@@ -341,8 +347,6 @@ public class CmdLineView extends View {
         printLastEvent("Inserisci 1: per vusualizzare una carta specifica");
         printLastEvent("Inserisic 2: per scrivere i leader");
         printLastEvent("inserisci 3: per scrivere il tuo personal bonus tiles");
-        printLastEvent("");
-
     }
 
     public Character inputVis1() {
@@ -353,7 +357,7 @@ public class CmdLineView extends View {
             keyStroke = screen.pollInput();
             while (keyStroke == null && cmdInterpreterView.toString().equals("IntrVisualization")) {
                 try {
-                    Thread.sleep(200);
+                    sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -364,10 +368,10 @@ public class CmdLineView extends View {
             e.printStackTrace();
         }
         if(keyStroke!=null) {
-            printLastEvent( "Input>: "+ keyStroke.getCharacter().toString());
+//            printLastEvent( "Input>: "+ keyStroke.getCharacter().toString());
             return keyStroke.getCharacter();
         }
-        printLastEvent( "Input>: null");
+//        printLastEvent( "Input>: null");
         return null;
     }
 
@@ -377,19 +381,19 @@ public class CmdLineView extends View {
         if (string != null) {
 
             if (consolePosition.getRow() < 44) {
-                textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns() - 3, consolePosition.getRow(), ' ');
+                textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns() - 70, consolePosition.getRow(), ' ');
                 textGraphics.putString(consolePosition.getColumn(), consolePosition.getRow(), string);
                 consolePosition = consolePosition.withRelative(0, 1);
-                textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns() - 3, consolePosition.getRow(), ' ');
+                textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns() - 70, consolePosition.getRow(), ' ');
 
             } else {
-                textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns() - 3, consolePosition.getRow(), ' ');
+                textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns() - 70, consolePosition.getRow(), ' ');
                 textGraphics.putString(consolePosition.getColumn(), consolePosition.getRow(), string);
                 consolePosition = consolePosition.withRelative(0, -13);
-                textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns() - 3, consolePosition.getRow(), ' ');
+                textGraphics.drawLine(consolePosition.getColumn(), consolePosition.getRow(), terminalSize.getColumns() - 70, consolePosition.getRow(), ' ');
             }
             try {
-                Thread.sleep(100);
+                sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -402,6 +406,40 @@ public class CmdLineView extends View {
 
     }
 
+    @Override
+    public void printLastState(String string) {
+        if (string != null) {
+
+            if (consolePosition2.getRow() < 44) {
+                textGraphics.drawLine(consolePosition2.getColumn(), consolePosition2.getRow(), terminalSize.getColumns() - 3, consolePosition2.getRow(), ' ');
+                textGraphics.putString(consolePosition2.getColumn(), consolePosition2.getRow(), string);
+                consolePosition2 = consolePosition2.withRelative(0, 1);
+                textGraphics.drawLine(consolePosition2.getColumn(), consolePosition2.getRow(), terminalSize.getColumns() - 3, consolePosition2.getRow(), ' ');
+
+            } else {
+                textGraphics.drawLine(consolePosition2.getColumn(), consolePosition2.getRow(), terminalSize.getColumns() - 3, consolePosition2.getRow(), ' ');
+                textGraphics.putString(consolePosition2.getColumn(), consolePosition2.getRow(), string);
+                consolePosition2 = consolePosition2.withRelative(0, -13);
+                textGraphics.drawLine(consolePosition2.getColumn(), consolePosition2.getRow(), terminalSize.getColumns() - 3, consolePosition2.getRow(), ' ');
+            }
+            try {
+                sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            screen.refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void printLastEventAndMemorize(String string){
+        lastAsk=string;
+        printLastEvent(string);
+    }
+
 
     @Override
     public void printTower (){
@@ -411,7 +449,7 @@ public class CmdLineView extends View {
                 for (StateViewTowerCardBox stateViewTowerCardBox:tower.getStateViewTowerCardBox()
                         ) {
                     printTowerCardBox(stateViewTowerCardBox);
-                    printTowerActionSpace(i);
+//                    printTowerActionSpace(i);
                     i++;
                 }
     }
@@ -718,6 +756,8 @@ public class CmdLineView extends View {
                         textGraphics.putString(labelBoxTopLeft.withRelative(1, 2), "F.");
                         textGraphics.putString(labelBoxTopLeft.withRelative(3, 2), valueOf(floor.getTowerFloor()));
 
+                        Integer spaceNumber= stateViewTowerCardBox.getCardColorAsNumber()*4+floor.getTowerFloor()+1;
+                        printTowerActionSpace(spaceNumber);
                     }j--;
                 }
             }i++;
@@ -728,9 +768,15 @@ public class CmdLineView extends View {
     private void printTowerActionSpace(int actionSpaceId) {
         int k=0;
         for (int i = 0; i < getNumber_Of_Tower(); i++) {
-            for (int j = 0; j < getTower_Identical_Box_Max(); j++) {
+            for (int j = getTower_Identical_Box_Max()-1; j>=0; j--) {
                 k++;
                 if(k==actionSpaceId) {
+//                    try {
+//                        sleep(500);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    printLastState("AGGIORNATO ACTION SPACE"+k);
                     TerminalSize actionSpaceBox = new TerminalSize(6, 4);
                     TerminalPosition labelBoxTopLeft = new TerminalPosition((7 + i * 8) + ((i * actionSpaceBox.getColumns())), (1 * j) + (j * actionSpaceBox.getRows()));
                     TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(actionSpaceBox.getColumns() - 1);
@@ -754,6 +800,8 @@ public class CmdLineView extends View {
         }
     }
 
+
+
     private void printActionSpace(int actionSpaceId, TerminalPosition labelBoxTopLeft, TerminalSize actionSpaceBox){
 
         TerminalPosition labelBoxTopRightCorner = labelBoxTopLeft.withRelativeColumn(actionSpaceBox.getColumns() - 1);
@@ -773,6 +821,7 @@ public class CmdLineView extends View {
         textGraphics.setCharacter(labelBoxTopRightCorner.withRelativeRow(actionSpaceBox.getRows() - 1), Symbols.DOUBLE_LINE_BOTTOM_RIGHT_CORNER);
         printEffectActionSpace(labelBoxTopLeft, actionSpaceId,actionSpaceBox);
     }
+
 
     private void printEffectActionSpace(TerminalPosition labelBoxTopLeft, int actionSpaceId,TerminalSize box) {
         StateViewEffect effect = getActionSpaceEffect()[actionSpaceId - 1];
@@ -824,7 +873,30 @@ public class CmdLineView extends View {
                     }
                 }
             } else {
-                if(getDiceActionSpaceValue()[actionSpaceId - 1]==1){ //stampa mercato
+                if(actionSpaceId>16) {
+                    if (getDiceActionSpaceValue()[actionSpaceId - 1] == 1) { //stampa mercato
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3, 2), Symbols.BLOCK_SPARSE);
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(4, 2), Symbols.BLOCK_SPARSE);
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(5, 2), Symbols.BLOCK_SPARSE);
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(6, 2), Symbols.BLOCK_SPARSE);
+                    }
+                    textGraphics.putString(labelBoxTopLeft.withRelative(1, 1), effect.getResourceToGain());
+                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 2), Symbols.INVERSE_WHITE_CIRCLE);
+                    textGraphics.putString(labelBoxTopLeft.withRelative(2, 2), valueOf(getDiceActionSpaceValue()[actionSpaceId - 1]));
+                    textGraphics.setCharacter(labelBoxTopLeft.withRelative(3, 2), Symbols.BLOCK_SPARSE);
+                    for (StateViewActionSpace actionSpace : super.getStateViewBoard().getStateViewActionSpaceList()
+                            ) {
+                        if (actionSpace.getStateFamilyMemberList() != null && actionSpace.getNumberOfActionSpace() == actionSpaceId) {
+                            for (int i = 0; i < actionSpace.getStateFamilyMemberList().size(); i++) {
+                                screen.setCharacter(labelBoxTopLeft.withRelative(7 + i, 2), getPlayerColorCharatcter(labelBoxTopLeft, actionSpace.getStateFamilyMemberList().get(i).getPlayerColor()));
+                            }
+                        }
+
+                    }
+                }
+            }
+            if(actionSpaceId<=16) {
+                if (getDiceActionSpaceValue()[actionSpaceId-1] == 1) { //action space torri
                     textGraphics.setCharacter(labelBoxTopLeft.withRelative(3, 2), Symbols.BLOCK_SPARSE);
                     textGraphics.setCharacter(labelBoxTopLeft.withRelative(4, 2), Symbols.BLOCK_SPARSE);
                     textGraphics.setCharacter(labelBoxTopLeft.withRelative(5, 2), Symbols.BLOCK_SPARSE);
@@ -840,8 +912,16 @@ public class CmdLineView extends View {
                         for (int i = 0; i < actionSpace.getStateFamilyMemberList().size(); i++) {
                             screen.setCharacter(labelBoxTopLeft.withRelative(7 + i, 2), getPlayerColorCharatcter(labelBoxTopLeft, actionSpace.getStateFamilyMemberList().get(i).getPlayerColor()));
                         }
+                        for (int i = 0; i < actionSpace.getStateFamilyMemberList().size(); i++) {
+                            if (actionSpaceId <= 16)
+                                screen.setCharacter(labelBoxTopLeft.withRelative(4 + i, 2), getPlayerColorCharatcter(labelBoxTopLeft, actionSpace.getStateFamilyMemberList().get(i).getPlayerColor()));
+                        }
+                    } else {
+                        textGraphics.drawLine(labelBoxTopLeft.withRelativeColumn(1).withRelativeRow(1), labelBoxTopLeft.withRelative(4, 1), Symbols.BLOCK_SPARSE);
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 2), Symbols.INVERSE_WHITE_CIRCLE);
+                        textGraphics.putString(labelBoxTopLeft.withRelative(2, 2), valueOf(getDiceActionSpaceValue()[actionSpaceId - 1]));
+                        textGraphics.setCharacter(labelBoxTopLeft.withRelative(3, 2), Symbols.BLOCK_SPARSE);
                     }
-
                 }
             }
 
@@ -978,7 +1058,7 @@ public class CmdLineView extends View {
 
     private void printResources(StateViewPlayer player,TerminalPosition labelBoxTopLeft){
         int i=0;
-        for (Resource resource : player.getPlayerResources().getPlayerResourceList().getResourceList()
+        for (Resource resource : player.getPlayerResources().getListOfResource()
                 ) {
             TerminalPosition resourcePosition = new TerminalPosition(3+ViewStaticInformation.getMax_Player_Name_Len()+i*6,1);
             textGraphics.putString(labelBoxTopLeft.withRelative(resourcePosition),resource.toString());
@@ -1206,6 +1286,21 @@ public class CmdLineView extends View {
         return terminal;
     }
 
+    public void setLastInterpreterView(CmdInterpreterView lastInterpreterView) {
+        this.lastInterpreterView = lastInterpreterView;
+    }
+
+    public CmdInterpreterView getLastInterpreterView() {
+        return lastInterpreterView;
+    }
+
+    public String getLastAsk() {
+        return lastAsk;
+    }
+
+    public void setLastAsk(String lastAsk) {
+        this.lastAsk = lastAsk;
+    }
 
     public void setKeyStroke1(KeyStroke keyStroke1) {
         this.keyStroke1 = keyStroke1;

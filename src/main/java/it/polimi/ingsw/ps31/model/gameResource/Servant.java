@@ -12,6 +12,11 @@ public class Servant extends PhysicalResource {
     }
 
     @Override
+    public Resource cloneResource(Resource resource) {
+        return new Servant(resource.getValue());
+    }
+
+    @Override
     public String toString(){
         return "SE"+this.getValue();
     }

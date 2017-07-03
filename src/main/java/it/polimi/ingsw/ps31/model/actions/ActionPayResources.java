@@ -43,7 +43,7 @@ public class ActionPayResources extends Action{
             if ( super.actionControlSet.payResourceControl(this.resourceToPay) )
             {
                 //Eseguo l'azione
-                List<Resource> resourcesToGetList = this.resourceToPay.getResourceList();
+                List<Resource> resourcesToGetList = this.resourceToPay.getListOfResource();
                 for(Resource currentResource : resourcesToGetList)
                     player.subResources(currentResource);
 

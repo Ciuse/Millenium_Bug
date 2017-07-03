@@ -14,6 +14,11 @@ public class MilitaryStrength extends PointResource{
         super(value);
     }
 
+    @Override
+    public Resource cloneResource(Resource resource) {
+        return new MilitaryStrength(resource.getValue());
+    }
+
     public MilitaryStrength(int value ,int valueRequest){
         super(value);
         this.valueRequest = valueRequest;

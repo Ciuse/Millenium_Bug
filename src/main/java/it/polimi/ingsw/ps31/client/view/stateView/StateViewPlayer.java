@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps31.client.view.stateView;
 
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.model.player.PlayerResources;
+import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.stateModel.*;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class StateViewPlayer {
     private final PlayerId playerId;
     private String nickname;
     private PlayerColor playerColor;
-    private PlayerResources playerResources;
+    private ResourceList playerResources;
     private final List<StateViewFamilyMember> stateViewFamilyMemberList = new ArrayList<>();
     private final List<StateViewMarkerDisc> stateViewMarkerDiscList = new ArrayList<>();
     private StateViewPersonalBonusTiles stateViewPersonalBonusTiles;
@@ -56,7 +56,7 @@ public class StateViewPlayer {
         return playerColor;
     }
 
-    public PlayerResources getPlayerResources() {
+    public ResourceList getPlayerResources() {
         return playerResources;
     }
 

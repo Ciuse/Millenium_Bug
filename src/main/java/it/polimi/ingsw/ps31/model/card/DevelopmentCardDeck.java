@@ -45,7 +45,7 @@ public class DevelopmentCardDeck {
     }
 
     public DevelopmentCard draw(){
-        if(maxNumber>1) {           //le carte vanno dalla posizione 0 a 7
+        if(maxNumber>0) {           //le carte vanno dalla posizione 0 a 7
             maxNumber--;
             DevelopmentCard cardDraw = this.cardList.get(maxNumber);
             this.cardList.remove(cardDraw);

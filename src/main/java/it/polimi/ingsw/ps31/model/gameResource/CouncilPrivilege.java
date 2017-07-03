@@ -34,6 +34,15 @@ public class CouncilPrivilege extends Resource {
     }
 
     @Override
+    public Resource cloneResource(Resource resource) {
+        if(resource.getValue()>1){
+            return new CouncilPrivilege(resource.getValue(),true);
+        }
+        else return new CouncilPrivilege(resource.getValue(),false);
+
+    }
+
+    @Override
     public void addResource(Player player){
         player.getPlayerActionSet().chooseDifferentPrivilege(this.getValue(),this.isDifferent());
     }

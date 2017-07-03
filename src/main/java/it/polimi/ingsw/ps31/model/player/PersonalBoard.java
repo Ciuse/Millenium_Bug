@@ -78,7 +78,6 @@ public class PersonalBoard {
             }
         }
 
-        System.out.println("LISTA"+developmentCardList);
         return developmentCardList;
     }
 

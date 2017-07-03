@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps31.client.view.stateView.StateViewDevelopmentCard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
+import static java.lang.String.valueOf;
+
 /**
  * Created by Giuseppe on 08/06/2017.
  */
@@ -31,6 +33,7 @@ public class IntrVisualization implements CmdInterpreterView {
                                 ) {
                             if (cardToPrint.getCardId() == cardNumber) {
                                 cmdLineView.printDevelopmentCard(cardNumber);
+                                cmdLineView.printLastEvent(">Carta: "+valueOf(cardNumber)+" stampata");
                             }
                         }
                     }
@@ -66,8 +69,7 @@ public class IntrVisualization implements CmdInterpreterView {
 
         if(in.compareTo('5')==0) {
         }
-        cmdLineView.printVisualizationMenu();
-
+        cmdLineView.setCmdInterpreterView(cmdLineView.getLastInterpreterView());
     }
 
     @Override

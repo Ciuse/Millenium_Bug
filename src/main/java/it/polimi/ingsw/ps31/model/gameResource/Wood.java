@@ -11,6 +11,11 @@ public class Wood extends PhysicalResource {
         super(value);
     }
 
+    @Override
+    public Resource cloneResource(Resource resource) {
+        return new Wood(resource.getValue());
+    }
+
 
     @Override
     public String toString(){

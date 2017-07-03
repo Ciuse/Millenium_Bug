@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.server;
 
 import it.polimi.ingsw.ps31.controller.Controller;
+import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
@@ -34,7 +35,9 @@ public class VirtualView extends Observable implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         MVVisitable message = (MVVisitable) arg;
-        setLastMessageSent(message);
+        if (message.getClass().equals(MVAskChoice.class)) {
+            setLastMessageSent(message);
+        }
 
         if (message.isNotifyAll()) { //se il messaggio riguarda tutti lo inoltro a tutti i client
             networkInterface.sendToAll(message);

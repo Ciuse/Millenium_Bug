@@ -24,7 +24,7 @@ public class GuiView extends View implements ActionListener{
             @Override
             public void run() {
                 runTerminal();
-                printTower();
+//                printTower();
             }
         });
 
@@ -129,13 +129,17 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void printTowerCardBox(StateViewTowerCardBox stateViewTowerCardBox) {
-        mainFrame.
-                getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getTowerPanel().printSingleCardBox(stateViewTowerCardBox);
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getTowerPanel().printSingleCardBox(stateViewTowerCardBox);
 
     }
 
     @Override
     public void printLastEvent(String string) {
+
+    }
+
+    @Override
+    public void printLastState(String string) {
 
     }
 

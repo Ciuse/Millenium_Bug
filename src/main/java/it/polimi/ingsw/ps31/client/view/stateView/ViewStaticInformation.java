@@ -27,17 +27,17 @@ public class ViewStaticInformation {
     private static PlayerId[] playerIds=PlayerId.values();
     private static PlayerColor[] playerColors=PlayerColor.values();
     private static StateViewEffect[] actionSpaceEffect={
-            new StateViewEffect(null,new Wood(2).toString(),+10), new StateViewEffect(null,new Wood(1).toString(),+10), null, null,
-            new StateViewEffect(null,new Stone(2).toString(),+10), new StateViewEffect(null,new Stone(1).toString(),+10),null, null,
-            new StateViewEffect(null,new MilitaryStrength(2).toString(),+10), new StateViewEffect(null,new MilitaryStrength(1).toString(),+10),null, null,
-            new StateViewEffect(null,new Coin(2).toString(),+10),new StateViewEffect(null,new Coin(1).toString(),+10),null,null,
+            null, null, new StateViewEffect(null,new Wood(1).toString(),+10),new StateViewEffect(null,new Wood(2).toString(),+10),
+            null, null, new StateViewEffect(null,new Stone(1).toString(),+10),new StateViewEffect(null,new Stone(2).toString(),+10),
+            null, null, new StateViewEffect(null,new MilitaryStrength(1).toString(),+10),new StateViewEffect(null,new MilitaryStrength(2).toString(),+10),
+            null,null,new StateViewEffect(null,new Coin(1).toString(),+10),new StateViewEffect(null,new Coin(2).toString(),+10),
             new StateViewEffect("Council",new ResourceList(new Coin(1),new CouncilPrivilege(1,false) ).toString(),+10 ),
             new StateViewEffect("Harv",null,0),new StateViewEffect("Harv",null,-3),
             new StateViewEffect("Prod",null,0),new StateViewEffect("Prod",null,-3),
             new StateViewEffect(null,new Coin(5).toString(),+10),new StateViewEffect(null,new Servant(5).toString(),+10),
             new StateViewEffect(null,new ResourceList(new MilitaryStrength(3),new Coin(2)).toString(),+10),
             new StateViewEffect(null,new CouncilPrivilege(2,true).toString(),+10)};
-    private static int[] diceActionSpaceValue={7,5,3,1,7,5,3,1,7,5,3,1,7,5,3,1,1,1,1,1,1,1,1,1,1};
+    private static int[] diceActionSpaceValue={1,3,5,7,1,3,5,7,1,3,5,7,1,3,5,7,1,1,1,1,1,1,1,1,1};
     private static String[] stringPointResourceType = {"MilitaryStrength","VictoryPoint","FaithPoint"};
     private static List<ResourceList> resourceListFromCouncilPrivilege = Arrays.asList(new ResourceList(new Wood(1),new Stone(1)), new ResourceList(new Servant(2)),
             new ResourceList(new Coin(2)), new ResourceList(new MilitaryStrength(2)),new ResourceList(new FaithPoint(1)));

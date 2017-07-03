@@ -46,7 +46,7 @@ public class ActionGetResources extends Action {
         } else
         {
             //Eseguo l'azione
-            List<Resource> resourcesToGetList = this.resourcesToGet.getResourceList();
+            List<Resource> resourcesToGetList = this.resourcesToGet.getListOfResource();
             for(Resource currentResource : resourcesToGetList)
             {
                 currentResource.addResource(super.player);

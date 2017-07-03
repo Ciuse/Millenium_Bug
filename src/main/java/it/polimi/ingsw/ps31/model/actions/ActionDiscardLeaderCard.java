@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.actions;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
+import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderToDiscard;
@@ -13,6 +14,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class ActionDiscardLeaderCard extends Action {
     private LeaderCard leaderCard = null;
+    private boolean actionTimerEnded=false;
 
     /* Constructor */
     public ActionDiscardLeaderCard(Player player, ActionControlSet actionControlSet) {
@@ -39,15 +41,21 @@ public class ActionDiscardLeaderCard extends Action {
     public void activate() {
         player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "Quale leader non giocato vuoi scartare?", new ChoiceLeaderToDiscard()));
         this.leaderCard = player.getModel().getModelChoices().waitLeaderCardChosen();
-        //Controllo che i parametri siano settati
 
-        if (!leaderCard.isPlayed()) {
-            player.removeLeaderCard(leaderCard);
-            //attivo la ricompensa (1 privilegio del consiglio)
-            player.getPlayerActionSet().getResources(new ResourceList(new CouncilPrivilege(1, false)));
+        if(this.leaderCard!=null) {     //TIMER NON SCADUTO
+
+            //Controllo che i parametri siano settati
+            if (!leaderCard.isPlayed()) {
+                player.removeLeaderCard(leaderCard);
+                //attivo la ricompensa (1 privilegio del consiglio)
+                player.getPlayerActionSet().getResources(new ResourceList(new CouncilPrivilege(1, false)));
+            }
+
+            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato leader card", leaderCard.getStateLeaderCard()));
+
+        }else{
+            player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
         }
-
-        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato leader card", leaderCard.getStateLeaderCard()));
 
         resetLeaderCard();
     }

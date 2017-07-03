@@ -195,8 +195,12 @@ public abstract class View extends Observable implements Observer {
 
             for (StateViewPersonalBoard viewPersonalBoard : stateViewPersonalBoardList
                     ) {
-                if (viewPersonalBoard.getPlayerId().equals(stateCardBox.getPlayerId()))
+                if (viewPersonalBoard.getPlayerId().equals(stateCardBox.getPlayerId())){
                     viewPersonalBoard.updateState(stateCardBox);
+                    if(stateCardBox.getPlayerId().equals(viewId)){
+                        printDevelopmentCard(stateCardBox.getCardId());
+                    }
+                }
             }
         }
         if(stateCardBox.getTowerFloor()!=-1){
@@ -290,6 +294,8 @@ public abstract class View extends Observable implements Observer {
     public abstract void printTowerCardBox(StateViewTowerCardBox stateViewTowerCardBox);
 
     public abstract void printLastEvent(String string);
+
+    public abstract void printLastState(String string);
 
     public abstract void printPlayerInAction();
 

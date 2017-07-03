@@ -13,6 +13,11 @@ public class FaithPoint extends PointResource{
         super(value);
     }
 
+    @Override
+    public Resource cloneResource(Resource resource) {
+        return new FaithPoint(resource.getValue());
+    }
+
 //    @Override
 //    public void addResource(Player player){
 //        MarkerDisc markerDiscToMove=faithTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(FaithPoint.class)).unSetMarkerDisc(player);

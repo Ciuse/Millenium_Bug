@@ -16,7 +16,7 @@ public class GetResourceFromResourceEffect extends GetResourceEffect { //per ogn
 
     @Override
     public void activate(Player player) {
-        int factor = player.getPlayerResources().getPlayerResourceList().getSpecificResource(requiredResource.getClass()).getValue()%requiredResource.getValue();
+        int factor = player.getPlayerResources().getSpecificResource(requiredResource.getClass()).getValue()%requiredResource.getValue();
         super.getResources().multiplyResourceList(factor);
         player.getPlayerActionSet().getTempResources(super.getResources());
     }

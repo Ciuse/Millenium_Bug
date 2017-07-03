@@ -1,16 +1,16 @@
 package it.polimi.ingsw.ps31.model.stateModel;
 
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.model.player.PlayerResources;
+import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 
 /**
  * Created by giulia on 06/06/2017.
  */
 public class StatePlayerResources extends StateType {
     private final PlayerId playerId;
-    private final PlayerResources playerResources;
+    private final ResourceList playerResources;
 
-    public StatePlayerResources(PlayerId playerId, PlayerResources playerResources) {
+    public StatePlayerResources(PlayerId playerId, ResourceList playerResources) {
         this.playerId = playerId;
         this.playerResources = playerResources;
     }
@@ -19,7 +19,7 @@ public class StatePlayerResources extends StateType {
         return playerId;
     }
 
-    public PlayerResources getPlayerResources() {
+    public ResourceList getPlayerResources() {
         return playerResources;
     }
 

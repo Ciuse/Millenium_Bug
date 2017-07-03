@@ -1,8 +1,5 @@
 package it.polimi.ingsw.ps31.model.game;
 
-import it.polimi.ingsw.ps31.client.view.TypeOfView;
-import it.polimi.ingsw.ps31.client.view.View;
-import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
@@ -41,6 +38,7 @@ public class GameUtility{
     private VictoryPoint[] bonusVictoryPointFromMilitaryTrack;
     private VictoryPoint bonusVictoryPointFromPlayerResources;
     private DevelopmentCardList developmentCardList;
+    private List<ExcommunicationTiles> excommunicationTilesList;
     private List<LeaderCard> leaderCardList;
     private List<LeaderCard> tempLeaderCardList = new ArrayList<>();
     private List<List<EffectList>>towerActionSpaceEffectList;
@@ -65,7 +63,7 @@ public class GameUtility{
             this.endActionTurn(playerList.get(playerNumber));
         }
         if (playerList.get(playerNumber).checkIfOnlyNEUTRALRemained() == true) {
-            gameBoard.getEndActionButton().setActive(true);
+            playerList.get(playerNumber).getPlayerActionSet().getActiveEndButton().setActive(true);
         }
         this.startActionTurn(playerList.get(playerNumber));
         this.doActionTurn(playerList.get(playerNumber));
@@ -139,7 +137,7 @@ public class GameUtility{
         resetPlayerAction();            //riattivo le azioni che i player hanno usato il turno prima
         setPlayerInAction(player);
         player.setWannaEndTurn(false);
-        String string1 = player.getPlayerId().toString()+": INIZIO FASE AZIONE";
+        String string1 = player.getNickname()+": INIZIO FASE AZIONE";
         model.notifyViews(new MVStringToPrint(null,true,string1));
         String string2 = player.getPlayerId().toString()+": Aggiornato Stato Azioni";
         model.notifyViews(new MVUpdateState(string2,player.getStatePlayerAction()));
@@ -147,23 +145,27 @@ public class GameUtility{
 
     public void doActionTurn(Player player) {
         model.getModelChoices().setStateActionGame();
-        while (model.getModelChoices().getStateModelChoices().equals("StateActionGame")) {
+        while (model.getModelChoices().getStateModelChoices().equals("StateActionGame")&&!player.isWannaEndTurn()) {
             this.createTimerAction();
             model.getModelChoices().getLastModelStateForControl().setStateForControl(player.getStatePlayerAction());
-            String string = player.getNickname() + ": Scegli l'azione";
+            String string = player.getNickname() + ": Qaule azione tra quelle che hai disponibili vuoi eseguire?";
             model.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceActionToDo()));
-            Action actionToDo =model.getModelChoices().waitActionToDo();
-            for (Action action:player.getPlayerActionSet().getActionList()
-                    ) {
-                if(actionToDo!=null){
-                    if(actionToDo.getClass().equals(action.getClass())) {
-                        model.getModelChoices().setStateActionGame();
-                        action.activate();
+            Action actionToDo = model.getModelChoices().waitActionToDo();
+            if (model.getModelChoices().getStateModelChoices().equals("StateActionGame")) {
+                for (Action action : player.getPlayerActionSet().getActionList()
+                        ) {
+                    if (actionToDo != null) {
+                        if (actionToDo.getClass().equals(action.getClass())) {
+                            action.activate();
+
+                            String string2 = player.getPlayerId().toString()+": Aggiornato Stato Azioni";
+                            model.notifyViews(new MVUpdateState(string2,player.getStatePlayerAction()));
+
+                        }
+                    } else {
+                        String string1 = "Non ho trovato l azione da eseguire";
+                        model.notifyViews(new MVStringToPrint(null, true, string1));
                     }
-                }
-                else{
-                    String string1 = "Non ho trovato l azione da eseguire";
-                    model.notifyViews(new MVStringToPrint(null,true,string1));
                 }
             }
         }
@@ -240,7 +242,7 @@ public class GameUtility{
 
             // il giocatore non ha abbastanza punti fede e prende la scomunica (non viene chiesto niente al giocatore)
             if (player.getPlayerResources().getResourceValue(FaithPoint.class) < gameBoard.getFaithPointTrack().getTrackCell().get(2 + period).getValue()) {
-                gameBoard.getExcommunicationTilesList().get(period-1).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
+                gameBoard.getExcommunicationTilesList().get(period-1).setExcommunicationToPlayer(player);
 
                 //regola dell'ultimo turno del terzo periodo (tutti ricevono i punti vittoria )
                 if (period == 3) {
@@ -268,7 +270,7 @@ public class GameUtility{
                     }
                 } else {
                     //il giocatore ha deciso di non mostrare il suo sostegno alla chiesa
-                    gameBoard.getExcommunicationTilesList().get(period-1).setExcommunicationToPlayer(playerList.get(playerMaxNumber));
+                    gameBoard.getExcommunicationTilesList().get(period-1).setExcommunicationToPlayer(player);
                     if (period == 3) {
                         int faithPointPlayer = player.getPlayerResources().getResourceValue(FaithPoint.class);
                         player.addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
@@ -298,8 +300,8 @@ public class GameUtility{
                     break;
                 }
             }
-        }
 
+        }
     }
 
     public void drawCardDeck(){
@@ -322,6 +324,39 @@ public class GameUtility{
             player.getSpecificMarkerDisc(VictoryPoint.class).setTrackCell(gameBoard.getVictoryPointTrack().getTrackCell().get(0));
         }
     }
+
+    public void setExcommunicationMatchTiles() {
+        boolean found1 = false;
+        boolean found2 = false;
+        boolean found3 = false;
+
+        List<ExcommunicationTiles> excommToUse = new ArrayList<>();
+        Collections.shuffle(excommunicationTilesList);
+        for (ExcommunicationTiles excom : excommunicationTilesList
+                ) {
+            if (!found1) {
+                if (excom.getPeriod() == 1) {
+                    found1 = true;
+                    excommToUse.add(excom);
+                }
+            }
+            if (!found2) {
+                if (excom.getPeriod() == 2) {
+                    found2 = true;
+                    excommToUse.add(excom);
+                }
+            }
+            if (!found3) {
+                if (excom.getPeriod() == 3) {
+                    found3 = true;
+                    excommToUse.add(excom);
+                }
+            }
+        }
+        gameBoard.setExcommunicationTilesList(excommToUse);
+    }
+
+
 
     /*metodi di creazione oggetti vari */
 
@@ -365,6 +400,7 @@ public class GameUtility{
 
                 model.getModelChoices().setStateEndTurn();
                 endActionTurn(playerInAction);
+                timer1.purge();
                 timer1.cancel();
             }
         };
@@ -453,7 +489,7 @@ public class GameUtility{
         player.activateFinalEffects();
     }
     public void finalExtraVictoryPoints4(Player player) {
-        int value = player.getPlayerResources().getPlayerResourceList().getPhysicalResource();
+        int value = player.getPlayerResources().getPhysicalResource();
         int factorValue = bonusVictoryPointFromPlayerResources.getValue();
         value = (value / 5) * factorValue;
         VictoryPoint victoryPointToAdd = new VictoryPoint(value);
@@ -467,7 +503,7 @@ public class GameUtility{
             if (tempPlayerList.get(0).getPlayerResources().getResourceValue(MilitaryStrength.class)
                     == tempPlayerList.get(i).getPlayerResources().getResourceValue(MilitaryStrength.class)) {
                 contatore++;
-                tempPlayerList.get(i).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[0]);
+                tempPlayerList.get(i).getPlayerResources().addSpecificResource(bonusVictoryPointFromMilitaryTrack[0]);
             }
         }
         if(contatore>1){
@@ -479,7 +515,7 @@ public class GameUtility{
                     && tempPlayerList.get(1).getPlayerResources().getResourceValue(MilitaryStrength.class)
                     == tempPlayerList.get(j).getPlayerResources().getResourceValue(MilitaryStrength.class)) {
                 contatore2++;
-                tempPlayerList.get(j).getPlayerResources().addResources(bonusVictoryPointFromMilitaryTrack[1]);
+                tempPlayerList.get(j).getPlayerResources().addSpecificResource(bonusVictoryPointFromMilitaryTrack[1]);
             }
         }
         if (contatore2>1){
@@ -494,33 +530,42 @@ public class GameUtility{
                 ) {
             for (ExcommunicationTiles excommunicationTiles : player.getExcommunicationTiles()
                     ) {
-                if (excommunicationTiles.isEndGame()==true) {            //se il giocatore ha una scomunica del terzo periodo allora dovrà sottrarre i punti vittoria diversamente
+                if (excommunicationTiles.isEndGame()) {            //se il giocatore ha una scomunica del terzo periodo allora dovrà sottrarre i punti vittoria diversamente
                     if (excommunicationTiles.getPermanentMalus().getCardColor() != null) {
                         if (excommunicationTiles.getPermanentMalus().getCardColor().equals(CardColor.GREEN)) {
-                            finalExtraVictoryPoints2(player);
-                            finalExtraVictoryPoints3(player);
-                            thirdPeriodExcomunication = true;
+                            if(!player.getPersonalBoard()
+                                    .getPlayerCardList()
+                                    .getDevelopmentCardList()
+                                    .isEmpty()) {
+                                finalExtraVictoryPoints2(player);
+                                finalExtraVictoryPoints3(player);
+                                thirdPeriodExcomunication = true;
+                            }
                         }
                         if (excommunicationTiles.getPermanentMalus().getCardColor().equals(CardColor.PURPLE)) {
-                            finalExtraVictoryPoints1(player);
-                            finalExtraVictoryPoints2(player);
-                            thirdPeriodExcomunication = true;
+                            if(!player.getPersonalBoard().getPlayerCardList().getDevelopmentCardList().isEmpty()) {
+                                finalExtraVictoryPoints1(player);
+                                finalExtraVictoryPoints2(player);
+                                thirdPeriodExcomunication = true;
+                            }
                         }
                         if (excommunicationTiles.getPermanentMalus().getCardColor().equals(CardColor.BLUE)) {
-                            finalExtraVictoryPoints1(player);
-                            finalExtraVictoryPoints3(player);
-                            thirdPeriodExcomunication = true;
+                            if(!player.getPersonalBoard().getPlayerCardList().getDevelopmentCardList().isEmpty()) {
+                                finalExtraVictoryPoints1(player);
+                                finalExtraVictoryPoints3(player);
+                                thirdPeriodExcomunication = true;
+                            }
                         }
                     }
                     if (excommunicationTiles.getPermanentMalus().getPointResource() != null) {  // il giocatore ha una scomunica che sottrae punti vittoria in base ad altri punti
                         if (excommunicationTiles.getPermanentMalus().getPointResource().getClass().equals(VictoryPoint.class)) {
-                            int value = player.getPlayerResources().getPlayerResourceList().getSpecificResource(VictoryPoint.class).getValue();
+                            int value = player.getPlayerResources().getSpecificResource(VictoryPoint.class).getValue();
                             value = (value / 5) * excommunicationTiles.getPermanentMalus().getPointResource().getValue();
                             VictoryPoint victoryPointToSub = new VictoryPoint(value);
                             player.subResources(victoryPointToSub);
                         }
                         if (excommunicationTiles.getPermanentMalus().getPointResource().getClass().equals(MilitaryStrength.class)) {
-                            int value = player.getPlayerResources().getPlayerResourceList().getSpecificResource(MilitaryStrength.class).getValue();
+                            int value = player.getPlayerResources().getSpecificResource(MilitaryStrength.class).getValue();
                             value = (value) * excommunicationTiles.getPermanentMalus().getPointResource().getValue();
                             VictoryPoint victoryPointToSub = new VictoryPoint(value);
                             player.subResources(victoryPointToSub);
@@ -529,14 +574,16 @@ public class GameUtility{
                     }
                     if (excommunicationTiles.getPermanentMalus().getResourceList() != null) {// il giocatore ha una scomunica che sottrae punti vittoria in base ai costi di legno e pietra delle carte gialle
                         int costToPay = 0;
-                        for (Resource resource:excommunicationTiles.getPermanentMalus().getResourceList().getResourceList()
-                                ) {
-                            for (DevelopmentCard developmentCard : player.getColorCardList(excommunicationTiles.getPermanentMalus().getCardColorForCostCard()).getDevelopmentCardList()
+                        if(!player.getPersonalBoard().getPlayerCardList().getDevelopmentCardList().isEmpty()) {
+                            for (Resource resource : excommunicationTiles.getPermanentMalus().getResourceList().getListOfResource()
                                     ) {
-                                for (ResourceList costList : developmentCard.getCostList()
+                                for (DevelopmentCard developmentCard : player.getColorCardList(excommunicationTiles.getPermanentMalus().getCardColorForCostCard()).getDevelopmentCardList()
                                         ) {
-                                    if (costList.getSpecificResource(resource.getClass()) != null) {
-                                        costToPay = costToPay + costList.getSpecificResource(resource.getClass()).getValue();
+                                    for (ResourceList costList : developmentCard.getCostList()
+                                            ) {
+                                        if (costList.getSpecificResource(resource.getClass()) != null) {
+                                            costToPay = costToPay + costList.getSpecificResource(resource.getClass()).getValue();
+                                        }
                                     }
                                 }
                             }
@@ -544,18 +591,22 @@ public class GameUtility{
                         VictoryPoint victoryPointToSub = new VictoryPoint(costToPay);
                         player.subResources(victoryPointToSub);
                     }
-                    if (excommunicationTiles.getPermanentMalus().getString().equals("LostFinalVictoryPointFromPlayerResources")) {
-                        int value = player.getPlayerResources().getPlayerResourceList().getPhysicalResource();
-                        VictoryPoint victoryPointToSub = new VictoryPoint(value);
-                        player.subResources(victoryPointToSub);
+                    if (excommunicationTiles.getPermanentMalus().getString()!=null) {
+                        if (excommunicationTiles.getPermanentMalus().getString().equals("LostFinalVictoryPointFromPlayerResources")) {
 
+                            int value = player.getPlayerResources().getPhysicalResource();
+                            VictoryPoint victoryPointToSub = new VictoryPoint(value);
+                            player.subResources(victoryPointToSub);
+                        }
                     }
                 }
             }
-            if (thirdPeriodExcomunication == false) {
-                finalExtraVictoryPoints1(player);
-                finalExtraVictoryPoints2(player);
-                finalExtraVictoryPoints3(player);
+            if (!thirdPeriodExcomunication) {
+                if(!player.getPersonalBoard().getPlayerCardList().getDevelopmentCardList().isEmpty()) {
+                    finalExtraVictoryPoints1(player);
+                    finalExtraVictoryPoints2(player);
+                    finalExtraVictoryPoints3(player);
+                }
             }
             finalExtraVictoryPoints4(player);
 
@@ -768,6 +819,14 @@ public class GameUtility{
 
     public InformationFromNetworking getInformationFromNetworking() {
         return model.getModelChoices().getInformationFromNetworking();
+    }
+
+    public List<ExcommunicationTiles> getExcommunicationTilesList() {
+        return excommunicationTilesList;
+    }
+
+    public void setExcommunicationTilesList(List<ExcommunicationTiles> excommunicationTilesList) {
+        this.excommunicationTilesList = excommunicationTilesList;
     }
 
     public long getTimerAction() {

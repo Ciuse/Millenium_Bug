@@ -12,6 +12,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class ActionActiveLeaderCard extends Action {
     private LeaderCard leaderCard= null;
+    private boolean actionTimerEnded=false;
 
     public ActionActiveLeaderCard(Player player, ActionControlSet actionControlSet) {
         super(player, actionControlSet);
@@ -19,21 +20,28 @@ public class ActionActiveLeaderCard extends Action {
 
     @Override
     public void activate() {
-        player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(),"Quale leader vuoi attivare?",new ChoiceLeaderToActive()));
-        this.leaderCard=player.getModel().getModelChoices().waitLeaderCardChosen();
-        //se la carta non è attiva, controllo che il player soddisfi i requisiti di attivazione
-        if (!leaderCard.isPlayed()) {
-            if (super.actionControlSet.leaderCardRequirementControl(leaderCard))
-                leaderCard.setPlayed(true);
-            else {
-                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getLeaderCardRequirementControl().getControlStringError()));
-            }
-        }
-        //se la carta è attivata (perchè lo era prima o perchè è stata appena attivata) allora attivo anche l'effetto
-        if (leaderCard.isPlayed())
-            leaderCard.activeEffectList(player);
+        player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "Quale leader vuoi attivare?", new ChoiceLeaderToActive()));
+        this.leaderCard = player.getModel().getModelChoices().waitLeaderCardChosen();
 
-        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato leader card",leaderCard.getStateLeaderCard()));
+        if (this.leaderCard != null) {     //TIMER NON SCADUTO
+
+            //se la carta non è attiva, controllo che il player soddisfi i requisiti di attivazione
+            if (!leaderCard.isPlayed()) {
+                if (super.actionControlSet.leaderCardRequirementControl(leaderCard))
+                    leaderCard.setPlayed(true);
+                else {
+                    player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getLeaderCardRequirementControl().getControlStringError()));
+                }
+            }
+            //se la carta è attivata (perchè lo era prima o perchè è stata appena attivata) allora attivo anche l'effetto
+            if (leaderCard.isPlayed())
+                leaderCard.activeEffectList(player);
+
+            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato leader card", leaderCard.getStateLeaderCard()));
+
+        } else {
+            player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
+        }
 
         resetLeaderCard();
     }

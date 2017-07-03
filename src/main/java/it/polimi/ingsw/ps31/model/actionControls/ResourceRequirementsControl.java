@@ -43,7 +43,7 @@ public class ResourceRequirementsControl extends Control {
         }
         else
         {
-            boolean result = player.getPlayerResources().greaterThan(this.requirement);
+            boolean result = this.requirement.lessOrEquals(player.getPlayerResources());
             resetRequirements();
             return result;
         }

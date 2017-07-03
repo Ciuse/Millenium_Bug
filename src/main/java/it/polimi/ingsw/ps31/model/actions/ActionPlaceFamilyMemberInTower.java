@@ -14,9 +14,9 @@ import it.polimi.ingsw.ps31.model.player.Player;
 public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
     private TowerCardSpace towerCardSpace;
     private boolean immediateEffectsAreActivable = true;
+    private boolean actionTimerEnded = false;
 
-    public ActionPlaceFamilyMemberInTower(Player player, ActionControlSet actionControlSet)
-    {
+    public ActionPlaceFamilyMemberInTower(Player player, ActionControlSet actionControlSet) {
         super(player, actionControlSet);
     }
 
@@ -31,8 +31,7 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
     }
 
     /* Resetters */
-    public void resetTowerCardSpace()
-    {
+    public void resetTowerCardSpace() {
         this.towerCardSpace = null;
     }
 
@@ -42,76 +41,92 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
         boolean askAgain = true;
 
         player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "Quale family member vuoi usare?", new ChoiceFamilyMember()));
-        this.familyMember = player.getModel().getModelChoices().waitFamilyMemberChosen();
+        familyMember = player.getModel().getModelChoices().waitFamilyMemberChosen();
         player.setLastUsedFamilyMember(familyMember);
 
-        //chiedo se vuole pagare dei servitori
-        player.getPlayerActionSet().payServants(super.familyMember);
+        if (familyMember != null) { //TIMER NON SCADUTO
 
-        do {
-            player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "In quale tower card space vuoi mettere il tuo family member?", new ChoiceTowerCardSpace()));
-            this.towerCardSpace = player.getModel().getModelChoices().waitTowerCardChosen();
+            //chiedo se vuole pagare dei servitori
+            player.getPlayerActionSet().payServants(super.familyMember);
 
-            //Eseguo i controlli
-            if (actionControlSet.selfOccupiedTowerControl(familyMember, towerCardSpace.getTower())) {
+            do {
+                player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "In quale tower card space vuoi mettere il tuo family member?", new ChoiceTowerCardSpace()));
+                this.towerCardSpace = player.getModel().getModelChoices().waitTowerCardChosen();
 
-                if (actionControlSet.diceValueVsCardSpaceControl(familyMember.getTotalValue(), towerCardSpace)) {
+                if (this.towerCardSpace != null) {      //TIMER NON SCADUTO
 
-                    if (actionControlSet.towerCostPlacementControl(towerCardSpace)) {
+                    //Eseguo i controlli
+                    if (actionControlSet.selfOccupiedTowerControl(familyMember, towerCardSpace.getTower())) {
 
-                        if(actionControlSet.takeDevelopmentCardControl(towerCardSpace.getCard())) {
+                        if (actionControlSet.diceValueVsCardSpaceControl(familyMember.getTotalValue(), towerCardSpace)) {
 
-                            //TODO SIMULARE L ATTIVAZIONE IN CATENA DEGLI EFFETI
-                            //pago la torre
-                            player.getPlayerActionSet().payTowerMoney();
+                            if (actionControlSet.towerCostPlacementControl(towerCardSpace)) {
 
-                            //metto il famigliare
-                            towerCardSpace.getActionSpace().addFamilyMember(familyMember);
-                            player.setLastUsedFamilyMember(familyMember);
-                            askAgain = false;
-                            //controllo i parametri extra che settano le scomuniche
-                            if (immediateEffectsAreActivable)
-                                //attivo gli effetti immediati degli action space
-                                towerCardSpace.getActionSpace().activeEffectList(player);
+                                if (actionControlSet.takeDevelopmentCardControl(towerCardSpace.getCard())) {
 
-                            //pago la carta
-                            super.player.getPlayerActionSet().payCard(towerCardSpace.getCard(),null);
+                                    //TODO SIMULARE L ATTIVAZIONE IN CATENA DEGLI EFFETI
+                                    //pago la torre
+                                    player.getPlayerActionSet().payTowerMoney();
 
-                            //prendo la carta
-                            super.player.addDevelopmentCard(this.towerCardSpace.takeCard());
+                                    //metto il famigliare
+                                    towerCardSpace.getActionSpace().addFamilyMember(familyMember);
+                                    askAgain = false;
+                                    //controllo i parametri extra che settano le scomuniche
+                                    if (immediateEffectsAreActivable)
+                                        //attivo gli effetti immediati degli action space
+                                        towerCardSpace.getActionSpace().activeEffectList(player);
 
-                            //metto la torre come occupata
-                            towerCardSpace.getTower().setOccupied(true);
-                        }else{      //TODO FARE OVERRIDE DEI GET CONTROL ERROR SPECIFICI
-                            player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTakeDevelopmentCardControl().getControlStringError()));
+                                    //pago la carta
+                                    super.player.getPlayerActionSet().payCard(towerCardSpace.getCard(), null);
+
+                                    //prendo la carta
+                                    super.player.addDevelopmentCard(this.towerCardSpace.takeCard());
+
+                                    //metto la torre come occupata
+                                    towerCardSpace.getTower().setOccupied(true);
+                                } else {      //TODO FARE OVERRIDE DEI GET CONTROL ERROR SPECIFICI
+                                    player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTakeDevelopmentCardControl().getControlStringError()));
+                                }
+                            } else {
+                                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTowerCardCostPlacementControl().getControlStringError()));
+                            }
+                        } else {
+                            player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getDiceValueActionSpaceControl().getControlStringError()));
+                            askAgain = true;
                         }
-                    } else{
-                        player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTowerCardCostPlacementControl().getControlStringError()));
+                    } else {
+                        player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getSelfOccupiedTowerControl().getControlStringError()));
+                        askAgain = true;
                     }
                 } else {
-                    player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getDiceValueActionSpaceControl().getControlStringError()));
-                    askAgain = true;
+                    actionTimerEnded = true;
+                    break;
                 }
-            } else {
-                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getSelfOccupiedTowerControl().getControlStringError()));
-                askAgain = true;
-            }
-        } while (askAgain);
 
+            } while (askAgain);
 
-        setUsed(true);
+            if (!actionTimerEnded) {
 
-        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato family member", familyMember.getStateFamilyMember()));
-        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella tower", towerCardSpace.getActionSpace().getStateActionSpace()));
+                setUsed(true);
+                player.getModel().notifyViews(new MVUpdateState("Aggiornato stato family member", familyMember.getStateFamilyMember()));
+                player.getModel().notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella tower", towerCardSpace.getActionSpace().getStateActionSpace()));
+
+            } else
+                player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
+
+        } else
+            player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
 
         resetTowerCardSpace();
         resetFamilyMember();
     }
 
+
     @Override
     public String toString() {
         return "Place FM in Tower";
     }
+
 
     /* Modifiers */
     public void setImmediateEffectsAreActivable(boolean areActivable)

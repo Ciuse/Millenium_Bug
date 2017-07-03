@@ -27,7 +27,7 @@ public class PlayerActionSet {
     private final ActionDiscardLeaderCard discardLeaderCard;
     private final ActionGetFinalResources getFinalResources;
     private final ActionControlSet actionControlSet;
-    private final ActionActiveEndButton activeEndButton;
+    private final ActionEndTurn activeEndButton;
     private final ActionAddFinalBonus addFinalBonus;
     private final ActionGetTempResourcesFromAllEffect getTempResources;
     private final ActionPayCard payCard;
@@ -52,7 +52,7 @@ public class PlayerActionSet {
         this.actionActiveLeaderCard = new ActionActiveLeaderCard(player, actionControlSet);
         this.discardLeaderCard = new ActionDiscardLeaderCard(player, actionControlSet);
         this.getFinalResources = new ActionGetFinalResources(player, actionControlSet);
-        this.activeEndButton= new ActionActiveEndButton(player, actionControlSet); //TODO IMPLEMENTARLO
+        this.activeEndButton= new ActionEndTurn(player, actionControlSet); //TODO IMPLEMENTARLO
         this.addFinalBonus= new ActionAddFinalBonus(player, actionControlSet);
         this.getTempResources = new ActionGetTempResourcesFromAllEffect(player,actionControlSet);
         this.payCard= new ActionPayCard(player,actionControlSet);
@@ -236,7 +236,7 @@ public class PlayerActionSet {
         return getFinalResources;
     }
 
-    public ActionActiveEndButton getActiveEndButton() {
+    public ActionEndTurn getActiveEndButton() {
         return activeEndButton;
     }
 

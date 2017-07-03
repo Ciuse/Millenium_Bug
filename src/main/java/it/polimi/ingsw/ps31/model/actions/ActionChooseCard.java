@@ -4,7 +4,6 @@ import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceListToPay;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerCardSpace;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
@@ -22,6 +21,7 @@ public class ActionChooseCard extends Action {
     private ResourceList resourceDiscount = null;
     private CardColor cardColor = null;
     private boolean anyCardColor = false;
+    private boolean actionTimerEnded = false;
 
     /* Constructor */
     public ActionChooseCard(Player player, ActionControlSet actionControlSet)
@@ -103,17 +103,28 @@ public class ActionChooseCard extends Action {
             player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceTowerCardSpace()));
             chosenCardSpace = player.getModel().getModelChoices().waitTowerCardChosen();
 
+            if (chosenCardSpace == null) {      //TIMER SCADUTO
+                actionTimerEnded=true;
+                player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
+                break;
+            }
+
         } while (!checkChosenTowerCardSpace(chosenCardSpace));
 
+        if (!actionTimerEnded) {      //TIMER NON SCADUTO
 
-        //pago la carta
-        super.player.getPlayerActionSet().payCard(chosenCardSpace.getCard(), resourceDiscount);
+            //pago la carta
+            super.player.getPlayerActionSet().payCard(chosenCardSpace.getCard(), resourceDiscount);
 
-        //prendo la carta
-        super.player.addDevelopmentCard(chosenCardSpace.takeCard());
+            //prendo la carta
+            super.player.addDevelopmentCard(chosenCardSpace.takeCard());
 
-        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato Player Personal Board", player.getPersonalBoard().getStatePersonalBoard()));
-        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato tower card space", chosenCardSpace.getStateTowerCardBox()));
+            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato Player Personal Board", player.getPersonalBoard().getStatePersonalBoard()));
+            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato tower card space", chosenCardSpace.getStateTowerCardBox()));
+
+        } else {
+            player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
+        }
 
         resetAnyCardColor();
         resetCardColor();
@@ -157,7 +168,7 @@ public class ActionChooseCard extends Action {
             List<ResourceList> tempResourceListList = new ArrayList<>(chosenTCS.getCard().getCostList());
             for (ResourceList list: tempResourceListList
                  ) {
-                for (Resource resource : resourceDiscount.getResourceList()
+                for (Resource resource : resourceDiscount.getListOfResource()
                         ) {
                     list.discountSpecificResource(resource);
                 }

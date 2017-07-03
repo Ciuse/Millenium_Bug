@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.actions;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
+import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceListToPay;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
@@ -52,7 +53,7 @@ public class ActionGetTempResourcesFromAllEffect extends Action {
         } else {//Eseguo l'azione
 
 
-            List<Resource> resourcesTempToGetList = this.resourcesTempToGet.getResourceList();
+            List<Resource> resourcesTempToGetList = this.resourcesTempToGet.getListOfResource();
             int listToPay = 0;
             if (!resourceMalus.isEmpty()) {
                 if (resourceMalus.size() > 1) {
@@ -60,10 +61,16 @@ public class ActionGetTempResourcesFromAllEffect extends Action {
                     String string = player.getPlayerId() + ": quale risorsa non vuoi ottenere?";
                     player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceListToPay(0)));
                     listToPay = player.getModel().getModelChoices().waitIntListToPay();
-                }
+
+                    if(listToPay==-1) {   //TIMER SCADUTO -> scelgo una lista a caso
+                        listToPay = 0;
+                        player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
+                    }
+
+                    }
                 for (Resource currentResource : resourcesTempToGetList) {
                     //todo: da attivare sse le risorse provengono da carte sviluppo o spazi azione
-                    for (Resource resource : resourceMalus.get(listToPay).getResourceList()
+                    for (Resource resource : resourceMalus.get(listToPay).getListOfResource()
                             ) {
                         currentResource.addValue(resource.getValue());
                     }

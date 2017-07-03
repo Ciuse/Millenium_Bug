@@ -53,6 +53,8 @@ public abstract class Resource {
         this.value=this.value*factor;
     }
 
+    public abstract Resource cloneResource(Resource resource);
+
     public abstract int getPhysicalResourceValue();
 
     public abstract int getPointResourceValue();

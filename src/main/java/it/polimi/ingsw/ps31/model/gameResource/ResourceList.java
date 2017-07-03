@@ -41,14 +41,14 @@ public class ResourceList {
     public void addSpecificResource(Resource resource){
         boolean found=false;
 
-        for (Resource resourceOfList : this.resourceList) {
+        for (Resource resourceOfList : resourceList) {
             if (resourceOfList.getClass().equals(resource.getClass()) && !found) {
                 resourceOfList.addValue(resource.getValue());
                 found = true;
             }
         }
         if(!found){
-            this.resourceList.add(resource);
+            resourceList.add(resource.cloneResource(resource));
         }
     }
 
@@ -92,7 +92,7 @@ public class ResourceList {
      * @param resourceList lista contenente tutte le risorse da scontare alla lista corrente
      */
     public void discountResourceList(ResourceList resourceList) {
-        for (Resource resource : resourceList.getResourceList()) {
+        for (Resource resource : resourceList.getListOfResource()) {
             discountSpecificResource(resource);
         }
     }
@@ -140,8 +140,13 @@ public class ResourceList {
         return this.resourceList.size();
     }
 
-    public List<Resource> getResourceList(){
-        return new ArrayList<>(this.resourceList);
+    public List<Resource> getListOfResource(){
+        List<Resource> resourceList = new ArrayList<>();
+        for (Resource resource: this.resourceList
+             ) {
+            resourceList.add(resource.cloneResource(resource));
+        }
+        return resourceList;
     }
 
     /**ritorna una risorsa contenuta nella lista o null nel caso non ci sia
@@ -155,6 +160,11 @@ public class ResourceList {
         }
         return null; //non trovato
     }
+
+        public int getResourceValue(Class<? extends Resource> resourceClass) throws NullPointerException {
+            return getSpecificResource(resourceClass).getValue();
+        }
+
 
     @Override
     public boolean equals(Object o) {
@@ -177,22 +187,37 @@ public class ResourceList {
 
         ResourceList that = (ResourceList) o;
 
-        if(that.getResourceList().size()<this.getResourceList().size()){            //se la mia lista ha più elemnti non sarà mai minore
+        if(that.getListOfResource().size()<this.getListOfResource().size()){            //se la mia lista ha più elemnti non sarà mai minore
             return false;
         }
+
         int contatore=0;
         for(int i=0; i<that.resourceList.size();i++){
-            for(int j=0; j<this.getResourceList().size();j++){
-                if(this.resourceList.get(j).lessOrEquals(that.getResourceList().get(i))){// confronto i vari elementi della lista con il metodo che ho implementato nel confronto tra risorse
+            for(int j = 0; j<this.getListOfResource().size(); j++){
+                if(this.resourceList.get(j).lessOrEquals(that.getListOfResource().get(i))){// confronto i vari elementi della lista con il metodo che ho implementato nel confronto tra risorse
                     contatore++;
+
                 }
             }
         }
-        if(contatore==this.getResourceList().size()){          // se tutte le mie risorse erano minore delle altre allora la mia lista è confrontabile ed è minore dell altra
+        if(contatore==this.getListOfResource().size()){          // se tutte le mie risorse erano minore delle altre allora la mia lista è confrontabile ed è minore dell altra
             return true;
         }
 
         return false;
+    }
+
+    public boolean greaterOrEquals(ResourceList that){
+        return that.lessOrEquals(this);
+    }
+
+    public boolean greaterOrEquals(Resource resource){
+        ResourceList that = new ResourceList(resource);
+        return greaterOrEquals(that);
+    }
+
+    public void setResourceList(List<Resource> resourceList) {
+        this.resourceList = resourceList;
     }
 
     @Override

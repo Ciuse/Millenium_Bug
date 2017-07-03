@@ -3,10 +3,8 @@ package it.polimi.ingsw.ps31.model.actionControls;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.effect.GetResourceEffect;
-import it.polimi.ingsw.ps31.model.gameResource.Resource;
-import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
+import it.polimi.ingsw.ps31.model.gameResource.*;
 import it.polimi.ingsw.ps31.model.player.Player;
-import it.polimi.ingsw.ps31.model.player.PlayerResources;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,28 +49,27 @@ public class TowerCardCostPlacementControl extends Control {
 
         boolean costAffordable = true;
 
-        PlayerResources tempPlayerResources = new PlayerResources(player.getPlayerResources().getPlayerResourceList());
+        ResourceList tempPlayerResources = new ResourceList(player.getPlayerResources().getListOfResource());
 
         //simulo il poter pagare o no la torre
-        if (!towerCardSpace.getTower().isOccupied()) {
-        } else {
+        if (towerCardSpace.getTower().isOccupied()) {System.out.println("PAYTHINGs");
             if (player.getPlayerActionSet().getPayTowerMoney().isToPay()) {
                 if (player.getPlayerActionSet().getActionControlSet().payResourceControl(player.getPlayerActionSet().getPayTowerMoney().getCOINTOPAY())) {
-                    tempPlayerResources.subResources(player.getPlayerActionSet().getPayTowerMoney().getCOINTOPAY());
+                    tempPlayerResources.subSpecificResource(player.getPlayerActionSet().getPayTowerMoney().getCOINTOPAY());
                     costAffordable = true;
+
                 }
             } else {
                 costAffordable = false;
             }
         }
-
         //simulo l attivazione dell effetto che mi fa guadagnare risorse dell action space (se ha un effetto che mi fa guadagnare risorse)
         if(towerCardSpace.getActionSpace().getImmediateEffectList()!=null){
             if(towerCardSpace.getActionSpace().getImmediateEffectList().getEffectList().get(0).getResourceToGainString()!=null){
                 GetResourceEffect tempGetRes = (GetResourceEffect) towerCardSpace.getActionSpace().getImmediateEffectList().get(0);
-                for (Resource resource: tempGetRes.getResources().getResourceList()
+                for (Resource resource: tempGetRes.getResources().getListOfResource()
                      ) {
-                    tempPlayerResources.addResources(resource);
+                    tempPlayerResources.addSpecificResource(resource);
                 }
             }
         }
@@ -82,7 +79,7 @@ public class TowerCardCostPlacementControl extends Control {
             costAffordable = true;
         else
             for (ResourceList currentCost : towerCardSpace.getCard().getCostList()) {
-                if (tempPlayerResources.greaterThan(currentCost))
+                if (currentCost.lessOrEquals(tempPlayerResources))
                     costAffordable = true;
             }
 

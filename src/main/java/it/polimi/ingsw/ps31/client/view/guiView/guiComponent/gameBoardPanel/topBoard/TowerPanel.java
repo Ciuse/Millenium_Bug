@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static java.lang.String.valueOf;
+import static java.lang.Thread.sleep;
+
 public class TowerPanel extends JPanel implements ActionListener {
     private ActionListener listener;
     private TowerCardAndActionSpacePanel[][] towerCardAndActionSpacePanels = new TowerCardAndActionSpacePanel[4][4];
@@ -95,6 +97,7 @@ public class TowerPanel extends JPanel implements ActionListener {
     }
 
     public void printSingleCardBox(StateViewTowerCardBox stateViewTowerCardBox) {
+
 
         if (stateViewTowerCardBox.getCardId() != 0) {
             towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/devCard/devcards_f_en_c_" + valueOf(stateViewTowerCardBox.getCardId()) + ".png");

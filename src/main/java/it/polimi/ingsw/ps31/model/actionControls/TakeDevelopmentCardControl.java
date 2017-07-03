@@ -61,7 +61,12 @@ public class TakeDevelopmentCardControl extends Control {
             if (!ignoreRequirement) {
                 PersonalBoardCardCell personalBoardCardCell = super.player.getPersonalBoard().getSpecificPersonalBoardCardList(developmentCard.getCardColor()).getFirstEmptyCardCell();
                 if (personalBoardCardCell.getExtraPointRequired() != null
-                        && !super.player.getPlayerResources().greaterThan(personalBoardCardCell.getExtraPointRequired())) {
+                        && !super.player.getPlayerResources().greaterOrEquals(personalBoardCardCell.getExtraPointRequired())) {
+                    System.out.println("ENTRATO");
+                    System.out.println(player.getPlayerResources().toString());
+                    System.out.println(personalBoardCardCell.getExtraPointRequired().toString());
+
+
                     resetDevelopmentCard();
                     return false;
                 }

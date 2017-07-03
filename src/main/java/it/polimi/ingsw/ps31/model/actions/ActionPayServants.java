@@ -51,6 +51,12 @@ public class ActionPayServants extends Action {
                     String string = player.getPlayerId() + ":Quanti servitori vuoi pagare per aumentare il valore del tuo familiare?";
                     player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceNumberOfServantsToPay()));
                     setServantsAmount(player.getModel().getModelChoices().waitNumberOfServantsToPay());
+
+                    if(servantsAmount==-1){ //TIMER SCADUTO
+                        player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
+                        servantsAmount=0;
+                        break;
+                    }
                 }
                 while (Math.floorDiv(servantsAmount, servantsToPayPerUnitaryDiceValueArise) + familyMember.getTotalValue() <= 0);
 

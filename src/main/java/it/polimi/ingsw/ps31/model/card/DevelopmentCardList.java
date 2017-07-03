@@ -44,64 +44,78 @@ public class DevelopmentCardList {
 
     public int countCardGreen() {
         int contatore = 0;
-        for (DevelopmentCard aDevelopmentCardList : this.developmentCardList) {
-            if (aDevelopmentCardList.getClass().equals(Territory.class))
-                contatore = contatore + 1;
+        for (DevelopmentCard developmentCard : this.developmentCardList) {
+            if (developmentCard != null) {
+
+                if (developmentCard.getClass().equals(Territory.class))
+                    contatore = contatore + 1;
+            }
         }
         return contatore;
     }
     public int countCardYellow() {
         int contatore = 0;
-        for (DevelopmentCard aDevelopmentCardList : this.developmentCardList) {
-            if (aDevelopmentCardList.getClass().equals(Building.class))
-                contatore = contatore + 1;
+        for (DevelopmentCard developmentCard : this.developmentCardList) {
+            if (developmentCard != null) {
+                if (developmentCard.getClass().equals(Building.class))
+                    contatore = contatore + 1;
+            }
         }
         return contatore;
     }
     public int countCardBlue() {
         int contatore = 0;
-        for (DevelopmentCard aDevelopmentCardList : this.developmentCardList) {
-            if (aDevelopmentCardList.getClass().equals(Character.class))
-                contatore = contatore + 1;
+        for (DevelopmentCard developmentCard : this.developmentCardList) {
+            if (developmentCard != null) {
+                if (developmentCard.getClass().equals(Character.class))
+                    contatore = contatore + 1;
+                }
         }
         return contatore;
     }
     public int countCardPurple() {
         int contatore = 0;
-        for (DevelopmentCard aDevelopmentCardList : this.developmentCardList) {
-            if (aDevelopmentCardList.getClass().equals(Venture.class))
-                contatore = contatore + 1;
+        for (DevelopmentCard developmentCard : this.developmentCardList) {
+            if (developmentCard != null) {
+
+                if (developmentCard.getClass().equals(Venture.class))
+                    contatore = contatore + 1;
+            }
         }
         return contatore;
     }
     //in base al colore conto le carte di quel colore
     public int countSpecificCardColor(CardColor cardColor) {
         int contatore = 0;
-        for (DevelopmentCard aDevelopmentCardList : this.developmentCardList) {
-            if (aDevelopmentCardList.getCardColor().equals(cardColor))
-                contatore = contatore + 1;
+        for (DevelopmentCard developmentCard : this.developmentCardList) {
+            if (developmentCard != null) {
+
+                if (developmentCard.getCardColor().equals(cardColor))
+                    contatore = contatore + 1;
+            }
         }
         return contatore;
     }
     public List<DevelopmentCard> getSpecificCardList(CardColor cardColor){
-
-        List<DevelopmentCard> specificCardList = new ArrayList<>();
-        for (DevelopmentCard aDevelopmentCardList : this.developmentCardList) {
-
-            if (aDevelopmentCardList
-                    .getCardColor()
-                    .equals(cardColor)) {
-                specificCardList.add(aDevelopmentCardList);
+            List<DevelopmentCard> specificCardList = new ArrayList<>();
+        System.out.println(cardColor);
+        System.out.println(developmentCardList);
+            for (DevelopmentCard developmentCard : this.developmentCardList) {
+                if (developmentCard != null) {
+                    if (developmentCard
+                            .getCardColor()
+                            .equals(cardColor)) {
+                        specificCardList.add(developmentCard);
+                    }
+                }
             }
-        }
-        return specificCardList;
+            return specificCardList;
     }
 
     public StateAllDevelopmentCard getStateAllCard(){
         List<StateDevelopmentCard> stateDevelopmentCardList = new ArrayList<>();
         for (DevelopmentCard developmentCard:developmentCardList
              ) {
-
             stateDevelopmentCardList.add(developmentCard.getStateDevelopmentCard());
         }return new StateAllDevelopmentCard(stateDevelopmentCardList);
     }

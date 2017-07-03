@@ -14,6 +14,7 @@ public class HarvestList extends HarvestProductionList{
     /* Constructor */
     public HarvestList(Player player, HarvestEffect firstHarvest) {
         super(player);
+        System.out.println(">Harvest List: Aggiunto Personal bonus tiles" + firstHarvest.getNameString() +" " + firstHarvest.getHarvestActionValue()+ " " + firstHarvest.getGetResourceEffect().getResources());
         this.addEffect(firstHarvest);
     }
 
@@ -26,10 +27,14 @@ public class HarvestList extends HarvestProductionList{
     @Override
     public void activate(int diceValue)
     {
+        System.out.println(">Harvest List: dimension: " + effectList.size());
+
         for(HarvestEffect currentEffect : effectList)
         {
             if (currentEffect.getHarvestActionValue() > diceValue)
-                currentEffect.getGetResourceEffect().activate(super.getPlayer());
+                System.out.println(">Harvest List: scorrere e attivare" + currentEffect.getNameString());
+
+                        currentEffect.getGetResourceEffect().activate(super.getPlayer());
         }
         super.getPlayer().addTempResoucesToPlayerResources();
     }

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.actions;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
+import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceListToPay;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
@@ -17,7 +18,7 @@ import java.util.Map;
 public class ActionPayCard extends Action {
    private DevelopmentCard cardToPay;
    private ResourceList resourceListDiscount;
-   private Map<CardColor, ResourceList> cardResourceDiscount;
+   private Map<CardColor, ResourceList> cardResourceDiscount;private boolean actionTimerEnded=false;
 
 
     public ActionPayCard(Player player, ActionControlSet actionControlSet) {
@@ -71,6 +72,10 @@ public class ActionPayCard extends Action {
                     player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceListToPay(cardToPay.getCardId())));
                     listToPay = player.getModel().getModelChoices().waitIntListToPay();
 
+                    if(listToPay==-1) {  //TIMER SCADUTO -> paga una lista a caso...
+                        player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
+                        listToPay=0;
+                    }
                     //controllo i requisiti dei military strength
                     if(cardToPay.getCostList().get(listToPay).getSpecificResource(MilitaryStrength.class)!=null){
                         MilitaryStrength militaryStrength = (MilitaryStrength)cardToPay.getCostList().get(listToPay).getSpecificResource(MilitaryStrength.class);
@@ -79,13 +84,12 @@ public class ActionPayCard extends Action {
                         }
                     }
 
-
                     listDiscounted=cardToPay.getCostList().get(listToPay);
                     listDiscounted.discountResourceList(this.cardResourceDiscount.get(cardToPay.getCardColor()));
                     if(resourceListDiscount!=null){
                         listDiscounted.discountResourceList(resourceListDiscount);
                     }
-                }while(!player.getPlayerResources().greaterThan(listDiscounted)||!canPayMilitaryStrength);   // se fallisce il pagamento glielo richiedo magari poteva pagare solo 1 dei due costi
+                }while(!listDiscounted.lessOrEquals(player.getPlayerResources())||!canPayMilitaryStrength);   // se fallisce il pagamento glielo richiedo magari poteva pagare solo 1 dei due costi
             }
         }
         if (listToPay != -1) {

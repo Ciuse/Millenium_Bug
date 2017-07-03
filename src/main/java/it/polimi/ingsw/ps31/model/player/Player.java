@@ -27,7 +27,7 @@ public class Player {
     private final PlayerId playerId;
     private final String nickname;
     private PlayerColor playerColor;
-    private final PlayerResources playerResources;      //setter -->add e sub
+    private final ResourceList playerResources;      //setter -->add e sub
     private ResourceList tempPlayerResourcesToGain;
     private final PersonalBoard personalBoard;
     private final List<FamilyMember> familyMembers = new ArrayList<>();
@@ -80,7 +80,7 @@ public class Player {
         markerDiscList.add(markerDisc3);
 
 
-        playerResources = new PlayerResources(initialResources);
+        playerResources = new ResourceList(initialResources.getListOfResource());
 
 
         //Instanzio un PlayerActionSet
@@ -121,8 +121,8 @@ public class Player {
         return playerColor;
     }
 
-    public PlayerResources getPlayerResources() {
-        return playerResources;
+    public ResourceList getPlayerResources() {
+        return new ResourceList(playerResources.getListOfResource());
     }
 
     public PersonalBoard getPersonalBoard() {
@@ -206,12 +206,12 @@ public class Player {
     /* Class Methods */
     public void addResources(Resource resourcesToAdd)
     {
-        this.playerResources.addResources(resourcesToAdd);
+        this.playerResources.addSpecificResource(resourcesToAdd);
     }
 
     public void subResources (Resource resourcesToSub)
     {
-        this.playerResources.subResources(resourcesToSub);
+        this.playerResources.subSpecificResource(resourcesToSub);
     }
 
     public void addTempResources(Resource tempResourceToAdd){
@@ -220,9 +220,9 @@ public class Player {
 
     public void addTempResoucesToPlayerResources(){
         for(int i = 0;i<tempPlayerResourcesToGain.size();i++){
-            playerResources.addResources(tempPlayerResourcesToGain.get(i));
+            playerResources.addSpecificResource(tempPlayerResourcesToGain.get(i));
         }
-        model.notifyViews(new MVUpdateState("Aggiornato stato PlayerResources", getStatePlayerResources()));
+        model.notifyViews(new MVUpdateState("Aggiornato stato PlayerResources temp", getStatePlayerResources()));
         this.tempPlayerResourcesToGain.clear();
     }
 
@@ -351,9 +351,11 @@ public class Player {
                 actionList.add(playerActionSet.getDiscardLeaderCard().toString());      //aggiungo l azione scarta leader se ne hai ancora uno in mano
         }
 
-        if (playerActionSet.getActiveEndButton().isActive()) {
+//        if (playerActionSet.getActiveEndButton().isActive()) {        //TODO DA RIMETTERE! (CHEAT)
             actionList.add(playerActionSet.getActiveEndButton().toString());             //se l oggetto fine turno è attivo aggiungo l azione per finire il turno
-        }
+//        }
+
+
         return new StatePlayerAction(playerId,actionList);
     }
 

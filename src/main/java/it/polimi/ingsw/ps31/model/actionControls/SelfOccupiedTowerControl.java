@@ -59,12 +59,8 @@ public class SelfOccupiedTowerControl extends Control {
         for (TowerCardSpace tcs : tower.getTowerCardSpaceList()) {
             for (FamilyMember family : tcs.getActionSpace().getFamilyMemberList()
                     ) {
-                if (!family
-                        .getDiceColor()
-                        .equals(DiceColor.NEUTRAL)
-                        && family
-                        .getPlayer()
-                        .equals(fmOwner))
+                if (!family.getDiceColor().equals(DiceColor.NEUTRAL)
+                        && family.getPlayer().equals(fmOwner))
                     azionePossibile = false;
             }
 

@@ -27,7 +27,6 @@ public class GameBoard{
     private MilitaryPointTrack militaryPointTrack;
     private FaithPointTrack faithPointTrack;
     private VictoryPointTrack victoryPointTrack;
-    private EndActionButton endActionButton;
     private List<ExcommunicationTiles> excommunicationTilesList;
     private final Model model;
 
@@ -62,7 +61,6 @@ public class GameBoard{
         this.faithPointTrack = new FaithPointTrack();
         this.faithPointTrack.inizializationFaithTrack(faithTrackExtraValue);
         this.victoryPointTrack = new VictoryPointTrack();
-        this.endActionButton = new EndActionButton(false);
     }
 
     public void add3PlayerActionSpace(List<EffectList> otherEffectList){
@@ -164,19 +162,12 @@ public class GameBoard{
     }
 
     public List<ExcommunicationTiles> getExcommunicationTilesList() {
-        return new ArrayList<>(excommunicationTilesList);
+        return excommunicationTilesList;
     }
 
     public void setExcommunicationTilesList(List<ExcommunicationTiles> excommunicationTiles) {
         this.excommunicationTilesList = excommunicationTiles;
     }
-
-
-
-    public EndActionButton getEndActionButton() {
-        return endActionButton;
-    }
-
     public Dice getSpecificDice(DiceColor diceColor) {
         for (Dice aDice : dice) {
             if (aDice.getColor().equals(diceColor)) {

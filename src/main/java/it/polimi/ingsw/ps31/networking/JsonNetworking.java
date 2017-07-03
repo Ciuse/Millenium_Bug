@@ -113,7 +113,7 @@ public class JsonNetworking {
         RuntimeTypeAdapterFactory<Action> actionAdapterFactory = RuntimeTypeAdapterFactory.of(Action.class, "Action");
         actionAdapterFactory.registerSubtype(ActionActivateHarvest.class, "ActionActivateHarvest");
         actionAdapterFactory.registerSubtype(ActionActivateProduction.class, "ActionActivateProduction");
-        actionAdapterFactory.registerSubtype(ActionActiveEndButton.class, "ActionActiveEndButton");
+        actionAdapterFactory.registerSubtype(ActionEndTurn.class, "ActionEndTurn");
         actionAdapterFactory.registerSubtype(ActionActiveLeaderCard.class, "ActionActiveLeaderCard");
         actionAdapterFactory.registerSubtype(ActionAddFinalBonus.class, "ActionAddFinalBonus");
         actionAdapterFactory.registerSubtype(ActionChooseCard.class, "ActionChooseCard");

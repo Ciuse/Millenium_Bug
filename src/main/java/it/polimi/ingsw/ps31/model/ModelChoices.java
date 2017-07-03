@@ -28,7 +28,6 @@ public class ModelChoices {
     private int leaderChoosenCounter=0;
     private int listToPay =-1;
     private TowerCardSpace towerCardSpaceChosen=null;
-    private DevelopmentCard developmentCardChosen = null;
     private Boolean activeEffect = null ;
     private Boolean supportTheChurch=null;
     private Boolean actionEnded=null;
@@ -43,7 +42,7 @@ public class ModelChoices {
     private FamilyMember familyMemberChosen;
     private ActionSpace actionSpaceChosen;
     private Action actionToDo=null;
-    Timer timer1 = new Timer();
+    private Timer timer1 = new Timer();
 
     public ModelChoices() {
 
@@ -119,18 +118,6 @@ public class ModelChoices {
             //TODO SISTEMARE
         }
         return actionSpaceChosen;
-    }
-
-    public synchronized DevelopmentCard waitDevelopmentCardChosen(){
-        setDevelopmentCardChosen(null);
-        setStateChoice();
-        while(developmentCardChosen==null&& this.stateModelChoices.equals("StateChoice")){
-            try {
-                sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }return developmentCardChosen;
     }
 
     public synchronized boolean waitActiveEffect(){
@@ -229,7 +216,11 @@ public class ModelChoices {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }return actionToDo;
+        }
+        if(actionToDo!=null){
+            setStateActionGame();
+        }
+        return actionToDo;
     }
 
     public void setActionSpaceChosen(ActionSpace actionSpaceChosen) {
@@ -319,10 +310,6 @@ public class ModelChoices {
 
     public void setInformationFromNetworking(InformationFromNetworking informationFromNetworking) {
         this.informationFromNetworking = informationFromNetworking;
-    }
-
-    public void setDevelopmentCardChosen(DevelopmentCard developmentCardChosen) {
-        this.developmentCardChosen = developmentCardChosen;
     }
 
     public void setTimerConnection(long timerConnection) {

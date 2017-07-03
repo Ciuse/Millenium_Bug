@@ -11,6 +11,11 @@ public class Stone extends PhysicalResource {
     }
 
     @Override
+    public Resource cloneResource(Resource resource) {
+        return new Stone(resource.getValue());
+    }
+
+    @Override
     public String toString(){
         return "ST"+this.getValue();
     }

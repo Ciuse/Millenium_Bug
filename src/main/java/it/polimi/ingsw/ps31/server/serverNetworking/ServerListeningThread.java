@@ -1,16 +1,8 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
-import com.sun.jmx.remote.internal.ServerCommunicatorAdmin;
-import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
-import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
-import it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
-import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import java.io.IOException;
-import java.net.SocketException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Francesco on 25/06/2017.

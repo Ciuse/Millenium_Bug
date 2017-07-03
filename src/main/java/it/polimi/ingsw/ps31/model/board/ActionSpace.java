@@ -96,7 +96,6 @@ public class ActionSpace implements ActiveEffect {
                     this.immediateEffectList.get(i).activate(player);
                 }
             }
-            player.addTempResoucesToPlayerResources();
         }
     }
 }

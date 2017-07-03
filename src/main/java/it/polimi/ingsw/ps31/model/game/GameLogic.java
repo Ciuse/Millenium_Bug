@@ -13,6 +13,8 @@ import it.polimi.ingsw.ps31.server.VirtualView;
 
 import java.util.Collections;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Created by giulia on 24/05/2017.
  */
@@ -77,6 +79,7 @@ public class GameLogic {
         gameUtility.setTimerConnection(jsonObjectReadFromFile.getPlayerConnectionTimer());
         gameUtility.setLeaderCardList(jsonObjectReadFromFile.getLeaderCardList());
         gameUtility.setCouncilPrivilegeResChoice(jsonObjectReadFromFile.getCouncilPrivilegeResChoice());
+        gameUtility.setExcommunicationTilesList(jsonObjectReadFromFile.getExcommunicationTiles());
     }
 
     public void playGame() {
@@ -114,7 +117,7 @@ public class GameLogic {
         Collections.shuffle(gameUtility.getPersonalBonusTilesList()); //mischio i personal bonus tiles
 
         gameUtility.createDeck();
-
+        gameUtility.setExcommunicationMatchTiles();
         for (this.period = 1; period <= PERIODMAXNUMBER; period++) {                               //inizio periodo
             gameUtility.setDeckTower(period);
             for (this.round = 1; round <= ROUNDMAXNUMBER; round++) {
@@ -129,6 +132,7 @@ public class GameLogic {
                         gameUtility.getModel().notifyViews(new MVUpdateState(string,gameUtility.getStateGame(this.period,this.round,playerNumber)));
                         gameUtility.phaseActionGame(playerNumber,action);
                     }
+
                 }
                 //sono finite le 16 azioni(massime) del turno e iniziano le 4 azioni(massime) che si sono perse per la scomunica
                 gameUtility.extraPhaseActionGame();
@@ -146,6 +150,8 @@ public class GameLogic {
         gameUtility.orderVictoryPoint();
 
         //TODO metodo per stampare a video il vincitore
+        gameUtility.getModel().notifyViews(new MVStringToPrint(null,true,"GRAZIE PER AVER GIOCATO, ALLA PROSSIMA PARTITA"));
+
 
     }
 

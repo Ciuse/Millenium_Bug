@@ -14,6 +14,11 @@ public class Coin extends PhysicalResource {
     }
 
     @Override
+    public Resource cloneResource(Resource resource) {
+        return new Coin(resource.getValue());
+    }
+
+        @Override
     public String toString(){
         return "CO"+this.getValue();
     }

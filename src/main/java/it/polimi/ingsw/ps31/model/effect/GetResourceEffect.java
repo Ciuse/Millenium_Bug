@@ -28,6 +28,8 @@ public class GetResourceEffect extends Effect {
             player.getPlayerActionSet().getGetTempResources().setFromCardEffect(true);
         }
         player.getPlayerActionSet().getTempResources(this.resources);
+        System.out.println("ATTIVATO");
+
     }
 
     public String getResourceToGainString(){
