@@ -92,7 +92,7 @@ public class NetworkInterface {
 
     public void sendToClient(MVVisitable msg, PlayerId playerId)
     {
-        System.out.println("NetworkInterface : sendtoClient()> player: "+playerId+"; msg: "+msg.toString());
+        //System.out.println("NetworkInterface : sendtoClient()> player: "+playerId+"; msg: "+msg.toString());
         PlayerCommunicationInterface connection = this.playerTable.playerIdToConnection(playerId);
         connection.send(msg);
     }

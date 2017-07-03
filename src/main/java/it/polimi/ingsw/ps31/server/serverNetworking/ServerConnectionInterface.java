@@ -35,7 +35,7 @@ public abstract class ServerConnectionInterface {
 
     public final void sendToClient(GenericMessage msg)
     {
-        System.out.println("ServerConnectionInterface:sendToClient> invio messaggio: "+msg.toString());
+        //System.out.println("ServerConnectionInterface:sendToClient> invio messaggio: "+msg.toString());
         writeOnNetwork(serialize(msg));
     }
 
