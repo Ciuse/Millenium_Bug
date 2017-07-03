@@ -36,8 +36,8 @@ public class BackgroundMainFramePanel extends PaintBackgroundPanel implements Ac
         gbl.columnWidths = new int[]{0, 0, 0, 0};
         gbl.rowHeights = new int[]{0, 0, 0};
 
-        gbl.columnWeights = new double[]{0.50, 0.01999, 0.481, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.526999, 0.472, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.50, 0.018999, 0.481, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.528, 0.472, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
 
@@ -58,7 +58,6 @@ public class BackgroundMainFramePanel extends PaintBackgroundPanel implements Ac
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //gbc.anchor = GridBagConstraints.WEST;
         playerPanel.setOpaque(false);
         playerPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(playerPanel, gbc);

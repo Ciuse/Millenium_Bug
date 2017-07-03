@@ -28,7 +28,7 @@ public class MainFrame extends JFrame implements ActionListener {
         frame.setResizable(false);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.getContentPane().setBackground(new Color(45, 55, 105));
+
 
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0, 0};

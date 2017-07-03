@@ -34,7 +34,7 @@ public class TowerCardAndActionSpacePanel extends JPanel implements ActionListen
         gbl.rowHeights = new int[]{0,0,0,0};
 
         gbl.columnWeights = new double[]{0.52,0.47999,Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.25,0.554,0.199,Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.25,0.551,0.199,Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();

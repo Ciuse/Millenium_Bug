@@ -12,10 +12,47 @@ import java.awt.event.ActionListener;
  */
 public class UtilityPanel extends JPanel implements ActionListener {
     private GuiView guiView;
+    private QuestionsToPlayerPanel questionsToPlayerPanel;
+    private StateGameOtherPlayersPanel stateGameOtherPlayersPanel;
 
     public UtilityPanel(GuiView guiView) {
         this.guiView=guiView;
-        this.setBackground(new Color(45,55,105));
+        addComponentsToPane(this);
+
+    }
+
+
+    public void addComponentsToPane(Container pane) {
+        //griglia 4*5
+        GridBagLayout gbl = new GridBagLayout();
+        gbl.columnWidths = new int[]{0, 0};
+        gbl.rowHeights = new int[]{0, 0,0};
+
+        gbl.columnWeights = new double[]{0.999999, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.60, 0.40, Double.MIN_VALUE};
+        pane.setLayout(gbl);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        questionsToPlayerPanel = new QuestionsToPlayerPanel();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridheight = 1;
+        gbc.gridwidth = 1;
+        gbc.fill = GridBagConstraints.BOTH;
+        questionsToPlayerPanel.setOpaque(false);
+        //questionsToPlayerPanel.setBackground(Color.green);
+        pane.add(questionsToPlayerPanel,gbc);
+
+        stateGameOtherPlayersPanel = new StateGameOtherPlayersPanel();
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridheight = 1;
+        gbc.gridwidth = 1;
+        gbc.fill = GridBagConstraints.BOTH;
+        //stateGameOtherPlayersPanel.setOpaque(false);
+        stateGameOtherPlayersPanel.setBackground(Color.red);
+        pane.add(stateGameOtherPlayersPanel,gbc);
     }
 
     @Override

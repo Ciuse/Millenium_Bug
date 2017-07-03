@@ -34,8 +34,8 @@ public class TowerPanel extends JPanel implements ActionListener {
         gbl.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
 
 
-        gbl.columnWeights = new double[]{0.04, 0.225, 0.225, 0.225, 0.225, 0.0499, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.01, 0.2325, 0.2325, 0.2325, 0.2325, 0.019, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.04, 0.225, 0.225, 0.225, 0.225, 0.0599, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.01, 0.2375, 0.2375, 0.2375, 0.2375, 0.039, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
