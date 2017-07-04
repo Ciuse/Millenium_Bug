@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 
@@ -21,7 +22,7 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
         this.listener=listener;
     }
 
-    public ButtonsFamilyMemberPanel() {
+    public ButtonsFamilyMemberPanel(StateViewFamilyMember stateViewFamilyMember) {
         addComponentsToPane(this);
     }
 
@@ -87,6 +88,21 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
     public FamilyMemberButton[] getButtonFamilyMember() {
         return buttonFamilyMember;
     }
+
+
+
+    public void printMyFamilyMembersOnPlayerPanel(StateViewFamilyMember stateViewFamilyMember) {
+        if (stateViewFamilyMember.getActionSpaceId() != -1) {
+                DiceColor colorFamilyMember = stateViewFamilyMember.getDiceColor();
+                for (int i =0;i<4;i++){
+                    if( colorFamilyMember.equals(this.getFamilyMemberColor(this.getButtonFamilyMember()[i].getBackground()))){
+                        this.getButtonFamilyMember()[i].setEnabled(false);
+                    }
+
+            }
+        }}
+
+
 
     public DiceColor getFamilyMemberColor(Color color){
         if(color==Color.BLACK){

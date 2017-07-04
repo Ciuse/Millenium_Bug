@@ -42,15 +42,6 @@ public class AskPlayerColorFrame extends JFrame  {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        JTextArea textArea = new JTextArea();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridheight = 1;
-        gbc.gridwidth = 9;
-        textArea.setOpaque(false);
-        gbc.fill = GridBagConstraints.BOTH;
-        textArea.setPreferredSize(new Dimension(10, 10));
-        //textArea.setBackground(Color.RED);
         JLabel label = new JLabel("Quale colore vuoi ?");
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -60,12 +51,8 @@ public class AskPlayerColorFrame extends JFrame  {
         gbc.fill = GridBagConstraints.BOTH;
         label.setPreferredSize(new Dimension(10, 10));
         //label.setBackground(Color.RED);
-        textArea.add(label);
-        frame.add(textArea, gbc);
-        JScrollPane scrollPane = new JScrollPane(textArea);
-        frame.add(scrollPane, gbc);
-        scrollPane.getViewport().setOpaque(false);
-        scrollPane.setOpaque(false);
+        frame.add(label, gbc);
+
 
         for (int i = 0; i < 4; i++) {
             buttons[i] = new JButton();
