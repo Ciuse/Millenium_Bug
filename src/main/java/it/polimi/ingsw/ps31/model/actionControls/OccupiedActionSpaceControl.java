@@ -11,12 +11,11 @@ import java.util.List;
  */
 public class OccupiedActionSpaceControl extends Control {
     private ActionSpace actionSpace = null;
-    private List<Integer> defaultAllowedActionSpaces; //Lista delgi action space dove il giocatore può posizionarsi senza considerare il limite di player
+    private boolean canPlaceInAllOccupedActionSpace=false; //Ludovico Ariosto ti permette di ignorare questo controllo
 
     /* Constructor */
     public OccupiedActionSpaceControl(Player player) {
         super(player);
-        this.defaultAllowedActionSpaces = new ArrayList<>();
     }
 
 
@@ -42,8 +41,8 @@ public class OccupiedActionSpaceControl extends Control {
             //TODO: gestire
             return false;
         }
-        //Ritorna true se l'action space è nella lista degli a.s. da non controllare
-        if (defaultAllowedActionSpaces.contains(this.actionSpace.getActionSpaceId())) {
+        //Ritorna true se hai attivato il leader
+        if (canPlaceInAllOccupedActionSpace) {
             resetActionSpace();
             return true;
         }
@@ -70,8 +69,8 @@ public class OccupiedActionSpaceControl extends Control {
     }
 
     /* Modifiers */
-    public void addDefaultAllowedActionSpace (List<Integer> actionSpaceIdList)
-    {
-        this.defaultAllowedActionSpaces.addAll(actionSpaceIdList);
+
+    public void setCanPlaceInAllOccupedActionSpace(boolean canPlaceInAllOccupedActionSpace) {
+        this.canPlaceInAllOccupedActionSpace = canPlaceInAllOccupedActionSpace;
     }
 }

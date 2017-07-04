@@ -66,8 +66,10 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
 
                                     //TODO SIMULARE L ATTIVAZIONE IN CATENA DEGLI EFFETI
                                     //pago la torre
-                                    player.getPlayerActionSet().payTowerMoney();
 
+                                    if(towerCardSpace.getTower().isOccupied()) {
+                                        player.getPlayerActionSet().payTowerMoney();
+                                    }
                                     //metto il famigliare
                                     towerCardSpace.getActionSpace().addFamilyMember(familyMember);
                                     askAgain = false;
@@ -107,7 +109,7 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
 
             if (!actionTimerEnded) {
 
-                setUsed(true);
+                super.setUsed(true);
                 player.getModel().notifyViews(new MVUpdateState("Aggiornato stato family member", familyMember.getStateFamilyMember()));
                 player.getModel().notifyViews(new MVUpdateState("Aggiornato stato dell' action space nella tower", towerCardSpace.getActionSpace().getStateActionSpace()));
 

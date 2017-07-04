@@ -22,6 +22,7 @@ public class StateViewEffect {
     private StateEffect stateEffect1 = null;
     private StateEffect stateEffect2 = null;
     private StateEffect stateEffect3 = null;
+    private String bonusName=null;
 
 
     public StateViewEffect(String nameEffect, String resourceToGain,int basicValue) {
@@ -81,6 +82,10 @@ public class StateViewEffect {
         return stateEffect3;
     }
 
+    public String getBonusName() {
+        return bonusName;
+    }
+
     public boolean isAnyColor() {
         return anyColor;
     }
@@ -125,6 +130,9 @@ public class StateViewEffect {
         }
         if(stateEffect.getStateEffect3()!=null){
             this.stateEffect3 = stateEffect.getStateEffect3();
+        }
+        if(stateEffect.getBonusName()!=null){
+            this.bonusName= stateEffect.getBonusName();
         }
     }
 }

@@ -21,9 +21,7 @@ public abstract class Effect implements EffectActivation{
     }
 
     @Override
-    public void activate(Player player) {
-
-    }
+    public abstract void activate(Player player);
 
     @Override
     public String toString(){

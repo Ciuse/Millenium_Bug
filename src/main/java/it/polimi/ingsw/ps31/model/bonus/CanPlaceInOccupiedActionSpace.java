@@ -8,17 +8,14 @@ import java.util.List;
  * Created by giulia on 16/06/2017.
  */
 public class CanPlaceInOccupiedActionSpace extends Bonus {
-    private List<Integer> actionSpaceIdList;
-//    private final int[] occupatedActionSpace;
 
     /* Constructor */
-    public CanPlaceInOccupiedActionSpace(List<Integer> actionSpaceIdList){
+    public CanPlaceInOccupiedActionSpace(){
         super();
-        this.actionSpaceIdList = actionSpaceIdList;
     }
 
     @Override
     public void activate(Player player) {
-        player.getActionControlSet().getOccupiedActionSpaceControl().addDefaultAllowedActionSpace(actionSpaceIdList);
+        player.getActionControlSet().getOccupiedActionSpaceControl().setCanPlaceInAllOccupedActionSpace(true);
     }
 }

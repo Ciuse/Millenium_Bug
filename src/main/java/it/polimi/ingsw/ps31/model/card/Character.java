@@ -11,8 +11,12 @@ import java.util.List;
  */
 public final class Character extends DevelopmentCard{
 
-
     public Character(int id, String name, int period, List<ResourceList> cost, EffectList immediateEffect, EffectList permanentEffect) {
         super(id, name, CardColor.BLUE, period, cost, immediateEffect, permanentEffect);
+    }
+
+    //Generic "BLUE CARD" -> for leader card cost
+    public Character() {
+        super(0, null, CardColor.BLUE, 0, null, null, null);
     }
 }

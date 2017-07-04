@@ -10,18 +10,9 @@ import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
  */
 public abstract class Bonus implements BonusActivation  {
 
-    protected Bonus() {}
- //   protected Bonus(Action actionToModify) {}
+    protected Bonus() {
 
-   // private final Action actionToModify;
-
-//    protected Bonus(Action actionToModify) {
-//        this.actionToModify = actionToModify;
-//    }
-
-//    public Action getActionToModify() {
-//        return actionToModify;
-//    }
+    }
 
     public CardColor getCardColor(){
         return null;
@@ -41,6 +32,10 @@ public abstract class Bonus implements BonusActivation  {
 
     public String getString() {
         return null;
+    }
+
+    public String getName() {
+        return this.getClass().getSimpleName();
     }
 
     public Resource getExtraResourceOfVaticanReport(){

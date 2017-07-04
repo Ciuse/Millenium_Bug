@@ -14,24 +14,24 @@ public class IntrChoiceFamilyMember implements CmdInterpreterView {
     }
 
     @Override
-    public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
-        if (in != null) {
-            for (Integer i = 1; i < terminalView.getMyStateViewPlayer().getStateViewFamilyMemberList().size()+ 1; i++) {
-                if (in.compareTo(i.toString().charAt(0))==0) {
-                    if (terminalView.getMyStateViewPlayer().getStateViewFamilyMemberList().get(i-1).getActionSpaceId() == -1) {
-                        terminalView.printLastEvent("Comando OK");
-                        terminalView.notifyController(new VCFamilyMemberChoice(terminalView.getViewId(),terminalView.getMyStateViewPlayer().getStateViewFamilyMemberList().get(i-1).getDiceColor()));
-                        return true;
+        public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
+            if (in != null) {
+                for (Integer i = 1; i < terminalView.getMyStateViewPlayer().getStateViewFamilyMemberList().size()+ 1; i++) {
+                    if (in.compareTo(i.toString().charAt(0))==0) {
+                        if (terminalView.getMyStateViewPlayer().getStateViewFamilyMemberList().get(i-1).getActionSpaceId() == -1) {
+                            terminalView.printLastEvent("Comando OK");
+                            terminalView.notifyController(new VCFamilyMemberChoice(terminalView.getViewId(),terminalView.getMyStateViewPlayer().getStateViewFamilyMemberList().get(i-1).getDiceColor()));
+                            return true;
+                        }
                     }
                 }
+                terminalView.printLastEvent("Comando Non Riconusciuto");
+                return false;
+            } else {
+                terminalView.printLastEvent("Comando Non Rilevato");
+                return false;
             }
-            terminalView.printLastEvent("Comando Non Riconusciuto");
-            return false;
-        } else {
-            terminalView.printLastEvent("Comando Non Rilevato");
-            return false;
         }
-    }
 
     @Override
     public boolean messageInterpreter2(CmdLineView terminalView, ChoiceType choiceType, Character in1, Character in2) {

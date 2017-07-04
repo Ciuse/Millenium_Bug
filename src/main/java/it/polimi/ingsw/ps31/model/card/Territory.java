@@ -15,6 +15,9 @@ public final class Territory extends DevelopmentCard {
         super(id, name, CardColor.GREEN, period, cost, immediateEffect, permanentEffect);
     }
 
-
+    //Generic "GREEN CARD" -> for leader card cost
+    public Territory() {
+        super(0, null, CardColor.GREEN, 0, null, null, null);
+    }
 
 }

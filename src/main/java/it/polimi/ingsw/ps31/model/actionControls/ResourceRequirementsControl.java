@@ -23,7 +23,7 @@ public class ResourceRequirementsControl extends Control {
 
     @Override
     public String getControlStringError() {
-        return "non hai abbastanza risorse richieste";
+        return "Non hai abbastanza requisiti \"Risorse\"";
     }
 
 
@@ -38,8 +38,8 @@ public class ResourceRequirementsControl extends Control {
     {
         if ( this.requirement == null )
         {
-            //TODO: gestire
-            return false;
+            //La carta ha una lista di risorse "null"
+            return true;
         }
         else
         {

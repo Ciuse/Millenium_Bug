@@ -15,4 +15,9 @@ public final class Building extends DevelopmentCard{
     public Building(int id, String name, int period, List<ResourceList> cost, EffectList immediateEffect, EffectList permanentEffect) {
         super(id, name, CardColor.YELLOW, period, cost, immediateEffect, permanentEffect);
     }
+
+    //Generic "YELLOW CARD" -> for leader card cost
+    public Building() {
+        super(0, null, CardColor.YELLOW, 0, null, null, null);
+    }
 }

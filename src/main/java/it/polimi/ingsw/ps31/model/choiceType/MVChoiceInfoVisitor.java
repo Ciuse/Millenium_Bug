@@ -101,4 +101,10 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
         view.setCmdInterpreterView(new IntrLeaderToDiscard());
         view.askLeaderToDiscard(choiceLeaderToDiscard);
     }
+
+    @Override
+    public void visit(ChoiceFamilyMemberToChangeValue choiceFamilyMemberToChangeValue) {
+        view.setCmdInterpreterView(new IntrChoiceFamilyMember());
+        view.askFamilyToChangeValue(choiceFamilyMemberToChangeValue);
+    }
 }

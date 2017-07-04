@@ -222,7 +222,7 @@ public class Player {
         for(int i = 0;i<tempPlayerResourcesToGain.size();i++){
             playerResources.addSpecificResource(tempPlayerResourcesToGain.get(i));
         }
-        model.notifyViews(new MVUpdateState("Aggiornato stato PlayerResources temp", getStatePlayerResources()));
+        model.notifyViews(new MVUpdateState("Aggiornato stato PlayerResources", getStatePlayerResources()));
         this.tempPlayerResourcesToGain.clear();
     }
 
@@ -239,6 +239,7 @@ public class Player {
 
             this.personalBoard.addCard(card);
 
+            addTempResoucesToPlayerResources();
 
             //Attivo gli effetti della carta
             card.activeEffectList(this);
@@ -330,11 +331,11 @@ public class Player {
 
     public StatePlayerAction getStatePlayerAction() {
         List<String> actionList = new ArrayList<>();
-        if(!playerActionSet.getPlaceFamilyMemberInBoard().isUsed()){
-        actionList.add(playerActionSet.getPlaceFamilyMemberInBoard().toString());           //aggiungo l azione piazza fagmigliare nella board
-        }
-        if(!playerActionSet.getPlaceFamilyMemberInBoard().isUsed()) {
-            actionList.add(playerActionSet.getPlaceFamilyMemberInTower().toString());       //aggiungo l azione piazza famigliare nella torre
+        if(!checkIfOnlyNEUTRALRemained() || !(getPlayerResources().getSpecificResource(Servant.class).getValue()<=0)) {
+            if (!playerActionSet.getPlaceFamilyMemberInBoard().isUsed() && !playerActionSet.getPlaceFamilyMemberInTower().isUsed()) {
+                actionList.add(playerActionSet.getPlaceFamilyMemberInBoard().toString());        //aggiungo l azione piazza fagmigliare nella board
+                actionList.add(playerActionSet.getPlaceFamilyMemberInTower().toString());       //aggiungo l azione piazza famigliare nella torre
+            }
         }
         if(leaderCardList.size()>0) {
             actionList.add(playerActionSet.getActiveLeaderCard().toString());             //aggiungo l azione gioca leader

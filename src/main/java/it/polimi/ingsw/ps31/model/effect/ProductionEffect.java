@@ -46,7 +46,7 @@ public class ProductionEffect extends Effect {
 
     @Override
     public void activate(Player player) {
-        player.getPlayerActionSet().activateProduction(productionActionValue);
+        player.getProductionList().addEffect(this);
     }
 
     @Override

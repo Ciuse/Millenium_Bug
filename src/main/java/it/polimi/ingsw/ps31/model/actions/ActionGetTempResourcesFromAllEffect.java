@@ -36,7 +36,7 @@ public class ActionGetTempResourcesFromAllEffect extends Action {
 
     public void resetFromCardEffect()
     {
-        this.fromCardEffect = false;
+        setFromCardEffect(false);
     }
 
     public void setFromCardEffect(boolean fromCardEffect) {
@@ -93,6 +93,7 @@ public class ActionGetTempResourcesFromAllEffect extends Action {
         if (fromCardEffect && doubleActivation) {       //riattivo l azione di ottenere le risorse se ho la carta leader Santa Rita e le sto ottenendo da una Carta Sviluppo
                                                         //il fromCardEffect è true solo se l effetto è stato attivato da una carta (controllo se l id della carta associato all effetto è diverso da 0)
             addTempResourceToPlayer();
+            System.out.println("ENTRATO");
         }
         this.resetResourcesTempToGet();
         this.resetFromCardEffect();   //lo rimetto a false per evitare che si attivi anche dagli action space

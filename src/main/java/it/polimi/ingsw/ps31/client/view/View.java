@@ -118,7 +118,7 @@ public abstract class View extends Observable implements Observer {
 
     public abstract void askPrivilegeResourceChange(ChoicePrivilegeResource choicePrivilegeResource);
 
-
+    public abstract void askFamilyToChangeValue(ChoiceFamilyMemberToChangeValue choiceFamilyMemberToChangeValue);
 
     public abstract void askVisualizationCommand();
 
@@ -269,6 +269,7 @@ public abstract class View extends Observable implements Observer {
         if (!firstTime) {
             printAllPlayer();
             printAllPersonalBoard();
+            printFamilyMemberInAction();
         }
     }
     public final void updateDevelopmentCard(StateDevelopmentCard stateDevelopmentCard) {

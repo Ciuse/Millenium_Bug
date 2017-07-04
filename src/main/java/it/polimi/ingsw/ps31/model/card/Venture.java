@@ -15,4 +15,9 @@ public final class Venture extends DevelopmentCard{
     public Venture(int id, String name, int period, List<ResourceList> cost, EffectList immediateEffect, EffectList permanentEffect) {
         super(id, name, CardColor.PURPLE, period, cost, immediateEffect, permanentEffect);
     }
+
+    //Generic "PURPLE CARD" -> for leader card cost
+    public Venture() {
+        super(0, null, CardColor.PURPLE, 0, null, null, null);
+    }
 }

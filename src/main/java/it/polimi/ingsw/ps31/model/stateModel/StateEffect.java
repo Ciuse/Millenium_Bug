@@ -24,6 +24,7 @@ public class StateEffect extends StateType {
     private StateEffect stateEffect1 = null;
     private StateEffect stateEffect2 = null;
     private StateEffect stateEffect3 = null;
+    private String bonusName=null;
 
     public StateEffect(Effect effect) {
         if(effect!=null) {
@@ -46,6 +47,9 @@ public class StateEffect extends StateType {
             }
             if(effect.getGetResourceEffectFromCard()!=null){
                 this.stateEffect3 = new StateEffect(effect.getGetResourceEffectFromCard());
+            }
+            if(effect.getBonus()!=null){
+                bonusName=effect.getBonus().getName();
             }
         }
 
@@ -105,6 +109,10 @@ public class StateEffect extends StateType {
 
     public StateEffect getStateEffect3() {
         return stateEffect3;
+    }
+
+    public String getBonusName() {
+        return bonusName;
     }
 
     @Override

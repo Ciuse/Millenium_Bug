@@ -118,7 +118,9 @@ public class StateViewPlayer {
         }
     }
     public void updateState(StateLeaderCard stateLeaderCard) {
+
         if (stateLeaderCard.getLeaderId() != -1) {
+
             boolean found = false;
             if (stateViewLeaderCardList.size() > 0) {
                 for (StateViewLeaderCard stateViewLeaderCard : stateViewLeaderCardList
@@ -131,7 +133,7 @@ public class StateViewPlayer {
                 }
 
             }
-            if (found == false) {
+            if (!found) {
                 StateViewLeaderCard stateViewLeaderCardNew = new StateViewLeaderCard();
                 stateViewLeaderCardNew.updateState(stateLeaderCard);
                 stateViewLeaderCardList.add(stateViewLeaderCardNew);
@@ -140,7 +142,7 @@ public class StateViewPlayer {
     }
 
     public void updateState(StatePersonalBonusTiles statePersonalBonusTiles){
-        if(statePersonalBonusTiles.getPersonalBonusTilesId()==-1){
+        if(statePersonalBonusTiles.getPersonalBonusTilesId()!=-1){
             if(this.stateViewPersonalBonusTiles==null){
                 List<StateViewEffect> personalTilesEffectList = new ArrayList<>();
                 int i=0;

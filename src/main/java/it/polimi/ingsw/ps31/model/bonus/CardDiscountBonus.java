@@ -10,17 +10,20 @@ import it.polimi.ingsw.ps31.model.player.Player;
 public class CardDiscountBonus extends Bonus {
     private final int value;
     private final CardColor cardColor;
+    private final boolean anyColor;
     private ResourceList resourceListDiscount; //TODO IMPLEMENTARE NEI CONTROLLI
 
-    public CardDiscountBonus(int value, CardColor cardColor) {
+    public CardDiscountBonus(int value, CardColor cardColor, boolean anyColor) {
         super();
         this.value = value;
         this.cardColor = cardColor;
+        this.anyColor = anyColor;
     }
 
-    public CardDiscountBonus(int value, CardColor cardColor, ResourceList resourceListDiscount) {
+    public CardDiscountBonus(int value, CardColor cardColor, boolean anyColor, ResourceList resourceListDiscount) {
         this.value = value;
         this.cardColor = cardColor;
+        this.anyColor = anyColor;
         this.resourceListDiscount = resourceListDiscount;
     }
 
@@ -35,8 +38,8 @@ public class CardDiscountBonus extends Bonus {
     @Override
     public void activate(Player player) {
         if(resourceListDiscount!=null){
-            player.getPlayerActionSet().getActionControlSet().getTowerCardCostPlacementControl().addCardResourceDiscount(cardColor,resourceListDiscount);
-            player.getPlayerActionSet().getPayCard().addCardResourceDiscount(cardColor,resourceListDiscount);
+            player.getPlayerActionSet().getActionControlSet().getTowerCardCostPlacementControl().addCardResourceDiscount(cardColor,anyColor,resourceListDiscount);
+            player.getPlayerActionSet().getPayCard().addCardResourceDiscount(cardColor,anyColor,resourceListDiscount);
         }
         player.getPlayerActionSet().getActionControlSet().getDiceValueCardSpaceControl().addCardDiceBonus(cardColor, value);
 

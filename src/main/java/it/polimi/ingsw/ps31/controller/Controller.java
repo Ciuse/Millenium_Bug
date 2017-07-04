@@ -66,25 +66,35 @@ public class Controller extends Thread implements Observer {
     public void selectStartLeader(int leaderIdToCreate, PlayerId viewId) {
         boolean found = false;
         boolean found1 = false;
+        boolean found2=false;
+        Player playerToAdd=null;
+        LeaderCard leaderCardToAdd=null;
         for (int i = 0; i < tempModelStateForLeaderChoice.getPlayerPossibleChoiceList().size(); i++) {
             if (viewId == tempModelStateForLeaderChoice.getPlayerPossibleChoiceList().get(i).getPlayerId()) {
                 for (Integer leaderId : tempModelStateForLeaderChoice.getPlayerPossibleChoiceList().get(i).getLeaderId()
                         ) {
                     if (leaderId == leaderIdToCreate) {
                         found = true;
-                        for (LeaderCard leaderCard : gameUtility.getTempLeaderCardList()
+                        for (LeaderCard leaderCard : gameUtility.getLeaderCardList()
                                 ) {
                             if (leaderIdToCreate == leaderCard.getLeaderId()) {
                                 found1 = true;
                                 for (Player player : gameUtility.getPlayerList()
                                         ) {
                                     if (player.getPlayerId().equals(tempModelStateForLeaderChoice.getPlayerPossibleChoiceList().get(i).getPlayerId())) {
-                                        player.addLeaderCard(leaderCard);
-                                        gameUtility.getTempLeaderCardList().remove(leaderCard);
-                                        modelChoices.incrementLeaderChoosenCounter();
+                                        found2=true;
+                                        playerToAdd=player;
+                                        leaderCard.setPlayerId(player.getPlayerId());
+                                        leaderCardToAdd=leaderCard;
                                     }
                                 }
                             }
+
+                        }
+                        if(found2) {
+                            playerToAdd.addLeaderCard(leaderCardToAdd);
+                            modelChoices.getTempModelStateForLeaderChoice().removerLeader(leaderCardToAdd);
+                            modelChoices.incrementLeaderChoosenCounter();
                         }
                         if (!found1) {
                                 virtualView.reSendLastMessageToSpecificView("non ho trovato il leader tra i possibili leader rimasti in gioco", viewId);
@@ -268,6 +278,21 @@ public class Controller extends Thread implements Observer {
     }
 
     public void selectLeaderToActivate(int leaderId, PlayerId viewId) {
+        boolean found = false;
+        for (LeaderCard leaderCard : gameUtility.getPlayerInAction().getLeaderCardList()
+                ) {
+            if (leaderCard.getLeaderId() == leaderId) {
+                found = true;
+                if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                    modelChoices.setLeaderCardChosen(leaderCard);
+            }
+        }
+        if (!found)
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato il leader associata");
+    }
+
+    public void selectLeaderToDiscard(int leaderId, PlayerId viewId) {
         boolean found = false;
         for (LeaderCard leaderCard : gameUtility.getPlayerInAction().getLeaderCardList()
                 ) {

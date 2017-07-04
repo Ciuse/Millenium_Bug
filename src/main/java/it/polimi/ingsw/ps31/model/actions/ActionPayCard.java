@@ -18,8 +18,7 @@ import java.util.Map;
 public class ActionPayCard extends Action {
    private DevelopmentCard cardToPay;
    private ResourceList resourceListDiscount;
-   private Map<CardColor, ResourceList> cardResourceDiscount;private boolean actionTimerEnded=false;
-
+   private Map<CardColor, ResourceList> cardResourceDiscount;
 
     public ActionPayCard(Player player, ActionControlSet actionControlSet) {
         super(player, actionControlSet); this.cardResourceDiscount = new HashMap<>();
@@ -101,11 +100,28 @@ public class ActionPayCard extends Action {
         resetListDiscount();
     }
 
-    public void addCardResourceDiscount(CardColor cardColor, ResourceList discountList)
+    public void addCardResourceDiscount(CardColor cardColor, boolean anyColor, ResourceList discountList)
     {
-        ResourceList currentDiscount = this.cardResourceDiscount.get(cardColor);
-        currentDiscount.discountResourceList(discountList);
-        cardResourceDiscount.put(cardColor, currentDiscount );
-
+        if(anyColor){
+            ResourceList currentDiscount1 = this.cardResourceDiscount.get(CardColor.GREEN);
+            currentDiscount1.discountResourceList(discountList);
+            cardResourceDiscount.put(CardColor.GREEN, currentDiscount1);
+            ResourceList currentDiscount2 = this.cardResourceDiscount.get(CardColor.BLUE);
+            currentDiscount2.discountResourceList(discountList);
+            cardResourceDiscount.put(CardColor.BLUE, currentDiscount2);
+            ResourceList currentDiscount3 = this.cardResourceDiscount.get(CardColor.YELLOW);
+            currentDiscount3.discountResourceList(discountList);
+            cardResourceDiscount.put(CardColor.YELLOW, currentDiscount3);
+            ResourceList currentDiscount4 = this.cardResourceDiscount.get(CardColor.PURPLE);
+            currentDiscount4.discountResourceList(discountList);
+            cardResourceDiscount.put(CardColor.PURPLE, currentDiscount4);
+        }
+        else {
+            if(cardColor!=null) {
+                ResourceList currentDiscount = this.cardResourceDiscount.get(cardColor);
+                currentDiscount.discountResourceList(discountList);
+                cardResourceDiscount.put(cardColor, currentDiscount);
+            }
+        }
     }
 }

@@ -9,8 +9,8 @@ import it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard;
 public class StateViewLeaderCard  {
     private int leaderId;
     private String leaderName;
-    private StateViewEffect abilityOneTimeForTurnString;
-    private StateViewEffect permanentAbilityString;
+    private StateViewEffect abilityOneTimeForTurnString= new StateViewEffect();
+    private StateViewEffect permanentAbilityString= new StateViewEffect();
     private boolean played;
     private boolean usedEffect1;
 

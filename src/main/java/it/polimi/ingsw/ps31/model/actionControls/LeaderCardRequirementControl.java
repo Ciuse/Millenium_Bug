@@ -23,7 +23,7 @@ public class LeaderCardRequirementControl extends Control {
 
     @Override
     public String getControlStringError() {
-        return "Non hai abbastanza requisiti per poter prendere la carta leader";
+        return "Non hai abbastanza requisiti per poter usare la carta leader";
     }
 
     /* Resetters */

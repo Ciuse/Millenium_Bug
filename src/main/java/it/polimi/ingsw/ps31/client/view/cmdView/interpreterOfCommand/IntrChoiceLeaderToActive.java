@@ -19,7 +19,7 @@ public class IntrChoiceLeaderToActive implements CmdInterpreterView {
             for (Integer i = 1; i < terminalView.getMyStateViewPlayer().getStateViewLeaderCardList().size()+ 1; i++) {
                 if (in.compareTo(i.toString().charAt(0))==0) {
                         terminalView.printLastEvent("Comando OK");
-                        terminalView.notifyController(new VCLeaderToActiveChoice(terminalView.getViewId(),i));
+                        terminalView.notifyController(new VCLeaderToActiveChoice(terminalView.getViewId(),terminalView.getMyStateViewPlayer().getStateViewLeaderCardList().get(i-1).getLeaderId()));
                         return true;
                 }
             }

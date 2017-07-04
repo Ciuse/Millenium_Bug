@@ -117,12 +117,19 @@ public class GameLogic {
         Collections.shuffle(gameUtility.getPersonalBonusTilesList()); //mischio i personal bonus tiles
 
         gameUtility.createDeck();
+
+        //Setto le scomuniche con cui si giocherà
         gameUtility.setExcommunicationMatchTiles();
-        for (this.period = 1; period <= PERIODMAXNUMBER; period++) {                               //inizio periodo
+
+        //Faccio partire il draft dei leader
+ /*TODO*/    gameUtility.leaderCardSetup();
+
+        for (this.period = 1; period <= PERIODMAXNUMBER; period++) {    //inizio periodo
             gameUtility.setDeckTower(period);
             for (this.round = 1; round <= ROUNDMAXNUMBER; round++) {
+
                 gameUtility.drawCardDeck();
-                gameUtility.resetFamilyMember();        //restituisco a tutti i propri famigliari
+                gameUtility.resetFamilyMember();    //restituisco a tutti i propri famigliari
                 gameUtility.getGameBoard().rollTheDice();
                 gameUtility.setFamilyMemberDiceValue();
 
@@ -136,21 +143,27 @@ public class GameLogic {
                 }
                 //sono finite le 16 azioni(massime) del turno e iniziano le 4 azioni(massime) che si sono perse per la scomunica
                 gameUtility.extraPhaseActionGame();
-                //SOLITE COSE DA FARE DOPO LA FINE DELLA FASE AZIONI
+
+                //FINE FASE AZIONI
                 if (round == 2) {
                     gameUtility.vaticanReport(period);
                 }
-                gameUtility.playerOrderFromCouncil();       //ordino i player
-                gameUtility.resetLeaderEffect();            //riattivo le abilità una volta per turno dei leader
+                gameUtility.playerOrderFromCouncil(); //ordino i player
+                gameUtility.resetLeaderEffect();     //riattivo le abilità una volta per turno dei leader
+
             }//fine ciclo turno
+
         }//fine ciclo periodo
+
         //gioco finito e calcolo punteggio finale
         gameUtility.getFinalVictoryPoint();
         gameUtility.militaryTrackWinnerPoint();
         gameUtility.orderVictoryPoint();
 
-        //TODO metodo per stampare a video il vincitore
+
         gameUtility.getModel().notifyViews(new MVStringToPrint(null,true,"GRAZIE PER AVER GIOCATO, ALLA PROSSIMA PARTITA"));
+
+        //TODO metodo per stampare a video il vincitore
 
 
     }

@@ -23,7 +23,7 @@ public class PayResourceControl extends Control {
 
     @Override
     public String getControlStringError() {
-        return "Non hai abbastanza risorse per poter pagare";
+        return "Non hai abbastanza risorse per poter pagare"+1/0;       //TODO TOGLIERE ASSOLUTAMENTE IL /0
     }
 
     public void setResourceList(ResourceList resourceList) {

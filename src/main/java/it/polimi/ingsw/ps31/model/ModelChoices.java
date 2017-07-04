@@ -67,7 +67,8 @@ public class ModelChoices {
     }
 
     public synchronized void waitAllInitialLeaderCardChosen(int playerMaxNumber) {
-
+        setListToPay(leaderChoosenCounter=0);
+        setStateChoice();
         while (leaderChoosenCounter<playerMaxNumber && this.stateModelChoices.equals("StateChoice")) {  //aspetto 20 secondi per far scegliere a tutti il leader
             try {
                 sleep(200);

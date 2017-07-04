@@ -5,9 +5,9 @@ import it.polimi.ingsw.ps31.model.bonus.*;
 import it.polimi.ingsw.ps31.model.card.*;
 import it.polimi.ingsw.ps31.model.card.Character;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
+import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.effect.*;
 import it.polimi.ingsw.ps31.model.gameResource.*;
-import it.polimi.ingsw.ps31.model.player.FamilyMember;
 import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 
 import java.util.ArrayList;
@@ -835,7 +835,7 @@ public class CreationJson {
 
         //creazione permBlueEffect permanente prima carta
         EffectList permanentEffectBlue1 = new EffectList();         //creazione  permBlueEffect
-        Bonus bonus1 = new CardDiscountBonus(2,CardColor.GREEN);
+        Bonus bonus1 = new CardDiscountBonus(2,CardColor.GREEN, false);
         BonusAndMalusEffect permBlueEffect1 = new BonusAndMalusEffect(49,bonus1);
         permanentEffectBlue1.add(permBlueEffect1);
         permanentEffectBlueList.add(0, permanentEffectBlue1);//aggiunta  permBlueEffect alla lista principale
@@ -843,7 +843,7 @@ public class CreationJson {
         //creazione permBlueEffect permanente seconda carta
         EffectList permanentEffectBlue2 = new EffectList();         //creazione  permBlueEffect
         ResourceList resourceListBlue2=new ResourceList(new Wood(1),new Stone(2));
-        Bonus bonus2 = new CardDiscountBonus(2,CardColor.YELLOW,resourceListBlue2);
+        Bonus bonus2 = new CardDiscountBonus(2,CardColor.YELLOW, false, resourceListBlue2);
         BonusAndMalusEffect permBlueEffect2= new BonusAndMalusEffect(50,bonus2);
         permanentEffectBlue2.add(permBlueEffect2);
         permanentEffectBlueList.add(1, permanentEffectBlue2);      //aggiunta  permBlueEffect alla lista principale
@@ -851,14 +851,14 @@ public class CreationJson {
         //creazione permBlueEffect permanente terza cart
         EffectList permanentEffectBlue3 = new EffectList();         //creazione  permBlueEffect
         ResourceList resourceListBlue3=new ResourceList(new Coin(1));
-        Bonus bonus3 = new CardDiscountBonus(2,CardColor.BLUE,resourceListBlue3);
+        Bonus bonus3 = new CardDiscountBonus(2,CardColor.BLUE, false, resourceListBlue3);
         BonusAndMalusEffect permBlueEffect3= new BonusAndMalusEffect(51,bonus3);
         permanentEffectBlue3.add(permBlueEffect3);
         permanentEffectBlueList.add(2, permanentEffectBlue3);      //aggiunta  permBlueEffect alla lista principale
 
         //creazione permBlueEffect permanente quarta carta
         EffectList permanentEffectBlue4 = new EffectList();         //creazione  permBlueEffect
-        Bonus bonus4 = new CardDiscountBonus(2,CardColor.PURPLE);
+        Bonus bonus4 = new CardDiscountBonus(2,CardColor.PURPLE, false);
         BonusAndMalusEffect permBlueEffect4= new BonusAndMalusEffect(52,bonus4);
         permanentEffectBlue4.add(permBlueEffect4);
         permanentEffectBlueList.add(3, permanentEffectBlue4);      //aggiunta  permBlueEffect alla lista principale
@@ -1331,10 +1331,131 @@ public class CreationJson {
 
         return developmentCardListToReturn;
     }           //TODO FINIRE DI SCRIVERE LE CARTE
-    public List<LeaderCard> createLeaderCardList(){
+    public List<LeaderCard> createLeaderCardList() {
         List<LeaderCard> leaderCardList = new ArrayList<>();
+
+        List<DevelopmentCard> developmentCards1 = new ArrayList<>();
+        developmentCards1.add(new Venture());
+        developmentCards1.add(new Venture());
+        developmentCards1.add(new Venture());
+        developmentCards1.add(new Venture());
+        developmentCards1.add(new Venture());
+        leaderCardList.add(new LeaderCard("Francesco Sforza", 1, null, new DevelopmentCardList(developmentCards1), new HarvestEffectActivationFromCard(0, 1), null));
+
+
+        List<DevelopmentCard> developmentCards2 = new ArrayList<>();
+        developmentCards2.add(new Character());
+        developmentCards2.add(new Character());
+        developmentCards2.add(new Character());
+        developmentCards2.add(new Character());
+        developmentCards2.add(new Character());
+        leaderCardList.add(new LeaderCard("Ludovico Ariosto", 2, null, new DevelopmentCardList(developmentCards2), null, new BonusAndMalusEffect(0, new CanPlaceInOccupiedActionSpace())));
+
+
+        List<DevelopmentCard> developmentCards3 = new ArrayList<>();
+        developmentCards3.add(new Building());
+        developmentCards3.add(new Building());
+        developmentCards3.add(new Building());
+        developmentCards3.add(new Building());
+        developmentCards3.add(new Building());
+        leaderCardList.add(new LeaderCard("Filippo Brunelleschi", 3, null, new DevelopmentCardList(developmentCards3), null, new BonusAndMalusEffect(0, new NoTowerPayment())));
+
+
+        List<DevelopmentCard> developmentCards4 = new ArrayList<>();
+        developmentCards4.add(new Territory());
+        developmentCards4.add(new Territory());
+        developmentCards4.add(new Territory());
+        developmentCards4.add(new Territory());
+        developmentCards4.add(new Territory());
+        leaderCardList.add(new LeaderCard("Federico da Montefeltro", 4, null, new DevelopmentCardList(developmentCards4), new ChangeFamilyValueEffect(0, 6), null));
+
+
+        leaderCardList.add(new LeaderCard("Girolamo Savonarola", 5, new ResourceList(new Coin(18)), null, new GetResourceEffect(0, new ResourceList(new FaithPoint(1))), null));
+
+        leaderCardList.add(new LeaderCard("Giovanni delle Bande Nere", 6, new ResourceList(new MilitaryStrength(12)), null, new GetResourceEffect(0, new ResourceList(new Wood(1), new Coin(1), new Stone(1))), null));
+
+        leaderCardList.add(new LeaderCard("Sandro Botticelli", 7, new ResourceList(new Wood(10)), null, new GetResourceEffect(0, new ResourceList(new MilitaryStrength(2), new VictoryPoint(1))), null));
+
+        leaderCardList.add(new LeaderCard("Michelangelo Buonarroti", 8, new ResourceList(new Stone(10)), null, new GetResourceEffect(0, new ResourceList(new Coin(3))), null));
+
+        leaderCardList.add(new LeaderCard("Ludovico III Gonzaga", 9, new ResourceList(new Servant(15)), null, new GetResourceEffect(0, new ResourceList(new CouncilPrivilege(1, false))), null));
+
+
+        List<DevelopmentCard> developmentCards5 = new ArrayList<>();
+        developmentCards5.add(new Territory());
+        developmentCards5.add(new Territory());
+        developmentCards5.add(new Character());
+        developmentCards5.add(new Character());
+        developmentCards5.add(new Character());
+        developmentCards5.add(new Character());
+        leaderCardList.add(new LeaderCard("Leonardo da Vinci", 10, null, new DevelopmentCardList(developmentCards5), new ProductionEffectActivationFromCard(0, 0), null));
+
+        List<DevelopmentCard> developmentCards6 = new ArrayList<>();
+        developmentCards6.add(new Building());
+        developmentCards6.add(new Building());
+        developmentCards6.add(new Venture());
+        developmentCards6.add(new Venture());
+        developmentCards6.add(new Venture());
+        developmentCards6.add(new Venture());
+        leaderCardList.add(new LeaderCard("Pico della Mirandola", 11, null, new DevelopmentCardList(developmentCards6), null, new BonusAndMalusEffect(0, new CardDiscountBonus(0, null, true, new ResourceList(new Coin(-3))))));
+
+        leaderCardList.add(new LeaderCard("Sisto IV", 12, new ResourceList(new Coin(6), new Stone(6), new Wood(6), new Servant(6)), null, null, new BonusAndMalusEffect(0, new VaticanReportExtraVictoryPoint(new Coin(5)))));
+
+        //TODO LUCREZIA BORGIA
+
+        leaderCardList.add(new LeaderCard("Sigismondo Malatesta", 14, new ResourceList(new MilitaryStrength(7), new FaithPoint(3)), null, null, new BonusAndMalusEffect(0, new NeutralFamilyMemberBonus(3))));
+
+        leaderCardList.add(new LeaderCard("Lorenzo de' Medici", 15, new ResourceList(new VictoryPoint(35)), null, null, new BonusAndMalusEffect(0, new CopyLeaderBonus(15))));
+
+
+        List<DevelopmentCard> developmentCards7 = new ArrayList<>();
+        developmentCards7.add(new Building());
+        developmentCards7.add(new Building());
+        developmentCards7.add(new Venture());
+        developmentCards7.add(new Venture());
+        developmentCards7.add(new Character());
+        developmentCards7.add(new Character());
+        developmentCards7.add(new Territory());
+        developmentCards7.add(new Territory());
+        List<DiceColor> diceColors = new ArrayList<>();
+        diceColors.add(DiceColor.WHITE);
+        diceColors.add(DiceColor.BLACK);
+        diceColors.add(DiceColor.ORANGE);
+        leaderCardList.add(new LeaderCard("Ludovico il Moro", 16, null, new DevelopmentCardList(developmentCards7), null, new BonusAndMalusEffect(0, new StaticFamilyMemberValueBonus(5, diceColors))));
+
+
+        List<DevelopmentCard> developmentCards8 = new ArrayList<>();
+        developmentCards8.add(new Building());
+        developmentCards8.add(new Building());
+        developmentCards8.add(new Building());
+        leaderCardList.add(new LeaderCard("Cesare Borgia", 17, new ResourceList(new Coin(12), new FaithPoint(2)), new DevelopmentCardList(developmentCards8), null, new BonusAndMalusEffect(0, new NoBoardRequirementControl(CardColor.GREEN))));
+
+        leaderCardList.add(new LeaderCard("Santa Rita", 18, new ResourceList(new FaithPoint(8)), null, null, new BonusAndMalusEffect(0, new DoubleResourceFromCardBonus())));
+
+        List<DevelopmentCard> developmentCards9 = new ArrayList<>();
+        developmentCards9.add(new Building());
+        developmentCards9.add(new Building());
+        developmentCards9.add(new Building());
+        developmentCards9.add(new Building());
+        developmentCards9.add(new Character());
+        developmentCards9.add(new Character());
+        leaderCardList.add(new LeaderCard("Cosimo de' Medici", 19, null, new DevelopmentCardList(developmentCards9), new GetResourceEffect(0, new ResourceList(new Servant(3), new VictoryPoint(1))), null));
+
+
+        List<DevelopmentCard> developmentCards10 = new ArrayList<>();
+        developmentCards10.add(new Venture());
+        developmentCards10.add(new Venture());
+        developmentCards10.add(new Territory());
+        developmentCards10.add(new Territory());
+        developmentCards10.add(new Territory());
+        developmentCards10.add(new Territory());
+        leaderCardList.add(new LeaderCard("Bartolomeo Colleoni", 20, null, new DevelopmentCardList(developmentCards10), new GetResourceEffect(0, new ResourceList(new VictoryPoint(4))), null));
+
+
         return new ArrayList<>(leaderCardList);
-    }          //TODO SCRIVERE LE CARTE LEADER
+    }
+
+
     private List<List<EffectList>> createTowerEffectList() {
         List<List<EffectList>> finalEffectList = new ArrayList<>();
 
@@ -1619,16 +1740,16 @@ public class CreationJson {
         Bonus coloredFamilyMemberBonus = new ColoredFamilyMembersBonus(-1);
         excommunicationTilesList.add(new ExcommunicationTiles(1,coloredFamilyMemberBonus,false));
 
-        Bonus cardDiscountBonus1 = new CardDiscountBonus(-4,CardColor.GREEN);
+        Bonus cardDiscountBonus1 = new CardDiscountBonus(-4,CardColor.GREEN, false);
         excommunicationTilesList.add(new ExcommunicationTiles(2,cardDiscountBonus1,false));
 
-        Bonus cardDiscountBonus2 = new CardDiscountBonus(-4,CardColor.YELLOW);
+        Bonus cardDiscountBonus2 = new CardDiscountBonus(-4,CardColor.YELLOW, false);
         excommunicationTilesList.add(new ExcommunicationTiles(2,cardDiscountBonus2,false));
 
-        Bonus cardDiscountBonus3 = new CardDiscountBonus(-4,CardColor.BLUE);
+        Bonus cardDiscountBonus3 = new CardDiscountBonus(-4,CardColor.BLUE, false);
         excommunicationTilesList.add(new ExcommunicationTiles(2,cardDiscountBonus3,false));
 
-        Bonus cardDiscountBonus4 = new CardDiscountBonus(-4,CardColor.PURPLE);
+        Bonus cardDiscountBonus4 = new CardDiscountBonus(-4,CardColor.PURPLE, false);
         excommunicationTilesList.add(new ExcommunicationTiles(2,cardDiscountBonus4,false));
 
         List<Integer> actionSpaceMarket =new ArrayList<>();

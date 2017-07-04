@@ -23,4 +23,8 @@ public class PlayerPossibleChoice {
     public List<Integer> getLeaderId() {
         return leaderId;
     }
+
+    public void setLeaderId(List<Integer> leaderId) {
+        this.leaderId = leaderId;
+    }
 }

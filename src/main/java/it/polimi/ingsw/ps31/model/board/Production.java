@@ -14,7 +14,5 @@ public abstract class Production extends ActionSpace {
 
     @Override
     public void addFamilyMember(FamilyMember familyMember) {
-        super.addFamilyMember(familyMember);
-        familyMember.getPlayer().getPlayerActionSet().activateProduction(familyMember.getTotalValue());
     }
 }

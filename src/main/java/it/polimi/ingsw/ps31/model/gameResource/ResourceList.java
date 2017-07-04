@@ -32,6 +32,12 @@ public class ResourceList {
         this.resourceList.add(resource2);
         this.resourceList.add(resource3);
     }
+    public ResourceList(Resource resource1,Resource resource2,Resource resource3, Resource resource4) {
+        this.resourceList.add(resource1);
+        this.resourceList.add(resource2);
+        this.resourceList.add(resource3);
+        this.resourceList.add(resource4);
+    }
 
 
     /**aggiunge una risorsa alla lista di risorse se non presenta

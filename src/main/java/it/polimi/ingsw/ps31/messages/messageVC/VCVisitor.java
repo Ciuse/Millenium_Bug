@@ -17,4 +17,5 @@ public interface VCVisitor {
     void visit(VCTowerCardSpaceChoice vcTowerCardSpaceChoice);
     void visit(VCPersonalTilesChoice vcPersonalTilesChoice);
     void visit(VCCouncilPrivilegeChoice vcCouncilPrivilegeChoice);
+    void visit(VCLeaderToDiscardChoice vcLeaderToDiscardChoice);
 }

@@ -34,9 +34,13 @@ public class ActionActivateHarvest extends Action {
     /* Activation Method */
     @Override
     public void activate() {
+        System.out.println("PLAYER RES BEFORE " +(player.getPlayerResources()));
 
         System.out.println(">HARV ACT: ATTIVAZIONE HARVEST: " +(this.diceValue + this.diceBonus));
+
         player.getHarvestList().activate(this.diceValue + this.diceBonus);
+
+        System.out.println("PLAYER RES AFTER " +(player.getPlayerResources()));
 
         player.getModel().notifyViews(new MVUpdateState("Aggiornato stato PlayerResources", player.getStatePlayerResources()));
 

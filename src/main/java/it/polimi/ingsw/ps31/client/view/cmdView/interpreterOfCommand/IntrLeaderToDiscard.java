@@ -22,7 +22,7 @@ public class IntrLeaderToDiscard implements CmdInterpreterView {
                     ) {
                 if (in.compareTo(i.toString().charAt(0))==0 && !leaderCard.isPlayed()) {
                     terminalView.printLastEvent("Comando OK");
-                    terminalView.notifyController(new VCLeaderToDiscardChoice(terminalView.getViewId(), i));
+                    terminalView.notifyController(new VCLeaderToDiscardChoice(terminalView.getViewId(), terminalView.getMyStateViewPlayer().getStateViewLeaderCardList().get(i-1).getLeaderId()));
                     return true;
                 }
                 i++;

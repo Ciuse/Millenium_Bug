@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand;
 import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewDevelopmentCard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 import static java.lang.String.valueOf;
@@ -49,7 +50,7 @@ public class IntrVisualization implements CmdInterpreterView {
         }
 
         if(in.compareTo('2')==0) {
-            String leaderName = "Possiedi";
+            String leaderName = "Possiedi: ";
 
             if (!cmdLineView.getMyStateViewPlayer().getStateViewLeaderCardList().isEmpty()) {
                 for (StateViewLeaderCard leaderCard : cmdLineView.getMyStateViewPlayer().getStateViewLeaderCardList()
@@ -58,10 +59,22 @@ public class IntrVisualization implements CmdInterpreterView {
                 }
                 cmdLineView.printLastEvent(leaderName);
             }
-            else cmdLineView.printLastEvent("Non possiedi Leader");
+            else cmdLineView.printLastEvent("Non possiedi Leader ");
         }
 
         if(in.compareTo('3')==0) {
+            String string1="Tiles Effect1: ";
+            string1=string1+cmdLineView.getMyStateViewPlayer().getStateViewPersonalBonusTiles().getStateEffectList().get(0).getNameEffect()+" ";
+            string1=string1+cmdLineView.getMyStateViewPlayer().getStateViewPersonalBonusTiles().getStateEffectList().get(0).getStateEffect1().getNameEffect()+": ";
+            string1=string1+cmdLineView.getMyStateViewPlayer().getStateViewPersonalBonusTiles().getStateEffectList().get(0).getStateEffect1().getResourceToGain()+" ";
+
+
+            String string2="Tiles Effect2: ";
+            string2=string2+cmdLineView.getMyStateViewPlayer().getStateViewPersonalBonusTiles().getStateEffectList().get(1).getNameEffect()+" ";
+            string2=string2+cmdLineView.getMyStateViewPlayer().getStateViewPersonalBonusTiles().getStateEffectList().get(1).getStateEffect1().getNameEffect()+": ";
+            string2=string2+cmdLineView.getMyStateViewPlayer().getStateViewPersonalBonusTiles().getStateEffectList().get(1).getStateEffect1().getResourceToGain()+" ";
+
+            cmdLineView.printLastEvent(string1+" "+string2);
         }
 
         if(in.compareTo('4')==0) {

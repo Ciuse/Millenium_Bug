@@ -30,7 +30,9 @@ public abstract class Resource {
     }
 
     public void addValue(int value) {
+
         this.value = this.value + value;
+
     }
 
     public void subValue(int value) {

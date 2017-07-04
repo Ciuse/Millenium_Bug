@@ -21,7 +21,7 @@ public class ProductionList extends  HarvestProductionList{
 
     /* Class Methods */
 
-    private void addEffect (ProductionEffect effectToAdd)
+    public void addEffect (ProductionEffect effectToAdd)
     {
         this.effectList.add(effectToAdd);
     }
@@ -36,7 +36,7 @@ public class ProductionList extends  HarvestProductionList{
         for(ProductionEffect currentEffect : effectList)
         {
             //non chiedo nulla, questo tipo di effetto va attivato per forza
-            if (currentEffect.getProductionActionValue() > diceValue){
+            if (diceValue >= currentEffect.getProductionActionValue()){
                 if(currentEffect.getGetResourceEffect()!=null) {
                     currentEffect.getGetResourceEffect().activate(super.getPlayer());
                 }
@@ -49,7 +49,7 @@ public class ProductionList extends  HarvestProductionList{
                     String string =" Vuoi attivare questo effetto?";
                     super.getPlayer().getModel().notifyViews(new MVAskChoice(super.getPlayer().getPlayerId(),string,new ChoiceIfActiveEffect(currentEffect.getChangeResourceEffect().getCardId())));
                     boolean choice = super.getPlayer().getModel().getModelChoices().waitActiveEffect();
-                    if(choice==true) {
+                    if(choice) {
                         currentEffect.getChangeResourceEffect().activate(super.getPlayer());
                     }
                 }

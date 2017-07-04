@@ -8,7 +8,7 @@ import java.util.List;
  * Created by giulia on 19/06/2017.
  */
 public class LastModelStateForControl {
-    private  StateType stateForControl;
+    private StateType stateForControl;
     private List<ResourceList> resourceListToControl;
 
     public LastModelStateForControl() {

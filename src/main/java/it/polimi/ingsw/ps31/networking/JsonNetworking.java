@@ -161,7 +161,7 @@ public class JsonNetworking {
         bonusAdapterFactory.registerSubtype(ColoredFamilyMembersBonus.class);
         bonusAdapterFactory.registerSubtype(CopyLeaderBonus.class);
         bonusAdapterFactory.registerSubtype(DoubleResourceFromCardBonus.class);
-        bonusAdapterFactory.registerSubtype(GainVictoryPointFromLeaderCardBonus.class);
+        bonusAdapterFactory.registerSubtype(VaticanReportExtraVictoryPoint.class);
         bonusAdapterFactory.registerSubtype(GetResourceMalus.class);
         bonusAdapterFactory.registerSubtype(HarvestBonus.class);
         bonusAdapterFactory.registerSubtype(LostExtraFinalVictoryPointBonus.class);
@@ -176,7 +176,6 @@ public class JsonNetworking {
         bonusAdapterFactory.registerSubtype(NoTowerPayment.class);
         bonusAdapterFactory.registerSubtype(ProductionBonus.class);
         bonusAdapterFactory.registerSubtype(StaticFamilyMemberValueBonus.class);
-
 
 
         RuntimeTypeAdapterFactory<Card> cardAdapterFactory = RuntimeTypeAdapterFactory.of(Card.class, "Card");
@@ -200,6 +199,7 @@ public class JsonNetworking {
         effectAdapterFactory.registerSubtype(GetResourceEffect.class);
         effectAdapterFactory.registerSubtype(HarvestEffect.class);
         effectAdapterFactory.registerSubtype(ProductionEffect.class);
+        effectAdapterFactory.registerSubtype(ChangeFamilyValueEffect.class);
 
 
         RuntimeTypeAdapterFactory<Resource> resourceAdapterFactory = RuntimeTypeAdapterFactory.of(Resource.class, "ResourceType");

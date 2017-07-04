@@ -29,7 +29,7 @@ public class BonusAndMalusEffect extends Effect  implements ActiveBonus{
     }
 
     public String getNameString() {
-        return null;
+        return "Bonus-Malus";
     }
 
 

@@ -112,6 +112,11 @@ public class GuiView extends View implements ActionListener{
     }
 
     @Override
+    public void askFamilyToChangeValue(ChoiceFamilyMemberToChangeValue choiceFamilyMemberToChangeValue) {
+        
+    }
+
+    @Override
     public void askVisualizationCommand() {
 
     }

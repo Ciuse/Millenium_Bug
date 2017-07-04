@@ -40,7 +40,6 @@ public class GameUtility{
     private DevelopmentCardList developmentCardList;
     private List<ExcommunicationTiles> excommunicationTilesList;
     private List<LeaderCard> leaderCardList;
-    private List<LeaderCard> tempLeaderCardList = new ArrayList<>();
     private List<List<EffectList>>towerActionSpaceEffectList;
     private List<EffectList> actionSpaceEffectList;
     private VictoryPoint[] faithTrackExtraValue;
@@ -52,17 +51,21 @@ public class GameUtility{
     private int playerMaxNumber;
     private static final int Max_Leader_Card = 4;
     private long timerAction;
+    private Timer timer;
+    private TimerTask timerTask;
     private Model model;
 
     public GameUtility() {
     }
+
+
 /* metodi che riguardano il funzionamento delle principali fasi del gioco e della loro logica interna */
 
     public void phaseActionGame(int playerNumber,int action) {
         if (action == 1 && playerList.get(playerNumber).getFlagTurnExcommunication() == 1) {
             this.endActionTurn(playerList.get(playerNumber));
         }
-        if (playerList.get(playerNumber).checkIfOnlyNEUTRALRemained() == true) {
+        if (playerList.get(playerNumber).checkIfOnlyNEUTRALRemained()) {
             playerList.get(playerNumber).getPlayerActionSet().getActiveEndButton().setActive(true);
         }
         this.startActionTurn(playerList.get(playerNumber));
@@ -101,35 +104,46 @@ public class GameUtility{
 
     public void leaderCardSetup() {
         Collections.shuffle(leaderCardList);
-        tempLeaderCardList=leaderCardList;
         for (int k = 0; k < Max_Leader_Card; k++) {
-            List<List<LeaderCard>> listList = new ArrayList<>();
+            List<List<LeaderCard>> listList = model.getModelChoices().getTempModelStateForLeaderChoice().getListList();
             int j = 0;
             for (Player player : playerList
                     ) {
-                listList.add(new ArrayList<>());
+                if (k == 0) {
+                    listList.add(new ArrayList<>());
+                }
                 List<Integer> leaderCardId = new ArrayList<>();
                 List<String> leaderCardString = new ArrayList<>();
                 for (int i = 0; i < Max_Leader_Card - k; i++) {
-                    listList.get(j).add(tempLeaderCardList.get(i));
-                    leaderCardId.add(tempLeaderCardList.get(j).getLeaderId());
-                    leaderCardString.add(tempLeaderCardList.get(j).getName());
-                    j++;
+                    if (k == 0) {
+                        listList.get(j).add(leaderCardList.get(i));
+                    }
+                    leaderCardId.add(model.getModelChoices().getTempModelStateForLeaderChoice().getListList().get(j).get(i).getLeaderId());
+                    leaderCardString.add(model.getModelChoices().getTempModelStateForLeaderChoice().getListList().get(j).get(i).getName());
                 }
-                TempModelStateForLeaderChoice tempModelStateForLeaderChoice = new TempModelStateForLeaderChoice();
-                tempModelStateForLeaderChoice.addPlayerPossibleChoide(player.getPlayerId(), leaderCardId);
+                model.getModelChoices().getTempModelStateForLeaderChoice().addPlayerPossibleChoise(player.getPlayerId(), leaderCardId);
                 String string = "SCEGLI CARTA LEADER: ";
-                model.getModelChoices().setTempModelStateForLeaderChoice(tempModelStateForLeaderChoice);
                 model.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceStartLeaderCard(leaderCardId, leaderCardString)));
+                j++;
             }
             model.getModelChoices().waitAllInitialLeaderCardChosen(playerMaxNumber);
-            //ricreo la leader card list sppostando il primo mazzo di carge in ultima posizione
-            // (simulo il fatto che ogni player passa le sue carte al player alla sua sinistra
-            tempLeaderCardList.clear();
-            for (int i=1;i<listList.size()-1;i++){
-                tempLeaderCardList.addAll(listList.get(i));
+
+
+            //prendo l ultima l ista e la sposto in testa per simulare il fatto che ogni player passa le sue carte al player alla sua sinistra
+
+            List<LeaderCard> listToMove = model.getModelChoices().getTempModelStateForLeaderChoice().getListList().get(model.getModelChoices().getTempModelStateForLeaderChoice().getListList().size() - 1);
+            model.getModelChoices().getTempModelStateForLeaderChoice().getListList().remove(listToMove);
+            model.getModelChoices().getTempModelStateForLeaderChoice().getListList().add(0, listToMove);
+
+
+        }
+        for (Player player : playerList
+                ) {
+            for (LeaderCard leader: player.getLeaderCardList()
+                    ) {
+                player.getModel().notifyViews(new MVUpdateState("Aggiornato stato leader card", leader.getStateLeaderCard()));
             }
-            tempLeaderCardList.addAll(listList.get(0));
+
         }
     }
 
@@ -146,7 +160,8 @@ public class GameUtility{
     public void doActionTurn(Player player) {
         model.getModelChoices().setStateActionGame();
         while (model.getModelChoices().getStateModelChoices().equals("StateActionGame")&&!player.isWannaEndTurn()) {
-            this.createTimerAction();
+            cancelTimer();
+            createTimerAction();
             model.getModelChoices().getLastModelStateForControl().setStateForControl(player.getStatePlayerAction());
             String string = player.getNickname() + ": Qaule azione tra quelle che hai disponibili vuoi eseguire?";
             model.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceActionToDo()));
@@ -157,10 +172,11 @@ public class GameUtility{
                     if (actionToDo != null) {
                         if (actionToDo.getClass().equals(action.getClass())) {
                             action.activate();
+                            player.addTempResoucesToPlayerResources();
 
                             String string2 = player.getPlayerId().toString()+": Aggiornato Stato Azioni";
                             model.notifyViews(new MVUpdateState(string2,player.getStatePlayerAction()));
-
+                            model.getModelChoices().setStateActionGame();
                         }
                     } else {
                         String string1 = "Non ho trovato l azione da eseguire";
@@ -169,6 +185,7 @@ public class GameUtility{
                 }
             }
         }
+        cancelTimer();
     }
 
     public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
@@ -393,18 +410,22 @@ public class GameUtility{
     }
 
     public void createTimerAction(){
-        Timer timer1 = new Timer();
-        TimerTask task1 = new TimerTask() {
+        timer = new Timer();
+        timerTask = new TimerTask() {
             @Override
             public void run() {
 
                 model.getModelChoices().setStateEndTurn();
                 endActionTurn(playerInAction);
-                timer1.purge();
-                timer1.cancel();
+                timer.cancel();
             }
         };
-        timer1.schedule(task1, timerAction);
+        timer.schedule(timerTask, timerAction);
+    }
+    public void cancelTimer(){
+        if(timer!=null) {
+            timer.cancel();
+        }
     }
 
 //    public List<PlayerId> createViews() {
@@ -849,13 +870,7 @@ public class GameUtility{
         this.leaderCardList = leaderCardList;
     }
 
-    public List<LeaderCard> getTempLeaderCardList() {
-        return tempLeaderCardList;
-    }
 
-    public void setTempLeaderCardList(List<LeaderCard> tempLeaderCardList) {
-        this.tempLeaderCardList = tempLeaderCardList;
-    }
 
     public Model getModel() {
         return model;

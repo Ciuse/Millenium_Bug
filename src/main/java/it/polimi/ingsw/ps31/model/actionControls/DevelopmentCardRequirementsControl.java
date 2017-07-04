@@ -23,7 +23,7 @@ public class DevelopmentCardRequirementsControl extends Control{
 
     @Override
     public String getControlStringError() {
-        return "Non hai abbastanza requisiti per poter prendere la carta";
+        return "Non hai abbastanza requisiti \"Carte\"";
     }
 
     /* Resetters */
@@ -35,7 +35,13 @@ public class DevelopmentCardRequirementsControl extends Control{
     /* Class Methods */
     @Override
     public boolean execute() {
-        boolean result = player.getPlayerCardList().lessOrEquals(this.requirement);
+        if ( this.requirement == null )
+        {
+            //La carta ha una lista di costi di carte "null"
+            return true;
+        }
+
+        boolean result = this.requirement.lessOrEquals(player.getPlayerCardList());
         resetRequirements();
         return result;
     }

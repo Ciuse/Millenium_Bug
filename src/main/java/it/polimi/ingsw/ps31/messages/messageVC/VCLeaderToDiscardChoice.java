@@ -13,8 +13,12 @@ public class VCLeaderToDiscardChoice extends VCVisitable {
         this.leaderId = leaderId;
     }
 
+    public int getLeaderId() {
+        return leaderId;
+    }
+
     @Override
     public void accept(VCVisitor vcVisitor) {
-
+        vcVisitor.visit(this);
     }
 }

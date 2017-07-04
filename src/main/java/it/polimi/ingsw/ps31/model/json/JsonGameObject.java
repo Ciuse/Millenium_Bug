@@ -85,6 +85,7 @@ public class JsonGameObject {
             effectAdapterFactory.registerSubtype(HarvestEffect.class, "HarvestEffect");
             effectAdapterFactory.registerSubtype(ProductionEffectActivationFromCard.class, "ProductionEffectActivationFromCard");
             effectAdapterFactory.registerSubtype(ProductionEffect.class, "ProductionEffect");
+            effectAdapterFactory.registerSubtype(ChangeFamilyValueEffect.class,"ChangeFamilyValueEffect");
 
 
             RuntimeTypeAdapterFactory<Bonus> bonusAdapterFactory = RuntimeTypeAdapterFactory.of(Bonus.class, "BonusType");
@@ -95,7 +96,7 @@ public class JsonGameObject {
             bonusAdapterFactory.registerSubtype(ColoredFamilyMembersBonus.class, "ColoredFamilyMembersBonus");
             bonusAdapterFactory.registerSubtype(CopyLeaderBonus.class, "CopyLeaderBonus");
             bonusAdapterFactory.registerSubtype(StaticFamilyMemberValueBonus.class, "StaticFamilyMemberValueBonus");
-            bonusAdapterFactory.registerSubtype(GainVictoryPointFromLeaderCardBonus.class, "GainVictoryPointFromLeaderCardBonus");
+            bonusAdapterFactory.registerSubtype(VaticanReportExtraVictoryPoint.class, "VaticanReportExtraVictoryPoint");
             bonusAdapterFactory.registerSubtype(LostExtraFinalVictoryPointBonus.class, "LostExtraFinalVictoryPointBonus");
             bonusAdapterFactory.registerSubtype(LostFinalVictoryPointBonus.class, "LostFinalVictoryPointBonus");
             bonusAdapterFactory.registerSubtype(LostFinalVictoryPointFromCardCosts.class, "LostFinalVictoryPointFromCardCosts");
@@ -108,6 +109,7 @@ public class JsonGameObject {
             bonusAdapterFactory.registerSubtype(NoFirstActionTurn.class,"NoFirstActionTurn");
             bonusAdapterFactory.registerSubtype(ProductionBonus.class, "ProductionBonus");
             bonusAdapterFactory.registerSubtype(GetResourceMalus.class, "GetResourceMalus");
+            bonusAdapterFactory.registerSubtype(DoubleResourceFromCardBonus.class,"DoubleResourceFromCardBonus");
 
 
 //Creazione del builder adatto a riconoscere tutti gli oggetti polimorfi

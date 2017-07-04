@@ -98,13 +98,9 @@ public class DevelopmentCardList {
     }
     public List<DevelopmentCard> getSpecificCardList(CardColor cardColor){
             List<DevelopmentCard> specificCardList = new ArrayList<>();
-        System.out.println(cardColor);
-        System.out.println(developmentCardList);
             for (DevelopmentCard developmentCard : this.developmentCardList) {
                 if (developmentCard != null) {
-                    if (developmentCard
-                            .getCardColor()
-                            .equals(cardColor)) {
+                    if (developmentCard.getCardColor().equals(cardColor)) {
                         specificCardList.add(developmentCard);
                     }
                 }
