@@ -23,6 +23,7 @@ public class StateViewPlayer {
     private StateViewPersonalBonusTiles stateViewPersonalBonusTiles;
     private List<String> stringPlayerAction;
     private List<StateViewLeaderCard> stateViewLeaderCardList = new ArrayList<>();
+    private List<StateViewExcommunication> stateViewExcommunicationList= new ArrayList<>();
 
 
     public StateViewPlayer(PlayerId playerId){
@@ -32,6 +33,9 @@ public class StateViewPlayer {
         }
         for(int i=0;i<getMax_number_Of_MarkerDisc();i++){
             stateViewMarkerDiscList.add(new StateViewMarkerDisc(this.playerId,getStringPointResourceType()[i]));
+        }
+        for (int i = 1;i<=getMax_number_ofExcommunication();i++){
+            stateViewExcommunicationList.add(new StateViewExcommunication(i));
         }
 
     }
@@ -72,6 +76,9 @@ public class StateViewPlayer {
         return stateViewMarkerDiscList;
     }
 
+    public List<StateViewExcommunication> getStateViewExcommunicationList() {
+        return stateViewExcommunicationList;
+    }
 
     public void updateState(StatePlayer stateInfoPlayer){
         if(stateInfoPlayer.getPlayerId().equals(this.playerId)) {
@@ -153,6 +160,15 @@ public class StateViewPlayer {
                     i++;
                 }
                 this.stateViewPersonalBonusTiles = new StateViewPersonalBonusTiles(playerId, statePersonalBonusTiles.getPersonalBonusTilesId(),personalTilesEffectList);
+            }
+        }
+    }
+
+    public void updateState(StateExcommunication stateExcommunication) {
+        for (StateViewExcommunication stateViewExcommunication : stateViewExcommunicationList
+                ) {
+            if (stateExcommunication.getPeriod() == stateViewExcommunication.getPeriod()) {
+                stateViewExcommunication.updateState(stateExcommunication);
             }
         }
     }

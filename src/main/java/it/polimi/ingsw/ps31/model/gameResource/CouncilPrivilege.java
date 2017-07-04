@@ -12,7 +12,9 @@ import javax.annotation.PostConstruct;
  */
 
 public class CouncilPrivilege extends Resource {
-    /*booleano che indica se i CouncilPrivilege sono diversi tra di loro o uguali*/
+    /**
+     * booleano che indica se i CouncilPrivilege sono diversi tra di loro o uguali
+     */
     private boolean different;
 
     public CouncilPrivilege(int value, boolean different) {
@@ -24,27 +26,26 @@ public class CouncilPrivilege extends Resource {
         return different;
     }
 
-    public void setDifferent(Boolean different){
-        this.different=different;
+    public void setDifferent(Boolean different) {
+        this.different = different;
     }
 
     @Override
-    public void addTempResource(Player player){
-        player.getPlayerActionSet().chooseDifferentPrivilege(this.getValue(),this.isDifferent());
+    public void addTempResource(Player player) {
+        player.getPlayerActionSet().chooseDifferentPrivilege(this.getValue(), this.isDifferent());
     }
 
     @Override
     public Resource cloneResource(Resource resource) {
-        if(resource.getValue()>1){
-            return new CouncilPrivilege(resource.getValue(),true);
-        }
-        else return new CouncilPrivilege(resource.getValue(),false);
+        if (resource.getValue() > 1) {
+            return new CouncilPrivilege(resource.getValue(), true);
+        } else return new CouncilPrivilege(resource.getValue(), false);
 
     }
 
     @Override
-    public void addResource(Player player){
-        player.getPlayerActionSet().chooseDifferentPrivilege(this.getValue(),this.isDifferent());
+    public void addResource(Player player) {
+        player.getPlayerActionSet().chooseDifferentPrivilege(this.getValue(), this.isDifferent());
     }
 
     @Override
@@ -58,10 +59,9 @@ public class CouncilPrivilege extends Resource {
     }
 
     @Override
-    public String toString(){
-        if(this.different) {
-            return "CP"+"!="+this.getValue();
-        }
-        else  return "CP"+"="+this.getValue();
+    public String toString() {
+        if (this.different) {
+            return "CP" + "!=" + this.getValue();
+        } else return "CP" + "=" + this.getValue();
     }
 }

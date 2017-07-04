@@ -30,7 +30,7 @@ public class TopBoardPanel extends JPanel implements ActionListener {
         gbl.rowHeights = new int[]{0,0,0};
 
         gbl.columnWeights = new double[]{0.9999, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.77, 0.2199, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.75, 0.2399, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints c = new GridBagConstraints();

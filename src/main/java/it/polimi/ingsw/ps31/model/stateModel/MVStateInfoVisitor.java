@@ -8,9 +8,10 @@ import it.polimi.ingsw.ps31.client.view.View;
 public class MVStateInfoVisitor implements StateVisitor {
     private View view;
 
-    public void setView(View view){
-        this.view=view;
+    public void setView(View view) {
+        this.view = view;
     }
+
     @Override
     public void visit(StatePlayer stateInfoPlayer) {
         view.updateInfoPlayer(stateInfoPlayer);
@@ -22,16 +23,18 @@ public class MVStateInfoVisitor implements StateVisitor {
     }
 
     @Override
-    public void visit(StateActionSpace stateActionSpace) { view.updateActionSpace(stateActionSpace);}
-
-    @Override
-    public void visit(StateMarkerDisc stateMarkerDisc) { view.updateMarkerDisc(stateMarkerDisc);
-
+    public void visit(StateActionSpace stateActionSpace) {
+        view.updateActionSpace(stateActionSpace);
     }
 
     @Override
-    public void visit(StateTower stateTower) { view.updateTower(stateTower);
+    public void visit(StateMarkerDisc stateMarkerDisc) {
+        view.updateMarkerDisc(stateMarkerDisc);
+    }
 
+    @Override
+    public void visit(StateTower stateTower) {
+        view.updateTower(stateTower);
     }
 
     @Override
@@ -42,13 +45,11 @@ public class MVStateInfoVisitor implements StateVisitor {
     @Override
     public void visit(StateEffect stateEffect) {
         //non viene mai mandato questo stato da solo dato che non cambiano mai durante il gioco
-
     }
 
     @Override
     public void visit(StatePersonalBonusTiles statePersonalBonusTiles) {
-       view.updatePersonalBonusTiles(statePersonalBonusTiles);
-
+        view.updatePersonalBonusTiles(statePersonalBonusTiles);
     }
 
     @Override
@@ -62,36 +63,38 @@ public class MVStateInfoVisitor implements StateVisitor {
     }
 
     @Override
+    public void visit(StateExcommunication stateExcommunication) {
+        view.updateExcommunication(stateExcommunication);
+    }
+
+    @Override
     public void visit(StateFamilyMember stateFamilyMember) {
         view.updateFamilyMember(stateFamilyMember);
     }
 
     @Override
-    public void visit(StateAllFamilyMember stateAllFamilyMember) { view.updateAllFamilyMember(stateAllFamilyMember);
-
+    public void visit(StateAllFamilyMember stateAllFamilyMember) {
+        view.updateAllFamilyMember(stateAllFamilyMember);
     }
 
     @Override
     public void visit(StateCardBox stateCardBox) {
         view.updateCardBox(stateCardBox);
-
     }
 
     @Override
-    public void visit(StateGame stateGame) { view.updateGame(stateGame);
-
+    public void visit(StateGame stateGame) {
+        view.updateGame(stateGame);
     }
 
     @Override
-    public void visit(StatePersonalBoard statePersonalBoard) { view.updatePersonalBoard(statePersonalBoard);
-
+    public void visit(StatePersonalBoard statePersonalBoard) {
+        view.updatePersonalBoard(statePersonalBoard);
     }
 
     @Override
     public void visit(StatePlayerAction statePlayerAction) {
         view.updatePlayerAction(statePlayerAction);
-
     }
-
 
 }

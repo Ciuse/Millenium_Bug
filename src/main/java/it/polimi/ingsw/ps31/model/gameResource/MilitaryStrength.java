@@ -6,9 +6,11 @@ package it.polimi.ingsw.ps31.model.gameResource;
  * Classe raffigurante la risorsa MilitaryStrength
  * @see Resource
  */
-public class MilitaryStrength extends PointResource{
-    /*valore opzionale che a volte può esserci, indica quanti punti militari servono per poter usare questa risorsa */
-    private int valueRequest=0;
+public class MilitaryStrength extends PointResource {
+    /**
+     * valore opzionale che a volte può esserci, indica quanti punti militari servono per poter usare questa risorsa
+     */
+    private int valueRequest = 0;
 
     public MilitaryStrength(int value) {
         super(value);
@@ -19,7 +21,7 @@ public class MilitaryStrength extends PointResource{
         return new MilitaryStrength(resource.getValue());
     }
 
-    public MilitaryStrength(int value ,int valueRequest){
+    public MilitaryStrength(int value, int valueRequest) {
         super(value);
         this.valueRequest = valueRequest;
     }
@@ -28,7 +30,7 @@ public class MilitaryStrength extends PointResource{
         return valueRequest;
     }
 
-    public void setValueRequest(int valueRequest){
+    public void setValueRequest(int valueRequest) {
         this.valueRequest = valueRequest;
     }
 
@@ -38,11 +40,12 @@ public class MilitaryStrength extends PointResource{
 
 
     @Override
-    public String toString(){
-        return "MS"+this.getValue();
+    public String toString() {
+        return "MS" + this.getValue();
     }
+
     @Override
-    public String getPointResourceType(){
+    public String getPointResourceType() {
         return "MilitaryStrength";
     }
 

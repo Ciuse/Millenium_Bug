@@ -2,9 +2,12 @@ package it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand;
 
 import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewDevelopmentCard;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewExcommunication;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
+
+import java.util.Collections;
 
 import static java.lang.String.valueOf;
 
@@ -50,14 +53,11 @@ public class IntrVisualization implements CmdInterpreterView {
         }
 
         if(in.compareTo('2')==0) {
-            String leaderName = "Possiedi: ";
-
             if (!cmdLineView.getMyStateViewPlayer().getStateViewLeaderCardList().isEmpty()) {
                 for (StateViewLeaderCard leaderCard : cmdLineView.getMyStateViewPlayer().getStateViewLeaderCardList()
                         ) {
-                    leaderName = leaderName + leaderCard.getLeaderName() + "/ ";
+                    cmdLineView.printLastEvent(leaderCard.getLeaderName());
                 }
-                cmdLineView.printLastEvent(leaderName);
             }
             else cmdLineView.printLastEvent("Non possiedi Leader ");
         }
@@ -78,9 +78,24 @@ public class IntrVisualization implements CmdInterpreterView {
         }
 
         if(in.compareTo('4')==0) {
+            String string1="Scomuniche in gioco ";
+            cmdLineView.printLastEvent(string1);
+
+            for (StateViewExcommunication stateViewEcomu:cmdLineView.getStateViewGame().getStateViewExcommunicationList()
+                 ) {
+                cmdLineView.printLastEvent("Scomunica Periodo: "+stateViewEcomu.getPeriod()+" "+ stateViewEcomu.getBonusName()+"(ID: "+stateViewEcomu.getId()+")");
+            }
         }
 
         if(in.compareTo('5')==0) {
+
+            String string1="Scomuniche che possiedi ";
+            cmdLineView.printLastEvent(string1);
+
+            for (StateViewExcommunication stateViewEcomu:cmdLineView.getMyStateViewPlayer().getStateViewExcommunicationList()
+                    ) {
+                cmdLineView.printLastEvent("Scomunica Periodo: "+stateViewEcomu.getPeriod()+" "+ stateViewEcomu.getBonusName()+"(ID: "+stateViewEcomu.getId()+")");
+            }
         }
         cmdLineView.setCmdInterpreterView(cmdLineView.getLastInterpreterView());
     }

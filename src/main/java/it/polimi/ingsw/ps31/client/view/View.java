@@ -24,20 +24,20 @@ import java.util.Observer;
 public abstract class View extends Observable implements Observer {
     private final PlayerId viewId;
     private final StateViewBoard stateViewBoard;
-    private final List<StateViewPlayer> stateViewPlayerList=new ArrayList<>();
-    private final List<StateViewPersonalBoard> stateViewPersonalBoardList= new ArrayList<>();
+    private final List<StateViewPlayer> stateViewPlayerList = new ArrayList<>();
+    private final List<StateViewPersonalBoard> stateViewPersonalBoardList = new ArrayList<>();
     private final StateViewGame stateViewGame;
     //private ClientNetworkInterface networkInterface;
-    protected boolean firstTime=true; // se provo a stampare senza avere tutte le informazioni la prima volta da errore (per alcuni metodi di stampa)
-                                    // la prima volta stampo solo se ho già tutto
+    protected boolean firstTime = true; // se provo a stampare senza avere tutte le informazioni la prima volta da errore (per alcuni metodi di stampa)
+    // la prima volta stampo solo se ho già tutto
 
 
     public View(PlayerId viewId, int playerMaxNumber) {
         this.viewId = viewId;
         this.stateViewBoard = new StateViewBoard();
         this.stateViewGame = new StateViewGame(playerMaxNumber);
-        PlayerId[] playerId=PlayerId.values();
-        for (int i=0; i<playerMaxNumber; i++){
+        PlayerId[] playerId = PlayerId.values();
+        for (int i = 0; i < playerMaxNumber; i++) {
             this.stateViewPersonalBoardList.add(new StateViewPersonalBoard(playerId[i]));
             this.stateViewPlayerList.add(new StateViewPlayer(playerId[i]));
         }
@@ -47,8 +47,7 @@ public abstract class View extends Observable implements Observer {
         this.addObserver(controller);
     }
 
-    public void addController(Observer observer)
-    {
+    public void addController(Observer observer) {
         this.addObserver(observer);
     }
 
@@ -129,7 +128,7 @@ public abstract class View extends Observable implements Observer {
             if (viewPlayer.getPlayerId().equals(stateInfoPlayer.getPlayerId()))
                 viewPlayer.updateState(stateInfoPlayer);
         }
-        if(!firstTime)
+        if (!firstTime)
             printAllPlayer();
     }
 
@@ -139,17 +138,26 @@ public abstract class View extends Observable implements Observer {
             if (viewPlayer.getPlayerId().equals(statePlayerResources.getPlayerId()))
                 viewPlayer.updateState(statePlayerResources);
         }
-        if(!firstTime)
+        if (!firstTime)
             printPlayerInAction();
     }
 
-   public final void updateAllDevelopmentCard(StateAllDevelopmentCard stateAllDevelopmentCard){
-       for (StateDevelopmentCard stateDevelopmentCard :stateAllDevelopmentCard.getStateDevelopmentCardList()
-               ) {
-           stateViewGame.updateState(stateDevelopmentCard);
-       }
+    public final void updateAllDevelopmentCard(StateAllDevelopmentCard stateAllDevelopmentCard) {
+        for (StateDevelopmentCard stateDevelopmentCard : stateAllDevelopmentCard.getStateDevelopmentCardList()
+                ) {
+            stateViewGame.updateState(stateDevelopmentCard);
+        }
 
-   }
+    }
+
+    public final void updateExcommunication(StateExcommunication stateExcommunication) {
+        if (stateExcommunication.getPlayerId() == null) {
+            stateViewGame.updateState(stateExcommunication);
+
+        }else {
+            getMyStateViewPlayer().updateState(stateExcommunication);
+        }
+    }
 
 
     public final void updateAllFamilyMember(StateAllFamilyMember stateAllFamilyMember) {
@@ -167,14 +175,14 @@ public abstract class View extends Observable implements Observer {
             if (viewPlayer.getPlayerId().equals(stateFamilyMember.getPlayerId()))
                 viewPlayer.updateState(stateFamilyMember);
         }
-        if(!firstTime)
-          printFamilyMemberInAction();
+        if (!firstTime)
+            printFamilyMemberInAction();
     }
 
-    public final void updatePersonalBonusTiles(StatePersonalBonusTiles statePersonalBonusTiles){
-        for (StateViewPlayer viewPlayer: stateViewPlayerList
-             ) {
-            if(viewPlayer.getPlayerId().equals(statePersonalBonusTiles.getPlayerId()))
+    public final void updatePersonalBonusTiles(StatePersonalBonusTiles statePersonalBonusTiles) {
+        for (StateViewPlayer viewPlayer : stateViewPlayerList
+                ) {
+            if (viewPlayer.getPlayerId().equals(statePersonalBonusTiles.getPlayerId()))
                 viewPlayer.updateState(statePersonalBonusTiles);
         }
     }
@@ -185,28 +193,26 @@ public abstract class View extends Observable implements Observer {
             if (statePersonalBoard.getPlayerId().equals(viewPersonalBoard.getPlayerId()))
                 viewPersonalBoard.updateState(statePersonalBoard);
         }
-        if(!firstTime)
+        if (!firstTime)
             printAllPersonalBoard();
     }
 
     public final void updateCardBox(StateCardBox stateCardBox) {
-
-
-        if(stateCardBox.getValue()!=-1) {
+        if (stateCardBox.getValue() != -1) {
 
             for (StateViewPersonalBoard viewPersonalBoard : stateViewPersonalBoardList
                     ) {
-                if (viewPersonalBoard.getPlayerId().equals(stateCardBox.getPlayerId())){
+                if (viewPersonalBoard.getPlayerId().equals(stateCardBox.getPlayerId())) {
                     viewPersonalBoard.updateState(stateCardBox);
-                    if(stateCardBox.getPlayerId().equals(viewId)){
+                    if (stateCardBox.getPlayerId().equals(viewId)) {
                         printDevelopmentCard(stateCardBox.getCardId());
                     }
                 }
             }
         }
-        if(stateCardBox.getTowerFloor()!=-1){
-            for (StateViewTower tower: getStateViewBoard().getStateViewTowerList()
-                 ) {
+        if (stateCardBox.getTowerFloor() != -1) {
+            for (StateViewTower tower : getStateViewBoard().getStateViewTowerList()
+                    ) {
                 if (tower.getTowerColor().equals(stateCardBox.getCardColor())) {
                     tower.updateState(stateCardBox);
                     for (StateViewTowerCardBox stateViewTowerCardBox : tower.getStateViewTowerCardBox()
@@ -218,8 +224,8 @@ public abstract class View extends Observable implements Observer {
                 }
             }
         }
-        if(!firstTime)
-        printPersonalBoardInAction();
+        if (!firstTime)
+            printPersonalBoardInAction();
     }
 
     public final void updateActionSpace(StateActionSpace stateActionSpace) {
@@ -248,7 +254,7 @@ public abstract class View extends Observable implements Observer {
             if (viewPlayer.getPlayerId().equals(statePlayerAction.getPlayerId()))
                 viewPlayer.updateState(statePlayerAction);
         }
-        if(firstTime) {
+        if (firstTime) {
             setFirstTime(false);        //TODO PROBABILMENTE é DA SPOSTATE ( CMQ LE AZIONI PER ORA DEVONO ESSERE STAMPATE PER ULTIME)
             printTower();
             printPlayerInAction();
@@ -273,15 +279,16 @@ public abstract class View extends Observable implements Observer {
             printFamilyMemberInAction();
         }
     }
+
     public final void updateDevelopmentCard(StateDevelopmentCard stateDevelopmentCard) {
         stateViewGame.updateState(stateDevelopmentCard);
     }
 
-    public final void updateLeaderCard(StateLeaderCard stateLeaderCard){
-        for (StateViewPlayer stateViewPlayer:stateViewPlayerList
-             ) {
-           if(stateViewPlayer.getPlayerId().equals(stateLeaderCard.getPlayerId()))
-               stateViewPlayer.updateState(stateLeaderCard);
+    public final void updateLeaderCard(StateLeaderCard stateLeaderCard) {
+        for (StateViewPlayer stateViewPlayer : stateViewPlayerList
+                ) {
+            if (stateViewPlayer.getPlayerId().equals(stateLeaderCard.getPlayerId()))
+                stateViewPlayer.updateState(stateLeaderCard);
         }
     }
 
@@ -360,7 +367,5 @@ public abstract class View extends Observable implements Observer {
         }
         return null;
     }
-
-
 
 }

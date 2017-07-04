@@ -29,7 +29,6 @@ public class GameLogic {
     private int period;
     private int round;
     private int action;
-    private boolean started;
     private Match match;
 
 
@@ -85,7 +84,6 @@ public class GameLogic {
     public void playGame() {
 
         System.out.println("GameLogic:playGame> Tutte le impostazioni correttamente caricate. Faccio partire il gioco");
-
 
 
         gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
@@ -165,7 +163,7 @@ public class GameLogic {
 
         //TODO metodo per stampare a video il vincitore
 
-
+        gameUtility.choiseColorPlayer(); //TODO RIMUOVEREeeeeeeeeee
     }
 
     public GameUtility getGameUtility() {

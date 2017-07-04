@@ -11,13 +11,21 @@ import java.util.List;
 
 /**
  * Created by Giuseppe on 31/05/2017.
+ *
+ * Rappresenta la lista di carte di uno specifico colore presente nella personal board
+ * @see PersonalBoard
+ * @see PersonalBoardCardCell
  */
 public class PersonalBoardCardList {
     private PlayerId playerId;
     private final static int MAX_CARD_OF_SAME_COLOR = 6 ;
     private final CardColor cardColor;
-    private PointResource[] extraResourceRequired;
     private final List<PersonalBoardCardCell> personalBoardCardCellList=new ArrayList<>();
+
+    /**
+     * Array contenente i valori exrta delle caselle (letti da json)
+     */
+    private PointResource[] extraResourceRequired;
 
     public PersonalBoardCardList(PlayerId playerId,CardColor cardColor, Model model,PointResource[] pointResourcesRequired) {
         this.playerId=playerId;

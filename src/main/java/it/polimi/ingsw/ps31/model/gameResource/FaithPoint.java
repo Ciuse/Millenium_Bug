@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.model.gameResource;
 
+import it.polimi.ingsw.ps31.model.player.Player;
+
 /**
  * Created by Giuseppe on 15/05/2017.
  *
@@ -23,6 +25,16 @@ public class FaithPoint extends PointResource{
 //        MarkerDisc markerDiscToMove=faithTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(FaithPoint.class)).unSetMarkerDisc(player);
 //        player.addResources(this);
 //        faithTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(FaithPoint.class)).setMarkerDisc(markerDiscToMove);
+//    }
+
+//
+//    @Override
+//    public void addResource(Player player) {
+//        if(player.getPlayerResources().getSpecificResource(this.getClass()).getValue()+this.getValue()<=15)
+//        super.addResource(player);
+//        else {
+
+//        }
 //    }
 
     @Override

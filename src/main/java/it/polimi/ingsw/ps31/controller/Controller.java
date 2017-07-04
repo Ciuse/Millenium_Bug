@@ -124,7 +124,8 @@ public class Controller extends Thread implements Observer {
     }
 
     public void activeEffect(boolean isToActive, PlayerId viewId) {
-        modelChoices.setActiveEffect(isToActive);
+        if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+            modelChoices.setActiveEffect(isToActive);
     }
 
     public void selectPlayerAction(String string, PlayerId viewId) {
@@ -232,10 +233,8 @@ public class Controller extends Thread implements Observer {
     }
 
     public void selectColor(PlayerColor playerColor, PlayerId viewId) {
-        if(gameUtility.
-                getPlayerInAction().
-                getPlayerId().
-                equals(viewId)) {
+        System.out.println("MESSAGGIO RICEVUTO");
+        if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId)) {
             modelChoices.setPlayerColorChosen(playerColor);
         }
     }

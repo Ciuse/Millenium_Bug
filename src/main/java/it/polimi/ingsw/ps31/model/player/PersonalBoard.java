@@ -14,6 +14,10 @@ import java.util.List;
 
 /**
  * Created by Francesco on 15/05/2017.
+ *
+ * Rappresenta la personal board del giocatore con le 4 liste di carte
+ * @see Player
+ * @see PersonalBoardCardList
  */
 public class PersonalBoard {
     private final PlayerId playerId;
@@ -38,19 +42,6 @@ public class PersonalBoard {
         return personalBoardCardList;
     }
 
-    public StatePersonalBoard getStatePersonalBoard(){
-        List<StateCardBox> stateCardBoxes = new ArrayList<>();
-        for (PersonalBoardCardList list: personalBoardCardList
-             ) {
-            for (PersonalBoardCardCell cell : list.getPersonalBoardCardCellList()
-                    ) {
-                stateCardBoxes.add(cell.getStatePersonalCardBox());
-            }
-
-        }
-        StatePersonalBoard statePersonalBoard = new StatePersonalBoard(playerId,stateCardBoxes);
-        return statePersonalBoard;
-    }
 
     public PersonalBoardCardList getSpecificPersonalBoardCardList(CardColor  cardColor) {
         for (PersonalBoardCardList list : personalBoardCardList
@@ -88,5 +79,21 @@ public class PersonalBoard {
             }
         }
     }
+
+    public StatePersonalBoard getStatePersonalBoard(){
+        List<StateCardBox> stateCardBoxes = new ArrayList<>();
+        for (PersonalBoardCardList list: personalBoardCardList
+                ) {
+            for (PersonalBoardCardCell cell : list.getPersonalBoardCardCellList()
+                    ) {
+                stateCardBoxes.add(cell.getStatePersonalCardBox());
+            }
+
+        }
+
+        StatePersonalBoard statePersonalBoard = new StatePersonalBoard(playerId,stateCardBoxes);
+        return statePersonalBoard;
+    }
+
 
 }

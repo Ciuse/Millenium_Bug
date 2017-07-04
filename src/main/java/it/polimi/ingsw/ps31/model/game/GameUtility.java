@@ -198,14 +198,14 @@ public class GameUtility{
     public void updateStartAllPlayersInformation(){
         for (Player player:playerList
                 ) {
-            model.notifyViews(new MVUpdateState("Aggiornato lo stato di ogni player",player.getStateInfoPlayer()));
+            model.notifyViews(new MVUpdateState("Aggiornato lo stato del player",player.getStateInfoPlayer()));
         }
     }
 
     public void updateStartAllPlayersResources(){
         for (Player player:playerList
                 ) {
-            model.notifyViews(new MVUpdateState("Aggiornato lo stato delle risorse di ogni player",player.getStatePlayerResources()));
+            model.notifyViews(new MVUpdateState("Aggiornato lo stato delle player resources",player.getStatePlayerResources()));
         }
     }
 
@@ -219,7 +219,7 @@ public class GameUtility{
     public void updateStartAllPersonalBoard(){
         for (Player player:playerList
                 ) {
-            model.notifyViews(new MVUpdateState("Aggiornato lo stato di ogni personal board",player.getPersonalBoard().getStatePersonalBoard()));
+            model.notifyViews(new MVUpdateState("Aggiornato lo stato della personal board del player",player.getPersonalBoard().getStatePersonalBoard()));
         }
     }
 
@@ -228,7 +228,7 @@ public class GameUtility{
                 ) {
             for (MarkerDisc markerDisc:player.getMarkerDiscList()
                  ) {
-                model.notifyViews(new MVUpdateState("Aggiornato lo stato di ogni marker disc di ogni giocatore",markerDisc.getStateMarkerDisc()));
+                model.notifyViews(new MVUpdateState("Aggiornato lo stato di ogni marker disc del player",markerDisc.getStateMarkerDisc()));
             }
 
         }
@@ -259,7 +259,12 @@ public class GameUtility{
 
             // il giocatore non ha abbastanza punti fede e prende la scomunica (non viene chiesto niente al giocatore)
             if (player.getPlayerResources().getResourceValue(FaithPoint.class) < gameBoard.getFaithPointTrack().getTrackCell().get(2 + period).getValue()) {
-                gameBoard.getExcommunicationTilesList().get(period-1).setExcommunicationToPlayer(player);
+                for (ExcommunicationTiles tiles : gameBoard.getExcommunicationTilesList()
+                        ) {
+                    if (tiles.getPeriod() == period) {
+                        tiles.setExcommunicationToPlayer(player);
+                    }
+                }
 
                 //regola dell'ultimo turno del terzo periodo (tutti ricevono i punti vittoria )
                 if (period == 3) {
@@ -275,8 +280,14 @@ public class GameUtility{
                 boolean supportTheChurch = model.getModelChoices().waitSupportTheChurch();
                 if (supportTheChurch) {
                     int faithPointPlayer = player.getPlayerResources().getResourceValue(FaithPoint.class);
-                    player.addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
-                    player.subResources(player.getPlayerResources().getSpecificResource(FaithPoint.class));
+                    if(faithPointPlayer>=15){
+                        player.addResources(gameBoard.getFaithPointTrack().getTrackCell().get(14).getExtraValue());
+                        player.subResources(player.getPlayerResources().getSpecificResource(FaithPoint.class));
+                    }
+                    else {
+                        player.addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
+                        player.subResources(player.getPlayerResources().getSpecificResource(FaithPoint.class));
+                    }
                     for (LeaderCard leaderCard : player.getLeaderCardList()
                             ) {
                         if (leaderCard.getPermanentAbility() != null
@@ -287,7 +298,12 @@ public class GameUtility{
                     }
                 } else {
                     //il giocatore ha deciso di non mostrare il suo sostegno alla chiesa
-                    gameBoard.getExcommunicationTilesList().get(period-1).setExcommunicationToPlayer(player);
+                    for (ExcommunicationTiles tiles : gameBoard.getExcommunicationTilesList()
+                            ) {
+                        if (tiles.getPeriod() == period) {
+                            tiles.setExcommunicationToPlayer(player);
+                        }
+                    }
                     if (period == 3) {
                         int faithPointPlayer = player.getPlayerResources().getResourceValue(FaithPoint.class);
                         player.addResources(gameBoard.getFaithPointTrack().getTrackCell().get(faithPointPlayer).getExtraValue());
@@ -295,7 +311,9 @@ public class GameUtility{
                     }
                 }
             }
+            model.notifyViews(new MVUpdateState("Aggiornato lo stato player resources",player.getStatePlayerResources()));
         }
+
     }
 
     public void createDeck(){
@@ -355,22 +373,33 @@ public class GameUtility{
                 if (excom.getPeriod() == 1) {
                     found1 = true;
                     excommToUse.add(excom);
+                    model.notifyViews(new MVUpdateState("Aggiornato stato scomuniche", excom.getStateExcommunication()));
                 }
             }
+        }
+
+        for (ExcommunicationTiles excom : excommunicationTilesList
+                ) {
             if (!found2) {
                 if (excom.getPeriod() == 2) {
                     found2 = true;
                     excommToUse.add(excom);
+                    model.notifyViews(new MVUpdateState("Aggiornato stato scomuniche", excom.getStateExcommunication()));
                 }
             }
+        }
+        for (ExcommunicationTiles excom : excommunicationTilesList
+                ) {
             if (!found3) {
                 if (excom.getPeriod() == 3) {
                     found3 = true;
                     excommToUse.add(excom);
+                    model.notifyViews(new MVUpdateState("Aggiornato stato scomuniche", excom.getStateExcommunication()));
                 }
             }
         }
         gameBoard.setExcommunicationTilesList(excommToUse);
+
     }
 
 
@@ -389,17 +418,17 @@ public class GameUtility{
              String string = player.getPlayerId()+": scegli il tuo colore";
              model.notifyViews(new MVAskChoice(player.getPlayerId(),string,new ChoiceColor(playerColorList)));
              PlayerColor playerColor = model.getModelChoices().waitPlayerColorChosen();
-             System.out.println(playerColor);
              int i=0;
+             PlayerColor found=null;
                  for (PlayerColor color : playerColorList
                          ) {
                      if(color.equals(playerColor)) {
                          player.setPlayerColor(color);
-                         return;
+                         found=color;
                      }
                      i++;
                  }
-             playerColorList.remove(i);
+             playerColorList.remove(found);
          }
      }
 

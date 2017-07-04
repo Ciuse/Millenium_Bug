@@ -1,9 +1,14 @@
 package it.polimi.ingsw.ps31.model.board;
 
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
+import it.polimi.ingsw.ps31.model.player.*;
 
 /**
  * Created by Francesco on 12/05/2017.
+ *
+ * Classe astratta che rappresenta una casella che contenere fisicamente una carta
+ * @see PersonalBoardCardCell
+ * @see TowerCardSpace
  */
 public abstract class PhysicalCardBox {
     protected DevelopmentCard card;
@@ -20,6 +25,10 @@ public abstract class PhysicalCardBox {
         this.card = card;
     }
 
+    /**
+     * Prende la propria carta, per poi settarsi il valore a null, per poi ritornarla
+     * @return ritorna la carta presa
+     */
     public DevelopmentCard takeCard()
     {
         DevelopmentCard takenCard = this.card;

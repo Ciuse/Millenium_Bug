@@ -20,38 +20,48 @@ import static java.lang.Thread.sleep;
 
 /**
  * Created by giulia on 15/06/2017.
+ * Classe che gestisce tutti i wait del model per attendere le risposte da parte degli utenti o per attendere che tutti siano pronti per giocare
+ * Inoltre gestisce anche il timer per lo scadere del tempo delle connessioni
+ * @see Timer
+ * @see InformationFromNetworking
+ * @see Model
  */
 public class ModelChoices {
-    //classe che gestisce tutti i wait del model per attendere le risposte da parte degli utenti / o per attendere che tutti siano pronti per giocare
+    /**
+     *Riferimento a una classe utile al controller per controllare alcune scelte
+     */
     private LastModelStateForControl lastModelStateForControl=new LastModelStateForControl();
+    /**
+     *Riferimento alla classe utile al controller per poter controllare il draft iniziale dei leader
+     */
     private TempModelStateForLeaderChoice tempModelStateForLeaderChoice=new TempModelStateForLeaderChoice();
     private int leaderChoosenCounter=0;
     private int listToPay =-1;
     private TowerCardSpace towerCardSpaceChosen=null;
     private Boolean activeEffect = null ;
     private Boolean supportTheChurch=null;
-    private Boolean actionEnded=null;
     private PersonalBonusTiles personalBonusTilesChosen=null;
     private PlayerColor playerColorChosen=null;
     private LeaderCard leaderCardChosen=null;
-    private String stateModelChoices="StateDefault";
-    private InformationFromNetworking informationFromNetworking;
-    private long timerConnection;
     private ResourceList resourceChosenFromPrivilege;
     private int numberOfServantsToPay;
     private FamilyMember familyMemberChosen;
     private ActionSpace actionSpaceChosen;
     private Action actionToDo=null;
+    private InformationFromNetworking informationFromNetworking;
+    private String stateModelChoices="StateDefault";
+    private long timerConnection;
     private Timer timer1 = new Timer();
 
     public ModelChoices() {
 
     }
 
-//I metodi di wait si mettono in attesa del controller, il quale setta la risposta
-    // proveniente dalla view e in questo modo il model continua l' esecuzione
-    // delle altre funzioni ritornando l' oggetto/risposta dell utente
-
+    /**
+     *  I metodi di wait si mettono in attesa del controller, il quale setta la risposta
+     *  proveniente dalla view e in questo modo il model riprende l' esecuzione
+     *  delle altre funzioni utilizzando l'oggetto o risposta dell utente
+     */
     public synchronized int waitIntListToPay(){
         setListToPay(-1);
         setStateChoice();
@@ -122,7 +132,7 @@ public class ModelChoices {
     }
 
     public synchronized boolean waitActiveEffect(){
-        setActiveEffect(false);
+        setActiveEffect(null);
         setStateChoice();
         while(activeEffect==null&& this.stateModelChoices.equals("StateChoice")){
             try {
@@ -170,7 +180,7 @@ public class ModelChoices {
     }
 
     public synchronized boolean waitSupportTheChurch(){
-        setSupportTheChurch(false);
+        setSupportTheChurch(null);
         setStateChoice();
         while(supportTheChurch==null && this.stateModelChoices.equals("StateChoice")){
             try {
@@ -295,10 +305,6 @@ public class ModelChoices {
 
     public void setSupportTheChurch(Boolean supportTheChurch) {
         this.supportTheChurch = supportTheChurch;
-    }
-
-    public void setActionEnded(Boolean actionEnded) {
-        this.actionEnded = actionEnded;
     }
 
     public void setActionToDo(Action actionToDo) {

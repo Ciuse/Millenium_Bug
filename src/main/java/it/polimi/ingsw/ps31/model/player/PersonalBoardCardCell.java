@@ -10,6 +10,10 @@ import it.polimi.ingsw.ps31.model.stateModel.StateCardBox;
 
 /**
  * Created by Francesco on 12/05/2017.
+ *
+ * Classe che rappresenta la singola casella della personal board, la quale estente CardBox fisico che contiene la carta
+ * @see PhysicalCardBox
+ * @see PersonalBoardCardList
  */
 public class PersonalBoardCardCell extends PhysicalCardBox {
     private PlayerId playerId;

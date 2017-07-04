@@ -22,7 +22,7 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
         this.listener=listener;
     }
 
-    public ButtonsFamilyMemberPanel(StateViewFamilyMember stateViewFamilyMember) {
+    public ButtonsFamilyMemberPanel() {
         addComponentsToPane(this);
     }
 
@@ -85,24 +85,17 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
 
     }
 
-    public FamilyMemberButton[] getButtonFamilyMember() {
-        return buttonFamilyMember;
-    }
-
-
-
     public void printMyFamilyMembersOnPlayerPanel(StateViewFamilyMember stateViewFamilyMember) {
         if (stateViewFamilyMember.getActionSpaceId() != -1) {
-                DiceColor colorFamilyMember = stateViewFamilyMember.getDiceColor();
-                for (int i =0;i<4;i++){
-                    if( colorFamilyMember.equals(this.getFamilyMemberColor(this.getButtonFamilyMember()[i].getBackground()))){
-                        this.getButtonFamilyMember()[i].setEnabled(false);
-                    }
+            DiceColor colorFamilyMember = stateViewFamilyMember.getDiceColor();
+            for (int i = 0; i < 4; i++) {
+                if (colorFamilyMember.equals(this.getFamilyMemberColor(buttonFamilyMember[i].getBackground()))) {
+                    buttonFamilyMember[i].setEnabled(false);
+                }
 
             }
-        }}
-
-
+        }
+    }
 
     public DiceColor getFamilyMemberColor(Color color){
         if(color==Color.BLACK){

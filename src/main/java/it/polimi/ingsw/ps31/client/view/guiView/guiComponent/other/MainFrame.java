@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 /**
  * Created by giulia on 25/06/2017.
@@ -27,6 +28,7 @@ public class MainFrame extends JFrame implements ActionListener {
         frame.setSize(screenSize);
         frame.setResizable(false);
         frame.setVisible(true);
+        frame.setAlwaysOnTop(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 
@@ -49,6 +51,7 @@ public class MainFrame extends JFrame implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         backgroundMainFramePanel.setPreferredSize(new Dimension(10, 10));
         frame.add(backgroundMainFramePanel, gbc);
+
     }
 
     @Override

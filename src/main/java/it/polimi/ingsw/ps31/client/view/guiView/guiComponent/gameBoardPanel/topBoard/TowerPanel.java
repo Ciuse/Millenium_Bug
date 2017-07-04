@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 import static java.lang.String.valueOf;
 import static java.lang.Thread.sleep;
@@ -36,8 +37,8 @@ public class TowerPanel extends JPanel implements ActionListener {
         gbl.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
 
 
-        gbl.columnWeights = new double[]{0.04, 0.225, 0.225, 0.225, 0.225, 0.0599, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.01, 0.2375, 0.2375, 0.2375, 0.2375, 0.039, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.035, 0.225, 0.225, 0.225, 0.225, 0.06449, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.01, 0.24, 0.24, 0.24, 0.24, 0.02999, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -109,7 +110,7 @@ public class TowerPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         ButtonCard buttonCard = (ButtonCard) e.getSource();
         String nameButton = buttonCard.getName();
 
@@ -132,7 +133,7 @@ public class TowerPanel extends JPanel implements ActionListener {
                             c.add(frameButton);
                             frameButton.addActionListener(new ActionListener() {
                                 public void actionPerformed(ActionEvent ev) {
-                                    frame.setVisible(false);
+                                    frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
                                 }
                             });
                         } else {
@@ -143,6 +144,7 @@ public class TowerPanel extends JPanel implements ActionListener {
                 }
             }
         }
+
     }
 
     public CardColor getCardColorFromButtonNumber(int i){

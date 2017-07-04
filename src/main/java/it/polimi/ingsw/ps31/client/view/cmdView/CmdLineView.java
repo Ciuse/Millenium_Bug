@@ -120,8 +120,7 @@ public class CmdLineView extends View {
         do {
             this.setCmdInterpreterView(new IntrChoiceIfActiveEffect());
             printDevelopmentCard(choiceIfActiveEffect.getCardIdEffect());
-            printLastEventAndMemorize("inserisci \"Y\" per attivare l'effetto permanente della carta");
-            printLastEventAndMemorize("inserisci \"N\" per non attivare l'effetto permanente della carta");
+            printLastEventAndMemorize("Rispondi \"Y\" o \"N\" per attivare o no l'effetto permanente della carta");
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this, choiceIfActiveEffect, keyStroke1.getCharacter()));
     }
@@ -168,8 +167,7 @@ public class CmdLineView extends View {
         do {
             this.setCmdInterpreterView(new IntrChoiceIfSupportChurch());
             printPlayerInAction();
-            printLastEventAndMemorize("inserisci \"Y\" per dare il supporto alla chiesa ed evitare la scomunica");
-            printLastEventAndMemorize("inserisci \"N\" per non dare il support alla chiesa e prendere la scomunica");
+            printLastEventAndMemorize("inserisci \"Y\" o \"N\" per dare o no il supporto alla chiesa");
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this,choiceIfSupportTheChurch, keyStroke1.getCharacter()));
     }
@@ -179,8 +177,7 @@ public class CmdLineView extends View {
         do {
             this.setCmdInterpreterView(new IntrChoiceListToPay());
             printDevelopmentCard(choiceListToPay.getCardId());
-            printLastEventAndMemorize("inserisci \"1\" per scegliere la prima lista da pagare/guadagnare");
-            printLastEventAndMemorize("inserisci \"2\" per scegleire la seconda lista da pagare/guadagnare");
+            printLastEventAndMemorize("inserisci \"1\" o \"2\" per scegliere la lista da  pagare/guadagnare");
             input1();
         }while(!cmdInterpreterView.messageInterpreter(this,choiceListToPay, keyStroke1.getCharacter()));
     }
@@ -369,6 +366,9 @@ public class CmdLineView extends View {
         printLastEvent("Inserisci 1: per vusualizzare una carta specifica");
         printLastEvent("Inserisic 2: per scrivere i leader");
         printLastEvent("inserisci 3: per scrivere il tuo personal bonus tiles");
+        printLastEvent("inserisci 4: per visualizzare le scomuniche in gioco");
+        printLastEvent("inserisci 5: per visualizzare le tue scomuniche");
+
     }
 
     public Character inputVis1() {
@@ -523,7 +523,7 @@ public class CmdLineView extends View {
 
     @Override
     public void printPlayerAction(){
-        textGraphics.putString(2,29,"Premi 'H' per accedere al menu speciale per visualizzare: / Una carta specifica / I tuoi leader / Il tuo personal bonus tiles /" );
+        textGraphics.putString(2,29,"Premi 'H' per accedere al menu speciale per visualizzare: / Una carta specifica / I tuoi leader / Il tuo personal bonus tiles / Le Scomuniche in gioco o che hai" );
         for (StateViewPlayer player:super.getStateViewPlayerList()
                 ) {
             if(super.getStateViewGame().getPlayerIdInAction().equals(player.getPlayerId())){

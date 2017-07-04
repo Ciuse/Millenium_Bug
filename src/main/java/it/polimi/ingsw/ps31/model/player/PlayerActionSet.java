@@ -11,6 +11,12 @@ import java.util.List;
 
 /**
  * Created by Francesco on 24/05/2017.
+ *
+ * Classe che rappresenta tutto il set di azioni di un player
+ * Ogni player in questo modo ha il suo set di azione con i suoi parametri e i suoi bonus
+ * @see Action
+ * @see Player
+ * @see ActionControlSet
  */
 public class PlayerActionSet {
     private final ActionActivateHarvest activateHarvest;
@@ -26,12 +32,12 @@ public class PlayerActionSet {
     private final ActionActiveLeaderCard actionActiveLeaderCard;
     private final ActionDiscardLeaderCard discardLeaderCard;
     private final ActionGetFinalResources getFinalResources;
-    private final ActionControlSet actionControlSet;
     private final ActionEndTurn activeEndButton;
     private final ActionAddFinalBonus addFinalBonus;
     private final ActionGetTempResourcesFromAllEffect getTempResources;
     private final ActionPayCard payCard;
     private final List<Action> actionList=new ArrayList<>();
+    private final ActionControlSet actionControlSet;
     private final Player player;
 
     /* Constructor */
@@ -52,7 +58,7 @@ public class PlayerActionSet {
         this.actionActiveLeaderCard = new ActionActiveLeaderCard(player, actionControlSet);
         this.discardLeaderCard = new ActionDiscardLeaderCard(player, actionControlSet);
         this.getFinalResources = new ActionGetFinalResources(player, actionControlSet);
-        this.activeEndButton= new ActionEndTurn(player, actionControlSet); //TODO IMPLEMENTARLO
+        this.activeEndButton= new ActionEndTurn(player, actionControlSet);
         this.addFinalBonus= new ActionAddFinalBonus(player, actionControlSet);
         this.getTempResources = new ActionGetTempResourcesFromAllEffect(player,actionControlSet);
         this.payCard= new ActionPayCard(player,actionControlSet);
@@ -121,7 +127,6 @@ public class PlayerActionSet {
     }
 
     public void activeEndButton(){
-        //todo implementare
         this.getActiveEndButton().activate();
     }
 

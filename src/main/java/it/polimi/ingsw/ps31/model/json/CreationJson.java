@@ -1712,81 +1712,81 @@ public class CreationJson {
         ResourceList resourceToSubList1 = new ResourceList();
         resourceToSubList1.addSpecificResource(new MilitaryStrength(-1));
         Bonus resourceMalus1 = new GetResourceMalus(resourceToSubList1,null);
-        excommunicationTilesList.add(new ExcommunicationTiles(1,resourceMalus1,false));
+        excommunicationTilesList.add(new ExcommunicationTiles(1, 1,resourceMalus1,false));
 
         ResourceList resourceToSubList2 = new ResourceList();
         resourceToSubList2.addSpecificResource(new Coin(-1));
         Bonus resourceMalus2 = new GetResourceMalus(resourceToSubList2,null);
-        excommunicationTilesList.add(new ExcommunicationTiles(1,resourceMalus2,false));
+        excommunicationTilesList.add(new ExcommunicationTiles(2, 1,resourceMalus2,false));
 
         ResourceList resourceToSubList3 = new ResourceList();
         resourceToSubList3.addSpecificResource(new Servant(-1));
         Bonus resourceMalus3 = new GetResourceMalus(resourceToSubList3,null);
-        excommunicationTilesList.add(new ExcommunicationTiles(1,resourceMalus3,false));
+        excommunicationTilesList.add(new ExcommunicationTiles(3, 1,resourceMalus3,false));
 
         ResourceList resourceToSubList4a = new ResourceList();
         resourceToSubList4a.addSpecificResource(new Wood(-1));
         ResourceList resourceToSubList4b = new ResourceList();
         resourceToSubList4b.addSpecificResource(new Stone(-1));
         Bonus resourceMalus4 = new GetResourceMalus(resourceToSubList4a,resourceToSubList4b);
-        excommunicationTilesList.add(new ExcommunicationTiles(1,resourceMalus4,false));
+        excommunicationTilesList.add(new ExcommunicationTiles(4, 1,resourceMalus4,false));
 
         Bonus harvestBonus = new HarvestBonus(-3);
-        excommunicationTilesList.add(new ExcommunicationTiles(1,harvestBonus,false));
+        excommunicationTilesList.add(new ExcommunicationTiles(5, 1,harvestBonus,false));
 
         Bonus productionBonus = new ProductionBonus(-3);
-        excommunicationTilesList.add(new ExcommunicationTiles(1,productionBonus,false));
+        excommunicationTilesList.add(new ExcommunicationTiles(6, 1,productionBonus,false));
 
         Bonus coloredFamilyMemberBonus = new ColoredFamilyMembersBonus(-1);
-        excommunicationTilesList.add(new ExcommunicationTiles(1,coloredFamilyMemberBonus,false));
+        excommunicationTilesList.add(new ExcommunicationTiles(7, 1,coloredFamilyMemberBonus,false));
 
         Bonus cardDiscountBonus1 = new CardDiscountBonus(-4,CardColor.GREEN, false);
-        excommunicationTilesList.add(new ExcommunicationTiles(2,cardDiscountBonus1,false));
+        excommunicationTilesList.add(new ExcommunicationTiles(8, 2,cardDiscountBonus1,false));
 
         Bonus cardDiscountBonus2 = new CardDiscountBonus(-4,CardColor.YELLOW, false);
-        excommunicationTilesList.add(new ExcommunicationTiles(2,cardDiscountBonus2,false));
+        excommunicationTilesList.add(new ExcommunicationTiles(9, 2,cardDiscountBonus2,false));
 
         Bonus cardDiscountBonus3 = new CardDiscountBonus(-4,CardColor.BLUE, false);
-        excommunicationTilesList.add(new ExcommunicationTiles(2,cardDiscountBonus3,false));
+        excommunicationTilesList.add(new ExcommunicationTiles(10, 2,cardDiscountBonus3,false));
 
         Bonus cardDiscountBonus4 = new CardDiscountBonus(-4,CardColor.PURPLE, false);
-        excommunicationTilesList.add(new ExcommunicationTiles(2,cardDiscountBonus4,false));
+        excommunicationTilesList.add(new ExcommunicationTiles(11, 2,cardDiscountBonus4,false));
 
         List<Integer> actionSpaceMarket =new ArrayList<>();
         actionSpaceMarket.add(24);
         actionSpaceMarket.add(25);
         Bonus cantPlaceInActionSpace = new CantPlaceInActionSpace(actionSpaceMarket);
-        excommunicationTilesList.add(new ExcommunicationTiles(2,cantPlaceInActionSpace,false));
+        excommunicationTilesList.add(new ExcommunicationTiles(12, 2,cantPlaceInActionSpace,false));
 
         Bonus modifyPayServantsBonus = new ModifyPayServantsBonus(2);
-        excommunicationTilesList.add(new ExcommunicationTiles(2,modifyPayServantsBonus,false));
+        excommunicationTilesList.add(new ExcommunicationTiles(13, 2,modifyPayServantsBonus,false));
 
         Bonus noFirstActionTurn = new NoFirstActionTurn();
-        excommunicationTilesList.add(new ExcommunicationTiles(2,noFirstActionTurn,false));
+        excommunicationTilesList.add(new ExcommunicationTiles(14, 2,noFirstActionTurn,false));
 
         Bonus lostExtraFinalVictoryPointBonus1 = new LostExtraFinalVictoryPointBonus(CardColor.BLUE);
-        excommunicationTilesList.add(new ExcommunicationTiles(3,lostExtraFinalVictoryPointBonus1,true));
+        excommunicationTilesList.add(new ExcommunicationTiles(15, 3,lostExtraFinalVictoryPointBonus1,true));
 
         Bonus lostExtraFinalVictoryPointBonus2 = new LostExtraFinalVictoryPointBonus(CardColor.PURPLE);
-        excommunicationTilesList.add(new ExcommunicationTiles(3,lostExtraFinalVictoryPointBonus2,true));
+        excommunicationTilesList.add(new ExcommunicationTiles(16, 3,lostExtraFinalVictoryPointBonus2,true));
 
         Bonus lostExtraFinalVictoryPointBonus3 = new LostExtraFinalVictoryPointBonus(CardColor.GREEN);
-        excommunicationTilesList.add(new ExcommunicationTiles(3,lostExtraFinalVictoryPointBonus3,true));
+        excommunicationTilesList.add(new ExcommunicationTiles(17, 3,lostExtraFinalVictoryPointBonus3,true));
 
         Bonus lostFinalVictoryPointBonus1 = new LostFinalVictoryPointBonus(new VictoryPoint(1));
-        excommunicationTilesList.add(new ExcommunicationTiles(3,lostFinalVictoryPointBonus1,true));
+        excommunicationTilesList.add(new ExcommunicationTiles(18, 3,lostFinalVictoryPointBonus1,true));
 
         Bonus lostFinalVictoryPointBonus2 = new LostFinalVictoryPointBonus(new MilitaryStrength(1));
-        excommunicationTilesList.add(new ExcommunicationTiles(3,lostFinalVictoryPointBonus2,true));
+        excommunicationTilesList.add(new ExcommunicationTiles(19, 3,lostFinalVictoryPointBonus2,true));
 
         ResourceList resourceToSubList = new ResourceList();
         resourceToSubList.addSpecificResource(new Wood(0));
         resourceToSubList.addSpecificResource(new Stone(0));
         Bonus lostFinalVictoryPointFromCardCosts = new LostFinalVictoryPointFromCardCosts(resourceToSubList,CardColor.YELLOW);
-        excommunicationTilesList.add(new ExcommunicationTiles(3,lostFinalVictoryPointFromCardCosts,true));
+        excommunicationTilesList.add(new ExcommunicationTiles(20, 3,lostFinalVictoryPointFromCardCosts,true));
 
         Bonus lostFinalVictoryPointFromPlayerResources = new LostFinalVictoryPointFromPlayerResources();
-        excommunicationTilesList.add(new ExcommunicationTiles(3,lostFinalVictoryPointFromPlayerResources,true));
+        excommunicationTilesList.add(new ExcommunicationTiles(21, 3,lostFinalVictoryPointFromPlayerResources,true));
 
 
         return new ArrayList<>(excommunicationTilesList);
