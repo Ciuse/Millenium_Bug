@@ -7,7 +7,6 @@ import it.polimi.ingsw.ps31.model.card.Character;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.effect.*;
 import it.polimi.ingsw.ps31.model.gameResource.*;
-import it.polimi.ingsw.ps31.model.player.FamilyMember;
 import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 
 import java.util.ArrayList;
@@ -1696,9 +1695,11 @@ public class CreationJson {
 
     public void createJsonFile(){
 
-        JsonFile.newFile("JsonObject.json");
-        Gson gson = JsonGameObject.gsonGameBuilder();
-        String jsonString = gson.toJson(this.jsonGameObject);
-        JsonFile.saveJsonToFile(jsonString,"JsonObject.json");
+        if(JsonFile.newFile("JsonObject.json")) {
+            Gson gson = JsonGameObject.gsonGameBuilder();
+            String jsonString = gson.toJson(this.jsonGameObject);
+            JsonFile.saveJsonToFile(jsonString, "JsonObject.json");
+        }
+
     }
 }

@@ -53,4 +53,9 @@ public class ServerInputBuffer {
         return vcVisitableBuffer.isEmpty();
     }
 
+    public void disconnect()
+    {
+        playerCommunicationInterface.closeConnection();
+    }
+
 }

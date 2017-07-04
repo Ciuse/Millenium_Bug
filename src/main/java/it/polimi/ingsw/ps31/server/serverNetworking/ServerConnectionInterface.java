@@ -11,6 +11,7 @@ import it.polimi.ingsw.ps31.networking.JsonNetworking;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by Francesco on 08/06/2017.
@@ -19,6 +20,8 @@ import java.sql.Timestamp;
 public abstract class ServerConnectionInterface {
     private final ConnectionType connectionType;
     protected ConnectionMessage connectionMessage = null;
+    private boolean closed = false;
+    private List<GenericMessage> disconnectionMessageBuffer;
 
     /* Constructor */
     public ServerConnectionInterface(ConnectionType connectionType)
@@ -35,12 +38,21 @@ public abstract class ServerConnectionInterface {
 
     public final void sendToClient(GenericMessage msg)
     {
-        //System.out.println("ServerConnectionInterface:sendToClient> invio messaggio: "+msg.toString());
-        writeOnNetwork(serialize(msg));
+        System.out.println("ServerConnectionInterface:sendToClinet> msg = "+msg+"; closed="+closed);
+
+        if( closed )
+            disconnectionMessageBuffer.add(msg);
+        else
+        {
+            //System.out.println("ServerConnectionInterface:sendToClient> invio messaggio: "+msg.toString());
+            writeOnNetwork(serialize(msg));
+        }
     }
 
     public final VCVisitable readFromClient() throws IOException
     {
+        if( closed )
+            return null;
         return deserialize(readFromNetwork());
     }
 
@@ -94,9 +106,12 @@ public abstract class ServerConnectionInterface {
         return connectionMessage;
     }
 
-    public abstract void disconnect();
+    public final void disconnect(){
+        this.closed = true;
+        closePhysicalConnection();
+    }
 
-
+    protected abstract void closePhysicalConnection();
 
     public boolean receivedCM()
     {
