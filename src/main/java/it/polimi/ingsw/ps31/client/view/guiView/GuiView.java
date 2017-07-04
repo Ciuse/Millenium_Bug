@@ -2,12 +2,14 @@ package it.polimi.ingsw.ps31.client.view.guiView;
 
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskPlayerColorFrame;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.MainFrame;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,19 +18,21 @@ import java.awt.event.ActionListener;
  */
 public class GuiView extends View implements ActionListener{
     private MainFrame mainFrame;
+    private AskPlayerColorFrame askPlayerColorFrame;
 
     public GuiView(PlayerId viewId, int playerMaxNumber) {
-        super(viewId, playerMaxNumber);
+      super(viewId, playerMaxNumber);
         this.mainFrame=new MainFrame(this);
         SwingUtilities.invokeLater(new Runnable() {
-            @Override
+           @Override
             public void run() {
-                runTerminal();
-//                printTower();
+               runTerminal();
             }
         });
 
-    }
+   }
+
+
 
     public void actionPerformed(ActionEvent ev) {
 
@@ -37,7 +41,6 @@ public class GuiView extends View implements ActionListener{
 
         @Override
     public void askActionSpace(ChoiceActionSpace choiceActionSpace) {
-
     }
 
     @Override
@@ -67,6 +70,35 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void askPlayerColor(ChoiceColor choiceColor) {
+        if(choiceColor.getPlayerColorList().size()==2){
+            askPlayerColorFrame.getButtons()[0].setBackground(Color.RED);
+            askPlayerColorFrame.getButtons()[0].setEnabled(true);
+            askPlayerColorFrame.getButtons()[1].setBackground(Color.GREEN);
+            askPlayerColorFrame.getButtons()[1].setEnabled(true);
+            askPlayerColorFrame.startMainFrame();
+        }
+        if(choiceColor.getPlayerColorList().size()==3){
+            askPlayerColorFrame.getButtons()[0].setBackground(Color.RED);
+            askPlayerColorFrame.getButtons()[0].setEnabled(true);
+            askPlayerColorFrame.getButtons()[1].setBackground(Color.GREEN);
+            askPlayerColorFrame.getButtons()[1].setEnabled(true);
+            askPlayerColorFrame.getButtons()[2].setBackground(Color.YELLOW);
+            askPlayerColorFrame.getButtons()[2].setEnabled(true);
+            askPlayerColorFrame.startMainFrame();
+        }
+        if(choiceColor.getPlayerColorList().size()==4){
+            askPlayerColorFrame.getButtons()[0].setBackground(Color.RED);
+            askPlayerColorFrame.getButtons()[0].setEnabled(true);
+            askPlayerColorFrame.getButtons()[1].setBackground(Color.GREEN);
+            askPlayerColorFrame.getButtons()[1].setEnabled(true);
+            askPlayerColorFrame.getButtons()[2].setBackground(Color.YELLOW);
+            askPlayerColorFrame.getButtons()[2].setEnabled(true);
+            askPlayerColorFrame.getButtons()[3].setBackground(Color.BLUE);
+            askPlayerColorFrame.getButtons()[3].setEnabled(true);
+            askPlayerColorFrame.startMainFrame();
+        }
+
+
 
     }
 
@@ -125,6 +157,7 @@ public class GuiView extends View implements ActionListener{
     @Override
     public void runTerminal() {
         mainFrame.startMainFrame();
+
     }
 
     @Override
