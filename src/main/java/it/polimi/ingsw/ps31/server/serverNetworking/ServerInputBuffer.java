@@ -37,7 +37,7 @@ public class ServerInputBuffer {
     /* Reading method */
     public VCVisitable readVC()
     {
-        System.out.println("ServerInputBuffer:readVC> Leggo da buffer. Stato="+vcVisitableBuffer.isEmpty());
+        //System.out.println("ServerInputBuffer:readVC> Leggo da buffer. Stato="+vcVisitableBuffer.isEmpty());
 
         VCVisitable ret = null;
         if ( !this.vcVisitableBuffer.isEmpty() )

@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps31.server;
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.controller.Controller;
+import it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.Model;
@@ -19,6 +20,50 @@ import it.polimi.ingsw.ps31.server.serverNetworking.ServerListeningThread;
 /**
  * Created by Francesco on 08/06/2017.
  */
+class InputBufferReader extends Thread{
+    private PlayerId playerToRead;
+    private boolean listenNetworkInterfaces = true;
+    private NetworkInterface networkInterface;
+    private VirtualView virtualView;
+
+    public InputBufferReader(NetworkInterface networkInterface, VirtualView virtualView, PlayerId firstPlayer)
+    {
+        this.networkInterface = networkInterface;
+        this.virtualView = virtualView;
+        changePlayer(firstPlayer);
+    }
+
+    public void run() {
+        System.out.println("Match:run> Entro nel run");
+        //Ciclo in attesa di messaggi sulle socket
+        while (listenNetworkInterfaces) {
+            //System.out.println("Match:run> ascolto. Timestamp="+System.currentTimeMillis());
+
+            //todo: cambiare, dal model, il playerId da ascoltare
+            VCVisitable vcVisitable = networkInterface.readFromClient(playerToRead);
+            if (vcVisitable != null)
+                virtualView.notifyController(vcVisitable);
+
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+    public void changePlayer(PlayerId playerId)
+    {
+        this.playerToRead = playerId;
+    }
+
+    public void alt()
+    {
+        listenNetworkInterfaces = false;
+    }
+
+}
+
 public class Match extends Thread{
     private final int MAX_PLAYER_NUMBER = PlayerId.values().length;
     private final NetworkInterface networkInterface;
@@ -26,11 +71,7 @@ public class Match extends Thread{
     private InformationFromNetworking informationFromNetworking;
     private PlayerCommunicationInterface hostConnection; //primo client che si collega alla partita
     private int id;
-    private boolean listenNetworkInterfaces = true;
-    private PlayerId playerToQuery;
-
-    private final Object playerToQueryLock = new Object();
-
+    private InputBufferReader inputBufferReader;
     //Attibuti di test
     private Model model;
     private VirtualView virtualView;
@@ -39,7 +80,7 @@ public class Match extends Thread{
 
     /* Constructor */
     public Match(PlayerCommunicationInterface host, int id, MatchTable matchTable){
-        System.out.println("Match: init> Match in costruzione");
+        //System.out.println("Match: init> Match in costruzione");
         this.informationFromNetworking = new InformationFromNetworking();
         this.model = new Model();
         this.gameLogic = new GameLogic(informationFromNetworking, model, this);
@@ -53,37 +94,21 @@ public class Match extends Thread{
 
     public void initializeGame()
     {
-        System.out.println("Match:run> entrato nello start");
+        //System.out.println("Match:run> entrato nello start");
         this.virtualView=new VirtualView(networkInterface);
         Controller controller = new Controller(model,virtualView,gameLogic.getGameUtility());
+        this.inputBufferReader = new InputBufferReader(this.networkInterface, this.virtualView, PlayerId.ONE);
         virtualView.addController(controller);
         controller.start();
         gameLogic.createJson();
         gameLogic.startConnection(virtualView);
-        this.playerToQuery = PlayerId.ONE;
         start();
-        gameLogic.playGame();
     }
 
     public void run()
     {
-        System.out.println("Match:run> Entro nel run");
-        //Ciclo in attesa di messaggi sulle socket
-        while ( listenNetworkInterfaces )
-        {
-            System.out.println("Match:run> ascolto. Timestamp="+System.currentTimeMillis());
-
-            //todo: cambiare, dal model, il playerId da ascoltare
-            VCVisitable vcVisitable = networkInterface.readFromClient(playerToQuery);
-            if( vcVisitable != null)
-                virtualView.notifyController(vcVisitable);
-
-            try {
-                sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        inputBufferReader.start();
+        gameLogic.playGame();
     }
 
     /* Getters & Setters*/
@@ -101,17 +126,17 @@ public class Match extends Thread{
 
     public void sendViews(int playerNumber)
     {
-        System.out.println("Match : sendViews()> VIEW PARTENZA!!!");
+        //System.out.println("Match : sendViews()> VIEW PARTENZA!!!");
 
         //spedisco le view ai client
         for(int i = 0; i<playerNumber; i++)
         {
-            System.out.println("Match : sendViews()> entrato nel ciclo!");
+            //System.out.println("Match : sendViews()> entrato nel ciclo!");
             PlayerId currentPlayerId = PlayerId.values()[i];
             System.out.println("Match : sendViews()> Player: " + currentPlayerId);
             networkInterface.sendToClient(new ViewMessage(currentPlayerId, playerNumber), currentPlayerId);
         }
-        System.out.println("Match : sendViews()> fuori dal ciclo");
+       // System.out.println("Match : sendViews()> fuori dal ciclo");
 
     }
 
@@ -136,11 +161,6 @@ public class Match extends Thread{
         return started;
     }
 
-    public void setListenNetworkInterfaces( boolean listenNetworkInterfaces )
-    {
-        this.listenNetworkInterfaces = listenNetworkInterfaces;
-    }
-
     public void disconnectPlayer(PlayerId playerId)
     {
         networkInterface.disconnectPlayer(playerId);
@@ -152,6 +172,10 @@ public class Match extends Thread{
 
     }
 
+    public void listenDifferentPlayer(PlayerId playerId)
+    {
+        inputBufferReader.changePlayer(playerId);
+    }
 
     @Override
     public boolean equals(Object o) {

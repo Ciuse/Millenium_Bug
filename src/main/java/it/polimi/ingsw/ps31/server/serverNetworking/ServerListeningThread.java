@@ -34,7 +34,7 @@ public class ServerListeningThread extends Thread {
                 closeConnection = true; //Esce dal ciclo e disconnette il client
             }
 
-            System.out.println("ServerListeningThread:run> messaggio letto. Bufferizzo");
+            //System.out.println("ServerListeningThread:run> messaggio letto. Bufferizzo");
 
             serverInputBuffer.bufferizeMessage(msgFromNetwork);
         }

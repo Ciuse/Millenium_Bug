@@ -107,7 +107,9 @@ public class MatchTable {
         this.matchTable.add(new MatchRow(match, playerCommunicationInterface));
 
         //TODO: istruzione di test da cancellare
-        System.out.println("Server> Creata nuova partita #"+match.getMatchId()+". Client associato.");
+        System.out.println("MatchTable:newMatch> Creata nuova partita #"+match.getMatchId()+". Client associato.");
+
+        match.start();
 
         return match;
     }
