@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
+import it.polimi.ingsw.ps31.model.constants.DiceColor;
+import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,10 +14,8 @@ import java.awt.event.ActionListener;
  */
 public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
     private ActionListener listener;
-    private ButtonCard buttonFamilyMember1;
-    private ButtonCard buttonFamilyMember2;
-    private ButtonCard buttonFamilyMember3;
-    private ButtonCard buttonFamilyMember4;
+    private FamilyMemberButton[] buttonFamilyMember = new FamilyMemberButton[4];
+
 
     public void attach (ActionListener listener){
         this.listener=listener;
@@ -37,51 +37,67 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        buttonFamilyMember1 = new ButtonCard();
-        buttonFamilyMember1.setName("1");
-        buttonFamilyMember1.addActionListener(this);
-        buttonFamilyMember1.setBackground(Color.white);
+        buttonFamilyMember[0] = new FamilyMemberButton();
+        buttonFamilyMember[0].setName("1");
+        buttonFamilyMember[0].addActionListener(this);
+        buttonFamilyMember[0].setBackground(Color.white);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        pane.add(buttonFamilyMember1, gbc);
+        pane.add(buttonFamilyMember[0], gbc);
 
-        buttonFamilyMember2 = new ButtonCard();
-        buttonFamilyMember2.setName("2");
-        buttonFamilyMember2.addActionListener(this);
-        buttonFamilyMember2.setBackground(Color.orange);
+        buttonFamilyMember[1] = new FamilyMemberButton();
+        buttonFamilyMember[1].setName("2");
+        buttonFamilyMember[1].addActionListener(this);
+        buttonFamilyMember[1].setBackground(Color.orange);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        pane.add(buttonFamilyMember2, gbc);
+        pane.add(buttonFamilyMember[1], gbc);
 
-        buttonFamilyMember3 = new ButtonCard();
-        buttonFamilyMember3.setName("3");
-        buttonFamilyMember3.addActionListener(this);
-        buttonFamilyMember3.setBackground(Color.black);
+        buttonFamilyMember[2] = new FamilyMemberButton();
+        buttonFamilyMember[2].setName("3");
+        buttonFamilyMember[2].addActionListener(this);
+        buttonFamilyMember[2].setBackground(Color.black);
         gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        pane.add(buttonFamilyMember3, gbc);
+        pane.add(buttonFamilyMember[2], gbc);
 
-        buttonFamilyMember4 = new ButtonCard();
-        buttonFamilyMember4.setName("4");
-        buttonFamilyMember4.addActionListener(this);
-        buttonFamilyMember4.setBackground(Color.cyan);
+        buttonFamilyMember[3] = new FamilyMemberButton();
+        buttonFamilyMember[3].setName("4");
+        buttonFamilyMember[3].addActionListener(this);
+        buttonFamilyMember[3].setBackground(Color.cyan);
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        pane.add(buttonFamilyMember4, gbc);
+        pane.add(buttonFamilyMember[3], gbc);
 
 
+    }
+
+    public FamilyMemberButton[] getButtonFamilyMember() {
+        return buttonFamilyMember;
+    }
+
+    public DiceColor getFamilyMemberColor(Color color){
+        if(color==Color.BLACK){
+            return DiceColor.BLACK;
+        }if(color==Color.ORANGE){
+            return DiceColor.ORANGE;
+        }if(color==Color.WHITE){
+            return DiceColor.WHITE;
+        }if(color==Color.CYAN){
+            return DiceColor.NEUTRAL;
+        }else return null;
     }
 
 

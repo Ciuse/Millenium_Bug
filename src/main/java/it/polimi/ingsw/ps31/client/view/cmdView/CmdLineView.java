@@ -657,7 +657,12 @@ public class CmdLineView extends View {
             e.printStackTrace();
         }
     }
-    
+
+    @Override
+    public void printMyFamilyMembersOnPlayerPanel() {
+
+    }
+
     @Override
     public void printDevelopmentCard(int cardId){
 
