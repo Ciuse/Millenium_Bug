@@ -67,19 +67,15 @@ public class SocketAccepter{
         //TODO: istruzione di test da cancellare
         System.out.println("SocketAccepter:acceptConnection> Connessione in ingresso. Deviata su porta "+clientSocket.getPort()+".");
 
+
+
         try {
             SocketServerConnection connectionInterface = new SocketServerConnection(clientSocket);
-            PlayerCommunicationInterface playerCommunicationInterface = new PlayerCommunicationInterface(connectionInterface);
-            System.out.println("SocketAccepter:acceptConnection> Debug 1");
+            PlayerCommunicationInterface playerCommunicationInterface = new PlayerCommunicationInterface(connectionInterface, matchTable);
+            //System.out.println("SocketAccepter:acceptConnection> Debug 1");
 
-            do {
-                try {
-                    sleep(200);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-            } while ( !playerCommunicationInterface.receivedCM() );
+            connectionInterface.writeOnNetwork("Connection ok");
+            playerCommunicationInterface.setConnectionMessage(connectionInterface.waitForConnectionMessage());
 
             //aggiungo il client alla prima partita libera
             matchTable.addPlayer(playerCommunicationInterface);

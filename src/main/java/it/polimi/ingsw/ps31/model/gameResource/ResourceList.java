@@ -80,10 +80,12 @@ public class ResourceList {
      */
     public void discountSpecificResource(Resource resource)
     {
-        for (Resource resourceList : this.resourceList) {
+        if ( resource != null) {
+            for (Resource resourceList : this.resourceList) {
 
-            if (resourceList.getClass().equals(resource.getClass())) {
-                resourceList.discountValue(resource.getValue());
+                if (resourceList.getClass().equals(resource.getClass())) {
+                    resourceList.discountValue(resource.getValue());
+                }
             }
         }
     }

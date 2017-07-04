@@ -36,7 +36,6 @@ class MatchRow {
 
         //passo il socket alla partita
         this.started = this.match.addConnection(client);
-
     }
 
     public Match getMatch()
@@ -44,6 +43,10 @@ class MatchRow {
         return this.match;
     }
 
+    public ArrayList<PlayerCommunicationInterface> getClientList()
+    {
+        return new ArrayList<>(this.clientList);
+    }
 }
 
 class DisconnectedClient{
@@ -97,9 +100,9 @@ public class MatchTable {
     private Match newMatch(PlayerCommunicationInterface playerCommunicationInterface)
     {
         //TODO: istruzione di test da cancellare
-        System.out.println("Server> inizio creazione match");
+        System.out.println("MatchTable:newMatch> inizio creazione match");
 
-        //Creo il match (che è un thread)
+        //Creo il match
         Match match = new Match(playerCommunicationInterface, nextMatchId, this);
         nextMatchId++;
 
@@ -109,13 +112,15 @@ public class MatchTable {
         //TODO: istruzione di test da cancellare
         System.out.println("MatchTable:newMatch> Creata nuova partita #"+match.getMatchId()+". Client associato.");
 
-        match.start();
+        //match.start();
 
         return match;
     }
 
     public Match addPlayer(PlayerCommunicationInterface connection)
     {
+        System.out.println("MatchTable:addPlayer> CM=" + connection.getConnectionMessage().toString());
+
         //Controllo se la connessione corrisponde a un client disconnesso in precedenza
         boolean found = false;
         int i = 0;
@@ -166,10 +171,26 @@ public class MatchTable {
         return currentMatch.getMatch(); //todo a cosa serve??
     }
 
-    public void disconnectClient (ServerConnectionInterface connection, Match match, PlayerId playerId)
+    private Match communicationInterfaceToMatch(PlayerCommunicationInterface communicationInterface)
     {
-        System.out.println("MatchTable : disconnectClient()> disconnetto client "+connection.getConnectionInfo()+
-                            " dal match "+match.getMatchId());
+        for(MatchRow currentRow : matchTable)
+        {
+            if ( currentRow.getClientList().contains(communicationInterface) )
+                return currentRow.getMatch();
+        }
+
+        return null;
+    }
+
+    public void disconnectClient (PlayerCommunicationInterface connection)//, Match match, PlayerId playerId)
+    {
+        Match match = communicationInterfaceToMatch(connection);
+        System.out.println("MatchTable : disconnectClient()> match:" + match);
+        System.out.println("MatchTable : disconnectClient()> connection:" + connection);
+        PlayerId playerId = match.connectionToPlayerId(connection);
+
+        System.out.println("MatchTable : disconnectClient()> disconnetto client "+connection.toString()+
+                          " dal match "+match.getMatchId());
         this.disconnections.add(new DisconnectedClient(connection.getConnectionMessage(), match, playerId));
         match.disconnectPlayer(playerId);
 
