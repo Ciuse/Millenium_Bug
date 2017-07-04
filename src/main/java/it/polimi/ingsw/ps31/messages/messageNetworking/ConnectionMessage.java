@@ -53,7 +53,10 @@ ConnectionMessage extends NetworkingMessage {
         return new ConcreteEnvelope(this);
     }
 
-
+    public String toString()
+    {
+        return "["+username+"|"+password+"|"+typeOfView+"]";
+    }
 
     @Override
     public boolean equals(Object o) {

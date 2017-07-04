@@ -1,17 +1,23 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.networking.ConnectionType;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.List;
 
 /**
  * Created by Francesco on 09/06/2017.
  */
 public class SocketServerConnection extends ServerConnectionInterface {
     private final Socket socket;
-    private  BufferedReader socketReader;
-    private  BufferedWriter socketWriter;
+    private BufferedReader socketReader;
+    private BufferedWriter socketWriter;
+
+    //socket lock (locket)
+    private final Object readLocket = new Object();
+    private final Object writeLocket = new Object();
 
     /* Constructor */
     public SocketServerConnection(Socket socket) throws IOException {
@@ -31,10 +37,15 @@ public class SocketServerConnection extends ServerConnectionInterface {
 
 
     @Override
-    protected String readFromNetwork() throws IOException {
+    protected String readFromNetwork() throws IOException
+    {
         String msgToReturn = null;
-        //if(socketReader.ready())
-            msgToReturn = socketReader.readLine();
+        synchronized (readLocket) {
+            System.out.println("SocketServerconnection:readFromNetwork> entro nel synch. State = "+socketReader.ready());
+            if( !socket.isClosed() )
+                msgToReturn = socketReader.readLine();
+            System.out.println("SocketServerconnection:readFromNetwork> esco dal synch. State = "+socketReader.ready());
+        }
 
         return msgToReturn;
     }
@@ -42,29 +53,46 @@ public class SocketServerConnection extends ServerConnectionInterface {
     @Override
     protected void writeOnNetwork(String msg)
     {
-        try {
-            socketWriter.write(msg+ "\n");
-            socketWriter.flush();
+        System.out.println("SocketServerconnection:writeOnNetwork> msg = "+msg);
 
+        boolean ret = false;
+        try
+        {
+
+            synchronized (writeLocket) {
+                System.out.println("SocketServerconnection:writeOnNetwork> entro nel synch");
+
+                if( !socket.isClosed() ){
+                    socketWriter.write(msg + "\n");
+                    socketWriter.flush();
+                }
+                System.out.println("SocketServerconnection:writeOnNetwork> esco dal synch");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override
     public String getConnectionInfo() {
-        Integer boh = (Integer)socket.getPort();
-        return boh.toString();
+        return ((Integer)socket.getPort()).toString();
+        //Integer boh = socket.getPort();
+        //return boh.toString();
     }
 
     @Override
-    public void disconnect()
+    protected void closePhysicalConnection()
     {
         try
         {
-            this.socket.close();
-            this.socketWriter.close();
-            this.socketReader.close();
+            synchronized (readLocket) {
+                synchronized (writeLocket) {
+                    this.socketWriter.close();
+                    this.socketReader.close();
+                    this.socket.close();
+                }
+            }
         } catch (IOException e)
         {
             e.printStackTrace();

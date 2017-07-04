@@ -1817,9 +1817,11 @@ public class CreationJson {
 
     public void createJsonFile(){
 
-        JsonFile.newFile("JsonObject.json");
-        Gson gson = JsonGameObject.gsonGameBuilder();
-        String jsonString = gson.toJson(this.jsonGameObject);
-        JsonFile.saveJsonToFile(jsonString,"JsonObject.json");
+        if(JsonFile.newFile("JsonObject.json")) {
+            Gson gson = JsonGameObject.gsonGameBuilder();
+            String jsonString = gson.toJson(this.jsonGameObject);
+            JsonFile.saveJsonToFile(jsonString, "JsonObject.json");
+        }
+
     }
 }

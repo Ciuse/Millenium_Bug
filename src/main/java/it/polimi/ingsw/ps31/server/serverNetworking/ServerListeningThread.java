@@ -23,23 +23,25 @@ public class ServerListeningThread extends Thread {
 
     public void run()
     {
-        System.out.println("ServerListeningThread:run> inizio ascolto da socket");
+        System.out.println("ServerListeningThread:run> inizio ascolto del client");
         while (!closeConnection)
         {
-            VCVisitable msgFromNetwork = null;
+            VCVisitable msgFromNetwork;
             try {
                 msgFromNetwork = serverConnectionInterface.readFromClient();
+
+                serverInputBuffer.bufferizeMessage(msgFromNetwork);
             } catch (IOException e)
             {
+                System.out.println("ServerListeningThread:run> client "+serverConnectionInterface.getConnectionInfo()+" disconnesso");
                 closeConnection = true; //Esce dal ciclo e disconnette il client
             }
 
-            //System.out.println("ServerListeningThread:run> messaggio letto. Bufferizzo");
-
-            serverInputBuffer.bufferizeMessage(msgFromNetwork);
         }
         //todo: istruzioni per disconnettere il client
         //            matchTable.disconnectClient(serverConnectionInterface, networkInterface.getMatch(), this.playerId);
+        serverConnectionInterface.disconnect();
+        serverInputBuffer.disconnect();
 
     }
 
