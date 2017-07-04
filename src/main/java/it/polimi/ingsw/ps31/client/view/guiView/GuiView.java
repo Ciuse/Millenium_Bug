@@ -4,8 +4,11 @@ import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskPlayerColorFrame;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.MainFrame;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
 import it.polimi.ingsw.ps31.model.choiceType.*;
+import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import javax.swing.*;
@@ -206,6 +209,22 @@ public class GuiView extends View implements ActionListener{
 
     }
 
+    public void printMyFamilyMembersOnPlayerPanel() {
+                for (StateViewFamilyMember family : super.getMyStateViewPlayer().getStateViewFamilyMemberList()
+                        ) {
+                            if(family.getActionSpaceId()!=-1){
+                                DiceColor colorFamilyMember = family.getDiceColor();
+                                for (int i =0;i<4;i++)
+                                    if( colorFamilyMember.equals(mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().getFamilyMemberColor(mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().getButtonFamilyMember()[i].getBackground()))){
+                                        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().getButtonFamilyMember()[i].setEnabled(false);
+                                }
+
+                            }
+                }
+            }
+
+
+
     @Override
     public void printBoardActionSpace() {
 
@@ -220,6 +239,8 @@ public class GuiView extends View implements ActionListener{
     public void printTextBox() {
 
     }
+
+
 
     @Override
     public void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView) {

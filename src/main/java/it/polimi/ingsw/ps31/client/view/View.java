@@ -157,6 +157,7 @@ public abstract class View extends Observable implements Observer {
                 ) {
             if (viewPlayer.getPlayerId().equals(stateAllFamilyMember.getIdFamilyMemberList()))
                 viewPlayer.updateState(stateAllFamilyMember);
+
         }
     }
 
@@ -314,6 +315,8 @@ public abstract class View extends Observable implements Observer {
     public abstract void printDevelopmentCard(int cardId);
 
     public abstract void printTextBox();
+
+    public abstract void printMyFamilyMembersOnPlayerPanel();
 
     public abstract void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView);
 

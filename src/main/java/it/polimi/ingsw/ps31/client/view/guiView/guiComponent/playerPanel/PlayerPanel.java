@@ -12,6 +12,11 @@ import java.awt.event.ActionListener;
  */
 public class PlayerPanel extends JPanel implements ActionListener {
     private GuiView guiView;
+    private PersonalBonusTilesPanel jPersonalBonusTilesPanel;
+    private PersonalBoardPanel jPersonalBoardPanel;
+    private ExtraCardPanel extraCardPanel;
+    private LeaderCardPanel jLeaderCardPanel;
+    private FamilyMemberPanel jFamilyMemberPanel;
 
     public PlayerPanel(GuiView guiView) {
         this.guiView = guiView;
@@ -31,7 +36,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        PersonalBonusTilesPanel jPersonalBonusTilesPanel = new PersonalBonusTilesPanel();
+        jPersonalBonusTilesPanel = new PersonalBonusTilesPanel();
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridheight = 3;
@@ -43,7 +48,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         jPersonalBonusTilesPanel.attach(this);
 
 
-        PersonalBoardPanel jPersonalBoardPanel = new PersonalBoardPanel();
+        jPersonalBoardPanel = new PersonalBoardPanel();
 
         gbc.gridx = 1;
         gbc.gridy = 1;
@@ -56,7 +61,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         pane.add(jPersonalBoardPanel, gbc);
         jPersonalBoardPanel.attach(this);
 
-        ExtraCardPanel extraCardPanel = new ExtraCardPanel();
+        extraCardPanel = new ExtraCardPanel();
 
         gbc.gridx = 3;
         gbc.gridy = 1;
@@ -70,7 +75,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         extraCardPanel.attach(this);
 
 
-        LeaderCardPanel jLeaderCardPanel = new LeaderCardPanel();
+        jLeaderCardPanel = new LeaderCardPanel();
 
         gbc.gridx = 4;
         gbc.gridy = 1;
@@ -84,7 +89,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         jLeaderCardPanel.attach(this);
 
 
-        FamilyMemberPanel jFamilyMemberPanel = new FamilyMemberPanel();
+        jFamilyMemberPanel = new FamilyMemberPanel();
 
         gbc.gridx = 4;
         gbc.gridy = 2;
@@ -97,6 +102,26 @@ public class PlayerPanel extends JPanel implements ActionListener {
         pane.add(jFamilyMemberPanel, gbc);
         jFamilyMemberPanel.attach(this);
 
+    }
+
+    public PersonalBonusTilesPanel getjPersonalBonusTilesPanel() {
+        return jPersonalBonusTilesPanel;
+    }
+
+    public PersonalBoardPanel getjPersonalBoardPanel() {
+        return jPersonalBoardPanel;
+    }
+
+    public ExtraCardPanel getExtraCardPanel() {
+        return extraCardPanel;
+    }
+
+    public LeaderCardPanel getjLeaderCardPanel() {
+        return jLeaderCardPanel;
+    }
+
+    public FamilyMemberPanel getjFamilyMemberPanel() {
+        return jFamilyMemberPanel;
     }
 
     @Override
