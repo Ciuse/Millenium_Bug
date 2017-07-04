@@ -217,14 +217,7 @@ public class GuiView extends View implements ActionListener{
     public void printMyFamilyMembersOnPlayerPanel() {
                 for (StateViewFamilyMember family : super.getMyStateViewPlayer().getStateViewFamilyMemberList()
                         ) {
-                            if(family.getActionSpaceId()!=-1){
-                                DiceColor colorFamilyMember = family.getDiceColor();
-                                for (int i =0;i<4;i++)
-                                    if( colorFamilyMember.equals(mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().getFamilyMemberColor(mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().getButtonFamilyMember()[i].getBackground()))){
-                                        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().getButtonFamilyMember()[i].setEnabled(false);
-                                }
-
-                            }
+                    mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().printMyFamilyMembersOnPlayerPanel(family);
                 }
             }
 
