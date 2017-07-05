@@ -24,11 +24,11 @@ class InputBufferReader extends Thread{
     private VirtualView virtualView;
     private int connectedPlayers;
 
-    public InputBufferReader(NetworkInterface networkInterface, VirtualView virtualView)
+    public InputBufferReader(NetworkInterface networkInterface, VirtualView virtualView, int initialNumberOfConnections)
     {
         this.networkInterface = networkInterface;
         this.virtualView = virtualView;
-        this.connectedPlayers = 0;
+        this.connectedPlayers = initialNumberOfConnections;
     }
 
     public void run() {
@@ -73,6 +73,7 @@ public class Match extends Thread{
     //Attibuti di test
     private Model model;
     private VirtualView virtualView;
+    private int connectedPlayers;
 
     //private List<Socket> sockets = new ArrayList<>();
 
@@ -87,6 +88,7 @@ public class Match extends Thread{
         this.hostConnection = host;
         this.id = id;
         this.disconnectedPlayers = new ArrayList<>();
+        this.connectedPlayers = 0;
 
         addConnection(host);
         start();
@@ -98,7 +100,7 @@ public class Match extends Thread{
         //System.out.println("Match:run> entrato nello start");
         this.virtualView=new VirtualView(networkInterface);
         Controller controller = new Controller(model,virtualView,gameLogic.getGameUtility());
-        this.inputBufferReader = new InputBufferReader(this.networkInterface, this.virtualView);
+        this.inputBufferReader = new InputBufferReader(this.networkInterface, this.virtualView, this.connectedPlayers);
         virtualView.addController(controller);
         controller.start();
         gameLogic.createJson();
@@ -158,7 +160,10 @@ public class Match extends Thread{
 
         clientConnection.switchOn();
 
-        inputBufferReader.incConnectedPlayers();
+        if( inputBufferReader == null)
+            this.connectedPlayers++;
+        else
+            inputBufferReader.incConnectedPlayers();
 
         boolean started = ( playerNumber == MAX_PLAYER_NUMBER );
 
