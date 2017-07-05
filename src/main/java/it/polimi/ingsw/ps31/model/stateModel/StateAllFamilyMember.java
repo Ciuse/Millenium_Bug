@@ -6,6 +6,11 @@ import java.util.List;
 
 /**
  * Created by giulia on 08/06/2017.
+ * Stato che raccoglie tutti gli stati dei family member per ottimizzarne l invio quando è necessario aggiornarli tutti
+ *
+ * @see StateType
+ * @see it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState
+ * @see StateFamilyMember
  */
 public class StateAllFamilyMember extends StateType {
     private final List<StateFamilyMember> stateAllFamilyMember;

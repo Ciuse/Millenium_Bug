@@ -24,9 +24,11 @@ public abstract class View extends Observable implements Observer {
     private final List<StateViewPlayer> stateViewPlayerList = new ArrayList<>();
     private final List<StateViewPersonalBoard> stateViewPersonalBoardList = new ArrayList<>();
     private final StateViewGame stateViewGame;
-    //private ClientNetworkInterface networkInterface;
-    protected boolean firstTime = true; // se provo a stampare senza avere tutte le informazioni la prima volta da errore (per alcuni metodi di stampa)
-    // la prima volta stampo solo se ho già tutto
+    /**
+     * se provo a stampare senza avere tutte le informazioni la prima volta da errore (per alcuni metodi di stampa)
+     * la prima volta stampo solo se ho già tutto
+     */
+    protected boolean firstTime = true;
 
 
     public View(PlayerId viewId, int playerMaxNumber) {
@@ -40,11 +42,9 @@ public abstract class View extends Observable implements Observer {
         }
     }
 
-    public void addController(Controller controller) {
-        this.addObserver(controller);
-    }
-
     public void addController(Observer observer) {
+        //in realtà non aggiungerò il controller ma colui che farà finta di essere il controller per la view e che poi
+        //invierà i messaggi via networking
         this.addObserver(observer);
     }
 
@@ -52,10 +52,6 @@ public abstract class View extends Observable implements Observer {
         this.setChanged();
         notifyObservers(message);
     }
-
-//    public void sendMessage(VCVisitable message) {
-//        networkInterface.sendToServer(message);
-//    }
 
     @Override
     public void update(Observable o, Object arg) {
@@ -264,6 +260,11 @@ public abstract class View extends Observable implements Observer {
 
         if (!firstTime) {
             printPlayerAction();
+            printAllPlayer();
+            printPlayerInAction();
+            printAllPersonalBoard();
+            printPersonalBoardInAction();
+            printFamilyMemberInAction();
         }
 
     }

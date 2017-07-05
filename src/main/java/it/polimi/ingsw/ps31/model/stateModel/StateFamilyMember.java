@@ -6,6 +6,12 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 /**
  * Created by giulia on 06/06/2017.
+ * Stato che rappresenta il generico Family Member di un giocatore
+ *
+ * @see StateType
+ * @see it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState
+ * @see it.polimi.ingsw.ps31.model.player.FamilyMember
+ *
  */
 public class StateFamilyMember extends StateType {
     private final PlayerId playerId;

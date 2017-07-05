@@ -8,12 +8,8 @@ import it.polimi.ingsw.ps31.model.player.FamilyMember;
  */
 public abstract class Harvest extends ActionSpace {
 
-    public Harvest(int diceCost, int familyMemberLimit, EffectList effectList)
-    {
+    public Harvest(int diceCost, int familyMemberLimit, EffectList effectList) {
         super(diceCost, familyMemberLimit, effectList);
-}
-
-    @Override
-    public void addFamilyMember(FamilyMember familyMember) {
     }
+
 }

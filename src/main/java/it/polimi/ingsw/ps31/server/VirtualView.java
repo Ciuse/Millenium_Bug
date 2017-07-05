@@ -10,9 +10,20 @@ import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
 
 import java.util.Observable;
 import java.util.Observer;
-
+import it.polimi.ingsw.ps31.model.Model;
+import it.polimi.ingsw.ps31.client.clientNetworking.ClientMessageHistory;
 /**
  * Created by Giuseppe on 22/06/2017.
+ * <p>
+ * Classe che implementa la logica "Observable/observer" e funga da View vera per il model e il controller
+ * ma in realtà serve per raccogliere gli update provenienti dal model e inoltrarli via networking al network handler(ClientMessageHistory) del client
+ * e per raccogliere i notify proveniente dal networking handler(ClientMessageHistory) del client e inoltrarli al controller
+ * Inoltre memorizza l' ultimo messaggio che è stato mandato via networking così che il controller può richiederne l'invio se necessario
+ *
+ * @see NetworkInterface
+ * @see Controller
+ * @see Model
+ * @see ClientMessageHistory
  */
 public class VirtualView extends Observable implements Observer {
     private final NetworkInterface networkInterface;
@@ -47,19 +58,18 @@ public class VirtualView extends Observable implements Observer {
         }
     }
 
-    public void reSendLastMessage(String string){
+    public void reSendLastMessage(String string) {
         if (lastMessageSent.isNotifyAll()) { //se il messaggio riguarda tutti lo inoltro a tutti i client
-            networkInterface.sendToAll(new MVStringToPrint(null,true,string));
+            networkInterface.sendToAll(new MVStringToPrint(null, true, string));
             networkInterface.sendToAll(lastMessageSent);
-        }
-        else {  //se il messaggio notifica solo un controller lo mando solo a lui
-        networkInterface.sendToClient(new MVStringToPrint(lastMessageSent.getNotifySinglePlayer(),false,string),lastMessageSent.getNotifySinglePlayer());
-        networkInterface.sendToClient(lastMessageSent, lastMessageSent.getNotifySinglePlayer());
+        } else {  //se il messaggio notifica solo un controller lo mando solo a lui
+            networkInterface.sendToClient(new MVStringToPrint(lastMessageSent.getNotifySinglePlayer(), false, string), lastMessageSent.getNotifySinglePlayer());
+            networkInterface.sendToClient(lastMessageSent, lastMessageSent.getNotifySinglePlayer());
         }
     }
 
-    public void reSendLastMessageToSpecificView(String string, PlayerId viewId){
-        networkInterface.sendToClient(new MVStringToPrint(viewId,false,string),viewId);
+    public void reSendLastMessageToSpecificView(String string, PlayerId viewId) {
+        networkInterface.sendToClient(new MVStringToPrint(viewId, false, string), viewId);
         networkInterface.sendToClient(lastMessageSent, viewId);
 
     }

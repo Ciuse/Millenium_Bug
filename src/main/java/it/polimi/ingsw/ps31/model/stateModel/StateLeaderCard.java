@@ -1,9 +1,16 @@
 package it.polimi.ingsw.ps31.model.stateModel;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 /**
  * Created by giulia on 22/06/2017.
+ *
+ * Stato che rappresenta lo stato in cui si trova un generico leader
+ *
+ * @see StateType
+ * @see MVUpdateState
+ * @see it.polimi.ingsw.ps31.model.card.LeaderCard
  */
 public class StateLeaderCard extends StateType{
     private final PlayerId playerId;

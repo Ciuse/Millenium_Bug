@@ -36,7 +36,7 @@ class InputBufferReader extends Thread{
         //Ciclo in attesa di messaggi sulle socket
         while (listenNetworkInterfaces) {
             for( int i = 0; i<connectedPlayers; i++) {
-                VCVisitable vcVisitable = networkInterface.readFromClient(PlayerId.values()[i-1]);
+                VCVisitable vcVisitable = networkInterface.readFromClient(PlayerId.values()[i]);
                 if (vcVisitable != null)
                     virtualView.notifyController(vcVisitable);
 

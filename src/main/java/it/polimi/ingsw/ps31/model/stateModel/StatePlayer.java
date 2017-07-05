@@ -1,10 +1,17 @@
 package it.polimi.ingsw.ps31.model.stateModel;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 /**
  * Created by giulia on 06/06/2017.
+ *
+ * Stato che rappresenta le informazione generiche di un player
+ *
+ * @see StateType
+ * @see MVUpdateState
+ * @see it.polimi.ingsw.ps31.model.player.Player
  */
 public class StatePlayer extends StateType {
     private final PlayerId playerId;

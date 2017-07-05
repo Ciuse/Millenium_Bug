@@ -6,6 +6,12 @@ import java.util.List;
 
 /**
  * Created by giulia on 13/06/2017.
+ * Stato che rappresenta lo stato di una generica carta sviluppo
+ *
+ * @see StateType
+ * @see it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState
+ * @see it.polimi.ingsw.ps31.model.card.DevelopmentCard
+ *
  */
 public class StateDevelopmentCard extends StateType {
     private String cardName = null;

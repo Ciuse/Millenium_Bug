@@ -5,6 +5,12 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 /**
  * Created by giulia on 06/06/2017.
+ * Stato che rappresenta le informazioni delle caselle che contengono una carta
+ * Un costruttore è per le caselle della torre, l altro per quello della personal board
+ *
+ * @see StateType
+ * @see it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState
+ *
  */
 public class StateCardBox extends StateType {
     private final String name;

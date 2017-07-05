@@ -21,6 +21,7 @@ import it.polimi.ingsw.ps31.model.player.FamilyMember;
 import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl;
+import it.polimi.ingsw.ps31.model.stateModel.PlayerPossibleChoice;
 import it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction;
 import it.polimi.ingsw.ps31.model.stateModel.TempModelStateForLeaderChoice;
 import it.polimi.ingsw.ps31.server.VirtualView;
@@ -66,12 +67,13 @@ public class Controller extends Thread implements Observer {
     public void selectStartLeader(int leaderIdToCreate, PlayerId viewId) {
         boolean found = false;
         boolean found1 = false;
-        boolean found2=false;
-        Player playerToAdd=null;
-        LeaderCard leaderCardToAdd=null;
-        for (int i = 0; i < tempModelStateForLeaderChoice.getPlayerPossibleChoiceList().size(); i++) {
-            if (viewId == tempModelStateForLeaderChoice.getPlayerPossibleChoiceList().get(i).getPlayerId()) {
-                for (Integer leaderId : tempModelStateForLeaderChoice.getPlayerPossibleChoiceList().get(i).getLeaderId()
+        boolean found2 = false;
+        Player playerToAdd = null;
+        LeaderCard leaderCardToAdd = null;
+        for (PlayerPossibleChoice playerPossible : tempModelStateForLeaderChoice.getPlayerPossibleChoiceList()
+                ) {
+            if (viewId == playerPossible.getPlayerId()) {
+                for (Integer leaderId : playerPossible.getLeaderId()
                         ) {
                     if (leaderId == leaderIdToCreate) {
                         found = true;
@@ -81,38 +83,41 @@ public class Controller extends Thread implements Observer {
                                 found1 = true;
                                 for (Player player : gameUtility.getPlayerList()
                                         ) {
-                                    if (player.getPlayerId().equals(tempModelStateForLeaderChoice.getPlayerPossibleChoiceList().get(i).getPlayerId())) {
-                                        found2=true;
-                                        playerToAdd=player;
+                                    if (player.getPlayerId().equals(playerPossible.getPlayerId())) {
+                                        found2 = true;
+                                        playerToAdd = player;
                                         leaderCard.setPlayerId(player.getPlayerId());
-                                        leaderCardToAdd=leaderCard;
+                                        leaderCardToAdd = leaderCard;
                                     }
+                                }
+                                if (found2) {
+                                    playerToAdd.addLeaderCard(leaderCardToAdd);
+                                    modelChoices.getTempModelStateForLeaderChoice().removerLeader(leaderCardToAdd);
+                                    modelChoices.incrementLeaderChoosenCounter();
                                 }
                             }
 
                         }
-                        if(found2) {
-                            playerToAdd.addLeaderCard(leaderCardToAdd);
-                            modelChoices.getTempModelStateForLeaderChoice().removerLeader(leaderCardToAdd);
-                            modelChoices.incrementLeaderChoosenCounter();
-                        }
-                        if (!found1) {
-                                virtualView.reSendLastMessageToSpecificView("non ho trovato il leader tra i possibili leader rimasti in gioco", viewId);
-                        }
                     }
-                }
-                if (!found) {
-                        virtualView.reSendLastMessageToSpecificView("non ho trovato il leader tra le tue possibili scelte", viewId);
                 }
             }
         }
-    }
 
-    public void selectStartPersonalBonusTiles(int numberOfChoice, PlayerId viewId) {
+        if (!found1) {
+            virtualView.reSendLastMessageToSpecificView("non ho trovato il leader tra i possibili leader rimasti in gioco", viewId);
+        }
+
+
+        if (!found) {
+            virtualView.reSendLastMessageToSpecificView("non ho trovato il leader tra le tue possibili scelte", viewId);
+        }
+
+    }
+    public void selectStartPersonalBonusTiles(int tilesId, PlayerId viewId) {
         boolean found = false;
         for (PersonalBonusTiles personalBonusTiles : gameUtility.getPersonalBonusTilesList()
                 ) {
-            if (numberOfChoice == personalBonusTiles.getPersonalBonusTilesId()) {
+            if (tilesId == personalBonusTiles.getPersonalBonusTilesId()) {
                 found = true;
                 if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
                     modelChoices.setPersonalBonusTilesChosen(personalBonusTiles);

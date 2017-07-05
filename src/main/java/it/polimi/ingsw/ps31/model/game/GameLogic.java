@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.Model;
+import it.polimi.ingsw.ps31.model.ModelChoices;
 import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.json.CreationJson;
 import it.polimi.ingsw.ps31.model.json.JsonFile;
@@ -23,44 +24,53 @@ import java.util.Collections;
  * @see Match
  * @see CreationJson
  * @see Model
+ * @see ModelChoices
  */
 public class GameLogic {
-    //classe che contiene il metodo principale con i cicli di funzionamento del gioco / la lettura degli oggeti dal file json / l attesa di connessione dei player
     private final GameUtility gameUtility = new GameUtility();
+    private final Model model;
+    private Match match;
     private final static int PERIODMAXNUMBER = 3;
     private final static int ROUNDMAXNUMBER = 2;
     private final static int ACTIONMAXNUMBER = 4;
-    private final Model model;
     private int playerMaxNumber;
     private int period;
     private int round;
     private int action;
-    private Match match;
 
 
     public GameLogic(InformationFromNetworking informationFromNetworking, Model model, Match match) {
         this.model = model;
-
         gameUtility.setModel(this.model);
         gameUtility.setInformationFromNetworking(informationFromNetworking);
         this.match = match;
     }
 
+    /**
+     * Metodo richiamato dal match il quale si mette in attesa dei vari client che si connettono
+     * @param virtualView virtual view del match in corso, la quale verrà settata al model del match in corso
+     */
     public void startConnection(VirtualView virtualView) {
-        //parte di connessione
-        playerMaxNumber=gameUtility.getModel().getModelChoices().waitPlayerConnection();  //mi metto in attesa dei giocatori che si connettano
+        //attesa dei giocatori che si connettono
+        playerMaxNumber=gameUtility.getModel().getModelChoices().waitPlayerConnection();
         gameUtility.setPlayerMaxNumber(playerMaxNumber);
 
         for(int i=0; i<playerMaxNumber; i++){
             gameUtility.createPlayer(gameUtility.getInformationFromNetworking().getPlayerNameList().get(i));
         }
 
+        //invio ai client le informazioni per poter creare le loro view
         match.sendViews(gameUtility.getPlayerMaxNumber());
-        System.out.println("GameLogic:startConnection> View inviate. Aggiungo la virtualView al model");
+
         model.addVirtualView(virtualView);
 
     }
 
+    /**
+     * Creazione del file .json (se necessaria) e conseguente lettura dell' oggetto della classe JsonGameObject contenente tutti gli oggetti
+     * che erano stati serializzati e scritti su file.
+     * Gli oggetti letti verranno settati come variabili della classe GameUtility
+     */
     public void createJson(){
         CreationJson creationJson = new CreationJson();
         creationJson.createJsonFile();          //Creazione file json se non è già presente
@@ -87,23 +97,25 @@ public class GameLogic {
         gameUtility.setExcommunicationTilesList(jsonObjectReadFromFile.getExcommunicationTiles());
     }
 
+    /**
+     * Contiene tutta la logica di gioco e i cicli principali di funzionamento delle scelte e dei turni
+     * I cicli secondari delle fasi di gioco sono contenuti all' interno della classe GameUtility che svolge una funzione di supporto
+     * alla logica principale di gioco
+     * @see GameUtility
+     */
     public void playGame() {
+        //chiedo ai player di scegliere(in base all ordine di connessione) il colore che vogliono
+        gameUtility.choiseColorPlayer();
 
-        System.out.println("GameLogic:playGame> Tutte le impostazioni correttamente caricate. Faccio partire il gioco");
+        //chiedo ai player di scegliere (in base all ordine di connessione) un personal bonus tiles e li aggiorno
+        gameUtility.phaseChoicePersonalBonusTiles();
 
-
-        gameUtility.choiseColorPlayer(); //chiedo ai player (in base all ordine di connessione) il colore che vogliono
-
-        gameUtility.phaseChoicePersonalBonusTiles(); //chiedo ai player di scegliere (in base all ordine di connessione) un personal bonus tiles e li aggiorno
-
-
-        //aggiorno lo stato iniziali degli stati della view
 
         GameBoard gameBoard = new GameBoard(gameUtility.getTowerActionSpaceEffectList(), gameUtility.getActionSpaceEffectList(), gameUtility.getFaithTrackExtraValue(), model);
+        //setto le aree della game board soggette al variare del numero dei player con cui si gioca
         gameUtility.setGameBoard(gameBoard);
 
-        //viene fatto dopo aver saputo in quanto si gioca (per istanziare le aree da 3 e/o 4 giocatori)
-
+        //aggiorno lo stato iniziali degli stati della view
         System.out.println("GameLogic:playGame> invio stato giocatori");
         gameUtility.updateStartAllPlayersInformation();
         System.out.println("GameLogic:playGame> invio risorse giocatori");
@@ -115,47 +127,49 @@ public class GameLogic {
         System.out.println("GameLogic:playGame> invio carte sviluppo");
         gameUtility.updateStartAllDevelopmentCard();
 
-
-
-        gameUtility.getDevelopmentCardList().shuffleCardList();  //mischio la lista di carte
-        Collections.shuffle(gameUtility.getPersonalBonusTilesList()); //mischio i personal bonus tiles
-
+        //mischio la lista di carte
+        gameUtility.getDevelopmentCardList().shuffleCardList();
+        //mischio i personal bonus tiles
+        Collections.shuffle(gameUtility.getPersonalBonusTilesList());
+        //creo i deck
         gameUtility.createDeck();
-
         //Setto le scomuniche con cui si giocherà
         gameUtility.setExcommunicationMatchTiles();
-
         //Faccio partire il draft dei leader
- /*TODO*/    gameUtility.leaderCardSetup();
+        gameUtility.leaderCardSetup();
 
         for (this.period = 1; period <= PERIODMAXNUMBER; period++) {    //inizio periodo
             gameUtility.setDeckTower(period);
             for (this.round = 1; round <= ROUNDMAXNUMBER; round++) {
 
-                gameUtility.drawCardDeck();
                 gameUtility.resetFamilyMember();    //restituisco a tutti i propri famigliari
+                gameUtility.drawCardDeck();
                 gameUtility.getGameBoard().rollTheDice();
                 gameUtility.setFamilyMemberDiceValue();
 
                 for (this.action = 1; action <= ACTIONMAXNUMBER; action++) {
                     for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
                         String string = "Aggiornato stato del gioco";
-                        gameUtility.getModel().notifyViews(new MVUpdateState(string,gameUtility.getStateGame(this.period,this.round,playerNumber)));
-                        gameUtility.phaseActionGame(playerNumber,action);
+                        gameUtility.getModel().notifyViews(new MVUpdateState(string, gameUtility.getStateGame(this.period, this.round, playerNumber)));
+                        gameUtility.phaseActionGame(playerNumber, action);
                     }
 
                 }
                 //sono finite le 16 azioni(massime) del turno e iniziano le 4 azioni(massime) che si sono perse per la scomunica
-                gameUtility.extraPhaseActionGame();
-
-                //FINE FASE AZIONI
-                if (round == 2) {
-                    gameUtility.vaticanReport(period);
+                for (int playerNumber = 0; playerNumber < playerMaxNumber; playerNumber++) {
+                    String string = "Aggiornato stato del gioco";
+                    gameUtility.getModel().notifyViews(new MVUpdateState(string, gameUtility.getStateGame(this.period, this.round, playerNumber)));
+                    gameUtility.extraPhaseActionGame(playerNumber);
                 }
+//                //FINE FASE AZIONI  // TODO VERIFICARE CHE SIA MEGLIO DOPO
+//                if (round == 2) {
+//                    gameUtility.vaticanReport(period);
+//                }
                 gameUtility.playerOrderFromCouncil(); //ordino i player
                 gameUtility.resetLeaderEffect();     //riattivo le abilità una volta per turno dei leader
 
             }//fine ciclo turno
+            gameUtility.vaticanReport(period);
 
         }//fine ciclo periodo
 
@@ -163,7 +177,6 @@ public class GameLogic {
         gameUtility.getFinalVictoryPoint();
         gameUtility.militaryTrackWinnerPoint();
         gameUtility.orderVictoryPoint();
-
 
         gameUtility.getModel().notifyViews(new MVStringToPrint(null,true,"GRAZIE PER AVER GIOCATO, ALLA PROSSIMA PARTITA"));
 

@@ -4,6 +4,11 @@ import java.util.List;
 
 /**
  * Created by giulia on 11/06/2017.
+ * Stato del generico action space
+ *
+ * @see StateType
+ * @see it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState
+ * @see it.polimi.ingsw.ps31.model.board.ActionSpace
  */
 public class StateActionSpace extends StateType {
     private int numberOfActionSpace=-1;

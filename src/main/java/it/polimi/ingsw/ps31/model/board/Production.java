@@ -7,12 +7,8 @@ import it.polimi.ingsw.ps31.model.player.FamilyMember;
  * Created by Francesco on 12/05/2017.
  */
 public abstract class Production extends ActionSpace {
-    public Production( int diceCost, int familyMemberLimit, EffectList effectList)
-    {
+    public Production(int diceCost, int familyMemberLimit, EffectList effectList) {
         super(diceCost, familyMemberLimit, effectList);
     }
 
-    @Override
-    public void addFamilyMember(FamilyMember familyMember) {
-    }
 }

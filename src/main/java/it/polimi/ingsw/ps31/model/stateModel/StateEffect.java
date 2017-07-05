@@ -8,6 +8,14 @@ import java.util.List;
 
 /**
  * Created by giulia on 13/06/2017.
+ *
+ * Stato che rappresenta il generico effetto
+ * Analizzando quali sono i parametri diversi da Null (o da un valore senza senso all interno del gioco)
+ * è possibile a risalire all' effetto e alla sua rappresentazione testuale
+ *
+ * @see StateType
+ * @see it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState
+ *
  */
 public class StateEffect extends StateType {
     private int cardId =-1;

@@ -27,6 +27,12 @@ public class TempModelStateForLeaderChoice {
         }
         if(!found){
             playerPossibleChoiceList.add(new PlayerPossibleChoice(playerId,leaderId));
+            System.out.println("LISTA AGIGUNTA Player:"+playerId);
+            for (Integer id: leaderId
+                 ) {
+                System.out.println("LEADER ID:"+id);
+
+            }
         }
 
     }

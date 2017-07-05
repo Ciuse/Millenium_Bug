@@ -25,14 +25,11 @@ public abstract class Action implements PlayerActions{
     /** Il control set da cui attivare i controlli relativi all'azione */
     protected final  ActionControlSet actionControlSet;
 
-    //private List<Action> actionList= new ArrayList<>();
-
     /* Constructor */
     public Action(Player player, ActionControlSet actionControlSet)
     {
         this.player = player;
         this.actionControlSet = actionControlSet;
-        //actionList.add(this);
     }
 
     @Override

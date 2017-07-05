@@ -4,6 +4,12 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 /**
  * Created by Giuseppe on 04/07/2017.
+ * Stato che rappresenta una generica scomunica e nel caso il player che la possiede
+ *
+ * @see StateType
+ * @see it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState
+ * @see it.polimi.ingsw.ps31.model.card.ExcommunicationTiles
+ *
  */
 public class StateExcommunication extends StateType {
     private int id;

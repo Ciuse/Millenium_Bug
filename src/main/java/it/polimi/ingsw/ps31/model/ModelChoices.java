@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.model;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
@@ -244,7 +243,7 @@ public class ModelChoices {
 
         boolean timerStarted=false;
         setStateConnection();
-        while(informationFromNetworking.getPlayerNameList().size()<4 && stateModelChoices.equals("StateConnection")){     //continuo a ciclare finchè non si connettono 4 player o il tempo scade
+        while(informationFromNetworking.getPlayerNameList().size()<3 && stateModelChoices.equals("StateConnection")){     //continuo a ciclare finchè non si connettono 4 player o il tempo scade
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {

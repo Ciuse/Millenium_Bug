@@ -1,11 +1,18 @@
 package it.polimi.ingsw.ps31.model.stateModel;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import java.util.List;
 
 /**
  * Created by giulia on 20/06/2017.
+ *
+ * Stato che rappresenta lo stato di un generico Personal Bonus Tiles
+ *
+ * @see StateType
+ * @see MVUpdateState
+ * @see it.polimi.ingsw.ps31.model.player.PersonalBonusTiles
  */
 public class StatePersonalBonusTiles extends StateType {
     private final PlayerId playerId;

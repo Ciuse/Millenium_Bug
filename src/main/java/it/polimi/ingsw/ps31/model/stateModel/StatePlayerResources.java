@@ -1,10 +1,17 @@
 package it.polimi.ingsw.ps31.model.stateModel;
 
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 
 /**
- * Created by giulia on 06/06/2017.
+ * Created by giulia on 09/06/2017.
+ *
+ * Stato che rappresenta le risorse del player
+ *
+ * @see StateType
+ * @see MVUpdateState
+ * @see it.polimi.ingsw.ps31.model.player.Player
  */
 public class StatePlayerResources extends StateType {
     private final PlayerId playerId;

@@ -4,6 +4,9 @@ import it.polimi.ingsw.ps31.client.view.View;
 
 /**
  * Created by Giuseppe on 06/06/2017.
+ *
+ * Implementazione del pattern visitor all'interno della logica degli stati.
+ * Ogni stato sa quale metodo di aggiornamento deve invocare sulla view.
  */
 public class MVStateInfoVisitor implements StateVisitor {
     private View view;

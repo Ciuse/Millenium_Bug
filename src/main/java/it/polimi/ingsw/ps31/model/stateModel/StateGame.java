@@ -4,6 +4,12 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 /**
  * Created by giulia on 06/06/2017.
+ * Stato che indica la fase in cui si trova la partita e il giocatore in gioco
+ *
+ * @see StateType
+ * @see it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState
+ * @see it.polimi.ingsw.ps31.model.game.GameLogic
+ *
  */
 public class StateGame extends StateType {
     private int period=-1;
