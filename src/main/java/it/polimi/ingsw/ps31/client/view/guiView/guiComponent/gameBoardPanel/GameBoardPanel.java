@@ -1,9 +1,9 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel;
 
+import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.BottomBoardPanel;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.TopBoardPanel;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.*;
-import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
 import it.polimi.ingsw.ps31.messages.messageVC.VCTowerCardSpaceChoice;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
@@ -12,8 +12,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import static java.lang.String.valueOf;
 
 /**
  * Created by giulia on 25/06/2017.

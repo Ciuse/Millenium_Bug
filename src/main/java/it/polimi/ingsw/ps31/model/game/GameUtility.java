@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.game;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
@@ -19,7 +20,6 @@ import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.model.stateModel.StateGame;
 import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles;
-import it.polimi.ingsw.ps31.model.stateModel.TempModelStateForLeaderChoice;
 
 import java.util.*;
 
@@ -277,7 +277,10 @@ public class GameUtility{
                 //chiedo l'intervento della view e una volta ricevuto il messaggio di risposta true (il giocatore vuole spendere i suoi punti fede per evitare la scomunica)
                 String string = player.getPlayerId() + ": vuoi spendere tutti i tuoi punti fede per evitare la scomunica?";
                 model.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceIfSupportTheChurch()));
-                boolean supportTheChurch = model.getModelChoices().waitSupportTheChurch();
+                Boolean supportTheChurch = model.getModelChoices().waitSupportTheChurch();
+                if(supportTheChurch==null){
+                    supportTheChurch=false;
+                }
                 if (supportTheChurch) {
                     int faithPointPlayer = player.getPlayerResources().getResourceValue(FaithPoint.class);
                     if(faithPointPlayer>=15){

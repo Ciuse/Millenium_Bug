@@ -14,6 +14,14 @@ import java.util.List;
 
 /**
  * Created by Giuseppe on 11/05/2017.
+ *
+ * Rapprenseta il tipo di oggetto che verrà scritto sul file .json contenente tutte le variabili e oggetti che devono essere scritti e letti.
+ * Utilizzando la ibreria Gson è necessario registrare tutti i tipi runtime delle classi astratte per poter dire al builder come dovrà
+ * serializzare e deserializzare gli oggetti astratti contenuti all' interno delle variabili dell' oggetto principale.
+ *
+ * @see Gson
+ * @see CreationJson
+ *
  */
 public class JsonGameObject {
     private DevelopmentCardList developementCardList;
@@ -33,99 +41,100 @@ public class JsonGameObject {
     private long playerConnectionTimer;
     private long playerActionTimer;
 
-    public JsonGameObject() {
+
+    /**
+     * metodo per la creazione del builder capace di serializzare e deserializzare questa classe
+     *
+     * @return il builder associato alla classe
+     */
+    public static Gson gsonGameBuilder() {
+        //Serve per poter far riconoscere a json una Lista di classi polimorfe
+        RuntimeTypeAdapterFactory<Resource> resourceAdapterFactory = RuntimeTypeAdapterFactory.of(Resource.class, "ResourceType");
+        resourceAdapterFactory.registerSubtype(Coin.class, "Coin");
+        resourceAdapterFactory.registerSubtype(Wood.class, "Wood");
+        resourceAdapterFactory.registerSubtype(Stone.class, "Stone");
+        resourceAdapterFactory.registerSubtype(Servant.class, "Servant");
+        resourceAdapterFactory.registerSubtype(FaithPoint.class, "FaithPoint");
+        resourceAdapterFactory.registerSubtype(MilitaryStrength.class, "MilitaryStrength");
+        resourceAdapterFactory.registerSubtype(VictoryPoint.class, "VictoryPoint");
+        resourceAdapterFactory.registerSubtype(CouncilPrivilege.class, "CouncilPrivilege");
+
+
+        RuntimeTypeAdapterFactory<PointResource> pointResourceRuntimeTypeAdapterFactory = RuntimeTypeAdapterFactory.of(PointResource.class, "PointResource");
+        pointResourceRuntimeTypeAdapterFactory.registerSubtype(FaithPoint.class, "FaithPoint");
+        pointResourceRuntimeTypeAdapterFactory.registerSubtype(MilitaryStrength.class, "MilitaryStrength");
+        pointResourceRuntimeTypeAdapterFactory.registerSubtype(VictoryPoint.class, "VictoryPoint");
+
+
+        RuntimeTypeAdapterFactory<PhysicalResource> physicalResourceRuntimeTypeAdapterFactory = RuntimeTypeAdapterFactory.of(PhysicalResource.class, "PhysicalResource");
+        physicalResourceRuntimeTypeAdapterFactory.registerSubtype(Coin.class, "Coin");
+        physicalResourceRuntimeTypeAdapterFactory.registerSubtype(Servant.class, "Servant");
+        physicalResourceRuntimeTypeAdapterFactory.registerSubtype(Wood.class, "Wood");
+        physicalResourceRuntimeTypeAdapterFactory.registerSubtype(Stone.class, "Stone");
+
+
+        RuntimeTypeAdapterFactory<DevelopmentCard> developementCardAdapterFactory = RuntimeTypeAdapterFactory.of(DevelopmentCard.class, "CardType");
+        developementCardAdapterFactory.registerSubtype(Territory.class, "Territory");
+        developementCardAdapterFactory.registerSubtype(Building.class, "Building");
+        developementCardAdapterFactory.registerSubtype(Character.class, "Character");
+        developementCardAdapterFactory.registerSubtype(Venture.class, "Venture");
+
+
+        RuntimeTypeAdapterFactory<Effect> effectAdapterFactory = RuntimeTypeAdapterFactory.of(Effect.class, "EffectType");
+        effectAdapterFactory.registerSubtype(BonusAndMalusEffect.class, "BonusAndMalusEffect");
+        effectAdapterFactory.registerSubtype(ChangeResourceEffect.class, "ChangeResourceEffect");
+        effectAdapterFactory.registerSubtype(ChooseCardEffect.class, "ChooseCardEffect");
+        effectAdapterFactory.registerSubtype(ChooseCardEffectWithDiscount.class, "ChooseCardEffectWithDiscount");
+        effectAdapterFactory.registerSubtype(GenericHarvestEffectActivation.class, "GenericHarvestEffectActivation");
+        effectAdapterFactory.registerSubtype(GenericProductionEffectActivation.class, "GenericProductionEffectActivation");
+        effectAdapterFactory.registerSubtype(GetResourceEffect.class, "GetResourceEffect");
+        effectAdapterFactory.registerSubtype(GetResourceEffectFromCard.class, "GetResourceEffectFromCard");
+        effectAdapterFactory.registerSubtype(GetResourceFromResourceEffect.class, "GetResourceFromResourceEffect");
+        effectAdapterFactory.registerSubtype(GetResourcesAtTheEndEffect.class, "GetResourcesAtTheEndEffect");
+        effectAdapterFactory.registerSubtype(HarvestEffectActivationFromCard.class, "HarvestEffectActivationFromCard");
+        effectAdapterFactory.registerSubtype(HarvestEffect.class, "HarvestEffect");
+        effectAdapterFactory.registerSubtype(ProductionEffectActivationFromCard.class, "ProductionEffectActivationFromCard");
+        effectAdapterFactory.registerSubtype(ProductionEffect.class, "ProductionEffect");
+        effectAdapterFactory.registerSubtype(ChangeFamilyValueEffect.class, "ChangeFamilyValueEffect");
+
+
+        RuntimeTypeAdapterFactory<Bonus> bonusAdapterFactory = RuntimeTypeAdapterFactory.of(Bonus.class, "BonusType");
+        bonusAdapterFactory.registerSubtype(NeutralFamilyMemberBonus.class, "NeutralFamilyMemberBonus");
+        bonusAdapterFactory.registerSubtype(CanPlaceInOccupiedActionSpace.class, "CanPlaceInOccupiedActionSpace");
+        bonusAdapterFactory.registerSubtype(CantPlaceInActionSpace.class, "CantPlaceInActionSpace");
+        bonusAdapterFactory.registerSubtype(CardDiscountBonus.class, "CardDiscountBonus");
+        bonusAdapterFactory.registerSubtype(ColoredFamilyMembersBonus.class, "ColoredFamilyMembersBonus");
+        bonusAdapterFactory.registerSubtype(CopyLeaderBonus.class, "CopyLeaderBonus");
+        bonusAdapterFactory.registerSubtype(StaticFamilyMemberValueBonus.class, "StaticFamilyMemberValueBonus");
+        bonusAdapterFactory.registerSubtype(VaticanReportExtraVictoryPoint.class, "VaticanReportExtraVictoryPoint");
+        bonusAdapterFactory.registerSubtype(LostExtraFinalVictoryPointBonus.class, "LostExtraFinalVictoryPointBonus");
+        bonusAdapterFactory.registerSubtype(LostFinalVictoryPointBonus.class, "LostFinalVictoryPointBonus");
+        bonusAdapterFactory.registerSubtype(LostFinalVictoryPointFromCardCosts.class, "LostFinalVictoryPointFromCardCosts");
+        bonusAdapterFactory.registerSubtype(LostFinalVictoryPointFromPlayerResources.class, "LostFinalVictoryPointFromPlayerResources");
+        bonusAdapterFactory.registerSubtype(ModifyPayServantsBonus.class, "ModifyPayServantsBonus");
+        bonusAdapterFactory.registerSubtype(HarvestBonus.class, "HarvestBonus");
+        bonusAdapterFactory.registerSubtype(NoImmediateEffectBonus.class, "NoImmediateEffectBonus");
+        bonusAdapterFactory.registerSubtype(NoTowerPayment.class, "NoTowerPayment");
+        bonusAdapterFactory.registerSubtype(NoBoardRequirementControl.class, "NoBoardRequirementControl");
+        bonusAdapterFactory.registerSubtype(NoFirstActionTurn.class, "NoFirstActionTurn");
+        bonusAdapterFactory.registerSubtype(ProductionBonus.class, "ProductionBonus");
+        bonusAdapterFactory.registerSubtype(GetResourceMalus.class, "GetResourceMalus");
+        bonusAdapterFactory.registerSubtype(DoubleResourceFromCardBonus.class, "DoubleResourceFromCardBonus");
+
+
+        //Creazione del builder adatto a riconoscere tutti gli oggetti polimorfi
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting().serializeNulls()
+                .registerTypeAdapterFactory(resourceAdapterFactory)
+                .registerTypeAdapterFactory(developementCardAdapterFactory)
+                .registerTypeAdapterFactory(effectAdapterFactory)
+                .registerTypeAdapterFactory(bonusAdapterFactory)
+                .registerTypeAdapterFactory(pointResourceRuntimeTypeAdapterFactory)
+                .registerTypeAdapterFactory(physicalResourceRuntimeTypeAdapterFactory);
+
+        return builder.create();
+
     }
-
-        public static Gson gsonGameBuilder() {       //TODO assicurarsi che ci siano tutti i sottotipi di queste classi astratte
-
-            //Serve per poter far riconoscere a json una Lista di classi polimorfe
-            RuntimeTypeAdapterFactory<Resource> resourceAdapterFactory = RuntimeTypeAdapterFactory.of(Resource.class, "ResourceType");
-            resourceAdapterFactory.registerSubtype(Coin.class, "Coin");
-            resourceAdapterFactory.registerSubtype(Wood.class, "Wood");
-            resourceAdapterFactory.registerSubtype(Stone.class, "Stone");
-            resourceAdapterFactory.registerSubtype(Servant.class, "Servant");
-            resourceAdapterFactory.registerSubtype(FaithPoint.class, "FaithPoint");
-            resourceAdapterFactory.registerSubtype(MilitaryStrength.class, "MilitaryStrength");
-            resourceAdapterFactory.registerSubtype(VictoryPoint.class, "VictoryPoint");
-            resourceAdapterFactory.registerSubtype(CouncilPrivilege.class, "CouncilPrivilege");
-
-
-            RuntimeTypeAdapterFactory<PointResource> pointResourceRuntimeTypeAdapterFactory= RuntimeTypeAdapterFactory.of(PointResource.class,"PointResource");
-            pointResourceRuntimeTypeAdapterFactory.registerSubtype(FaithPoint.class, "FaithPoint");
-            pointResourceRuntimeTypeAdapterFactory.registerSubtype(MilitaryStrength.class, "MilitaryStrength");
-            pointResourceRuntimeTypeAdapterFactory.registerSubtype(VictoryPoint.class, "VictoryPoint");
-
-
-            RuntimeTypeAdapterFactory<PhysicalResource> physicalResourceRuntimeTypeAdapterFactory= RuntimeTypeAdapterFactory.of(PhysicalResource.class,"PhysicalResource");
-            physicalResourceRuntimeTypeAdapterFactory.registerSubtype(Coin.class, "Coin");
-            physicalResourceRuntimeTypeAdapterFactory.registerSubtype(Servant.class, "Servant");
-            physicalResourceRuntimeTypeAdapterFactory.registerSubtype(Wood.class, "Wood");
-            physicalResourceRuntimeTypeAdapterFactory.registerSubtype(Stone.class, "Stone");
-
-
-            RuntimeTypeAdapterFactory<DevelopmentCard> developementCardAdapterFactory = RuntimeTypeAdapterFactory.of(DevelopmentCard.class, "CardType");
-            developementCardAdapterFactory.registerSubtype(Territory.class, "Territory");
-            developementCardAdapterFactory.registerSubtype(Building.class, "Building");
-            developementCardAdapterFactory.registerSubtype(Character.class, "Character");
-            developementCardAdapterFactory.registerSubtype(Venture.class, "Venture");
-
-
-            RuntimeTypeAdapterFactory<Effect> effectAdapterFactory = RuntimeTypeAdapterFactory.of(Effect.class, "EffectType");
-            effectAdapterFactory.registerSubtype(BonusAndMalusEffect.class, "BonusAndMalusEffect");
-            effectAdapterFactory.registerSubtype(ChangeResourceEffect.class, "ChangeResourceEffect");
-            effectAdapterFactory.registerSubtype(ChooseCardEffect.class, "ChooseCardEffect");
-            effectAdapterFactory.registerSubtype(ChooseCardEffectWithDiscount.class, "ChooseCardEffectWithDiscount");
-            effectAdapterFactory.registerSubtype(GenericHarvestEffectActivation.class, "GenericHarvestEffectActivation");
-            effectAdapterFactory.registerSubtype(GenericProductionEffectActivation.class, "GenericProductionEffectActivation");
-            effectAdapterFactory.registerSubtype(GetResourceEffect.class, "GetResourceEffect");
-            effectAdapterFactory.registerSubtype(GetResourceEffectFromCard.class, "GetResourceEffectFromCard");
-            effectAdapterFactory.registerSubtype(GetResourceFromResourceEffect.class, "GetResourceFromResourceEffect");
-            effectAdapterFactory.registerSubtype(GetResourcesAtTheEndEffect.class, "GetResourcesAtTheEndEffect");
-            effectAdapterFactory.registerSubtype(HarvestEffectActivationFromCard.class, "HarvestEffectActivationFromCard");
-            effectAdapterFactory.registerSubtype(HarvestEffect.class, "HarvestEffect");
-            effectAdapterFactory.registerSubtype(ProductionEffectActivationFromCard.class, "ProductionEffectActivationFromCard");
-            effectAdapterFactory.registerSubtype(ProductionEffect.class, "ProductionEffect");
-            effectAdapterFactory.registerSubtype(ChangeFamilyValueEffect.class,"ChangeFamilyValueEffect");
-
-
-            RuntimeTypeAdapterFactory<Bonus> bonusAdapterFactory = RuntimeTypeAdapterFactory.of(Bonus.class, "BonusType");
-            bonusAdapterFactory.registerSubtype(NeutralFamilyMemberBonus.class, "NeutralFamilyMemberBonus");
-            bonusAdapterFactory.registerSubtype(CanPlaceInOccupiedActionSpace.class, "CanPlaceInOccupiedActionSpace");
-            bonusAdapterFactory.registerSubtype(CantPlaceInActionSpace.class, "CantPlaceInActionSpace");
-            bonusAdapterFactory.registerSubtype(CardDiscountBonus.class, "CardDiscountBonus");
-            bonusAdapterFactory.registerSubtype(ColoredFamilyMembersBonus.class, "ColoredFamilyMembersBonus");
-            bonusAdapterFactory.registerSubtype(CopyLeaderBonus.class, "CopyLeaderBonus");
-            bonusAdapterFactory.registerSubtype(StaticFamilyMemberValueBonus.class, "StaticFamilyMemberValueBonus");
-            bonusAdapterFactory.registerSubtype(VaticanReportExtraVictoryPoint.class, "VaticanReportExtraVictoryPoint");
-            bonusAdapterFactory.registerSubtype(LostExtraFinalVictoryPointBonus.class, "LostExtraFinalVictoryPointBonus");
-            bonusAdapterFactory.registerSubtype(LostFinalVictoryPointBonus.class, "LostFinalVictoryPointBonus");
-            bonusAdapterFactory.registerSubtype(LostFinalVictoryPointFromCardCosts.class, "LostFinalVictoryPointFromCardCosts");
-            bonusAdapterFactory.registerSubtype(LostFinalVictoryPointFromPlayerResources.class, "LostFinalVictoryPointFromPlayerResources");
-            bonusAdapterFactory.registerSubtype(ModifyPayServantsBonus.class, "ModifyPayServantsBonus");
-            bonusAdapterFactory.registerSubtype(HarvestBonus.class, "HarvestBonus");
-            bonusAdapterFactory.registerSubtype(NoImmediateEffectBonus.class, "NoImmediateEffectBonus");
-            bonusAdapterFactory.registerSubtype(NoTowerPayment.class, "NoTowerPayment");
-            bonusAdapterFactory.registerSubtype(NoBoardRequirementControl.class, "NoBoardRequirementControl");
-            bonusAdapterFactory.registerSubtype(NoFirstActionTurn.class,"NoFirstActionTurn");
-            bonusAdapterFactory.registerSubtype(ProductionBonus.class, "ProductionBonus");
-            bonusAdapterFactory.registerSubtype(GetResourceMalus.class, "GetResourceMalus");
-            bonusAdapterFactory.registerSubtype(DoubleResourceFromCardBonus.class,"DoubleResourceFromCardBonus");
-
-
-//Creazione del builder adatto a riconoscere tutti gli oggetti polimorfi
-            GsonBuilder builder = new GsonBuilder();
-            builder.setPrettyPrinting().serializeNulls()
-                    .registerTypeAdapterFactory(resourceAdapterFactory)
-                    .registerTypeAdapterFactory(developementCardAdapterFactory)
-                    .registerTypeAdapterFactory(effectAdapterFactory)
-                    .registerTypeAdapterFactory(bonusAdapterFactory)
-                    .registerTypeAdapterFactory(pointResourceRuntimeTypeAdapterFactory)
-                    .registerTypeAdapterFactory(physicalResourceRuntimeTypeAdapterFactory);
-
-            Gson gson = builder.create();
-
-            return gson;
-        }
 
 
 /*Getters & Setters*/
@@ -137,7 +146,8 @@ public class JsonGameObject {
     public void setDevelopementCardList(DevelopmentCardList developementCardList) {
         this.developementCardList = developementCardList;
     }
-//
+
+    //
     public List<LeaderCard> getLeaderCardList() {
         return new ArrayList<>(leaderCardList);
     }
@@ -257,4 +267,6 @@ public class JsonGameObject {
     public void setPlayerActionTimer(long playerActionTimer) {
         this.playerActionTimer = playerActionTimer;
     }
+
+
 }

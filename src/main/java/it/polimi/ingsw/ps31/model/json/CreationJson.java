@@ -15,6 +15,11 @@ import java.util.List;
 
 /**
  * Created by giulia on 16/05/2017.
+ *
+ * Classe che crea fisicamento l'oggetto per il file .json e riempie tutte le sue variabili con i valori veri del gioco e gli oggetti veri del gioco
+ *
+ * @see JsonGameObject
+ * @see JsonFile
  */
 public class CreationJson {
     private JsonGameObject jsonGameObject = new JsonGameObject();
@@ -39,7 +44,8 @@ public class CreationJson {
 
     }
 
-    public DevelopmentCardList createCardList() {
+    //tutti i metodi per scrivere gli attributi degli oggetti e crearli.
+    private DevelopmentCardList createCardList() {
         List<DevelopmentCard> cardList = new ArrayList<>();
         //creazione di tutti i nomi delle carte
         int contatore = 0;
@@ -1327,11 +1333,10 @@ public class CreationJson {
                 contatore++;
             }
         }
-        DevelopmentCardList developmentCardListToReturn = new DevelopmentCardList(cardList);
 
-        return developmentCardListToReturn;
+        return new DevelopmentCardList(cardList);
     }           //TODO FINIRE DI SCRIVERE LE CARTE
-    public List<LeaderCard> createLeaderCardList() {
+    private List<LeaderCard> createLeaderCardList() {
         List<LeaderCard> leaderCardList = new ArrayList<>();
 
         List<DevelopmentCard> developmentCards1 = new ArrayList<>();
@@ -1454,8 +1459,6 @@ public class CreationJson {
 
         return new ArrayList<>(leaderCardList);
     }
-
-
     private List<List<EffectList>> createTowerEffectList() {
         List<List<EffectList>> finalEffectList = new ArrayList<>();
 
@@ -1603,7 +1606,7 @@ public class CreationJson {
         listToReturn.add(greenRequired);
         listToReturn.add(purpleRequired);
         listToReturn.add(blueRequired);
-        return listToReturn;
+        return new ArrayList<>(listToReturn);
     }
     private List<ResourceList> initialResourcePlayer(){
         List<ResourceList> listToReturn = new ArrayList<>();
@@ -1618,7 +1621,7 @@ public class CreationJson {
             resourceListToAdd.addSpecificResource(new VictoryPoint(0));
             listToReturn.add(resourceListToAdd);
         }
-        return listToReturn;
+        return new ArrayList<>(listToReturn);
     }
     private List<PersonalBonusTiles> createPersonalBonusTilesList() {
 
@@ -1696,7 +1699,7 @@ public class CreationJson {
         personalBonusTilesList.add(personalBonusTiles3);
         personalBonusTilesList.add(personalBonusTiles4);
 
-        return personalBonusTilesList;
+        return new ArrayList<>(personalBonusTilesList);
     }
     private long createPlayerActionTimer(){
         long playerActionTimer=120000;
@@ -1791,7 +1794,6 @@ public class CreationJson {
 
         return new ArrayList<>(excommunicationTilesList);
     }
-
     private List<ResourceList> createCouncilPrivilegeResChoice(){
         List<ResourceList> resourceList = new ArrayList<>();
 
@@ -1805,23 +1807,18 @@ public class CreationJson {
 
         resourceList.add(new ResourceList(new FaithPoint(1)));
 
-        return resourceList;
+        return new ArrayList<>(resourceList);
     }
 
-    public JsonGameObject getJsonGameObject() {
-        return jsonGameObject;
-    }
-    public void setJsonGameObject(JsonGameObject jsonGameObject) {
-        this.jsonGameObject = jsonGameObject;
-    }
 
+    /**
+     * Metodo che scrive l oggetto sul file JsonObject.json se non vi è già presente un file con lo stesso nome.
+     */
     public void createJsonFile(){
-
-        if(JsonFile.newFile("JsonObject.json")) {
+        if(JsonFile.isFileExists("JsonObject.json")) {
             Gson gson = JsonGameObject.gsonGameBuilder();
             String jsonString = gson.toJson(this.jsonGameObject);
             JsonFile.saveJsonToFile(jsonString, "JsonObject.json");
         }
-
     }
 }

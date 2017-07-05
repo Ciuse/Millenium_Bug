@@ -1,20 +1,15 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
-import com.googlecode.lanterna.TextColor;
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
 import it.polimi.ingsw.ps31.messages.messageVC.VCColorChoice;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
-import oracle.jrockit.jfr.JFR;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-
-import static java.lang.String.valueOf;
 
 /**
  * Created by giulia on 04/07/2017.

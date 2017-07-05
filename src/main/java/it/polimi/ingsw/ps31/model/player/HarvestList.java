@@ -39,8 +39,8 @@ public class HarvestList extends HarvestProductionList {
         for (HarvestEffect currentEffect : effectList) {
             if (diceValue >= currentEffect.getHarvestActionValue())
 
-                currentEffect.getGetResourceEffect().activate(super.getPlayer());
+                currentEffect.getGetResourceEffect().activate(super.player);
         }
-        super.getPlayer().addTempResoucesToPlayerResources();
+        super.player.addTempResoucesToPlayerResources();
     }
 }

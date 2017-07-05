@@ -4,7 +4,6 @@ package it.polimi.ingsw.ps31.messages.messageMV;
 import it.polimi.ingsw.ps31.messages.ConcreteEnvelope;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.networking.DeliverableMessageType;
 
 /**
  * Created by giulia on 01/06/2017.

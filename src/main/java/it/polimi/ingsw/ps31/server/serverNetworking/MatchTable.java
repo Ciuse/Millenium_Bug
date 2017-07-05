@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps31.server.serverNetworking;
 
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.server.Match;
 
 import java.util.ArrayList;

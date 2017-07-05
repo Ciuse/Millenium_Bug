@@ -1,8 +1,8 @@
 package it.polimi.ingsw.ps31.model.player;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
+import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceIfActiveEffect;
-import it.polimi.ingsw.ps31.model.effect.HarvestEffect;
 import it.polimi.ingsw.ps31.model.effect.ProductionEffect;
 
 import java.util.ArrayList;
@@ -50,24 +50,26 @@ public class ProductionList extends  HarvestProductionList {
             //non chiedo nulla, questo tipo di effetto va attivato per forza
             if (diceValue >= currentEffect.getProductionActionValue()) {
                 if (currentEffect.getGetResourceEffect() != null) {
-                    currentEffect.getGetResourceEffect().activate(super.getPlayer());
+                    currentEffect.getGetResourceEffect().activate(super.player);
                 }
                 //non chiedo nulla, questo tipo di effetto va attivato per forza
                 if (currentEffect.getGetResourceEffectFromCard() != null) {
-                    currentEffect.getGetResourceEffectFromCard().activate(super.getPlayer());
+                    currentEffect.getGetResourceEffectFromCard().activate(super.player);
                 }
                 //chiedo al player se vuoile attivare questo tipo di effetto o no
                 if (currentEffect.getChangeResourceEffect() != null) {
                     String string = " Vuoi attivare questo effetto?";
-                    super.getPlayer().getModel().notifyViews(new MVAskChoice(super.getPlayer().getPlayerId(), string, new ChoiceIfActiveEffect(currentEffect.getChangeResourceEffect().getCardId())));
-                    boolean choice = super.getPlayer().getModel().getModelChoices().waitActiveEffect();
+                    super.player.getModel().notifyViews(new MVAskChoice(super.player.getPlayerId(), string, new ChoiceIfActiveEffect(currentEffect.getChangeResourceEffect().getCardId())));
+                    Boolean choice = super.player.getModel().getModelChoices().waitActiveEffect();
+                    if (choice == null) {
+                        choice = false;
+                    }
                     if (choice) {
-                        currentEffect.getChangeResourceEffect().activate(super.getPlayer());
+                        currentEffect.getChangeResourceEffect().activate(super.player);
                     }
                 }
             }
-            super.getPlayer().addTempResoucesToPlayerResources();
         }
-
+        super.player.addTempResoucesToPlayerResources();
     }
 }

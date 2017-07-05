@@ -1,9 +1,7 @@
 package it.polimi.ingsw.ps31.messages.messageNetworking;
 
-import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.ConcreteEnvelope;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
-import it.polimi.ingsw.ps31.networking.DeliverableMessageType;
 
 /**
  * Created by Francesco on 24/06/2017.

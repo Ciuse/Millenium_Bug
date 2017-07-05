@@ -1,9 +1,10 @@
 package it.polimi.ingsw.ps31.model;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.model.actions.Action;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
-import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
 import it.polimi.ingsw.ps31.model.card.LeaderCard;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.game.InformationFromNetworking;
@@ -20,11 +21,12 @@ import static java.lang.Thread.sleep;
 
 /**
  * Created by giulia on 15/06/2017.
- * Classe che gestisce tutti i wait del model per attendere le risposte da parte degli utenti o per attendere che tutti siano pronti per giocare
+ * Classe che gestisce tutti i metpdo di "Wait" del model per attendere le risposte da parte degli utenti o per attendere che tutti gli utenti si siano connessi
  * Inoltre gestisce anche il timer per lo scadere del tempo delle connessioni
  * @see Timer
  * @see InformationFromNetworking
  * @see Model
+ * @see Controller
  */
 public class ModelChoices {
     /**
@@ -58,9 +60,10 @@ public class ModelChoices {
     }
 
     /**
-     *  I metodi di wait si mettono in attesa del controller, il quale setta la risposta
-     *  proveniente dalla view e in questo modo il model riprende l' esecuzione
-     *  delle altre funzioni utilizzando l'oggetto o risposta dell utente
+     *  I metodi di wait permettono al model di mettersi in atteesa di una risposta prima di continuare l esecuzione delle azioni
+     *  sarà il controller a settare le varie risposte provenienti dalle view, ovviamente prima assicurandosi della leggitimità delle risposte
+     *
+     *  @see Thread: il thread del model esegue delle sleep ad ogni ciclo per evitare un eccessivo uso della cpu durante i cicli di attesa
      */
     public synchronized int waitIntListToPay(){
         setListToPay(-1);
@@ -71,7 +74,6 @@ public class ModelChoices {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //TODO SISTEMARE
         }
         return listToPay;
     }
@@ -85,7 +87,6 @@ public class ModelChoices {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //TODO SISTEMARE
         }
     }
 
@@ -98,7 +99,6 @@ public class ModelChoices {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //TODO SISTEMARE
         }
         return leaderCardChosen;
     }
@@ -112,7 +112,6 @@ public class ModelChoices {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //TODO SISTEMARE
         }
         return towerCardSpaceChosen;
     }
@@ -126,12 +125,11 @@ public class ModelChoices {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //TODO SISTEMARE
         }
         return actionSpaceChosen;
     }
 
-    public synchronized boolean waitActiveEffect(){
+    public synchronized Boolean waitActiveEffect(){
         setActiveEffect(null);
         setStateChoice();
         while(activeEffect==null&& this.stateModelChoices.equals("StateChoice")){
@@ -179,7 +177,7 @@ public class ModelChoices {
         }return numberOfServantsToPay;
     }
 
-    public synchronized boolean waitSupportTheChurch(){
+    public synchronized Boolean waitSupportTheChurch(){
         setSupportTheChurch(null);
         setStateChoice();
         while(supportTheChurch==null && this.stateModelChoices.equals("StateChoice")){

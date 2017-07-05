@@ -3,9 +3,6 @@ package it.polimi.ingsw.ps31.model.actionControls;
 import it.polimi.ingsw.ps31.model.board.ActionSpace;
 import it.polimi.ingsw.ps31.model.player.Player;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Francesco on 24/05/2017.
  */

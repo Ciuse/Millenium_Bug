@@ -8,7 +8,7 @@ package it.polimi.ingsw.ps31.model.player;
  * su di lui e del metodo activate
  */
 public abstract class HarvestProductionList{
-    private final Player player;
+    protected final Player player;
 
     /* Constructor */
     public HarvestProductionList(Player player) {

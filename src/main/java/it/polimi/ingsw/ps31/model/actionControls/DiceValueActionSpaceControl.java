@@ -3,9 +3,6 @@ package it.polimi.ingsw.ps31.model.actionControls;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.player.Player;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by Francesco on 24/05/2017.
  */

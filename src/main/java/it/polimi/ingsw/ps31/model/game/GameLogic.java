@@ -13,10 +13,16 @@ import it.polimi.ingsw.ps31.server.VirtualView;
 
 import java.util.Collections;
 
-import static java.lang.Thread.sleep;
-
 /**
  * Created by giulia on 24/05/2017.
+ *
+ * Classe principale del gioco. Contiene le principali logiche di funzionamento: Attesa dei player, Creazione del file Json, Cicli e scelte principali dell' avvio del gioco
+ *
+ * @see GameUtility
+ * @see InformationFromNetworking
+ * @see Match
+ * @see CreationJson
+ * @see Model
  */
 public class GameLogic {
     //classe che contiene il metodo principale con i cicli di funzionamento del gioco / la lettura degli oggeti dal file json / l attesa di connessione dei player

@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import static java.lang.Thread.sleep;
-
 /**
  * Created by Francesco on 08/06/2017.
  */

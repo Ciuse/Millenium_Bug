@@ -3,14 +3,12 @@ package it.polimi.ingsw.ps31.server.serverNetworking;
 import com.google.gson.Gson;
 import it.polimi.ingsw.ps31.messages.ConcreteEnvelope;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
-import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.networking.ConnectionType;
 import it.polimi.ingsw.ps31.networking.JsonNetworking;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.List;
 
 /**

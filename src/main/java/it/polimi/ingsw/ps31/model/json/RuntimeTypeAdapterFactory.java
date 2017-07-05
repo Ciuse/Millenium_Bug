@@ -24,8 +24,11 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
     /**
+     * Non essendo già presente nella libreria di Gson base è stato necessaria aggiungerla al nostro progetto come classe di supporto.
+     * Serve per poter capire i vari tipi degli oggetti a runtime durante la serializzazione e deserializzazione.
+     *
+     *
      * Adapts values whose runtime type may differ from their declaration type. This
      * is necessary when a field's type is not the same type that GSON should create
      * when deserializing that field. For example, consider these types:
@@ -115,8 +118,9 @@ import java.util.Map;
      * }</pre>
      */
 
-    public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {  // classe della libreria Gson che abbiamo dovuto aggiungere manualmente per poter leggere
-                                                                                    // i runtime type per gli oggetti polimorfi
+    // classe della libreria Gson che abbiamo dovuto aggiungere manualmente per poter leggere i runtime type per gli oggetti polimorfi
+    public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
+
 
         private final Class<?> baseType;
         private final String typeFieldName;

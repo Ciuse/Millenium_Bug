@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.client.view.stateView;
 
-import it.polimi.ingsw.ps31.model.stateModel.StateDevelopmentCard;
 import it.polimi.ingsw.ps31.model.stateModel.StateExcommunication;
 
 /**

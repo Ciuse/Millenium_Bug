@@ -22,7 +22,6 @@ import it.polimi.ingsw.ps31.model.gameResource.Servant;
 import java.io.IOException;
 
 import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.*;
-import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getTower_Identical_Box_Max;
 import static java.lang.String.valueOf;
 import static java.lang.Thread.sleep;
 

@@ -1,9 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
-import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 
 import javax.swing.*;
 import java.awt.*;

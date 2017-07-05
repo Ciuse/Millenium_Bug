@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
-import it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 
 import java.util.ArrayList;

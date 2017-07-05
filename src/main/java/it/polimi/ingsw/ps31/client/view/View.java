@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps31.client.view;
 
-import it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
 import it.polimi.ingsw.ps31.controller.Controller;
@@ -8,11 +7,9 @@ import it.polimi.ingsw.ps31.messages.messageMV.MVMessageVisitor;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.choiceType.*;
-import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.stateModel.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;

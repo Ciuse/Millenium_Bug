@@ -2,8 +2,6 @@ package it.polimi.ingsw.ps31.model.gameResource;
 
 import it.polimi.ingsw.ps31.model.player.Player;
 
-import javax.annotation.PostConstruct;
-
 /**
  * Created by giulia on 17/05/2017.
  *

@@ -5,10 +5,8 @@ import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpre
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskPlayerColorFrame;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.MainFrame;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
 import it.polimi.ingsw.ps31.model.choiceType.*;
-import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import javax.swing.*;

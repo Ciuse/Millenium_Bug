@@ -1,21 +1,16 @@
 package it.polimi.ingsw.ps31.server;
 
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
-import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.controller.Controller;
-import it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.Model;
-import it.polimi.ingsw.ps31.model.actionControls.Control;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.game.GameLogic;
 import it.polimi.ingsw.ps31.model.game.InformationFromNetworking;
-import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.server.serverNetworking.MatchTable;
 import it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface;
 import it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface;
-import it.polimi.ingsw.ps31.server.serverNetworking.ServerListeningThread;
 
 import java.util.ArrayList;
 import java.util.List;

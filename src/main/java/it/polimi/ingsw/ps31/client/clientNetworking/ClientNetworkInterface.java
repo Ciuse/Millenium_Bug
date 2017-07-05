@@ -1,9 +1,7 @@
 package it.polimi.ingsw.ps31.client.clientNetworking;
 
 import com.google.gson.Gson;
-import it.polimi.ingsw.ps31.client.Client;
 import it.polimi.ingsw.ps31.client.ClientReadingThread;
-import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.ConcreteEnvelope;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;

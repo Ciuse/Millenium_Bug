@@ -1,11 +1,9 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
-import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.networking.ConnectionType;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.List;
 
 /**
  * Created by Francesco on 09/06/2017.

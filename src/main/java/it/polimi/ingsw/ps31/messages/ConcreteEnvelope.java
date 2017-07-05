@@ -1,9 +1,7 @@
 package it.polimi.ingsw.ps31.messages;
 
-import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
-import it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 

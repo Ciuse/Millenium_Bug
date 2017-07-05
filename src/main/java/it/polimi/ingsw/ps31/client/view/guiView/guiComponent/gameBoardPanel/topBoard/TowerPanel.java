@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
 import static java.lang.String.valueOf;
-import static java.lang.Thread.sleep;
 
 public class TowerPanel extends JPanel implements ActionListener {
     private ActionListener listener;

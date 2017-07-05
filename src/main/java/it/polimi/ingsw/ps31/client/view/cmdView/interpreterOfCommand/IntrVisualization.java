@@ -4,10 +4,7 @@ import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewDevelopmentCard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewExcommunication;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
-
-import java.util.Collections;
 
 import static java.lang.String.valueOf;
 

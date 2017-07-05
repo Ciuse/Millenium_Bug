@@ -1,10 +1,5 @@
 package it.polimi.ingsw.ps31.networking;
 
-import it.polimi.ingsw.ps31.messages.GenericMessage;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Francesco on 25/06/2017.
 */

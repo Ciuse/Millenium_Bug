@@ -4,8 +4,6 @@ import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.messages.messageVC.VCActionSpace;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
-import javax.swing.*;
-
 /**
  * Created by Giuseppe on 22/06/2017.
  */

@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.model.board;
 
 import it.polimi.ingsw.ps31.model.card.DevelopmentCard;
-import it.polimi.ingsw.ps31.model.player.*;
+import it.polimi.ingsw.ps31.model.player.PersonalBoardCardCell;
 
 /**
  * Created by Francesco on 12/05/2017.

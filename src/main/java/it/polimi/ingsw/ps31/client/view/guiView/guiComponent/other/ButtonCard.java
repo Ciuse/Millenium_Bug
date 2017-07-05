@@ -1,7 +1,5 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other;
 
-import it.polimi.ingsw.ps31.model.actions.*;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;

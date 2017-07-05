@@ -1,9 +1,9 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.UtilityPanel;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.GameBoardPanel;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PlayerPanel;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.UtilityPanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
