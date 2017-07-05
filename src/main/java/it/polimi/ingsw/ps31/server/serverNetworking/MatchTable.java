@@ -140,6 +140,8 @@ public class MatchTable {
             System.out.println("MatchTable : addPlayer>\t\triconnessione in corso");
             PlayerId disconnectedPlayerId = currentDisconnection.getPlayerId();
             currentDisconnection.getMatch().reconnectPlayer(connection, disconnectedPlayerId);
+            currentDisconnection.getMatch().printPlayerTable();
+
             return currentDisconnection.getMatch();
         }
 

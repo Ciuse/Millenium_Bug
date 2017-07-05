@@ -13,31 +13,6 @@ import java.util.List;
 /**
  * Created by Francesco on 08/06/2017.
  */
-class DisconnectedPlayer{
-    private final PlayerId playerId;
-    private final String username;
-    private final String password;
-
-    public DisconnectedPlayer(PlayerId playerId, String username, String password)
-    {
-        this.playerId = playerId;
-        this.username = username;
-        this.password = password;
-    }
-
-    public PlayerId getPlayerId() {
-        return playerId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-}
-
 //Classe con il compito di interfacciare le varie conessioni ad una partita con l'oggetto match corrispondente
 public class NetworkInterface {
 //    private List<ServerConnectionInterface> connectionInterfaces = new ArrayList<>();
@@ -138,5 +113,10 @@ public class NetworkInterface {
     public PlayerId connectionToPlayerId(PlayerCommunicationInterface playerCommunicationInterface)
     {
         return playerTable.connectionToPlayerId(playerCommunicationInterface);
+    }
+
+    public PlayerCommunicationInterface playerIdToConnection(PlayerId playerId)
+    {
+        return playerTable.playerIdToConnection(playerId);
     }
 }

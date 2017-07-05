@@ -139,7 +139,7 @@ public class PlayerTable {
         tblStr += "\n========================";
         for(PlayerConnectionRow currentRow : playerConnectionRows) {
             String alignment = (currentRow.getPlayerId()==PlayerId.THREE) ? "\t" : "\t\t";
-            tblStr += "\nPlayer " + currentRow.getPlayerId() + alignment+": " + currentRow.getPlayerCommunicationInterface().toString();
+            tblStr += "\nPlayer " + currentRow.getPlayerId() + alignment + ": " + currentRow.getPlayerCommunicationInterface().toString();
         }
         tblStr += "\n";
 

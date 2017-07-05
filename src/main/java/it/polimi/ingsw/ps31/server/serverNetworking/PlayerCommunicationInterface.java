@@ -1,10 +1,16 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
 import it.polimi.ingsw.ps31.messages.GenericMessage;
+import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import it.polimi.ingsw.ps31.model.player.Player;
+import it.polimi.ingsw.ps31.server.Match;
 
+import javax.swing.text.Style;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,6 +34,7 @@ public class PlayerCommunicationInterface {
         //Inizializzo attributi di base
         this.newMessages = false;
         this.disconnected = false;
+        this.pendingMessages = new ArrayList<>();
 
         //Creo l'infrastruttura di comunicazione con la rete
         this.serverConnectionInterface = serverConnectionInterface;
@@ -81,24 +88,31 @@ public class PlayerCommunicationInterface {
         }
     }
 
-
     public void closeConnection() {
         this.disconnected = true;
         matchTable.disconnectClient(this);
     }
 
-    public boolean reopenClosedConnection(ServerConnectionInterface newConnection)
+    public void reopenClosedConnection(PlayerCommunicationInterface oldConnection)
     {
-        //Controllo che il connectionMessage vecchio e quello nuovo contengano stessi id e password
-        ConnectionMessage newCM = newConnection.getConnectionMessage();
-        if( ! newCM.getUsername().equals(connectionMessage.getUsername()) ||
-            ! newCM.getPassword().equals(connectionMessage.getUsername()))
-            return false;
+        //copio nella nuova communicationInterface(this) i pending messages di quella vecchia (oldConnection)
+        setPendingMessages(oldConnection.getPendingMessages());
 
-        this.serverConnectionInterface = newConnection;
-        ServerListeningThread listeningThread = new ServerListeningThread(serverConnectionInterface, serverInputBuffer);
+        //invio al client i pending messages appena copiati
+        for(GenericMessage currentMessage : pendingMessages)
+        {
+            serverConnectionInterface.sendToClient(currentMessage);
+        }
+    }
 
-        return true;
+    private List<GenericMessage> getPendingMessages()
+    {
+        return this.pendingMessages;
+    }
+
+    private void setPendingMessages(List<GenericMessage> oldList)
+    {
+        this.pendingMessages = new ArrayList<>(oldList);
     }
 
     public void setPlayerId(PlayerId playerId) {

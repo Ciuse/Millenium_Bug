@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 18/05/2017.
+ *
+ * Azione che attiva le carte raccolto del player. Necessita di un intero che rappresenta il costo
  */
 public class ActionActivateHarvest extends Action {
     private Integer diceValue = null;

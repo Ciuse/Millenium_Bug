@@ -22,24 +22,26 @@ class InputBufferReader extends Thread{
     private boolean listenNetworkInterfaces = true;
     private NetworkInterface networkInterface;
     private VirtualView virtualView;
+    private int connectedPlayers;
 
     public InputBufferReader(NetworkInterface networkInterface, VirtualView virtualView)
     {
         this.networkInterface = networkInterface;
         this.virtualView = virtualView;
+        this.connectedPlayers = 0;
     }
 
     public void run() {
         System.out.println("Match:run> Entro nel run");
         //Ciclo in attesa di messaggi sulle socket
         while (listenNetworkInterfaces) {
-            for( PlayerId playerToRead : PlayerId.values()) {
-                VCVisitable vcVisitable = networkInterface.readFromClient(playerToRead);
+            for( int i = 0; i<connectedPlayers; i++) {
+                VCVisitable vcVisitable = networkInterface.readFromClient(PlayerId.values()[i-1]);
                 if (vcVisitable != null)
                     virtualView.notifyController(vcVisitable);
 
                 try {
-                    sleep(1000);
+                    sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -53,6 +55,10 @@ class InputBufferReader extends Thread{
         listenNetworkInterfaces = false;
     }
 
+    public void incConnectedPlayers()
+    {
+        this.connectedPlayers++;
+    }
 }
 
 public class Match extends Thread{
@@ -80,7 +86,7 @@ public class Match extends Thread{
         //this.networkInterface.setModelProva(modelProva);
         this.hostConnection = host;
         this.id = id;
-        disconnectedPlayers = new ArrayList<>();
+        this.disconnectedPlayers = new ArrayList<>();
 
         addConnection(host);
         start();
@@ -152,6 +158,8 @@ public class Match extends Thread{
 
         clientConnection.switchOn();
 
+        inputBufferReader.incConnectedPlayers();
+
         boolean started = ( playerNumber == MAX_PLAYER_NUMBER );
 
         networkInterface.printPlayerTable();
@@ -164,9 +172,13 @@ public class Match extends Thread{
         disconnectedPlayers.add(playerId);
     }
 
-    public void reconnectPlayer(PlayerCommunicationInterface connectionThread, PlayerId playerId)
+    public void reconnectPlayer(PlayerCommunicationInterface newCommunicationInterface, PlayerId playerId)
     {
         disconnectedPlayers.remove(playerId);
+        PlayerCommunicationInterface oldCommunicationInterface = networkInterface.playerIdToConnection(playerId);
+
+        newCommunicationInterface.reopenClosedConnection(oldCommunicationInterface);
+
     }
 
     public PlayerId connectionToPlayerId(PlayerCommunicationInterface playerCommunicationInterface)
@@ -174,6 +186,10 @@ public class Match extends Thread{
         return networkInterface.connectionToPlayerId(playerCommunicationInterface);
     }
 
+    public void printPlayerTable()
+    {
+        networkInterface.printPlayerTable();
+    }
 
     @Override
     public boolean equals(Object o) {
