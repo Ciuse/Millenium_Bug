@@ -110,7 +110,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
         ButtonCard buttonCard = (ButtonCard) e.getSource();
         String nameButton = buttonCard.getName();
 
-        if (buttonCard.getString() != null) {
+        if (buttonCard.getStringImage() != null) {
             for (int i = 1; i <= 6; i++) {
                     if (nameButton.equals(valueOf(i))) {
                         JFrame frame = new JFrame(nameButton);
@@ -121,7 +121,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
                         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         Container c = frame.getContentPane();
                         ButtonCard frameButton = new ButtonCard();
-                        frameButton.imageToReprint(buttonCard.getString());
+                        frameButton.imageToReprint(buttonCard.getStringImage());
                         c.add(frameButton);
                         frameButton.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent ev) {

@@ -65,7 +65,6 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
                             this.actionSpace.addFamilyMember(familyMember);
                             //Attivo l'effetto dello spazio azione
                             this.actionSpace.activeEffectList(player);
-                            super.player.setLastUsedFamilyMember(familyMember);
                             askAgain = false;
                         } else {
                             player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getDiceValueActionSpaceControl().getControlStringError()));

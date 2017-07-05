@@ -20,8 +20,7 @@ public class AskPlayerColorFrame extends JFrame implements ActionListener {
     private GuiView guiView;
     private JFrame frame = new JFrame();
 
-    public AskPlayerColorFrame(ChoiceColor choiceColor, GuiView guiView) throws HeadlessException {
-
+    public AskPlayerColorFrame(ChoiceColor choiceColor, GuiView guiView)  {
         this.choiceColor = choiceColor;
         this.guiView = guiView;
     }

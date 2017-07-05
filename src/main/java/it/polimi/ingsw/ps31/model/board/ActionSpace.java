@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps31.model.board;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
+import it.polimi.ingsw.ps31.model.constants.DiceColor;
+import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.effect.ActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
 import it.polimi.ingsw.ps31.model.player.FamilyMember;
@@ -26,6 +28,21 @@ public class ActionSpace implements ActiveEffect {
         this.diceCost = diceCost;
         this.familyMemberLimit = familyMemberLimit;
         this.immediateEffectList = immediateEffectList;
+    }
+
+    /**
+     * Controllo se in questo action space c' è già un famigliare dello stesso player
+     * @param playerColor colore del player del famigliare da controllare
+     */
+    public boolean checkIfPlayerColor(PlayerColor playerColor){
+        if (familyMembers!=null){
+            for (FamilyMember family: familyMembers
+                 ) {
+                if(family.getPlayer().getPlayerColor().equals(playerColor))
+                    return true;
+            }
+        }
+        return false;
     }
 
     /* Getters & Setters */

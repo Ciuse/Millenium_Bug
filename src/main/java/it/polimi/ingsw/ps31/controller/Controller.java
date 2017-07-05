@@ -163,6 +163,7 @@ public class Controller extends Thread implements Observer {
 
     public void selectActionSpace(int actionSpaceId, PlayerId viewId) {
         boolean found = false;
+        boolean canPlace = true;
         ActionSpace actionSpaceToControl = null;
         if (actionSpaceId == 1) {
             actionSpaceToControl = gameUtility.getGameBoard().getCouncilPalace();
@@ -171,23 +172,47 @@ public class Controller extends Thread implements Observer {
         if (actionSpaceId == 2) {
             actionSpaceToControl = gameUtility.getGameBoard().getSmallHarvest();
             found = true;
+            if (gameUtility.getGameBoard().getSmallHarvest().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
+                canPlace = false;
+            }
+            if (gameUtility.getGameBoard().getBigHarvest().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
+                canPlace = false;
+            }
         }
         if (actionSpaceId == 3) {
             actionSpaceToControl = gameUtility.getGameBoard().getBigHarvest();
             found = true;
+            if (gameUtility.getGameBoard().getSmallHarvest().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
+                canPlace = false;
+            }
+            if (gameUtility.getGameBoard().getBigHarvest().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
+                canPlace = false;
+            }
         }
         if (actionSpaceId == 4) {
             actionSpaceToControl = gameUtility.getGameBoard().getSmallProduction();
             found = true;
+            if (gameUtility.getGameBoard().getSmallProduction().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
+                canPlace = false;
+            }
+            if (gameUtility.getGameBoard().getBigProduction().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
+                canPlace = false;
+            }
         }
         if (actionSpaceId == 5) {
             actionSpaceToControl = gameUtility.getGameBoard().getBigProduction();
             found = true;
+            if (gameUtility.getGameBoard().getSmallProduction().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
+                canPlace = false;
+            }
+            if (gameUtility.getGameBoard().getBigProduction().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
+                canPlace = false;
+            }
         }
         if (actionSpaceId >= 6 && actionSpaceId <= 9) {
             for (ActionSpace marketActionSpace : gameUtility.getGameBoard().getMarket().getActionSpaceList()
                     ) {
-                if ((actionSpaceId+16) == marketActionSpace.getActionSpaceId()) {
+                if ((actionSpaceId + 16) == marketActionSpace.getActionSpaceId()) {
                     actionSpaceToControl = marketActionSpace;
                     found = true;
                 }
@@ -195,14 +220,23 @@ public class Controller extends Thread implements Observer {
         }
         if (found) {
             if (gameUtility.getPlayerInAction().getPlayerActionSet().getActionControlSet().occupiedActionSpaceControl(actionSpaceToControl)) {        //se esiste l action space controllo se posso meterci il famigliare
-                if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
-                    modelChoices.setActionSpaceChosen(actionSpaceToControl);
+                if (gameUtility.getPlayerInAction().getLastUsedFamilyMember().getDiceColor().equals(DiceColor.NEUTRAL)) {
+                    canPlace = true;
+                }
+                if (canPlace) {
+                    if (gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                        modelChoices.setActionSpaceChosen(actionSpaceToControl);
+                }
+                else  {
+                    virtualView.reSendLastMessage("Hai già un famigliare colorato in produzione/raccolto ");
+
+                }
             } else {
-                if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                if (gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
                     virtualView.reSendLastMessage(gameUtility.getPlayerInAction().getActionControlSet().getOccupiedActionSpaceControl().getControlStringError());
             }
         } else {
-            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+            if (gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
                 virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l actionSpace");
         }
     }

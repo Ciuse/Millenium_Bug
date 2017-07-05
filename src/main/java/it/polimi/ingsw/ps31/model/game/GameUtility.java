@@ -20,7 +20,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.model.stateModel.StateGame;
 import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.json.JsonGameObject;
-
+import it.polimi.ingsw.ps31.controller.Controller;
 import java.util.*;
 
 
@@ -72,8 +72,13 @@ public class GameUtility {
     }
 
 
-    /*metodi che riguardano il funzionamento delle principali fasi del gioco e della loro logica interna */
+    /* metodi che riguardano il funzionamento delle principali fasi del gioco e della loro logica interna */
 
+    /**
+     * Scelta che i giocatori faranno uno alla volta per decidere quale colore usare
+     * @see ChoiceColor
+     * @see Controller
+     */
     public void choiseColorPlayer() {
         List<PlayerColor> playerColorList = new ArrayList<>();
         playerColorList.add(PlayerColor.GREEN);
@@ -100,6 +105,11 @@ public class GameUtility {
         }
     }
 
+    /**
+     * Scelta del personal bonus tiles
+     * @see ChoicePersonalBonusTiles
+     * @see Controller
+     */
     public void phaseChoicePersonalBonusTiles() {
         for (Player player : playerList
                 ) {
@@ -118,6 +128,16 @@ public class GameUtility {
         }
     }
 
+    /**
+     * Draft dei leader nel quale ogni giocatore sceglierà uno dei 4 leader che gli vengono assegnati,
+     * poi la lista dei leader viene ricomposta ma con le possbili scelte dell' ultimo giocatore questa volta
+     * in testa alla lista (così da simulare il fatto che i giocatori passano le proprie carte al giocatore alla
+     * loro sinistra) e di nuovo verranno riassegnati i leader ai giocatori ovviamente ad ogni ciclo si avrà un
+     * leader in meno tra le possibili scelte
+     *
+     * @see ChoiceStartLeaderCard
+     * @see Controller
+     */
     public void leaderCardSetup() {
         Collections.shuffle(leaderCardList);
         for (int k = 0; k < Max_Leader_Card; k++) {
@@ -144,14 +164,10 @@ public class GameUtility {
             }
             model.getModelChoices().waitAllInitialLeaderCardChosen(playerMaxNumber);
 
-
-            //prendo l ultima l ista e la sposto in testa per simulare il fatto che ogni player passa le sue carte al player alla sua sinistra
-
+            //prendo l ultima lista e la sposto in testa per simulare il fatto che ogni player passa le sue carte al player alla sua sinistra
             List<LeaderCard> listToMove = model.getModelChoices().getTempModelStateForLeaderChoice().getListList().get(model.getModelChoices().getTempModelStateForLeaderChoice().getListList().size() - 1);
             model.getModelChoices().getTempModelStateForLeaderChoice().getListList().remove(listToMove);
             model.getModelChoices().getTempModelStateForLeaderChoice().getListList().add(0, listToMove);
-
-
         }
         for (Player player : playerList
                 ) {
@@ -159,10 +175,16 @@ public class GameUtility {
                     ) {
                 player.getModel().notifyViews(new MVUpdateState("Aggiornato stato leader card", leader.getStateLeaderCard()));
             }
-
         }
     }
 
+    /**
+     * Fase principale delle azioni: viene eseguito un controllo sulla possibile scomunica che ne cambia la logica
+     * se viene trovata il giocatore salterà il primo turno, in caso di riscontro negativo verrà eseguita la normale
+     * logica del turno di azione.
+     * @param playerNumber
+     * @param action
+     */
     public void phaseActionGame(int playerNumber, int action) {
         if (action == 1 && playerList.get(playerNumber).getFlagTurnExcommunication() == 1) {
             this.endActionTurn(playerList.get(playerNumber));
@@ -175,6 +197,10 @@ public class GameUtility {
         this.endActionTurn(playerList.get(playerNumber));
     }
 
+    /**
+     * Fase extra per recuperare le azioni perse per colpa della scomunica
+     * @param playerNumber
+     */
     public void extraPhaseActionGame(int playerNumber) {
         if (playerList.get(playerNumber).getFlagTurnExcommunication() == 1) {
             if (playerList.get(playerNumber).checkIfOnlyNEUTRALRemained()) {
@@ -187,6 +213,10 @@ public class GameUtility {
         }
     }
 
+    /**
+     * Inizio fase azioni con relativo aggiornamento dello stato delle azioni del player
+     * @param player player che dovrà eseguire l azione
+     */
     public void startActionTurn(Player player) {
         resetPlayerAction();            //riattivo le azioni che i player hanno usato il turno prima
         setPlayerInAction(player);
@@ -197,6 +227,14 @@ public class GameUtility {
         model.notifyViews(new MVUpdateState(string2, player.getStatePlayerAction()));
     }
 
+    /**
+     * Il cuore della fase azione inizia con la creazione del timer, per poi chiedere al client
+     * quale azione fare. In base alla stringa che ritorna verrà eseguita l azione del player
+     * sempre se questa è tra le possibili azioni.
+     * Il giocatore potrà continuare a fare azioni finchè non deciderà di passare il turno
+     * (per esempio può piazzare un famigliare nella torre, scartare due leader e attivarne uno, e poi passare il turno)
+     * @param player
+     */
     public void doActionTurn(Player player) {
         model.getModelChoices().setStateActionGame();
         while (model.getModelChoices().getStateModelChoices().equals("StateActionGame") && !player.isWannaEndTurn()) {
@@ -228,6 +266,10 @@ public class GameUtility {
         cancelTimer();
     }
 
+    /**
+     * Fase cnclusiva delle azioni, può essere invocata dallo scadere del timer o dalla decisione del player di finire il turno
+     * @param player
+     */
     public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
 
         String string1 = player.getNickname() + ": FINE FASE AZIONE";
@@ -235,6 +277,12 @@ public class GameUtility {
         model.getModelChoices().setStateEndTurn();
     }
 
+    /**
+     * metodo per gestire tutta la logica della fase del rapporto con il vaticano e le scelte
+     * per decidere o no se supportare la chiesa nel caso si abbiano abbastanza punti fede
+     * @param period
+     * @see ChoiceIfSupportTheChurch
+     */
     public void vaticanReport(int period) {
         for (Player player : playerList
                 ) {
@@ -617,6 +665,12 @@ public class GameUtility {
 
     /* metodo principale per attribuire i punti alla fine del gioco in base alle scomuniche possedute dai player */
 
+    /**
+     * Vengono applicate le regole di gioco per calcolare i punti finali alla fine della partita
+     * A volte però le scomuniche del terzo periodo posso influenzarne il modo in cui si calcolano
+     * perchè vengono controllate tutte le condizioni e le scomuniche prima di attribuirne il valore
+     * leggitimo al player
+     */
     public void getFinalVictoryPoint() {
         boolean thirdPeriodExcomunication = false;
         for (Player player : playerList

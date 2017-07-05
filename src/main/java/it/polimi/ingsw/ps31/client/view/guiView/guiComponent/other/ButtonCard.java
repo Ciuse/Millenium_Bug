@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class ButtonCard extends JButton {
     private ActionListener listener;
-    private String string;
+    private String stringImage;
     private BufferedImage backgroundPanel;
 
     @Override
@@ -34,18 +34,19 @@ public class ButtonCard extends JButton {
     }
 
     public ButtonCard() {
-        this.string = string;
+        this.stringImage = stringImage;
     }
 
-    public void imageToReprint(String string) {
-        this.string = string;
-        imageToLoad(string);
+    public void imageToReprint(String stringImage) {
+        this.stringImage = stringImage;
+        imageToLoad(stringImage);
         repaint();
         revalidate();
+        validate();
     }
 
-    public String getString() {
-        return string;
+    public String getStringImage() {
+        return stringImage;
     }
 
     public BufferedImage getBackgroundPanel() {

@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.client.view.guiView;
 
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskPersonalBonusTiles;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskPlayerColorFrame;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.MainFrame;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
@@ -64,7 +65,8 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void askStartPersonalTilesToKeep(ChoicePersonalBonusTiles choicePersonalBonusTiles) {
-
+     AskPersonalBonusTiles askPersonalBonusTiles = new AskPersonalBonusTiles(choicePersonalBonusTiles,this);
+     askPersonalBonusTiles.startFrame();
     }
 
     @Override
@@ -184,11 +186,11 @@ public class GuiView extends View implements ActionListener{
     }
 
     public void printMyFamilyMembersOnPlayerPanel() {
-                for (StateViewFamilyMember family : super.getMyStateViewPlayer().getStateViewFamilyMemberList()
-                        ) {
-                    mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().printMyFamilyMembersOnPlayerPanel(family);
-                }
-            }
+     for (StateViewFamilyMember family : super.getMyStateViewPlayer().getStateViewFamilyMemberList()
+             ) {
+      mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().printMyFamilyMembersOnPlayerPanel(family);
+     }
+    }
 
 
 

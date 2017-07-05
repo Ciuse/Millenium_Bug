@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  */
 public class LeaderCardPanel extends JPanel implements  ActionListener {
     private ActionListener listener;
-    ButtonCard buttonOpenLeaderCard;
+    private ButtonCard buttonOpenLeaderCard;
 
     public LeaderCardPanel() {
         addComponentsToPane(this);

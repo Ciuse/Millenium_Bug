@@ -103,7 +103,6 @@ public class TowerPanel extends JPanel implements ActionListener {
             towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/devCard/devcards_f_en_c_" + valueOf(stateViewTowerCardBox.getCardId()) + ".png");
         } else
             towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().setOpaque(false);
-
     }
 
 
@@ -113,7 +112,7 @@ public class TowerPanel extends JPanel implements ActionListener {
         ButtonCard buttonCard = (ButtonCard) e.getSource();
         String nameButton = buttonCard.getName();
 
-        if (buttonCard.getString() != null) {
+        if (buttonCard.getStringImage() != null) {
             int k = 1;
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
@@ -128,7 +127,7 @@ public class TowerPanel extends JPanel implements ActionListener {
                             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                             Container c = frame.getContentPane();
                             ButtonCard frameButton = new ButtonCard();
-                            frameButton.imageToReprint(buttonCard.getString());
+                            frameButton.imageToReprint(buttonCard.getStringImage());
                             c.add(frameButton);
                             frameButton.addActionListener(new ActionListener() {
                                 public void actionPerformed(ActionEvent ev) {
