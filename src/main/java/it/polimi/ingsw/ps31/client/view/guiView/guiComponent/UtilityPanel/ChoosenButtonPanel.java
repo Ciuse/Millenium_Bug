@@ -19,11 +19,11 @@ import static java.lang.String.valueOf;
  */
 public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionListener {
     private ActionListener listener;
-    private ButtonCard button1 = new ButtonCard("Family member in board");
-    private ButtonCard button2 = new ButtonCard("Family member in tower");;
-    private ButtonCard button3 = new ButtonCard("Attiva leader");;
-    private ButtonCard button4 = new ButtonCard("Scarta leader");;
-    private ButtonCard button5 = new ButtonCard("FINE TURNO");;
+    private ButtonCard button1;
+    private ButtonCard button2;
+    private ButtonCard button3;
+    private ButtonCard button4;
+    private ButtonCard button5;
     private ButtonCard[] buttonsAction = new ButtonCard[5];
     private GuiView guiView;
 
@@ -51,7 +51,7 @@ public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionLi
         GridBagConstraints gbc = new GridBagConstraints();
 
 
-
+        button1 = new ButtonCard("Family member in board");
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridheight = 2;
@@ -64,7 +64,7 @@ public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionLi
         button1.addActionListener(this);
         buttonsAction[0] = button1;
 
-
+        button2 = new ButtonCard("Family member in tower");
         gbc.gridx = 1;
         gbc.gridy = 4;
         gbc.gridheight = 2;
@@ -78,7 +78,7 @@ public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionLi
         buttonsAction[1] = button2;
 
 
-
+        button3 = new ButtonCard("Attiva leader");
         gbc.gridx = 3;
         gbc.gridy = 1;
         gbc.gridheight = 2;
@@ -92,7 +92,7 @@ public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionLi
         buttonsAction[2] = button3;
 
 
-
+        button4 = new ButtonCard("Scarta leader");
         gbc.gridx = 3;
         gbc.gridy = 4;
         gbc.gridheight = 2;
@@ -106,7 +106,7 @@ public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionLi
         buttonsAction[3] = button4;
 
 
-
+        button5 = new ButtonCard("FINE TURNO");
         gbc.gridx = 5;
         gbc.gridy = 2;
         gbc.gridheight = 3;
