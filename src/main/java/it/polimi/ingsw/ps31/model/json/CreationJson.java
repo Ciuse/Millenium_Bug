@@ -164,6 +164,112 @@ public class CreationJson {
 
 
 
+        //COSTI CARTE VIOLA
+        List<List<ResourceList>> mainListPurpleCost = new ArrayList<>();
+
+        List<ResourceList> purpleCard1 = new ArrayList<>();
+        purpleCard1.add(new ResourceList(new Coin(4)));
+        mainListPurpleCost.add(purpleCard1);
+
+        List<ResourceList> purpleCard2 = new ArrayList<>();
+        purpleCard2.add(new ResourceList(new Coin(1), new Wood(1), new Stone(1)));
+        mainListPurpleCost.add(purpleCard2);
+
+        List<ResourceList> purpleCard3 = new ArrayList<>();
+        purpleCard3.add(new ResourceList(new Stone(3)));
+        mainListPurpleCost.add(purpleCard3);
+
+        List<ResourceList> purpleCard4 = new ArrayList<>();
+        purpleCard4.add(new ResourceList(new Wood(2), new Stone(2)));
+        mainListPurpleCost.add(purpleCard4);
+
+        List<ResourceList> purpleCard5 = new ArrayList<>();
+        purpleCard5.add(new ResourceList(new MilitaryStrength(2, 3)));
+        mainListPurpleCost.add(purpleCard5);
+
+        List<ResourceList> purpleCard6 = new ArrayList<>();
+        purpleCard6.add(new ResourceList(new Wood(3)));
+        mainListPurpleCost.add(purpleCard6);
+
+        List<ResourceList> purpleCard7 = new ArrayList<>();
+        purpleCard7.add(new ResourceList(new MilitaryStrength(3, 5)));
+        mainListPurpleCost.add(purpleCard7);
+
+        List<ResourceList> purpleCard8 = new ArrayList<>();
+        purpleCard8.add(new ResourceList(new MilitaryStrength(2, 4)));
+        purpleCard8.add(new ResourceList(new Wood(1), new Stone(1), new Coin(2)));
+        mainListPurpleCost.add(purpleCard8);
+
+        List<ResourceList> purpleCard9 = new ArrayList<>();
+        purpleCard9.add(new ResourceList(new Coin(6)));
+        mainListPurpleCost.add(purpleCard9);
+
+        List<ResourceList> purpleCard10 = new ArrayList<>();
+        purpleCard10.add(new ResourceList(new Coin(2), new Wood(2), new Stone(2)));
+        mainListPurpleCost.add(purpleCard10);
+
+        List<ResourceList> purpleCard11 = new ArrayList<>();
+        purpleCard11.add(new ResourceList(new Stone(4)));
+        mainListPurpleCost.add(purpleCard11);
+
+        List<ResourceList> purpleCard12 = new ArrayList<>();
+        purpleCard12.add(new ResourceList(new MilitaryStrength(3, 6)));
+        mainListPurpleCost.add(purpleCard12);
+
+        List<ResourceList> purpleCard13 = new ArrayList<>();
+        purpleCard13.add(new ResourceList(new Servant(2), new Coin(3)));
+        mainListPurpleCost.add(purpleCard13);
+
+        List<ResourceList> purpleCard14 = new ArrayList<>();
+        purpleCard14.add(new ResourceList(new Wood(4)));
+        mainListPurpleCost.add(purpleCard14);
+
+        List<ResourceList> purpleCard15 = new ArrayList<>();
+        purpleCard15.add(new ResourceList(new MilitaryStrength(4, 8)));
+        mainListPurpleCost.add(purpleCard15);
+
+        List<ResourceList> purpleCard16 = new ArrayList<>();
+        purpleCard16.add(new ResourceList(new MilitaryStrength(4, 7)));
+        purpleCard16.add(new ResourceList(new Wood(2), new Coin(3), new Stone(2)));
+        mainListPurpleCost.add(purpleCard16);
+
+        List<ResourceList> purpleCard17 = new ArrayList<>();
+        purpleCard17.add(new ResourceList(new Coin(8)));
+        mainListPurpleCost.add(purpleCard17);
+
+        List<ResourceList> purpleCard18 = new ArrayList<>();
+        purpleCard18.add(new ResourceList(new Coin(3), new Wood(3), new Stone(3)));
+        mainListPurpleCost.add(purpleCard18);
+
+        List<ResourceList> purpleCard19 = new ArrayList<>();
+        purpleCard19.add(new ResourceList(new Stone(6)));
+        mainListPurpleCost.add(purpleCard19);
+
+        List<ResourceList> purpleCard20 = new ArrayList<>();
+        purpleCard20.add(new ResourceList(new Wood(6)));
+        mainListPurpleCost.add(purpleCard20);
+
+        List<ResourceList> purpleCard21 = new ArrayList<>();
+        purpleCard21.add(new ResourceList(new MilitaryStrength(6, 12)));
+        mainListPurpleCost.add(purpleCard21);
+
+        List<ResourceList> purpleCard22 = new ArrayList<>();
+        purpleCard22.add(new ResourceList(new Servant(3), new Coin(4)));
+        mainListPurpleCost.add(purpleCard22);
+
+        List<ResourceList> purpleCard23 = new ArrayList<>();
+        purpleCard23.add(new ResourceList(new MilitaryStrength(8, 15)));
+        mainListPurpleCost.add(purpleCard23);
+
+        List<ResourceList> purpleCard24 = new ArrayList<>();
+        purpleCard24.add(new ResourceList(new MilitaryStrength(5, 10)));
+        purpleCard24.add(new ResourceList(new Wood(3), new Coin(4), new Stone(3)));
+        mainListPurpleCost.add(purpleCard24);
+
+
+
+
+
         //creazione degli effetti di tutte le carte
 
         //creazione effetti immediati carte verdi
