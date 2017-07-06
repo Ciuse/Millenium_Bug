@@ -11,50 +11,45 @@ import java.util.List;
 /**
  * Created by Francesco on 23/05/2017.
  */
-public class ActionPayResources extends Action{
+public class ActionPayResources extends Action {
     private ResourceList resourceToPay = null;
 
     /* Constructor */
-    public ActionPayResources(Player player, ActionControlSet actionControlSet)
-    {
+    public ActionPayResources(Player player, ActionControlSet actionControlSet) {
         super(player, actionControlSet);
     }
 
     /* Setter & Getter */
-    public void setResourceToPay (ResourceList resourceToPay)
-    {
+    public void setResourceToPay(ResourceList resourceToPay) {
         this.resourceToPay = resourceToPay;
     }
 
-    public void resetResourceToPay()
-    {
+    public void resetResourceToPay() {
         this.resourceToPay = null;
     }
 
     @Override
-    public void activate()
-    {
-        if ( this.resourceToPay == null )
-        {
+    public void activate() {
+        if (this.resourceToPay == null) {
             //TODO: fare cose
-        } else
-        {
-            //Eseguo il controllo
-            if ( super.actionControlSet.payResourceControl(this.resourceToPay) )
-            {
-                //Eseguo l'azione
-                List<Resource> resourcesToGetList = this.resourceToPay.getListOfResource();
-                for(Resource currentResource : resourcesToGetList)
+        } else {
+//            //Eseguo il controllo
+            if ( super.actionControlSet.payResourceControl(this.resourceToPay) ) {
+//           //Eseguo l'azione
+                for (Resource currentResource : resourceToPay.getListOfResource())
                     player.subResources(currentResource);
 
-                resetResourceToPay();
-            } else
-            {
-                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPayResourceControl().getControlStringError()));
             }
 
             resetResourceToPay();
-            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato player resource",player.getStatePlayerResources()));
+//            } else
+//            {
+//                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPayResourceControl().getControlStringError()));
+//            }
+//
+//            resetResourceToPay();
+//            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato player resource",player.getStatePlayerResources()));
+//        }
         }
     }
 }

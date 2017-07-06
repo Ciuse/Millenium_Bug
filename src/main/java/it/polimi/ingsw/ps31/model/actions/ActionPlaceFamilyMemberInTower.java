@@ -62,32 +62,36 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
 
                             if (actionControlSet.towerCostPlacementControl(towerCardSpace)) {
 
-                                if (actionControlSet.takeDevelopmentCardControl(towerCardSpace.getCard())) {
+                                if (actionControlSet.payCardControl(towerCardSpace.getCard(), null)) {
 
-                                    //TODO SIMULARE L ATTIVAZIONE IN CATENA DEGLI EFFETI
-                                    //pago la torre
+                                    if (actionControlSet.takeDevelopmentCardControl(towerCardSpace.getCard())) {
 
-                                    if(towerCardSpace.getTower().isOccupied()) {
-                                        player.getPlayerActionSet().payTowerMoney();
+                                        //TODO SIMULARE L ATTIVAZIONE IN CATENA DEGLI EFFETI
+                                        //pago la torre
+
+                                        if (towerCardSpace.getTower().isOccupied()) {
+                                            player.getPlayerActionSet().payTowerMoney();
+                                        }
+                                        //metto il famigliare
+                                        towerCardSpace.getActionSpace().addFamilyMember(familyMember);
+                                        askAgain = false;
+                                        //controllo i parametri extra che settano le scomuniche
+                                        if (immediateEffectsAreActivable)
+                                            //attivo gli effetti immediati degli action space
+                                            towerCardSpace.getActionSpace().activeEffectList(player);
+
+//                                        super.player.getPlayerActionSet().payCard(towerCardSpace.getCard(), null);
+
+                                        //prendo la carta
+                                        super.player.addDevelopmentCard(this.towerCardSpace.takeCard());
+
+                                        //metto la torre come occupata
+                                        towerCardSpace.getTower().setOccupied(true);
+                                    } else {      //TODO FARE OVERRIDE DEI GET CONTROL ERROR SPECIFICI
+                                        player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTakeDevelopmentCardControl().getControlStringError()));
                                     }
-                                    //metto il famigliare
-                                    towerCardSpace.getActionSpace().addFamilyMember(familyMember);
-                                    askAgain = false;
-                                    //controllo i parametri extra che settano le scomuniche
-                                    if (immediateEffectsAreActivable)
-                                        //attivo gli effetti immediati degli action space
-                                        towerCardSpace.getActionSpace().activeEffectList(player);
-
-                                    //pago la carta
-                                    super.player.getPlayerActionSet().payCard(towerCardSpace.getCard(), null);
-
-                                    //prendo la carta
-                                    super.player.addDevelopmentCard(this.towerCardSpace.takeCard());
-
-                                    //metto la torre come occupata
-                                    towerCardSpace.getTower().setOccupied(true);
-                                } else {      //TODO FARE OVERRIDE DEI GET CONTROL ERROR SPECIFICI
-                                    player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTakeDevelopmentCardControl().getControlStringError()));
+                                } else {
+                                    player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPayCardControl().getControlStringError()));
                                 }
                             } else {
                                 player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTowerCardCostPlacementControl().getControlStringError()));

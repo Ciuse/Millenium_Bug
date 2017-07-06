@@ -34,7 +34,7 @@ public class AskPersonalBonusTiles extends JFrame implements ActionListener {
 
     public void startFrame() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setSize(screenSize.width / 5, screenSize.height / 2);
+        frame.setSize(screenSize.width / 5, screenSize.height / 2 +300);
         frame.setResizable(false);
         frame.setVisible(true);
         frame.setLocation((int) screenSize.getWidth() / (3) + 200, (int) screenSize.getHeight() / 8);
@@ -81,6 +81,9 @@ public class AskPersonalBonusTiles extends JFrame implements ActionListener {
             frame.add(buttons[i], gbc);
             i++;
         }
+
+        frame.repaint();
+        frame.revalidate();
     }
 
     @Override
@@ -91,7 +94,6 @@ public class AskPersonalBonusTiles extends JFrame implements ActionListener {
                 ) {
             if (nameButton.equals(valueOf(state.getPersonalBonusTilesId()))) {
                 guiView.notifyController(new VCPersonalTilesChoice(guiView.getViewId(), state.getPersonalBonusTilesId()));
-                System.out.println("MESSAGGIO MANDATO");
                 frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         }

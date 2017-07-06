@@ -175,8 +175,10 @@ public class Controller extends Thread implements Observer {
             if (gameUtility.getGameBoard().getSmallHarvest().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
                 canPlace = false;
             }
-            if (gameUtility.getGameBoard().getBigHarvest().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
-                canPlace = false;
+            if(gameUtility.getGameBoard().getBigHarvest()!=null) {
+                if (gameUtility.getGameBoard().getBigHarvest().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
+                    canPlace = false;
+                }
             }
         }
         if (actionSpaceId == 3) {
@@ -185,8 +187,11 @@ public class Controller extends Thread implements Observer {
             if (gameUtility.getGameBoard().getSmallHarvest().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
                 canPlace = false;
             }
-            if (gameUtility.getGameBoard().getBigHarvest().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
-                canPlace = false;
+            if(gameUtility.getGameBoard().getBigHarvest()!=null) {
+
+                if (gameUtility.getGameBoard().getBigHarvest().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
+                    canPlace = false;
+                }
             }
         }
         if (actionSpaceId == 4) {
@@ -195,8 +200,10 @@ public class Controller extends Thread implements Observer {
             if (gameUtility.getGameBoard().getSmallProduction().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
                 canPlace = false;
             }
-            if (gameUtility.getGameBoard().getBigProduction().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
-                canPlace = false;
+            if(gameUtility.getGameBoard().getBigProduction()!=null) {
+                if (gameUtility.getGameBoard().getBigProduction().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
+                    canPlace = false;
+                }
             }
         }
         if (actionSpaceId == 5) {
@@ -205,8 +212,10 @@ public class Controller extends Thread implements Observer {
             if (gameUtility.getGameBoard().getSmallProduction().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
                 canPlace = false;
             }
-            if (gameUtility.getGameBoard().getBigProduction().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
-                canPlace = false;
+            if(gameUtility.getGameBoard().getBigProduction()!=null) {
+                if (gameUtility.getGameBoard().getBigProduction().checkIfPlayerColor(gameUtility.getPlayerInAction().getPlayerColor())) {
+                    canPlace = false;
+                }
             }
         }
         if (actionSpaceId >= 6 && actionSpaceId <= 9) {

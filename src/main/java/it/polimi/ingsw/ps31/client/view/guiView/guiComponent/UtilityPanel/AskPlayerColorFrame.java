@@ -83,7 +83,6 @@ public class AskPlayerColorFrame extends JFrame implements ActionListener {
                 ) {
             if (nameButton.equals(playeColor.name())) {
                 guiView.notifyController(new VCColorChoice(guiView.getViewId(),playeColor));
-                System.out.println("MESSAGGIO MANDATO");
                 frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         }

@@ -48,11 +48,10 @@ public class CreationJson {
     private DevelopmentCardList createCardList() {
         List<DevelopmentCard> cardList = new ArrayList<>();
         //creazione di tutti i nomi delle carte
-        int contatore = 0;
         String[] greenCardName = {"Avamposto Commerciale", "Bosco", "Borgo", "Cava di Ghiaia", "Foresta", "Monastero", "Rocca", "Città", "Miniera d'Oro", "Villaggio Montanaro",
                 "Villaggio Minerario", "Cava di Pietra", "Possedimento", "Eremo", "Maniero", "Ducato", "Città Mercantile", "Tenuta", "Colonia", "Cava di Marmo", "Provincia",
                 "Santuario", "Castello", "Città Fortificata",};
-        String[] yellowCardName = {"Zecca", "Esattoria", "arco di Trionfo", "Teatro", "Falegnameria", "Tagliapietre", "Cappella", "Residenza",
+        String[] yellowCardName = {"Zecca", "Esattoria", "Arco di Trionfo", "Teatro", "Falegnameria", "Tagliapietre", "Cappella", "Residenza",
                 "Mercato", "Tesoreria", "Gilda dei Pittori", "Gilda degli Scultori", "Gilda dei Costruttori", "Battistero", "Caserma", "Fortezza",
                 "Banca", "Fiera", "Giardino", "Castelletto", "Palazzo", "Basilica", "Accademia Militare", "Cattedrale",};
         String[] blueCardName = {"Condottiero", "Costruttore", "Dama", "Cavalliere", "Contadino", "Artigiano", "Predicatore", "Badessa", "Capitano",
@@ -62,6 +61,109 @@ public class CreationJson {
                 "Ospitare i Mendicanti", "Combattere le Eresie", "Sostegno al Vescovo", "Ingaggiare Soldati", "Riparare l'Abbazia", "Costruire i Bastioni",
                 "Scavare Canalizzazioni", "Supporto al Re", "Accogliere gli Stranieri", "Crociata", "Sostegno al Cardinale", "Ingaggiare Mercenari", "Riparare la Cattedrale",
                 "Costruire le Torri", "Commissionare Arte Sacra", "Conquista Militare", "Migliorare le Strade", "Guerra Santa", "Sostegno al Papa",};
+
+
+        //COSTI CARTE GIALLE
+        List<List<ResourceList>> mainListYellowCost = new ArrayList<>();
+
+        List<ResourceList> yellowCard1 = new ArrayList<>();
+        yellowCard1.add(new ResourceList(new Wood(1),new Stone(3)));
+        mainListYellowCost.add(yellowCard1);
+
+        List<ResourceList> yellowCard2 = new ArrayList<>();
+        yellowCard2.add(new ResourceList(new Wood(3),new Stone(1)));
+        mainListYellowCost.add(yellowCard2);
+
+        List<ResourceList> yellowCard3 = new ArrayList<>();
+        yellowCard3.add(new ResourceList(new Coin(2),new Stone(2)));
+        mainListYellowCost.add(yellowCard3);
+
+        List<ResourceList> yellowCard4 = new ArrayList<>();
+        yellowCard4.add(new ResourceList(new Coin(2),new Wood(2)));
+        mainListYellowCost.add(yellowCard4);
+
+        List<ResourceList> yellowCard5 = new ArrayList<>();
+        yellowCard5.add(new ResourceList(new Coin(1),new Wood(2)));
+        mainListYellowCost.add(yellowCard5);
+
+        List<ResourceList> yellowCard6 = new ArrayList<>();
+        yellowCard6.add(new ResourceList(new Coin(1),new Stone(2)));
+        mainListYellowCost.add(yellowCard6);
+
+        List<ResourceList> yellowCard7 = new ArrayList<>();
+        yellowCard7.add(new ResourceList(new Wood(2)));
+        mainListYellowCost.add(yellowCard7);
+
+        List<ResourceList> yellowCard8 = new ArrayList<>();
+        yellowCard8.add(new ResourceList(new Stone(2)));
+        mainListYellowCost.add(yellowCard8);
+
+        List<ResourceList> yellowCard9 = new ArrayList<>();
+        yellowCard9.add(new ResourceList(new Wood(2),new Stone(1)));
+        mainListYellowCost.add(yellowCard9);
+
+        List<ResourceList> yellowCard10 = new ArrayList<>();
+        yellowCard10.add(new ResourceList(new Wood(3)));
+        mainListYellowCost.add(yellowCard10);
+
+        List<ResourceList> yellowCard11 = new ArrayList<>();
+        yellowCard11.add(new ResourceList(new Wood(4)));
+        mainListYellowCost.add(yellowCard11);
+
+        List<ResourceList> yellowCard12 = new ArrayList<>();
+        yellowCard12.add(new ResourceList(new Stone(4)));
+        mainListYellowCost.add(yellowCard12);
+
+        List<ResourceList> yellowCard13 = new ArrayList<>();
+        yellowCard13.add(new ResourceList(new Wood(1),new Stone(2)));
+        mainListYellowCost.add(yellowCard13);
+
+        List<ResourceList> yellowCard14 = new ArrayList<>();
+        yellowCard14.add(new ResourceList(new Stone(3)));
+        mainListYellowCost.add(yellowCard14);
+
+        List<ResourceList> yellowCard15 = new ArrayList<>();
+        yellowCard15.add(new ResourceList(new Wood(1),new Stone(1)));
+        mainListYellowCost.add(yellowCard15);
+
+        List<ResourceList> yellowCard16 = new ArrayList<>();
+        yellowCard16.add(new ResourceList(new Coin(2),new Wood(2),new Stone(2)));
+        mainListYellowCost.add(yellowCard16);
+
+        List<ResourceList> yellowCard17 = new ArrayList<>();
+        yellowCard17.add(new ResourceList(new Coin(3),new Wood(1),new Stone(3)));
+        mainListYellowCost.add(yellowCard17);
+
+        List<ResourceList> yellowCard18 = new ArrayList<>();
+        yellowCard18.add(new ResourceList(new Coin(4),new Wood(3)));
+        mainListYellowCost.add(yellowCard18);
+
+        List<ResourceList> yellowCard19 = new ArrayList<>();
+        yellowCard19.add(new ResourceList(new Servant(2),new Wood(4),new Stone(2)));
+        mainListYellowCost.add(yellowCard19);
+
+        List<ResourceList> yellowCard20 = new ArrayList<>();
+        yellowCard20.add(new ResourceList(new Coin(2),new Wood(2),new Stone(4)));
+        mainListYellowCost.add(yellowCard20);
+
+        List<ResourceList> yellowCard21 = new ArrayList<>();
+        yellowCard21.add(new ResourceList(new Coin(3),new Wood(3),new Stone(1)));
+        mainListYellowCost.add(yellowCard21);
+
+        List<ResourceList> yellowCard22 = new ArrayList<>();
+        yellowCard22.add(new ResourceList(new Wood(1),new Stone(4)));
+        mainListYellowCost.add(yellowCard22);
+
+        List<ResourceList> yellowCard23 = new ArrayList<>();
+        yellowCard23.add(new ResourceList(new Servant(1),new Wood(2),new Stone(2)));
+        mainListYellowCost.add(yellowCard23);
+
+        List<ResourceList> yellowCard24 = new ArrayList<>();
+        yellowCard24.add(new ResourceList(new Wood(4),new Stone(4)));
+        mainListYellowCost.add(yellowCard24);
+
+
+
         //creazione degli effetti di tutte le carte
 
         //creazione effetti immediati carte verdi
@@ -1278,7 +1380,7 @@ public class CreationJson {
 
 
 
-
+        int contatore = 0;
         // creazione di tutte le carte
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 8; j++) {
@@ -1289,7 +1391,7 @@ public class CreationJson {
                 //inserimento altri parametri
                 int period = i + 1;
                 String name = greenCardName[contatore];
-                cardList.add(new Territory(cardNumber1, name, period, costListGreen, immediateEffectGreenList.get(cardNumber1-1), permanentEffectGreenList.get(cardNumber1-1)));
+                cardList.add(new Territory(cardNumber1, name, period, costListGreen, immediateEffectGreenList.get(contatore), permanentEffectGreenList.get(contatore)));
                 //creazione della carta giallo
                 int cardNumber2 = i * 8 + j + 24+1;
 //                System.out.println("scrivi il costo della carta gialla numero : " + cardNumber2);
@@ -1303,7 +1405,7 @@ public class CreationJson {
                 //inserimento altri parametri
                 int period2 = i + 1;
                 String name2 = yellowCardName[contatore];
-                cardList.add(new Building(cardNumber2, name2, period2, costListYellow, immediateEffectYellowList.get(cardNumber1-1), permanentEffectYellowList.get(cardNumber1-1)));
+                cardList.add(new Building(cardNumber2, name2, period2, mainListYellowCost.get(contatore), immediateEffectYellowList.get(contatore), permanentEffectYellowList.get(contatore)));
                 // creazione carte blu
                 int cardNumber3 = i * 8 + j + 48+1;
 //                System.out.println("scrivi il costo della carta blu numero : " + cardNumber3);
@@ -1314,7 +1416,7 @@ public class CreationJson {
                 //inserimento altri parametri
                 int period3 = i + 1;
                 String name3 = blueCardName[contatore];
-                cardList.add(new Character(cardNumber3, name3, period3, costListBlue, immediateEffectBlueList.get(cardNumber1-1), permanentEffectBlueList.get(cardNumber1-1)));
+                cardList.add(new Character(cardNumber3, name3, period3, costListBlue, immediateEffectBlueList.get(contatore), permanentEffectBlueList.get(contatore)));
 
                 //creazione delle carte viola
                 int cardNumber4 = i * 8 + j + 72+1;
@@ -1328,7 +1430,7 @@ public class CreationJson {
                 //inserimento altri parametri
                 int period4 = i + 1;
                 String name4 = purpleCardName[contatore];
-                cardList.add(new Venture(cardNumber4, name4, period4, costListPurple, immediateEffectPurpleList.get(cardNumber1-1), permanentEffectPurpleList.get(cardNumber1-1)));
+                cardList.add(new Venture(cardNumber4, name4, period4, costListPurple, immediateEffectPurpleList.get(contatore), permanentEffectPurpleList.get(contatore)));
 
                 contatore++;
             }

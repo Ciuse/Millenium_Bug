@@ -42,7 +42,6 @@ public class ButtonCard extends JButton {
         imageToLoad(stringImage);
         repaint();
         revalidate();
-        validate();
     }
 
     public String getStringImage() {

@@ -33,6 +33,7 @@ public class ActionControlSet {
     private final TakeDevelopmentCardControl takeDevelopmentCardControl;
     private final TowerCardCostPlacementControl towerCardCostPlacementControl;
     private final LeaderCardRequirementControl leaderCardRequirementControl;
+    private final PayCardControl payCardControl;
 
 
     /* Constructor */
@@ -51,6 +52,7 @@ public class ActionControlSet {
         this.developmentCardRequirementsControl = new DevelopmentCardRequirementsControl(player);
         this.takeDevelopmentCardControl = new TakeDevelopmentCardControl(player);
         this.leaderCardRequirementControl= new LeaderCardRequirementControl(player);
+        this.payCardControl= new PayCardControl(player);
     }
 
     /* Class Methods */
@@ -76,6 +78,12 @@ public class ActionControlSet {
         this.diceValueCardSpaceControl.setDiceValue(diceValue);
         this.diceValueCardSpaceControl.setTowerCardSpace(towerCardSpace);
         return this.diceValueCardSpaceControl.execute();
+    }
+
+    public boolean payCardControl(DevelopmentCard card, ResourceList resourceList){
+        this.payCardControl.setCardToPay(card);
+        this.payCardControl.setResourceListDiscount(resourceList);
+        return this.payCardControl.execute();
     }
 
     public boolean occupiedActionSpaceControl(ActionSpace actionSpace)
@@ -188,5 +196,9 @@ public class ActionControlSet {
 
     public LeaderCardRequirementControl getLeaderCardRequirementControl() {
         return leaderCardRequirementControl;
+    }
+
+    public PayCardControl getPayCardControl() {
+        return payCardControl;
     }
 }

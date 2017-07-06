@@ -175,8 +175,9 @@ public abstract class View extends Observable implements Observer {
     public final void updatePersonalBonusTiles(StatePersonalBonusTiles statePersonalBonusTiles) {
         for (StateViewPlayer viewPlayer : stateViewPlayerList
                 ) {
-            if (viewPlayer.getPlayerId().equals(statePersonalBonusTiles.getPlayerId()))
+            if (viewId.equals(statePersonalBonusTiles.getPlayerId())) {
                 viewPlayer.updateState(statePersonalBonusTiles);
+            }
         }
     }
 
@@ -323,6 +324,8 @@ public abstract class View extends Observable implements Observer {
     public abstract void printTextBox();
 
     public abstract void printMyFamilyMembersOnPlayerPanel();
+
+    public abstract void printMyTiles();
 
     public abstract void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView);
 

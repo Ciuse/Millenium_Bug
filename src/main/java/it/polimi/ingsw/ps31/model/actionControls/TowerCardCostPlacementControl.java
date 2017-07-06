@@ -53,7 +53,7 @@ public class TowerCardCostPlacementControl extends Control {
         ResourceList tempPlayerResources = new ResourceList(player.getPlayerResources().getListOfResource());
 
         //simulo il poter pagare o no la torre
-        if (towerCardSpace.getTower().isOccupied()) {System.out.println("PAYTHINGs");
+        if (towerCardSpace.getTower().isOccupied()) {
             if (player.getPlayerActionSet().getPayTowerMoney().isToPay()) {
                 if (player.getPlayerActionSet().getActionControlSet().payResourceControl(player.getPlayerActionSet().getPayTowerMoney().getCOINTOPAY())) {
                     tempPlayerResources.subSpecificResource(player.getPlayerActionSet().getPayTowerMoney().getCOINTOPAY());
@@ -80,8 +80,8 @@ public class TowerCardCostPlacementControl extends Control {
             costAffordable = true;
         else
             for (ResourceList currentCost : towerCardSpace.getCard().getCostList()) {
-                if (currentCost.lessOrEquals(tempPlayerResources))
-                    costAffordable = true;
+                if (!currentCost.lessOrEquals(tempPlayerResources))
+                    costAffordable = false;
             }
 
         resetTowerCardSpace();

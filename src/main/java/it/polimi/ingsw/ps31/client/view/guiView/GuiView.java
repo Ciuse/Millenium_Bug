@@ -60,7 +60,7 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void askStartLeaderToKeep(ChoiceStartLeaderCard choiceStartLeaderCard) {
-
+     printMyTiles();
     }
 
     @Override
@@ -185,12 +185,21 @@ public class GuiView extends View implements ActionListener{
 
     }
 
-    public void printMyFamilyMembersOnPlayerPanel() {
-     for (StateViewFamilyMember family : super.getMyStateViewPlayer().getStateViewFamilyMemberList()
-             ) {
-      mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().printMyFamilyMembersOnPlayerPanel(family);
-     }
-    }
+ @Override
+ public void printMyTiles() {
+     System.out.println(getMyStateViewPlayer().getStateViewPersonalBonusTiles());
+     mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBonusTilesPanel().printTiles(getMyStateViewPlayer().getStateViewPersonalBonusTiles());
+//     mainFrame.repaint();
+//     mainFrame.revalidate();
+ }
+
+ @Override
+ public void printMyFamilyMembersOnPlayerPanel() {
+  for (StateViewFamilyMember family : super.getMyStateViewPlayer().getStateViewFamilyMemberList()
+          ) {
+   mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().printMyFamilyMembersOnPlayerPanel(family);
+  }
+ }
 
 
 

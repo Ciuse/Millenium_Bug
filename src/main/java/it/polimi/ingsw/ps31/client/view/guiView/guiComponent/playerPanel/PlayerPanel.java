@@ -30,7 +30,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         gbl.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
         gbl.rowHeights = new int[]{0, 0, 0, 0, 0};
 
-        gbl.columnWeights = new double[]{0.05, 0.45, 0.25, 0.115, 0.13, 0.00999, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.06, 0.44, 0.25, 0.115, 0.13, 0.00999, Double.MIN_VALUE};
         gbl.rowWeights = new double[]{0.00999, 0.39, 0.41, 0.19, Double.MIN_VALUE};
         pane.setLayout(gbl);
 

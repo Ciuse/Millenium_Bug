@@ -657,6 +657,11 @@ public class CmdLineView extends View {
     }
 
     @Override
+    public void printMyTiles() {
+
+    }
+
+    @Override
     public void printMyFamilyMembersOnPlayerPanel() {
 
     }

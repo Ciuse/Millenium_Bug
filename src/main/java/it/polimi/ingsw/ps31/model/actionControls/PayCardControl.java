@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps31.model.actions;
+package it.polimi.ingsw.ps31.model.actionControls;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
@@ -13,20 +13,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Giuseppe on 28/06/2017.
+ * Created by Giuseppe on 06/07/2017.
  */
-public class ActionPayCard extends Action {
-   private DevelopmentCard cardToPay;
-   private ResourceList resourceListDiscount;
-   private Map<CardColor, ResourceList> cardResourceDiscount;
+public class PayCardControl extends Control {
+    private DevelopmentCard cardToPay;
+    private ResourceList resourceListDiscount;
+    private Map<CardColor, ResourceList> cardResourceDiscount;
 
-    public ActionPayCard(Player player, ActionControlSet actionControlSet) {
-        super(player, actionControlSet);
+
+    public PayCardControl(Player player) {
+        super(player);
         this.cardResourceDiscount = new HashMap<>();
         for (CardColor cardColor : CardColor.values())
             this.cardResourceDiscount.put(cardColor, null);
-
     }
+
 
     public void setCardToPay(DevelopmentCard cardToPay) {
         this.cardToPay = cardToPay;
@@ -50,7 +51,7 @@ public class ActionPayCard extends Action {
     }
 
     @Override
-    public void activate() {
+    public boolean execute() {
 
         int listToPay=-1;
         ResourceList listDiscounted=null;
@@ -69,7 +70,7 @@ public class ActionPayCard extends Action {
             }
             //se la carta ha almeno una lista da pagare vedo quante ne ha
             if (cardToPay.getCostList().size() > 1) {     //se la carta ha più di una lista da pagare chiedo alla view quale vuole pagare
-                do {
+//                do {
                     String string = player.getPlayerId() + "Quale costo della carta vuoi pagare?";
                     player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(cardToPay.getCostList());
                     player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceListToPay(cardToPay.getCardId())));
@@ -86,25 +87,45 @@ public class ActionPayCard extends Action {
                             canPayMilitaryStrength=false;
                         }
                     }
-
-                    listDiscounted=cardToPay.getCostList().get(listToPay);
-                    listDiscounted.discountResourceList(this.cardResourceDiscount.get(cardToPay.getCardColor()));
+                    listDiscounted = cardToPay.getCostList().get(listToPay);
+                    ResourceList discountList=this.cardResourceDiscount.get(cardToPay.getCardColor());
+                    if(discountList!=null) {
+                        listDiscounted.discountResourceList(discountList);
+                    }
                     if(resourceListDiscount!=null){
                         listDiscounted.discountResourceList(resourceListDiscount);
                     }
-                }while(!listDiscounted.lessOrEquals(player.getPlayerResources())||!canPayMilitaryStrength);   // se fallisce il pagamento glielo richiedo magari poteva pagare solo 1 dei due costi
+//                }while(!listDiscounted.lessOrEquals(player.getPlayerResources())||!canPayMilitaryStrength);   // se fallisce il pagamento glielo richiedo magari poteva pagare solo 1 dei due costi
+            }
+        }else {
+            resetCardToPay();
+            resetListDiscount();
+            return true;
+        }
+        if ( player.getActionControlSet().payResourceControl(listDiscounted) ) {
+            if (canPayMilitaryStrength) {
+                //pago la carta
+                player.getPlayerActionSet().payResources(listDiscounted);
+
+                resetCardToPay();
+                resetListDiscount();
+                return true;
+            }
+            else {
+                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, "Non hai abbastanza punti militari per pagare il requisito"));
+
             }
         }
-        if ( super.actionControlSet.payResourceControl(listDiscounted) )
-
-            if (listToPay != -1) {
-            //pago la carta in base alla lista che mi ha detto il giocatore se c era piu di una lista
-            player.getPlayerActionSet().payResources(listDiscounted);
-        }
-
         resetCardToPay();
         resetListDiscount();
+        return false;
     }
+
+    @Override
+    public String getControlStringError() {
+        return "Non hai abbastanza risorse per pagare la carta";
+    }
+
 
     public void addCardResourceDiscount(CardColor cardColor, boolean anyColor, ResourceList discountList)
     {

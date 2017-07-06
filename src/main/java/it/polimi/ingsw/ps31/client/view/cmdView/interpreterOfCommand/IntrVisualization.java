@@ -27,7 +27,6 @@ public class IntrVisualization implements CmdInterpreterView {
 
 
                     int cardNumber = Integer.parseInt(stringBuilder.toString());
-                    System.out.println(cardNumber);
 
                     if (cardNumber > 0 && cardNumber <= 96) {
                         for (StateViewDevelopmentCard cardToPrint : cmdLineView.getStateViewGame().getStateViewDevelopmentCardList()

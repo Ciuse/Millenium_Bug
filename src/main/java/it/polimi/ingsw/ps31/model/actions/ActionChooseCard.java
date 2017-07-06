@@ -108,13 +108,18 @@ public class ActionChooseCard extends Action {
                 player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
                 break;
             }
+            if (actionControlSet.payCardControl(chosenCardSpace.getCard(), resourceDiscount)) {
+                break;
+            }else   {
+                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPayCardControl().getControlStringError()));
+            }
 
-        } while (!checkChosenTowerCardSpace(chosenCardSpace));
+            } while (!checkChosenTowerCardSpace(chosenCardSpace));
 
         if (!actionTimerEnded) {      //TIMER NON SCADUTO
 
-            //pago la carta
-            super.player.getPlayerActionSet().payCard(chosenCardSpace.getCard(), resourceDiscount);
+//            pago la carta
+//            super.player.getPlayerActionSet().payCard(chosenCardSpace.getCard(), resourceDiscount);
 
             //prendo la carta
             super.player.addDevelopmentCard(chosenCardSpace.takeCard());

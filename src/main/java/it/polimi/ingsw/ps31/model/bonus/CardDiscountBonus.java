@@ -39,7 +39,7 @@ public class CardDiscountBonus extends Bonus {
     public void activate(Player player) {
         if(resourceListDiscount!=null){
             player.getPlayerActionSet().getActionControlSet().getTowerCardCostPlacementControl().addCardResourceDiscount(cardColor,anyColor,resourceListDiscount);
-            player.getPlayerActionSet().getPayCard().addCardResourceDiscount(cardColor,anyColor,resourceListDiscount);
+            player.getPlayerActionSet().getActionControlSet().getPayCardControl().addCardResourceDiscount(cardColor,anyColor,resourceListDiscount);
         }
         player.getPlayerActionSet().getActionControlSet().getDiceValueCardSpaceControl().addCardDiceBonus(cardColor, value);
 

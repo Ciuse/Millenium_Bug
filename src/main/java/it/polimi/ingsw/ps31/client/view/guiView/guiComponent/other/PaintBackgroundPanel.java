@@ -11,12 +11,15 @@ import java.io.IOException;
  */
 public class PaintBackgroundPanel extends JPanel {
     private BufferedImage backgroundPanel;
+    private String stringImage;
 
     @Override
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Dimension dimension = getSize();
-        g.drawImage(backgroundPanel,0,0,dimension.width,dimension.height,0,0,backgroundPanel.getWidth(),backgroundPanel.getHeight(),null);
+        if (backgroundPanel != null) {
+            g.drawImage(backgroundPanel, 0, 0, dimension.width, dimension.height, 0, 0, backgroundPanel.getWidth(), backgroundPanel.getHeight(), null);
+        }
     }
 
     public void imageToLoad(String stringPath){
@@ -27,4 +30,12 @@ public class PaintBackgroundPanel extends JPanel {
             System.err.println("Errore");
         } backgroundPanel=resizedImage;
     }
+
+    public void imageToReprint(String stringImage) {
+        this.stringImage = stringImage;
+        imageToLoad(stringImage);
+        repaint();
+        revalidate();
+    }
+
 }
