@@ -8,6 +8,10 @@ import java.util.List;
 
 /**
  * Created by Giuseppe on 20/06/2017.
+ *
+ * Stato temporale che permette al controller di controllare il draft iniziale dei leader.
+ * Vengono memorizzate le liste delle possibili scelte per ogni player, e le liste dei leader
+ * con cui si sta draftando
  */
 public class TempModelStateForLeaderChoice {
     private List<PlayerPossibleChoice> playerPossibleChoiceList= new ArrayList<>();
@@ -27,29 +31,15 @@ public class TempModelStateForLeaderChoice {
         }
         if(!found){
             playerPossibleChoiceList.add(new PlayerPossibleChoice(playerId,leaderId));
-            System.out.println("LISTA AGIGUNTA Player:"+playerId);
-            for (Integer id: leaderId
-                 ) {
-                System.out.println("LEADER ID:"+id);
-
-            }
         }
-
     }
 
     public List<PlayerPossibleChoice> getPlayerPossibleChoiceList() {
         return playerPossibleChoiceList;
     }
 
-    public void setPlayerPossibleChoiceList(PlayerId playerId, List<Integer> leaderId) {
-    }
-
     public List<List<LeaderCard>> getListList() {
         return listList;
-    }
-
-    public void setListList(List<List<LeaderCard>> listList) {
-        this.listList = listList;
     }
 
     public void removerLeader(LeaderCard leaderCard){

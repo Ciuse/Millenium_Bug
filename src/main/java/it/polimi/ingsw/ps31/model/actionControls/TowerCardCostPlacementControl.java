@@ -18,29 +18,23 @@ public class TowerCardCostPlacementControl extends Control {
     private Map<CardColor, ResourceList> cardResourceDiscount;
 
     /* Constructor */
-    public TowerCardCostPlacementControl(Player player)
-    {
+    public TowerCardCostPlacementControl(Player player) {
         super(player);
-        this.cardResourceDiscount = new HashMap<>();
-        for (CardColor cardColor : CardColor.values())
-            this.cardResourceDiscount.put(cardColor, null);
     }
 
 
     /* Setters & Getters */
-    public void setTowerCardSpace(TowerCardSpace towerCardSpace)
-    {
+    public void setTowerCardSpace(TowerCardSpace towerCardSpace) {
         this.towerCardSpace = towerCardSpace;
     }
 
     @Override
     public String getControlStringError() {
-        return "non puoi piazzare il familiare";
+        return "Non puoi pagare la torre e/o la carta";
     }
 
     /* Resetters */
-    public void resetTowerCardSpace()
-    {
+    public void resetTowerCardSpace() {
         this.towerCardSpace = null;
     }
 
@@ -57,58 +51,35 @@ public class TowerCardCostPlacementControl extends Control {
             if (player.getPlayerActionSet().getPayTowerMoney().isToPay()) {
                 if (player.getPlayerActionSet().getActionControlSet().payResourceControl(player.getPlayerActionSet().getPayTowerMoney().getCOINTOPAY())) {
                     tempPlayerResources.subSpecificResource(player.getPlayerActionSet().getPayTowerMoney().getCOINTOPAY());
-                    costAffordable = true;
-
                 }
             } else {
                 costAffordable = false;
             }
         }
         //simulo l attivazione dell effetto che mi fa guadagnare risorse dell action space (se ha un effetto che mi fa guadagnare risorse)
-        if(towerCardSpace.getActionSpace().getImmediateEffectList()!=null){
-            if(towerCardSpace.getActionSpace().getImmediateEffectList().getEffectList().get(0).getResourceToGainString()!=null){
+        if (towerCardSpace.getActionSpace().getImmediateEffectList() != null) {
+            if (towerCardSpace.getActionSpace().getImmediateEffectList().getEffectList().get(0).getResourceToGainString() != null) {
                 GetResourceEffect tempGetRes = (GetResourceEffect) towerCardSpace.getActionSpace().getImmediateEffectList().get(0);
-                for (Resource resource: tempGetRes.getResources().getListOfResource()
-                     ) {
+                for (Resource resource : tempGetRes.getResources().getListOfResource()
+                        ) {
                     tempPlayerResources.addSpecificResource(resource);
                 }
             }
         }
 
-        //simulo il dover pagare la carta
-        if (towerCardSpace.getCard().getCostList() == null)
-            costAffordable = true;
-        else
-            for (ResourceList currentCost : towerCardSpace.getCard().getCostList()) {
-                if (!currentCost.lessOrEquals(tempPlayerResources))
-                    costAffordable = false;
-            }
+//        //simulo il dover pagare la carta
+//        if (towerCardSpace.getCard().getCostList() == null)
+//            costAffordable = true;
+//        else
+//            for (ResourceList currentCost : towerCardSpace.getCard().getCostList()) {
+//                if (currentCost.lessOrEquals(tempPlayerResources))
+//                    costAffordable = true;
+//            }
+        if (!player.getActionControlSet().payCardControl(towerCardSpace.getCard(), null, tempPlayerResources)) {
+            costAffordable = false;
+        }
 
         resetTowerCardSpace();
         return costAffordable;
-    }
-    public void addCardResourceDiscount(CardColor cardColor, boolean anyColor, ResourceList discountList)
-    {
-        if(anyColor){
-            ResourceList currentDiscount1 = this.cardResourceDiscount.get(CardColor.GREEN);
-            currentDiscount1.discountResourceList(discountList);
-            cardResourceDiscount.put(CardColor.GREEN, currentDiscount1);
-            ResourceList currentDiscount2 = this.cardResourceDiscount.get(CardColor.BLUE);
-            currentDiscount2.discountResourceList(discountList);
-            cardResourceDiscount.put(CardColor.BLUE, currentDiscount2);
-            ResourceList currentDiscount3 = this.cardResourceDiscount.get(CardColor.YELLOW);
-            currentDiscount3.discountResourceList(discountList);
-            cardResourceDiscount.put(CardColor.YELLOW, currentDiscount3);
-            ResourceList currentDiscount4 = this.cardResourceDiscount.get(CardColor.PURPLE);
-            currentDiscount4.discountResourceList(discountList);
-            cardResourceDiscount.put(CardColor.PURPLE, currentDiscount4);
-        }
-        else {
-            if(cardColor!=null) {
-                ResourceList currentDiscount = this.cardResourceDiscount.get(cardColor);
-                currentDiscount.discountResourceList(discountList);
-                cardResourceDiscount.put(cardColor, currentDiscount);
-            }
-        }
     }
 }

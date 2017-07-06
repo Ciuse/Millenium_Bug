@@ -8,8 +8,14 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Giuseppe on 03/07/2017.
+ *
+ * Effetto implementato solo da un leader, il quale permette al giocatore di selezionare un famigliare
+ * e di settarne il valore a quello descritto nell'effetto
  */
 public class ChangeFamilyValueEffect extends Effect {
+    /**
+     * nuovo valore del famigliare raffigurato sull'effetto
+     */
     private final int newFamilyMemberValue;
 
     public ChangeFamilyValueEffect(int cardId, int newFamilyMemberValue) {

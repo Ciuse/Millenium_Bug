@@ -40,12 +40,21 @@ public abstract class ActionPlaceFamilyMember extends Action{
     }
 
     /* Modifiers */
-    public void addDefaultDenyActionSpace(List<Integer> actionSpaceId)
-    {
-        if ( this.defaultDenyActionSpaces.contains(actionSpaceId) )
-            return;
+    public void addDefaultDenyActionSpace(List<Integer> actionSpaceId) {
 
-        this.defaultDenyActionSpaces.addAll(actionSpaceId);
+        for (Integer idToAdd : actionSpaceId
+                ) {
+            boolean found = false;
+            for (Integer idOld : defaultDenyActionSpaces
+                    ) {
+                if (idToAdd.equals(idOld)) {
+                    found = true;
+                }
+            }
+            if (!found) {
+                defaultDenyActionSpaces.add(idToAdd);
+            }
+        }
     }
 
 }

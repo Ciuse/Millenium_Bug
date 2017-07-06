@@ -6,8 +6,9 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by giulia on 18/05/2017.
+ * Effetto che racchiude un qualsiasi bonus o malus da attivare sul player quando viene attiva l'effetto
  */
-public class BonusAndMalusEffect extends Effect  implements ActiveBonus{
+public class BonusAndMalusEffect extends Effect implements ActiveBonus{
     private final Bonus bonus;
 
     public BonusAndMalusEffect(int cardId,Bonus bonus) {

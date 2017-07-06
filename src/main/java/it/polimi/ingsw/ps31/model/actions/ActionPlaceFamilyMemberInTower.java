@@ -62,7 +62,7 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
 
                             if (actionControlSet.towerCostPlacementControl(towerCardSpace)) {
 
-                                if (actionControlSet.payCardControl(towerCardSpace.getCard(), null)) {
+//                                if (actionControlSet.payCardControl(towerCardSpace.getCard(), null)) {
 
                                     if (actionControlSet.takeDevelopmentCardControl(towerCardSpace.getCard())) {
 
@@ -80,7 +80,8 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
                                             //attivo gli effetti immediati degli action space
                                             towerCardSpace.getActionSpace().activeEffectList(player);
 
-//                                        super.player.getPlayerActionSet().payCard(towerCardSpace.getCard(), null);
+                                        //pago la carta
+                                        super.player.getPlayerActionSet().payCard();
 
                                         //prendo la carta
                                         super.player.addDevelopmentCard(this.towerCardSpace.takeCard());
@@ -90,9 +91,9 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
                                     } else {      //TODO FARE OVERRIDE DEI GET CONTROL ERROR SPECIFICI
                                         player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTakeDevelopmentCardControl().getControlStringError()));
                                     }
-                                } else {
-                                    player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPayCardControl().getControlStringError()));
-                                }
+//                                } else {
+//                                    player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPayCardControl().getControlStringError()));
+//                                }
                             } else {
                                 player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTowerCardCostPlacementControl().getControlStringError()));
                             }
