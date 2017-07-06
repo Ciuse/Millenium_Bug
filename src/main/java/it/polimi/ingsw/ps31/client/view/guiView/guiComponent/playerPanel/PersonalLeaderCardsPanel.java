@@ -1,24 +1,27 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
+import it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import static java.lang.String.valueOf;
 
 /**
  * Created by giulia on 30/06/2017.
  */
-public class PersonalLeaderCardsPanel extends JPanel implements ActionListener {
+public class PersonalLeaderCardsPanel extends JPanel {
     private ActionListener listener;
-    private ButtonCard buttonLeader1;
-    private ButtonCard buttonLeader2;
-    private ButtonCard buttonLeader3;
-    private ButtonCard buttonLeader4;
+    private PaintBackgroundPanel[] leader = new PaintBackgroundPanel[4];
 
+    private List<StateViewLeaderCard> stateViewLeaderCardList;
 
 
     public PersonalLeaderCardsPanel() {
@@ -29,109 +32,45 @@ public class PersonalLeaderCardsPanel extends JPanel implements ActionListener {
         return listener;
     }
 
-    public void attach (ActionListener listener){
-        this.listener=listener;
+    public void attach(ActionListener listener) {
+        this.listener = listener;
     }
 
 
-        public void addComponentsToPane(Container pane){
+    public void addComponentsToPane(Container pane) {
 
-            GridBagLayout gbl = new GridBagLayout();
-            gbl.columnWidths = new int[]{0, 0, 0, 0, 0,};
-            gbl.rowHeights = new int[]{0, 0,};
+        GridBagLayout gbl = new GridBagLayout();
+        gbl.columnWidths = new int[]{0, 0, 0, 0, 0,0,0,0,0,0};
+        gbl.rowHeights = new int[]{0, 0,0,0};
 
-            gbl.columnWeights = new double[]{0.25, 0.25, 0.25, 0.24999, Double.MIN_VALUE};
-            gbl.rowWeights = new double[]{0.99999, Double.MIN_VALUE};
-            pane.setLayout(gbl);
+        gbl.columnWeights = new double[]{0.01, 0.2375, 0.01, 0.2375, 0.01, 0.2375, 0.01, 0.2375, 0.01, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.01,0.98,0.01, Double.MIN_VALUE};
+        pane.setLayout(gbl);
 
-            GridBagConstraints gbc = new GridBagConstraints();
-
-            buttonLeader1 = new ButtonCard();
-            buttonLeader1.setName("1");
-            buttonLeader1.addActionListener(this);
-            gbc.gridx = 0;
-            gbc.gridy = 0;
+        GridBagConstraints gbc = new GridBagConstraints();
+        for (int i = 0; i < 4; i++) {
+            leader[i] = new PaintBackgroundPanel();
+            gbc.gridx = (2 * i) + 1;;
+            gbc.gridy = 1;
             gbc.gridheight = 1;
             gbc.gridwidth = 1;
             gbc.fill = GridBagConstraints.BOTH;
-            pane.add(buttonLeader1, gbc);
-
-            buttonLeader2 = new ButtonCard();
-            buttonLeader2.setName("2");
-            buttonLeader2.addActionListener(this);
-            gbc.gridx = 1;
-            gbc.gridy = 0;
-            gbc.gridheight = 1;
-            gbc.gridwidth = 1;
-            gbc.fill = GridBagConstraints.BOTH;
-            pane.add(buttonLeader2, gbc);
-
-            buttonLeader3 = new ButtonCard();
-            buttonLeader3.setName("3");
-            buttonLeader3.addActionListener(this);
-            gbc.gridx = 2;
-            gbc.gridy = 0;
-            gbc.gridheight = 1;
-            gbc.gridwidth = 1;
-            gbc.fill = GridBagConstraints.BOTH;
-            pane.add(buttonLeader3, gbc);
-
-            buttonLeader4 = new ButtonCard();
-            buttonLeader4.setName("4");
-            buttonLeader4.addActionListener(this);
-            gbc.gridx = 3;
-            gbc.gridy = 0;
-            gbc.gridheight = 1;
-            gbc.gridwidth = 1;
-            gbc.fill = GridBagConstraints.BOTH;
-            pane.add(buttonLeader4, gbc);
-
-
+            pane.add(leader[i], gbc);
         }
+    }
 
-        @Override
-    public void actionPerformed(ActionEvent e) {
-            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-            ButtonCard buttonCard = (ButtonCard) e.getSource();
-            String nameButton = buttonCard.getName();
 
-            if (buttonCard.getStringImage() != null) {
-                for (int i = 1; i <= 4; i++) {
-                    if (nameButton.equals(valueOf(i))) {
-                        JFrame frame = new JFrame(nameButton);
-                        frame.setLocation((int) screenSize.getHeight() / (13 / 5), (int) screenSize.getWidth() / 8);
-                        frame.setAlwaysOnTop(true);
-                        frame.setSize(screenSize.width / (37 / 6), screenSize.height / (32 / 12));
-                        frame.setVisible(true);
-                        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                        Container c = frame.getContentPane();
-                        ButtonCard frameButton = new ButtonCard();
-                        frameButton.imageToReprint(buttonCard.getStringImage());
-                        c.add(frameButton);
-                        frameButton.addActionListener(new ActionListener() {
-                            public void actionPerformed(ActionEvent ev) {
-                                frame.setVisible(false);
-                            }
-                        });
-                    }
-                }
+    public void fillLeaderPanel() {
+        if (!stateViewLeaderCardList.isEmpty()) {
+            int i=0;
+            for (StateViewLeaderCard leaderCard : stateViewLeaderCardList
+                    ) {
+                leader[i].imageToReprint("/leaderCard/leaders_f_c_" + valueOf(leaderCard.getLeaderId()) + ".jpg");
+                i++;
             }
         }
-
-
-    public ButtonCard getButtonLeader1() {
-        return buttonLeader1;
     }
-
-    public ButtonCard getButtonLeader2() {
-        return buttonLeader2;
-    }
-
-    public ButtonCard getButtonLeader3() {
-        return buttonLeader3;
-    }
-
-    public ButtonCard getButtonLeader4() {
-        return buttonLeader4;
+    public void setStateViewLeaderCardList(List<StateViewLeaderCard> stateViewLeaderCardList) {
+        this.stateViewLeaderCardList = stateViewLeaderCardList;
     }
 }

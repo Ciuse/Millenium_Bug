@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
+import it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +14,7 @@ import java.awt.event.ActionListener;
 public class LeaderCardPanel extends JPanel implements  ActionListener {
     private ActionListener listener;
     private ButtonCard buttonOpenLeaderCard;
+    private PersonalLeaderCardsPanel personalLeaderCardsPanel = new PersonalLeaderCardsPanel();
 
     public LeaderCardPanel() {
         addComponentsToPane(this);
@@ -62,7 +64,6 @@ public class LeaderCardPanel extends JPanel implements  ActionListener {
         JButton jButton = (JButton) e.getSource();
         String nameButton = jButton.getName();
         if (nameButton.equals("LeaderCard")) {
-            PersonalLeaderCardsPanel personalLeaderCardsPanel = new PersonalLeaderCardsPanel();
             JFrame frame = new JFrame(nameButton);
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             frame.setLocation((int) screenSize.getHeight() / (18 / 6), (int) screenSize.getWidth() / 10);
@@ -71,6 +72,8 @@ public class LeaderCardPanel extends JPanel implements  ActionListener {
             frame.setVisible(true);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             Container c = frame.getContentPane();
+            personalLeaderCardsPanel.setBackground(Color.black);
+            //personalLeaderCardsPanel.setOpaque(false);
             c.add(personalLeaderCardsPanel);
         }
     }
@@ -81,5 +84,9 @@ public class LeaderCardPanel extends JPanel implements  ActionListener {
 
     public void setButtonOpenLeaderCard(ButtonCard buttonOpenLeaderCard) {
         this.buttonOpenLeaderCard = buttonOpenLeaderCard;
+    }
+
+    public PersonalLeaderCardsPanel getPersonalLeaderCardsPanel() {
+        return personalLeaderCardsPanel;
     }
 }

@@ -2,8 +2,9 @@ package it.polimi.ingsw.ps31.client.view.guiView;
 
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskLeaderCard;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskPersonalBonusTiles;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskPlayerColorFrame;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskPlayerColor;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.MainFrame;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
@@ -61,6 +62,8 @@ public class GuiView extends View implements ActionListener{
     @Override
     public void askStartLeaderToKeep(ChoiceStartLeaderCard choiceStartLeaderCard) {
      printMyTiles();
+        AskLeaderCard askLeaderCard = new AskLeaderCard(choiceStartLeaderCard,this);
+        askLeaderCard.startFrame();
     }
 
     @Override
@@ -71,8 +74,8 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void askPlayerColor(ChoiceColor choiceColor) {
-        AskPlayerColorFrame askPlayerColorFrame = new AskPlayerColorFrame(choiceColor,this);
-        askPlayerColorFrame.startFrame();
+        AskPlayerColor askPlayerColor = new AskPlayerColor(choiceColor,this);
+        askPlayerColor.startFrame();
 
     }
 
@@ -167,6 +170,8 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void printPlayerAction() {
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjLeaderCardPanel().getPersonalLeaderCardsPanel().setStateViewLeaderCardList(getMyStateViewPlayer().getStateViewLeaderCardList());
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjLeaderCardPanel().getPersonalLeaderCardsPanel().fillLeaderPanel();
 
     }
 

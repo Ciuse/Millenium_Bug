@@ -50,8 +50,8 @@ public class UtilityPanel extends JPanel implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //stateGameOtherPlayersPanel.setOpaque(false);
-        stateGameOtherPlayersPanel.setBackground(Color.red);
+        stateGameOtherPlayersPanel.setOpaque(false);
+        //stateGameOtherPlayersPanel.setBackground(Color.red);
         pane.add(stateGameOtherPlayersPanel,gbc);
     }
 

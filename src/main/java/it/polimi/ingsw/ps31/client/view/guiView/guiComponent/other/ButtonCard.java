@@ -14,6 +14,7 @@ public class ButtonCard extends JButton {
     private ActionListener listener;
     private String stringImage;
     private BufferedImage backgroundPanel;
+    private String nameBotton;
 
     @Override
     public void paintComponent(Graphics g) {
@@ -31,6 +32,10 @@ public class ButtonCard extends JButton {
         }catch (IOException e){
             System.err.println("Errore");
         } backgroundPanel=resizedImage;
+    }
+
+    public ButtonCard(String nameBotton) {
+        this.nameBotton = nameBotton;
     }
 
     public ButtonCard() {

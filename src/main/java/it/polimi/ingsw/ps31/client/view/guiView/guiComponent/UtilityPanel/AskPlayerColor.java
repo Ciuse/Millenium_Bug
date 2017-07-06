@@ -14,13 +14,13 @@ import java.awt.event.WindowEvent;
 /**
  * Created by giulia on 04/07/2017.
  */
-public class AskPlayerColorFrame extends JFrame implements ActionListener {
+public class AskPlayerColor extends JFrame implements ActionListener {
     private JButton[] buttons = new JButton[4];
     private ChoiceColor choiceColor;
     private GuiView guiView;
     private JFrame frame = new JFrame();
 
-    public AskPlayerColorFrame(ChoiceColor choiceColor, GuiView guiView)  {
+    public AskPlayerColor(ChoiceColor choiceColor, GuiView guiView)  {
         this.choiceColor = choiceColor;
         this.guiView = guiView;
     }
