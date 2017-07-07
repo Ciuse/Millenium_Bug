@@ -58,6 +58,14 @@ public class CouncilPanel extends JPanel implements ActionListener{
 
     }
 
+    public ExcommunicationPanel getExcommunicationPanel() {
+        return excommunicationPanel;
+    }
+
+    public SingleBigActionSpace getActionSpaceCouncilPanel() {
+        return actionSpaceCouncilPanel;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 

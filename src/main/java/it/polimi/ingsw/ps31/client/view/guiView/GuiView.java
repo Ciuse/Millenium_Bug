@@ -134,7 +134,7 @@ public class GuiView extends View implements ActionListener{
     @Override
     public void askPrivilegeResourceChange(ChoicePrivilegeResource choicePrivilegeResource) {
         //TODO ERA SOLO DI PROVA, IMPLEMENTARLO BENE
-        notifyController(new VCCouncilPrivilegeChoice(getViewId(), ViewStaticInformation.getResourceListFromCouncilPrivilege().get(0)));
+//        notifyController(new VCCouncilPrivilegeChoice(getViewId(), ViewStaticInformation.getResourceListFromCouncilPrivilege().get(0)));
     }
 
     @Override
@@ -190,6 +190,11 @@ public class GuiView extends View implements ActionListener{
         mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjLeaderCardPanel().getLeaderCardsOpenedPanel().setStateViewLeaderCardList(getMyStateViewPlayer().getStateViewLeaderCardList());
         mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjLeaderCardPanel().getLeaderCardsOpenedPanel().fillLeaderPanel();
 
+    }
+
+    @Override
+    public void printExcommunications() {
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getExcommunicationPanel().printExcommunication(getStateViewGame().getStateViewExcommunicationList());
     }
 
     @Override

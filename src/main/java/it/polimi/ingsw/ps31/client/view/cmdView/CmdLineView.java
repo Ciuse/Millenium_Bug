@@ -676,6 +676,11 @@ public class CmdLineView extends View {
     }
 
     @Override
+    public void printExcommunications() {
+
+    }
+
+    @Override
     public void printMyTiles() {
 
     }

@@ -150,6 +150,8 @@ public abstract class View extends Observable implements Observer {
         }else {
             getMyStateViewPlayer().updateState(stateExcommunication);
         }
+
+        printExcommunications();
     }
 
 
@@ -325,6 +327,8 @@ public abstract class View extends Observable implements Observer {
     public abstract void printMyFamilyMembersOnPlayerPanel();
 
     public abstract void printMyTiles();
+
+    public abstract void printExcommunications();
 
     public abstract void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView);
 

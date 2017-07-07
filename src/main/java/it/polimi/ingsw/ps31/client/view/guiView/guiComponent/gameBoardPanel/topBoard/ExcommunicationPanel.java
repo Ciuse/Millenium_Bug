@@ -1,11 +1,14 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard;
 
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
-
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewExcommunication;
+import java.util.List;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static java.lang.String.valueOf;
 
 /**
  * Created by giulia on 30/06/2017.
@@ -79,6 +82,23 @@ public class ExcommunicationPanel extends JPanel implements ActionListener {
         pane.add(buttonExcommunication3,gbc);
     }
 
+    public void printExcommunication(List<StateViewExcommunication> stateViewExcommunicationList){
+
+        for (StateViewExcommunication excommunication:stateViewExcommunicationList
+             ) {
+            if(excommunication.getId()!=0) {
+                if (excommunication.getPeriod() == 1) {
+                    buttonExcommunication1.imageToReprint("/excommunications/excomm_1_" + valueOf(excommunication.getId()) + ".png");
+                }
+                if (excommunication.getPeriod() == 2) {
+                    buttonExcommunication2.imageToReprint("/excommunications/excomm_2_" + valueOf(excommunication.getId() - 7) + ".png");
+                }
+                if (excommunication.getPeriod() == 3) {
+                    buttonExcommunication3.imageToReprint("/excommunications/excomm_3_" + valueOf(excommunication.getId() - 14) + ".png");
+                }
+            }
+        }
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

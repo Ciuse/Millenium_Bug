@@ -64,6 +64,10 @@ public class TopBoardPanel extends JPanel implements ActionListener {
         councilPanel.attach(this);
     }
 
+    public CouncilPanel getCouncilPanel() {
+        return councilPanel;
+    }
+
     public TowerPanel getTowerPanel() {
         return towerPanel;
     }
