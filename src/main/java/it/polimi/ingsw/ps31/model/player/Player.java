@@ -153,7 +153,9 @@ public class Player {
     }
 
     public void removeLeaderCard(LeaderCard leaderCard) {
-        leaderCardList.remove(leaderCard);
+        int index = leaderCardList.indexOf(leaderCard);
+        leaderCardList.get(index).setPlayed(null);
+        leaderCardList.remove(index);
     }
 
     public void addFinalBonusResource(ResourceList bonusResourcesToAdd) {

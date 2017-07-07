@@ -2,12 +2,11 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
-import it.polimi.ingsw.ps31.messages.messageVC.VCColorChoice;
 import it.polimi.ingsw.ps31.messages.messageVC.VCPersonalTilesChoice;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceColor;
+import it.polimi.ingsw.ps31.messages.messageVC.VCStartLeaderChoice;
 import it.polimi.ingsw.ps31.model.choiceType.ChoicePersonalBonusTiles;
-import it.polimi.ingsw.ps31.model.constants.PlayerColor;
-import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBoard;
+import it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard;
+import it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard;
 import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles;
 
 import javax.swing.*;
@@ -19,25 +18,25 @@ import java.awt.event.WindowEvent;
 import static java.lang.String.valueOf;
 
 /**
- * Created by Giuseppe on 05/07/2017.
+ * Created by giulia on 06/07/2017.
  */
-public class AskPersonalBonusTiles extends JFrame implements ActionListener {
+public class AskStartLeaderCard extends JFrame implements ActionListener {
     private ButtonCard[] buttons = new ButtonCard[4];
-    private ChoicePersonalBonusTiles choicePersonalBonusTiles;
+    private ChoiceStartLeaderCard choiceStartLeaderCard;
     private GuiView guiView;
     private JFrame frame = new JFrame();
 
-    public AskPersonalBonusTiles(ChoicePersonalBonusTiles choicePersonalBonusTiles, GuiView guiView){
-        this.choicePersonalBonusTiles = choicePersonalBonusTiles;
+    public AskStartLeaderCard(ChoiceStartLeaderCard choiceStartLeaderCard, GuiView guiView){
+        this.choiceStartLeaderCard = choiceStartLeaderCard;
         this.guiView = guiView;
     }
 
     public void startFrame() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setSize(screenSize.width / 5, screenSize.height / 2 +300);
+        frame.setSize(screenSize.width / 2+200, screenSize.height / 3 +200);
         frame.setResizable(false);
         frame.setVisible(true);
-        frame.setLocation((int) screenSize.getWidth() / (3) + 200, (int) screenSize.getHeight() / 8);
+        frame.setLocation((int) screenSize.getWidth() / (2) + 200, (int) screenSize.getHeight() / 8);
         frame.setAlwaysOnTop(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -52,7 +51,7 @@ public class AskPersonalBonusTiles extends JFrame implements ActionListener {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        JLabel label = new JLabel("Quale personal bonus tiles vuoi ?");
+        JLabel label = new JLabel("Quale Leader vuoi ?");
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 1;
@@ -65,12 +64,12 @@ public class AskPersonalBonusTiles extends JFrame implements ActionListener {
 
 
         int i=0;
-        for (StatePersonalBonusTiles state: choicePersonalBonusTiles.getStatePersonalBonusTilesList()
-             ) {
+        for (int leaderId: choiceStartLeaderCard.getLeaderIdList()
+                ) {
             buttons[i] = new ButtonCard();
             buttons[i].addActionListener(this);
-            buttons[i].setName(String.valueOf(state.getPersonalBonusTilesId()));
-            buttons[i].imageToLoad("/personalbonustile_" + valueOf(state.getPersonalBonusTilesId()) + ".png");
+            buttons[i].setName(String.valueOf(leaderId));
+            buttons[i].imageToLoad("/leaderCard/leaders_f_c_" + valueOf(leaderId) + ".jpg");
             gbc.gridx = (2 * i) + 1;
             gbc.gridy = 2;
             gbc.gridheight = 1;
@@ -90,12 +89,14 @@ public class AskPersonalBonusTiles extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         ButtonCard tilesButton = (ButtonCard) e.getSource();
         String nameButton = tilesButton.getName();
-        for (StatePersonalBonusTiles state: choicePersonalBonusTiles.getStatePersonalBonusTilesList()
+        for (int leaderId: choiceStartLeaderCard.getLeaderIdList()
                 ) {
-            if (nameButton.equals(valueOf(state.getPersonalBonusTilesId()))) {
-                guiView.notifyController(new VCPersonalTilesChoice(guiView.getViewId(), state.getPersonalBonusTilesId()));
+            if (nameButton.equals(valueOf(leaderId))) {
+                guiView.notifyController(new VCStartLeaderChoice(guiView.getViewId(), leaderId));
                 frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         }
     }
 }
+
+

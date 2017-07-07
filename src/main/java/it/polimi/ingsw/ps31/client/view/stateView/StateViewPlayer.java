@@ -34,7 +34,7 @@ public class StateViewPlayer {
         for(int i=0;i<getMax_number_Of_MarkerDisc();i++){
             stateViewMarkerDiscList.add(new StateViewMarkerDisc(this.playerId,getStringPointResourceType()[i]));
         }
-        for (int i = 1;i<=getMax_number_ofExcommunication();i++){
+        for (int i = 1; i<= getMax_number_of_Excommunication(); i++){
             stateViewExcommunicationList.add(new StateViewExcommunication(i));
         }
 

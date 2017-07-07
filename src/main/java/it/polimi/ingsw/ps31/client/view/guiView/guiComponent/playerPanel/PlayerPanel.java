@@ -23,7 +23,6 @@ public class PlayerPanel extends JPanel implements ActionListener {
         addComponentsToPane(this);
     }
 
-
     public void addComponentsToPane(Container pane) {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
@@ -75,7 +74,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         extraCardPanel.attach(this);
 
 
-        jLeaderCardPanel = new LeaderCardPanel();
+        jLeaderCardPanel = new LeaderCardPanel(guiView);
 
         gbc.gridx = 4;
         gbc.gridy = 1;

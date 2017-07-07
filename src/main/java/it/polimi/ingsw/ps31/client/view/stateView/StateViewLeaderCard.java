@@ -10,7 +10,7 @@ public class StateViewLeaderCard  {
     private String leaderName;
     private StateViewEffect abilityOneTimeForTurnString= new StateViewEffect();
     private StateViewEffect permanentAbilityString= new StateViewEffect();
-    private boolean played;
+    private Boolean played;
     private boolean usedEffect1;
 
     public int getLeaderId() {
@@ -29,7 +29,7 @@ public class StateViewLeaderCard  {
         return permanentAbilityString;
     }
 
-    public boolean isPlayed() {
+    public Boolean isPlayed() {
         return played;
     }
 

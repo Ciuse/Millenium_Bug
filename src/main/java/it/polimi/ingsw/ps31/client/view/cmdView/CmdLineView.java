@@ -193,7 +193,16 @@ public class CmdLineView extends View {
             this.setCmdInterpreterView(new IntrChoiceLeaderToActive());
             //print leader card
             StateViewPlayer player = super.getMyStateViewPlayer();
-            printLastEventAndMemorize("Inserisci da 1 a " + valueOf(player.getStateViewLeaderCardList().size()) + " per selezionare il leader da attivare");
+            String string = "Inserisci: ";
+            int j = 1;
+            for (StateViewLeaderCard leaderCard : player.getStateViewLeaderCardList()
+                    ) {
+                if(leaderCard.isPlayed()!=null) {
+                        string = string + "/" + valueOf(j);
+                }
+                j++;
+            }
+            printLastEventAndMemorize(string + "per selezionare il leader da giocare/attivare");
             input1();
         } while (!cmdInterpreterView.messageInterpreter(this, choiceLeaderToActive, keyStroke1.getCharacter()));
     }
@@ -208,10 +217,12 @@ public class CmdLineView extends View {
             int j = 1;
             for (StateViewLeaderCard leaderCard : player.getStateViewLeaderCardList()
                     ) {
-                if (!leaderCard.isPlayed()) {
-                    string = string + "/" + valueOf(j);
-                    j++;
+                if(leaderCard.isPlayed()!=null) {
+                    if (!leaderCard.isPlayed()) {
+                        string = string + "/" + valueOf(j);
+                    }
                 }
+                j++;
             }
             printLastEventAndMemorize(string + "per selezionare il leader da scartare");
             input1();
@@ -775,6 +786,7 @@ public class CmdLineView extends View {
 
                             textGraphics.setCharacter(labelBoxTopLeft.withRelative(1, 1), ' ');
                             textGraphics.setCharacter(labelBoxTopLeft.withRelative(2, 1), ' ');
+                            textGraphics.setCharacter(labelBoxTopLeft.withRelative(3, 1), ' ');
 
                         }
 

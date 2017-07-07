@@ -504,7 +504,7 @@ public class GameUtility {
     public void resetLeaderEffect() {
         for (Player aPlayerList : playerList) {
             for (int j = 0; j < aPlayerList.getLeaderCardList().size(); j++) {
-                aPlayerList.getLeaderCardList().get(j).setUsedEffect1(false);
+                aPlayerList.getLeaderCardList().get(j).resetEffectLeaderCard();
             }
         }
     }

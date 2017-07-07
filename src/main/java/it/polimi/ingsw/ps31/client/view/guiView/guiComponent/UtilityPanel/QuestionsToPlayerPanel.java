@@ -62,7 +62,7 @@ public class QuestionsToPlayerPanel extends JPanel implements DocumentListener{
         gbc.gridheight = 1;
         gbc.gridwidth = 2;
         choosenButtonPanel.setOpaque(false);
-        choosenButtonPanel.imageToLoad("/cornice 42.gif");
+//        choosenButtonPanel.imageToLoad("/cornice 42.gif");
         gbc.fill = GridBagConstraints.BOTH;
         choosenButtonPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(choosenButtonPanel, gbc);

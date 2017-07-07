@@ -12,7 +12,7 @@ import static java.lang.String.valueOf;
 /**
  * Created by giulia on 29/06/2017.
  */
-public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements ActionListener {
+public class DevelopmentCardsOpenedPanel extends JPanel implements ActionListener {
     private ActionListener listener;
     private ButtonCard buttonCard1;
     private ButtonCard buttonCard2;
@@ -23,7 +23,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
     private ButtonCard[] buttonCards = new ButtonCard[6];
 
 
-    public DevelopmentCardOnPersonalBoardPanel() {
+    public DevelopmentCardsOpenedPanel() {
         addComponentsToPane(this);
     }
 

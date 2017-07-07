@@ -1,7 +1,9 @@
 package it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand;
 
 import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
 import it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToActiveChoice;
+import it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToDiscardChoice;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
@@ -16,12 +18,15 @@ public class IntrChoiceLeaderToActive implements CmdInterpreterView {
     @Override
     public boolean messageInterpreter(CmdLineView terminalView, ChoiceType choiceType, Character in) {
         if (in != null) {
-            for (Integer i = 1; i < terminalView.getMyStateViewPlayer().getStateViewLeaderCardList().size()+ 1; i++) {
-                if (in.compareTo(i.toString().charAt(0))==0) {
-                        terminalView.printLastEvent("Comando OK");
-                        terminalView.notifyController(new VCLeaderToActiveChoice(terminalView.getViewId(),terminalView.getMyStateViewPlayer().getStateViewLeaderCardList().get(i-1).getLeaderId()));
-                        return true;
+            Integer i = 1;
+            for (StateViewLeaderCard leaderCard : terminalView.getMyStateViewPlayer().getStateViewLeaderCardList()
+                    ) {
+                if (in.compareTo(i.toString().charAt(0))==0 && leaderCard.isPlayed()!=null) {
+                    terminalView.printLastEvent("Comando OK");
+                    terminalView.notifyController(new VCLeaderToActiveChoice(terminalView.getViewId(), terminalView.getMyStateViewPlayer().getStateViewLeaderCardList().get(i-1).getLeaderId()));
+                    return true;
                 }
+                i++;
             }
             terminalView.printLastEvent("Comando Non Riconusciuto");
             return false;

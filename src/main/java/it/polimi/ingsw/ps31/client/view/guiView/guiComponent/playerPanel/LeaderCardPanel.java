@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
+import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
-import it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,9 +14,11 @@ import java.awt.event.ActionListener;
 public class LeaderCardPanel extends JPanel implements  ActionListener {
     private ActionListener listener;
     private ButtonCard buttonOpenLeaderCard;
-    private PersonalLeaderCardsPanel personalLeaderCardsPanel = new PersonalLeaderCardsPanel();
+    private LeaderCardsOpenedPanel leaderCardsOpenedPanel;
+    private GuiView guiView;
 
-    public LeaderCardPanel() {
+    public LeaderCardPanel(GuiView guiView) {
+        this.guiView=guiView;
         addComponentsToPane(this);
     }
 
@@ -49,6 +51,8 @@ public class LeaderCardPanel extends JPanel implements  ActionListener {
         buttonOpenLeaderCard.addActionListener(this);
         pane.add(buttonOpenLeaderCard,gbc);
 
+        leaderCardsOpenedPanel = new LeaderCardsOpenedPanel(guiView);
+
     }
 
     public ActionListener getListener() {
@@ -72,9 +76,10 @@ public class LeaderCardPanel extends JPanel implements  ActionListener {
             frame.setVisible(true);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             Container c = frame.getContentPane();
-            personalLeaderCardsPanel.setBackground(Color.black);
-            //personalLeaderCardsPanel.setOpaque(false);
-            c.add(personalLeaderCardsPanel);
+            leaderCardsOpenedPanel.setBackground(Color.black);
+            leaderCardsOpenedPanel.setFather(frame);
+            //leaderCardsOpenedPanel.setOpaque(false);
+            c.add(leaderCardsOpenedPanel);
         }
     }
 
@@ -86,7 +91,7 @@ public class LeaderCardPanel extends JPanel implements  ActionListener {
         this.buttonOpenLeaderCard = buttonOpenLeaderCard;
     }
 
-    public PersonalLeaderCardsPanel getPersonalLeaderCardsPanel() {
-        return personalLeaderCardsPanel;
+    public LeaderCardsOpenedPanel getLeaderCardsOpenedPanel() {
+        return leaderCardsOpenedPanel;
     }
 }

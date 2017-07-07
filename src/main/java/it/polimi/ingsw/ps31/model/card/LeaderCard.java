@@ -20,7 +20,7 @@ public class LeaderCard extends Card implements ActiveEffect {
     private final DevelopmentCardList developmentCardRequest;
     private Effect abilityOneTimeForTurn;
     private Effect permanentAbility;
-    private boolean played = false;
+    private Boolean played = null;
     private boolean usedEffect1 = false;
     private boolean usedEffect2 = false;
 
@@ -32,13 +32,13 @@ public class LeaderCard extends Card implements ActiveEffect {
         this.abilityOneTimeForTurn = abilityOneTimeForTurn;
         this.permanentAbility = permanentAbility;
     }
-
-    public List<Object> getRequirements(){          //ritorna una lista di due oggetti diversi (poi andranno castati in appositi oggetti del loro tipo)
-        List<Object> requirementsList = new ArrayList<>();
-        requirementsList.add(this.resourceRequest);
-        requirementsList.add(this.developmentCardRequest);
-        return requirementsList;
-    }
+//
+//    public List<Object> getRequirements(){          //ritorna una lista di due oggetti diversi (poi andranno castati in appositi oggetti del loro tipo)
+//        List<Object> requirementsList = new ArrayList<>();
+//        requirementsList.add(this.resourceRequest);
+//        requirementsList.add(this.developmentCardRequest);
+//        return requirementsList;
+//    }
 
     public ResourceList getResourceRequest()
     {
@@ -58,11 +58,11 @@ public class LeaderCard extends Card implements ActiveEffect {
         return this.permanentAbility;
     }
 
-    public boolean isPlayed() {
+    public Boolean isPlayed() {
         return played;
     }
 
-    public void setPlayed(boolean played) {
+    public void setPlayed(Boolean played) {
         this.played = played;
     }
 

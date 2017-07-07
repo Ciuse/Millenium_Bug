@@ -14,6 +14,9 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
     private ActionListener listener;
     private ButtonCard buttonCardPurplePanel;
     private ButtonCard buttonCardBluePanel;
+    private DevelopmentCardsOpenedPanel purpleCardPanel = new DevelopmentCardsOpenedPanel();
+    private DevelopmentCardsOpenedPanel blueCardPanel = new DevelopmentCardsOpenedPanel();
+
 
     public void attach (ActionListener listener){
         this.listener=listener;
@@ -21,7 +24,6 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
 
     public ExtraCardPanel() {
         addComponentsToPane(this);
-
     }
 
     public ActionListener getListener() {
@@ -69,36 +71,33 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
         pane.add(buttonCardBluePanel,gbc);
 
     }
-
-    public ButtonCard getButtonCardPurplePanel() {
-        return buttonCardPurplePanel;
-    }
-
-    public ButtonCard getButtonCardBluePanel() {
-        return buttonCardBluePanel;
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton jButton = (JButton) e.getSource();
         String nameButton = jButton.getName();
         JFrame frame = new JFrame(nameButton);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setLocation((int) screenSize.getHeight() / (18/6), (int) screenSize.getWidth() / 10);
+        frame.setLocation((int) screenSize.getHeight() / (18 / 6), (int) screenSize.getWidth() / 10);
         frame.setAlwaysOnTop(true);
-        frame.setSize(screenSize.width / 2, screenSize.height / (12/4));
+        frame.setSize(screenSize.width / 2, screenSize.height / (12 / 4));
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container c = frame.getContentPane();
         if (nameButton.equals("PurpleCard")) {
-            PurpleCardPanel purpleCardPanel = new PurpleCardPanel();
             c.add(purpleCardPanel);
         }
         if (nameButton.equals("BlueCard")) {
-            BlueCardPanel blueCardPanel = new BlueCardPanel();
             c.add(blueCardPanel);
         }
 
     }
+
+    public DevelopmentCardsOpenedPanel getPurpleCardPanel() {
+        return purpleCardPanel;
     }
+
+    public DevelopmentCardsOpenedPanel getBlueCardPanel() {
+        return blueCardPanel;
+    }
+}
 

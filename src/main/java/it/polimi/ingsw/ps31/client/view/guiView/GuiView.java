@@ -2,12 +2,14 @@ package it.polimi.ingsw.ps31.client.view.guiView;
 
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskLeaderCard;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskPersonalBonusTiles;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskPlayerColor;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskStartLeaderCard;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskStartPersonalBonusTiles;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskStartPlayerColor;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.MainFrame;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
+import it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation;
+import it.polimi.ingsw.ps31.messages.messageVC.VCCouncilPrivilegeChoice;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
@@ -66,20 +68,20 @@ public class GuiView extends View implements ActionListener{
     @Override
     public void askStartLeaderToKeep(ChoiceStartLeaderCard choiceStartLeaderCard) {
      printMyTiles();
-        AskLeaderCard askLeaderCard = new AskLeaderCard(choiceStartLeaderCard,this);
-        askLeaderCard.startFrame();
+        AskStartLeaderCard askStartLeaderCard = new AskStartLeaderCard(choiceStartLeaderCard,this);
+        askStartLeaderCard.startFrame();
     }
 
     @Override
     public void askStartPersonalTilesToKeep(ChoicePersonalBonusTiles choicePersonalBonusTiles) {
-     AskPersonalBonusTiles askPersonalBonusTiles = new AskPersonalBonusTiles(choicePersonalBonusTiles,this);
-     askPersonalBonusTiles.startFrame();
+     AskStartPersonalBonusTiles askStartPersonalBonusTiles = new AskStartPersonalBonusTiles(choicePersonalBonusTiles,this);
+     askStartPersonalBonusTiles.startFrame();
     }
 
     @Override
     public void askPlayerColor(ChoiceColor choiceColor) {
-        AskPlayerColor askPlayerColor = new AskPlayerColor(choiceColor,this);
-        askPlayerColor.startFrame();
+        AskStartPlayerColor askStartPlayerColor = new AskStartPlayerColor(choiceColor,this);
+        askStartPlayerColor.startFrame();
 
     }
 
@@ -106,11 +108,16 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void askLeaderToActive(ChoiceLeaderToActive choiceLeaderToActive) {
-
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjLeaderCardPanel().getLeaderCardsOpenedPanel().setActiveLeader(true);
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjLeaderCardPanel().getLeaderCardsOpenedPanel().enableLeader();
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjLeaderCardPanel().getButtonOpenLeaderCard().doClick();
     }
 
     @Override
     public void askLeaderToDiscard(ChoiceLeaderToDiscard choiceLeaderToDiscard) {
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjLeaderCardPanel().getLeaderCardsOpenedPanel().setDiscardLeader(true);
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjLeaderCardPanel().getLeaderCardsOpenedPanel().enableLeader();
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjLeaderCardPanel().getButtonOpenLeaderCard().doClick();
 
     }
 
@@ -123,7 +130,8 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void askPrivilegeResourceChange(ChoicePrivilegeResource choicePrivilegeResource) {
-
+        //TODO ERA SOLO DI PROVA, IMPLEMENTARLO BENE
+        notifyController(new VCCouncilPrivilegeChoice(getViewId(), ViewStaticInformation.getResourceListFromCouncilPrivilege().get(0)));
     }
 
     @Override
@@ -176,8 +184,8 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void printPlayerAction() {
-        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjLeaderCardPanel().getPersonalLeaderCardsPanel().setStateViewLeaderCardList(getMyStateViewPlayer().getStateViewLeaderCardList());
-        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjLeaderCardPanel().getPersonalLeaderCardsPanel().fillLeaderPanel();
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjLeaderCardPanel().getLeaderCardsOpenedPanel().setStateViewLeaderCardList(getMyStateViewPlayer().getStateViewLeaderCardList());
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjLeaderCardPanel().getLeaderCardsOpenedPanel().fillLeaderPanel();
 
     }
 
@@ -200,8 +208,7 @@ public class GuiView extends View implements ActionListener{
  public void printMyTiles() {
      System.out.println(getMyStateViewPlayer().getStateViewPersonalBonusTiles());
      mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBonusTilesPanel().printTiles(getMyStateViewPlayer().getStateViewPersonalBonusTiles());
-//     mainFrame.repaint();
-//     mainFrame.revalidate();
+
  }
 
  @Override

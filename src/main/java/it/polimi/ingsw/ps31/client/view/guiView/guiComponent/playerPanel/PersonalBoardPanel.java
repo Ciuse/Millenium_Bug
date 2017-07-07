@@ -40,7 +40,7 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        DevelopmentCardOnPersonalBoardPanel jPanel1 = new DevelopmentCardOnPersonalBoardPanel();
+        DevelopmentCardsOpenedPanel jPanel1 = new DevelopmentCardsOpenedPanel();
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridheight = 1;
@@ -52,7 +52,7 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
         pane.add(jPanel1, gbc);
         jPanel1.attach(this);
 
-        DevelopmentCardOnPersonalBoardPanel jPanel2 = new DevelopmentCardOnPersonalBoardPanel();
+        DevelopmentCardsOpenedPanel jPanel2 = new DevelopmentCardsOpenedPanel();
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridheight = 1;

@@ -18,10 +18,10 @@ public class StateLeaderCard extends StateType{
     private String leaderName=null;
     private final StateEffect abilityOneTimeForTurnString;
     private final StateEffect permanentAbilityString;
-    private final boolean played;
+    private final Boolean played;
     private final boolean usedEffect1;
 
-    public StateLeaderCard(PlayerId playerId, int leaderId, String leaderName, StateEffect abilityOneTimeForTurnString, StateEffect permanentAbilityString, boolean played, boolean usedEffect1) {
+    public StateLeaderCard(PlayerId playerId, int leaderId, String leaderName, StateEffect abilityOneTimeForTurnString, StateEffect permanentAbilityString, Boolean played, boolean usedEffect1) {
         this.playerId = playerId;
         this.leaderId = leaderId;
         this.leaderName = leaderName;
@@ -51,7 +51,7 @@ public class StateLeaderCard extends StateType{
         return permanentAbilityString;
     }
 
-    public boolean isPlayed() {
+    public Boolean isPlayed() {
         return played;
     }
 

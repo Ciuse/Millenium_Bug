@@ -21,15 +21,15 @@ public class JsonFileTest {
     public void tearDown() throws Exception {
     }
 
-    @Test
-    public void newFile() throws Exception {
-        CreationJson creationJson = new CreationJson();
-        creationJson.createJsonFile();
-        File fileTrue = new File(JsonFile.filePath("/jsonObject.json"));
-        assertTrue(fileTrue.exists());
-
-        assertFalse(fileTrue.length()==0);
-    }
+//    @Test
+//    public void newFile() throws Exception {
+//        CreationJson creationJson = new CreationJson();
+//        creationJson.createJsonFile();
+//        File fileTrue = new File(JsonFile.filePath("/jsonObject.json"));
+//        assertTrue(fileTrue.exists());
+//
+//        assertFalse(fileTrue.length()==0);
+//    }
 
     @Test
     public void saveJsonToFile() throws Exception {

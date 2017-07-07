@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps31.model.stateModel.StateGame;
 import java.util.ArrayList;
 import java.util.List;
 
-import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getMax_number_ofExcommunication;
+import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getMax_number_of_Excommunication;
 import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getNumber_Of_DevelopmentCard;
 
 /**
@@ -27,7 +27,7 @@ public class StateViewGame {
         for (int i = 1;i<=getNumber_Of_DevelopmentCard();i++){
             stateViewDevelopmentCardList.add(new StateViewDevelopmentCard(i));
         }
-        for (int i = 1;i<=getMax_number_ofExcommunication();i++){
+        for (int i = 1; i<= getMax_number_of_Excommunication(); i++){
             stateViewExcommunicationList.add(new StateViewExcommunication(i));
         }
     }

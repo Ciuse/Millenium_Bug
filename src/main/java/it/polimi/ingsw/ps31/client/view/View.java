@@ -257,9 +257,7 @@ public abstract class View extends Observable implements Observer {
             printAllPersonalBoard();
             printAllPlayer();
             printPlayerAction();
-        }
-
-        if (!firstTime) {
+        }else {
             printPlayerAction();
             printAllPlayer();
             printPlayerInAction();

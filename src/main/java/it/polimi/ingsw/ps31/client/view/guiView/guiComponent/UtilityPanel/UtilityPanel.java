@@ -63,6 +63,9 @@ public class UtilityPanel extends JPanel implements ActionListener {
         return stateGameOtherPlayersPanel;
     }
 
+    public GuiView getGuiView() {
+        return guiView;
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 

@@ -22,7 +22,8 @@ public class ViewStaticInformation {
     private static int Number_Of_DevelopmentCard=96;
     private static int Number_Of_ActionSpace = 25;
     private static int Max_number_Of_MarkerDisc = 3;
-    private static int Max_number_ofExcommunication=3;
+    private static int Max_number_of_Excommunication =3;
+    private static int Max_number_of_LeaderCard=4;
     private static CardColor[] cardColors=CardColor.values();
     private static DiceColor[] diceColors=DiceColor.values();
     private static PlayerId[] playerIds=PlayerId.values();
@@ -72,8 +73,8 @@ public class ViewStaticInformation {
         return Number_Of_DevelopmentCard;
     }
 
-    public static int getMax_number_ofExcommunication() {
-        return Max_number_ofExcommunication;
+    public static int getMax_number_of_Excommunication() {
+        return Max_number_of_Excommunication;
     }
 
     public static CardColor[] getCardColors() {
@@ -106,6 +107,10 @@ public class ViewStaticInformation {
 
     public static int getMax_number_Of_MarkerDisc() {
         return Max_number_Of_MarkerDisc;
+    }
+
+    public static int getMax_number_of_LeaderCard() {
+        return Max_number_of_LeaderCard;
     }
 
     public static String[] getStringPointResourceType() {
