@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
+import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
+import it.polimi.ingsw.ps31.messages.messageVC.VCFamilyMemberChoice;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 
 import javax.swing.*;
@@ -13,14 +15,16 @@ import java.awt.event.ActionListener;
  */
 public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
     private ActionListener listener;
-    private FamilyMemberButton[] buttonFamilyMember = new FamilyMemberButton[4];
+    private GuiView guiView;
+    private JButton[] buttonFamilyMember = new JButton[4];
 
 
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
-    public ButtonsFamilyMemberPanel() {
+    public ButtonsFamilyMemberPanel(GuiView guiView) {
+        this.guiView = guiView;
         addComponentsToPane(this);
     }
 
@@ -36,10 +40,11 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        buttonFamilyMember[0] = new FamilyMemberButton();
+        buttonFamilyMember[0] = new JButton();
         buttonFamilyMember[0].setName("1");
         buttonFamilyMember[0].addActionListener(this);
         buttonFamilyMember[0].setBackground(Color.white);
+        buttonFamilyMember[0].setEnabled(false);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 1;
@@ -47,10 +52,11 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(buttonFamilyMember[0], gbc);
 
-        buttonFamilyMember[1] = new FamilyMemberButton();
+        buttonFamilyMember[1] = new JButton();
         buttonFamilyMember[1].setName("2");
         buttonFamilyMember[1].addActionListener(this);
         buttonFamilyMember[1].setBackground(Color.orange);
+        buttonFamilyMember[1].setEnabled(false);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridheight = 1;
@@ -58,10 +64,11 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(buttonFamilyMember[1], gbc);
 
-        buttonFamilyMember[2] = new FamilyMemberButton();
+        buttonFamilyMember[2] = new JButton();
         buttonFamilyMember[2].setName("3");
         buttonFamilyMember[2].addActionListener(this);
         buttonFamilyMember[2].setBackground(Color.black);
+        buttonFamilyMember[2].setEnabled(false);
         gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.gridheight = 1;
@@ -69,10 +76,11 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(buttonFamilyMember[2], gbc);
 
-        buttonFamilyMember[3] = new FamilyMemberButton();
+        buttonFamilyMember[3] = new JButton();
         buttonFamilyMember[3].setName("4");
         buttonFamilyMember[3].addActionListener(this);
         buttonFamilyMember[3].setBackground(Color.cyan);
+        buttonFamilyMember[3].setEnabled(false);
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridheight = 1;
@@ -95,6 +103,22 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
         }
     }
 
+
+    public void setEnabledFamilyMember(){
+        for(int i = 0;i<4;i++){
+            Color colorFamilyMember = buttonFamilyMember[i].getBackground();
+            for (StateViewFamilyMember familyMember : guiView.getMyStateViewPlayer().getStateViewFamilyMemberList()
+                    ) {
+                if(familyMember.getDiceColor().equals(getFamilyMemberColor(colorFamilyMember))){
+                    buttonFamilyMember[i].setEnabled(true);
+                }
+            }
+        }
+
+
+    }
+
+
     public DiceColor getFamilyMemberColor(Color color){
         if(color==Color.BLACK){
             return DiceColor.BLACK;
@@ -106,10 +130,23 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
             return DiceColor.NEUTRAL;
         }else return null;
     }
-
+    public void setDisabledAllFamilyMember(){
+        for(int i = 0;i<4;i++){
+            buttonFamilyMember[i].setEnabled(false);
+        }
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        JButton jButton = (JButton) e.getSource();
+        Color colorFamilyMember = jButton.getBackground();
+        for (StateViewFamilyMember familyMember: guiView.getMyStateViewPlayer().getStateViewFamilyMemberList()
+             ) {
+            if(familyMember.getDiceColor().equals(getFamilyMemberColor(colorFamilyMember))){
+                guiView.notifyController(new VCFamilyMemberChoice(guiView.getViewId(),getFamilyMemberColor(colorFamilyMember)));
+                this.setDisabledAllFamilyMember();
+            }
+        }
 
     }
 }

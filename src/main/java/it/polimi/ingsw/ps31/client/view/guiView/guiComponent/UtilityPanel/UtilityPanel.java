@@ -29,12 +29,12 @@ public class UtilityPanel extends JPanel implements ActionListener {
         gbl.rowHeights = new int[]{0, 0,0};
 
         gbl.columnWeights = new double[]{0.999999, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.60, 0.40, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.70, 0.30, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        questionsToPlayerPanel = new QuestionsToPlayerPanel();
+        questionsToPlayerPanel = new QuestionsToPlayerPanel(this.guiView);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 1;
@@ -53,6 +53,14 @@ public class UtilityPanel extends JPanel implements ActionListener {
         stateGameOtherPlayersPanel.setOpaque(false);
         //stateGameOtherPlayersPanel.setBackground(Color.red);
         pane.add(stateGameOtherPlayersPanel,gbc);
+    }
+
+    public QuestionsToPlayerPanel getQuestionsToPlayerPanel() {
+        return questionsToPlayerPanel;
+    }
+
+    public StateGameOtherPlayersPanel getStateGameOtherPlayersPanel() {
+        return stateGameOtherPlayersPanel;
     }
 
     @Override

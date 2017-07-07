@@ -1,16 +1,16 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
+
+
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
-import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
+import it.polimi.ingsw.ps31.messages.messageVC.VCPlayerAction;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import static java.lang.String.valueOf;
 
@@ -18,6 +18,7 @@ import static java.lang.String.valueOf;
  * Created by giulia on 04/07/2017.
  */
 public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionListener {
+    private GuiView guiView;
     private ActionListener listener;
     private ButtonCard button1;
     private ButtonCard button2;
@@ -25,14 +26,15 @@ public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionLi
     private ButtonCard button4;
     private ButtonCard button5;
     private ButtonCard[] buttonsAction = new ButtonCard[5];
-    private GuiView guiView;
 
 
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
-    public ChoosenButtonPanel() {
+    public ChoosenButtonPanel(GuiView guiView) {
+
+        this.guiView = guiView;
         addComponentsToPane(this);
     }
 
@@ -123,23 +125,46 @@ public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionLi
 
     }
 
-    public void setEnabledActions() {
+    public void setEnabledActions(List<String> list) {
         for(int i = 0; i<5;i++) {
             boolean found = false;
-        for (String string : guiView.getMyStateViewPlayer().getStringPlayerAction()
+        for (String string : list
                 ) {
             if(string.equals(buttonsAction[i].getName())){
                 found=true;
             }
         }if(found){
                 buttonsAction[i].setEnabled(true);
+                buttonsAction[i].repaint();
+                buttonsAction[i].revalidate();
             }else buttonsAction[i].setEnabled(false);
         }
     }
 
+    public ButtonCard[] getButtonsAction() {
+        return buttonsAction;
+    }
+
+    public void setDisabledAllButtons(){
+        for(int i = 0;i<5;i++){
+            buttonsAction[i].setEnabled(false);
+        }
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        ButtonCard buttonCard = (ButtonCard) e.getSource();
+        String nameButton = buttonCard.getName();
+            for (String string :guiView.
+                    getMyStateViewPlayer().
+                    getStringPlayerAction()
+                    ) {
+                if(nameButton.equals(string)){
+                    guiView.notifyController(new VCPlayerAction(guiView.getMyStateViewPlayer().getPlayerId(),string));
+                    this.setDisabledAllButtons();
+                }
+            }
 
-    }
+        }
+
 }

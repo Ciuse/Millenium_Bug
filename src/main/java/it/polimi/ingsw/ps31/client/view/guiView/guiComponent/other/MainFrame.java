@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  */
 public class MainFrame extends JFrame implements ActionListener {
     private GuiView guiView;
-    private BackgroundMainFramePanel backgroundMainFramePanel= new BackgroundMainFramePanel(guiView);;
+    private BackgroundMainFramePanel backgroundMainFramePanel;
 
 
     public MainFrame(GuiView guiView) {
@@ -20,6 +20,8 @@ public class MainFrame extends JFrame implements ActionListener {
     }
 
     public void startMainFrame() {
+
+        backgroundMainFramePanel= new BackgroundMainFramePanel(guiView);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 

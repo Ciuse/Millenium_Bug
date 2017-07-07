@@ -20,6 +20,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
     private ButtonCard buttonCard4;
     private ButtonCard buttonCard5;
     private ButtonCard buttonCard6;
+    private ButtonCard[] buttonCards = new ButtonCard[6];
 
 
     public DevelopmentCardOnPersonalBoardPanel() {
@@ -51,6 +52,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(buttonCard1,gbc);
+        buttonCards[0] = buttonCard1;
 
         buttonCard2 = new ButtonCard();
         buttonCard2.setName("2");
@@ -61,6 +63,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(buttonCard2,gbc);
+        buttonCards[1] = buttonCard2;
 
         buttonCard3 = new ButtonCard();
         buttonCard3.setName("3");
@@ -71,6 +74,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(buttonCard3,gbc);
+        buttonCards[2] = buttonCard3;
 
         buttonCard4 = new ButtonCard();
         buttonCard4.setName("4");
@@ -81,6 +85,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(buttonCard4,gbc);
+        buttonCards[3] = buttonCard4;
 
         buttonCard5 = new ButtonCard();
         buttonCard5.setName("5");
@@ -91,6 +96,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(buttonCard5,gbc);
+        buttonCards[4] = buttonCard5;
 
         buttonCard6 = new ButtonCard();
         buttonCard6.setName("6");
@@ -101,6 +107,7 @@ public class DevelopmentCardOnPersonalBoardPanel extends JPanel implements Actio
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(buttonCard6,gbc);
+        buttonCards[5] = buttonCard6;
 
         }
 

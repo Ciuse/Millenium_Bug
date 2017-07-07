@@ -186,11 +186,11 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
 
         JComponent buttonClicked = (JComponent) e.getSource();
         int buttonNumber = Integer.parseInt(buttonClicked.getName());
-        System.out.println(buttonNumber);
         if (getTopBoardPanel().getTowerPanel().isSendNextClick()) {
             CardColor cardColor=getTopBoardPanel().getTowerPanel().getCardColorFromButtonNumber(buttonNumber);
             int floorNumber=getTopBoardPanel().getTowerPanel().getFloorNumberFromButtonName(buttonNumber);
             guiView.notifyController(new VCTowerCardSpaceChoice(guiView.getViewId(),cardColor,floorNumber));
+            getTopBoardPanel().getTowerPanel().setSendNextClick(false);
         }
 
     }

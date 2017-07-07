@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
+import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,13 +12,15 @@ import java.awt.event.ActionListener;
  */
 public class FamilyMemberPanel extends JPanel implements ActionListener {
     private ActionListener listener;
+    private GuiView guiView;
     private ButtonsFamilyMemberPanel buttonsFamilyMemberPanel;
 
     public void attach(ActionListener listener) {
         this.listener = listener;
     }
 
-    public FamilyMemberPanel() {
+    public FamilyMemberPanel(GuiView guiView) {
+        this.guiView = guiView;
         addComponentsToPane(this);
     }
 
@@ -32,7 +36,7 @@ public class FamilyMemberPanel extends JPanel implements ActionListener {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        buttonsFamilyMemberPanel = new ButtonsFamilyMemberPanel();
+        buttonsFamilyMemberPanel = new ButtonsFamilyMemberPanel(guiView);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridheight = 1;

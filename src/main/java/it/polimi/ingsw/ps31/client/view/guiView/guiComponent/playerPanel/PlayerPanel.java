@@ -89,7 +89,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         jLeaderCardPanel.attach(this);
 
 
-        jFamilyMemberPanel = new FamilyMemberPanel();
+        jFamilyMemberPanel = new FamilyMemberPanel(guiView);
 
         gbc.gridx = 4;
         gbc.gridy = 2;

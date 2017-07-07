@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
+import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -10,13 +12,18 @@ import java.awt.event.ActionListener;
  * Created by giulia on 02/07/2017.
  */
 public class QuestionsToPlayerPanel extends JPanel implements DocumentListener{
+    private GuiView guiView;
     private ActionListener listener;
+    private AskActionPanel askActionPanel;
+    private ChoosenButtonPanel choosenButtonPanel;
 
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
-    public QuestionsToPlayerPanel() {
+    public QuestionsToPlayerPanel(GuiView guiView) {
+
+        this.guiView = guiView;
         addComponentsToPane(this);
     }
 
@@ -28,31 +35,28 @@ public class QuestionsToPlayerPanel extends JPanel implements DocumentListener{
         gbl.rowHeights = new int[]{0,0, 0, 0,0,0};
 
         gbl.columnWeights = new double[]{0.99999, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.03,0.10, 0.02,0.83,0.02, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.05,0.08, 0.02,0.83,0.02, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
 
         GridBagConstraints gbc = new GridBagConstraints();
 
 
-        JTextArea textArea = new JTextArea("inserisci il tuo nome ");
+        askActionPanel = new AskActionPanel();
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        textArea.setOpaque(false);
+        askActionPanel.setOpaque(false);
+        askActionPanel.imageToLoad("/sfondoPerLeDomande.jpg");
         gbc.fill = GridBagConstraints.BOTH;
-        textArea.setPreferredSize(new Dimension(10, 10));
-        //textArea.setBackground(Color.RED);
-        pane.add(textArea, gbc);
-        textArea.getDocument().addDocumentListener(this);
-        JScrollPane scrollPane = new JScrollPane(textArea);
-        pane.add(scrollPane, gbc);
-        scrollPane.getViewport().setOpaque(false);
-        scrollPane.setOpaque(false);
+        askActionPanel.setPreferredSize(new Dimension(10, 10));
+        //askActionPanel.setBackground(Color.RED);
+        pane.add(askActionPanel, gbc);
 
 
-        ChoosenButtonPanel choosenButtonPanel = new ChoosenButtonPanel();
+
+        choosenButtonPanel = new ChoosenButtonPanel(guiView);
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridheight = 1;
@@ -66,6 +70,13 @@ public class QuestionsToPlayerPanel extends JPanel implements DocumentListener{
 
     }
 
+    public AskActionPanel getAskActionPanel() {
+        return askActionPanel;
+    }
+
+    public ChoosenButtonPanel getChoosenButtonPanel() {
+        return choosenButtonPanel;
+    }
 
     @Override
     public void insertUpdate(DocumentEvent e) {

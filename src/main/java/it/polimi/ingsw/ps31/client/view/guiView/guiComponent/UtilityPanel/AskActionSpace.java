@@ -14,6 +14,9 @@ public class AskActionSpace extends JPanel implements ActionListener {
         this.listener=listener;
     }
 
+
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
 

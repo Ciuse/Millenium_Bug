@@ -46,11 +46,15 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void askTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace) {
+        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("SELEZIONA UNA CASELLA DELLA TORRE SU CUI VUOI PIAZZARE IL TUO FAMILY MEMBER");
         mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getTowerPanel().setSendNextClick(true);
     }
 
     @Override
     public void askActionToDo(ChoiceActionToDo choiceActionToDo) {
+
+        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("QUALE AZIONE VUOI FARE?");
+        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getChoosenButtonPanel().setEnabledActions(getMyStateViewPlayer().getStringPlayerAction());
 
     }
 
@@ -81,7 +85,8 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void askFamilyMember(ChoiceFamilyMember choiceFamilyMember) {
-
+        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("QUALE FAMILY MEMBER VUOI USARE?");
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().setEnabledFamilyMember();
     }
 
     @Override
@@ -111,6 +116,7 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void askServantToPay(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay) {
+        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("QUANTI SERVITORI VUOI PAGARE PER AUMENTARE IL VALORE DEL TUO FAMILY MEMBER?");
 
     }
 
