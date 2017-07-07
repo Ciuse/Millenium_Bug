@@ -108,7 +108,7 @@ public class ActionChooseCard extends Action {
                 player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
                 break;
             }
-            if (actionControlSet.payCardControl(chosenCardSpace.getCard(), resourceDiscount)) {
+            if (actionControlSet.payCardControl(chosenCardSpace.getCard(), resourceDiscount,null)) {
                 break;
             }else   {
                 player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPayCardControl().getControlStringError()));
@@ -119,7 +119,7 @@ public class ActionChooseCard extends Action {
         if (!actionTimerEnded) {      //TIMER NON SCADUTO
 
 //            pago la carta
-//            super.player.getPlayerActionSet().payCard(chosenCardSpace.getCard(), resourceDiscount);
+            super.player.getPlayerActionSet().payCard();
 
             //prendo la carta
             super.player.addDevelopmentCard(chosenCardSpace.takeCard());
@@ -179,10 +179,10 @@ public class ActionChooseCard extends Action {
                 }
             }
             //sommo sconto permanente
-            if(player.getPlayerActionSet().getPayCard().getCardResourceDiscount().get(chosenTCS.getCard().getCardColor())!=null){
+            if(player.getPlayerActionSet().getActionControlSet().getPayCardControl().getCardResourceDiscount().get(chosenTCS.getCard().getCardColor())!=null){
                 for (ResourceList list: tempResourceListList
                         ) {
-                    list.discountResourceList(player.getPlayerActionSet().getPayCard().getCardResourceDiscount().get(chosenTCS.getCard().getCardColor()));
+                    list.discountResourceList(player.getPlayerActionSet().getActionControlSet().getPayCardControl().getCardResourceDiscount().get(chosenTCS.getCard().getCardColor()));
                     }
             }
 

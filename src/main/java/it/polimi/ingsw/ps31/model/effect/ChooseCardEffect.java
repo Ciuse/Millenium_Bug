@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by giulia on 17/05/2017.
+ *
+ * Effetto che ti permette di scegliere una carta di un certo valore massimoe un certo colore (o qualsiasi)
  */
 public class ChooseCardEffect extends Effect{
     private CardColor cardColor = null;
@@ -18,11 +20,16 @@ public class ChooseCardEffect extends Effect{
         this.diceValue = diceValue;
     }
 
-
+    /**
+     * attiva l'azione di scegli carta
+     * @see it.polimi.ingsw.ps31.model.actions.ActionChooseCard
+     * @param player player su cui verrà attivato l'effetto
+     */
     @Override
     public void activate(Player player) {
         player.getPlayerActionSet().chooseCard(this.cardColor,this.diceValue,this.anyColor);
     }
+
     public String getNameString(){
         return "ChooseCard";
     }

@@ -5,6 +5,9 @@ import java.util.List;
 
 /**
  * Created by Giuseppe on 21/05/2017.
+ * Contiene una generica lista di Effetti e i metodi per gestirle e crearle in modo ottimale
+ * @see Effect
+ * @see List
  */
 public class EffectList {
     private List<Effect> effectList = new ArrayList<>();

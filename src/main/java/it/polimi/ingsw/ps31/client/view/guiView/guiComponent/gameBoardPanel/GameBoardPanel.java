@@ -43,8 +43,8 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         gbl.columnWidths = new int[]{0, 0, 0, 0, 0};
         gbl.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
 
-        gbl.columnWeights = new double[]{0.04, 0.85, 0.08, 0.030, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.04, 0.710, 0.015, 0.202, 0.033, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.04, 0.85, 0.08, 0.0299, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.04, 0.710, 0.015, 0.201, 0.033, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints c = new GridBagConstraints();

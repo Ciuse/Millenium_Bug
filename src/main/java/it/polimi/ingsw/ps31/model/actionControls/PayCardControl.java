@@ -18,6 +18,7 @@ import java.util.Map;
 public class PayCardControl extends Control {
     private DevelopmentCard cardToPay;
     private ResourceList resourceListDiscount;
+    private ResourceList tempPlayerListAfterControl;
     private Map<CardColor, ResourceList> cardResourceDiscount;
 
 
@@ -28,6 +29,9 @@ public class PayCardControl extends Control {
             this.cardResourceDiscount.put(cardColor, null);
     }
 
+    public void setTempPlayerListAfterControl(ResourceList tempPlayerListAfterControl) {
+        this.tempPlayerListAfterControl = tempPlayerListAfterControl;
+    }
 
     public void setCardToPay(DevelopmentCard cardToPay) {
         this.cardToPay = cardToPay;
@@ -41,27 +45,30 @@ public class PayCardControl extends Control {
         this.resourceListDiscount = resourceListDiscount;
     }
 
-    public void resetCardToPay()
-    {
+    public void resetCardToPay() {
         this.cardToPay = null;
     }
-    public void resetListDiscount()
-    {
+
+    public void resetListDiscount() {
         this.resourceListDiscount = null;
+    }
+
+    public void resetTempList() {
+        this.tempPlayerListAfterControl = null;
     }
 
     @Override
     public boolean execute() {
 
-        int listToPay=-1;
-        ResourceList listDiscounted=null;
-        boolean canPayMilitaryStrength=true;
+        int listToPay = -1;
+        ResourceList listDiscounted = null;
+        boolean canPayMilitaryStrength = true;
         if (!cardToPay.getCostList().isEmpty()) {
-            if(cardToPay.getCostList().size()==1) {
+            if (cardToPay.getCostList().size() == 1) {
                 listToPay = 0;
                 listDiscounted = cardToPay.getCostList().get(listToPay);
-                ResourceList discountList=this.cardResourceDiscount.get(cardToPay.getCardColor());
-                if(discountList!=null) {
+                ResourceList discountList = this.cardResourceDiscount.get(cardToPay.getCardColor());
+                if (discountList != null) {
                     listDiscounted.discountResourceList(discountList);
                 }
                 if (resourceListDiscount != null) {
@@ -71,54 +78,72 @@ public class PayCardControl extends Control {
             //se la carta ha almeno una lista da pagare vedo quante ne ha
             if (cardToPay.getCostList().size() > 1) {     //se la carta ha più di una lista da pagare chiedo alla view quale vuole pagare
 //                do {
-                    String string = player.getPlayerId() + "Quale costo della carta vuoi pagare?";
-                    player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(cardToPay.getCostList());
-                    player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceListToPay(cardToPay.getCardId())));
-                    listToPay = player.getModel().getModelChoices().waitIntListToPay();
+                String string = player.getPlayerId() + "Quale costo della carta vuoi pagare?";
+                player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(cardToPay.getCostList());
+                player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceListToPay(cardToPay.getCardId())));
+                listToPay = player.getModel().getModelChoices().waitIntListToPay();
 
-                    if(listToPay==-1) {  //TIMER SCADUTO -> paga una lista a caso...
-                        player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
-                        listToPay=0;
+                if (listToPay == -1) {  //TIMER SCADUTO -> paga una lista a caso...
+                    player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
+                    listToPay = 0;
+                }
+                //controllo i requisiti dei military strength
+                if (cardToPay.getCostList().get(listToPay).getSpecificResource(MilitaryStrength.class) != null) {
+                    MilitaryStrength militaryStrength = (MilitaryStrength) cardToPay.getCostList().get(listToPay).getSpecificResource(MilitaryStrength.class);
+                    if (player.getPlayerResources().getSpecificResource(MilitaryStrength.class).lessOrEquals(militaryStrength.getValueRequest())) {
+                        canPayMilitaryStrength = false;
                     }
-                    //controllo i requisiti dei military strength
-                    if(cardToPay.getCostList().get(listToPay).getSpecificResource(MilitaryStrength.class)!=null){
-                        MilitaryStrength militaryStrength = (MilitaryStrength)cardToPay.getCostList().get(listToPay).getSpecificResource(MilitaryStrength.class);
-                        if(player.getPlayerResources().getSpecificResource(MilitaryStrength.class).lessOrEquals(militaryStrength.getValueRequest())){
-                            canPayMilitaryStrength=false;
-                        }
-                    }
-                    listDiscounted = cardToPay.getCostList().get(listToPay);
-                    ResourceList discountList=this.cardResourceDiscount.get(cardToPay.getCardColor());
-                    if(discountList!=null) {
-                        listDiscounted.discountResourceList(discountList);
-                    }
-                    if(resourceListDiscount!=null){
-                        listDiscounted.discountResourceList(resourceListDiscount);
-                    }
+                }
+                listDiscounted = cardToPay.getCostList().get(listToPay);
+                ResourceList discountList = this.cardResourceDiscount.get(cardToPay.getCardColor());
+                if (discountList != null) {
+                    listDiscounted.discountResourceList(discountList);
+                }
+                if (resourceListDiscount != null) {
+                    listDiscounted.discountResourceList(resourceListDiscount);
+                }
 //                }while(!listDiscounted.lessOrEquals(player.getPlayerResources())||!canPayMilitaryStrength);   // se fallisce il pagamento glielo richiedo magari poteva pagare solo 1 dei due costi
             }
-        }else {
+
+            if (tempPlayerListAfterControl == null) {
+                if (player.getActionControlSet().payResourceControl(listDiscounted)) {
+                    if (canPayMilitaryStrength) {
+
+                        //setto il costo della carta da pagare
+                        player.getPlayerActionSet().getPayCard().setListToPay(cardToPay.getCostList().get(listToPay));
+
+                        resetTempList();
+                        resetCardToPay();
+                        resetListDiscount();
+                        return true;
+                    }
+                }
+            } else {
+                if (player.getActionControlSet().payResourceControl(listDiscounted)) {
+                    if (canPayMilitaryStrength) {
+
+                        //setto il costo della carta da pagare scontato dagli effetti e/o bonus
+                        player.getPlayerActionSet().getPayCard().setListToPay(listDiscounted);
+
+                        resetTempList();
+                        resetCardToPay();
+                        resetListDiscount();
+                        return true;
+                    }
+                }
+
+            }
+        } else {
+            resetTempList();
             resetCardToPay();
             resetListDiscount();
             return true;
         }
-        if ( player.getActionControlSet().payResourceControl(listDiscounted) ) {
-            if (canPayMilitaryStrength) {
-                //pago la carta
-                player.getPlayerActionSet().payResources(listDiscounted);
-
-                resetCardToPay();
-                resetListDiscount();
-                return true;
-            }
-            else {
-                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, "Non hai abbastanza punti militari per pagare il requisito"));
-
-            }
-        }
+        resetTempList();
         resetCardToPay();
         resetListDiscount();
         return false;
+
     }
 
     @Override

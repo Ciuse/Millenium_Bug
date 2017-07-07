@@ -96,9 +96,7 @@ public class PlayerActionSet {
         this.activateProduction.activate();
     }
 
-    public void payCard(DevelopmentCard card, ResourceList resourceList){
-        this.payCard.setCardToPay(card);
-        this.payCard.setResourceListDiscount(resourceList);
+    public void payCard(){
         this.payCard.activate();
     }
 

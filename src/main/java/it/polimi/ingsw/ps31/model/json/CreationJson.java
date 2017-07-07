@@ -163,6 +163,106 @@ public class CreationJson {
         mainListYellowCost.add(yellowCard24);
 
 
+        //COSTI CARTE BLUE
+        List<List<ResourceList>> mainListBlueCard = new ArrayList<>();
+
+        List<ResourceList> bluCard1 = new ArrayList<>();
+        bluCard1.add(new ResourceList(new Coin(2)));
+        mainListBlueCard.add(bluCard1);
+
+        List<ResourceList> bluCard2 = new ArrayList<>();
+        bluCard2.add(new ResourceList(new Coin(4)));
+        mainListBlueCard.add(bluCard2);
+
+        List<ResourceList> bluCard3 = new ArrayList<>();
+        bluCard3.add(new ResourceList(new Coin(4)));
+        mainListBlueCard.add(bluCard3);
+
+        List<ResourceList> bluCard4 = new ArrayList<>();
+        bluCard4.add(new ResourceList(new Coin(2)));
+        mainListBlueCard.add(bluCard4);
+
+        List<ResourceList> bluCard5 = new ArrayList<>();
+        bluCard5.add(new ResourceList(new Coin(3)));
+        mainListBlueCard.add(bluCard5);
+
+        List<ResourceList> bluCard6 = new ArrayList<>();
+        bluCard6.add(new ResourceList(new Coin(3)));
+        mainListBlueCard.add(bluCard6);
+
+        List<ResourceList> bluCard7 = new ArrayList<>();
+        bluCard7.add(new ResourceList(new Coin(2)));
+        mainListBlueCard.add(bluCard7);
+
+        List<ResourceList> bluCard8 = new ArrayList<>();
+        bluCard8.add(new ResourceList(new Coin(3)));
+        mainListBlueCard.add(bluCard8);
+
+        List<ResourceList> bluCard9 = new ArrayList<>();
+        bluCard9.add(new ResourceList(new Coin(4)));
+        mainListBlueCard.add(bluCard9);
+
+        List<ResourceList> bluCard10 = new ArrayList<>();
+        bluCard10.add(new ResourceList(new Coin(4)));
+        mainListBlueCard.add(bluCard10);
+
+        List<ResourceList> bluCard11 = new ArrayList<>();
+        bluCard11.add(new ResourceList(new Coin(3)));
+        mainListBlueCard.add(bluCard11);
+
+        List<ResourceList> bluCard12 = new ArrayList<>();
+        bluCard12.add(new ResourceList(new Coin(4)));
+        mainListBlueCard.add(bluCard12);
+
+        List<ResourceList> bluCard13 = new ArrayList<>();
+        bluCard13.add(new ResourceList(new Coin(4)));
+        mainListBlueCard.add(bluCard13);
+
+        List<ResourceList> bluCard14 = new ArrayList<>();
+        bluCard14.add(new ResourceList(new Coin(4)));
+        mainListBlueCard.add(bluCard14);
+
+        List<ResourceList> bluCard15 = new ArrayList<>();
+        bluCard15.add(new ResourceList(new Coin(5)));
+        mainListBlueCard.add(bluCard15);
+
+        List<ResourceList> bluCard16 = new ArrayList<>();
+        bluCard16.add(new ResourceList(new Coin(5)));
+        mainListBlueCard.add(bluCard16);
+
+        List<ResourceList> bluCard17 = new ArrayList<>();
+        bluCard17.add(new ResourceList(new Coin(6)));
+        mainListBlueCard.add(bluCard17);
+
+        List<ResourceList> bluCard18 = new ArrayList<>();
+        bluCard18.add(new ResourceList(new Coin(6)));
+        mainListBlueCard.add(bluCard18);
+
+        List<ResourceList> bluCard19 = new ArrayList<>();
+        bluCard19.add(new ResourceList(new Coin(7)));
+        mainListBlueCard.add(bluCard19);
+
+        List<ResourceList> bluCard20 = new ArrayList<>();
+        bluCard20.add(new ResourceList(new Coin(6)));
+        mainListBlueCard.add(bluCard20);
+
+        List<ResourceList> bluCard21 = new ArrayList<>();
+        bluCard21.add(new ResourceList(new Coin(4)));
+        mainListBlueCard.add(bluCard21);
+
+        List<ResourceList> bluCard22 = new ArrayList<>();
+        bluCard22.add(new ResourceList(new Coin(5)));
+        mainListBlueCard.add(bluCard22);
+
+        List<ResourceList> bluCard23 = new ArrayList<>();
+        bluCard23.add(new ResourceList(new Coin(5)));
+        mainListBlueCard.add(bluCard23);
+
+        List<ResourceList> bluCard24 = new ArrayList<>();
+        bluCard24.add(new ResourceList(new Coin(6)));
+        mainListBlueCard.add(bluCard24);
+
+
 
         //COSTI CARTE VIOLA
         List<List<ResourceList>> mainListPurpleCost = new ArrayList<>();
@@ -1522,7 +1622,7 @@ public class CreationJson {
                 //inserimento altri parametri
                 int period3 = i + 1;
                 String name3 = blueCardName[contatore];
-                cardList.add(new Character(cardNumber3, name3, period3, costListBlue, immediateEffectBlueList.get(contatore), permanentEffectBlueList.get(contatore)));
+                cardList.add(new Character(cardNumber3, name3, period3, mainListBlueCard.get(contatore), immediateEffectBlueList.get(contatore), permanentEffectBlueList.get(contatore)));
 
                 //creazione delle carte viola
                 int cardNumber4 = i * 8 + j + 72+1;
@@ -1536,7 +1636,7 @@ public class CreationJson {
                 //inserimento altri parametri
                 int period4 = i + 1;
                 String name4 = purpleCardName[contatore];
-                cardList.add(new Venture(cardNumber4, name4, period4, costListPurple, immediateEffectPurpleList.get(contatore), permanentEffectPurpleList.get(contatore)));
+                cardList.add(new Venture(cardNumber4, name4, period4, mainListPurpleCost.get(contatore), immediateEffectPurpleList.get(contatore), permanentEffectPurpleList.get(contatore)));
 
                 contatore++;
             }

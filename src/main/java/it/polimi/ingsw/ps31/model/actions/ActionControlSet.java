@@ -80,9 +80,10 @@ public class ActionControlSet {
         return this.diceValueCardSpaceControl.execute();
     }
 
-    public boolean payCardControl(DevelopmentCard card, ResourceList resourceList){
+    public boolean payCardControl(DevelopmentCard card, ResourceList resourceList, ResourceList tempPlayerListAfterControl){
         this.payCardControl.setCardToPay(card);
         this.payCardControl.setResourceListDiscount(resourceList);
+        this.payCardControl.setTempPlayerListAfterControl(tempPlayerListAfterControl);
         return this.payCardControl.execute();
     }
 

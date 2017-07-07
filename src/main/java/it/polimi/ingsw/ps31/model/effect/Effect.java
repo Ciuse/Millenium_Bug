@@ -9,8 +9,17 @@ import java.util.List;
 
 /**
  * Created by Giuseppe on 09/05/2017.
+ *
+ * Classe che rappresenta un generico effetto, ogni effetto ha un suo modo proprio di attivarsi che verrà implementato
+ * in modo unico in ogni effetto.
+ *
  */
 public abstract class Effect implements EffectActivation{
+    /**
+     * Se diverso da 0 indica che l'effetto proviene da una carta, ed è possibile
+     * risalire dall'effetto alla carta (a volte necessario nella cli per rispondere a domande specifiche
+     * se attivare o no lìeffetto)
+     */
     protected int cardId;
 
     public Effect(){
@@ -20,6 +29,10 @@ public abstract class Effect implements EffectActivation{
         this.cardId = cardId;
     }
 
+    /**
+     * metedo generico di attivazione dell'effetto
+     * @param player player su cui verrà attivato l'effetto
+     */
     @Override
     public abstract void activate(Player player);
 

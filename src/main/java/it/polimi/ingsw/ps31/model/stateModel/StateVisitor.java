@@ -2,6 +2,9 @@ package it.polimi.ingsw.ps31.model.stateModel;
 
 /**
  * Created by Giuseppe on 06/06/2017.
+ *
+ * Interfaccia del pattern Visitor (degli stati), implementata dall'oggetto visitatore che sa come visitare i vari oggetti diversi
+ * @see MVStateInfoVisitor
  */
 public interface StateVisitor {
 

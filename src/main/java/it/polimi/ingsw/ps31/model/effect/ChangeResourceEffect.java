@@ -9,11 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by giulia on 17/05/2017.
+ * Created by giulia on 17/05/2017.ù
+ * Effetto che permette al player di pagare tot risorse per ottenerne altre
  */
 public class ChangeResourceEffect extends Effect {
-    private final List<ResourceList> resourceToPayList; // alcune carte hanno una doppia scelta sulle risorse da pagare per ottenere nuove risorse
-    private final List<ResourceList> resourceToGainList; // alcune carte potrebbero avere una doppia scelta di risorse da guadagnare
+    /**
+     * Lista di possibili scelte di risorse da cui pagare (una o più)
+     */
+    private final List<ResourceList> resourceToPayList;
+    /**
+     * Lista di possibili scelte di risorse da guadagnare (una o più)
+     */
+    private final List<ResourceList> resourceToGainList;
 
     public ChangeResourceEffect(int cardId, List<ResourceList> resourceToPayList, List<ResourceList> resourceToGainList) {
         super(cardId);
@@ -32,6 +39,15 @@ public class ChangeResourceEffect extends Effect {
     }
 
 
+    /**
+     * se l'effetto ha una sola possibile lista da pagare e guadagnare allora non verrà chiesto all'utente nulla
+     * mentre se vi sono più liste in base alla risposta del giocatore verra attivata la lista i-esima da pagare
+     * e la lista i-esima da guadagnare visto che ogni lista da pagare ha sempre associata una e una sola lista
+     * da guadgnare e viceversa
+     * @see it.polimi.ingsw.ps31.model.actions.ActionGetTempResourcesFromAllEffect
+     * @see it.polimi.ingsw.ps31.model.actions.ActionPayResources
+     * @param player player su cui verrà attivato l'effetto
+     */
     @Override
     public void activate(Player player) {
         if(resourceToGainList.size()==1&&resourceToPayList.size()==1){
