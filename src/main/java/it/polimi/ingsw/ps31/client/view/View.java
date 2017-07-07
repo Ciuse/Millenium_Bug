@@ -158,7 +158,6 @@ public abstract class View extends Observable implements Observer {
                 ) {
             if (viewPlayer.getPlayerId().equals(stateAllFamilyMember.getIdFamilyMemberList()))
                 viewPlayer.updateState(stateAllFamilyMember);
-
         }
     }
 
@@ -170,6 +169,8 @@ public abstract class View extends Observable implements Observer {
         }
         if (!firstTime)
             printFamilyMemberInAction();
+        printMyFamilyMembersOnPlayerPanel();
+
     }
 
     public final void updatePersonalBonusTiles(StatePersonalBonusTiles statePersonalBonusTiles) {

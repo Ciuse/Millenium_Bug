@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
+import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
 
 import javax.swing.*;
@@ -12,18 +13,21 @@ import java.awt.event.ActionListener;
  */
 public class ExtraCardPanel extends JPanel implements ActionListener {
     private ActionListener listener;
+    private GuiView guiView;
     private ButtonCard buttonCardPurplePanel;
     private ButtonCard buttonCardBluePanel;
-    private DevelopmentCardsOpenedPanel purpleCardPanel = new DevelopmentCardsOpenedPanel();
-    private DevelopmentCardsOpenedPanel blueCardPanel = new DevelopmentCardsOpenedPanel();
+    private DevelopmentCardsOpenedPanel purpleCardPanel ;
+    private DevelopmentCardsOpenedPanel blueCardPanel ;
 
 
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
-    public ExtraCardPanel() {
+    public ExtraCardPanel(GuiView guiView) {
+        this.guiView = guiView;
         addComponentsToPane(this);
+
     }
 
     public ActionListener getListener() {
@@ -71,6 +75,15 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
         pane.add(buttonCardBluePanel,gbc);
 
     }
+
+    public ButtonCard getButtonCardPurplePanel() {
+        return buttonCardPurplePanel;
+    }
+
+    public ButtonCard getButtonCardBluePanel() {
+        return buttonCardBluePanel;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton jButton = (JButton) e.getSource();
@@ -84,9 +97,11 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container c = frame.getContentPane();
         if (nameButton.equals("PurpleCard")) {
+            purpleCardPanel = new DevelopmentCardsOpenedPanel(guiView);
             c.add(purpleCardPanel);
         }
         if (nameButton.equals("BlueCard")) {
+            blueCardPanel = new DevelopmentCardsOpenedPanel(guiView);
             c.add(blueCardPanel);
         }
 

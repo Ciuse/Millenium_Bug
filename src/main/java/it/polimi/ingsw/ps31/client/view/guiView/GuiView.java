@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.client.view.guiView;
 
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskServantsToPay;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskStartLeaderCard;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskStartPersonalBonusTiles;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskStartPlayerColor;
@@ -10,6 +11,7 @@ import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
 import it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation;
 import it.polimi.ingsw.ps31.messages.messageVC.VCCouncilPrivilegeChoice;
+import it.polimi.ingsw.ps31.messages.messageVC.VCServantToPayChoice;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
@@ -124,7 +126,8 @@ public class GuiView extends View implements ActionListener{
     @Override
     public void askServantToPay(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay) {
         mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("QUANTI SERVITORI VUOI PAGARE PER AUMENTARE IL VALORE DEL TUO FAMILY MEMBER?");
-
+        AskServantsToPay askServantsToPay = new AskServantsToPay(mainFrame);
+        notifyController(new VCServantToPayChoice(getViewId(),new Integer(askServantsToPay.getInput(getMyStateViewPlayer()))));;
     }
 
 
@@ -191,6 +194,14 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void printPersonalBoardInAction() {
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBoardPanel().getCardYellow().setStateViewPersonalCardBoxList(getMyStateViewPersonalBoard().getStateViewPersonalCardBoxListYellow());
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBoardPanel().getCardYellow().fillDevelopmentCardPanel();
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBoardPanel().getCardGreen().setStateViewPersonalCardBoxList(getMyStateViewPersonalBoard().getStateViewPersonalCardBoxListGreen());
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBoardPanel().getCardGreen().fillDevelopmentCardPanel();
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getExtraCardPanel().getPurpleCardPanel().setStateViewPersonalCardBoxList(getMyStateViewPersonalBoard().getStateViewPersonalCardBoxListPurple());
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getExtraCardPanel().getPurpleCardPanel().fillDevelopmentCardPanel();
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getExtraCardPanel().getBlueCardPanel().setStateViewPersonalCardBoxList(getMyStateViewPersonalBoard().getStateViewPersonalCardBoxListBlue());
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getExtraCardPanel().getBlueCardPanel().fillDevelopmentCardPanel();
 
     }
 
@@ -201,6 +212,7 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void printFamilyMemberInAction() {
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().setString(super.getMyStateViewPlayer().getStateViewFamilyMemberList());
 
     }
 
@@ -216,6 +228,7 @@ public class GuiView extends View implements ActionListener{
   for (StateViewFamilyMember family : super.getMyStateViewPlayer().getStateViewFamilyMemberList()
           ) {
    mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().printMyFamilyMembersOnPlayerPanel(family);
+
   }
  }
 

@@ -47,7 +47,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         jPersonalBonusTilesPanel.attach(this);
 
 
-        jPersonalBoardPanel = new PersonalBoardPanel();
+        jPersonalBoardPanel = new PersonalBoardPanel(guiView);
 
         gbc.gridx = 1;
         gbc.gridy = 1;
@@ -60,7 +60,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         pane.add(jPersonalBoardPanel, gbc);
         jPersonalBoardPanel.attach(this);
 
-        extraCardPanel = new ExtraCardPanel();
+        extraCardPanel = new ExtraCardPanel(guiView);
 
         gbc.gridx = 3;
         gbc.gridy = 1;

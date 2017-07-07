@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
+import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
 
 import java.awt.*;
@@ -11,6 +12,9 @@ import java.awt.event.ActionListener;
  */
 public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionListener{
     private ActionListener listener;
+    private  GuiView guiView;
+    private DevelopmentCardsOpenedPanel cardYellow;
+    private DevelopmentCardsOpenedPanel cardGreen;
 
 
     public void paintComponent(Graphics g) {
@@ -19,7 +23,8 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
     }
 
 
-    public PersonalBoardPanel() {
+    public PersonalBoardPanel(GuiView guiView) {
+        this.guiView = guiView;
         addComponentsToPane(this);
     }
 
@@ -40,29 +45,29 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        DevelopmentCardsOpenedPanel jPanel1 = new DevelopmentCardsOpenedPanel();
+        cardYellow = new DevelopmentCardsOpenedPanel(guiView);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //jPanel1.setBackground(Color.CYAN);
-        jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new Dimension(10,10));
-        pane.add(jPanel1, gbc);
-        jPanel1.attach(this);
+        //cardYellow.setBackground(Color.CYAN);
+        cardYellow.setOpaque(false);
+        cardYellow.setPreferredSize(new Dimension(10,10));
+        pane.add(cardYellow, gbc);
+        cardYellow.attach(this);
 
-        DevelopmentCardsOpenedPanel jPanel2 = new DevelopmentCardsOpenedPanel();
+        cardGreen = new DevelopmentCardsOpenedPanel(guiView);
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //jPanel2.setBackground(Color.red);
-        jPanel2.setOpaque(false);
-        jPanel2.setPreferredSize(new Dimension(10,10));
-        pane.add(jPanel2, gbc);
-        jPanel2.attach(this);
+        //cardGreen.setBackground(Color.red);
+        cardGreen.setOpaque(false);
+        cardGreen.setPreferredSize(new Dimension(10,10));
+        pane.add(cardGreen, gbc);
+        cardGreen.attach(this);
 
         PlayerResourcesPanel jPanel3 = new PlayerResourcesPanel();
         gbc.gridx = 0;
@@ -77,6 +82,14 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
         jPanel3.attach(this);
 
 
+    }
+
+    public DevelopmentCardsOpenedPanel getCardYellow() {
+        return cardYellow;
+    }
+
+    public DevelopmentCardsOpenedPanel getCardGreen() {
+        return cardGreen;
     }
 
     @Override

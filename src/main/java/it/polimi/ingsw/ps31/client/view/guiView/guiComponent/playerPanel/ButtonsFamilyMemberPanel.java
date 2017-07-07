@@ -10,13 +10,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static java.lang.String.valueOf;
+import java.util.List;
+
 /**
  * Created by giulia on 30/06/2017.
  */
 public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
     private ActionListener listener;
     private GuiView guiView;
-    private JButton[] buttonFamilyMember = new JButton[4];
+    private FamilyMemberButton[] buttonFamilyMember = new FamilyMemberButton[4];
 
 
     public void attach (ActionListener listener){
@@ -40,7 +43,9 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        buttonFamilyMember[0] = new JButton();
+
+
+        buttonFamilyMember[0] = new FamilyMemberButton(guiView);
         buttonFamilyMember[0].setName("1");
         buttonFamilyMember[0].addActionListener(this);
         buttonFamilyMember[0].setBackground(Color.white);
@@ -52,7 +57,8 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(buttonFamilyMember[0], gbc);
 
-        buttonFamilyMember[1] = new JButton();
+
+        buttonFamilyMember[1] = new FamilyMemberButton(guiView);
         buttonFamilyMember[1].setName("2");
         buttonFamilyMember[1].addActionListener(this);
         buttonFamilyMember[1].setBackground(Color.orange);
@@ -64,7 +70,7 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(buttonFamilyMember[1], gbc);
 
-        buttonFamilyMember[2] = new JButton();
+        buttonFamilyMember[2] = new FamilyMemberButton(guiView);
         buttonFamilyMember[2].setName("3");
         buttonFamilyMember[2].addActionListener(this);
         buttonFamilyMember[2].setBackground(Color.black);
@@ -76,7 +82,7 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(buttonFamilyMember[2], gbc);
 
-        buttonFamilyMember[3] = new JButton();
+        buttonFamilyMember[3] = new FamilyMemberButton(guiView);
         buttonFamilyMember[3].setName("4");
         buttonFamilyMember[3].addActionListener(this);
         buttonFamilyMember[3].setBackground(Color.cyan);
@@ -116,6 +122,22 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
         }
 
 
+    }
+
+
+    public void setString(List<StateViewFamilyMember> list){
+        for(int i=0;i<4;i++){
+            Color colorFamilyMember = buttonFamilyMember[i].getBackground();
+        for (StateViewFamilyMember familyMember :list
+                ) {
+            if(familyMember.getDiceColor().equals(getFamilyMemberColor(colorFamilyMember))){
+                buttonFamilyMember[i].
+                        getFamilyMemberLabel().
+                        setText(valueOf(familyMember.getDiceValue()));
+            }
+        }
+
+        }
     }
 
 

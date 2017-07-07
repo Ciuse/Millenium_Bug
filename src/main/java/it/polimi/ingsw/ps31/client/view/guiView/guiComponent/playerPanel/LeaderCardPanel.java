@@ -47,7 +47,7 @@ public class LeaderCardPanel extends JPanel implements  ActionListener {
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         //buttonOpenLeaderCard.setOpaque(false);
-        buttonOpenLeaderCard.setBackground(Color.red);
+       // buttonOpenLeaderCard.setBackground(Color.red);
         buttonOpenLeaderCard.addActionListener(this);
         pane.add(buttonOpenLeaderCard,gbc);
 

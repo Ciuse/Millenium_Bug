@@ -29,7 +29,7 @@ public class MainFrame extends JFrame implements ActionListener {
         frame.setSize(screenSize);
         frame.setResizable(false);
         frame.setVisible(true);
-        frame.setAlwaysOnTop(true);
+//        frame.setAlwaysOnTop(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 
@@ -62,5 +62,9 @@ public class MainFrame extends JFrame implements ActionListener {
 
     public BackgroundMainFramePanel getBackgroundMainFramePanel() {
         return backgroundMainFramePanel;
+    }
+
+    public GuiView getGuiView() {
+        return guiView;
     }
 }
