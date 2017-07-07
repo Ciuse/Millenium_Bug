@@ -517,6 +517,20 @@ public class GameUtility {
     }
 
 
+    public LeaderCard findOtherPlayerPlayedLeader(int leaderId, PlayerId playerId){
+        for (Player player:playerList
+             ) {
+            if(!playerId.equals(player.getPlayerId()))
+            for (LeaderCard leader:player.getLeaderCardList()
+                 ) {
+                if(leader.isPlayed() && leader.getLeaderId()==leaderId){
+                    return leader;
+                }
+            }
+        }
+        return null;
+    }
+
 
 
     /*metodi di creazione oggetti vari */

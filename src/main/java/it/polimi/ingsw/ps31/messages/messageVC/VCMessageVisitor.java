@@ -73,6 +73,11 @@ public class VCMessageVisitor implements VCVisitor {
     }
 
     @Override
+    public void visit(VCLeaderToCopyChoice vcLeaderToCopyChoice) {
+        controller.selectLeaderToCopy(vcLeaderToCopyChoice.getLeaderIdToReplace(),vcLeaderToCopyChoice.getLeaderIdToCopy(),vcLeaderToCopyChoice.getViewId());
+    }
+
+    @Override
     public void visit(VCLeaderToDiscardChoice vcLeaderToDiscardChoice) {
         controller.selectLeaderToDiscard(vcLeaderToDiscardChoice.getLeaderId(),vcLeaderToDiscardChoice.getViewId());
     }

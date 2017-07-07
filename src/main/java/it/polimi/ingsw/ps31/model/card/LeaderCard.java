@@ -7,9 +7,6 @@ import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.model.stateModel.StateEffect;
 import it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Giuseppe on 22/05/2017.
  */
@@ -18,17 +15,19 @@ public class LeaderCard extends Card implements ActiveEffect {
     private final int leaderId;
     private final ResourceList resourceRequest;
     private final DevelopmentCardList developmentCardRequest;
+    private final int numberOfCardOfTheSameType;
     private Effect abilityOneTimeForTurn;
     private Effect permanentAbility;
-    private Boolean played = null;
+    private Boolean played = false;
     private boolean usedEffect1 = false;
     private boolean usedEffect2 = false;
 
-    public LeaderCard(String name, int leaderId, ResourceList resourceRequest, DevelopmentCardList developmentCardRequest, Effect abilityOneTimeForTurn, Effect permanentAbility) {
+    public LeaderCard(String name, int leaderId, ResourceList resourceRequest, DevelopmentCardList developmentCardRequest, int numberOfCardOfTheSameType, Effect abilityOneTimeForTurn, Effect permanentAbility) {
         super(name);
         this.leaderId = leaderId;
         this.resourceRequest = resourceRequest;
         this.developmentCardRequest = developmentCardRequest;
+        this.numberOfCardOfTheSameType = numberOfCardOfTheSameType;
         this.abilityOneTimeForTurn = abilityOneTimeForTurn;
         this.permanentAbility = permanentAbility;
     }
@@ -80,6 +79,10 @@ public class LeaderCard extends Card implements ActiveEffect {
 
     public void setUsedEffect2(boolean usedEffect2) {
         this.usedEffect2 = usedEffect2;
+    }
+
+    public int getNumberOfCardOfTheSameType() {
+        return numberOfCardOfTheSameType;
     }
 
     public int getLeaderId() {

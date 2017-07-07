@@ -184,6 +184,14 @@ public class CmdLineView extends View {
 
     @Override
     public void askLeaderEffectToCopy(ChoiceLeaderEffectToCopy choiceLeaderEffectToCopy) {
+        do {
+            this.setCmdInterpreterView(new IntrChoiceCopyLeader());
+            //print leader card
+            StateViewPlayer player = super.getMyStateViewPlayer();
+            String string = "Inserisci da 1 a 20 per selzionare l'ID del leader da copiare";
+            printLastEventAndMemorize(string );
+            input1();
+        } while (!cmdInterpreterView.messageInterpreter(this, choiceLeaderEffectToCopy, keyStroke1.getCharacter()));
 
     }
 

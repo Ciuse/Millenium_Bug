@@ -121,6 +121,20 @@ public class DevelopmentCardList {
         Collections.shuffle(developmentCardList);
     }
 
+    public int maxNumberOfCardOfTheSameType() {
+        int maxNumber1 = 0;
+        int maxNumber2 = 0;
+        if (countCardBlue() > countCardGreen()) {
+            maxNumber1 = countCardBlue();
+        } else maxNumber1 = countCardGreen();
+        if (countCardPurple() > countCardYellow()) {
+            maxNumber2 = countCardPurple();
+        } else maxNumber2 = countCardYellow();
+
+        if (maxNumber1 > maxNumber2) {
+            return maxNumber1;
+        } else return maxNumber2;
+    }
 
     @Override
     public boolean equals(Object o) {

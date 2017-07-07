@@ -74,6 +74,11 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
         buttonCardBluePanel.setBackground(Color.BLUE);
         pane.add(buttonCardBluePanel,gbc);
 
+        purpleCardPanel = new DevelopmentCardsOpenedPanel(guiView);
+
+        blueCardPanel = new DevelopmentCardsOpenedPanel(guiView);
+
+
     }
 
     public ButtonCard getButtonCardPurplePanel() {
@@ -97,11 +102,9 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container c = frame.getContentPane();
         if (nameButton.equals("PurpleCard")) {
-            purpleCardPanel = new DevelopmentCardsOpenedPanel(guiView);
             c.add(purpleCardPanel);
         }
         if (nameButton.equals("BlueCard")) {
-            blueCardPanel = new DevelopmentCardsOpenedPanel(guiView);
             c.add(blueCardPanel);
         }
 

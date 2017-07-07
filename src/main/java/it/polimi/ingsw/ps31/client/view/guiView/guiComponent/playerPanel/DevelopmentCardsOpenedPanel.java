@@ -157,18 +157,18 @@ public class DevelopmentCardsOpenedPanel extends JPanel implements ActionListene
         }
 
         public void fillDevelopmentCardPanel() {
-            for(int i=0;i<6;i++){
-                if (!stateViewPersonalCardBoxList.isEmpty()) {
+            int i = 0;
+            if (!stateViewPersonalCardBoxList.isEmpty()) {
                 for (StateViewPersonalCardBox card : stateViewPersonalCardBoxList
                         ) {
-                    if(card.getCardId()!=0) {
-                        buttonCards[i].setBackground(Color.RED);
-                        //buttonCards[i].imageToReprint("/devCard/devcards_f_en_c_" + valueOf(card.getCardId()) + ".png");
-                        }
+                    if (card.getCardId() != 0) {
+                        buttonCards[i].imageToReprint("/devCard/devcards_f_en_c_" + valueOf(card.getCardId()) + ".png");
                     }
+                    i++;
                 }
             }
         }
+
         public void setStateViewPersonalCardBoxList(List<StateViewPersonalCardBox> stateViewPersonalCardBoxList) {
             this.stateViewPersonalCardBoxList=stateViewPersonalCardBoxList;
         }

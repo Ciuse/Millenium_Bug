@@ -1653,7 +1653,7 @@ public class CreationJson {
         developmentCards1.add(new Venture());
         developmentCards1.add(new Venture());
         developmentCards1.add(new Venture());
-        leaderCardList.add(new LeaderCard("Francesco Sforza", 1, null, new DevelopmentCardList(developmentCards1), new HarvestEffectActivationFromCard(0, 1), null));
+        leaderCardList.add(new LeaderCard("Francesco Sforza", 1, null, new DevelopmentCardList(developmentCards1), 0, new HarvestEffectActivationFromCard(0, 1), null));
 
 
         List<DevelopmentCard> developmentCards2 = new ArrayList<>();
@@ -1662,7 +1662,7 @@ public class CreationJson {
         developmentCards2.add(new Character());
         developmentCards2.add(new Character());
         developmentCards2.add(new Character());
-        leaderCardList.add(new LeaderCard("Ludovico Ariosto", 2, null, new DevelopmentCardList(developmentCards2), null, new BonusAndMalusEffect(0, new CanPlaceInOccupiedActionSpace())));
+        leaderCardList.add(new LeaderCard("Ludovico Ariosto", 2, null, new DevelopmentCardList(developmentCards2), 0, null, new BonusAndMalusEffect(0, new CanPlaceInOccupiedActionSpace())));
 
 
         List<DevelopmentCard> developmentCards3 = new ArrayList<>();
@@ -1671,7 +1671,7 @@ public class CreationJson {
         developmentCards3.add(new Building());
         developmentCards3.add(new Building());
         developmentCards3.add(new Building());
-        leaderCardList.add(new LeaderCard("Filippo Brunelleschi", 3, null, new DevelopmentCardList(developmentCards3), null, new BonusAndMalusEffect(0, new NoTowerPayment())));
+        leaderCardList.add(new LeaderCard("Filippo Brunelleschi", 3, null, new DevelopmentCardList(developmentCards3), 0, null, new BonusAndMalusEffect(0, new NoTowerPayment())));
 
 
         List<DevelopmentCard> developmentCards4 = new ArrayList<>();
@@ -1680,18 +1680,18 @@ public class CreationJson {
         developmentCards4.add(new Territory());
         developmentCards4.add(new Territory());
         developmentCards4.add(new Territory());
-        leaderCardList.add(new LeaderCard("Federico da Montefeltro", 4, null, new DevelopmentCardList(developmentCards4), new ChangeFamilyValueEffect(0, 6), null));
+        leaderCardList.add(new LeaderCard("Federico da Montefeltro", 4, null, new DevelopmentCardList(developmentCards4), 0, new ChangeFamilyValueEffect(0, 6), null));
 
 
-        leaderCardList.add(new LeaderCard("Girolamo Savonarola", 5, new ResourceList(new Coin(18)), null, new GetResourceEffect(0, new ResourceList(new FaithPoint(1))), null));
+        leaderCardList.add(new LeaderCard("Girolamo Savonarola", 5, new ResourceList(new Coin(18)), null, 0, new GetResourceEffect(0, new ResourceList(new FaithPoint(1))), null));
 
-        leaderCardList.add(new LeaderCard("Giovanni delle Bande Nere", 6, new ResourceList(new MilitaryStrength(12)), null, new GetResourceEffect(0, new ResourceList(new Wood(1), new Coin(1), new Stone(1))), null));
+        leaderCardList.add(new LeaderCard("Giovanni delle Bande Nere", 6, new ResourceList(new MilitaryStrength(12)), null, 0, new GetResourceEffect(0, new ResourceList(new Wood(1), new Coin(1), new Stone(1))), null));
 
-        leaderCardList.add(new LeaderCard("Sandro Botticelli", 7, new ResourceList(new Wood(10)), null, new GetResourceEffect(0, new ResourceList(new MilitaryStrength(2), new VictoryPoint(1))), null));
+        leaderCardList.add(new LeaderCard("Sandro Botticelli", 7, new ResourceList(new Wood(10)), null, 0, new GetResourceEffect(0, new ResourceList(new MilitaryStrength(2), new VictoryPoint(1))), null));
 
-        leaderCardList.add(new LeaderCard("Michelangelo Buonarroti", 8, new ResourceList(new Stone(10)), null, new GetResourceEffect(0, new ResourceList(new Coin(3))), null));
+        leaderCardList.add(new LeaderCard("Michelangelo Buonarroti", 8, new ResourceList(new Stone(10)), null, 0, new GetResourceEffect(0, new ResourceList(new Coin(3))), null));
 
-        leaderCardList.add(new LeaderCard("Ludovico III Gonzaga", 9, new ResourceList(new Servant(15)), null, new GetResourceEffect(0, new ResourceList(new CouncilPrivilege(1, false))), null));
+        leaderCardList.add(new LeaderCard("Ludovico III Gonzaga", 9, new ResourceList(new Servant(15)), null, 0, new GetResourceEffect(0, new ResourceList(new CouncilPrivilege(1, false))), null));
 
 
         List<DevelopmentCard> developmentCards5 = new ArrayList<>();
@@ -1701,7 +1701,7 @@ public class CreationJson {
         developmentCards5.add(new Character());
         developmentCards5.add(new Character());
         developmentCards5.add(new Character());
-        leaderCardList.add(new LeaderCard("Leonardo da Vinci", 10, null, new DevelopmentCardList(developmentCards5), new ProductionEffectActivationFromCard(0, 0), null));
+        leaderCardList.add(new LeaderCard("Leonardo da Vinci", 10, null, new DevelopmentCardList(developmentCards5), 0, new ProductionEffectActivationFromCard(0, 0), null));
 
         List<DevelopmentCard> developmentCards6 = new ArrayList<>();
         developmentCards6.add(new Building());
@@ -1710,15 +1710,15 @@ public class CreationJson {
         developmentCards6.add(new Venture());
         developmentCards6.add(new Venture());
         developmentCards6.add(new Venture());
-        leaderCardList.add(new LeaderCard("Pico della Mirandola", 11, null, new DevelopmentCardList(developmentCards6), null, new BonusAndMalusEffect(0, new CardDiscountBonus(0, null, true, new ResourceList(new Coin(-3))))));
+        leaderCardList.add(new LeaderCard("Pico della Mirandola", 11, null, new DevelopmentCardList(developmentCards6), 0, null, new BonusAndMalusEffect(0, new CardDiscountBonus(0, null, true, new ResourceList(new Coin(-3))))));
 
-        leaderCardList.add(new LeaderCard("Sisto IV", 12, new ResourceList(new Coin(6), new Stone(6), new Wood(6), new Servant(6)), null, null, new BonusAndMalusEffect(0, new VaticanReportExtraVictoryPoint(new Coin(5)))));
+        leaderCardList.add(new LeaderCard("Sisto IV", 12, new ResourceList(new Coin(6), new Stone(6), new Wood(6), new Servant(6)), null, 0, null, new BonusAndMalusEffect(0, new VaticanReportExtraVictoryPoint(new Coin(5)))));
 
-        //TODO LUCREZIA BORGIA
+        leaderCardList.add(new LeaderCard("Lucrezia Borgia",13,null,null,6,null,new BonusAndMalusEffect(0,new ColoredFamilyMembersBonus(2))));
 
-        leaderCardList.add(new LeaderCard("Sigismondo Malatesta", 14, new ResourceList(new MilitaryStrength(7), new FaithPoint(3)), null, null, new BonusAndMalusEffect(0, new NeutralFamilyMemberBonus(3))));
+        leaderCardList.add(new LeaderCard("Sigismondo Malatesta", 14, new ResourceList(new MilitaryStrength(7), new FaithPoint(3)), null, 0, null, new BonusAndMalusEffect(0, new NeutralFamilyMemberBonus(3))));
 
-        leaderCardList.add(new LeaderCard("Lorenzo de' Medici", 15, new ResourceList(new VictoryPoint(35)), null, null, new BonusAndMalusEffect(0, new CopyLeaderBonus(15))));
+        leaderCardList.add(new LeaderCard("Lorenzo de' Medici", 15, new ResourceList(new VictoryPoint(35)), null, 0, null, new BonusAndMalusEffect(0, new CopyLeaderBonus(15))));
 
 
         List<DevelopmentCard> developmentCards7 = new ArrayList<>();
@@ -1734,16 +1734,16 @@ public class CreationJson {
         diceColors.add(DiceColor.WHITE);
         diceColors.add(DiceColor.BLACK);
         diceColors.add(DiceColor.ORANGE);
-        leaderCardList.add(new LeaderCard("Ludovico il Moro", 16, null, new DevelopmentCardList(developmentCards7), null, new BonusAndMalusEffect(0, new StaticFamilyMemberValueBonus(5, diceColors))));
+        leaderCardList.add(new LeaderCard("Ludovico il Moro", 16, null, new DevelopmentCardList(developmentCards7), 0, null, new BonusAndMalusEffect(0, new StaticFamilyMemberValueBonus(5, diceColors))));
 
 
         List<DevelopmentCard> developmentCards8 = new ArrayList<>();
         developmentCards8.add(new Building());
         developmentCards8.add(new Building());
         developmentCards8.add(new Building());
-        leaderCardList.add(new LeaderCard("Cesare Borgia", 17, new ResourceList(new Coin(12), new FaithPoint(2)), new DevelopmentCardList(developmentCards8), null, new BonusAndMalusEffect(0, new NoBoardRequirementControl(CardColor.GREEN))));
+        leaderCardList.add(new LeaderCard("Cesare Borgia", 17, new ResourceList(new Coin(12), new FaithPoint(2)), new DevelopmentCardList(developmentCards8), 0, null, new BonusAndMalusEffect(0, new NoBoardRequirementControl(CardColor.GREEN))));
 
-        leaderCardList.add(new LeaderCard("Santa Rita", 18, new ResourceList(new FaithPoint(8)), null, null, new BonusAndMalusEffect(0, new DoubleResourceFromCardBonus())));
+        leaderCardList.add(new LeaderCard("Santa Rita", 18, new ResourceList(new FaithPoint(8)), null, 0, null, new BonusAndMalusEffect(0, new DoubleResourceFromCardBonus())));
 
         List<DevelopmentCard> developmentCards9 = new ArrayList<>();
         developmentCards9.add(new Building());
@@ -1752,7 +1752,7 @@ public class CreationJson {
         developmentCards9.add(new Building());
         developmentCards9.add(new Character());
         developmentCards9.add(new Character());
-        leaderCardList.add(new LeaderCard("Cosimo de' Medici", 19, null, new DevelopmentCardList(developmentCards9), new GetResourceEffect(0, new ResourceList(new Servant(3), new VictoryPoint(1))), null));
+        leaderCardList.add(new LeaderCard("Cosimo de' Medici", 19, null, new DevelopmentCardList(developmentCards9), 0, new GetResourceEffect(0, new ResourceList(new Servant(3), new VictoryPoint(1))), null));
 
 
         List<DevelopmentCard> developmentCards10 = new ArrayList<>();
@@ -1762,7 +1762,7 @@ public class CreationJson {
         developmentCards10.add(new Territory());
         developmentCards10.add(new Territory());
         developmentCards10.add(new Territory());
-        leaderCardList.add(new LeaderCard("Bartolomeo Colleoni", 20, null, new DevelopmentCardList(developmentCards10), new GetResourceEffect(0, new ResourceList(new VictoryPoint(4))), null));
+        leaderCardList.add(new LeaderCard("Bartolomeo Colleoni", 20, null, new DevelopmentCardList(developmentCards10), 0, new GetResourceEffect(0, new ResourceList(new VictoryPoint(4))), null));
 
 
         return new ArrayList<>(leaderCardList);

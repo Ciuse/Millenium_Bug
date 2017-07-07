@@ -241,8 +241,6 @@ public class Player {
             boolean found = false;
             for (LeaderCard leaderCard : leaderCardList
                     ) {
-                System.out.println(leaderCard);
-                System.out.println(leaderCard.isPlayed());
                 if (!leaderCard.isPlayed()) {
                     found = true;
                 }

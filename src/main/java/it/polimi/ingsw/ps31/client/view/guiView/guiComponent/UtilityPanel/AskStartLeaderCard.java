@@ -36,7 +36,7 @@ public class AskStartLeaderCard extends JFrame implements ActionListener {
         frame.setSize(screenSize.width / 2+200, screenSize.height / 3 +200);
         frame.setResizable(false);
         frame.setVisible(true);
-        frame.setLocation((int) screenSize.getWidth() / (2) + 200, (int) screenSize.getHeight() / 8);
+        frame.setLocation((int) screenSize.getWidth() / (6), (int) screenSize.getHeight() / 6);
         frame.setAlwaysOnTop(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 

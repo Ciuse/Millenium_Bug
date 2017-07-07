@@ -354,6 +354,22 @@ public class Controller extends Thread implements Observer {
                 virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato il leader associata");
     }
 
+    public void selectLeaderToCopy(int leaderIdToReplace, int leaderIdToCopy,PlayerId viewId){
+        boolean found = false;
+        LeaderCard leaderToCopy=gameUtility.findOtherPlayerPlayedLeader(leaderIdToCopy,viewId);
+        if(leaderToCopy!=null){
+            found=true;
+            LeaderCard newCopiedLeader=new LeaderCard("Lorenzo de' Medici",leaderIdToReplace,null,null,0,leaderToCopy.getAbilityOneTimeForTurn(),leaderToCopy.getPermanentAbility());
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                modelChoices.setLeaderCardChosen(newCopiedLeader);
+        }
+        if (!found)
+            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato il leader da copiare richiesto   ");
+    }
+
+
+
     public void selectServantToPay(int servantToPay, PlayerId viewId) {
         List<Resource> servantsAsList = new ArrayList<>();
         Resource servantsAsResource = new Servant(servantToPay);

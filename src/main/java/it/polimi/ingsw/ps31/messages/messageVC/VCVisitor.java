@@ -18,4 +18,6 @@ public interface VCVisitor {
     void visit(VCPersonalTilesChoice vcPersonalTilesChoice);
     void visit(VCCouncilPrivilegeChoice vcCouncilPrivilegeChoice);
     void visit(VCLeaderToDiscardChoice vcLeaderToDiscardChoice);
+
+    void visit(VCLeaderToCopyChoice vcLeaderToCopyChoice);
 }
