@@ -15,6 +15,7 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
     private  GuiView guiView;
     private DevelopmentCardsOpenedPanel cardYellow;
     private DevelopmentCardsOpenedPanel cardGreen;
+    private PlayerResourcesPanel playerResourcesPanel;
 
 
     public void paintComponent(Graphics g) {
@@ -69,19 +70,23 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
         pane.add(cardGreen, gbc);
         cardGreen.attach(this);
 
-        PlayerResourcesPanel jPanel3 = new PlayerResourcesPanel();
+        playerResourcesPanel = new PlayerResourcesPanel();
         gbc.gridx = 0;
         gbc.gridy = 5;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //jPanel3.setBackground(Color.green);
-        jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new Dimension(10,10));
-        pane.add(jPanel3, gbc);
-        jPanel3.attach(this);
+        //playerResourcesPanel.setBackground(Color.green);
+        playerResourcesPanel.setOpaque(false);
+        playerResourcesPanel.setPreferredSize(new Dimension(10,10));
+        pane.add(playerResourcesPanel, gbc);
+        playerResourcesPanel.attach(this);
 
 
+    }
+
+    public PlayerResourcesPanel getPlayerResourcesPanel() {
+        return playerResourcesPanel;
     }
 
     public DevelopmentCardsOpenedPanel getCardYellow() {
