@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps31.messages.messageNetworking;
 
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
 import it.polimi.ingsw.ps31.messages.ConcreteEnvelope;
-import it.polimi.ingsw.ps31.server.Match;
 
 /**
  * Created by Francesco on 21/06/2017.

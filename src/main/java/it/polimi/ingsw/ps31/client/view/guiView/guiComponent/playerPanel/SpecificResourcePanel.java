@@ -1,15 +1,9 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
-import it.polimi.ingsw.ps31.model.gameResource.Coin;
-import it.polimi.ingsw.ps31.model.gameResource.Servant;
-import it.polimi.ingsw.ps31.model.gameResource.Stone;
-import it.polimi.ingsw.ps31.model.gameResource.Wood;
 
 import javax.swing.*;
 import java.awt.*;
-
-import static java.lang.String.valueOf;
 
 /**
  * Created by giulia on 08/07/2017.

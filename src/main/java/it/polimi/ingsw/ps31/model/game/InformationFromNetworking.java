@@ -3,9 +3,10 @@ package it.polimi.ingsw.ps31.model.game;
 import it.polimi.ingsw.ps31.DebugUtility;
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
 import it.polimi.ingsw.ps31.model.ModelChoices;
+import it.polimi.ingsw.ps31.server.Match;
+
 import java.util.ArrayList;
 import java.util.List;
-import it.polimi.ingsw.ps31.server.Match;
 /**
  * Created by giulia on 21/06/2017.
  *

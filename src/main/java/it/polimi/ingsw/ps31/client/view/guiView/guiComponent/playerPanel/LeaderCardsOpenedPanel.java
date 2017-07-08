@@ -6,7 +6,6 @@ import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
 import it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToActiveChoice;
 import it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToDiscardChoice;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -79,7 +78,7 @@ public class LeaderCardsOpenedPanel extends JPanel implements ActionListener {
                     ) {
                 if (leaderCard.isPlayed()!=null) {
                     leader[i].setName(valueOf(leaderCard.getLeaderId()));
-                    if (leaderCard.isPlayed()) { //TODO SE GIOCATE CARICARE UN IMMAGINE CON SCRITTO ACTIVATED E UN SIMBOLINO MAGARI
+                    if (leaderCard.isPlayed()) {
                         if (leaderCard.getAbilityOneTimeForTurnString() != null && leaderCard.isUsedEffect1()) {
                             leader[i].imageToReprint("/sfondoleader.jpg");
                         } else {

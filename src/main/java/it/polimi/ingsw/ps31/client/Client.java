@@ -10,7 +10,6 @@ import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
-import sun.security.ssl.Debug;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,14 +1,11 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
 import it.polimi.ingsw.ps31.model.gameResource.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import static java.lang.String.valueOf;
 

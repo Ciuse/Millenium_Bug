@@ -83,6 +83,7 @@ public class JsonGameObject {
         RuntimeTypeAdapterFactory<Effect> effectAdapterFactory = RuntimeTypeAdapterFactory.of(Effect.class, "EffectType");
         effectAdapterFactory.registerSubtype(BonusAndMalusEffect.class, "BonusAndMalusEffect");
         effectAdapterFactory.registerSubtype(ChangeResourceEffect.class, "ChangeResourceEffect");
+        effectAdapterFactory.registerSubtype(ChangeFamilyValueEffect.class, "ChangeFamilyValueEffect");
         effectAdapterFactory.registerSubtype(ChooseCardEffect.class, "ChooseCardEffect");
         effectAdapterFactory.registerSubtype(ChooseCardEffectWithDiscount.class, "ChooseCardEffectWithDiscount");
         effectAdapterFactory.registerSubtype(GenericHarvestEffectActivation.class, "GenericHarvestEffectActivation");
@@ -95,7 +96,6 @@ public class JsonGameObject {
         effectAdapterFactory.registerSubtype(HarvestEffect.class, "HarvestEffect");
         effectAdapterFactory.registerSubtype(ProductionEffectActivationFromCard.class, "ProductionEffectActivationFromCard");
         effectAdapterFactory.registerSubtype(ProductionEffect.class, "ProductionEffect");
-        effectAdapterFactory.registerSubtype(ChangeFamilyValueEffect.class, "ChangeFamilyValueEffect");
 
 
         RuntimeTypeAdapterFactory<Bonus> bonusAdapterFactory = RuntimeTypeAdapterFactory.of(Bonus.class, "BonusType");

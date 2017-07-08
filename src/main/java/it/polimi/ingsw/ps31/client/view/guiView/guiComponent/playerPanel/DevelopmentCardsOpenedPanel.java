@@ -2,17 +2,15 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewDevelopmentCard;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalCardBox;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import static java.lang.String.valueOf;
-import java.util.List;
 
 
 

@@ -2,14 +2,9 @@ package it.polimi.ingsw.ps31.client.clientNetworking;
 
 import it.polimi.ingsw.ps31.DebugUtility;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
-import sun.security.ssl.Debug;
 
 import java.io.*;
-import java.net.ConnectException;
 import java.net.Socket;
-
-import static com.sun.org.apache.xerces.internal.dom.DOMNormalizer.abort;
-import static java.lang.Thread.sleep;
 
 /**
  * Created by Francesco on 10/06/2017.

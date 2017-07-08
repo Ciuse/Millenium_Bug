@@ -2,11 +2,12 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.top
 
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewExcommunication;
-import java.util.List;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import static java.lang.String.valueOf;
 

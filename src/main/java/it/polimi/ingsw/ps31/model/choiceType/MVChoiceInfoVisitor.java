@@ -69,7 +69,8 @@ public class MVChoiceInfoVisitor implements ChoiceVisitor {
 
     @Override
     public void visit(ChoiceLeaderEffectToCopy choiceLeaderEffectToCopy) {
-
+        view.setCmdInterpreterView(new IntrChoiceCopyLeader());
+        view.askLeaderEffectToCopy(choiceLeaderEffectToCopy);
     }
 
     @Override

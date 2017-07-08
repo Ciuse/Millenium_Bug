@@ -62,6 +62,7 @@ public class JsonNetworking {
         vCVisitableAdapterFactory.registerSubtype(VCCouncilPrivilegeChoice.class, "VCCouncilPrivilegeChoice");
         vCVisitableAdapterFactory.registerSubtype(VCFamilyMemberChoice.class, "VCFamilyMemberChoice");
         vCVisitableAdapterFactory.registerSubtype(VCLeaderToActiveChoice.class, "VCLeaderToActiveChoice");
+        vCVisitableAdapterFactory.registerSubtype(VCLeaderToCopyChoice.class,"VCLeaderToCopyChoice");
         vCVisitableAdapterFactory.registerSubtype(VCLeaderToDiscardChoice.class, "VCLeaderToDiscardChoice");
         vCVisitableAdapterFactory.registerSubtype(VCListToPayChoice.class, "VCListToPayChoice");
         vCVisitableAdapterFactory.registerSubtype(VCPersonalTilesChoice.class, "VCPersonalTilesChoice");
@@ -108,6 +109,7 @@ public class JsonNetworking {
         controlAdapterFactory.registerSubtype(SelfOccupiedTowerControl.class, "SelfOccupiedTowerControl");
         controlAdapterFactory.registerSubtype(TakeDevelopmentCardControl.class, "TakeDevelopmentCardControl");
         controlAdapterFactory.registerSubtype(TowerCardCostPlacementControl.class, "TowerCardCostPlacementControl");
+        controlAdapterFactory.registerSubtype(PayCardControl.class,"PayCardControl");
 
 
         RuntimeTypeAdapterFactory<Action> actionAdapterFactory = RuntimeTypeAdapterFactory.of(Action.class, "Action");
@@ -193,13 +195,19 @@ public class JsonNetworking {
         RuntimeTypeAdapterFactory<Effect> effectAdapterFactory = RuntimeTypeAdapterFactory.of(Effect.class, "Effect");
         effectAdapterFactory.registerSubtype(BonusAndMalusEffect.class);
         effectAdapterFactory.registerSubtype(ChangeResourceEffect.class);
+        effectAdapterFactory.registerSubtype(ChangeFamilyValueEffect.class);
         effectAdapterFactory.registerSubtype(ChooseCardEffect.class);
+        effectAdapterFactory.registerSubtype(ChooseCardEffectWithDiscount.class);
         effectAdapterFactory.registerSubtype(GenericHarvestEffectActivation.class);
         effectAdapterFactory.registerSubtype(GenericProductionEffectActivation.class);
         effectAdapterFactory.registerSubtype(GetResourceEffect.class);
+        effectAdapterFactory.registerSubtype(GetResourceEffectFromCard.class );
+        effectAdapterFactory.registerSubtype(GetResourceFromResourceEffect.class);
+        effectAdapterFactory.registerSubtype(GetResourcesAtTheEndEffect.class);
         effectAdapterFactory.registerSubtype(HarvestEffect.class);
         effectAdapterFactory.registerSubtype(ProductionEffect.class);
-        effectAdapterFactory.registerSubtype(ChangeFamilyValueEffect.class);
+        effectAdapterFactory.registerSubtype(HarvestEffectActivationFromCard.class);
+        effectAdapterFactory.registerSubtype(ProductionEffectActivationFromCard.class);
 
 
         RuntimeTypeAdapterFactory<Resource> resourceAdapterFactory = RuntimeTypeAdapterFactory.of(Resource.class, "ResourceType");

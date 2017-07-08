@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps31.client.view;
 
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
-import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.messages.messageMV.MVMessageVisitor;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;

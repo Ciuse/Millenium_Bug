@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBonusTiles;
 
-import java.awt.*;
 import java.awt.event.ActionListener;
 
 import static java.lang.String.valueOf;

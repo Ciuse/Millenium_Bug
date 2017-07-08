@@ -34,23 +34,18 @@ public class LeaderCardRequirementControl extends Control {
 
     /* Execute Method */
     @Override
-    public boolean execute()
-    {
-        //Controllo che i parametri siano settati
-        if ( this.leaderCard == null )
-        {
-            //todo: eccezione
-            return false;
-        }
-        else
-        {
-            boolean ret;
+    public boolean execute() {
+        boolean ret;
+        if (leaderCard.getNumberOfCardOfTheSameType() == 0) {
             ret = player.getActionControlSet().developmentCardRequirementsControl(leaderCard.getDevelopmentCardRequest())
-               && player.getActionControlSet().resourceRequirementsControl(leaderCard.getResourceRequest());
+                    && player.getActionControlSet().resourceRequirementsControl(leaderCard.getResourceRequest());
             resetLeaderCard();
-
             return ret;
+        } else{
+            if(player.getPersonalBoard().getPlayerCardList().maxNumberOfCardOfTheSameType()>=leaderCard.getNumberOfCardOfTheSameType()){
+                return true;
+            }
+            else return false;
         }
-
     }
 }

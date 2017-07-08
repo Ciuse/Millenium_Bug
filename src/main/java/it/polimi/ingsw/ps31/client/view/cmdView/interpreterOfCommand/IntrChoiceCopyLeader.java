@@ -1,14 +1,9 @@
 package it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand;
 
 import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
 import it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToCopyChoice;
-import it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToDiscardChoice;
-import it.polimi.ingsw.ps31.model.choiceType.ChoiceColor;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderEffectToCopy;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
-
-import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getResourceListFromCouncilPrivilege;
 
 /**
  * Created by Giuseppe on 07/07/2017.

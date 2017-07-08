@@ -6,7 +6,6 @@ import it.polimi.ingsw.ps31.model.gameResource.Servant;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import static java.lang.String.valueOf;
 
@@ -15,7 +14,6 @@ import static java.lang.String.valueOf;
  */
 public class AskServantsToPay extends JOptionPane implements ActionListener {
     private ActionListener listener;
-    private String input;
     private JFrame father;
 
     public AskServantsToPay(JFrame father) {
@@ -37,7 +35,7 @@ public class AskServantsToPay extends JOptionPane implements ActionListener {
             possibleValues[i] = valueOf(i);
         }
 
-        return JOptionPane.showInputDialog(father, "SELEZIONA QUANTI SERVITORI VUOI PAGARE", "0",
+        return JOptionPane.showInputDialog(father, "SELEZIONA QUANTI SERVITORI VUOI PAGARE", "PAY SERVANT",
                 JOptionPane.INFORMATION_MESSAGE, null,
                 possibleValues, possibleValues[0]).toString();
     }

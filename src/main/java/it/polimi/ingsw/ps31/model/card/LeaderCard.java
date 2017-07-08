@@ -1,4 +1,5 @@
 package it.polimi.ingsw.ps31.model.card;
+import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.effect.ActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.Effect;
@@ -117,8 +118,10 @@ public class LeaderCard extends Card implements ActiveEffect {
         }
     }
 
-    public void resetEffectLeaderCard(){
+    public void resetEffectLeaderCard(Player player){
       setUsedEffect1(false);
+        player.getModel().notifyViews(new MVUpdateState("Aggiornato stato leader card", this.getStateLeaderCard()));
+
     }
 
     @Override

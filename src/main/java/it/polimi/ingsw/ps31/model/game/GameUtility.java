@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.game;
 
+import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
@@ -14,13 +15,13 @@ import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
 import it.polimi.ingsw.ps31.model.gameResource.*;
+import it.polimi.ingsw.ps31.model.json.JsonGameObject;
 import it.polimi.ingsw.ps31.model.player.PersonalBoard;
 import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.model.stateModel.StateGame;
 import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles;
-import it.polimi.ingsw.ps31.model.json.JsonGameObject;
-import it.polimi.ingsw.ps31.controller.Controller;
+
 import java.util.*;
 
 
@@ -507,9 +508,9 @@ public class GameUtility {
     }
 
     public void resetLeaderEffect() {
-        for (Player aPlayerList : playerList) {
-            for (int j = 0; j < aPlayerList.getLeaderCardList().size(); j++) {
-                aPlayerList.getLeaderCardList().get(j).resetEffectLeaderCard();
+        for (Player player : playerList) {
+            for (int j = 0; j < player.getLeaderCardList().size(); j++) {
+                player.getLeaderCardList().get(j).resetEffectLeaderCard(player);
             }
         }
     }

@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.model.player;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
-import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceIfActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.ProductionEffect;
 

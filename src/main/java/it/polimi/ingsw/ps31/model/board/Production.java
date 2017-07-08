@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.model.board;
 
 import it.polimi.ingsw.ps31.model.effect.EffectList;
-import it.polimi.ingsw.ps31.model.player.FamilyMember;
 
 /**
  * Created by Francesco on 12/05/2017.

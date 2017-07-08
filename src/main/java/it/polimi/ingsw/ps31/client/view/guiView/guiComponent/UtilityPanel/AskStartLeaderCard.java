@@ -2,12 +2,8 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
-import it.polimi.ingsw.ps31.messages.messageVC.VCPersonalTilesChoice;
 import it.polimi.ingsw.ps31.messages.messageVC.VCStartLeaderChoice;
-import it.polimi.ingsw.ps31.model.choiceType.ChoicePersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard;
-import it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard;
-import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles;
 
 import javax.swing.*;
 import java.awt.*;

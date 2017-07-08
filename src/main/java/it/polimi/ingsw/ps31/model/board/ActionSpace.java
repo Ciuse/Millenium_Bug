@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.model.board;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
-import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.effect.ActiveEffect;
 import it.polimi.ingsw.ps31.model.effect.EffectList;

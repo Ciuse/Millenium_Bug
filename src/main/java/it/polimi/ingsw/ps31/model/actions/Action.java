@@ -2,9 +2,6 @@ package it.polimi.ingsw.ps31.model.actions;
 
 import it.polimi.ingsw.ps31.model.player.Player;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Francesco on 18/05/2017.
  *

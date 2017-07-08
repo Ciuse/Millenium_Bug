@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand;
 import it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard;
 import it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToActiveChoice;
-import it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToDiscardChoice;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
