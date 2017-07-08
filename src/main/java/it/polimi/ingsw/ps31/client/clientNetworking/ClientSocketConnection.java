@@ -1,10 +1,14 @@
 package it.polimi.ingsw.ps31.client.clientNetworking;
 
+import it.polimi.ingsw.ps31.DebugUtility;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
+import sun.security.ssl.Debug;
 
 import java.io.*;
+import java.net.ConnectException;
 import java.net.Socket;
 
+import static com.sun.org.apache.xerces.internal.dom.DOMNormalizer.abort;
 import static java.lang.Thread.sleep;
 
 /**
@@ -21,14 +25,9 @@ public class ClientSocketConnection extends ClientNetworkInterface {
         super(connectionMessage);
         this.port = port;
 
-        //TODO: istruzione di test da cancellare
-        System.out.println("ClientSocketConnection:init> sto per creare la socket");
-
         //Creo la socket e la collego al server
         this.socket = new Socket("127.0.0.1", this.port);
 
-        //TODO: istruzione di test da cancellare
-        System.out.println("ClientSocketConnection:init> socket creata ");
 
         //Creo il reader da socket
         InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
@@ -38,36 +37,36 @@ public class ClientSocketConnection extends ClientNetworkInterface {
         OutputStreamWriter socketOutStream = new OutputStreamWriter(socket.getOutputStream());
         this.socketWriter = new BufferedWriter(socketOutStream);
 
+//        DebugUtility.debugConsoleUserMessage("ClientSocketConnection", "init", "Connessione");
 
         //PROTOCOLLO DI INIZIALIZZAZIONE DELLA CONNESSIONE
 
         //Attendo il "via libera" del server alla comunicazione
-        String s = null;
-        while(s == null)
-        {
-            s = readFromNetwork(true);
-            try {
+        DebugUtility.simpleDebugMessage("Attesa connection ok");
+
+        /*String s = null;
+        while (s == null) {*/
+
+           String s = readFromNetwork(false);
+
+          /*  try {
                 sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
-        System.out.println("ClientSocketConnection:init> Message frome server: "+s);
+        }*/
 
+        DebugUtility.simpleDebugMessage("Message from server: "+s);
     }
 
     @Override
     protected void writeOnNetwork(String msgStr) {
         //TODO: istruzione di test da cancellare
-        System.out.println("ClientSocketConnection : writeOnNetwork> sto per inviare il messaggio: " + msgStr);
+        //System.out.println("ClientSocketConnection : writeOnNetwork> sto per inviare il messaggio: " + msgStr);
 
         try {
-
             socketWriter.write(msgStr + "\n");
             socketWriter.flush();
-            //TODO: istruzione di test da cancellare
-            System.out.println("ClientSocketConnection : writeOnNetwork> messaggio inviato");
-            //socketWriter.close();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,17 +74,11 @@ public class ClientSocketConnection extends ClientNetworkInterface {
     }
 
     @Override
-    protected String readFromNetwork(boolean returnIfNull) {
+    protected String readFromNetwork(boolean returnIfNull) throws IOException {
         String msg = null;
-        System.out.println("ClientSocketConnection:readFromNetwork> leggo da socket");
-        try {
-            System.out.println("ClientSocketConnection:readFromNetwork> Entro nel try. Reader pronto: "+ socketReader.ready());
-            if( !returnIfNull || socketReader.ready() )
-                msg = socketReader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if( !returnIfNull || socketReader.ready() ) {
+            msg = socketReader.readLine();
         }
-        System.out.println("ClientSocketConnection:readFromNetwork> ritorno risultato");
         return msg;
     }
 }

@@ -152,7 +152,8 @@ public class GameUtility {
                 List<String> leaderCardString = new ArrayList<>();
                 for (int i = 0; i < Max_Leader_Card - k; i++) {
                     if (k == 0) {
-                        listList.get(j).add(leaderCardList.get((j * 4) + i));
+                        listList.get(j)
+                                .add(leaderCardList.get((j * 4) + i));//errore qui
                     }
                     leaderCardId.add(model.getModelChoices().getTempModelStateForLeaderChoice().getListList().get(j).get(i).getLeaderId());
                     leaderCardString.add(model.getModelChoices().getTempModelStateForLeaderChoice().getListList().get(j).get(i).getName());
@@ -779,10 +780,7 @@ public class GameUtility {
     /* metodi getter e setter */
 
     public void setInformationFromNetworking(InformationFromNetworking informationFromNetworking) {
-        model.
-                getModelChoices().
-                setInformationFromNetworking(
-                        informationFromNetworking);
+        model.getModelChoices().setInformationFromNetworking(informationFromNetworking);
     }
 
     public List<DevelopmentCardDeck> getDeckList() {

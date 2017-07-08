@@ -1,7 +1,11 @@
 package it.polimi.ingsw.ps31.server;
 
+import it.polimi.ingsw.ps31.DebugUtility;
 import it.polimi.ingsw.ps31.server.serverNetworking.MatchTable;
 import it.polimi.ingsw.ps31.server.serverNetworking.SocketAccepter;
+
+import java.io.IOException;
+import java.net.BindException;
 
 /**
  * Created by Giuseppe on 05/06/2017.
@@ -16,70 +20,27 @@ public class Server {
 
     public static void main(String args[])
     {
+        boolean error = false;
+
         //Crea tabella partite
         matchTable = MatchTable.getInstance();
 
         //Crea socket di ascolto
-        connectionAccepter = SocketAccepter.createInstance(matchTable);
+        try {
+            connectionAccepter = SocketAccepter.createInstance(matchTable);
+        }catch (BindException e) {
+            DebugUtility.debuggedUserMessage("Attenzione! Un'istanza del server è già attiva. " +
+                    "Non può esserne avviata un'altra.");
+            error = true;
+        }catch (IOException e){
+            e.printStackTrace();
+        }
 
         //Avvio il socket
-        connectionAccepter.startAccepting();
+        if( !error)
+            connectionAccepter.startAccepting();
 
         //Spegnimento del server
         return;
     }
-
-
-
-
-
-
-//    public static void main(String args[]) {
-//        ServerSocket serverSocket = null;
-//        Socket socket = null;
-//
-//        todo creare matchTable
-//        todo creare connection accepter (solo socket)
-//        try {
-//            serverSocket = new ServerSocket(PORT);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//
-//        }
-//        while (connection<MAXCONNECTION ) {
-//            try {
-//                System.out.println("Echo Server attesa connessione ...");
-//                socket = serverSocket.accept();
-//                connection++;
-//                OutputStreamWriter socketOutStream = new OutputStreamWriter(socket.getOutputStream());
-//                BufferedWriter socketWriter = new BufferedWriter(socketOutStream);
-//                System.out.println("Connessione Accettata");
-//                socketWriter.write("Connessione Accettata");
-//                socketWriter.flush();
-//                socketWriter.close();
-//            } catch (IOException e) {
-//                System.out.println("I/O error: " + e);
-//            }
-//             new threa for a client
-//            new ServerThread(socket).start();
-//        }
-//        while(connection==MAXCONNECTION){
-//
-//            try {
-//                System.out.println("Massimo connessioni raggiunto");
-//                socket = serverSocket.accept();
-//                OutputStreamWriter socketOutStream = new OutputStreamWriter(socket.getOutputStream());
-//                BufferedWriter socketWriter = new BufferedWriter(socketOutStream);
-//                socketWriter.write("exit");
-//                socketWriter.flush();
-//                socketWriter.close();
-//                socket.close();
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
-//    }
-
 }

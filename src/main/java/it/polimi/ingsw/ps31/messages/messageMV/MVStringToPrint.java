@@ -12,6 +12,7 @@ public class MVStringToPrint extends MVVisitable {
         this.stringToPrint = stringToPrint;
         super.setNotifySinglePlayer(playerToNotify);
         super.setNotifyAll(notifyAll);
+        super.isViewUpdate = false;
     }
 
     public String getStringToPrint() {

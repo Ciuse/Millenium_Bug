@@ -11,6 +11,8 @@ import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.networking.JsonNetworking;
 
+import java.io.IOException;
+
 /**
  * Created by Francesco on 10/06/2017.
  */
@@ -49,13 +51,11 @@ public abstract class ClientNetworkInterface {
     }
 
     //legge un messaggio proveninete dal server, lo deserializza e lo restituisce
-    public final MVVisitable readFromServer(boolean returnIfNull){
+    public final MVVisitable readFromServer(boolean returnIfNull) throws IOException {
         return deserialize(readFromNetwork(returnIfNull));
     }
 
-    public final ViewMessage readViewMessageFromServer()
-    {
-        System.out.println("ClientNetworkInterface:readViewMessageFormServer> entrato nel metodo");
+    public final ViewMessage readViewMessageFromServer() throws IOException {
         return deserializeVM(readFromNetwork(false));
     }
 
@@ -94,7 +94,6 @@ public abstract class ClientNetworkInterface {
 
     private ViewMessage deserializeVM(String msg)
     {
-        System.out.println("ClientNetworkInterface:deserializeVM> metodo invocato");
         return deserializeEnvelope(msg).getViewMessage();
 
     }
@@ -111,5 +110,5 @@ public abstract class ClientNetworkInterface {
 
     /* Abstract Methods */
     protected abstract void writeOnNetwork(String msgStr);
-    protected abstract String readFromNetwork(boolean returnIfNull);
+    protected abstract String readFromNetwork(boolean returnIfNull) throws IOException;
 }

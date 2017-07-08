@@ -8,4 +8,9 @@ import it.polimi.ingsw.ps31.messages.GenericMessage;
  */
 public abstract class NetworkingMessage extends GenericMessage {
 
+    /* Constructor */
+    public NetworkingMessage()
+    {
+        super.isViewUpdate = false;
+    }
 }

@@ -1,6 +1,10 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import it.polimi.ingsw.ps31.DebugUtility;
+
 import java.io.IOException;
+import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -16,7 +20,7 @@ public class SocketAccepter{
     private boolean closeConnection = false;
 
     /* Singleton Methods */
-    public static SocketAccepter createInstance(MatchTable matchTable)
+    public static SocketAccepter createInstance(MatchTable matchTable) throws IOException
     {
         if( ourInstance == null)
             ourInstance = new SocketAccepter(matchTable);
@@ -29,15 +33,11 @@ public class SocketAccepter{
     }
 
     /* Constructor */
-    private SocketAccepter(MatchTable matchTable) {
+    private SocketAccepter(MatchTable matchTable) throws IOException {
         this.matchTable = matchTable;
 
         //creo il socket
-        try {
-            socket = new ServerSocket(SOCKET_PORT);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        socket = new ServerSocket(SOCKET_PORT);
     }
 
     public void startAccepting()
@@ -62,15 +62,14 @@ public class SocketAccepter{
         if ( clientSocket == null )
             return;
 
-        //TODO: istruzione di test da cancellare
-        System.out.println("SocketAccepter:acceptConnection> Connessione in ingresso. Deviata su porta "+clientSocket.getPort()+".");
+        DebugUtility.debuggedUserMessage(/*"SocketAccepter:acceptConnection> */"Connessione in ingresso. Porta remota: "+clientSocket.getPort()+".");
 
 
 
         try {
             SocketServerConnection connectionInterface = new SocketServerConnection(clientSocket);
             PlayerCommunicationInterface playerCommunicationInterface = new PlayerCommunicationInterface(connectionInterface, matchTable);
-            //System.out.println("SocketAccepter:acceptConnection> Debug 1");
+            //System.out.println("SocketAccepter:acceptConnection> DebugUtility 1");
 
             connectionInterface.writeOnNetwork("Connection ok");
             playerCommunicationInterface.setConnectionMessage(connectionInterface.waitForConnectionMessage());

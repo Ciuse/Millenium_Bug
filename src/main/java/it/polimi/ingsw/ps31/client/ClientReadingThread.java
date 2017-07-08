@@ -1,8 +1,11 @@
 package it.polimi.ingsw.ps31.client;
 
+import it.polimi.ingsw.ps31.DebugUtility;
 import it.polimi.ingsw.ps31.client.clientNetworking.ClientMessageHistory;
 import it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
+
+import java.io.IOException;
 
 /**
  * Created by Francesco on 11/06/2017.
@@ -23,14 +26,23 @@ public class ClientReadingThread extends Thread {
     @Override
     public void run()
     {
-        System.out.println("ClientReadingThread:run> Inizio ascolto socket.");
+
+        DebugUtility.simpleDebugMessage("Inizio ascolto socket.");
         MVVisitable mvVisitable;
         while( !stopListening )
         {
-            mvVisitable = clientNetworkInterface.readFromServer(false);
-            if (mvVisitable != null)
-                clientMessageHistory.newMessage(mvVisitable);
+            try {
+                mvVisitable = clientNetworkInterface.readFromServer(false);
+                DebugUtility.simpleDebugMessage("Messaggio ricevuto: "+mvVisitable);
+                if (mvVisitable != null)
+                    clientMessageHistory.newMessage(mvVisitable);
+            } catch (IOException e) {
+                stopListening = true;
+            }
+            DebugUtility.simpleDebugMessage("Esco dal ciclo di lettura.");
         }
+
+        // TODO: Istruzioni per la disconnessione
     }
 
 }

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.model.game;
 
+import it.polimi.ingsw.ps31.DebugUtility;
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
 import it.polimi.ingsw.ps31.model.ModelChoices;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class InformationFromNetworking {
     }
 
     public int addPlayerViewChoice(TypeOfView typeOfView, String username){
+        DebugUtility.simpleDebugMessage("Invocato. Username: "+username+"; TOV = "+typeOfView);
         viewChoiceList.add(typeOfView);
         playerNameList.add(username);
         this.size ++;

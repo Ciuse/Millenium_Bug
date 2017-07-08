@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.server.serverNetworking;
 
+import it.polimi.ingsw.ps31.DebugUtility;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.server.Match;
@@ -34,7 +35,11 @@ class MatchRow {
         this.clientList.add(client);
 
         //passo il socket alla partita
-        this.started = this.match.addConnection(client);
+        this.match.addConnection(client);
+    }
+
+    public void setStarted(boolean started) {
+        this.started = started;
     }
 
     public Match getMatch()
@@ -45,6 +50,21 @@ class MatchRow {
     public ArrayList<PlayerCommunicationInterface> getClientList()
     {
         return new ArrayList<>(this.clientList);
+    }
+
+    public String printRow()
+    {
+        String res = "-----------------------------------\n";
+        boolean start = true;
+        for( PlayerCommunicationInterface playerCommunicationInterface : clientList ) {
+            if (start) {
+                res += match.getMatchId();
+                start = false;
+            }
+            res += "\t|\t CI: "+playerCommunicationInterface+"\n";
+        }
+
+        return res;
     }
 }
 
@@ -96,11 +116,8 @@ public class MatchTable {
     }
 
     /* Class Methods */
-    private Match newMatch(PlayerCommunicationInterface playerCommunicationInterface)
+    private void newMatch(PlayerCommunicationInterface playerCommunicationInterface)
     {
-        //TODO: istruzione di test da cancellare
-        System.out.println("MatchTable:newMatch> inizio creazione match");
-
         //Creo il match
         Match match = new Match(playerCommunicationInterface, nextMatchId, this);
         nextMatchId++;
@@ -109,16 +126,13 @@ public class MatchTable {
         this.matchTable.add(new MatchRow(match, playerCommunicationInterface));
 
         //TODO: istruzione di test da cancellare
-        System.out.println("MatchTable:newMatch> Creata nuova partita #"+match.getMatchId()+". Client associato.");
+        DebugUtility.simpleUserMessage(/*"MatchTable:newMatch>*/" Creata nuova partita #"+match.getMatchId()+". Client associato.");
 
-        //match.start();
-
-        return match;
     }
 
-    public Match addPlayer(PlayerCommunicationInterface connection)
+    public void addPlayer(PlayerCommunicationInterface connection)
     {
-        System.out.println("MatchTable:addPlayer> CM=" + connection.getConnectionMessage().toString());
+        DebugUtility.simpleUserMessage(/*"MatchTable:addPlayer>*/" CM=" + connection.getConnectionMessage().toString());
 
         //Controllo se la connessione corrisponde a un client disconnesso in precedenza
         boolean found = false;
@@ -137,21 +151,22 @@ public class MatchTable {
         }
         if( found )
         {
-            System.out.println("MatchTable : addPlayer>\t\triconnessione in corso");
+            DebugUtility.simpleUserMessage(/*"MatchTable" : addPlayer>*/"riconnessione in corso al match "+currentDisconnection.getMatch().getMatchId());
             PlayerId disconnectedPlayerId = currentDisconnection.getPlayerId();
-            currentDisconnection.getMatch().reconnectPlayer(connection, disconnectedPlayerId);
+            currentDisconnection.getMatch().reconnectPlayer(connection, disconnectedPlayerId, isMatchStarted(currentDisconnection.getMatch()));
             currentDisconnection.getMatch().printPlayerTable();
 
-            return currentDisconnection.getMatch();
+            return;
         }
-
 
         //Iteratore che scorre la lista di partite
         Iterator<MatchRow> matchItr = matchTable.iterator();
 
         //Se non ci sono partite nella lista, ne creo una nuova e la ritorno
-        if( !matchItr.hasNext() )
-           return newMatch(connection);
+        if( !matchItr.hasNext() ){
+            newMatch(connection);
+            return;
+        }
 
         MatchRow currentMatch;
         do
@@ -160,24 +175,26 @@ public class MatchTable {
         } while ( currentMatch.isStarted() && matchItr.hasNext() );
 
         //se il match puntato all'uscita dal ciclo è già iniziato, allora ne creo uno nuovo e lo ritorno
-        if ( currentMatch.isStarted() )
-           return newMatch(connection);
+        if ( currentMatch.isStarted() ){
+            newMatch(connection);
+            return;
+        }
 
         currentMatch.addPlayer(connection);
 
-        //TODO: istruzione di test da cancellare
-        System.out.println("Server> Client connesso alla partita #"+currentMatch.getMatch().getMatchId());
-
-
-        return currentMatch.getMatch(); //todo a cosa serve??
+        DebugUtility.simpleUserMessage("Client connesso alla partita #"+currentMatch.getMatch().getMatchId());
     }
 
     private Match communicationInterfaceToMatch(PlayerCommunicationInterface communicationInterface)
     {
+        printTable();
         for(MatchRow currentRow : matchTable)
         {
-            if ( currentRow.getClientList().contains(communicationInterface) )
+            for( PlayerCommunicationInterface currentInterface : currentRow.getClientList() )
+
+            if ( currentInterface == communicationInterface ) {  //Mi interessa che siano esattamente lo stesso oggetto
                 return currentRow.getMatch();
+            }
         }
 
         return null;
@@ -185,17 +202,55 @@ public class MatchTable {
 
     public void disconnectClient (PlayerCommunicationInterface connection)//, Match match, PlayerId playerId)
     {
+        DebugUtility.simpleDebugMessage("Avvio disconnessione player "+connection.getConnectionMessage().getUsername());
+        DebugUtility.simpleDebugMessage("Invocato da "+DebugUtility.getCaller());
+
         Match match = communicationInterfaceToMatch(connection);
-        System.out.println("MatchTable : disconnectClient()> match:" + match);
-        System.out.println("MatchTable : disconnectClient()> connection:" + connection);
         PlayerId playerId = match.connectionToPlayerId(connection);
 
-        System.out.println("MatchTable : disconnectClient()> disconnetto client "+connection.toString()+
+        DebugUtility.simpleDebugMessage(/*"MatchTable":disconnectClient()>*/"disconnetto client "+connection.toString()+
                           " dal match "+match.getMatchId());
         this.disconnections.add(new DisconnectedClient(connection.getConnectionMessage(), match, playerId));
         match.disconnectPlayer(playerId);
 
     }
 
+    public void notifyMatchStarted(Match match)
+    {
+        int i = 0;
+        boolean trovato = false;
+        while ( !trovato  &&  i < matchTable.size() )
+        {
+            MatchRow currentRow = matchTable.get(i);
+            if( currentRow.getMatch() == match ) {
+                trovato = true;
+                currentRow.setStarted(true);
+            }
+        }
+
+    }
+
+    public boolean isMatchStarted(Match match) {
+        int i = 0;
+        boolean trovato = false;
+        while (!trovato && i < matchTable.size()) {
+            MatchRow currentRow = matchTable.get(i);
+            if (currentRow.getMatch() == match) {
+                return currentRow.isStarted();
+            }
+        }
+        //TODO eccezione
+        return true;
+    }
+
+    public void printTable()
+    {
+        String tableStr="===========[MATCH TABLE]===========\n";
+        for ( MatchRow row : matchTable ){
+            tableStr += row.printRow();
+        }
+
+        System.out.println(tableStr);
+    }
     //global = 3;
 }

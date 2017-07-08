@@ -16,6 +16,7 @@ ConnectionMessage extends NetworkingMessage {
     /* Constructor */
     public ConnectionMessage(String username, String password, TypeOfView typeOfView)
     {
+        super();
         this.username = username;
         this.password = password;
         this.typeOfView = typeOfView;
@@ -33,18 +34,6 @@ ConnectionMessage extends NetworkingMessage {
     public TypeOfView getTypeOfView(){
         return this.typeOfView;
     }
-
-    public Match getDisconnectedFrom()
-    {
-        return null;//this.disconnectedFrom;
-    }
-
-    /* Setters */
-    public void setDisconnectionMatch(Match match)
-    {
-        //this.disconnectedFrom = match;
-    }
-
 
     /* Abstract methods implementation */
     public ConcreteEnvelope wrap()

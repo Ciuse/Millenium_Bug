@@ -36,7 +36,7 @@ public abstract class ServerConnectionInterface {
 
     public final void sendToClient(GenericMessage msg)
     {
-        System.out.println("ServerConnectionInterface:sendToClinet> msg = "+msg+"; closed="+closed);
+        ///System.out.println("ServerConnectionInterface:sendToClinet> msg = "+msg+"; closed="+closed);
 
         if( closed )
             disconnectionMessageBuffer.add(msg);
@@ -93,9 +93,9 @@ public abstract class ServerConnectionInterface {
     {
         ConnectionMessage connectionMessage = null;
         try {
-            System.out.println("ServerConnectionInterface:waitForConnectionMessage> inizio attesa: "+ System.currentTimeMillis());
+           // System.out.println("ServerConnectionInterface:waitForConnectionMessage> inizio attesa: "+ System.currentTimeMillis());
             connectionMessage = deserializeCM(readFromNetwork());
-            System.out.println("ServerConnectionInterface:waitForConnectionMessage> fine attesa: "+ System.currentTimeMillis());
+           // System.out.println("ServerConnectionInterface:waitForConnectionMessage> fine attesa: "+ System.currentTimeMillis());
 
         } catch (IOException e) {
             e.printStackTrace();

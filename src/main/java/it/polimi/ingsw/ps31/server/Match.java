@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.server;
 
+import it.polimi.ingsw.ps31.DebugUtility;
 import it.polimi.ingsw.ps31.client.view.TypeOfView;
 import it.polimi.ingsw.ps31.controller.Controller;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
@@ -32,7 +33,7 @@ class InputBufferReader extends Thread{
     }
 
     public void run() {
-        System.out.println("Match:run> Entro nel run");
+        //System.out.println("Match:run> Entro nel run");
         //Ciclo in attesa di messaggi sulle socket
         while (listenNetworkInterfaces) {
             for( int i = 0; i<connectedPlayers; i++) {
@@ -70,7 +71,6 @@ public class Match extends Thread{
     private int id;
     private InputBufferReader inputBufferReader;
     private List<PlayerId> disconnectedPlayers;
-    //Attibuti di test
     private Model model;
     private VirtualView virtualView;
     private int connectedPlayers;
@@ -89,7 +89,7 @@ public class Match extends Thread{
         this.id = id;
         this.disconnectedPlayers = new ArrayList<>();
         this.connectedPlayers = 0;
-
+        DebugUtility.simpleDebugMessage("Creata partita (id = " + id + ")");
         addConnection(host);
         start();
 
@@ -105,7 +105,6 @@ public class Match extends Thread{
         controller.start();
         gameLogic.createJson();
         gameLogic.startConnection(virtualView);
-        System.out.println("Match:initializeGame> prima del ritorno al run");
 
     }
     public void run()
@@ -130,33 +129,33 @@ public class Match extends Thread{
 
     public void sendViews(int playerNumber)
     {
-        //System.out.println("Match : sendViews()> VIEW PARTENZA!!!");
+        //Se invocato, significa che la partita è iniziata, quindi la marco come tale
+        networkInterface.setMatchStarted();
 
         //spedisco le view ai client
         for(int i = 0; i<playerNumber; i++)
         {
             //System.out.println("Match : sendViews()> entrato nel ciclo!");
             PlayerId currentPlayerId = PlayerId.values()[i];
-            System.out.println("Match : sendViews()> Player: " + currentPlayerId);
+            DebugUtility.simpleUserMessage(/*"Match : sendViews()>*/"Invio view al player " + currentPlayerId);
             networkInterface.sendToClient(new ViewMessage(currentPlayerId, playerNumber), currentPlayerId);
         }
-       // System.out.println("Match : sendViews()> fuori dal ciclo");
 
     }
 
-    public boolean addConnection(PlayerCommunicationInterface clientConnection)
+    public void addConnection(PlayerCommunicationInterface clientConnection)
     {
         if ( this.networkInterface.getConnectionListSize() == MAX_PLAYER_NUMBER )
         {
             //TODO: eccezione
-            return true; //ma sarebbe meglio gestire la cosa in modo diverso: si è tentato di aggiungere un player ad una partita già completa
+            return; //ma sarebbe meglio gestire la cosa in modo diverso: si è tentato di aggiungere un player ad una partita già completa
         }
 
         this.networkInterface.addConnection(clientConnection);
 
         TypeOfView tov = clientConnection.getConnectionMessage().getTypeOfView();
         String username = clientConnection.getConnectionMessage().getUsername();
-        int playerNumber = this.informationFromNetworking.addPlayerViewChoice(tov, username);
+        this.informationFromNetworking.addPlayerViewChoice(tov, username);
 
         clientConnection.switchOn();
 
@@ -165,25 +164,33 @@ public class Match extends Thread{
         else
             inputBufferReader.incConnectedPlayers();
 
-        boolean started = ( playerNumber == MAX_PLAYER_NUMBER );
-
         networkInterface.printPlayerTable();
-
-        return started;
     }
 
     public void disconnectPlayer(PlayerId playerId)
     {
+        DebugUtility.simpleDebugMessage("disconnessione in corso del player "+playerId);
         disconnectedPlayers.add(playerId);
+        networkInterface.notifyPlayerDisconnection(playerId);
     }
 
-    public void reconnectPlayer(PlayerCommunicationInterface newCommunicationInterface, PlayerId playerId)
+    public void reconnectPlayer(PlayerCommunicationInterface newCommunicationInterface, PlayerId playerId, boolean sendViews)
     {
         disconnectedPlayers.remove(playerId);
         PlayerCommunicationInterface oldCommunicationInterface = networkInterface.playerIdToConnection(playerId);
+        networkInterface.notifyPlayerReconnection(newCommunicationInterface, playerId);
+        if(sendViews)
+            networkInterface.sendToClient(new ViewMessage(playerId, informationFromNetworking.getPlayerNameList().size()), playerId);
+
+        try {
+            sleep(15000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        networkInterface.sendHistory(playerId);
 
         newCommunicationInterface.reopenClosedConnection(oldCommunicationInterface);
-
     }
 
     public PlayerId connectionToPlayerId(PlayerCommunicationInterface playerCommunicationInterface)

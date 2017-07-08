@@ -15,6 +15,7 @@ public class MVAskChoice extends MVVisitable {
         this.choiceType = choiceType;
         super.setNotifyAll(false);
         super.setNotifySinglePlayer(playerToNotify);
+        super.isViewUpdate = false;
     }
 
     public ChoiceType getChoiceType() {

@@ -315,7 +315,8 @@ public class CmdLineView extends View {
         try {
             terminal.flush();
             keyStroke1 = screen.readInput();
-            if (keyStroke1.getCharacter().compareTo('h') == 0) {
+            if (keyStroke1.getCharacter().compareTo('h') == 0 ||
+                keyStroke1.getCharacter().compareTo('H') == 0) {
                 setLastInterpreterView(cmdInterpreterView);
                 setCmdInterpreterView(new IntrVisualization());
                 askVisualizationCommand();

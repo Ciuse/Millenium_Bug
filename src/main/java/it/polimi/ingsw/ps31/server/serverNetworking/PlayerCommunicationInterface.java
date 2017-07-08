@@ -78,7 +78,6 @@ public class PlayerCommunicationInterface {
 
     public void send(GenericMessage msg)
     {
-        System.out.println("PlayerCommunicationInterface:send> msg = "+msg+"; disconnected="+disconnected);
         if( msg != null )
         {
             if( disconnected )
@@ -103,6 +102,8 @@ public class PlayerCommunicationInterface {
         {
             serverConnectionInterface.sendToClient(currentMessage);
         }
+
+        switchOn();
     }
 
     private List<GenericMessage> getPendingMessages()
@@ -122,7 +123,7 @@ public class PlayerCommunicationInterface {
     public void setConnectionMessage(ConnectionMessage connectionMessage)
     {
         if( connectionMessage == null )
-            return; //todo: significa che il client (stronzo) si è disconnesso nel momento peggiore
+            return; //todo: significa che il client si è disconnesso nel momento peggiore
         this.connectionMessage = connectionMessage;
     }
 
@@ -148,5 +149,10 @@ public class PlayerCommunicationInterface {
                      "Porta = "    + serverConnectionInterface.getConnectionInfo();
 
         return res;
+    }
+
+    public String getConnectionInfo()
+    {
+        return serverConnectionInterface.getConnectionInfo();
     }
 }

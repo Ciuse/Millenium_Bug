@@ -41,6 +41,7 @@ class PlayerConnectionRow{
     public void reconnect(PlayerCommunicationInterface playerCommunicationInterface)
     {
         this.disconnected = false;
+        this.playerCommunicationInterface = playerCommunicationInterface;
     }
 
     public boolean isDisconnected()
@@ -165,21 +166,18 @@ public class PlayerTable {
         return result;
     }
 
-    public boolean reconnectPlayer(PlayerCommunicationInterface connectionThread, PlayerId playerId)
+    public void disconnectPlayer(PlayerId playerId)
     {
-        int i = 0;
-        boolean found = false;
-        while( i < playerConnectionRows.size() && !found )
-        {
-            if ( playerConnectionRows.get(i).getPlayerId() == playerId )
-            {
-                playerConnectionRows.remove(i);
-                playerConnectionRows.add( new PlayerConnectionRow(playerId, connectionThread) );
-                found = true;
-            }
-        }
-        return found;
+        for(PlayerConnectionRow currentRow : playerConnectionRows)
+            if( currentRow.getPlayerId().equals(playerId) )
+                currentRow.disconnect();
+    }
 
+    public void reconnectPlayer(PlayerCommunicationInterface connection, PlayerId playerId)
+    {
+        for(PlayerConnectionRow currentRow : playerConnectionRows)
+            if( currentRow.getPlayerId().equals(playerId) )
+                currentRow.reconnect(connection);
     }
 
 }

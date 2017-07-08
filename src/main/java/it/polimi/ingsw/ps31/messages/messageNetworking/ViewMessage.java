@@ -13,6 +13,7 @@ public class ViewMessage extends NetworkingMessage{
     /* Constructor */
     public ViewMessage(PlayerId playerId, int maxPlayerNumber)
     {
+        super();
         this.playerId = playerId;
         this.maxPlayerNumber = maxPlayerNumber;
     }

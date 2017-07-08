@@ -5,4 +5,8 @@ package it.polimi.ingsw.ps31.model.constants;
  */
 public enum PlayerId {
     ONE, TWO, THREE, FOUR;
+
+    public int toInt(){
+        return ( this.ordinal()+1 );
+    }
 }
