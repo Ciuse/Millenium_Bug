@@ -266,6 +266,7 @@ public class PlayerActionSet {
     public void resetUsedAction(){
         this.getPlaceFamilyMemberInBoard().setUsed(false);
         this.getPlaceFamilyMemberInTower().setUsed(false);
+        this.getActiveEndButton().setActive(false);
     }
 
     public void addActionToTheList(){

@@ -9,8 +9,6 @@ import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskSta
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.MainFrame;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
-import it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation;
-import it.polimi.ingsw.ps31.messages.messageVC.VCCouncilPrivilegeChoice;
 import it.polimi.ingsw.ps31.messages.messageVC.VCServantToPayChoice;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
@@ -52,13 +50,14 @@ public class GuiView extends View implements ActionListener{
     public void askTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace) {
         mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("SELEZIONA UNA CASELLA DELLA TORRE SU CUI VUOI PIAZZARE IL TUO FAMILY MEMBER");
         mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getTowerPanel().setSendNextClick(true);
+        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getChoosenActionButtonPanel().getButton6().setEnabled(true);
     }
 
     @Override
     public void askActionToDo(ChoiceActionToDo choiceActionToDo) {
 
         mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("QUALE AZIONE VUOI FARE?");
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getChoosenButtonPanel().setEnabledActions(getMyStateViewPlayer().getStringPlayerAction());
+        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getChoosenActionButtonPanel().setEnabledActions(getMyStateViewPlayer().getStringPlayerAction());
 
     }
 
@@ -167,7 +166,9 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void printLastEvent(String string) {
-
+        if(!firstTime) {
+            mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString(string);
+        }
     }
 
     @Override
@@ -227,7 +228,6 @@ public class GuiView extends View implements ActionListener{
 
  @Override
  public void printMyTiles() {
-     System.out.println(getMyStateViewPlayer().getStateViewPersonalBonusTiles());
      mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBonusTilesPanel().printTiles(getMyStateViewPlayer().getStateViewPersonalBonusTiles());
 
  }

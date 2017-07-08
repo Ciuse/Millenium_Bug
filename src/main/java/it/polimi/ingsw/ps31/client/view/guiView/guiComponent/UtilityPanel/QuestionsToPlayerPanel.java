@@ -15,7 +15,7 @@ public class QuestionsToPlayerPanel extends JPanel implements DocumentListener{
     private GuiView guiView;
     private ActionListener listener;
     private AskActionPanel askActionPanel;
-    private ChoosenButtonPanel choosenButtonPanel;
+    private ChoosenActionButtonPanel choosenActionButtonPanel;
 
     public void attach (ActionListener listener){
         this.listener=listener;
@@ -56,16 +56,16 @@ public class QuestionsToPlayerPanel extends JPanel implements DocumentListener{
 
 
 
-        choosenButtonPanel = new ChoosenButtonPanel(guiView);
+        choosenActionButtonPanel = new ChoosenActionButtonPanel(guiView);
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridheight = 1;
         gbc.gridwidth = 2;
-        choosenButtonPanel.setOpaque(false);
-        choosenButtonPanel.imageToLoad("/cornice 42.gif");
+        choosenActionButtonPanel.setOpaque(false);
+        choosenActionButtonPanel.imageToLoad("/cornice 42.gif");
         gbc.fill = GridBagConstraints.BOTH;
-        choosenButtonPanel.setPreferredSize(new Dimension(10, 10));
-        pane.add(choosenButtonPanel, gbc);
+        choosenActionButtonPanel.setPreferredSize(new Dimension(10, 10));
+        pane.add(choosenActionButtonPanel, gbc);
 
 
     }
@@ -74,8 +74,8 @@ public class QuestionsToPlayerPanel extends JPanel implements DocumentListener{
         return askActionPanel;
     }
 
-    public ChoosenButtonPanel getChoosenButtonPanel() {
-        return choosenButtonPanel;
+    public ChoosenActionButtonPanel getChoosenActionButtonPanel() {
+        return choosenActionButtonPanel;
     }
 
     @Override

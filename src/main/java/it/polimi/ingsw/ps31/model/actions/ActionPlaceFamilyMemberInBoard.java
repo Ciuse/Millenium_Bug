@@ -87,6 +87,7 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
         } else
             player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
 
+        actionTimerEnded=false;
         resetActionSpace();
         resetFamilyMember();
     }

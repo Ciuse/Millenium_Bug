@@ -248,9 +248,9 @@ public class Player {
             if (found)
                 actionList.add(playerActionSet.getDiscardLeaderCard().toString());      //aggiungo l azione scarta leader se ne hai ancora uno in mano
         }
-//        if (playerActionSet.getActiveEndButton().isActive()) {        //TODO DA RIMETTERE! (CHEAT)
+        if (playerActionSet.getActiveEndButton().isActive()) {        //TODO DA RIMETTERE! (CHEAT)
         actionList.add(playerActionSet.getActiveEndButton().toString());             //se l oggetto fine turno è attivo aggiungo l azione per finire il turno
-//        }
+        }
         return new StatePlayerAction(playerId, actionList);
     }
 

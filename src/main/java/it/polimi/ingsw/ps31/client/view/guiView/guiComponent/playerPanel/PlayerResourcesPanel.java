@@ -45,7 +45,7 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        resources[0].setName(valueOf(0));
+        resources[0].setName(Coin.class.getSimpleName());
         gbc.fill = GridBagConstraints.BOTH;
         resources[0].setOpaque(false);
         //resources[i].setBackground(Color.BLUE);
@@ -56,7 +56,7 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        resources[1].setName(valueOf(1));
+        resources[1].setName(Wood.class.getSimpleName());
         gbc.fill = GridBagConstraints.BOTH;
         resources[1].setOpaque(false);
         //resources[i].setBackground(Color.BLUE);
@@ -67,7 +67,7 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        resources[2].setName(valueOf(2));
+        resources[2].setName(Stone.class.getSimpleName());
         gbc.fill = GridBagConstraints.BOTH;
         resources[2].setOpaque(false);
         //resources[i].setBackground(Color.BLUE);
@@ -78,7 +78,7 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        resources[3].setName(valueOf(3));
+        resources[3].setName(Servant.class.getSimpleName());
         gbc.fill = GridBagConstraints.BOTH;
         resources[3].setOpaque(false);
         //resources[i].setBackground(Color.BLUE);
@@ -91,27 +91,24 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
         for(int i=0;i<4;i++){
             for (Resource resource :list.getListOfResource()
                     ) {
-                if(resource.getClass().equals( getSpecificResourceFromPanel(resources[i].getName()))){
-                    resources[i].
-                            getResource().
-                            setText(valueOf(resource.getPhysicalResourceValue()));
+                if(resource.getClass().getSimpleName().equals(resources[i].getName())){
+                    resources[i].getResource().setText(valueOf(resource.getPhysicalResourceValue()));
                 }
             }
-
         }
     }
-
-    public Class<? extends PhysicalResource> getSpecificResourceFromPanel(String string){
-        if(string==valueOf(0)){
-            return Coin.class;
-        }if(string==valueOf(1)){
-            return Wood.class;
-        }if(string==valueOf(2)){
-            return Stone.class;
-        }if(string==valueOf(3)){
-            return Servant.class ;
-        }else return null;
-    }
+//
+//    public Class<? extends PhysicalResource> getSpecificResourceFromPanel(String string){
+//        if(string.equals(valueOf(0))){
+//            return Coin.class;
+//        }if(string.equals(valueOf(1))){
+//            return Wood.class;
+//        }if(string.equals(valueOf(2))){
+//            return Stone.class;
+//        }if(string.equals(valueOf(3))){
+//            return Servant.class ;
+//        }else return null;
+//    }
 
     public SpecificResourcePanel[] getResources() {
         return resources;

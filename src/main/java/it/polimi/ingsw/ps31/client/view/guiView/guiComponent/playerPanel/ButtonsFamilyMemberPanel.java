@@ -110,18 +110,21 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
     }
 
 
-    public void setEnabledFamilyMember(){
-        for(int i = 0;i<4;i++){
+    public void setEnabledFamilyMember() {
+        for (int i = 0; i < 4; i++) {
             Color colorFamilyMember = buttonFamilyMember[i].getBackground();
             for (StateViewFamilyMember familyMember : guiView.getMyStateViewPlayer().getStateViewFamilyMemberList()
                     ) {
-                if(familyMember.getDiceColor().equals(getFamilyMemberColor(colorFamilyMember))){
-                    buttonFamilyMember[i].setEnabled(true);
+                if (familyMember.getDiceColor().equals(getFamilyMemberColor(colorFamilyMember))) {
+                    if (familyMember.getActionSpaceId() == -1) {
+                        buttonFamilyMember[i].setEnabled(true);
+                    }
+                    else {
+                        //TODO BHO METTERE UNO SFONDO NEUTRO PER OSCURARLO
+                    }
                 }
             }
         }
-
-
     }
 
 

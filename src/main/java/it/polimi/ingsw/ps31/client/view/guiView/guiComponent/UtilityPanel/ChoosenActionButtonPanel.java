@@ -6,6 +6,7 @@ import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
 import it.polimi.ingsw.ps31.messages.messageVC.VCPlayerAction;
+import it.polimi.ingsw.ps31.messages.messageVC.VCTowerCardSpaceChoice;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +18,7 @@ import static java.lang.String.valueOf;
 /**
  * Created by giulia on 04/07/2017.
  */
-public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionListener {
+public class ChoosenActionButtonPanel extends PaintBackgroundPanel implements ActionListener {
     private GuiView guiView;
     private ActionListener listener;
     private ButtonCard button1;
@@ -25,14 +26,15 @@ public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionLi
     private ButtonCard button3;
     private ButtonCard button4;
     private ButtonCard button5;
-    private ButtonCard[] buttonsAction = new ButtonCard[5];
+    private ButtonCard button6;
+    private ButtonCard[] buttonsAction = new ButtonCard[6];
 
 
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
-    public ChoosenButtonPanel(GuiView guiView) {
+    public ChoosenActionButtonPanel(GuiView guiView) {
 
         this.guiView = guiView;
         addComponentsToPane(this);
@@ -110,8 +112,8 @@ public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionLi
 
         button5 = new ButtonCard("FINE TURNO");
         gbc.gridx = 5;
-        gbc.gridy = 2;
-        gbc.gridheight = 3;
+        gbc.gridy = 1;
+        gbc.gridheight = 2;
         gbc.gridwidth = 1;
         button5.setEnabled(false);
         gbc.fill = GridBagConstraints.BOTH;
@@ -121,6 +123,20 @@ public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionLi
         button5.addActionListener(this);
         buttonsAction[4] = button5;
 
+
+
+        button6 = new ButtonCard("UNDO ACTION");
+        gbc.gridx = 5;
+        gbc.gridy = 4;
+        gbc.gridheight = 2;
+        gbc.gridwidth = 1;
+        button6.setEnabled(false);
+        gbc.fill = GridBagConstraints.BOTH;
+        button6.setName("Undo Action");
+        button6.setPreferredSize(new Dimension(10, 10));
+        pane.add(button6, gbc);
+        button6.addActionListener(this);
+        buttonsAction[5] = button6;
 
 
     }
@@ -139,14 +155,19 @@ public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionLi
                 buttonsAction[i].revalidate();
             }else buttonsAction[i].setEnabled(false);
         }
+        button6.setEnabled(false);
     }
 
     public ButtonCard[] getButtonsAction() {
         return buttonsAction;
     }
 
+    public ButtonCard getButton6() {
+        return button6;
+    }
+
     public void setDisabledAllButtons(){
-        for(int i = 0;i<5;i++){
+        for(int i = 0;i<6;i++){
             buttonsAction[i].setEnabled(false);
         }
     }
@@ -155,16 +176,18 @@ public class ChoosenButtonPanel extends PaintBackgroundPanel implements ActionLi
     public void actionPerformed(ActionEvent e) {
         ButtonCard buttonCard = (ButtonCard) e.getSource();
         String nameButton = buttonCard.getName();
-            for (String string :guiView.
-                    getMyStateViewPlayer().
-                    getStringPlayerAction()
+        if (nameButton.equals("Undo Action")) {
+            guiView.notifyController(new VCTowerCardSpaceChoice(guiView.getViewId(),null,0));
+            this.setDisabledAllButtons();
+        } else {
+            for (String string : guiView.getMyStateViewPlayer().getStringPlayerAction()
                     ) {
-                if(nameButton.equals(string)){
-                    guiView.notifyController(new VCPlayerAction(guiView.getMyStateViewPlayer().getPlayerId(),string));
+                if (nameButton.equals(string)) {
+                    guiView.notifyController(new VCPlayerAction(guiView.getViewId(), string));
                     this.setDisabledAllButtons();
                 }
             }
-
         }
+    }
 
 }

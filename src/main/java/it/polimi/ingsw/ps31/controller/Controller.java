@@ -276,8 +276,16 @@ public class Controller extends Thread implements Observer {
             }
         }
         if (!found)
-            if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
-                virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l azione associata");
+            if(floorNumber==0 && towerColor==null){
+                if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId)){
+                    modelChoices.setTowerCardSpaceChosen(new TowerCardSpace(null,null,null,0));
+                }
+
+            }
+            else {
+                if (gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
+                    virtualView.reSendLastMessage("(controller) Mi dispiace non ho trovato l azione associata");
+            }
     }
 
     public void selectColor(PlayerColor playerColor, PlayerId viewId) {

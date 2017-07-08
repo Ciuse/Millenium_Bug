@@ -11,6 +11,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.*;
 import it.polimi.ingsw.ps31.client.view.stateView.*;
+import it.polimi.ingsw.ps31.messages.messageVC.VCTowerCardSpaceChoice;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
@@ -68,17 +69,26 @@ public class CmdLineView extends View {
     public void askTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace) {
         do {
             this.setCmdInterpreterView(new IntrChoiceTowerCardSpace());
-            printLastEventAndMemorize("Inserisci G/B/Y/P per selezionare la torre in base al colore");
+            printLastEventAndMemorize("Inserisci prima G/B/Y/P per selezionare la torre e poi 1/2/3/4 per il piano. (annullare: \"ESC\")");
             input1();
 
+
             this.setCmdInterpreterView(new IntrChoiceTowerCardSpace());
-            printLastEventAndMemorize("Inserisci 1/2/3/4 per selezionare il piano della torre (\"1\" si riferisce al piano terra)");
-            input2();
+//            printLastEventAndMemorize("Inserisci 1/2/3/4 per selezionare il piano della torre (\"1\" si riferisce al piano terra)");
+            if (keyStroke1.getKeyType() != KeyType.Escape) {
+                System.out.println("ENTRATO1");
+                input2();
+            }
+            if (keyStroke1.getKeyType() == KeyType.Escape || keyStroke2.getKeyType() == KeyType.Escape) {
+                System.out.println("ENTRATO2");
+                notifyController(new VCTowerCardSpaceChoice(getViewId(), null, 0));
+                break;
+            }
 
         }
         while (!cmdInterpreterView.messageInterpreter2(this, choiceTowerCardSpace, keyStroke1.getCharacter(), keyStroke2.getCharacter()));
-    }
 
+    }
     @Override
     public void askActionToDo(ChoiceActionToDo choiceActionToDo) {
         do {
@@ -313,16 +323,17 @@ public class CmdLineView extends View {
 
     public void input1() {
         try {
-            terminal.flush();
             keyStroke1 = screen.readInput();
-            if (keyStroke1.getCharacter().compareTo('h') == 0 ||
-                keyStroke1.getCharacter().compareTo('H') == 0) {
-                setLastInterpreterView(cmdInterpreterView);
-                setCmdInterpreterView(new IntrVisualization());
-                askVisualizationCommand();
-                printLastEvent("");
-                printLastEvent(lastAsk);
-                input1();
+            if(keyStroke1.getCharacter()!=null) {
+                if (keyStroke1.getCharacter().compareTo('h') == 0
+                        || keyStroke1.getCharacter().compareTo('H') == 0) {
+                    setLastInterpreterView(cmdInterpreterView);
+                    setCmdInterpreterView(new IntrVisualization());
+                    askVisualizationCommand();
+                    printLastEvent("-------------------------------------------------------------------------------------------");
+                    printLastEvent(lastAsk);
+                    input1();
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();

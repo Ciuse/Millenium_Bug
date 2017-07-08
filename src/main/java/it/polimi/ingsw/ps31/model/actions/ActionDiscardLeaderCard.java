@@ -14,7 +14,6 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class ActionDiscardLeaderCard extends Action {
     private LeaderCard leaderCard = null;
-    private boolean actionTimerEnded=false;
 
     /* Constructor */
     public ActionDiscardLeaderCard(Player player, ActionControlSet actionControlSet) {

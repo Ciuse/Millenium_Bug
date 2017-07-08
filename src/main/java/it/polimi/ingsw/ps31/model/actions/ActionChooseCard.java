@@ -131,6 +131,7 @@ public class ActionChooseCard extends Action {
             player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
         }
 
+        actionTimerEnded=false;
         resetAnyCardColor();
         resetCardColor();
         resetDiceCost();

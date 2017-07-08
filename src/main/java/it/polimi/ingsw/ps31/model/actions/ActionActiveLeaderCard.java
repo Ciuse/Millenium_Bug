@@ -12,7 +12,6 @@ import it.polimi.ingsw.ps31.model.player.Player;
  */
 public class ActionActiveLeaderCard extends Action {
     private LeaderCard leaderCard= null;
-    private boolean actionTimerEnded=false;
 
     public ActionActiveLeaderCard(Player player, ActionControlSet actionControlSet) {
         super(player, actionControlSet);

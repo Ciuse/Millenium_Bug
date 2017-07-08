@@ -100,9 +100,28 @@ public class TowerPanel extends JPanel implements ActionListener {
 
 
         if (stateViewTowerCardBox.getCardId() != 0) {
+
             towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/devCard/devcards_f_en_c_" + valueOf(stateViewTowerCardBox.getCardId()) + ".png");
-        } else
-            towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().setOpaque(false);
+        } else {
+            if (stateViewTowerCardBox.getCardColor().equals(CardColor.GREEN)) {
+
+                towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/sfondoverde.jpg");
+
+            }
+            if (stateViewTowerCardBox.getCardColor().equals(CardColor.BLUE)) {
+                towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/sfondoblue.jpg");
+
+            }
+            if (stateViewTowerCardBox.getCardColor().equals(CardColor.YELLOW)) {
+                towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/sfondogiallo.jpg");
+
+            }
+            if (stateViewTowerCardBox.getCardColor().equals(CardColor.PURPLE)) {
+                towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/sfondoviola.jpg");
+
+            }
+
+        }
     }
 
 
@@ -167,7 +186,7 @@ public class TowerPanel extends JPanel implements ActionListener {
 
     public int getFloorNumberFromButtonName(int i){
         i=i-1;
-        return ((i+4)%4)+1;
+        return ((i+4)%4);
     }
 
 

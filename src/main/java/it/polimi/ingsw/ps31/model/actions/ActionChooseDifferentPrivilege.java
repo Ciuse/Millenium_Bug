@@ -93,6 +93,8 @@ public class ActionChooseDifferentPrivilege extends Action {
                 player.getModel().notifyViews(new MVUpdateState("Aggiornato stato player resources", player.getStatePlayerResources()));
             }
         }
+
+        actionTimerEnded=false;
         resetAreDifferent();
         resetNumberOfDifferentPrivileges();
 

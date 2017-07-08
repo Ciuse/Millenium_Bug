@@ -193,6 +193,7 @@ public class GameUtility {
         if (playerList.get(playerNumber).checkIfOnlyNEUTRALRemained()) {
             playerList.get(playerNumber).getPlayerActionSet().getActiveEndButton().setActive(true);
         }
+
         this.startActionTurn(playerList.get(playerNumber));
         this.doActionTurn(playerList.get(playerNumber));
         this.endActionTurn(playerList.get(playerNumber));
@@ -252,6 +253,9 @@ public class GameUtility {
                         if (actionToDo.getClass().equals(action.getClass())) {
                             action.activate();
                             player.addTempResoucesToPlayerResources();
+                            if(player.getPlayerActionSet().getPlaceFamilyMemberInTower().isUsed()
+                                    || player.getPlayerActionSet().getPlaceFamilyMemberInBoard().isUsed())
+                                player.getPlayerActionSet().getActiveEndButton().setActive(true);
 
                             String string2 = player.getPlayerId().toString() + ": Aggiornato Stato Azioni";
                             model.notifyViews(new MVUpdateState(string2, player.getStatePlayerAction()));

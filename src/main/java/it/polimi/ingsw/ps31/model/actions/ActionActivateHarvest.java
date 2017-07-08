@@ -11,8 +11,6 @@ import it.polimi.ingsw.ps31.model.player.Player;
 public class ActionActivateHarvest extends Action {
     private Integer diceValue = null;
     private Integer diceBonus = 0;
-    private boolean activated = false;
-    private boolean activatedFromNeutral = false;
 
     /* Constructor */
     public ActionActivateHarvest(Player player, ActionControlSet actionControlSet) {
