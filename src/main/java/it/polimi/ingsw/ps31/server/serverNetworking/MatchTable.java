@@ -226,6 +226,7 @@ public class MatchTable {
                 trovato = true;
                 currentRow.setStarted(true);
             }
+            i++;
         }
 
     }

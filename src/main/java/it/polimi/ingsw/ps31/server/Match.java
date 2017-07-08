@@ -129,12 +129,16 @@ public class Match extends Thread{
 
     public void sendViews(int playerNumber)
     {
+        DebugUtility.simpleDebugMessage("Inizio invio view");
+
         //Se invocato, significa che la partita è iniziata, quindi la marco come tale
         networkInterface.setMatchStarted();
 
+        DebugUtility.simpleDebugMessage("debug1");
         //spedisco le view ai client
         for(int i = 0; i<playerNumber; i++)
         {
+            DebugUtility.simpleDebugMessage("debug2");
             //System.out.println("Match : sendViews()> entrato nel ciclo!");
             PlayerId currentPlayerId = PlayerId.values()[i];
             DebugUtility.simpleUserMessage(/*"Match : sendViews()>*/"Invio view al player " + currentPlayerId);
@@ -181,12 +185,6 @@ public class Match extends Thread{
         networkInterface.notifyPlayerReconnection(newCommunicationInterface, playerId);
         if(sendViews)
             networkInterface.sendToClient(new ViewMessage(playerId, informationFromNetworking.getPlayerNameList().size()), playerId);
-
-        try {
-            sleep(15000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         networkInterface.sendHistory(playerId);
 

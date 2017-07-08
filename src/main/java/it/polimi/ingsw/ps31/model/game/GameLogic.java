@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.game;
 
 import com.google.gson.Gson;
+import it.polimi.ingsw.ps31.DebugUtility;
 import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState;
 import it.polimi.ingsw.ps31.model.Model;
@@ -51,8 +52,11 @@ public class GameLogic {
      * @param virtualView virtual view del match in corso, la quale verrà settata al model del match in corso
      */
     public void startConnection(VirtualView virtualView) {
+        DebugUtility.simpleDebugMessage("Inizio attesa player");
         //attesa dei giocatori che si connettono
         playerMaxNumber=gameUtility.getModel().getModelChoices().waitPlayerConnection();
+        DebugUtility.simpleDebugMessage("Fine attesa player");
+
         gameUtility.setPlayerMaxNumber(playerMaxNumber);
 
         for(int i=0; i<playerMaxNumber; i++){

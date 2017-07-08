@@ -101,17 +101,14 @@ public class NetworkInterface {
 
     public void sendToClient(NetworkingMessage msg, PlayerId playerId)
     {
+        DebugUtility.simpleDebugMessage("Invocato per invio messaggio");
+
         messageHistory.add(new SentMessageEntry(playerId.toInt(), msg));
         sendReallyToClient(playerId, msg);
 
     }
 
-    public void sendHistoryToClient(MVVisitable msg, PlayerId playerId)
-    {
-        sendReallyToClient(playerId, msg);
-    }
-
-    public void sendHistoryToClient(NetworkingMessage msg, PlayerId playerId)
+    public void sendHistoryToClient(GenericMessage msg, PlayerId playerId)
     {
         sendReallyToClient(playerId, msg);
     }
@@ -134,14 +131,7 @@ public class NetworkInterface {
     {
         String porta = playerTable.playerIdToConnection(player).getConnectionInfo();
         DebugUtility.simpleDebugMessage("invio messaggio " +message+" sulla porta "+porta);
-
-        if( message instanceof MVVisitable ){
-            sendHistoryToClient((MVVisitable)message, player);
-        }
-        else
-        if ( message instanceof NetworkingMessage){
-            sendHistoryToClient((NetworkingMessage)message, player);
-        }
+        sendHistoryToClient(message, player);
     }
 
     public void sendHistory(PlayerId playerId)
@@ -214,5 +204,10 @@ public class NetworkInterface {
     public void notifyPlayerReconnection(PlayerCommunicationInterface communicationInterface, PlayerId playerId)
     {
         playerTable.reconnectPlayer(communicationInterface, playerId);
+    }
+
+    public boolean isDisconncted(PlayerId playerId)
+    {
+        return playerTable.isDisconnected(playerId);
     }
 }

@@ -180,4 +180,13 @@ public class PlayerTable {
                 currentRow.reconnect(connection);
     }
 
+    public boolean isDisconnected(PlayerId playerId)
+    {
+       for(PlayerConnectionRow currentRow : playerConnectionRows) {
+           if (currentRow.getPlayerId().equals(playerId))
+               return currentRow.isDisconnected();
+       }
+       return true;
+    }
+
 }
