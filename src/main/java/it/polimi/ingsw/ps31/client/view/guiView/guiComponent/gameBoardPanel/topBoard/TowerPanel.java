@@ -36,7 +36,7 @@ public class TowerPanel extends JPanel implements ActionListener {
         gbl.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
 
 
-        gbl.columnWeights = new double[]{0.035, 0.225, 0.225, 0.225, 0.225, 0.06449, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.022, 0.227, 0.227, 0.227, 0.227, 0.05669, Double.MIN_VALUE};
         gbl.rowWeights = new double[]{0.01, 0.24, 0.24, 0.24, 0.24, 0.02999, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
