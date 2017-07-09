@@ -78,25 +78,25 @@ public class GuiView extends View implements ActionListener {
 
 //        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("SELEZIONA SE ATTIVARE O NO L'EFFETTO DELLA CARTA "+choiceIfActiveEffect.getCardIdEffect());
         AskIfActiveEffect askIfActiveEffect = new AskIfActiveEffect(mainFrame);
-        notifyController(new VCActiveEffectChoice(getViewId(),askIfActiveEffect.getInput(choiceIfActiveEffect)));
+        notifyController(new VCActiveEffectChoice(getViewId(), askIfActiveEffect.getInput(choiceIfActiveEffect)));
     }
 
     @Override
     public void askStartLeaderToKeep(ChoiceStartLeaderCard choiceStartLeaderCard) {
-     printMyTiles();
-        AskStartLeaderCard askStartLeaderCard = new AskStartLeaderCard(choiceStartLeaderCard,this);
+        printMyTiles();
+        AskStartLeaderCard askStartLeaderCard = new AskStartLeaderCard(choiceStartLeaderCard, this);
         askStartLeaderCard.startFrame();
     }
 
     @Override
     public void askStartPersonalTilesToKeep(ChoicePersonalBonusTiles choicePersonalBonusTiles) {
-     AskStartPersonalBonusTiles askStartPersonalBonusTiles = new AskStartPersonalBonusTiles(choicePersonalBonusTiles,this);
-     askStartPersonalBonusTiles.startFrame();
+        AskStartPersonalBonusTiles askStartPersonalBonusTiles = new AskStartPersonalBonusTiles(choicePersonalBonusTiles, this);
+        askStartPersonalBonusTiles.startFrame();
     }
 
     @Override
     public void askPlayerColor(ChoiceColor choiceColor) {
-        AskStartPlayerColor askStartPlayerColor = new AskStartPlayerColor(choiceColor,this);
+        AskStartPlayerColor askStartPlayerColor = new AskStartPlayerColor(choiceColor, this);
         askStartPlayerColor.startFrame();
 
     }
@@ -111,15 +111,15 @@ public class GuiView extends View implements ActionListener {
     public void askIfSupportChurch(ChoiceIfSupportTheChurch choiceIfSupportTheChurch) {
 //        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("FASE RAPPORTI CON IL VATICANO");
         AskIfSupportChurch askListToPay = new AskIfSupportChurch(mainFrame);
-        notifyController(new VCSupportTheChurchChoice(getViewId(),askListToPay.getInput()));
+        notifyController(new VCSupportTheChurchChoice(getViewId(), askListToPay.getInput()));
     }
 
     @Override
     public void askListToPay(ChoiceListToPay choiceListToPay) {
 //        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("SELEZIONA IL PRIVILEGIO DEL CONSIGLIO DA OTTENERE");
         AskListToPay askListToPay = new AskListToPay(mainFrame);
-        int choiceNumber=askListToPay.getInput(choiceListToPay.getCardId());
-        notifyController(new VCListToPayChoice(getViewId(),choiceNumber));
+        int choiceNumber = askListToPay.getInput(choiceListToPay.getCardId());
+        notifyController(new VCListToPayChoice(getViewId(), choiceNumber));
     }
 
     @Override
@@ -127,8 +127,8 @@ public class GuiView extends View implements ActionListener {
 
 //        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("INSERISCI L'ID DEL LEADER GIOCATO DA UN ALTRO GIOCATORE DA COPIARE");
         AskLeaderToCopy askLeaderToCopy = new AskLeaderToCopy(mainFrame);
-        Integer choiceNumber=new Integer(askLeaderToCopy.getInput());
-        notifyController(new VCLeaderToCopyChoice(getViewId(),choiceLeaderEffectToCopy.getLeaderCardId(),choiceNumber));
+        Integer choiceNumber = new Integer(askLeaderToCopy.getInput());
+        notifyController(new VCLeaderToCopyChoice(getViewId(), choiceLeaderEffectToCopy.getLeaderCardId(), choiceNumber));
     }
 
     @Override
@@ -150,7 +150,7 @@ public class GuiView extends View implements ActionListener {
     public void askServantToPay(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay) {
 //        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("QUANTI SERVITORI VUOI PAGARE PER AUMENTARE IL VALORE DEL TUO FAMILY MEMBER?");
         AskServantsToPay askServantsToPay = new AskServantsToPay(mainFrame);
-        notifyController(new VCServantToPayChoice(getViewId(),new Integer(askServantsToPay.getInput(getMyStateViewPlayer()))));
+        notifyController(new VCServantToPayChoice(getViewId(), new Integer(askServantsToPay.getInput(getMyStateViewPlayer()))));
     }
 
 
@@ -158,8 +158,8 @@ public class GuiView extends View implements ActionListener {
     public void askPrivilegeResourceChange(ChoicePrivilegeResource choicePrivilegeResource) {
 //        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("SELEZIONA IL PRIVILEGIO DEL CONSIGLIO DA OTTENERE");
         AskPrivilegeToChoice askPrivilegeToChoice = new AskPrivilegeToChoice(mainFrame);
-        int choiceNumber=askPrivilegeToChoice.getInput(choicePrivilegeResource.getResourceListToChoice());
-        notifyController(new VCCouncilPrivilegeChoice(getViewId(),getResourceListFromCouncilPrivilege().get(choiceNumber)));
+        int choiceNumber = askPrivilegeToChoice.getInput(choicePrivilegeResource.getResourceListToChoice());
+        notifyController(new VCCouncilPrivilegeChoice(getViewId(), getResourceListFromCouncilPrivilege().get(choiceNumber)));
     }
 
     @Override
@@ -193,9 +193,10 @@ public class GuiView extends View implements ActionListener {
 
     @Override
     public void printLastEvent(String string) {
-        if(!firstTime) {
-            string=string.toUpperCase();
+        if (!firstTime) {
+            string = string.toUpperCase();
             mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString(string);
+
         }
     }
 
@@ -225,6 +226,7 @@ public class GuiView extends View implements ActionListener {
     @Override
     public void printExcommunications() {
         mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getExcommunicationPanel().printExcommunication(getStateViewGame().getStateViewExcommunicationList());
+        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getOtherChosenPlayerPanel().getExcommunicationPlayerPanel().fillExcomm(getMyStateViewPlayer().getStateViewExcommunicationList());
     }
 
     @Override
@@ -245,11 +247,11 @@ public class GuiView extends View implements ActionListener {
 
     }
 
-    public void printMyPhysicalResource(){
+    public void printMyPhysicalResource() {
         mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBoardPanel().getPlayerResourcesPanel().setString(super.getMyStateViewPlayer().getPlayerResources());
     }
 
-    public void printMyPointResource(){
+    public void printMyPointResource() {
         mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getPointResourcePanel().setString(super.getMyStateViewPlayer().getPlayerResources());
     }
 
@@ -265,47 +267,51 @@ public class GuiView extends View implements ActionListener {
     }
 
     @Override
- public void printMyTiles() {
-     mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBonusTilesPanel().printTiles(getMyStateViewPlayer().getStateViewPersonalBonusTiles());
+    public void printMyTiles() {
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBonusTilesPanel().printTiles(getMyStateViewPlayer().getStateViewPersonalBonusTiles());
 
- }
+    }
 
- @Override
- public void printMyFamilyMembersOnPlayerPanel() {
-  for (StateViewFamilyMember family : super.getMyStateViewPlayer().getStateViewFamilyMemberList()
-          ) {
-   mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().printMyFamilyMembersOnPlayerPanel(family);
+    @Override
+    public void printMyFamilyMembersOnPlayerPanel() {
+        for (StateViewFamilyMember family : super.getMyStateViewPlayer().getStateViewFamilyMemberList()
+                ) {
+            mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().printMyFamilyMembersOnPlayerPanel(family);
 
-  }
- }
+        }
+    }
 
-
-
-    public void printBoardActionSpace(StateActionSpace actionSpace) {
-            if(actionSpace.getNumberOfActionSpace()==17){
-                mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getActionSpaceCouncilPanel().printFamilyMemberOnBottomBoard(actionSpace.getStateFamilyMemberList());
-            } if(actionSpace.getNumberOfActionSpace()>=18&&actionSpace.getNumberOfActionSpace()<=21){
-                for(int i=0;i<4;i++){
-                    mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getActionSpaceBoardButtons()[i].printFamilyMemberOnBottomBoard(actionSpace.getStateFamilyMemberList());
-                }
-            }if(actionSpace.getNumberOfActionSpace()>=22&&actionSpace.getNumberOfActionSpace()<=25){
-                for(int i=0;i<4;i++){
-                mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getMarketActionSpacePanel().getMarketActionSpace()[i].printFamilyMemberOnBottomBoard(actionSpace.getStateFamilyMemberList());
-                }
+    @Override
+    public void printSingleBoardActionSpace(StateActionSpace actionSpace) {
+        if (actionSpace.getNumberOfActionSpace() == 17) {
+            mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getActionSpaceCouncilPanel().printFamilyMemberOnBottomBoard(actionSpace.getStateFamilyMemberList());
+        }
+        if (actionSpace.getNumberOfActionSpace() >= 18 && actionSpace.getNumberOfActionSpace() <= 21) {
+            for (int i = 0; i < 4; i++) {
+                mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getActionSpaceBoardButtons()[i].printFamilyMemberOnBottomBoard(actionSpace.getStateFamilyMemberList());
             }
         }
+        if (actionSpace.getNumberOfActionSpace() >= 22 && actionSpace.getNumberOfActionSpace() <= 25) {
+            for (int i = 0; i < 4; i++) {
+                mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getMarketActionSpacePanel().getMarketActionSpace()[i].printFamilyMemberOnBottomBoard(actionSpace.getStateFamilyMemberList());
+            }
+        }
+    }
 
-
-    public void printTowerActionSpace(StateActionSpace actionSpace){
-            if (actionSpace.getNumberOfActionSpace() >= 1 && actionSpace.getNumberOfActionSpace() <= 16) {
-                for (int i = 0; i < 4; i++) {
-                    for (int j = 0; j < 4; j++) {
+    @Override
+    public void printSingleTowerActionSpace(StateActionSpace actionSpace) {
+        if (actionSpace.getNumberOfActionSpace() >= 1 && actionSpace.getNumberOfActionSpace() <= 16) {
+            int k=1;
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    if(k==actionSpace.getNumberOfActionSpace()) {
                         mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getTowerPanel().getTowerCardAndActionSpacePanels()[i][j].getSingleSmallActionSpacePanel().printFamilyMemberOnTopBoard(actionSpace.getStateFamilyMemberList());
                     }
+                    k++;
                 }
             }
         }
-
+    }
 
 
     @Override
@@ -319,14 +325,9 @@ public class GuiView extends View implements ActionListener {
     }
 
 
-
     @Override
     public void setCmdInterpreterView(CmdInterpreterView cmdInterpreterView) {
 
     }
-
-
-
-
 
 }

@@ -3,14 +3,11 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
-import it.polimi.ingsw.ps31.messages.messageVC.VCPlayerAction;
-import it.polimi.ingsw.ps31.messages.messageVC.VCTowerCardSpaceChoice;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
 
 /**
  * Created by giulia on 02/07/2017.
@@ -18,8 +15,8 @@ import java.util.*;
 public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements ActionListener {
     private GuiView guiView;
     private ActionListener listener;
-    private ButtonCard button1;
-    private ButtonCard button2;
+    private ButtonCard otherBoard;
+    private ButtonCard playerExcomm;
     private ExcommunicationPlayerPanel excommunicationPlayerPanel;
 
 
@@ -48,40 +45,44 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
         GridBagConstraints gbc = new GridBagConstraints();
 
 
-        button1 = new ButtonCard("Other player board");
+        otherBoard = new ButtonCard("Stato altri player");
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        button1.setName("Other player board");
-        button1.setEnabled(false);
-        button1.setPreferredSize(new Dimension(10, 10));
-        pane.add(button1, gbc);
-        button1.addActionListener(this);
+        otherBoard.setName("Other player board");
+        otherBoard.setEnabled(false);
+        otherBoard.setPreferredSize(new Dimension(10, 10));
+        pane.add(otherBoard, gbc);
+        otherBoard.addActionListener(this);
 
-        button2 = new ButtonCard("Your excommunications");
+        playerExcomm = new ButtonCard("Stato tue scomuniche");
         gbc.gridx = 3;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        button2.setEnabled(true);
+        playerExcomm.setEnabled(true);
         gbc.fill = GridBagConstraints.BOTH;
-        button2.setName("Your excommunications");
-        button2.setPreferredSize(new Dimension(10, 10));
-        pane.add(button2, gbc);
-        button2.addActionListener(this);
+        playerExcomm.setName("Your excommunications");
+        playerExcomm.setPreferredSize(new Dimension(10, 10));
+        pane.add(playerExcomm, gbc);
+        playerExcomm.addActionListener(this);
 
         excommunicationPlayerPanel=new ExcommunicationPlayerPanel(guiView);
 
     }
 
-    public ButtonCard getButton1() {
-        return button1;
+    public ExcommunicationPlayerPanel getExcommunicationPlayerPanel() {
+        return excommunicationPlayerPanel;
     }
 
-    public ButtonCard getButton2() {
-        return button2;
+    public ButtonCard getOtherBoard() {
+        return otherBoard;
+    }
+
+    public ButtonCard getPlayerExcomm() {
+        return playerExcomm;
     }
     @Override
     public void actionPerformed(ActionEvent e) {

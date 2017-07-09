@@ -19,6 +19,7 @@ import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.Servant;
+import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
 
 import java.io.IOException;
 
@@ -622,6 +623,16 @@ public class CmdLineView extends View {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void printSingleTowerActionSpace(StateActionSpace actionSpace) {
+
+    }
+
+    @Override
+    public void printSingleBoardActionSpace(StateActionSpace actionSpace) {
+
     }
 
     @Override

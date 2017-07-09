@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceIfActiveEffect;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,9 +33,14 @@ public class AskIfActiveEffect  extends JOptionPane implements ActionListener {
         possibleValues[0] = "YES";
         possibleValues[1] = "NO";
 
-        String choice = JOptionPane.showInputDialog(father, "VUOI ATTIVARE L'EFFETTO DELLA CARTA: "+choiceIfActiveEffect.getCardIdEffect()+" ?", "CARD EFFECT ACTIVATION",
-                JOptionPane.INFORMATION_MESSAGE, null,
-                possibleValues, possibleValues[0]).toString();
+        String choice = "";
+        try {
+            choice = JOptionPane.showInputDialog(father, "VUOI ATTIVARE L'EFFETTO DELLA CARTA: "+choiceIfActiveEffect.getCardIdEffect()+" ?", "CARD EFFECT ACTIVATION",
+                    JOptionPane.INFORMATION_MESSAGE, null,
+                    possibleValues, possibleValues[0]).toString();
+        } catch (NullPointerException e) {
+            choice = "NO";
+        }
 
 
         if (choice.equals("YES")){

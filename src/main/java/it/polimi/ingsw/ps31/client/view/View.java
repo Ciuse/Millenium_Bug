@@ -224,6 +224,8 @@ public abstract class View extends Observable implements Observer {
     public final void updateActionSpace(StateActionSpace stateActionSpace) {
         stateViewBoard.updateState(stateActionSpace);
         printBoardActionSpace();
+        printSingleBoardActionSpace(stateActionSpace);
+        printSingleTowerActionSpace(stateActionSpace);
     }
 
     public final void updateTower(StateTower stateTower) {
@@ -315,6 +317,10 @@ public abstract class View extends Observable implements Observer {
     public abstract void printFamilyMemberInAction();
 
     public abstract void printBoardActionSpace();
+
+    public abstract void printSingleBoardActionSpace(StateActionSpace actionSpace);
+
+    public abstract void printSingleTowerActionSpace(StateActionSpace actionSpace);
 
     public abstract void printDevelopmentCard(int cardId);
 

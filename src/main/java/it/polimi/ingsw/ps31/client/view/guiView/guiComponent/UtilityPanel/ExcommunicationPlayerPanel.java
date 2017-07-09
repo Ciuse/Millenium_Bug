@@ -2,11 +2,16 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewExcommunication;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalCardBox;
 
 import javax.swing.*;
+import javax.swing.plaf.nimbus.State;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.util.*;
 
 import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getMax_number_of_Excommunication;
 import static java.lang.String.valueOf;
@@ -44,6 +49,7 @@ public class ExcommunicationPlayerPanel extends JPanel implements ActionListener
             for (int i = 0; i < getMax_number_of_Excommunication(); i++) {
                 excomm[i] = new ButtonCard();
                 excomm[i].setName(valueOf(i));
+                excomm[i].imageToLoad("/excommunications/excomm_back_"+(i+1)+".png");
                 gbc.gridx = (2 * i) + 1;
                 gbc.gridy = 1;
                 gbc.gridheight = 1;
@@ -56,14 +62,35 @@ public class ExcommunicationPlayerPanel extends JPanel implements ActionListener
 
         }
 
+
+    public void fillExcomm(java.util.List<StateViewExcommunication> stateViewExcommunicationList) {
+        int i = 0;
+        if (!stateViewExcommunicationList.isEmpty()) {
+            for (StateViewExcommunication excommunication : stateViewExcommunicationList
+                    ) {
+                if (excommunication.getId() != 0) {
+                    if (excommunication.getPeriod() == 1) {
+                        excomm[0].imageToReprint("/excommunications/excomm_1_" + valueOf(excommunication.getId()) + ".png");
+                    }
+                    if (excommunication.getPeriod() == 2) {
+                        excomm[1].imageToReprint("/excommunications/excomm_2_" + valueOf(excommunication.getId() - 7) + ".png");
+                    }
+                    if (excommunication.getPeriod() == 3) {
+                        excomm[2].imageToReprint("/excommunications/excomm_3_" + valueOf(excommunication.getId() - 14) + ".png");
+                    }
+                    i++;
+                }
+            }
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         ButtonCard buttonCard = (ButtonCard) e.getSource();
         String nameButton = buttonCard.getName();
         for (int i = 0; i < getMax_number_of_Excommunication(); i++) {
             if (valueOf(i).equals(nameButton)) {
-
-
+                father.dispatchEvent(new WindowEvent(father, WindowEvent.WINDOW_CLOSING));
             }
         }
     }

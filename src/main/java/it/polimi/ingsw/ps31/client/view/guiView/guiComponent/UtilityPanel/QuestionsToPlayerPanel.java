@@ -48,7 +48,6 @@ public class QuestionsToPlayerPanel extends JPanel implements DocumentListener{
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         askActionPanel.setOpaque(false);
-        askActionPanel.imageToLoad("/sfondoPerLeDomande.jpg");
         gbc.fill = GridBagConstraints.BOTH;
         askActionPanel.setPreferredSize(new Dimension(10, 10));
         //askActionPanel.setBackground(Color.RED);

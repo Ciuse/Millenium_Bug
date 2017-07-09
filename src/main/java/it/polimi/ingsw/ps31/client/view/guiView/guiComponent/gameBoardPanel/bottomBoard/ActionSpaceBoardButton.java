@@ -109,7 +109,7 @@ public class ActionSpaceBoardButton extends JButton implements ActionListener {
              for (StateFamilyMember familyMember : stateFamilyMemberList
                      ) {
                  if(familyMember.getDiceColor().equals(DiceColor.NEUTRAL)){
-                     this.familyMember[i].imageToLoad("/" +familyMember.getPlayerColor()+ " _Neutral.png");
+                     this.familyMember[i].imageToLoad("/" +familyMember.getPlayerColor().name()+ " _Neutral.png");
                  }else  this.familyMember[i].setBackground(getFamilyMemberColor(familyMember.getPlayerColor()));
                     i++;
              }

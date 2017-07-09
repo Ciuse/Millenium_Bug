@@ -133,9 +133,8 @@ public class Player {
     public void addExcommunication(ExcommunicationTiles excommunicationTiles) {
         this.excommunicationTiles.add(excommunicationTiles);
         excommunicationTiles.activeBonus(this);
-        model.notifyViews(new MVUpdateState("Aggiornato stato PlayerResources",
+        model.notifyViews(new MVUpdateState("Aggiornato stato scomuniche Player",
                 new StateExcommunication(excommunicationTiles.getId(), excommunicationTiles.getPeriod(), excommunicationTiles.getPermanentMalus().getName(), this.playerId)));
-
     }
 
     public void addDevelopmentCard(DevelopmentCard card) {

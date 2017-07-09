@@ -31,12 +31,16 @@ public class AskPrivilegeToChoice extends JOptionPane implements ActionListener{
                 possibleValues[i] = resourceList.get(i);
             }
 
-            String choice = JOptionPane.showInputDialog(father, "SELEZIONA LA LISTA DA OTTENERE", "COUNCIL PRIVILEGE",
-                    JOptionPane.INFORMATION_MESSAGE, null,
-                    possibleValues, possibleValues[0]).toString();
+            int choice=0;
+
+            choice= JOptionPane.showOptionDialog(father,"SELEZIONA LA LISTA DA OTTENERE", "COUNCIL PRIVILEGE", JOptionPane.NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, possibleValues , possibleValues[0]);
+//
+//            choice = JOptionPane.showInputDialog(father, "SELEZIONA LA LISTA DA OTTENERE", "COUNCIL PRIVILEGE",
+//                    JOptionPane.INFORMATION_MESSAGE, null,
+//                    possibleValues, possibleValues[0]).toString();
 
             for (int i = 0; i <= numberOfChoice; i++) {
-                if (resourceList.get(i).equals(choice)) {
+                if (i==(choice)) {
                     return i;
                 }
             }

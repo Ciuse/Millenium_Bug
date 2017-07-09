@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,9 +32,17 @@ public class AskLeaderToCopy extends JOptionPane implements ActionListener {
             possibleValues[i] = valueOf(i+1);
         }
 
-        return JOptionPane.showInputDialog(father, "SELEZIONA L'ID DEL LEADER DA COPIARE", "COPY LEADER",
-                JOptionPane.INFORMATION_MESSAGE, null,
-                possibleValues, possibleValues[0]).toString();
+        String choice="";
+        try {
+            choice= JOptionPane.showInputDialog(father, "SELEZIONA L'ID DEL LEADER DA COPIARE", "COPY LEADER",
+                    JOptionPane.INFORMATION_MESSAGE, null,
+                    possibleValues, possibleValues[0]).toString();
+        } catch (NullPointerException e) {
+
+            return "0";
+        }
+
+        return choice;
     }
 
 

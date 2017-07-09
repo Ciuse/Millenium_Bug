@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  */
 public class AskActionPanel extends PaintBackgroundPanel implements ActionListener {
     private ActionListener listener;
-    private JTextArea textArea;
+    private PaintTextArea textArea;
     private JScrollPane scroll;
 
     public void attach (ActionListener listener){
@@ -39,11 +39,11 @@ public class AskActionPanel extends PaintBackgroundPanel implements ActionListen
         GridBagConstraints gbc = new GridBagConstraints();
 
 
-        textArea = new JTextArea();
+        textArea = new PaintTextArea();
+        textArea.setEditable(false);
         DefaultCaret caret = (DefaultCaret)textArea.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         scroll = new JScrollPane (textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;

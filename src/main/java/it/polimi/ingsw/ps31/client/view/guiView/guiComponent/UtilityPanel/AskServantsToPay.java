@@ -35,9 +35,14 @@ public class AskServantsToPay extends JOptionPane implements ActionListener {
             possibleValues[i] = valueOf(i);
         }
 
-        return JOptionPane.showInputDialog(father, "SELEZIONA QUANTI SERVITORI VUOI PAGARE", "PAY SERVANT",
+        Object choice=null;
+        choice = JOptionPane.showInputDialog(father, "SELEZIONA QUANTI SERVITORI VUOI PAGARE", "PAY SERVANT",
                 JOptionPane.INFORMATION_MESSAGE, null,
-                possibleValues, possibleValues[0]).toString();
+                possibleValues, possibleValues[0]);
+        if(choice!=null){
+            return choice.toString();
+        }
+        else return "0";
     }
 
 

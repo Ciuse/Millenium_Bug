@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,9 +31,14 @@ public class AskIfSupportChurch extends JOptionPane implements ActionListener {
         possibleValues[0] = "YES";
         possibleValues[1] = "NO";
 
-        String choice = JOptionPane.showInputDialog(father, "VUOI DARE IL TUO SUPPORTO ALLA CHIESA?", "VATICAN REPORT",
-                JOptionPane.INFORMATION_MESSAGE, null,
-                possibleValues, possibleValues[0]).toString();
+        String choice = "";
+        try {
+            choice = JOptionPane.showInputDialog(father, "VUOI DARE IL TUO SUPPORTO ALLA CHIESA?", "VATICAN REPORT",
+                    JOptionPane.INFORMATION_MESSAGE, null,
+                    possibleValues, possibleValues[0]).toString();
+        } catch (NullPointerException e) {
+            choice = "NO";
+        }
 
 
         if (choice.equals("YES")){

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,9 +33,15 @@ public class AskListToPay extends JOptionPane implements ActionListener{
             possibleValues[i] = valueOf(i);
         }
 
-        String choice = JOptionPane.showInputDialog(father, "SELEZIONA IL NUMERO DELLA LISTA CHE VUOI USARE", "CARD: "+cardID+" LIST TO PAY",
-                JOptionPane.INFORMATION_MESSAGE, null,
-                possibleValues, possibleValues[0]).toString();
+        String choice="";
+        try {
+            choice = JOptionPane.showInputDialog(father, "SELEZIONA IL NUMERO DELLA LISTA CHE VUOI USARE", "CARD: "+cardID+" LIST TO PAY",
+                    JOptionPane.INFORMATION_MESSAGE, null,
+                    possibleValues, possibleValues[0]).toString();
+
+        } catch (NullPointerException e) {
+            return 0;
+        }
 
 
         for (int i = 0; i <= numberOfChoice; i++) {
