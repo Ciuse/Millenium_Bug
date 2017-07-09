@@ -36,7 +36,6 @@ public class PointResourcePanel extends PaintBackgroundPanel {
         GridBagConstraints gbc = new GridBagConstraints();
 
         singlePointResourcePanel[0] = new SinglePointResourcePanel();
-        singlePointResourcePanel[0].setName("1");
         //singlePointResourcePanel[0].setBackground(Color.white);
         singlePointResourcePanel[0].imageToLoad("/ImmaginePuntiMilitare.png");
         singlePointResourcePanel[0].setName(MilitaryStrength.class.getSimpleName());
@@ -48,7 +47,6 @@ public class PointResourcePanel extends PaintBackgroundPanel {
         pane.add(singlePointResourcePanel[0], gbc);
 
         singlePointResourcePanel[1] = new SinglePointResourcePanel();
-        singlePointResourcePanel[1].setName("2");
         //singlePointResourcePanel[1].setBackground(Color.white);
         singlePointResourcePanel[1].imageToLoad("/ImmaginePuntiVittoria.png");
         singlePointResourcePanel[1].setName(VictoryPoint.class.getSimpleName());
@@ -60,7 +58,6 @@ public class PointResourcePanel extends PaintBackgroundPanel {
         pane.add(singlePointResourcePanel[1], gbc);
 
         singlePointResourcePanel[2] = new SinglePointResourcePanel();
-        singlePointResourcePanel[2].setName("3");
         //singlePointResourcePanel[2].setBackground(Color.white);
         singlePointResourcePanel[2].imageToLoad("/ImmaginePuntiFede.png");
         singlePointResourcePanel[2].setName(FaithPoint.class.getSimpleName());
@@ -79,7 +76,7 @@ public class PointResourcePanel extends PaintBackgroundPanel {
             for (Resource resource :list.getListOfResource()
                     ) {
                 if(resource.getClass().getSimpleName().equals(singlePointResourcePanel[i].getName())){
-                    singlePointResourcePanel[i].getResourceLabel().setText(valueOf(resource.getPhysicalResourceValue()));
+                    singlePointResourcePanel[i].getResourceLabel().setText(valueOf(resource.getPointResourceValue()));
                 }
             }
         }

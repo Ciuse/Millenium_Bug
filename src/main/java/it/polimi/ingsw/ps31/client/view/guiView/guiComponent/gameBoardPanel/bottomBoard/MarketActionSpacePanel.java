@@ -1,7 +1,5 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard;
 
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -90,6 +88,10 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
         pane.add(marketActionSpace[3], gbc);
 
 
+    }
+
+    public SingleBigActionSpace[] getMarketActionSpace() {
+        return marketActionSpace;
     }
 
     @Override

@@ -19,21 +19,20 @@ import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.g
 /**
  * Created by Giuseppe on 07/06/2017.
  */
-public class GuiView extends View implements ActionListener{
+public class GuiView extends View implements ActionListener {
     private MainFrame mainFrame;
 
     public GuiView(PlayerId viewId, int playerMaxNumber) {
-      super(viewId, playerMaxNumber);
-        this.mainFrame=new MainFrame(this);
+        super(viewId, playerMaxNumber);
+        this.mainFrame = new MainFrame(this);
         SwingUtilities.invokeLater(new Runnable() {
-           @Override
+            @Override
             public void run() {
-               runTerminal();
+                runTerminal();
             }
         });
 
-   }
-
+    }
 
 
     public void actionPerformed(ActionEvent ev) {
@@ -41,30 +40,40 @@ public class GuiView extends View implements ActionListener{
     }
 
 
-        @Override
+    @Override
     public void askActionSpace(ChoiceActionSpace choiceActionSpace) {
         mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().setSendClickBoard(true);
+        //attivo bottoni board
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().changeButtonBoardState(true);
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getActionSpaceCouncilButton().setEnabled(true);
     }
 
     @Override
     public void askTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace) {
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("SELEZIONA UNA CASELLA DELLA TORRE SU CUI VUOI PIAZZARE IL TUO FAMILY MEMBER");
+//        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("SELEZIONA UNA CASELLA DELLA TORRE SU CUI VUOI PIAZZARE IL TUO FAMILY MEMBER");
         mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getTowerPanel().setSendNextClick(true);
         mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getChosenActionButtonPanel().getButton6().setEnabled(true);
+        //disabilito bottoni board
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().changeButtonBoardState(false);
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getActionSpaceCouncilButton().setEnabled(false);
     }
 
     @Override
     public void askActionToDo(ChoiceActionToDo choiceActionToDo) {
 
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("QUALE AZIONE VUOI FARE?");
+//        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("QUALE AZIONE VUOI FARE?");
         mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getChosenActionButtonPanel().setEnabledActions(getMyStateViewPlayer().getStringPlayerAction());
 
+        //disabilito bottoni board
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().changeButtonBoardState(false);
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getActionSpaceCouncilButton().setEnabled(false);
     }
+
 
     @Override
     public void askIfActiveEffect(ChoiceIfActiveEffect choiceIfActiveEffect) {
 
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("SELEZIONA SE ATTIVARE O NO L'EFFETTO DELLA CARTA "+choiceIfActiveEffect.getCardIdEffect());
+//        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("SELEZIONA SE ATTIVARE O NO L'EFFETTO DELLA CARTA "+choiceIfActiveEffect.getCardIdEffect());
         AskIfActiveEffect askIfActiveEffect = new AskIfActiveEffect(mainFrame);
         notifyController(new VCActiveEffectChoice(getViewId(),askIfActiveEffect.getInput(choiceIfActiveEffect)));
     }
@@ -91,20 +100,20 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void askFamilyMember(ChoiceFamilyMember choiceFamilyMember) {
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("QUALE FAMILY MEMBER VUOI USARE?");
+//        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("QUALE FAMILY MEMBER VUOI USARE?");
         mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().setEnabledFamilyMember();
     }
 
     @Override
     public void askIfSupportChurch(ChoiceIfSupportTheChurch choiceIfSupportTheChurch) {
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("FASE RAPPORTI CON IL VATICANO");
+//        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("FASE RAPPORTI CON IL VATICANO");
         AskIfSupportChurch askListToPay = new AskIfSupportChurch(mainFrame);
         notifyController(new VCSupportTheChurchChoice(getViewId(),askListToPay.getInput()));
     }
 
     @Override
     public void askListToPay(ChoiceListToPay choiceListToPay) {
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("SELEZIONA IL PRIVILEGIO DEL CONSIGLIO DA OTTENERE");
+//        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("SELEZIONA IL PRIVILEGIO DEL CONSIGLIO DA OTTENERE");
         AskListToPay askListToPay = new AskListToPay(mainFrame);
         int choiceNumber=askListToPay.getInput(choiceListToPay.getCardId());
         notifyController(new VCListToPayChoice(getViewId(),choiceNumber));
@@ -113,7 +122,7 @@ public class GuiView extends View implements ActionListener{
     @Override
     public void askLeaderEffectToCopy(ChoiceLeaderEffectToCopy choiceLeaderEffectToCopy) {
 
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("INSERISCI L'ID DEL LEADER GIOCATO DA UN ALTRO GIOCATORE DA COPIARE");
+//        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("INSERISCI L'ID DEL LEADER GIOCATO DA UN ALTRO GIOCATORE DA COPIARE");
         AskLeaderToCopy askLeaderToCopy = new AskLeaderToCopy(mainFrame);
         Integer choiceNumber=new Integer(askLeaderToCopy.getInput());
         notifyController(new VCLeaderToCopyChoice(getViewId(),choiceLeaderEffectToCopy.getLeaderCardId(),choiceNumber));
@@ -136,7 +145,7 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void askServantToPay(ChoiceNumberOfServantsToPay choiceNumberOfServantsToPay) {
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("QUANTI SERVITORI VUOI PAGARE PER AUMENTARE IL VALORE DEL TUO FAMILY MEMBER?");
+//        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("QUANTI SERVITORI VUOI PAGARE PER AUMENTARE IL VALORE DEL TUO FAMILY MEMBER?");
         AskServantsToPay askServantsToPay = new AskServantsToPay(mainFrame);
         notifyController(new VCServantToPayChoice(getViewId(),new Integer(askServantsToPay.getInput(getMyStateViewPlayer()))));
     }
@@ -144,7 +153,7 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void askPrivilegeResourceChange(ChoicePrivilegeResource choicePrivilegeResource) {
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("SELEZIONA IL PRIVILEGIO DEL CONSIGLIO DA OTTENERE");
+//        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("SELEZIONA IL PRIVILEGIO DEL CONSIGLIO DA OTTENERE");
         AskPrivilegeToChoice askPrivilegeToChoice = new AskPrivilegeToChoice(mainFrame);
         int choiceNumber=askPrivilegeToChoice.getInput(choicePrivilegeResource.getResourceListToChoice());
         notifyController(new VCCouncilPrivilegeChoice(getViewId(),getResourceListFromCouncilPrivilege().get(choiceNumber)));
@@ -152,7 +161,7 @@ public class GuiView extends View implements ActionListener{
 
     @Override
     public void askFamilyToChangeValue(ChoiceFamilyMemberToChangeValue choiceFamilyMemberToChangeValue) {
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("A QUALE FAMILY VUOI AUMENTARE IL VALORE DI: "+choiceFamilyMemberToChangeValue.getNewValue());
+//        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("A QUALE FAMILY VUOI AUMENTARE IL VALORE DI: "+choiceFamilyMemberToChangeValue.getNewValue());
         mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().setEnabledFamilyMember();
     }
 
@@ -182,6 +191,7 @@ public class GuiView extends View implements ActionListener{
     @Override
     public void printLastEvent(String string) {
         if(!firstTime) {
+            string=string.toUpperCase();
             mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString(string);
         }
     }

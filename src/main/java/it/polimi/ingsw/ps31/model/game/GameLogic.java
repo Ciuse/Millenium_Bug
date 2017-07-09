@@ -44,6 +44,7 @@ public class GameLogic {
         this.model = model;
         gameUtility.setModel(this.model);
         gameUtility.setInformationFromNetworking(informationFromNetworking);
+        gameUtility.setMatch(match);
         this.match = match;
     }
 

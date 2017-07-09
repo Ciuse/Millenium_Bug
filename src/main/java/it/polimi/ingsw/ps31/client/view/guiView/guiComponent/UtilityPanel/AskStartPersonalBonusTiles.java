@@ -30,25 +30,28 @@ public class AskStartPersonalBonusTiles extends JFrame implements ActionListener
 
     public void startFrame() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setUndecorated(true);
+        frame.getContentPane().setBackground(Color.black);
         frame.setSize(screenSize.width / 5, screenSize.height / 2 +300);
         frame.setResizable(false);
         frame.setVisible(true);
         frame.setLocation((int) screenSize.getWidth() / (3) + 200, (int) screenSize.getHeight() / 8);
         frame.setAlwaysOnTop(true);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        gbl.rowHeights = new int[]{0, 0, 0, 0, 0};
+        gbl.rowHeights = new int[]{0, 0, 0, 0};
 
         gbl.columnWeights = new double[]{0.01, 0.2375, 0.01, 0.2375, 0.01, 0.2375, 0.01, 0.2375, 0.01, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.10, 0.05, 0.80, 0.0449, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.05, 0.85, 0.0449, Double.MIN_VALUE};
         frame.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
 
         JLabel label = new JLabel("Quale personal bonus tiles vuoi ?");
+        label.setForeground(Color.WHITE);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 1;
@@ -68,7 +71,7 @@ public class AskStartPersonalBonusTiles extends JFrame implements ActionListener
             buttons[i].setName(String.valueOf(state.getPersonalBonusTilesId()));
             buttons[i].imageToLoad("/personalbonustile_" + valueOf(state.getPersonalBonusTilesId()) + ".png");
             gbc.gridx = (2 * i) + 1;
-            gbc.gridy = 2;
+            gbc.gridy = 1;
             gbc.gridheight = 1;
             gbc.gridwidth = 1;
             gbc.fill = GridBagConstraints.BOTH;
@@ -90,6 +93,7 @@ public class AskStartPersonalBonusTiles extends JFrame implements ActionListener
                 ) {
             if (nameButton.equals(valueOf(state.getPersonalBonusTilesId()))) {
                 guiView.notifyController(new VCPersonalTilesChoice(guiView.getViewId(), state.getPersonalBonusTilesId()));
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         }

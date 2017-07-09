@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard;
 
+
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.SingleBigActionSpace;
 
 import javax.swing.*;
@@ -15,7 +16,7 @@ import static java.lang.String.valueOf;
 public class CouncilPanel extends JPanel implements ActionListener{
     private ActionListener listener;
     private ExcommunicationPanel excommunicationPanel;
-    private SingleBigActionSpace actionSpaceCouncilPanel;
+    private SingleBigActionSpace actionSpaceCouncilButton;
 
 
     public void attach (ActionListener listener){
@@ -49,19 +50,19 @@ public class CouncilPanel extends JPanel implements ActionListener{
         //excommunicationPanel.setBackground(Color.RED);
         pane.add(excommunicationPanel,gbc);
 
-        actionSpaceCouncilPanel = new SingleBigActionSpace();
+        actionSpaceCouncilButton = new SingleBigActionSpace();
         gbc.gridx = 3;
         gbc.gridy = 0;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        actionSpaceCouncilPanel.setName(valueOf(1));
-        actionSpaceCouncilPanel.setPreferredSize(new Dimension(10,10));
-        actionSpaceCouncilPanel.setContentAreaFilled(false);
-        actionSpaceCouncilPanel.setOpaque(false);
-        actionSpaceCouncilPanel.addActionListener(this);
-        //actionSpaceCouncilPanel.setBackground(Color.green);
-        pane.add(actionSpaceCouncilPanel,gbc);
+        actionSpaceCouncilButton.setName(valueOf(1));
+        actionSpaceCouncilButton.setPreferredSize(new Dimension(10,10));
+        actionSpaceCouncilButton.setContentAreaFilled(false);
+        actionSpaceCouncilButton.setOpaque(false);
+        actionSpaceCouncilButton.addActionListener(this);
+        //actionSpaceCouncilButton.setBackground(Color.green);
+        pane.add(actionSpaceCouncilButton,gbc);
 
     }
 
@@ -69,8 +70,8 @@ public class CouncilPanel extends JPanel implements ActionListener{
         return excommunicationPanel;
     }
 
-    public SingleBigActionSpace getActionSpaceCouncilPanel() {
-        return actionSpaceCouncilPanel;
+    public SingleBigActionSpace getActionSpaceCouncilButton() {
+        return actionSpaceCouncilButton;
     }
 
     @Override

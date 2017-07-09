@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
 
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +13,8 @@ import java.awt.event.ActionListener;
  */
 public class AskActionPanel extends PaintBackgroundPanel implements ActionListener {
     private ActionListener listener;
-    private JLabel textArea;
+    private JTextArea textArea;
+    private JScrollPane scroll;
 
     public void attach (ActionListener listener){
         this.listener=listener;
@@ -37,23 +39,26 @@ public class AskActionPanel extends PaintBackgroundPanel implements ActionListen
         GridBagConstraints gbc = new GridBagConstraints();
 
 
-        textArea = new JLabel();
-        gbc.gridx = 0;
+        textArea = new JTextArea();
+        DefaultCaret caret = (DefaultCaret)textArea.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+        scroll = new JScrollPane (textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        textArea.setOpaque(false);
+        scroll.setOpaque(false);
         gbc.fill = GridBagConstraints.BOTH;
-        textArea.setPreferredSize(new Dimension(10, 10));
+        scroll.setPreferredSize(new Dimension(10, 10));
         //textArea.setBackground(Color.RED);
-        pane.add(textArea, gbc);
+        pane.add(scroll, gbc);
 
 
 
     }
 
     public void setString(String string){
-        this.textArea.setText(string);
+        this.textArea.append(string+"\n");
     }
 
         @Override

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.model.effect;
 
 import it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice;
+import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceListToPay;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
@@ -58,8 +59,14 @@ public class ChangeResourceEffect extends Effect {
             player.getModel().getModelChoices().getLastModelStateForControl().setResourceListToControl(resourceToPayList);
             player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(),string, new ChoiceListToPay(super.cardId)));
             int listChoose = player.getModel().getModelChoices().waitIntListToPay();
-            player.getPlayerActionSet().payResources(resourceToPayList.get(listChoose));
-            player.getPlayerActionSet().getTempResources(resourceToGainList.get(listChoose));
+
+            if(player.getActionControlSet().payResourceControl(resourceToPayList.get(listChoose))){
+                player.getPlayerActionSet().payResources(resourceToPayList.get(listChoose));
+                player.getPlayerActionSet().getTempResources(resourceToGainList.get(listChoose));
+            }
+            else {
+                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, "Non hai abbastanza risorse per attivare quello che hai detto"));
+            }
         }
     }
 

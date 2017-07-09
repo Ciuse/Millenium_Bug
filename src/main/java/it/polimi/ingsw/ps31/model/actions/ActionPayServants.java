@@ -48,7 +48,7 @@ public class ActionPayServants extends Action {
             if (player.getPlayerResources().getSpecificResource(Servant.class).getValue() > 0) {
                 //chiedere al player quanti servitori vuole pagare per aumentare il valore del familiare
                 do {
-                    String string = player.getPlayerId() + ":Quanti servitori vuoi pagare per aumentare il valore del tuo familiare?";
+                    String string = "Quanti servitori vuoi pagare per aumentare il valore del tuo familiare?";
                     player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceNumberOfServantsToPay()));
                     setServantsAmount(player.getModel().getModelChoices().waitNumberOfServantsToPay());
 

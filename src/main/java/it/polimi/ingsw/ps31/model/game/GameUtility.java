@@ -21,6 +21,7 @@ import it.polimi.ingsw.ps31.model.player.PersonalBonusTiles;
 import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.model.stateModel.StateGame;
 import it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles;
+import it.polimi.ingsw.ps31.server.Match;
 
 import java.util.*;
 
@@ -47,6 +48,7 @@ public class GameUtility {
     private List<Player> playerList = new ArrayList<>();
     private Player playerInAction;
     private GameBoard gameBoard;
+    private Match match;
     private VictoryPoint[] bonusVictoryPointFromTerritory;
     private VictoryPoint[] bonusVictoryPointFromCharacterCard;
     private VictoryPoint[] bonusVictoryPointFromMilitaryTrack;
@@ -244,7 +246,7 @@ public class GameUtility {
             cancelTimer();
             createTimerAction();
             model.getModelChoices().getLastModelStateForControl().setStateForControl(player.getStatePlayerAction());
-            String string = player.getNickname() + ": Qaule azione tra quelle che hai disponibili vuoi eseguire?";
+            String string = player.getNickname() + ": Quale azione tra quelle che hai disponibili vuoi eseguire?";
             model.notifyViews(new MVAskChoice(player.getPlayerId(), string, new ChoiceActionToDo()));
             Action actionToDo = model.getModelChoices().waitActionToDo();
             if (model.getModelChoices().getStateModelChoices().equals("StateActionGame")) {
@@ -963,6 +965,10 @@ public class GameUtility {
     public StateGame getStateGame(int period, int round, int playerNumber) {
         StateGame stateGame = new StateGame(period, round, playerList.get(playerNumber).getPlayerId());
         return stateGame;
+    }
+
+    public void setMatch(Match match) {
+        this.match = match;
     }
 
     public Model getModel() {

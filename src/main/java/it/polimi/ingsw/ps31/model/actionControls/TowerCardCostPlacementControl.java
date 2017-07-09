@@ -2,10 +2,12 @@ package it.polimi.ingsw.ps31.model.actionControls;
 
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
+import it.polimi.ingsw.ps31.model.effect.ChangeResourceEffect;
 import it.polimi.ingsw.ps31.model.effect.GetResourceEffect;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
+import javafx.scene.control.TextFormatter;
 
 import java.util.Map;
 
@@ -65,18 +67,12 @@ public class TowerCardCostPlacementControl extends Control {
                 }
             }
         }
-
-//        //simulo il dover pagare la carta
-//        if (towerCardSpace.getCard().getCostList() == null)
-//            costAffordable = true;
-//        else
-//            for (ResourceList currentCost : towerCardSpace.getCard().getCostList()) {
-//                if (currentCost.lessOrEquals(tempPlayerResources))
-//                    costAffordable = true;
-//            }
+         //simulo il dover pagare la carta
         if (!player.getActionControlSet().payCardControl(towerCardSpace.getCard(), null, tempPlayerResources)) {
             costAffordable = false;
         }
+
+
 
         resetTowerCardSpace();
         return costAffordable;

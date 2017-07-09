@@ -35,7 +35,7 @@ public class QuestionsToPlayerPanel extends JPanel implements DocumentListener{
         gbl.rowHeights = new int[]{0,0, 0, 0,0,0};
 
         gbl.columnWeights = new double[]{0.99999, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.05,0.08, 0.02,0.83,0.02, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.05,0.18, 0.02,0.73,0.02, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
 

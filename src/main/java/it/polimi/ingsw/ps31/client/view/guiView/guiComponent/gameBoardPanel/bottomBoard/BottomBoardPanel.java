@@ -123,6 +123,22 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
 
     }
 
+
+    public void changeButtonBoardState(boolean state){
+        smallActionSpaceHarvest.setEnabled(state);
+        smallActionSpaceProduction.setEnabled(state);
+        bigActionSpacePanelHarvest.setEnabled(state);
+        bigActionSpacePanelProduction.setEnabled(state);
+
+        for (SingleBigActionSpace button: marketActionSpacePanel.getMarketActionSpace()
+             ) {
+            button.setEnabled(state);
+        }
+    }
+
+
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
         listener.actionPerformed(e);

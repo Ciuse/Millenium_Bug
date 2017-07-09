@@ -87,14 +87,14 @@ public class TowerPanel extends JPanel implements ActionListener {
 
 
     public void printTower(StateViewBoard stateViewBoard) {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                int cardNumber = stateViewBoard.getStateViewTowerList().get(i).getStateViewTowerCardBox().get(j).getCardId();
-                if (cardNumber != 0) {
-                    towerCardAndActionSpacePanels[i][j].getjButtonPanel().imageToReprint("/devCard/devcards_f_en_c_" + valueOf(cardNumber) + ".png");
-                }
-            }
-        }
+//        for (int i = 0; i < 4; i++) {
+//            for (int j = 0; j < 4; j++) {
+//                int cardNumber = stateViewBoard.getStateViewTowerList().get(i).getStateViewTowerCardBox().get(j).getCardId();
+//                if (cardNumber != 0) {
+//                    towerCardAndActionSpacePanels[i][j].getjButtonPanel().imageToReprint("/devCard/devcards_f_en_c_" + valueOf(cardNumber) + ".png");
+//                }
+//            }
+//        }
     }
 
     public void printSingleCardBox(StateViewTowerCardBox stateViewTowerCardBox) {
@@ -141,6 +141,8 @@ public class TowerPanel extends JPanel implements ActionListener {
                         if (!sendNextClick) {
                             JFrame frame = new JFrame(nameButton);
                             frame.setLocation((int) screenSize.getHeight() / 8, (int) screenSize.getWidth() / 16);
+                            frame.setUndecorated(true);
+                            frame.getContentPane().setBackground(Color.black);
                             frame.setAlwaysOnTop(true);
                             frame.setSize(screenSize.width / (37 / 6), screenSize.height / (32 / 12));
                             frame.setVisible(true);
