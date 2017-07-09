@@ -41,6 +41,7 @@ public class BottomBoardPanel extends JPanel  {
         gbc.gridheight = 3;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        smallActionSpace.setPreferredSize(new Dimension(10, 10));
         smallActionSpace.setOpaque(false);
         //smallActionSpace.setBackground(Color.green);
         pane.add(smallActionSpace,gbc);

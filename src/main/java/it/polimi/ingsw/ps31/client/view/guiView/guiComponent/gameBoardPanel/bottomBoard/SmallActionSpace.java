@@ -41,10 +41,11 @@ public class SmallActionSpace extends JPanel implements ActionListener{
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+
         buttons[0].setName("buttonProduction");
         buttons[0].setContentAreaFilled(false);
-        buttons[0].setOpaque(false);
-        //buttons[0].setBackground(Color.RED);
+        buttons[0].setOpaque(true);
+        buttons[0].setBackground(Color.RED);
         pane.add(buttons[0],gbc);
 
         buttons[1] = new MarketButton();

@@ -42,6 +42,7 @@ public class SingleBigActionSpace extends JButton implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        familyMember[0].setPreferredSize(new Dimension(10,10));
         familyMember[0].setBackground(Color.BLUE);
         pane.add(familyMember[0], gbc);
 
@@ -51,6 +52,7 @@ public class SingleBigActionSpace extends JButton implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        familyMember[1].setPreferredSize(new Dimension(10,10));
         familyMember[1].setBackground(Color.green);
         pane.add(familyMember[1], gbc);
 
@@ -60,6 +62,7 @@ public class SingleBigActionSpace extends JButton implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        familyMember[2].setPreferredSize(new Dimension(10,10));
         familyMember[2].setBackground(Color.pink);
         pane.add(familyMember[2], gbc);
 
@@ -69,6 +72,7 @@ public class SingleBigActionSpace extends JButton implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        familyMember[3].setPreferredSize(new Dimension(10,10));
         familyMember[3].setBackground(Color.black);
         pane.add(familyMember[3], gbc);
 
@@ -78,6 +82,7 @@ public class SingleBigActionSpace extends JButton implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        familyMember[4].setPreferredSize(new Dimension(10,10));
         familyMember[4].setBackground(Color.yellow);
         pane.add(familyMember[4], gbc);
 
@@ -87,6 +92,7 @@ public class SingleBigActionSpace extends JButton implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        familyMember[5].setPreferredSize(new Dimension(10,10));
         familyMember[5].setBackground(Color.red);
         pane.add(familyMember[5], gbc);
 

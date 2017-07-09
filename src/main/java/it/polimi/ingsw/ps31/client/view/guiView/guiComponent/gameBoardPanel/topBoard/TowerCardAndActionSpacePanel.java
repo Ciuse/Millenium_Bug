@@ -42,6 +42,7 @@ public class TowerCardAndActionSpacePanel extends JPanel implements ActionListen
         jButtonPanel.setName(numberOfActionSpace);
         jButtonPanel.addActionListener(this);
         jButtonPanel.setContentAreaFilled(false);
+        jButtonPanel.setPreferredSize(new Dimension(10,10));
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 3;
@@ -57,6 +58,7 @@ public class TowerCardAndActionSpacePanel extends JPanel implements ActionListen
         gbc.fill = GridBagConstraints.BOTH;
         //singleSmallActionSpacePanel.setBackground(Color.green);
         singleSmallActionSpacePanel.setOpaque(false);
+        singleSmallActionSpacePanel.setPreferredSize(new Dimension(10,10));
         pane.add(singleSmallActionSpacePanel,gbc);
     }
 

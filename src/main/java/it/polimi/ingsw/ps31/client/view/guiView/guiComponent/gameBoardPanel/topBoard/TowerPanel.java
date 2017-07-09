@@ -51,7 +51,8 @@ public class TowerPanel extends JPanel implements ActionListener {
                 gbc.gridy = 4 - j;
                 gbc.gridheight = 1;
                 gbc.gridwidth = 1;
-                towerCardAndActionSpacePanels[i][j].setBackground(Color.RED);
+                towerCardAndActionSpacePanels[i][j].setPreferredSize(new Dimension(10,10));
+//                towerCardAndActionSpacePanels[i][j].setBackground(Color.RED);
                 gbc.fill = gbc.BOTH;
                 towerCardAndActionSpacePanels[i][j].setOpaque(false);
                 pane.add(towerCardAndActionSpacePanels[i][j], gbc);

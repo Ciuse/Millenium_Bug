@@ -49,6 +49,7 @@ public class ExcommunicationPanel extends JPanel implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        buttonExcommunication1.setPreferredSize(new Dimension(10,10));
         //buttonExcommunication1.setBackground(Color.green);
         buttonExcommunication1.addActionListener(this);
         //buttonExcommunication1.setOpaque(false);
@@ -64,6 +65,7 @@ public class ExcommunicationPanel extends JPanel implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        buttonExcommunication2.setPreferredSize(new Dimension(10,10));
         //buttonExcommunication2.setBackground(Color.red);
         buttonExcommunication2.addActionListener(this);
         //buttonExcommunication2.setOpaque(false);
@@ -77,6 +79,7 @@ public class ExcommunicationPanel extends JPanel implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        buttonExcommunication3.setPreferredSize(new Dimension(10,10));
         //buttonExcommunication3.setBackground(Color.yellow);
         buttonExcommunication3.addActionListener(this);
         //buttonExcommunication3.setOpaque(false);
