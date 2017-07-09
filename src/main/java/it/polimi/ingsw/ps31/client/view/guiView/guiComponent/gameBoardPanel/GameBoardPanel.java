@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bott
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.TopBoardPanel;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.*;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.messages.messageVC.VCActionSpace;
 import it.polimi.ingsw.ps31.messages.messageVC.VCTowerCardSpaceChoice;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
 
@@ -26,6 +27,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
     private MilitaryTrackPanel militaryTrackPanel;
     private VictoryPointTrackSecondColumnPanel victoryPointTrackSecondColumnPanel;
     private GuiView guiView;
+    private boolean sendClickBoard=false;
 
     public void paintComponent(Graphics g) {
         super.imageToLoad("/gameboard1_f_c.png");
@@ -99,7 +101,6 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         faithPointTrackPanel.attach(this);
 
         bottomBoardPanel = new BottomBoardPanel();
-        bottomBoardPanel.attach(this);
         c.gridx = 1;
         c.gridy = 3;
         c.gridheight = 1;
@@ -153,6 +154,14 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         return topBoardPanel;
     }
 
+    public boolean isSendClickBoard() {
+        return sendClickBoard;
+    }
+
+    public void setSendClickBoard(boolean sendClickBoard) {
+        this.sendClickBoard = sendClickBoard;
+    }
+
     public VictoryPointTrackFirstColumnPanel getVictoryPointTrackFirstColumnPanel() {
         return victoryPointTrackFirstColumnPanel;
     }
@@ -191,6 +200,12 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
             int floorNumber=getTopBoardPanel().getTowerPanel().getFloorNumberFromButtonName(buttonNumber);
             guiView.notifyController(new VCTowerCardSpaceChoice(guiView.getViewId(),cardColor,floorNumber));
             getTopBoardPanel().getTowerPanel().setSendNextClick(false);
+        }
+
+        if(sendClickBoard){
+            System.out.println(buttonNumber);
+            guiView.notifyController(new VCActionSpace(guiView.getViewId(),buttonNumber));
+            setSendClickBoard(false);
         }
 
     }

@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static java.lang.String.valueOf;
+
 /**
  * Created by giulia on 26/06/2017.
  */
@@ -53,9 +55,11 @@ public class CouncilPanel extends JPanel implements ActionListener{
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        actionSpaceCouncilPanel.setName(valueOf(1));
         actionSpaceCouncilPanel.setPreferredSize(new Dimension(10,10));
         actionSpaceCouncilPanel.setContentAreaFilled(false);
         actionSpaceCouncilPanel.setOpaque(false);
+        actionSpaceCouncilPanel.attach(this);
         //actionSpaceCouncilPanel.setBackground(Color.green);
         pane.add(actionSpaceCouncilPanel,gbc);
 
@@ -71,6 +75,6 @@ public class CouncilPanel extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        listener.actionPerformed(e);
     }
 }

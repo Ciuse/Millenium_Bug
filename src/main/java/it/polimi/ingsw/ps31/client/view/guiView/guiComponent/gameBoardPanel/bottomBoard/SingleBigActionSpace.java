@@ -103,6 +103,6 @@ public class SingleBigActionSpace extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        listener.actionPerformed(e);
     }
 }

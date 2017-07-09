@@ -43,6 +43,7 @@ public class GuiView extends View implements ActionListener{
 
         @Override
     public void askActionSpace(ChoiceActionSpace choiceActionSpace) {
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().setSendClickBoard(true);
     }
 
     @Override
