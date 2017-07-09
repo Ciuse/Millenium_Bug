@@ -1,17 +1,22 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard;
 
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewActionSpace;
+import it.polimi.ingsw.ps31.model.constants.DiceColor;
+import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.player.FamilyMember;
+import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * Created by giulia on 01/07/2017.
  */
-public class SingleBigActionSpace extends JButton implements ActionListener {
+public class ActionSpaceBoardButton extends JButton implements ActionListener {
     private ActionListener listener;
     private PaintBackgroundPanel[] familyMember = new PaintBackgroundPanel[6];
 
@@ -19,7 +24,7 @@ public class SingleBigActionSpace extends JButton implements ActionListener {
         this.listener=listener;
     }
 
-    public SingleBigActionSpace() {
+    public ActionSpaceBoardButton() {
         addComponentsToPane(this);
     }
 
@@ -98,7 +103,31 @@ public class SingleBigActionSpace extends JButton implements ActionListener {
 
         }
 
+ public void printFamilyMemberOnBottomBoard(List<StateFamilyMember> stateFamilyMemberList) {
+     if (stateFamilyMemberList.size() != 0) {
+         int i = 0;
+             for (StateFamilyMember familyMember : stateFamilyMemberList
+                     ) {
+                 if(familyMember.getDiceColor().equals(DiceColor.NEUTRAL)){
+                     this.familyMember[i].imageToLoad("/" +familyMember.getPlayerColor()+ " _Neutral.png");
+                 }else  this.familyMember[i].setBackground(getFamilyMemberColor(familyMember.getPlayerColor()));
+                    i++;
+             }
+         }
+     }
 
+
+    public Color getFamilyMemberColor(PlayerColor playerColor){
+        if(playerColor==playerColor.RED){
+            return Color.RED;
+        }if(playerColor==playerColor.GREEN){
+            return Color.GREEN;
+        }if(playerColor==playerColor.BLUE){
+            return Color.BLUE;
+        }if(playerColor==playerColor.YELLOW){
+            return Color.YELLOW;
+        } else return null;
+    }
 
 
     @Override

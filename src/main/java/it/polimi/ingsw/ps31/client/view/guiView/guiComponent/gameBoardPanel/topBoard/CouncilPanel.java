@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard;
 
-
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.SingleBigActionSpace;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.ActionSpaceBoardButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +15,7 @@ import static java.lang.String.valueOf;
 public class CouncilPanel extends JPanel implements ActionListener{
     private ActionListener listener;
     private ExcommunicationPanel excommunicationPanel;
-    private SingleBigActionSpace actionSpaceCouncilButton;
+    private ActionSpaceBoardButton actionSpaceCouncilPanel;
 
 
     public void attach (ActionListener listener){
@@ -50,19 +49,19 @@ public class CouncilPanel extends JPanel implements ActionListener{
         //excommunicationPanel.setBackground(Color.RED);
         pane.add(excommunicationPanel,gbc);
 
-        actionSpaceCouncilButton = new SingleBigActionSpace();
+        actionSpaceCouncilPanel = new ActionSpaceBoardButton();
         gbc.gridx = 3;
         gbc.gridy = 0;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        actionSpaceCouncilButton.setName(valueOf(1));
-        actionSpaceCouncilButton.setPreferredSize(new Dimension(10,10));
-        actionSpaceCouncilButton.setContentAreaFilled(false);
-        actionSpaceCouncilButton.setOpaque(false);
-        actionSpaceCouncilButton.addActionListener(this);
-        //actionSpaceCouncilButton.setBackground(Color.green);
-        pane.add(actionSpaceCouncilButton,gbc);
+        actionSpaceCouncilPanel.setName(valueOf(1));
+        actionSpaceCouncilPanel.setPreferredSize(new Dimension(10,10));
+        actionSpaceCouncilPanel.setContentAreaFilled(false);
+        actionSpaceCouncilPanel.setOpaque(false);
+        actionSpaceCouncilPanel.addActionListener(this);
+        //actionSpaceCouncilPanel.setBackground(Color.green);
+        pane.add(actionSpaceCouncilPanel,gbc);
 
     }
 
@@ -70,8 +69,8 @@ public class CouncilPanel extends JPanel implements ActionListener{
         return excommunicationPanel;
     }
 
-    public SingleBigActionSpace getActionSpaceCouncilButton() {
-        return actionSpaceCouncilButton;
+    public ActionSpaceBoardButton getActionSpaceCouncilPanel() {
+        return actionSpaceCouncilPanel;
     }
 
     @Override

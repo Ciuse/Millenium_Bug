@@ -4,11 +4,14 @@ import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.*;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.MainFrame;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewActionSpace;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
 import it.polimi.ingsw.ps31.messages.messageVC.*;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
+import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
+import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -45,7 +48,7 @@ public class GuiView extends View implements ActionListener {
         mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().setSendClickBoard(true);
         //attivo bottoni board
         mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().changeButtonBoardState(true);
-        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getActionSpaceCouncilButton().setEnabled(true);
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getActionSpaceCouncilPanel().setEnabled(true);
     }
 
     @Override
@@ -55,7 +58,7 @@ public class GuiView extends View implements ActionListener {
         mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getChosenActionButtonPanel().getButton6().setEnabled(true);
         //disabilito bottoni board
         mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().changeButtonBoardState(false);
-        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getActionSpaceCouncilButton().setEnabled(false);
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getActionSpaceCouncilPanel().setEnabled(false);
     }
 
     @Override
@@ -66,7 +69,7 @@ public class GuiView extends View implements ActionListener {
 
         //disabilito bottoni board
         mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().changeButtonBoardState(false);
-        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getActionSpaceCouncilButton().setEnabled(false);
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getActionSpaceCouncilPanel().setEnabled(false);
     }
 
 
@@ -256,7 +259,12 @@ public class GuiView extends View implements ActionListener {
 
     }
 
- @Override
+    @Override
+    public void printBoardActionSpace() {
+
+    }
+
+    @Override
  public void printMyTiles() {
      mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBonusTilesPanel().printTiles(getMyStateViewPlayer().getStateViewPersonalBonusTiles());
 
@@ -273,10 +281,32 @@ public class GuiView extends View implements ActionListener {
 
 
 
-    @Override
-    public void printBoardActionSpace() {
+    public void printBoardActionSpace(StateActionSpace actionSpace) {
+            if(actionSpace.getNumberOfActionSpace()==17){
+                mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getActionSpaceCouncilPanel().printFamilyMemberOnBottomBoard(actionSpace.getStateFamilyMemberList());
+            } if(actionSpace.getNumberOfActionSpace()>=18&&actionSpace.getNumberOfActionSpace()<=21){
+                for(int i=0;i<4;i++){
+                    mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getActionSpaceBoardButtons()[i].printFamilyMemberOnBottomBoard(actionSpace.getStateFamilyMemberList());
+                }
+            }if(actionSpace.getNumberOfActionSpace()>=22&&actionSpace.getNumberOfActionSpace()<=25){
+                for(int i=0;i<4;i++){
+                mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getMarketActionSpacePanel().getMarketActionSpace()[i].printFamilyMemberOnBottomBoard(actionSpace.getStateFamilyMemberList());
+                }
+            }
+        }
 
-    }
+
+    public void printTowerActionSpace(StateActionSpace actionSpace){
+            if (actionSpace.getNumberOfActionSpace() >= 1 && actionSpace.getNumberOfActionSpace() <= 16) {
+                for (int i = 0; i < 4; i++) {
+                    for (int j = 0; j < 4; j++) {
+                        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getTowerPanel().getTowerCardAndActionSpacePanels()[i][j].getSingleSmallActionSpacePanel().printFamilyMemberOnTopBoard(actionSpace.getStateFamilyMemberList());
+                    }
+                }
+            }
+        }
+
+
 
     @Override
     public void printDevelopmentCard(int cardId) {

@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
  */
 public class BigActionSpacePanel extends JPanel implements ActionListener {
     private ActionListener listener;
-    private SingleBigActionSpace singleBigActionSpaceButtonProduction;
-    private SingleBigActionSpace singleBigActionSpaceButtonHarvest;
+    private ActionSpaceBoardButton actionSpaceBoardButtonProduction;
+    private ActionSpaceBoardButton actionSpaceBoardButtonHarvest;
 
 
     public void attach (ActionListener listener){
@@ -35,27 +35,27 @@ public class BigActionSpacePanel extends JPanel implements ActionListener {
         GridBagConstraints gbc = new GridBagConstraints();
 
 
-        singleBigActionSpaceButtonProduction = new SingleBigActionSpace();
+        actionSpaceBoardButtonProduction = new ActionSpaceBoardButton();
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        singleBigActionSpaceButtonProduction.setContentAreaFilled(false);
-        //singleBigActionSpaceButtonProduction.setOpaque(false);
-        //singleBigActionSpaceButtonProduction.setBackground(Color.RED);
-        pane.add(singleBigActionSpaceButtonProduction, gbc);
+        actionSpaceBoardButtonProduction.setContentAreaFilled(false);
+        //actionSpaceBoardButtonProduction.setOpaque(false);
+        //actionSpaceBoardButtonProduction.setBackground(Color.RED);
+        pane.add(actionSpaceBoardButtonProduction, gbc);
 
-        singleBigActionSpaceButtonHarvest = new SingleBigActionSpace();
+        actionSpaceBoardButtonHarvest = new ActionSpaceBoardButton();
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        singleBigActionSpaceButtonHarvest.setContentAreaFilled(false);
-        //singleBigActionSpaceButtonHarvest.setOpaque(false);
-        //singleBigActionSpaceButtonHarvest.setBackground(Color.black);
-        pane.add(singleBigActionSpaceButtonHarvest, gbc);
+        actionSpaceBoardButtonHarvest.setContentAreaFilled(false);
+        //actionSpaceBoardButtonHarvest.setOpaque(false);
+        //actionSpaceBoardButtonHarvest.setBackground(Color.black);
+        pane.add(actionSpaceBoardButtonHarvest, gbc);
     }
 
     @Override

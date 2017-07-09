@@ -1,11 +1,15 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard;
 
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewActionSpace;
+import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
+import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * Created by giulia on 29/06/2017.
@@ -72,7 +76,31 @@ public class SingleSmallActionSpacePanel extends JPanel  {
         }
 
 
+    public void printFamilyMemberOnTopBoard(List<StateFamilyMember> stateFamilyMemberList) {
+        if (stateFamilyMemberList.size() != 0) {
+            int i = 0;
+                for (StateFamilyMember familyMember : stateFamilyMemberList
+                        ) {
+                    if(familyMember.getDiceColor().equals(DiceColor.NEUTRAL)){
+                        this.familyMemberPanel[i].imageToLoad("/" +familyMember.getPlayerColor()+ " _Neutral.png");;
+                    }else  this.familyMemberPanel[i].setBackground(getFamilyMemberColor(familyMember.getPlayerColor()));
+                        i++;
+                }
+            }
+        }
 
+
+    public Color getFamilyMemberColor(PlayerColor playerColor){
+        if(playerColor==playerColor.RED){
+            return Color.RED;
+        }if(playerColor==playerColor.GREEN){
+            return Color.GREEN;
+        }if(playerColor==playerColor.BLUE){
+            return Color.BLUE;
+        }if(playerColor==playerColor.YELLOW){
+            return Color.YELLOW;
+        } else return null;
+    }
 
     public JPanel[] getFamilyMemberPanel() {
         return familyMemberPanel;

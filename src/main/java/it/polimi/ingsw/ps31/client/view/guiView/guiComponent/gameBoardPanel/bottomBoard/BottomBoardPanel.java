@@ -12,12 +12,9 @@ import static java.lang.String.valueOf;
  */
 public class BottomBoardPanel extends JPanel implements ActionListener  {
     private ActionListener listener;
-    private SingleBigActionSpace smallActionSpaceProduction;
-    private SingleBigActionSpace smallActionSpaceHarvest;
-    private SingleBigActionSpace bigActionSpacePanelProduction;
-    private SingleBigActionSpace bigActionSpacePanelHarvest;
     private MarketActionSpacePanel marketActionSpacePanel;
-    private DicePanel dicePanel;
+    private ActionSpaceBoardButton[] actionSpaceBoardButtons = new ActionSpaceBoardButton[4];
+    private DicesPanel dicesPanel;
 
 
     public void attach (ActionListener listener){
@@ -40,62 +37,65 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        smallActionSpaceProduction = new SingleBigActionSpace();
+        //SmallActionSpaceProduction
+        actionSpaceBoardButtons[0]  = new ActionSpaceBoardButton();
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        smallActionSpaceProduction.setName(valueOf(4));
-        smallActionSpaceProduction.setPreferredSize(new Dimension(10,10));
-//        smallActionSpaceProduction.setOpaque(false);
-        smallActionSpaceProduction.setContentAreaFilled(false);
-        //smallActionSpaceProduction.setBackground(Color.green);
-        smallActionSpaceProduction.addActionListener(this);
-        pane.add(smallActionSpaceProduction,gbc);
+        actionSpaceBoardButtons[0].setName(valueOf(4));
+        actionSpaceBoardButtons[0].setPreferredSize(new Dimension(10,10));
+//        actionSpaceBoardButtons[0].setOpaque(false);
+        actionSpaceBoardButtons[0].setContentAreaFilled(false);
+        //actionSpaceBoardButtons[0].setBackground(Color.green);
+        actionSpaceBoardButtons[0].addActionListener(this);
+        pane.add(actionSpaceBoardButtons[0],gbc);
 
-        smallActionSpaceHarvest = new SingleBigActionSpace();
+        //SmallActionSpaceHarvest
+        actionSpaceBoardButtons[1] = new ActionSpaceBoardButton();
         gbc.gridx = 1;
         gbc.gridy = 3;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        smallActionSpaceHarvest.setName(valueOf(2));
-        smallActionSpaceHarvest.setContentAreaFilled(false);
-        smallActionSpaceHarvest.setPreferredSize(new Dimension(10,10));
-//        smallActionSpaceHarvest.setOpaque(false);
-        //smallActionSpaceHarvest.setBackground(Color.green);
-        smallActionSpaceHarvest.addActionListener(this);
-        pane.add(smallActionSpaceHarvest,gbc);
+        actionSpaceBoardButtons[1].setName(valueOf(2));
+        actionSpaceBoardButtons[1].setContentAreaFilled(false);
+        actionSpaceBoardButtons[1].setPreferredSize(new Dimension(10,10));
+//        actionSpaceBoardButtons[1].setOpaque(false);
+        //actionSpaceBoardButtons[1].setBackground(Color.green);
+        actionSpaceBoardButtons[1].addActionListener(this);
+        pane.add(actionSpaceBoardButtons[1],gbc);
 
-
-        bigActionSpacePanelProduction = new SingleBigActionSpace();
+        //bigActionSpacePanelProduction
+        actionSpaceBoardButtons[2] = new ActionSpaceBoardButton();
         gbc.gridx = 3;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        bigActionSpacePanelProduction.setName(valueOf(5));
-        bigActionSpacePanelProduction.setContentAreaFilled(false);
-        bigActionSpacePanelProduction.setPreferredSize(new Dimension(10,10));
-//        bigActionSpacePanelProduction.setOpaque(false);
-        //bigActionSpacePanelProduction.setBackground(Color.RED);
-        bigActionSpacePanelProduction.addActionListener(this);
-        pane.add(bigActionSpacePanelProduction,gbc);
+        actionSpaceBoardButtons[2].setName(valueOf(5));
+        actionSpaceBoardButtons[2].setContentAreaFilled(false);
+        actionSpaceBoardButtons[2].setPreferredSize(new Dimension(10,10));
+//        actionSpaceBoardButtons[2].setOpaque(false);
+        //actionSpaceBoardButtons[2].setBackground(Color.RED);
+        actionSpaceBoardButtons[2].addActionListener(this);
+        pane.add(actionSpaceBoardButtons[2],gbc);
 
-        bigActionSpacePanelHarvest = new SingleBigActionSpace();
+        //bigActionSpacePanelHarvest
+        actionSpaceBoardButtons[3] = new ActionSpaceBoardButton();
         gbc.gridx = 3;
         gbc.gridy = 3;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        bigActionSpacePanelHarvest.setName(valueOf(3));
-        bigActionSpacePanelHarvest.setContentAreaFilled(false);
-        bigActionSpacePanelHarvest.setPreferredSize(new Dimension(10,10));
-        bigActionSpacePanelHarvest.setOpaque(false);
-        //bigActionSpacePanelHarvest.setBackground(Color.RED);
-        bigActionSpacePanelHarvest.addActionListener(this);
-        pane.add(bigActionSpacePanelHarvest,gbc);
+        actionSpaceBoardButtons[3].setName(valueOf(3));
+        actionSpaceBoardButtons[3].setContentAreaFilled(false);
+        actionSpaceBoardButtons[3].setPreferredSize(new Dimension(10,10));
+        actionSpaceBoardButtons[3].setOpaque(false);
+        //actionSpaceBoardButtons[3].setBackground(Color.RED);
+        actionSpaceBoardButtons[3].addActionListener(this);
+        pane.add(actionSpaceBoardButtons[3],gbc);
 
         marketActionSpacePanel = new MarketActionSpacePanel();
         gbc.gridx = 5;
@@ -109,28 +109,39 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
         marketActionSpacePanel.attach(this);
         pane.add(marketActionSpacePanel,gbc);
 
-        dicePanel = new DicePanel();
+        dicesPanel = new DicesPanel();
         gbc.gridx = 5;
         gbc.gridy = 4;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        dicePanel.setPreferredSize(new Dimension(10,10));
-        //dicePanel.setOpaque(false);
-        dicePanel.setBackground(Color.black);
-        dicePanel.attach(this);
-        pane.add(dicePanel,gbc);
+        dicesPanel.setPreferredSize(new Dimension(10,10));
+        dicesPanel.setOpaque(false);
+        //dicesPanel.setBackground(Color.black);
+        dicesPanel.attach(this);
+        pane.add(dicesPanel,gbc);
 
     }
 
+    public ActionSpaceBoardButton[] getActionSpaceBoardButtons() {
+        return actionSpaceBoardButtons;
+    }
+
+    public MarketActionSpacePanel getMarketActionSpacePanel() {
+        return marketActionSpacePanel;
+    }
+
+    public DicesPanel getDicesPanel() {
+        return dicesPanel;
+    }
 
     public void changeButtonBoardState(boolean state){
-        smallActionSpaceHarvest.setEnabled(state);
-        smallActionSpaceProduction.setEnabled(state);
-        bigActionSpacePanelHarvest.setEnabled(state);
-        bigActionSpacePanelProduction.setEnabled(state);
+        actionSpaceBoardButtons[0].setEnabled(state);
+        actionSpaceBoardButtons[1].setEnabled(state);
+        actionSpaceBoardButtons[2].setEnabled(state);
+        actionSpaceBoardButtons[3].setEnabled(state);
 
-        for (SingleBigActionSpace button: marketActionSpacePanel.getMarketActionSpace()
+        for (ActionSpaceBoardButton button: marketActionSpacePanel.getMarketActionSpace()
              ) {
             button.setEnabled(state);
         }

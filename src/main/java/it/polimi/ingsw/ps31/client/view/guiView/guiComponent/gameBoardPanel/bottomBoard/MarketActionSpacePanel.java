@@ -17,7 +17,7 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
         this.listener=listener;
     }
 
-    private SingleBigActionSpace[] marketActionSpace = new SingleBigActionSpace[4];
+    private ActionSpaceBoardButton[] marketActionSpace = new ActionSpaceBoardButton[4];
 
     public MarketActionSpacePanel() {
         addComponentsTopane(this);
@@ -35,7 +35,7 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        marketActionSpace[0] = new SingleBigActionSpace();
+        marketActionSpace[0] = new ActionSpaceBoardButton();
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridheight = 2;
@@ -48,7 +48,7 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(marketActionSpace[0], gbc);
 
-        marketActionSpace[1] = new SingleBigActionSpace();
+        marketActionSpace[1] = new ActionSpaceBoardButton();
         gbc.gridx = 3;
         gbc.gridy = 1;
         gbc.gridheight = 2;
@@ -61,7 +61,7 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(marketActionSpace[1], gbc);
 
-        marketActionSpace[2] = new SingleBigActionSpace();
+        marketActionSpace[2] = new ActionSpaceBoardButton();
         gbc.gridx = 5;
         gbc.gridy = 2;
         gbc.gridheight = 2;
@@ -74,7 +74,7 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(marketActionSpace[2], gbc);
 
-        marketActionSpace[3] = new SingleBigActionSpace();
+        marketActionSpace[3] = new ActionSpaceBoardButton();
         gbc.gridx = 6;
         gbc.gridy = 5;
         gbc.gridheight = 2;
@@ -90,7 +90,7 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
 
     }
 
-    public SingleBigActionSpace[] getMarketActionSpace() {
+    public ActionSpaceBoardButton[] getMarketActionSpace() {
         return marketActionSpace;
     }
 
