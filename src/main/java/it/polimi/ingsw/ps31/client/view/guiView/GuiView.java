@@ -193,6 +193,7 @@ public class GuiView extends View implements ActionListener{
     @Override
     public void printPlayerInAction() {
         this.printMyPhysicalResource();
+        this.printMyPointResource();
     }
 
     @Override
@@ -232,6 +233,10 @@ public class GuiView extends View implements ActionListener{
 
     public void printMyPhysicalResource(){
         mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBoardPanel().getPlayerResourcesPanel().setString(super.getMyStateViewPlayer().getPlayerResources());
+    }
+
+    public void printMyPointResource(){
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getPointResourcePanel().setString(super.getMyStateViewPlayer().getPlayerResources());
     }
 
     @Override

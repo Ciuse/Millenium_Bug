@@ -17,6 +17,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
     private ExtraCardPanel extraCardPanel;
     private LeaderCardPanel jLeaderCardPanel;
     private FamilyMemberPanel jFamilyMemberPanel;
+    private PointResourcePanel pointResourcePanel;
 
     public PlayerPanel(GuiView guiView) {
         this.guiView = guiView;
@@ -64,7 +65,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
 
         gbc.gridx = 3;
         gbc.gridy = 1;
-        gbc.gridheight = 3;
+        gbc.gridheight = 2;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         //extraCardPanel.setBackground(Color.green);
@@ -92,7 +93,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
 
         gbc.gridx = 4;
         gbc.gridy = 2;
-        gbc.gridheight = 2;
+        gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         //jFamilyMemberPanel.setBackground(Color.red);
@@ -101,6 +102,25 @@ public class PlayerPanel extends JPanel implements ActionListener {
         pane.add(jFamilyMemberPanel, gbc);
         jFamilyMemberPanel.attach(this);
 
+        pointResourcePanel = new PointResourcePanel();
+
+        gbc.gridx = 3;
+        gbc.gridy = 3;
+        gbc.gridheight = 1;
+        gbc.gridwidth = 2;
+        gbc.fill = GridBagConstraints.BOTH;
+        //pointResourcePanel.setBackground(Color.red);
+        pointResourcePanel.setOpaque(false);
+        pointResourcePanel.setPreferredSize(new Dimension(10, 10));
+        pane.add(pointResourcePanel, gbc);
+        pointResourcePanel.attach(this);
+
+
+
+    }
+
+    public PointResourcePanel getPointResourcePanel() {
+        return pointResourcePanel;
     }
 
     public PersonalBonusTilesPanel getjPersonalBonusTilesPanel() {

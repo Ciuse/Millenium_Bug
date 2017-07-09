@@ -23,18 +23,17 @@ public class SpecificResourcePanel extends PaintBackgroundPanel {
         gbl.rowHeights = new int[]{0, 0,0,0};
 
         gbl.columnWeights = new double[]{0.09,0.09, 0.1533,0.33, 0.33, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.43, 0.13, 0.43, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.43, 0.13, 0.215,0.215, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
 
 
         resourcePanel = new PaintBackgroundPanel();
-        gbc.gridx = 2;
-        gbc.gridy = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        resourcePanel.imageToLoad("/sfondorisorse.jpg");
         resourcePanel.setOpaque(false);
         resource = new JLabel();
         resourcePanel.add(resource);

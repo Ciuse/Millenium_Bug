@@ -14,7 +14,7 @@ public class TowerCardAndActionSpacePanel extends JPanel implements ActionListen
     private ActionListener listener;
     private String numberOfActionSpace;
     ButtonCard jButtonPanel = new ButtonCard();
-    TowerActionSpacePanel towerActionSpacePanel = new TowerActionSpacePanel();
+    SingleSmallActionSpacePanel singleSmallActionSpacePanel = new SingleSmallActionSpacePanel();
 
 
     public TowerCardAndActionSpacePanel(String numberOfActionSpace) {
@@ -33,7 +33,7 @@ public class TowerCardAndActionSpacePanel extends JPanel implements ActionListen
         gbl.columnWidths = new int[]{0,0,0};
         gbl.rowHeights = new int[]{0,0,0,0};
 
-        gbl.columnWeights = new double[]{0.52,0.47999,Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.55,0.44999,Double.MIN_VALUE};
         gbl.rowWeights = new double[]{0.25,0.551,0.199,Double.MIN_VALUE};
         pane.setLayout(gbl);
 
@@ -41,6 +41,7 @@ public class TowerCardAndActionSpacePanel extends JPanel implements ActionListen
 
         jButtonPanel.setName(numberOfActionSpace);
         jButtonPanel.addActionListener(this);
+        jButtonPanel.setContentAreaFilled(false);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 3;
@@ -54,13 +55,13 @@ public class TowerCardAndActionSpacePanel extends JPanel implements ActionListen
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //towerActionSpacePanel.setBackground(Color.green);
-        towerActionSpacePanel.setOpaque(false);
-        pane.add(towerActionSpacePanel,gbc);
+        //singleSmallActionSpacePanel.setBackground(Color.green);
+        singleSmallActionSpacePanel.setOpaque(false);
+        pane.add(singleSmallActionSpacePanel,gbc);
     }
 
-    public TowerActionSpacePanel getTowerActionSpacePanel() {
-        return towerActionSpacePanel;
+    public SingleSmallActionSpacePanel getSingleSmallActionSpacePanel() {
+        return singleSmallActionSpacePanel;
     }
 
     public String getNumberStringOfActionSpace() {

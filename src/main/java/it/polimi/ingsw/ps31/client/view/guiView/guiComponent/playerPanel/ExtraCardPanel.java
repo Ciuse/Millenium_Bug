@@ -43,7 +43,7 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
         gbl.rowHeights = new int[]{0,0,0,0,0,0};
 
         gbl.columnWeights = new double[]{0.999999,Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.07,0.270,0.068,0.270,0.26,Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.07,0.370,0.058,0.360,0.08,Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();

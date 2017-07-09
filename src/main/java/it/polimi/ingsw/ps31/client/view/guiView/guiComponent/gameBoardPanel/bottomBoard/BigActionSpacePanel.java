@@ -28,8 +28,8 @@ public class BigActionSpacePanel extends JPanel implements ActionListener {
         gbl.columnWidths = new int[]{0, 0,0};
         gbl.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
 
-        gbl.columnWeights = new double[]{0.50,0.4999, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.33, 0.13, 0.27, 0.13, 0.1399, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.38,0.61999, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.37, 0.09, 0.27, 0.09, 0.1699, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -41,8 +41,9 @@ public class BigActionSpacePanel extends JPanel implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        singleBigActionSpaceProduction.setContentAreaFilled(false);
         //singleBigActionSpaceProduction.setOpaque(false);
-        singleBigActionSpaceProduction.setBackground(Color.RED);
+        //singleBigActionSpaceProduction.setBackground(Color.RED);
         pane.add(singleBigActionSpaceProduction, gbc);
 
         singleBigActionSpaceHarvest = new SingleBigActionSpace();
@@ -51,8 +52,9 @@ public class BigActionSpacePanel extends JPanel implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        singleBigActionSpaceHarvest.setContentAreaFilled(false);
         //singleBigActionSpaceHarvest.setOpaque(false);
-        singleBigActionSpaceHarvest.setBackground(Color.black);
+        //singleBigActionSpaceHarvest.setBackground(Color.black);
         pane.add(singleBigActionSpaceHarvest, gbc);
     }
 

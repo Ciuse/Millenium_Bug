@@ -28,20 +28,21 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
     public void addComponentsToPane(Container pane) {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
-        gbl.columnWidths = new int[]{0, 0,0,0,0,0};
-        gbl.rowHeights = new int[]{0,0};
+        gbl.columnWidths = new int[]{0, 0,0,0,0,0,0,0,0,0};
+        gbl.rowHeights = new int[]{0,0,0,0};
 
-        gbl.columnWeights = new double[]{0.15,0.15,0.15,0.13,0.42, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.99999, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.03,0.086,0.06,0.085,0.06,0.085,0.06,0.082,0.452, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.3,0.40,0.3, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
 
         resources[0] = new SpecificResourcePanel();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
+        gbc.gridx = 1;
+        gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
+        resources[0].imageToLoad("/ImmagineCoin.png");
         resources[0].setName(Coin.class.getSimpleName());
         gbc.fill = GridBagConstraints.BOTH;
         resources[0].setOpaque(false);
@@ -49,10 +50,11 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
         pane.add(resources[0], gbc);
 
         resources[1] = new SpecificResourcePanel();
-        gbc.gridx = 1;
-        gbc.gridy = 0;
+        gbc.gridx = 3;
+        gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
+        resources[1].imageToLoad("/ImmagineWood.png");
         resources[1].setName(Wood.class.getSimpleName());
         gbc.fill = GridBagConstraints.BOTH;
         resources[1].setOpaque(false);
@@ -60,10 +62,11 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
         pane.add(resources[1], gbc);
 
         resources[2] = new SpecificResourcePanel();
-        gbc.gridx = 2;
-        gbc.gridy = 0;
+        gbc.gridx = 5;
+        gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
+        resources[2].imageToLoad("/ImmagineStone.png");
         resources[2].setName(Stone.class.getSimpleName());
         gbc.fill = GridBagConstraints.BOTH;
         resources[2].setOpaque(false);
@@ -71,10 +74,11 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
         pane.add(resources[2], gbc);
 
         resources[3] = new SpecificResourcePanel();
-        gbc.gridx = 3;
-        gbc.gridy = 0;
+        gbc.gridx = 7;
+        gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
+        resources[3].imageToLoad("/ImmagineServant.png");
         resources[3].setName(Servant.class.getSimpleName());
         gbc.fill = GridBagConstraints.BOTH;
         resources[3].setOpaque(false);

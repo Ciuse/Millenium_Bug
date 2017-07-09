@@ -26,10 +26,10 @@ public class BottomBoardPanel extends JPanel  {
     public void addComponentsToPane(Container pane) {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
-        gbl.columnWidths = new int[]{0, 0, 0, 0};
+        gbl.columnWidths = new int[]{0, 0, 0, 0,0};
         gbl.rowHeights = new int[]{0, 0, 0, 0};
 
-        gbl.columnWeights = new double[]{0.15, 0.35, 0.499, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.07, 0.58,0.05, 0.299, Double.MIN_VALUE};
         gbl.rowWeights = new double[]{0.6799, 0.08, 0.24, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
@@ -56,7 +56,7 @@ public class BottomBoardPanel extends JPanel  {
         pane.add(bigActionSpacePanel,gbc);
 
         marketActionSpacePanel = new MarketActionSpacePanel();
-        gbc.gridx = 2;
+        gbc.gridx = 3;
         gbc.gridy = 0;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
@@ -69,10 +69,10 @@ public class BottomBoardPanel extends JPanel  {
         gbc.gridx = 2;
         gbc.gridy = 2;
         gbc.gridheight = 1;
-        gbc.gridwidth = 1;
+        gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.BOTH;
-        dicePanel.setOpaque(false);
-        //dicePanel.setBackground(Color.black);
+        //dicePanel.setOpaque(false);
+        dicePanel.setBackground(Color.black);
         pane.add(dicePanel,gbc);
 
     }

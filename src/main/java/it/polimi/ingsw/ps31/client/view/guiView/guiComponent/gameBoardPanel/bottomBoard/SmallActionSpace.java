@@ -12,8 +12,7 @@ import java.awt.event.ActionListener;
  */
 public class SmallActionSpace extends JPanel implements ActionListener{
     private ActionListener listener;
-    private ButtonCard buttonProduction;
-    private ButtonCard buttonHarvest;
+    private MarketButton[] buttons = new MarketButton[2];
     public void attach (ActionListener listener){
         this.listener=listener;
     }
@@ -35,27 +34,31 @@ public class SmallActionSpace extends JPanel implements ActionListener{
         GridBagConstraints gbc = new GridBagConstraints();
 
 
-        buttonProduction = new ButtonCard();
-        buttonProduction.addActionListener(this);
+        buttons[0] = new MarketButton();
+        buttons[0].addActionListener(this);
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //buttonProduction.setOpaque(false);
-        buttonProduction.setBackground(Color.RED);
-        pane.add(buttonProduction,gbc);
+        buttons[0].setName("buttonProduction");
+        buttons[0].setContentAreaFilled(false);
+        buttons[0].setOpaque(false);
+        //buttons[0].setBackground(Color.RED);
+        pane.add(buttons[0],gbc);
 
-        buttonHarvest = new ButtonCard();
-        buttonHarvest.addActionListener(this);
+        buttons[1] = new MarketButton();
+        buttons[1].addActionListener(this);
         gbc.gridx = 1;
         gbc.gridy = 3;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //buttonHarvest.setOpaque(false);
-        buttonHarvest.setBackground(Color.BLUE);
-        pane.add(buttonHarvest,gbc);
+        buttons[1].setName("buttonHarvest");
+        buttons[1].setContentAreaFilled(false);
+        //buttons[1].setOpaque(false);
+        buttons[1].setBackground(Color.BLUE);
+        pane.add(buttons[1],gbc);
 
     }
 

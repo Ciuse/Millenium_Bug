@@ -54,6 +54,7 @@ public class DevelopmentCardsOpenedPanel extends JPanel implements ActionListene
             buttonCard1 = new ButtonCard();
             buttonCard1.setName("1");
             buttonCard1.addActionListener(this);
+            buttonCard1.setContentAreaFilled(false);
             gbc.gridx = 0;
             gbc.gridy = 0;
             gbc.gridheight = 1;
@@ -66,6 +67,7 @@ public class DevelopmentCardsOpenedPanel extends JPanel implements ActionListene
             buttonCard2 = new ButtonCard();
             buttonCard2.setName("2");
             buttonCard2.addActionListener(this);
+            buttonCard2.setContentAreaFilled(false);
             gbc.gridx = 1;
             gbc.gridy = 0;
             gbc.gridheight = 1;
@@ -78,6 +80,7 @@ public class DevelopmentCardsOpenedPanel extends JPanel implements ActionListene
             buttonCard3 = new ButtonCard();
             buttonCard3.setName("3");
             buttonCard3.addActionListener(this);
+            buttonCard3.setContentAreaFilled(false);
             gbc.gridx = 2;
             gbc.gridy = 0;
             gbc.gridheight = 1;
@@ -90,6 +93,7 @@ public class DevelopmentCardsOpenedPanel extends JPanel implements ActionListene
             buttonCard4 = new ButtonCard();
             buttonCard4.setName("4");
             buttonCard4.addActionListener(this);
+            buttonCard4.setContentAreaFilled(false);
             gbc.gridx = 3;
             gbc.gridy = 0;
             gbc.gridheight = 1;
@@ -102,6 +106,7 @@ public class DevelopmentCardsOpenedPanel extends JPanel implements ActionListene
             buttonCard5 = new ButtonCard();
             buttonCard5.setName("5");
             buttonCard5.addActionListener(this);
+            buttonCard5.setContentAreaFilled(false);
             gbc.gridx = 4;
             gbc.gridy = 0;
             gbc.gridheight = 1;
@@ -114,6 +119,7 @@ public class DevelopmentCardsOpenedPanel extends JPanel implements ActionListene
             buttonCard6 = new ButtonCard();
             buttonCard6.setName("6");
             buttonCard6.addActionListener(this);
+            buttonCard6.setContentAreaFilled(false);
             gbc.gridx = 5;
             gbc.gridy = 0;
             gbc.gridheight = 1;
