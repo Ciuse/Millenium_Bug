@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 public class UtilityPanel extends JPanel implements ActionListener {
     private GuiView guiView;
     private QuestionsToPlayerPanel questionsToPlayerPanel;
-    private StateGameOtherPlayersPanel stateGameOtherPlayersPanel;
+    private OtherChosenPlayerPanel otherChosenPlayerPanel;
 
     public UtilityPanel(GuiView guiView) {
         this.guiView=guiView;
@@ -44,23 +44,23 @@ public class UtilityPanel extends JPanel implements ActionListener {
         //questionsToPlayerPanel.setBackground(Color.green);
         pane.add(questionsToPlayerPanel,gbc);
 
-        stateGameOtherPlayersPanel = new StateGameOtherPlayersPanel();
+        otherChosenPlayerPanel = new OtherChosenPlayerPanel(this.guiView);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        stateGameOtherPlayersPanel.setOpaque(false);
-        //stateGameOtherPlayersPanel.setBackground(Color.red);
-        pane.add(stateGameOtherPlayersPanel,gbc);
+        otherChosenPlayerPanel.setOpaque(false);
+//        otherChosenPlayerPanel.setBackground(Color.red);
+        pane.add(otherChosenPlayerPanel,gbc);
     }
 
     public QuestionsToPlayerPanel getQuestionsToPlayerPanel() {
         return questionsToPlayerPanel;
     }
 
-    public StateGameOtherPlayersPanel getStateGameOtherPlayersPanel() {
-        return stateGameOtherPlayersPanel;
+    public OtherChosenPlayerPanel getOtherChosenPlayerPanel() {
+        return otherChosenPlayerPanel;
     }
 
     public GuiView getGuiView() {

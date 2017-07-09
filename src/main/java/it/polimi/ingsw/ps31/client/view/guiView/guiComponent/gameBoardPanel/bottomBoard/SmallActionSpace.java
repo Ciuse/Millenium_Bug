@@ -27,7 +27,7 @@ public class SmallActionSpace extends JPanel implements ActionListener{
         gbl.columnWidths = new int[]{0, 0, 0, 0};
         gbl.rowHeights = new int[]{0, 0, 0, 0,0,0};
 
-        gbl.columnWeights = new double[]{0.25, 0.24, 0.50999, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.23, 0.18, 0.58999, Double.MIN_VALUE};
         gbl.rowWeights = new double[]{0.35, 0.13, 0.26,0.15,0.1099, Double.MIN_VALUE};
         pane.setLayout(gbl);
 

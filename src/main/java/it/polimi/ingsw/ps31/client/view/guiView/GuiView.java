@@ -49,14 +49,14 @@ public class GuiView extends View implements ActionListener{
     public void askTowerCardSpace(ChoiceTowerCardSpace choiceTowerCardSpace) {
         mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("SELEZIONA UNA CASELLA DELLA TORRE SU CUI VUOI PIAZZARE IL TUO FAMILY MEMBER");
         mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getTowerPanel().setSendNextClick(true);
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getChoosenActionButtonPanel().getButton6().setEnabled(true);
+        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getChosenActionButtonPanel().getButton6().setEnabled(true);
     }
 
     @Override
     public void askActionToDo(ChoiceActionToDo choiceActionToDo) {
 
         mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("QUALE AZIONE VUOI FARE?");
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getChoosenActionButtonPanel().setEnabledActions(getMyStateViewPlayer().getStringPlayerAction());
+        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getChosenActionButtonPanel().setEnabledActions(getMyStateViewPlayer().getStringPlayerAction());
 
     }
 

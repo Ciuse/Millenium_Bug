@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by giulia on 04/07/2017.
  */
-public class ChoosenActionButtonPanel extends PaintBackgroundPanel implements ActionListener {
+public class ChosenActionButtonPanel extends PaintBackgroundPanel implements ActionListener {
     private GuiView guiView;
     private ActionListener listener;
     private ButtonCard button1;
@@ -31,7 +31,7 @@ public class ChoosenActionButtonPanel extends PaintBackgroundPanel implements Ac
         this.listener=listener;
     }
 
-    public ChoosenActionButtonPanel(GuiView guiView) {
+    public ChosenActionButtonPanel(GuiView guiView) {
 
         this.guiView = guiView;
         addComponentsToPane(this);

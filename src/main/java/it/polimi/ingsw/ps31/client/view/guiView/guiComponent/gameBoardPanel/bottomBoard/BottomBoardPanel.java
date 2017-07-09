@@ -26,10 +26,10 @@ public class BottomBoardPanel extends JPanel  {
     public void addComponentsToPane(Container pane) {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
-        gbl.columnWidths = new int[]{0, 0, 0, 0,0};
+        gbl.columnWidths = new int[]{0, 0, 0, 0, 0};
         gbl.rowHeights = new int[]{0, 0, 0, 0};
 
-        gbl.columnWeights = new double[]{0.07, 0.58,0.05, 0.299, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.13, 0.52, 0.05, 0.299, Double.MIN_VALUE};
         gbl.rowWeights = new double[]{0.6799, 0.08, 0.24, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
