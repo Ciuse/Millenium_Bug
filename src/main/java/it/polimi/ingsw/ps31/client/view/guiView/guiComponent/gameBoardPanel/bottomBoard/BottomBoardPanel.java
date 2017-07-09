@@ -51,7 +51,7 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
 //        smallActionSpaceProduction.setOpaque(false);
         smallActionSpaceProduction.setContentAreaFilled(false);
         //smallActionSpaceProduction.setBackground(Color.green);
-        smallActionSpaceProduction.attach(this);
+        smallActionSpaceProduction.addActionListener(this);
         pane.add(smallActionSpaceProduction,gbc);
 
         smallActionSpaceHarvest = new SingleBigActionSpace();
@@ -65,7 +65,7 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
         smallActionSpaceHarvest.setPreferredSize(new Dimension(10,10));
 //        smallActionSpaceHarvest.setOpaque(false);
         //smallActionSpaceHarvest.setBackground(Color.green);
-        smallActionSpaceHarvest.attach(this);
+        smallActionSpaceHarvest.addActionListener(this);
         pane.add(smallActionSpaceHarvest,gbc);
 
 
@@ -80,7 +80,7 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
         bigActionSpacePanelProduction.setPreferredSize(new Dimension(10,10));
 //        bigActionSpacePanelProduction.setOpaque(false);
         //bigActionSpacePanelProduction.setBackground(Color.RED);
-        bigActionSpacePanelProduction.attach(this);
+        bigActionSpacePanelProduction.addActionListener(this);
         pane.add(bigActionSpacePanelProduction,gbc);
 
         bigActionSpacePanelHarvest = new SingleBigActionSpace();
@@ -94,7 +94,7 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
         bigActionSpacePanelHarvest.setPreferredSize(new Dimension(10,10));
         bigActionSpacePanelHarvest.setOpaque(false);
         //bigActionSpacePanelHarvest.setBackground(Color.RED);
-        bigActionSpacePanelHarvest.attach(this);
+        bigActionSpacePanelHarvest.addActionListener(this);
         pane.add(bigActionSpacePanelHarvest,gbc);
 
         marketActionSpacePanel = new MarketActionSpacePanel();

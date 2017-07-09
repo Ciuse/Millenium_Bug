@@ -46,7 +46,7 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
         marketActionSpace[0].setName(valueOf(6));
         marketActionSpace[0].setPreferredSize(new Dimension(10,10));
         marketActionSpace[0].setContentAreaFilled(false);
-        marketActionSpace[0].attach(this);
+        marketActionSpace[0].addActionListener(this);
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(marketActionSpace[0], gbc);
 
@@ -59,7 +59,7 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
         marketActionSpace[1].setName(valueOf(7));
         marketActionSpace[1].setPreferredSize(new Dimension(10,10));
         marketActionSpace[1].setContentAreaFilled(false);
-        marketActionSpace[1].attach(this);
+        marketActionSpace[1].addActionListener(this);
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(marketActionSpace[1], gbc);
 
@@ -72,7 +72,7 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
         marketActionSpace[2].setName(valueOf(8));
         marketActionSpace[2].setPreferredSize(new Dimension(10,10));
         marketActionSpace[2].setContentAreaFilled(false);
-        marketActionSpace[2].attach(this);
+        marketActionSpace[2].addActionListener(this);
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(marketActionSpace[2], gbc);
 
@@ -85,7 +85,7 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
         marketActionSpace[3].setName(valueOf(9));
         marketActionSpace[3].setPreferredSize(new Dimension(10,10));
         marketActionSpace[3].setContentAreaFilled(false);
-        marketActionSpace[3].attach(this);
+        marketActionSpace[3].addActionListener(this);
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(marketActionSpace[3], gbc);
 
