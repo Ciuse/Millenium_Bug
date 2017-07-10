@@ -18,6 +18,7 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
     private ButtonCard otherBoard;
     private ButtonCard playerExcomm;
     private ExcommunicationPlayerPanel excommunicationPlayerPanel;
+    private OtherPlayersPanel otherPlayersPanel;
 
 
     public void attach (ActionListener listener){
@@ -52,7 +53,7 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         otherBoard.setName("Other player board");
-        otherBoard.setEnabled(false);
+        otherBoard.setEnabled(true);
         otherBoard.setPreferredSize(new Dimension(10, 10));
         pane.add(otherBoard, gbc);
         otherBoard.addActionListener(this);
@@ -71,6 +72,8 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
 
         excommunicationPlayerPanel=new ExcommunicationPlayerPanel(guiView);
 
+        otherPlayersPanel = new OtherPlayersPanel(guiView);
+
     }
 
     public ExcommunicationPlayerPanel getExcommunicationPlayerPanel() {
@@ -84,12 +87,26 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
     public ButtonCard getPlayerExcomm() {
         return playerExcomm;
     }
+
+    public OtherPlayersPanel getOtherPlayersPanel() {
+        return otherPlayersPanel;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         ButtonCard buttonCard = (ButtonCard) e.getSource();
         String nameButton = buttonCard.getName();
         if (nameButton.equals("Other player board")) {
-
+            JFrame otherPlayersFrame = new JFrame();
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            //otherPlayersFrame.setLocation((int) screenSize.getHeight() /2 +300, (int) screenSize.getWidth() / 6);
+            otherPlayersFrame.setAlwaysOnTop(true);
+            otherPlayersFrame.setSize(screenSize.width, screenSize.height/2);
+            otherPlayersFrame.setVisible(true);
+            otherPlayersFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            Container c = otherPlayersFrame.getContentPane();
+            otherPlayersPanel.setFather(otherPlayersFrame);
+            c.add(otherPlayersPanel);
         }
 
         if (nameButton.equals("Your excommunications")) {
