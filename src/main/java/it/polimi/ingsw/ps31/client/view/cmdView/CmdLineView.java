@@ -1365,7 +1365,7 @@ public class CmdLineView extends View {
                 labelBoxTopLeft.withRelativeColumn(19),
                 ' ');
 
-        textGraphics.putString(labelBoxTopLeft.withRelative(0, 1 + i), "Player Action:");
+        textGraphics.putString(labelBoxTopLeft.withRelative(0, 1 + i), "player Action:");
         i++;
         for (String action : player.getStringPlayerAction()
                 ) {

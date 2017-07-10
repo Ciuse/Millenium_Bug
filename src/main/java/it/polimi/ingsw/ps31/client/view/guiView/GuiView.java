@@ -293,12 +293,17 @@ public class GuiView extends View implements ActionListener {
         }
         if (actionSpace.getNumberOfActionSpace() >= 18 && actionSpace.getNumberOfActionSpace() <= 21) {
             for (int i = 0; i < 4; i++) {
-                mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getActionSpaceBoardButtons()[i].printFamilyMemberOnBottomBoard(actionSpace.getStateFamilyMemberList());
+                if(actionSpace.getNumberOfActionSpace()==(i+18)){
+                    mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getActionSpaceBoardButtons()[i].printFamilyMemberOnBottomBoard(actionSpace.getStateFamilyMemberList());
+
+                }
             }
         }
         if (actionSpace.getNumberOfActionSpace() >= 22 && actionSpace.getNumberOfActionSpace() <= 25) {
             for (int i = 0; i < 4; i++) {
-                mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getMarketActionSpacePanel().getMarketActionSpace()[i].printFamilyMemberOnBottomBoard(actionSpace.getStateFamilyMemberList());
+                if (actionSpace.getNumberOfActionSpace() == (i + 22)) {
+                    mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getMarketActionSpacePanel().getMarketActionSpace()[i].printFamilyMemberOnBottomBoard(actionSpace.getStateFamilyMemberList());
+                }
             }
         }
     }

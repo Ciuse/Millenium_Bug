@@ -29,7 +29,7 @@ public class UtilityPanel extends JPanel implements ActionListener {
         gbl.rowHeights = new int[]{0, 0,0};
 
         gbl.columnWeights = new double[]{0.999999, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.70, 0.30, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.80, 0.20, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();

@@ -62,7 +62,7 @@ public abstract class View extends Observable implements Observer {
             debug += "Messaggio broadcast: accettato";
             message.accept(mVMessageVisitor);
         } else {
-            if (message.getNotifySinglePlayer().equals(this.viewId)) {  //se il messaggio notifica solo un player controllo se è la mia la View di quel Player
+            if (message.getNotifySinglePlayer().equals(this.viewId)) {  //se il messaggio notifica solo un player controllo se è la mia la View di quel player
                debug += "Messaggio indirizzato a me: accettato";
                 message.accept(mVMessageVisitor);
             } else

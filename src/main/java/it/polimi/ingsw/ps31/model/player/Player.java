@@ -133,7 +133,7 @@ public class Player {
     public void addExcommunication(ExcommunicationTiles excommunicationTiles) {
         this.excommunicationTiles.add(excommunicationTiles);
         excommunicationTiles.activeBonus(this);
-        model.notifyViews(new MVUpdateState("Aggiornato stato scomuniche Player",
+        model.notifyViews(new MVUpdateState("Aggiornato stato scomuniche player",
                 new StateExcommunication(excommunicationTiles.getId(), excommunicationTiles.getPeriod(), excommunicationTiles.getPermanentMalus().getName(), this.playerId)));
     }
 

@@ -41,6 +41,7 @@ public class AskActionPanel extends PaintBackgroundPanel implements ActionListen
 
         textArea = new PaintTextArea();
         textArea.setEditable(false);
+        textArea.setBackground(new Color(125, 66, 30));
         DefaultCaret caret = (DefaultCaret)textArea.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         scroll = new JScrollPane (textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -58,6 +59,7 @@ public class AskActionPanel extends PaintBackgroundPanel implements ActionListen
     }
 
     public void setString(String string){
+        this.textArea.setForeground(new Color(255,255,255));
         this.textArea.append(string+"\n");
     }
 

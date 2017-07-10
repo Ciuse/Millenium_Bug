@@ -124,7 +124,7 @@ public class ActionChooseCard extends Action {
             //prendo la carta
             super.player.addDevelopmentCard(chosenCardSpace.takeCard());
 
-            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato Player Personal Board", player.getPersonalBoard().getStatePersonalBoard()));
+            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato player Personal Board", player.getPersonalBoard().getStatePersonalBoard()));
             player.getModel().notifyViews(new MVUpdateState("Aggiornato stato tower card space", chosenCardSpace.getStateTowerCardBox()));
 
         } else {

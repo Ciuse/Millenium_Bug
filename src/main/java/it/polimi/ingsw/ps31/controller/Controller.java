@@ -145,7 +145,7 @@ public class Controller extends Thread implements Observer {
         }
         if (!legitAnswer) {
             if(gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
-                virtualView.reSendLastMessage("(controller) Player mi hai mentito");
+                virtualView.reSendLastMessage("(controller) player mi hai mentito");
         } else {
             for (Action action : gameUtility.getPlayerInAction().getPlayerActionSet().getActionList()
                     ) {
@@ -323,7 +323,7 @@ public class Controller extends Thread implements Observer {
         }
         if (!legitAnswer) {
             if (gameUtility.getPlayerInAction().getPlayerId().equals(viewId))
-                virtualView.reSendLastMessage("(controller) Player mi hai mentito");
+                virtualView.reSendLastMessage("(controller) player mi hai mentito");
         }
     }
 

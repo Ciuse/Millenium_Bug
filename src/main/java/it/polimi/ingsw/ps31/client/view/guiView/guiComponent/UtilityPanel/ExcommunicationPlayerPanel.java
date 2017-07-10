@@ -41,7 +41,7 @@ public class ExcommunicationPlayerPanel extends JPanel implements ActionListener
             gbl.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
             gbl.rowHeights = new int[]{0, 0, 0, 0};
 
-            gbl.columnWeights = new double[]{0.01, 0.2375, 0.01, 0.2375, 0.01, 0.2375, 0.01, Double.MIN_VALUE};
+            gbl.columnWeights = new double[]{0.04, 0.2325, 0.04, 0.2325, 0.04, 0.2325, 0.04, Double.MIN_VALUE};
             gbl.rowWeights = new double[]{0.01, 0.98, 0.01, Double.MIN_VALUE};
             pane.setLayout(gbl);
 

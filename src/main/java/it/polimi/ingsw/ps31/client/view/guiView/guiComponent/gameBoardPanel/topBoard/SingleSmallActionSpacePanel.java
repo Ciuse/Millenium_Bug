@@ -80,7 +80,7 @@ public class SingleSmallActionSpacePanel extends JPanel  {
                 for (StateFamilyMember familyMember : stateFamilyMemberList
                         ) {
                     if(familyMember.getDiceColor().equals(DiceColor.NEUTRAL)){
-                        this.familyMemberPanel[i].imageToLoad("/" +familyMember.getPlayerColor()+ " _Neutral.png");;
+                        this.familyMemberPanel[i].imageToReprint("/" +familyMember.getPlayerColor().name()+ "_Neutral.png");;
                     }else {
                         this.familyMemberPanel[i].setOpaque(true);
                         this.familyMemberPanel[i].setBackground(getFamilyMemberColor(familyMember.getPlayerColor()));

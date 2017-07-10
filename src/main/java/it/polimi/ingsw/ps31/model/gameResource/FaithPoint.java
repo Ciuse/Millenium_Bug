@@ -19,7 +19,7 @@ public class FaithPoint extends PointResource{
     }
 
 //    @Override
-//    public void addResource(Player player){
+//    public void addResource(player player){
 //        MarkerDisc markerDiscToMove=faithTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(FaithPoint.class)).unSetMarkerDisc(player);
 //        player.addResources(this);
 //        faithTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(FaithPoint.class)).setMarkerDisc(markerDiscToMove);
@@ -27,7 +27,7 @@ public class FaithPoint extends PointResource{
 
 //
 //    @Override
-//    public void addResource(Player player) {
+//    public void addResource(player player) {
 //        if(player.getPlayerResources().getSpecificResource(this.getClass()).getValue()+this.getValue()<=15)
 //        super.addResource(player);
 //        else {

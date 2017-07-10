@@ -19,7 +19,7 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
 
 
     public void paintComponent(Graphics g) {
-        super.imageToLoad("/personalBoard.jpg");
+        super.imageToLoad("/player/personalBoard.png");
         super.paintComponent(g);
     }
 

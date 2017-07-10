@@ -69,7 +69,7 @@ public class AskStartPersonalBonusTiles extends JFrame implements ActionListener
             buttons[i] = new ButtonCard();
             buttons[i].addActionListener(this);
             buttons[i].setName(String.valueOf(state.getPersonalBonusTilesId()));
-            buttons[i].imageToLoad("/personalbonustile_" + valueOf(state.getPersonalBonusTilesId()) + ".png");
+            buttons[i].imageToLoad("/player/personalbonustile_" + valueOf(state.getPersonalBonusTilesId()) + ".png");
             gbc.gridx = (2 * i) + 1;
             gbc.gridy = 1;
             gbc.gridheight = 1;

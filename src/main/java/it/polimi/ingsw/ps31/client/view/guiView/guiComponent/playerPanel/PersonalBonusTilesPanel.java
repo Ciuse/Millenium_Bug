@@ -22,8 +22,7 @@ public class PersonalBonusTilesPanel extends PaintBackgroundPanel {
     }
 
     public void printTiles(StateViewPersonalBonusTiles personalBonusTiles){
-        this.setOpaque(true);
-        imageToReprint("/personalbonustile_" + valueOf(personalBonusTiles.getPersonalBonusTilesId()) + ".png");
+        imageToReprint("/player/personalbonustileBoard_" + valueOf(personalBonusTiles.getPersonalBonusTilesId()) + ".png");
     }
 
 }

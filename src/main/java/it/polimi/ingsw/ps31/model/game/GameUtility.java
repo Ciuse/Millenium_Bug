@@ -570,7 +570,7 @@ public class GameUtility {
     }
 
 
-    /*Metoci per Riordinare la Lista dei Player*/
+    /*Metoci per Riordinare la Lista dei player*/
 
     public void playerOrderFromCouncil() { // riordina i giocatori in base all'ordine dei colori nel palazzo del concilio
 

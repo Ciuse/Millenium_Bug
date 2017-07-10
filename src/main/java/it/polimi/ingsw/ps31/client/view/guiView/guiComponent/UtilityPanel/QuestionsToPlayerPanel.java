@@ -32,10 +32,10 @@ public class QuestionsToPlayerPanel extends JPanel implements DocumentListener{
 
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0,0,0};
-        gbl.rowHeights = new int[]{0,0, 0, 0,0,0};
+        gbl.rowHeights = new int[]{0,0,0,0};
 
         gbl.columnWeights = new double[]{0.99999, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.05,0.18, 0.02,0.73,0.02, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.05,0.18, 0.73, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
 
@@ -57,11 +57,11 @@ public class QuestionsToPlayerPanel extends JPanel implements DocumentListener{
 
         chosenActionButtonPanel = new ChosenActionButtonPanel(guiView);
         gbc.gridx = 0;
-        gbc.gridy = 3;
+        gbc.gridy = 2;
         gbc.gridheight = 1;
         gbc.gridwidth = 2;
         chosenActionButtonPanel.setOpaque(false);
-        chosenActionButtonPanel.imageToLoad("/cornice 42.gif");
+//        chosenActionButtonPanel.imageToLoad("/cornice 42.gif");
         gbc.fill = GridBagConstraints.BOTH;
         chosenActionButtonPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(chosenActionButtonPanel, gbc);

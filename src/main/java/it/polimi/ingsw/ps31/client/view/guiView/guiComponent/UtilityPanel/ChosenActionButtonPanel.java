@@ -44,7 +44,7 @@ public class ChosenActionButtonPanel extends PaintBackgroundPanel implements Act
         gbl.columnWidths = new int[]{0,0,0,0,0,0,0,0};
         gbl.rowHeights = new int[]{0, 0,0,0,0,0,0,0};
 
-        gbl.columnWeights = new double[]{0.08,0.28,0.02,0.28,0.02,0.28,0.04, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.03,0.30,0.02,0.30,0.02,0.30,0.03, Double.MIN_VALUE};
         gbl.rowWeights = new double[]{0.08,0.205,0.205,0.02,0.205,0.205,0.08, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
@@ -58,7 +58,11 @@ public class ChosenActionButtonPanel extends PaintBackgroundPanel implements Act
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        button1.setEnabled(false);
+        button1.setOpaque(false);
+        button1.imageToReprint("/button/buttonBoard.png");
         button1.setName("Place FM Board");
+
         button1.setEnabled(false);
         button1.setPreferredSize(new Dimension(10, 10));
         pane.add(button1, gbc);
@@ -70,7 +74,9 @@ public class ChosenActionButtonPanel extends PaintBackgroundPanel implements Act
         gbc.gridy = 4;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
+        button2.setOpaque(false);
         button2.setEnabled(false);
+        button2.imageToReprint("/button/buttonTower.png");
         gbc.fill = GridBagConstraints.BOTH;
         button2.setName("Place FM in Tower");
         button2.setPreferredSize(new Dimension(10, 10));
@@ -84,7 +90,9 @@ public class ChosenActionButtonPanel extends PaintBackgroundPanel implements Act
         gbc.gridy = 1;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
+        button3.setOpaque(false);
         button3.setEnabled(false);
+        button3.imageToReprint("/button/buttonActiveLeader.png");
         button3.setName("Active Leader");
         gbc.fill = GridBagConstraints.BOTH;
         button3.setPreferredSize(new Dimension(10, 10));
@@ -98,7 +106,9 @@ public class ChosenActionButtonPanel extends PaintBackgroundPanel implements Act
         gbc.gridy = 4;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
+        button4.setOpaque(false);
         button4.setEnabled(false);
+        button4.imageToReprint("/button/buttonDiscardLeader.png");
         button4.setName("DiscardLeader");
         gbc.fill = GridBagConstraints.BOTH;
         button4.setPreferredSize(new Dimension(10, 10));
@@ -112,7 +122,9 @@ public class ChosenActionButtonPanel extends PaintBackgroundPanel implements Act
         gbc.gridy = 1;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
+        button5.setOpaque(false);
         button5.setEnabled(false);
+        button5.imageToReprint("/button/buttonEndTurn.png");
         gbc.fill = GridBagConstraints.BOTH;
         button5.setName("End Turn");
         button5.setPreferredSize(new Dimension(10, 10));
@@ -127,7 +139,9 @@ public class ChosenActionButtonPanel extends PaintBackgroundPanel implements Act
         gbc.gridy = 4;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
+        button6.setOpaque(false);
         button6.setEnabled(false);
+        button6.imageToReprint("/button/buttonUndoAction.png");
         gbc.fill = GridBagConstraints.BOTH;
         button6.setName("Undo Action");
         button6.setPreferredSize(new Dimension(10, 10));

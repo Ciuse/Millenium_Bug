@@ -17,7 +17,7 @@ public class VictoryPoint extends PointResource{
     }
 
 //    @Override
-//    public void addResource(Player player){
+//    public void addResource(player player){
 //        MarkerDisc markerDiscToMove=victoryTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(VictoryPoint.class)).unSetMarkerDisc(player);
 //        player.addResources(this);
 //        victoryTrack.getTrackCell().get(player.getPlayerResources().getResourceValue(VictoryPoint.class)).setMarkerDisc(markerDiscToMove);
