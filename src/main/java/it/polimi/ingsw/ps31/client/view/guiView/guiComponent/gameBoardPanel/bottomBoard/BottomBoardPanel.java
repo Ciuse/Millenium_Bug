@@ -38,64 +38,64 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
         GridBagConstraints gbc = new GridBagConstraints();
 
         //SmallActionSpaceProduction
-        actionSpaceBoardButtons[0]  = new ActionSpaceBoardButton();
+        actionSpaceBoardButtons[2]  = new ActionSpaceBoardButton();
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        actionSpaceBoardButtons[0].setName(valueOf(4));
-        actionSpaceBoardButtons[0].setPreferredSize(new Dimension(10,10));
-//        actionSpaceBoardButtons[0].setOpaque(false);
-        actionSpaceBoardButtons[0].setContentAreaFilled(false);
-        //actionSpaceBoardButtons[0].setBackground(Color.green);
-        actionSpaceBoardButtons[0].addActionListener(this);
-        pane.add(actionSpaceBoardButtons[0],gbc);
-
-        //SmallActionSpaceHarvest
-        actionSpaceBoardButtons[1] = new ActionSpaceBoardButton();
-        gbc.gridx = 1;
-        gbc.gridy = 3;
-        gbc.gridheight = 2;
-        gbc.gridwidth = 1;
-        gbc.fill = GridBagConstraints.BOTH;
-        actionSpaceBoardButtons[1].setName(valueOf(2));
-        actionSpaceBoardButtons[1].setContentAreaFilled(false);
-        actionSpaceBoardButtons[1].setPreferredSize(new Dimension(10,10));
-//        actionSpaceBoardButtons[1].setOpaque(false);
-        //actionSpaceBoardButtons[1].setBackground(Color.green);
-        actionSpaceBoardButtons[1].addActionListener(this);
-        pane.add(actionSpaceBoardButtons[1],gbc);
-
-        //bigActionSpacePanelProduction
-        actionSpaceBoardButtons[2] = new ActionSpaceBoardButton();
-        gbc.gridx = 3;
-        gbc.gridy = 1;
-        gbc.gridheight = 1;
-        gbc.gridwidth = 1;
-        gbc.fill = GridBagConstraints.BOTH;
-        actionSpaceBoardButtons[2].setName(valueOf(5));
-        actionSpaceBoardButtons[2].setContentAreaFilled(false);
+        actionSpaceBoardButtons[2].setName(valueOf(4));
         actionSpaceBoardButtons[2].setPreferredSize(new Dimension(10,10));
-//        actionSpaceBoardButtons[2].setOpaque(false);
-        //actionSpaceBoardButtons[2].setBackground(Color.RED);
+//        actionSpaceBoardButtons[0].setOpaque(false);
+        actionSpaceBoardButtons[2].setContentAreaFilled(false);
+        //actionSpaceBoardButtons[0].setBackground(Color.green);
         actionSpaceBoardButtons[2].addActionListener(this);
         pane.add(actionSpaceBoardButtons[2],gbc);
 
-        //bigActionSpacePanelHarvest
+        //SmallActionSpaceHarvest
+        actionSpaceBoardButtons[0] = new ActionSpaceBoardButton();
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        gbc.gridheight = 2;
+        gbc.gridwidth = 1;
+        gbc.fill = GridBagConstraints.BOTH;
+        actionSpaceBoardButtons[0].setName(valueOf(2));
+        actionSpaceBoardButtons[0].setContentAreaFilled(false);
+        actionSpaceBoardButtons[0].setPreferredSize(new Dimension(10,10));
+//        actionSpaceBoardButtons[1].setOpaque(false);
+        //actionSpaceBoardButtons[1].setBackground(Color.green);
+        actionSpaceBoardButtons[0].addActionListener(this);
+        pane.add(actionSpaceBoardButtons[0],gbc);
+
+        //bigActionSpacePanelProduction
         actionSpaceBoardButtons[3] = new ActionSpaceBoardButton();
+        gbc.gridx = 3;
+        gbc.gridy = 1;
+        gbc.gridheight = 1;
+        gbc.gridwidth = 1;
+        gbc.fill = GridBagConstraints.BOTH;
+        actionSpaceBoardButtons[3].setName(valueOf(5));
+        actionSpaceBoardButtons[3].setContentAreaFilled(false);
+        actionSpaceBoardButtons[3].setPreferredSize(new Dimension(10,10));
+//        actionSpaceBoardButtons[2].setOpaque(false);
+        //actionSpaceBoardButtons[2].setBackground(Color.RED);
+        actionSpaceBoardButtons[3].addActionListener(this);
+        pane.add(actionSpaceBoardButtons[3],gbc);
+
+        //bigActionSpacePanelHarvest
+        actionSpaceBoardButtons[1] = new ActionSpaceBoardButton();
         gbc.gridx = 3;
         gbc.gridy = 3;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        actionSpaceBoardButtons[3].setName(valueOf(3));
-        actionSpaceBoardButtons[3].setContentAreaFilled(false);
-        actionSpaceBoardButtons[3].setPreferredSize(new Dimension(10,10));
-        actionSpaceBoardButtons[3].setOpaque(false);
+        actionSpaceBoardButtons[1].setName(valueOf(3));
+        actionSpaceBoardButtons[1].setContentAreaFilled(false);
+        actionSpaceBoardButtons[1].setPreferredSize(new Dimension(10,10));
+        actionSpaceBoardButtons[1].setOpaque(false);
         //actionSpaceBoardButtons[3].setBackground(Color.RED);
-        actionSpaceBoardButtons[3].addActionListener(this);
-        pane.add(actionSpaceBoardButtons[3],gbc);
+        actionSpaceBoardButtons[1].addActionListener(this);
+        pane.add(actionSpaceBoardButtons[1],gbc);
 
         marketActionSpacePanel = new MarketActionSpacePanel();
         gbc.gridx = 5;
@@ -137,8 +137,8 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
 
 
     public void disableBigActionSpace(){
-        actionSpaceBoardButtons[2].setEnabled(false);
-        actionSpaceBoardButtons[2].imageToReprint("/coveringtile_2_back_.png");
+        actionSpaceBoardButtons[1].setEnabled(false);
+        actionSpaceBoardButtons[1].imageToReprint("/coveringtile_2_back_.png");
         actionSpaceBoardButtons[3].setEnabled(false);
         actionSpaceBoardButtons[3].imageToReprint("/coveringtile_2_back_.png");
 
