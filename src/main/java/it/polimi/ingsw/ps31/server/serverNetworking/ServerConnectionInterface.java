@@ -10,7 +10,6 @@ import it.polimi.ingsw.ps31.networking.ConnectionType;
 import it.polimi.ingsw.ps31.networking.JsonNetworking;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by Francesco on 08/06/2017.

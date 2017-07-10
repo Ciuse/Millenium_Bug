@@ -1,7 +1,10 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.*;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.ExtraCardPanel;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.LeaderCardPanel;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PersonalBoardPanel;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PersonalBonusTilesPanel;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 import javax.swing.*;

@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 import it.polimi.ingsw.ps31.model.choiceType.ChoiceIfActiveEffect;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

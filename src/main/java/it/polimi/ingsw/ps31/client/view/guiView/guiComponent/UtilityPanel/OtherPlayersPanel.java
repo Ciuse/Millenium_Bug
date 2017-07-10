@@ -39,7 +39,6 @@ public class OtherPlayersPanel extends JPanel implements ActionListener {
         for (StateViewPlayer player : guiView.getStateViewPlayerList()
                 ) {
             if (player.getPlayerId() != guiView.getMyStateViewPlayer().getPlayerId()) {
-                System.out.println(player.getPlayerId());
                 singleOtherPlayersPanel[i] = new SingleOtherPlayersPanel(this.guiView, player.getPlayerId());
                 gbc.gridx = i * 2;
                 gbc.gridy = 0;

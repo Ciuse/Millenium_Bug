@@ -8,10 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
 import java.util.List;
-
-import static java.lang.String.valueOf;
 
 /**
  * Created by giulia on 01/07/2017.

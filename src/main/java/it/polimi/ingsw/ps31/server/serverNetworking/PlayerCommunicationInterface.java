@@ -5,9 +5,6 @@ import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Francesco on 30/06/2017.
  * Interfaccia di comunicazione verso il singolo client. Rappresenta, per la networkInterface, il gateway di

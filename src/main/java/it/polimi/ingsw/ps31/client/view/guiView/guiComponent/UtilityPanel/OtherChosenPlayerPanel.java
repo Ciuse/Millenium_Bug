@@ -33,11 +33,11 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
 
 
         GridBagLayout gbl = new GridBagLayout();
-        gbl.columnWidths = new int[]{0,0,0,0,0,0,0,0};
+        gbl.columnWidths = new int[]{0,0,0,0};
         gbl.rowHeights = new int[]{0,0,0,0};
 
-        gbl.columnWeights = new double[]{0.08,0.28,0.02,0.28,0.02,0.28,0.04, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.35,0.2999,0.35, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.35,0.30,0.35, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.15,0.7499,0.10, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
 
@@ -51,7 +51,10 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         otherBoard.setName("Other player board");
+//        otherBoard.setContentAreaFilled(false);
+        otherBoard.setOpaque(false);
         otherBoard.setEnabled(true);
+        otherBoard.imageToReprint("/button/buttonOtherPlayer.png");
         otherBoard.setPreferredSize(new Dimension(10, 10));
         pane.add(otherBoard, gbc);
         otherBoard.addActionListener(this);
