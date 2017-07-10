@@ -249,11 +249,12 @@ public class GuiView extends View implements ActionListener {
     }
 
     public void printMyPhysicalResource() {
-        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBoardPanel().getPlayerResourcesPanel().setString(super.getMyStateViewPlayer().getPlayerResources());
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBoardPanel().getPlayerResourcesPanel().setStringPhysicalResources(super.getMyStateViewPlayer().getPlayerResources());
     }
 
     public void printMyPointResource() {
-        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getPointResourcePanel().setString(super.getMyStateViewPlayer().getPlayerResources());
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjPersonalBoardPanel().getPlayerResourcesPanel().setStringPointResources(super.getMyStateViewPlayer().getPlayerResources());
+
     }
 
     @Override

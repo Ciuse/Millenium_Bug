@@ -36,12 +36,12 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
     public void addComponentsToPane(Container pane) {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
-        gbl.columnWidths = new int[]{0, 0};
-        gbl.rowHeights = new int[]{0,0, 0, 0, 0, 0,0};
+        gbl.columnWidths = new int[]{0, 0,0,0};
+        gbl.rowHeights = new int[]{0,0, 0, 0, 0, 0,0,0,0};
 
 
-        gbl.columnWeights = new double[]{0.999999, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.07,0.31, 0.06, 0.31, 0.07,0.179999 ,Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.06,0.88,0.06, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.07,0.31, 0.06, 0.31, 0.07,0.08,0.063,0.037 ,Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -50,7 +50,7 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridheight = 1;
-        gbc.gridwidth = 1;
+        gbc.gridwidth = 3;
         gbc.fill = GridBagConstraints.BOTH;
         //cardYellow.setBackground(Color.CYAN);
         cardYellow.setOpaque(false);
@@ -62,7 +62,7 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridheight = 1;
-        gbc.gridwidth = 1;
+        gbc.gridwidth = 3;
         gbc.fill = GridBagConstraints.BOTH;
         //cardGreen.setBackground(Color.red);
         cardGreen.setOpaque(false);
@@ -71,8 +71,8 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
         cardGreen.attach(this);
 
         playerResourcesPanel = new PlayerResourcesPanel();
-        gbc.gridx = 0;
-        gbc.gridy = 5;
+        gbc.gridx = 1;
+        gbc.gridy = 6;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;

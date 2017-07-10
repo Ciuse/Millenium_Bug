@@ -14,7 +14,9 @@ import static java.lang.String.valueOf;
  */
 public class PlayerResourcesPanel extends JPanel implements ActionListener{
     ActionListener listener;
-    private SpecificResourcePanel[] resources = new SpecificResourcePanel[4];
+    private JLabel[] physicalResources = new JLabel[4];
+    private JLabel[] pointResources = new JLabel[3];
+
 
 
     public void attach (ActionListener listener){
@@ -28,91 +30,118 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
     public void addComponentsToPane(Container pane) {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
-        gbl.columnWidths = new int[]{0, 0,0,0,0,0,0,0,0,0};
-        gbl.rowHeights = new int[]{0,0,0,0};
+        gbl.columnWidths = new int[]{0, 0,0,0,0,0,0,0};
+        gbl.rowHeights = new int[]{0,0};
 
-        gbl.columnWeights = new double[]{0.03,0.086,0.06,0.085,0.06,0.085,0.06,0.082,0.452, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.3,0.40,0.3, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.01428,0.01428,0.01428,0.01428,0.01428,0.01428,0.01428, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.99999, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        resources[0] = new SpecificResourcePanel();
+        physicalResources[0] = new JLabel();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridheight = 1;
+        gbc.gridwidth = 1;
+        physicalResources[0].setName(Coin.class.getSimpleName());
+        gbc.fill = GridBagConstraints.BOTH;
+        physicalResources[0].setOpaque(false);
+        physicalResources[0].setHorizontalAlignment( JLabel.CENTER );
+        // physicalResources[i].setBackground(Color.BLUE);
+        pane.add( physicalResources[0], gbc);
+
+        physicalResources[1] = new JLabel();
         gbc.gridx = 1;
-        gbc.gridy = 1;
+        gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        resources[0].imageToLoad("/ImmagineCoin.png");
-        resources[0].setName(Coin.class.getSimpleName());
+        physicalResources[1].setName(Wood.class.getSimpleName());
         gbc.fill = GridBagConstraints.BOTH;
-        resources[0].setOpaque(false);
-        //resources[i].setBackground(Color.BLUE);
-        pane.add(resources[0], gbc);
+        physicalResources[1].setOpaque(false);
+        physicalResources[1].setHorizontalAlignment( JLabel.CENTER );
+        pane.add( physicalResources[1], gbc);
 
-        resources[1] = new SpecificResourcePanel();
+        physicalResources[2] = new JLabel();
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.gridheight = 1;
+        gbc.gridwidth = 1;
+        physicalResources[2].setName(Stone.class.getSimpleName());
+        gbc.fill = GridBagConstraints.BOTH;
+        physicalResources[2].setOpaque(false);
+        physicalResources[2].setHorizontalAlignment( JLabel.CENTER );
+        pane.add( physicalResources[2], gbc);
+
+        physicalResources[3] = new JLabel();
         gbc.gridx = 3;
-        gbc.gridy = 1;
+        gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        resources[1].imageToLoad("/ImmagineWood.png");
-        resources[1].setName(Wood.class.getSimpleName());
+        physicalResources[3].setName(Servant.class.getSimpleName());
         gbc.fill = GridBagConstraints.BOTH;
-        resources[1].setOpaque(false);
-        //resources[i].setBackground(Color.BLUE);
-        pane.add(resources[1], gbc);
+        physicalResources[3].setOpaque(false);
+        physicalResources[3].setHorizontalAlignment( JLabel.CENTER );
+        pane.add( physicalResources[3], gbc);
 
-        resources[2] = new SpecificResourcePanel();
+
+        pointResources[0] = new JLabel();
+        gbc.gridx = 4;
+        gbc.gridy = 0;
+        gbc.gridheight = 1;
+        gbc.gridwidth = 1;
+        pointResources[0].setName(MilitaryStrength.class.getSimpleName());
+        gbc.fill = GridBagConstraints.BOTH;
+        pointResources[0].setOpaque(false);
+        pointResources[0].setHorizontalAlignment( JLabel.CENTER );
+        pane.add( pointResources[0], gbc);
+
+        pointResources[1] = new JLabel();
         gbc.gridx = 5;
-        gbc.gridy = 1;
+        gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        resources[2].imageToLoad("/ImmagineStone.png");
-        resources[2].setName(Stone.class.getSimpleName());
+        pointResources[1].setName(MilitaryStrength.class.getSimpleName());
         gbc.fill = GridBagConstraints.BOTH;
-        resources[2].setOpaque(false);
-        //resources[i].setBackground(Color.BLUE);
-        pane.add(resources[2], gbc);
+        pointResources[1].setOpaque(false);
+        pointResources[1].setHorizontalAlignment( JLabel.CENTER );
+        pane.add( pointResources[1], gbc);
 
-        resources[3] = new SpecificResourcePanel();
-        gbc.gridx = 7;
-        gbc.gridy = 1;
+        pointResources[2] = new JLabel();
+        gbc.gridx = 6;
+        gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        resources[3].imageToLoad("/ImmagineServant.png");
-        resources[3].setName(Servant.class.getSimpleName());
+        pointResources[2].setName(FaithPoint.class.getSimpleName());
         gbc.fill = GridBagConstraints.BOTH;
-        resources[3].setOpaque(false);
-        //resources[i].setBackground(Color.BLUE);
-        pane.add(resources[3], gbc);
+        pointResources[2].setOpaque(false);
+        pointResources[2].setHorizontalAlignment( JLabel.CENTER );
+        pane.add( pointResources[2], gbc);
+
         }
 
 
 
-    public void setString(ResourceList list){
+    public void setStringPhysicalResources(ResourceList list){
         for(int i=0;i<4;i++){
             for (Resource resource :list.getListOfResource()
                     ) {
-                if(resource.getClass().getSimpleName().equals(resources[i].getName())){
-                    resources[i].getResource().setText(valueOf(resource.getPhysicalResourceValue()));
+                if(resource.getClass().getSimpleName().equals( physicalResources[i].getName())){
+                    physicalResources[i].setText(valueOf(resource.getPhysicalResourceValue()));
                 }
             }
         }
     }
-//
-//    public Class<? extends PhysicalResource> getSpecificResourceFromPanel(String string){
-//        if(string.equals(valueOf(0))){
-//            return Coin.class;
-//        }if(string.equals(valueOf(1))){
-//            return Wood.class;
-//        }if(string.equals(valueOf(2))){
-//            return Stone.class;
-//        }if(string.equals(valueOf(3))){
-//            return Servant.class ;
-//        }else return null;
-//    }
 
-    public SpecificResourcePanel[] getResources() {
-        return resources;
+    public void setStringPointResources(ResourceList list){
+        for(int i=0;i<3;i++){
+            for (Resource resource :list.getListOfResource()
+                    ) {
+                if(resource.getClass().getSimpleName().equals(pointResources[i].getName())){
+                    pointResources[i].setText(valueOf(resource.getPointResourceValue()));
+                }
+            }
+        }
     }
 
     @Override
