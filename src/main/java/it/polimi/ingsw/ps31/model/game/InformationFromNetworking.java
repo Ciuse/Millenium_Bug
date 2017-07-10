@@ -29,6 +29,9 @@ public class InformationFromNetworking {
     }
 
     public int addPlayerViewChoice(TypeOfView typeOfView, String username){
+        if(typeOfView == null || username == null)
+            return this.size;
+
         DebugUtility.simpleDebugMessage("Invocato. Username: "+username+"; TOV = "+typeOfView);
         viewChoiceList.add(typeOfView);
         playerNameList.add(username);

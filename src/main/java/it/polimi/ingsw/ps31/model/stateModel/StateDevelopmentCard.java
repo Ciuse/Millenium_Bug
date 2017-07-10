@@ -13,7 +13,7 @@ import java.util.List;
  * @see it.polimi.ingsw.ps31.model.card.DevelopmentCard
  *
  */
-public class StateDevelopmentCard extends StateType {
+public class    StateDevelopmentCard extends StateType {
     private String cardName = null;
     private int cardId = 0;
     private final CardColor cardColor;
