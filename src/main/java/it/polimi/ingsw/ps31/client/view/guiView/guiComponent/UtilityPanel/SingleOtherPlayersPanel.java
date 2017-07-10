@@ -93,6 +93,10 @@ public class SingleOtherPlayersPanel extends JPanel implements ActionListener {
         jLeaderCardPanel.attach(this);
     }
 
+    public PlayerId getNumberOfPlayer() {
+        return numberOfPlayer;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 

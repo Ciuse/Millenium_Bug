@@ -25,35 +25,32 @@ public class OtherPlayersPanel extends JPanel implements ActionListener {
 
 
         GridBagLayout gbl = new GridBagLayout();
-        gbl.columnWidths = new int[]{0, 0, 0, 0,0,0};
+        gbl.columnWidths = new int[]{0, 0, 0, 0, 0, 0};
         gbl.rowHeights = new int[]{0, 0};
 
-        gbl.columnWeights = new double[]{0.32,0.02, 0.32,0.02, 0.32, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.32, 0.02, 0.32, 0.02, 0.32, Double.MIN_VALUE};
         gbl.rowWeights = new double[]{0.9999, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        int i=0;
+        int i = 0;
         for (StateViewPlayer player : guiView.getStateViewPlayerList()
-              ) {
-        if(player.getPlayerId()!=guiView.getMyStateViewPlayer().getPlayerId()){
-            System.out.println(player.getNickname());
-            singleOtherPlayersPanel[i] = new SingleOtherPlayersPanel(this.guiView,player.getPlayerId());
-        gbc.gridx = i*2;
-        gbc.gridy = 0;
-        gbc.gridheight = 1;
-        gbc.gridwidth = 1;
-        singleOtherPlayersPanel[i].setPreferredSize(new Dimension(10,10));
-        singleOtherPlayersPanel[i].setName(player.getNickname());
-        gbc.fill = GridBagConstraints.BOTH;
-        pane.add(singleOtherPlayersPanel[i],gbc);
+                ) {
+            if (player.getPlayerId() != guiView.getMyStateViewPlayer().getPlayerId()) {
+                System.out.println(player.getPlayerId());
+                singleOtherPlayersPanel[i] = new SingleOtherPlayersPanel(this.guiView, player.getPlayerId());
+                gbc.gridx = i * 2;
+                gbc.gridy = 0;
+                gbc.gridheight = 1;
+                gbc.gridwidth = 1;
+                singleOtherPlayersPanel[i].setPreferredSize(new Dimension(10, 10));
+                gbc.fill = GridBagConstraints.BOTH;
+                pane.add(singleOtherPlayersPanel[i], gbc);
+                i++;
+            }
         }
-        }
-
-
-
     }
 
     public void setFather(JFrame father) {

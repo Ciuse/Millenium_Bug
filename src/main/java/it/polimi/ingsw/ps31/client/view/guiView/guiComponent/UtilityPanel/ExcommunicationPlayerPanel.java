@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewExcommunication;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalCardBox;
 
@@ -12,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.util.*;
+import java.util.List;
 
 import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.getMax_number_of_Excommunication;
 import static java.lang.String.valueOf;
@@ -23,7 +25,7 @@ public class ExcommunicationPlayerPanel extends JPanel implements ActionListener
     private ActionListener listener;
     private JFrame father = null;
     private GuiView guiView;
-    private ButtonCard[] excomm = new ButtonCard[3];
+    private PaintBackgroundPanel[] excomm = new PaintBackgroundPanel[3];
 
     public ExcommunicationPlayerPanel(GuiView guiView) {
         this.guiView = guiView;
@@ -47,7 +49,7 @@ public class ExcommunicationPlayerPanel extends JPanel implements ActionListener
 
             GridBagConstraints gbc = new GridBagConstraints();
             for (int i = 0; i < getMax_number_of_Excommunication(); i++) {
-                excomm[i] = new ButtonCard();
+                excomm[i] = new PaintBackgroundPanel();
                 excomm[i].setName(valueOf(i));
                 excomm[i].imageToLoad("/excommunications/excomm_back_"+(i+1)+".png");
                 gbc.gridx = (2 * i) + 1;
@@ -56,15 +58,13 @@ public class ExcommunicationPlayerPanel extends JPanel implements ActionListener
                 gbc.gridwidth = 1;
                 gbc.fill = GridBagConstraints.BOTH;
                 pane.add(excomm[i], gbc);
-                excomm[i].addActionListener(this);
 
             }
 
         }
 
 
-    public void fillExcomm(java.util.List<StateViewExcommunication> stateViewExcommunicationList) {
-        int i = 0;
+    public void fillExcomm(List<StateViewExcommunication> stateViewExcommunicationList) {
         if (!stateViewExcommunicationList.isEmpty()) {
             for (StateViewExcommunication excommunication : stateViewExcommunicationList
                     ) {
@@ -78,7 +78,6 @@ public class ExcommunicationPlayerPanel extends JPanel implements ActionListener
                     if (excommunication.getPeriod() == 3) {
                         excomm[2].imageToReprint("/excommunications/excomm_3_" + valueOf(excommunication.getId() - 14) + ".png");
                     }
-                    i++;
                 }
             }
         }
@@ -86,13 +85,6 @@ public class ExcommunicationPlayerPanel extends JPanel implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        ButtonCard buttonCard = (ButtonCard) e.getSource();
-        String nameButton = buttonCard.getName();
-        for (int i = 0; i < getMax_number_of_Excommunication(); i++) {
-            if (valueOf(i).equals(nameButton)) {
-                father.dispatchEvent(new WindowEvent(father, WindowEvent.WINDOW_CLOSING));
-            }
-        }
     }
 
     public void setFather(JFrame father) {

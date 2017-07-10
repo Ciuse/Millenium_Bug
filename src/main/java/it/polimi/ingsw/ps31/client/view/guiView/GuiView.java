@@ -196,7 +196,7 @@ public class GuiView extends View implements ActionListener {
         if (!firstTime) {
             string = string.toUpperCase();
             mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString(string);
-            mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("-----------------------------------------------------------------------------------------------------------------------------------------------------");
+            mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("-------------------------------------------------------------------------------------------------------------------------------------------------------");
 
         }
     }
@@ -228,7 +228,7 @@ public class GuiView extends View implements ActionListener {
     @Override
     public void printExcommunications() {
         mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getExcommunicationPanel().printExcommunication(getStateViewGame().getStateViewExcommunicationList());
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getOtherChosenPlayerPanel().getExcommunicationPlayerPanel().fillExcomm(getMyStateViewPlayer().getStateViewExcommunicationList());
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjExcommunication().fillExcomm(getMyStateViewPlayer().getStateViewExcommunicationList());
     }
 
     @Override

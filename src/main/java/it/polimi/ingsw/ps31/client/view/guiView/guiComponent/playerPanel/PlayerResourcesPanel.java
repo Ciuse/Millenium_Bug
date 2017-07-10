@@ -101,7 +101,7 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        pointResources[1].setName(MilitaryStrength.class.getSimpleName());
+        pointResources[1].setName(FaithPoint.class.getSimpleName());
         gbc.fill = GridBagConstraints.BOTH;
         pointResources[1].setOpaque(false);
         pointResources[1].setHorizontalAlignment( JLabel.CENTER );
@@ -112,7 +112,7 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        pointResources[2].setName(FaithPoint.class.getSimpleName());
+        pointResources[2].setName(VictoryPoint.class.getSimpleName());
         gbc.fill = GridBagConstraints.BOTH;
         pointResources[2].setOpaque(false);
         pointResources[2].setHorizontalAlignment( JLabel.CENTER );

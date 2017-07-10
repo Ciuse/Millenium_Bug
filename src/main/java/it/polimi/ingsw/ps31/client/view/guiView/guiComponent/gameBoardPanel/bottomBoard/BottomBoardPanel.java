@@ -138,7 +138,7 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
 
     public void disableBigActionSpace(){
         actionSpaceBoardButtons[1].setEnabled(false);
-        actionSpaceBoardButtons[1].imageToReprint("/coveringtile_2_back_.png");
+        actionSpaceBoardButtons[1].imageToReprint("/coveringtile_3_back_.png");
         actionSpaceBoardButtons[3].setEnabled(false);
         actionSpaceBoardButtons[3].imageToReprint("/coveringtile_2_back_.png");
 

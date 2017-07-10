@@ -226,6 +226,12 @@ public class GameUtility {
         resetPlayerAction();            //riattivo le azioni che i player hanno usato il turno prima
         setPlayerInAction(player);
         player.setWannaEndTurn(false);
+        for (PlayerId playerIdDisc: match.getDisconnectedPlayers()
+             ) {
+            if(playerIdDisc.equals(player.getPlayerId())){
+                player.setWannaEndTurn(true);
+            }
+        }
         String string1 = player.getNickname() + ": INIZIO FASE AZIONE";
         model.notifyViews(new MVStringToPrint(null, true, string1));
         String string2 = player.getPlayerId().toString() + ": Aggiornato Stato Azioni";

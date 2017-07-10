@@ -70,7 +70,7 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
         pane.add(cardGreen, gbc);
         cardGreen.attach(this);
 
-        playerResourcesPanel = new PlayerResourcesPanel();
+        playerResourcesPanel = new  PlayerResourcesPanel();
         gbc.gridx = 1;
         gbc.gridy = 6;
         gbc.gridheight = 1;

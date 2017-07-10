@@ -196,6 +196,10 @@ public class Match extends Thread{
         return networkInterface.connectionToPlayerId(playerCommunicationInterface);
     }
 
+    public List<PlayerId> getDisconnectedPlayers() {
+        return disconnectedPlayers;
+    }
+
     public void printPlayerTable()
     {
         networkInterface.printPlayerTable();

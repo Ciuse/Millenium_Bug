@@ -146,8 +146,8 @@ public class GameLogic {
         for (this.period = 1; period <= PERIODMAXNUMBER; period++) {    //inizio periodo
             gameUtility.setDeckTower(period);
             for (this.round = 1; round <= ROUNDMAXNUMBER; round++) {
-
-                gameUtility.resetFamilyMember();    //restituisco a tutti i propri famigliari
+                //restituisco a tutti i propri famigliari
+                gameUtility.resetFamilyMember();
                 gameUtility.drawCardDeck();
                 gameUtility.getGameBoard().rollTheDice();
                 gameUtility.setFamilyMemberDiceValue();
@@ -166,12 +166,10 @@ public class GameLogic {
                     gameUtility.getModel().notifyViews(new MVUpdateState(string, gameUtility.getStateGame(this.period, this.round, playerNumber)));
                     gameUtility.extraPhaseActionGame(playerNumber);
                 }
-//                //FINE FASE AZIONI  // TODO VERIFICARE CHE SIA MEGLIO DOPO
-//                if (round == 2) {
-//                    gameUtility.vaticanReport(period);
-//                }
-                gameUtility.playerOrderFromCouncil(); //ordino i player
-                gameUtility.resetLeaderEffect();     //riattivo le abilità una volta per turno dei leader
+                //ordino i player
+                gameUtility.playerOrderFromCouncil();
+                //riattivo le abilità una volta per turno dei leader
+                gameUtility.resetLeaderEffect();
 
             }//fine ciclo turno
             gameUtility.vaticanReport(period);
@@ -186,8 +184,6 @@ public class GameLogic {
         gameUtility.getModel().notifyViews(new MVStringToPrint(null,true,"GRAZIE PER AVER GIOCATO, ALLA PROSSIMA PARTITA"));
 
         //TODO metodo per stampare a video il vincitore
-
-        gameUtility.choiseColorPlayer(); //TODO RIMUOVEREeeeeeeeeee
     }
 
     public GameUtility getGameUtility() {

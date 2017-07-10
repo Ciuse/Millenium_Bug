@@ -16,8 +16,6 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
     private GuiView guiView;
     private ActionListener listener;
     private ButtonCard otherBoard;
-    private ButtonCard playerExcomm;
-    private ExcommunicationPlayerPanel excommunicationPlayerPanel;
     private OtherPlayersPanel otherPlayersPanel;
 
 
@@ -58,34 +56,12 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
         pane.add(otherBoard, gbc);
         otherBoard.addActionListener(this);
 
-        playerExcomm = new ButtonCard("Stato tue scomuniche");
-        gbc.gridx = 3;
-        gbc.gridy = 1;
-        gbc.gridheight = 1;
-        gbc.gridwidth = 1;
-        playerExcomm.setEnabled(true);
-        gbc.fill = GridBagConstraints.BOTH;
-        playerExcomm.setName("Your excommunications");
-        playerExcomm.setPreferredSize(new Dimension(10, 10));
-        pane.add(playerExcomm, gbc);
-        playerExcomm.addActionListener(this);
-
-        excommunicationPlayerPanel=new ExcommunicationPlayerPanel(guiView);
-
         otherPlayersPanel = new OtherPlayersPanel(guiView);
 
     }
 
-    public ExcommunicationPlayerPanel getExcommunicationPlayerPanel() {
-        return excommunicationPlayerPanel;
-    }
-
     public ButtonCard getOtherBoard() {
         return otherBoard;
-    }
-
-    public ButtonCard getPlayerExcomm() {
-        return playerExcomm;
     }
 
     public OtherPlayersPanel getOtherPlayersPanel() {
@@ -107,20 +83,6 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
             Container c = otherPlayersFrame.getContentPane();
             otherPlayersPanel.setFather(otherPlayersFrame);
             c.add(otherPlayersPanel);
-        }
-
-        if (nameButton.equals("Your excommunications")) {
-            JFrame frame = new JFrame(nameButton);
-            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-            frame.setLocation((int) screenSize.getHeight() /2 +300, (int) screenSize.getWidth() / 6);
-            frame.setAlwaysOnTop(true);
-            frame.setSize(screenSize.width / 4, screenSize.height / 5);
-            frame.setVisible(true);
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            Container c = frame.getContentPane();
-            excommunicationPlayerPanel.setBackground(Color.black);
-            excommunicationPlayerPanel.setFather(frame);
-            c.add(excommunicationPlayerPanel);
         }
     }
 
