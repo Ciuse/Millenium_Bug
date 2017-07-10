@@ -24,6 +24,7 @@ public class BonusAndMalusEffect extends Effect implements ActiveBonus{
     public void activate(Player player) {
         activeBonus(player);
     }
+
     @Override
     public void activeBonus(Player player) {
         bonus.activate(player);

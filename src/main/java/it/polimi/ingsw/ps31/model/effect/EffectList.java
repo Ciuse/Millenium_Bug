@@ -44,13 +44,14 @@ public class EffectList {
         this.effectList.clear();
     }
     public boolean isNotNull(){
-        if(effectList!=null){
+        if(effectList!=null && !effectList.isEmpty()){
             if(effectList.get(0)!=null) {
                 return true;
             }
         }
         return false;
     }
+
     /*Getters & Setters*/
     public List<Effect> getEffectList(){
         return new ArrayList<>(this.effectList);
