@@ -51,7 +51,7 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
         buttonCardPurplePanel = new ButtonCard();
         buttonCardPurplePanel.addActionListener(this);
         buttonCardPurplePanel.setName("PurpleCard");
-        buttonCardPurplePanel.imageToLoad("/player/sfondoviola.png");
+        buttonCardPurplePanel.imageToLoad("/sfondoviola.png");
         buttonCardPurplePanel.setContentAreaFilled(false);
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -64,7 +64,7 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
         buttonCardBluePanel = new ButtonCard();
         buttonCardBluePanel.addActionListener(this);
         buttonCardBluePanel.setName("BlueCard");
-        buttonCardBluePanel.imageToLoad("/player/sfondoblue.png");
+        buttonCardBluePanel.imageToLoad("/sfondoblu.png");
         buttonCardBluePanel.setContentAreaFilled(false);
         gbc.gridx = 0;
         gbc.gridy = 3;

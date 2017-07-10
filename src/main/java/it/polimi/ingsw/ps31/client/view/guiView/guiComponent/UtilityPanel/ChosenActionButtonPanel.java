@@ -52,38 +52,38 @@ public class ChosenActionButtonPanel extends PaintBackgroundPanel implements Act
         GridBagConstraints gbc = new GridBagConstraints();
 
 
-        button1 = new ButtonCard("Family member in board");
+
+
+        button1 = new ButtonCard("Family member in tower");
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
-        gbc.fill = GridBagConstraints.BOTH;
-        button1.setEnabled(false);
         button1.setOpaque(false);
-        button1.imageToReprint("/button/buttonBoard.png");
-        button1.setName("Place FM Board");
-
         button1.setEnabled(false);
+        button1.imageToReprint("/button/buttonTower.png");
+        gbc.fill = GridBagConstraints.BOTH;
+        button1.setName("Place FM in Tower");
         button1.setPreferredSize(new Dimension(10, 10));
         pane.add(button1, gbc);
         button1.addActionListener(this);
         buttonsAction[0] = button1;
 
-        button2 = new ButtonCard("Family member in tower");
+        button2 = new ButtonCard("Family member in board");
         gbc.gridx = 1;
         gbc.gridy = 4;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
-        button2.setOpaque(false);
-        button2.setEnabled(false);
-        button2.imageToReprint("/button/buttonTower.png");
         gbc.fill = GridBagConstraints.BOTH;
-        button2.setName("Place FM in Tower");
+        button2.setEnabled(false);
+        button2.setOpaque(false);
+        button2.imageToReprint("/button/buttonBoard.png");
+        button2.setName("Place FM Board");
+        button2.setEnabled(false);
         button2.setPreferredSize(new Dimension(10, 10));
         pane.add(button2, gbc);
         button2.addActionListener(this);
         buttonsAction[1] = button2;
-
 
         button3 = new ButtonCard("Attiva leader");
         gbc.gridx = 3;

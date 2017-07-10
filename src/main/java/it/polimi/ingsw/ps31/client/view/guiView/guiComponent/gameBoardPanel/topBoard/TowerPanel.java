@@ -33,11 +33,11 @@ public class TowerPanel extends JPanel implements ActionListener {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
-        gbl.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
+        gbl.rowHeights = new int[]{ 0, 0, 0, 0, 0, 0};
 
 
-        gbl.columnWeights = new double[]{0.022, 0.227, 0.227, 0.227, 0.227, 0.05669, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.01, 0.24, 0.24, 0.24, 0.24, 0.02999, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.02, 0.240, 0.238, 0.238, 0.238, 0.026, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.028, 0.24, 0.24, 0.24, 0.24, 0.012, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -66,30 +66,6 @@ public class TowerPanel extends JPanel implements ActionListener {
         return towerCardAndActionSpacePanels;
     }
 
-    public void printFamilyMember(StateViewBoard stateViewBoard) {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                int elementNumber = Integer.parseInt(towerCardAndActionSpacePanels[i][j].getNumberStringOfActionSpace());
-                for (StateViewActionSpace stateViewActionSpace : stateViewBoard.getStateViewActionSpaceList()
-                        ) {
-                    if (elementNumber == stateViewActionSpace.getNumberOfActionSpace()) {
-                        int numberOfFamilyMember = stateViewActionSpace.getStateFamilyMemberList().size();
-                        if (numberOfFamilyMember == 1) {
-                            PlayerColor singlePlayerColor = stateViewActionSpace.getStateFamilyMemberList().get(0).getPlayerColor();
-                            towerCardAndActionSpacePanels[i][j].getSingleSmallActionSpacePanel().printFamilyMember(elementNumber, singlePlayerColor);
-                        } else {
-                            PlayerColor firstPlayerColor = stateViewActionSpace.getStateFamilyMemberList().get(0).getPlayerColor();
-                            PlayerColor secondPlayerColor = stateViewActionSpace.getStateFamilyMemberList().get(1).getPlayerColor();
-                            towerCardAndActionSpacePanels[i][j].getSingleSmallActionSpacePanel().printFamilyMember(elementNumber, firstPlayerColor);
-                            towerCardAndActionSpacePanels[i][j].getSingleSmallActionSpacePanel().printFamilyMember(elementNumber, secondPlayerColor);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
     public void printTower(StateViewBoard stateViewBoard) {
 //        for (int i = 0; i < 4; i++) {
 //            for (int j = 0; j < 4; j++) {
@@ -110,19 +86,19 @@ public class TowerPanel extends JPanel implements ActionListener {
         } else {
             if (stateViewTowerCardBox.getCardColor().equals(CardColor.GREEN)) {
 
-                towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/sfondoverde.jpg");
+                towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/sfondoverde.png");
 
             }
             if (stateViewTowerCardBox.getCardColor().equals(CardColor.BLUE)) {
-                towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/sfondoblue.jpg");
+                towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/sfondoblu.png");
 
             }
             if (stateViewTowerCardBox.getCardColor().equals(CardColor.YELLOW)) {
-                towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/sfondogiallo.jpg");
+                towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/sfondogiallo.png");
 
             }
             if (stateViewTowerCardBox.getCardColor().equals(CardColor.PURPLE)) {
-                towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/sfondoviola.jpg");
+                towerCardAndActionSpacePanels[stateViewTowerCardBox.getCardColorAsNumber()][stateViewTowerCardBox.getTowerFloor()].getjButtonPanel().imageToReprint("/sfondoviola.png");
 
             }
 

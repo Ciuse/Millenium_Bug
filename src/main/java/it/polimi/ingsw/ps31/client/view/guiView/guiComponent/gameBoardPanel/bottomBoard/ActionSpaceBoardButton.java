@@ -116,7 +116,7 @@ public class ActionSpaceBoardButton extends ButtonCard implements ActionListener
              for (StateFamilyMember familyMember : stateFamilyMemberList
                      ) {
                  if(familyMember.getDiceColor().equals(DiceColor.NEUTRAL)){
-                     this.familyMember[i].imageToReprint("/" +familyMember.getPlayerColor().name()+ "_Neutral.png");
+                     this.familyMember[i].imageToReprint("/player/" +familyMember.getPlayerColor().name()+ "_Neutral.png");
                  }else  {
                      this.familyMember[i].setOpaque(true);
                      this.familyMember[i].setBackground(getFamilyMemberColor(familyMember.getPlayerColor()));

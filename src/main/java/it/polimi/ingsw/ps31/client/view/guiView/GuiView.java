@@ -196,6 +196,7 @@ public class GuiView extends View implements ActionListener {
         if (!firstTime) {
             string = string.toUpperCase();
             mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString(string);
+            mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("-----------------------------------------------------------------------------------------------------------------------------------------------------");
 
         }
     }

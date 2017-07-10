@@ -31,46 +31,46 @@ public class DicesPanel extends JPanel implements ActionListener {
     public void addComponentsToPane(Container pane) {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
-        gbl.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
-        gbl.rowHeights = new int[]{0, 0};
+        gbl.columnWidths = new int[]{0,0, 0, 0, 0, 0, 0, 0};
+        gbl.rowHeights = new int[]{0, 0, 0};
 
-        gbl.columnWeights = new double[]{0.18, 0.06, 0.18, 0.06, 0.18, 0.25, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.99999, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.03,0.18, 0.06, 0.17, 0.06, 0.18, 0.23, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.91999,0.08, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
 
         diceLabel[0] = new PaintBackgroundPanel();
-        gbc.gridx = 0;
+        gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         diceLabel[0].setName(DiceColor.BLACK.name());
-        diceLabel[0].setOpaque(false);
-        //diceLabel[0].setBackground(Color.black);
+//        diceLabel[0].setOpaque(false);
+        diceLabel[0].setBackground(Color.black);
         pane.add(diceLabel[0], gbc);
 
         diceLabel[1] = new PaintBackgroundPanel();
-        gbc.gridx = 2;
+        gbc.gridx = 3;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         diceLabel[1].setName(DiceColor.WHITE.name());
-        diceLabel[1].setOpaque(false);
-        //diceLabel[1].setBackground(Color.white);
+//        diceLabel[1].setOpaque(false);
+        diceLabel[1].setBackground(Color.white);
         pane.add(diceLabel[1], gbc);
 
         diceLabel[2] = new PaintBackgroundPanel();
-        gbc.gridx = 4;
+        gbc.gridx = 5;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         diceLabel[2].setName(DiceColor.ORANGE.name());
-        diceLabel[2].setOpaque(false);
-        //diceLabel[2].setBackground(Color.orange);
+//        diceLabel[2].setOpaque(false);
+        diceLabel[2].setBackground(Color.orange);
         pane.add(diceLabel[2], gbc);
     }
 
