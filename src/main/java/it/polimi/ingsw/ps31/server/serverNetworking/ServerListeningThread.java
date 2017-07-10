@@ -7,12 +7,22 @@ import java.io.IOException;
 
 /**
  * Created by Francesco on 25/06/2017.
+ *
+ * Thread con il compito di rimanere in attesa di messaggi sulla rete. Quando viene attivato continua a rimanere
+ * in ascolto dei messaggi dal client. Quando ne riceve uno, lo bufferizza e ritorna ad ascoltare.
+ * Inoltre è la classe che si occupa di accorgersi se il client è stato disconnesso.
+ *
+ * @see ServerInputBuffer
+ * @see ServerConnectionInterface
  */
-
-//Thread con il compito di rimanere in attesa di messaggi sulla socket
 public class ServerListeningThread extends Thread {
+    /** La connectionInterface da cui ascoltare */
     private ServerConnectionInterface serverConnectionInterface;
+
+    /** Il buffer in cui inserire i messaggi letti */
     private ServerInputBuffer serverInputBuffer;
+
+    /** booleano che indica se la connessione è stata interrotta (true) o meno (false) */
     private boolean closeConnection;
 
     public ServerListeningThread ( ServerConnectionInterface serverConnectionInterface, ServerInputBuffer serverInputBuffer)
@@ -22,7 +32,12 @@ public class ServerListeningThread extends Thread {
         this.closeConnection = false;
     }
 
-    //public void start(){}
+    /**
+     * Ascolta la rete in attesa di messaggi e li bufferizza quando ne riceve.
+     * Se la ServerConnectionInterface lancia una eccezione di tipo IOException, essa viene
+     * interpretata come una disconnessione del client e viene quindi richiamata la catena di invocazione
+     * che la gestisce.
+     */
     public void run()
     {
         DebugUtility.simpleUserMessage("Inizio ascolto del client");

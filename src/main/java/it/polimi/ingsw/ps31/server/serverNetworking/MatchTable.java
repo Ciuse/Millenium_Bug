@@ -11,10 +11,28 @@ import java.util.List;
 
 /**
  * Created by Francesco on 08/06/2017.
+ *
+ * Insieme di classi che gestiscono le varie partite in corso sul server, mettendo in relazione ogni client connesso
+ * al relativo match a cui è collegato. Inoltre tiene traccia dei client disconnessi, in modo da poterli riassociare
+ * al match corretti una volta riconnessi
+ *
+ * @see Match
+ */
+
+/**
+ * Classe che contiene le informazioni relative ad una singola partita, ossia la classe Match che la contiene e le
+ * classi PlayerCommunicationInterface relative ai client ad essa collegati
+ *
+ * @see PlayerCommunicationInterface;
  */
 class MatchRow {
+    /** Riferimento al match */
     private Match match;
+
+    /** Lista di riferimenti all'interfaccia di comunicaizone con il client */
     private List<PlayerCommunicationInterface> clientList;
+
+    /** Booleano che indica se la partita è iniziata. Se non lo è, allora è ancora possibile aggiungere altri goicatori */
     private boolean started = false;
 
     public MatchRow(Match match, PlayerCommunicationInterface hostConnection)
@@ -29,6 +47,8 @@ class MatchRow {
         return this.started;
     }
 
+    /** aggiunge un player alla partita
+     * @param client PlayerCommunicationInterface relativa alla connessione con il player che si sta agigungendo*/
     public void addPlayer(PlayerCommunicationInterface client)
     {
         //aggiungo la connessione alla lista di connessioni della row
@@ -68,9 +88,19 @@ class MatchRow {
     }
 }
 
+/** Indica un client disconnesso. Contiene il match da cui è avvenuta la disconnessione, il playerId
+ * e il ConnectionMessage del player. Quest'ultimo attributo permette di eseguire confronti tra l'utente
+ * che si sta riconnettendo e l'utente che si è disconnesso, in modo da accettare la riconnessione solo
+ * se le password coincidono*/
 class DisconnectedClient{
+
+    /** ConnectionMessage dell'utente al momento della dsiconnessione */
     private ConnectionMessage connectionMessage;
+
+    /** Riferimento al match a cui riconnettere l'utente*/
     private Match match;
+
+    /** PlayerId del giocatore al momento della disconnessione */
     private PlayerId playerId;
 
     /* Constructor */
@@ -98,10 +128,20 @@ class DisconnectedClient{
 
 }
 
+/**
+ * Classe che rappresenta la tabella di tutte le partite attualmente attive sul server.
+ * Può essere instanziata una sola volta.
+ */
 public class MatchTable {
     /* Singleton */
+
+    /** tabella vera e propria, modellata come una lista di righe */
     private List<MatchRow> matchTable = new ArrayList<>();
+
+    /** Identificativo della prossima partita che verrà instanziata */
     private int nextMatchId;
+
+    /** Lista dei player disconnessi */
     private List<DisconnectedClient> disconnections = new ArrayList<>();
 
     /* Singleton Methods */
@@ -116,6 +156,12 @@ public class MatchTable {
     }
 
     /* Class Methods */
+
+    /**
+     * Crea un nuovo match e lo agiunge alla partita. Obbligatorio indicare la connessione al primo client della partita.
+     *
+     * @param playerCommunicationInterface connessione al primo client della partita (host)
+     */
     private void newMatch(PlayerCommunicationInterface playerCommunicationInterface)
     {
         //Creo il match
@@ -130,6 +176,15 @@ public class MatchTable {
 
     }
 
+    /**
+     * Aggiunge un player alla prima partita libera della tabella o alla partita da cui si era disconnesso in precedenza.
+     * Si scorre dapprima la lista di disconnessioni, controllando per ogni elemento se i ConnectionMessage del player
+     * disconnesso e di quello che si sta aggiungendo coincidono. In caso si trovi una corrispondenza, il player verrà
+     * aggiunto a quel match. In caso contrario si scorrerà la tabella finchè non si trova una partita con flag "strated"
+     * a true e vi si aggiungerà il player. Se tutte le partite attive sono già iniziate, se ne crea una nuova.
+     *
+     * @param connection connessione al client che si sta aggiungendo
+     */
     public void addPlayer(PlayerCommunicationInterface connection)
     {
         DebugUtility.simpleUserMessage(/*"MatchTable:addPlayer>*/" CM=" + connection.getConnectionMessage().toString());
@@ -185,8 +240,16 @@ public class MatchTable {
         DebugUtility.simpleUserMessage("Client connesso alla partita #"+currentMatch.getMatch().getMatchId());
     }
 
+    /**
+     * Data una connessione a un client, restituisce il match al quale il client è connesso
+     * @param communicationInterface connessione della quale si vuole sapere il match a cui è collegato
+     * @return il Match al quale il client è connesso, null se non è stato trovato alcun client
+     */
     private Match communicationInterfaceToMatch(PlayerCommunicationInterface communicationInterface)
     {
+        if (communicationInterface == null)
+            return null;
+
         printTable();
         for(MatchRow currentRow : matchTable)
         {
@@ -200,6 +263,10 @@ public class MatchTable {
         return null;
     }
 
+    /**
+     * Rimuove un client dal suo Match e aggiunge una nuova entry alla lista di disconnessioni
+     * @param connection la connessione del player che si vuole disconnettere
+     */
     public void disconnectClient (PlayerCommunicationInterface connection)//, Match match, PlayerId playerId)
     {
         DebugUtility.simpleDebugMessage("Avvio disconnessione player "+connection.getConnectionMessage().getUsername());
@@ -215,6 +282,10 @@ public class MatchTable {
 
     }
 
+    /**
+     * Invocato dal Match, imposta a true il flag Started nella riga del match che lo ha invocato
+     * @param match il match che è iniziato
+     */
     public void notifyMatchStarted(Match match)
     {
         int i = 0;
@@ -231,6 +302,12 @@ public class MatchTable {
 
     }
 
+    /**
+     * Ritorna se il match indicato è iniziato (true) o meno (false). Se il match non esiste ritorna true di
+     * default, in modo che si interagisca il meno possibile con il match.
+     * @param match il match di cui si vuole conoscere lo stato
+     * @return lo stato di esecuzione del match (iniziato - non iniziato)
+     */
     public boolean isMatchStarted(Match match) {
         int i = 0;
         boolean trovato = false;

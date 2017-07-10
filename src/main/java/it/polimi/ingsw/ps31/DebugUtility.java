@@ -43,7 +43,7 @@ public class DebugUtility {
             System.out.print(strToConsole);
     }
 
-    /** Da usare per i messaggi destinati all'utente finale. Stampa il caller in base a debugEverything*/
+    /** Da usare per i messaggi destinati all'utente finale. Stampa il caller in base a released*/
     public static void simpleUserMessage(String msgToConsole)
     {
         dynamicStackDebugger(msgToConsole, 3, true);

@@ -7,11 +7,21 @@ import java.util.List;
 
 /**
  * Created by Francesco on 30/06/2017.
+ *
+ * Buffer contenente i messaggi in arrivo dal client. Ad ogni lettura restituisce ed elimina sempre il
+ * messaggio ricevuto meno di recente
+ * @see ServerListeningThread
+ * @see PlayerCommunicationInterface
+ * @see ServerConnectionInterface
  */
 public class ServerInputBuffer {
+    /** Buffer dei messaggi di tipo VCVisitable*/
     private List<VCVisitable> vcVisitableBuffer;
+
+    /** Riferimento alla playerCommunicationInterface */
     private PlayerCommunicationInterface playerCommunicationInterface;
 
+    /** Lock del buffer */
     private final Object bufferLock = new Object();
 
     /* Constructor */
@@ -22,6 +32,10 @@ public class ServerInputBuffer {
     }
 
     /* Writing method */
+    /**
+     * Bufferizza un messagio di tipo VCVisitable solo se non è null. Altrimenti lo ingora.
+     * @param msg messaggio da bufferizzare
+     */
     public void bufferizeMessage(VCVisitable msg)
     {
         if (msg != null ) {
@@ -34,6 +48,10 @@ public class ServerInputBuffer {
     }
 
     /* Reading method */
+    /**
+     * Restituisce, rimuovendolo dal buffer, il messaggio bufferizzato meno di recente
+     * @return messaggio meno recente nel buffer
+     */
     public VCVisitable readVC()
     {
         //System.out.println("ServerInputBuffer:readVC> Leggo da buffer. Stato="+vcVisitableBuffer.isEmpty());

@@ -8,13 +8,19 @@ import java.net.Socket;
 
 /**
  * Created by Francesco on 09/06/2017.
- */
+ * Classe che incapsula una socket e i suoi reader e writer. Espone un metodo di input e uno di output.
+ * */
 public class SocketServerConnection extends ServerConnectionInterface {
+    /** La socket */
     private final Socket socket;
+
+    /** Il reader della socket */
     private BufferedReader socketReader;
+
+    /** Il writer della socket */
     private BufferedWriter socketWriter;
 
-    //socket lock (locket)
+    /**socket lock (locket) */
     private final Object readLocket = new Object();
     private final Object writeLocket = new Object();
 
@@ -34,7 +40,11 @@ public class SocketServerConnection extends ServerConnectionInterface {
         this.socketWriter = new BufferedWriter(socketOutStream);
     }
 
-
+    /**
+     * Legge da socket. Se la socket è chiusa non succede nulla
+     * @return il messaggio letto, null se la connessione è interrotta e la socket è chiusa.
+     * @throws IOException
+     */
     @Override
     protected String readFromNetwork() throws IOException
     {
@@ -49,12 +59,15 @@ public class SocketServerConnection extends ServerConnectionInterface {
         return msgToReturn;
     }
 
+    /**
+     * Scrittura su socket. Se la socket è chiusa non succede nulla.
+     * @param msg stringa da scrivere
+     */
     @Override
     protected void writeOnNetwork(String msg)
     {
         //System.out.println("SocketServerconnection:writeOnNetwork> msg = "+msg);
 
-        boolean ret = false;
         try
         {
 
@@ -81,6 +94,9 @@ public class SocketServerConnection extends ServerConnectionInterface {
         //return boh.toString();
     }
 
+    /**
+     * Chiude la connessione
+     */
     @Override
     protected void closePhysicalConnection()
     {

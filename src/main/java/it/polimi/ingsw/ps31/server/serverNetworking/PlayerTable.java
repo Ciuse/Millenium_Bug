@@ -9,6 +9,14 @@ import java.util.List;
 
 /**
  * Created by Francesco on 12/06/2017.
+ * Associa ogni PlayerId di una partita con la PlayerConnectionInterface collegata al giocatore.
+ * É contenuta nella NetworkInterface ed è unica per ogni partita.
+ * @see it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface
+ */
+
+/**
+ * Singola riga della tabella. Contine playerId, riferimento alla PlayerConnectinInterface e un flag che indica
+ * se il client è disconnesso o meno.
  */
 class PlayerConnectionRow{
     private final PlayerId playerId;
@@ -33,17 +41,27 @@ class PlayerConnectionRow{
         return playerCommunicationInterface;
     }
 
+    /**
+     * Marca il client come disconnesso
+     */
     public void disconnect()
     {
        this.disconnected = true;
     }
 
+    /**
+     * riconnette il client salva il riferimento alla nuova PlayerCommunicationInterface
+     * @param playerCommunicationInterface nuova communication interface verso il client
+     */
     public void reconnect(PlayerCommunicationInterface playerCommunicationInterface)
     {
         this.disconnected = false;
         this.playerCommunicationInterface = playerCommunicationInterface;
     }
 
+    /**
+     * @return true se il client è disconnesso, false se non lo è
+     */
     public boolean isDisconnected()
     {
         return this.disconnected;
@@ -69,8 +87,13 @@ class PlayerConnectionRow{
     }
 }
 
+/**
+ * Tabella contenente le associazioni
+ */
 public class PlayerTable {
+    /** Tabella vera e propria, modellizzata come una lista di PlayerConnectionRow */
     private List<PlayerConnectionRow> playerConnectionRows;
+
     private int nextPlayerIdIndex = 0;
 
     /* Constructor */
@@ -80,6 +103,11 @@ public class PlayerTable {
     }
 
     /* Class Methods */
+
+    /**
+     * Aggiunge un player alla tabella e associa il playerId corretto alla PlayerCommunicationInterface
+     * @param playerCommunicationInterface interfaccia del player da aggiungere
+     */
     public void addPlayer(PlayerCommunicationInterface playerCommunicationInterface)
     {
         if ( nextPlayerIdIndex == PlayerId.values().length )
@@ -90,13 +118,18 @@ public class PlayerTable {
         PlayerId playerId = PlayerId.values()[nextPlayerIdIndex];
         PlayerConnectionRow newRow = new PlayerConnectionRow(playerId, playerCommunicationInterface);
         playerCommunicationInterface.setPlayerId(playerId);
-        playerCommunicationInterface.setPlayerTable(this);
+        //playerCommunicationInterface.setPlayerTable(this);
         this.playerConnectionRows.add(newRow);
 
         nextPlayerIdIndex++;
     }
 
-    public PlayerId connectionToPlayerId(PlayerCommunicationInterface serverConnectionInterface)
+    /**
+     * Data una connessione a un client, restituisce il playerId del client connesso
+     * @param playerCommunicationInterface connessione della quale si vuole sapere l'id del player
+     * @return il PlayerId del giocatore a cui la communicationInterface è collegata
+     */
+    public PlayerId connectionToPlayerId(PlayerCommunicationInterface playerCommunicationInterface)
     {
         Iterator<PlayerConnectionRow> rowsItr = this.playerConnectionRows.iterator();
         PlayerConnectionRow currentRow;
@@ -104,13 +137,18 @@ public class PlayerTable {
         while (rowsItr.hasNext() && playerIdToReturn == null)
         {
             currentRow = rowsItr.next();
-            if( currentRow.getPlayerCommunicationInterface().equals(serverConnectionInterface) )
+            if( currentRow.getPlayerCommunicationInterface().equals(playerCommunicationInterface) )
                 playerIdToReturn = currentRow.getPlayerId();
         }
 
         return playerIdToReturn;
     }
 
+    /**
+     * Dato un playerId, restituisce la PlayerCommunicationInterface per raggiungerlo
+     * @param playerId id di cui si cerca il riferimento alla PlayerComunicatoinInterface
+     * @return PlayerCommunicationInterface per comunicare con il player
+     */
     public PlayerCommunicationInterface playerIdToConnection(PlayerId playerId)
     {
         Iterator<PlayerConnectionRow> rowsItr = this.playerConnectionRows.iterator();
@@ -147,6 +185,10 @@ public class PlayerTable {
         System.out.println(tblStr);
     }
 
+    /**
+     * @return una lista contenente tutte le PlayerCommunicationInterface collegate alla partita, in ordine
+     * di connessione (e quindi con PlayerId crescente)
+     */
     public List<PlayerCommunicationInterface> getAllConnections()
     {
         List<PlayerCommunicationInterface> list = new ArrayList<>();
@@ -157,6 +199,9 @@ public class PlayerTable {
         return list;
     }
 
+    /**
+     * @return una lista con tutti i PlayerId già in uso nella partita
+     */
     public List<PlayerId> getPlayerIdList()
     {
         List<PlayerId> result = new ArrayList<>();
@@ -166,6 +211,10 @@ public class PlayerTable {
         return result;
     }
 
+    /**
+     * Disconnette il player
+     * @param playerId id del player da disocnnettere
+     */
     public void disconnectPlayer(PlayerId playerId)
     {
         for(PlayerConnectionRow currentRow : playerConnectionRows)
@@ -173,6 +222,11 @@ public class PlayerTable {
                 currentRow.disconnect();
     }
 
+    /**
+     * Riconnette un player alla partita
+     * @param connection nuova PlayerCommunicationInterface per comunicare con il player
+     * @param playerId id del playerche si vuole riconnettere
+     */
     public void reconnectPlayer(PlayerCommunicationInterface connection, PlayerId playerId)
     {
         for(PlayerConnectionRow currentRow : playerConnectionRows)

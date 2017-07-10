@@ -9,7 +9,10 @@ import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.effect.ChangeFamilyValueEffect;
 import it.polimi.ingsw.ps31.model.effect.EffectList;
+import it.polimi.ingsw.ps31.model.gameResource.MilitaryStrength;
+import it.polimi.ingsw.ps31.model.gameResource.PointResource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
+import it.polimi.ingsw.ps31.model.gameResource.VictoryPoint;
 import it.polimi.ingsw.ps31.model.json.CreationJson;
 import it.polimi.ingsw.ps31.model.json.JsonFile;
 import it.polimi.ingsw.ps31.model.json.JsonGameObject;
@@ -57,15 +60,26 @@ public class PersonalBoardTest extends TestCase{
     @Before
     public void setUp() throws Exception {
 
-        CreationJson creationJson = new CreationJson();
-        creationJson.createJsonFile();          //Creazione file json se non è già presente
-        Gson gson = JsonGameObject.gsonGameBuilder();
-        String jsonStringReadFromFile = JsonFile.readJsonFromFile("JsonObject.json");         //lettura file json
-        JsonGameObject jo = gson.fromJson(jsonStringReadFromFile, JsonGameObject.class);
+//        CreationJson creationJson = new CreationJson();
+//        creationJson.createJsonFile();          //Creazione file json se non è già presente
+//        Gson gson = JsonGameObject.gsonGameBuilder();
+//        String jsonStringReadFromFile = JsonFile.readJsonFromFile("JsonObject.json");         //lettura file json
+//        JsonGameObject jo = gson.fromJson(jsonStringReadFromFile, JsonGameObject.class);
 
+
+        PointResource[] yellowRequired = {new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0)};
+        MilitaryStrength[] greenRequired = {new MilitaryStrength(0),new MilitaryStrength(0),new MilitaryStrength(3),
+                new MilitaryStrength(7),new MilitaryStrength(12),new MilitaryStrength(18)};
+        PointResource[] purpleRequired = {new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0)};
+        PointResource[] blueRequired = {new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0),new VictoryPoint(0)};
+        List<PointResource[]> listToReturn = new ArrayList<>();
+        listToReturn.add(yellowRequired);
+        listToReturn.add(greenRequired);
+        listToReturn.add(purpleRequired);
+        listToReturn.add(blueRequired);
 
         Model model = new Model();
-        personalBoard = new PersonalBoard(jo.getPointResourceRequired(), PlayerId.ONE, model);
+        personalBoard = new PersonalBoard(listToReturn, PlayerId.ONE, model);
         playerTest = new Player(model, PlayerId.ONE, new ResourceList(), "test", personalBoard);
 
         testB1 = new Building(1, "B1", 1, new ArrayList<>(), new EffectList(), new EffectList());
