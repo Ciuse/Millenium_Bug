@@ -47,8 +47,9 @@ public class ActionSpaceBoardButton extends JButton implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        familyMember[0].setOpaque(false);
         familyMember[0].setPreferredSize(new Dimension(10,10));
-        familyMember[0].setBackground(Color.BLUE);
+        //familyMember[0].setBackground(Color.BLUE);
         pane.add(familyMember[0], gbc);
 
         familyMember[1] = new PaintBackgroundPanel();
@@ -57,8 +58,9 @@ public class ActionSpaceBoardButton extends JButton implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        familyMember[1].setOpaque(false);
         familyMember[1].setPreferredSize(new Dimension(10,10));
-        familyMember[1].setBackground(Color.green);
+        //familyMember[1].setBackground(Color.green);
         pane.add(familyMember[1], gbc);
 
         familyMember[2] = new PaintBackgroundPanel();
@@ -67,8 +69,9 @@ public class ActionSpaceBoardButton extends JButton implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        familyMember[2].setOpaque(false);
         familyMember[2].setPreferredSize(new Dimension(10,10));
-        familyMember[2].setBackground(Color.pink);
+        //familyMember[2].setBackground(Color.pink);
         pane.add(familyMember[2], gbc);
 
         familyMember[3] = new PaintBackgroundPanel();
@@ -77,8 +80,9 @@ public class ActionSpaceBoardButton extends JButton implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        familyMember[3].setOpaque(false);
         familyMember[3].setPreferredSize(new Dimension(10,10));
-        familyMember[3].setBackground(Color.black);
+        //familyMember[3].setBackground(Color.black);
         pane.add(familyMember[3], gbc);
 
         familyMember[4] = new PaintBackgroundPanel();
@@ -87,8 +91,9 @@ public class ActionSpaceBoardButton extends JButton implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        familyMember[4].setOpaque(false);
         familyMember[4].setPreferredSize(new Dimension(10,10));
-        familyMember[4].setBackground(Color.yellow);
+        //familyMember[4].setBackground(Color.yellow);
         pane.add(familyMember[4], gbc);
 
         familyMember[5] = new PaintBackgroundPanel();
@@ -97,8 +102,9 @@ public class ActionSpaceBoardButton extends JButton implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
+        familyMember[5].setOpaque(false);
         familyMember[5].setPreferredSize(new Dimension(10,10));
-        familyMember[5].setBackground(Color.red);
+        //familyMember[5].setBackground(Color.red);
         pane.add(familyMember[5], gbc);
 
         }
@@ -109,8 +115,11 @@ public class ActionSpaceBoardButton extends JButton implements ActionListener {
              for (StateFamilyMember familyMember : stateFamilyMemberList
                      ) {
                  if(familyMember.getDiceColor().equals(DiceColor.NEUTRAL)){
-                     this.familyMember[i].imageToLoad("/" +familyMember.getPlayerColor().name()+ " _Neutral.png");
-                 }else  this.familyMember[i].setBackground(getFamilyMemberColor(familyMember.getPlayerColor()));
+                     this.familyMember[i].imageToLoad("/" +familyMember.getPlayerColor()+ " _Neutral.png");
+                 }else  {
+                     this.familyMember[i].setOpaque(true);
+                     this.familyMember[i].setBackground(getFamilyMemberColor(familyMember.getPlayerColor()));
+                 }
                     i++;
              }
          }

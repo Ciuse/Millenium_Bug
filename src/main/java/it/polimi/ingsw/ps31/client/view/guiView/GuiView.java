@@ -209,6 +209,7 @@ public class GuiView extends View implements ActionListener {
     public void printPlayerInAction() {
         this.printMyPhysicalResource();
         this.printMyPointResource();
+        this.printDiceValue();
     }
 
     @Override
@@ -259,6 +260,10 @@ public class GuiView extends View implements ActionListener {
     public void printFamilyMemberInAction() {
         mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjFamilyMemberPanel().getButtonsFamilyMemberPanel().setString(super.getMyStateViewPlayer().getStateViewFamilyMemberList());
 
+    }
+
+    public void printDiceValue(){
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getDicesPanel().setString(getMyStateViewPlayer().getStateViewFamilyMemberList());
     }
 
     @Override

@@ -13,8 +13,8 @@ import java.awt.event.ActionListener;
 public class TowerCardAndActionSpacePanel extends JPanel implements ActionListener{
     private ActionListener listener;
     private String numberOfActionSpace;
-    ButtonCard jButtonPanel = new ButtonCard();
-    SingleSmallActionSpacePanel singleSmallActionSpacePanel = new SingleSmallActionSpacePanel();
+    private ButtonCard jButtonPanel = new ButtonCard();
+    private SingleSmallActionSpacePanel singleSmallActionSpacePanel = new SingleSmallActionSpacePanel();
 
 
     public TowerCardAndActionSpacePanel(String numberOfActionSpace) {

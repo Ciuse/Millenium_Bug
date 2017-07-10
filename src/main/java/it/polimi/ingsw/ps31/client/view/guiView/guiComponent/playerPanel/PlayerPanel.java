@@ -43,6 +43,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         //jPersonalBonusTilesPanel.setBackground(Color.RED);
+        jPersonalBonusTilesPanel.setOpaque(false);
         jPersonalBonusTilesPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(jPersonalBonusTilesPanel, gbc);
         jPersonalBonusTilesPanel.attach(this);

@@ -58,7 +58,7 @@ public class CouncilPanel extends JPanel implements ActionListener{
         actionSpaceCouncilPanel.setName(valueOf(1));
         actionSpaceCouncilPanel.setPreferredSize(new Dimension(10,10));
         actionSpaceCouncilPanel.setContentAreaFilled(false);
-        actionSpaceCouncilPanel.setOpaque(false);
+        //actionSpaceCouncilPanel.setOpaque(false);
         actionSpaceCouncilPanel.addActionListener(this);
         //actionSpaceCouncilPanel.setBackground(Color.green);
         pane.add(actionSpaceCouncilPanel,gbc);

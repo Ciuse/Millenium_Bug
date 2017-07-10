@@ -9,7 +9,7 @@ import java.awt.*;
  * Created by giulia on 09/07/2017.
  */
 public class DiceLabel extends PaintBackgroundPanel {
-    private JLabel diceLabel;
+    private JLabel label;
 
     public DiceLabel() {
         addComponentsTopane(this);
@@ -27,12 +27,16 @@ public class DiceLabel extends PaintBackgroundPanel {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        diceLabel = new JLabel("3");
+        label = new JLabel();
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        pane.add(diceLabel, gbc);
+        pane.add(label, gbc);
+    }
+
+    public JLabel getLabel() {
+        return label;
     }
 }

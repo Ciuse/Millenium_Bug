@@ -46,8 +46,8 @@ public class SingleSmallActionSpacePanel extends JPanel  {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        familyMemberPanel[0].setBackground(Color.BLUE);
-        //familyMemberPanel[i].setOpaque(false);
+        familyMemberPanel[0].setOpaque(false);
+        //familyMemberPanel[0].setBackground(Color.BLUE);
         familyMemberPanel[0].setPreferredSize(new Dimension(10, 10));
         pane.add(familyMemberPanel[0], gbc);
 
@@ -58,8 +58,7 @@ public class SingleSmallActionSpacePanel extends JPanel  {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        familyMemberPanel[1].setBackground(Color.RED);
-        //familyMemberPanel[i].setOpaque(false);
+        familyMemberPanel[1].setOpaque(false);
         familyMemberPanel[1].setPreferredSize(new Dimension(10, 10));
         pane.add(familyMemberPanel[1], gbc);
 
@@ -69,8 +68,7 @@ public class SingleSmallActionSpacePanel extends JPanel  {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        familyMemberPanel[2].setBackground(Color.PINK);
-        //familyMemberPanel[i].setOpaque(false);
+        familyMemberPanel[2].setOpaque(false);
         familyMemberPanel[2].setPreferredSize(new Dimension(10, 10));
         pane.add(familyMemberPanel[2], gbc);
         }
@@ -82,8 +80,11 @@ public class SingleSmallActionSpacePanel extends JPanel  {
                 for (StateFamilyMember familyMember : stateFamilyMemberList
                         ) {
                     if(familyMember.getDiceColor().equals(DiceColor.NEUTRAL)){
-                        this.familyMemberPanel[i].imageToLoad("/" +familyMember.getPlayerColor().name()+ " _Neutral.png");;
-                    }else  this.familyMemberPanel[i].setBackground(getFamilyMemberColor(familyMember.getPlayerColor()));
+                        this.familyMemberPanel[i].imageToLoad("/" +familyMember.getPlayerColor()+ " _Neutral.png");;
+                    }else {
+                        this.familyMemberPanel[i].setOpaque(true);
+                        this.familyMemberPanel[i].setBackground(getFamilyMemberColor(familyMember.getPlayerColor()));
+                    }
                         i++;
                 }
             }

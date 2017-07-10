@@ -1,8 +1,12 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard;
 
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
+import it.polimi.ingsw.ps31.model.board.Dice;
+import it.polimi.ingsw.ps31.model.constants.DiceColor;
 
 import java.awt.*;
+import java.util.List;
 
 /**
  * Created by giulia on 09/07/2017.
@@ -36,4 +40,11 @@ public class SingleDicePanel extends PaintBackgroundPanel {
         pane.add(diceLabel, gbc);
 
     }
+
+    public DiceLabel getDiceLabel() {
+        return diceLabel;
+    }
+
+
+
 }
