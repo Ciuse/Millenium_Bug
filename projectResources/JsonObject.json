@@ -99,7 +99,16 @@
         "cardId": 49,
         "cardColor": "BLUE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 2
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -139,7 +148,16 @@
         "cardId": 73,
         "cardColor": "PURPLE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -284,7 +302,16 @@
         "cardId": 50,
         "cardColor": "BLUE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             null
@@ -323,7 +350,24 @@
         "cardId": 74,
         "cardColor": "PURPLE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 1
+              },
+              {
+                "ResourceType": "Wood",
+                "value": 1
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 1
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -460,7 +504,16 @@
         "cardId": 51,
         "cardColor": "BLUE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             null
@@ -495,7 +548,16 @@
         "cardId": 75,
         "cardColor": "PURPLE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Stone",
+                "value": 3
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -645,7 +707,16 @@
         "cardId": 52,
         "cardColor": "BLUE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 2
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -685,7 +756,20 @@
         "cardId": 76,
         "cardColor": "PURPLE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 2
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 2
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -857,7 +941,16 @@
         "cardId": 53,
         "cardColor": "BLUE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 3
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             null
@@ -882,7 +975,17 @@
         "cardId": 77,
         "cardColor": "PURPLE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 3,
+                "value": 2
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -1062,7 +1165,16 @@
         "cardId": 54,
         "cardColor": "BLUE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 3
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             null
@@ -1087,7 +1199,16 @@
         "cardId": 78,
         "cardColor": "PURPLE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 3
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -1232,7 +1353,16 @@
         "cardId": 55,
         "cardColor": "BLUE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 2
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -1267,7 +1397,17 @@
         "cardId": 79,
         "cardColor": "PURPLE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 5,
+                "value": 3
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -1420,7 +1560,16 @@
         "cardId": 56,
         "cardColor": "BLUE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 3
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -1456,7 +1605,33 @@
         "cardId": 80,
         "cardColor": "PURPLE",
         "period": 1,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 4,
+                "value": 2
+              }
+            ]
+          },
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 1
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 1
+              },
+              {
+                "ResourceType": "Coin",
+                "value": 2
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -1615,7 +1790,16 @@
         "cardId": 57,
         "cardColor": "BLUE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -1652,7 +1836,16 @@
         "cardId": 81,
         "cardColor": "PURPLE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 6
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -1825,7 +2018,16 @@
         "cardId": 58,
         "cardColor": "BLUE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -1861,7 +2063,24 @@
         "cardId": 82,
         "cardColor": "PURPLE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 2
+              },
+              {
+                "ResourceType": "Wood",
+                "value": 2
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 2
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -2032,7 +2251,16 @@
         "cardId": 59,
         "cardColor": "BLUE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 3
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -2064,7 +2292,16 @@
         "cardId": 83,
         "cardColor": "PURPLE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Stone",
+                "value": 4
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -2237,7 +2474,16 @@
         "cardId": 60,
         "cardColor": "BLUE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -2270,7 +2516,17 @@
         "cardId": 84,
         "cardColor": "PURPLE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 6,
+                "value": 3
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -2446,7 +2702,16 @@
         "cardId": 61,
         "cardColor": "BLUE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             null
@@ -2471,7 +2736,20 @@
         "cardId": 85,
         "cardColor": "PURPLE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Servant",
+                "value": 2
+              },
+              {
+                "ResourceType": "Coin",
+                "value": 3
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -2623,7 +2901,16 @@
         "cardId": 62,
         "cardColor": "BLUE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             null
@@ -2648,7 +2935,16 @@
         "cardId": 86,
         "cardColor": "PURPLE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 4
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -2798,7 +3094,16 @@
         "cardId": 63,
         "cardColor": "BLUE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 5
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -2827,7 +3132,17 @@
         "cardId": 87,
         "cardColor": "PURPLE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 8,
+                "value": 4
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -2991,7 +3306,16 @@
         "cardId": 64,
         "cardColor": "BLUE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 5
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -3021,7 +3345,33 @@
         "cardId": 88,
         "cardColor": "PURPLE",
         "period": 2,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 7,
+                "value": 4
+              }
+            ]
+          },
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 2
+              },
+              {
+                "ResourceType": "Coin",
+                "value": 3
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 2
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -3172,7 +3522,16 @@
         "cardId": 65,
         "cardColor": "BLUE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 6
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -3202,7 +3561,16 @@
         "cardId": 89,
         "cardColor": "PURPLE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 8
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -3370,7 +3738,16 @@
         "cardId": 66,
         "cardColor": "BLUE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 6
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -3400,7 +3777,24 @@
         "cardId": 90,
         "cardColor": "PURPLE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 3
+              },
+              {
+                "ResourceType": "Wood",
+                "value": 3
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 3
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -3559,7 +3953,16 @@
         "cardId": 67,
         "cardColor": "BLUE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 7
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -3589,7 +3992,16 @@
         "cardId": 91,
         "cardColor": "PURPLE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Stone",
+                "value": 6
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -3751,7 +4163,16 @@
         "cardId": 68,
         "cardColor": "BLUE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 6
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -3781,7 +4202,16 @@
         "cardId": 92,
         "cardColor": "PURPLE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 6
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -3953,7 +4383,16 @@
         "cardId": 69,
         "cardColor": "BLUE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -3987,7 +4426,17 @@
         "cardId": 93,
         "cardColor": "PURPLE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 12,
+                "value": 6
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -4174,7 +4623,16 @@
         "cardId": 70,
         "cardColor": "BLUE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 5
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -4208,7 +4666,20 @@
         "cardId": 94,
         "cardColor": "PURPLE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Servant",
+                "value": 3
+              },
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -4374,7 +4845,16 @@
         "cardId": 71,
         "cardColor": "BLUE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 5
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -4408,7 +4888,17 @@
         "cardId": 95,
         "cardColor": "PURPLE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 15,
+                "value": 8
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -4565,7 +5055,16 @@
         "cardId": 72,
         "cardColor": "BLUE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 6
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -4602,7 +5101,33 @@
         "cardId": 96,
         "cardColor": "PURPLE",
         "period": 3,
-        "costList": [],
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 10,
+                "value": 5
+              }
+            ]
+          },
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 3
+              },
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 3
+              }
+            ]
+          }
+        ],
         "immediateEffectList": {
           "effectList": [
             {
@@ -4698,6 +5223,7 @@
           }
         ]
       },
+      "numberOfCardOfTheSameType": 0,
       "abilityOneTimeForTurn": {
         "EffectType": "HarvestEffectActivationFromCard",
         "basicValue": 1,
@@ -4767,6 +5293,7 @@
           }
         ]
       },
+      "numberOfCardOfTheSameType": 0,
       "abilityOneTimeForTurn": null,
       "permanentAbility": {
         "EffectType": "BonusAndMalusEffect",
@@ -4838,6 +5365,7 @@
           }
         ]
       },
+      "numberOfCardOfTheSameType": 0,
       "abilityOneTimeForTurn": null,
       "permanentAbility": {
         "EffectType": "BonusAndMalusEffect",
@@ -4909,6 +5437,7 @@
           }
         ]
       },
+      "numberOfCardOfTheSameType": 0,
       "abilityOneTimeForTurn": {
         "EffectType": "ChangeFamilyValueEffect",
         "newFamilyMemberValue": 6,
@@ -4932,6 +5461,7 @@
         ]
       },
       "developmentCardRequest": null,
+      "numberOfCardOfTheSameType": 0,
       "abilityOneTimeForTurn": {
         "EffectType": "GetResourceEffect",
         "resources": {
@@ -4950,3 +5480,1949 @@
       "usedEffect2": false,
       "name": "Girolamo Savonarola"
     },
+    {
+      "playerId": null,
+      "leaderId": 6,
+      "resourceRequest": {
+        "resourceList": [
+          {
+            "ResourceType": "MilitaryStrength",
+            "valueRequest": 0,
+            "value": 12
+          }
+        ]
+      },
+      "developmentCardRequest": null,
+      "numberOfCardOfTheSameType": 0,
+      "abilityOneTimeForTurn": {
+        "EffectType": "GetResourceEffect",
+        "resources": {
+          "resourceList": [
+            {
+              "ResourceType": "Wood",
+              "value": 1
+            },
+            {
+              "ResourceType": "Coin",
+              "value": 1
+            },
+            {
+              "ResourceType": "Stone",
+              "value": 1
+            }
+          ]
+        },
+        "cardId": 0
+      },
+      "permanentAbility": null,
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Giovanni delle Bande Nere"
+    },
+    {
+      "playerId": null,
+      "leaderId": 7,
+      "resourceRequest": {
+        "resourceList": [
+          {
+            "ResourceType": "Wood",
+            "value": 10
+          }
+        ]
+      },
+      "developmentCardRequest": null,
+      "numberOfCardOfTheSameType": 0,
+      "abilityOneTimeForTurn": {
+        "EffectType": "GetResourceEffect",
+        "resources": {
+          "resourceList": [
+            {
+              "ResourceType": "MilitaryStrength",
+              "valueRequest": 0,
+              "value": 2
+            },
+            {
+              "ResourceType": "VictoryPoint",
+              "value": 1
+            }
+          ]
+        },
+        "cardId": 0
+      },
+      "permanentAbility": null,
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Sandro Botticelli"
+    },
+    {
+      "playerId": null,
+      "leaderId": 8,
+      "resourceRequest": {
+        "resourceList": [
+          {
+            "ResourceType": "Stone",
+            "value": 10
+          }
+        ]
+      },
+      "developmentCardRequest": null,
+      "numberOfCardOfTheSameType": 0,
+      "abilityOneTimeForTurn": {
+        "EffectType": "GetResourceEffect",
+        "resources": {
+          "resourceList": [
+            {
+              "ResourceType": "Coin",
+              "value": 3
+            }
+          ]
+        },
+        "cardId": 0
+      },
+      "permanentAbility": null,
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Michelangelo Buonarroti"
+    },
+    {
+      "playerId": null,
+      "leaderId": 9,
+      "resourceRequest": {
+        "resourceList": [
+          {
+            "ResourceType": "Servant",
+            "value": 15
+          }
+        ]
+      },
+      "developmentCardRequest": null,
+      "numberOfCardOfTheSameType": 0,
+      "abilityOneTimeForTurn": {
+        "EffectType": "GetResourceEffect",
+        "resources": {
+          "resourceList": [
+            {
+              "ResourceType": "CouncilPrivilege",
+              "different": false,
+              "value": 1
+            }
+          ]
+        },
+        "cardId": 0
+      },
+      "permanentAbility": null,
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Ludovico III Gonzaga"
+    },
+    {
+      "playerId": null,
+      "leaderId": 10,
+      "resourceRequest": null,
+      "developmentCardRequest": {
+        "developmentCardList": [
+          {
+            "CardType": "Territory",
+            "cardId": 0,
+            "cardColor": "GREEN",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Territory",
+            "cardId": 0,
+            "cardColor": "GREEN",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Character",
+            "cardId": 0,
+            "cardColor": "BLUE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Character",
+            "cardId": 0,
+            "cardColor": "BLUE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Character",
+            "cardId": 0,
+            "cardColor": "BLUE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Character",
+            "cardId": 0,
+            "cardColor": "BLUE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          }
+        ]
+      },
+      "numberOfCardOfTheSameType": 0,
+      "abilityOneTimeForTurn": {
+        "EffectType": "ProductionEffectActivationFromCard",
+        "basicValue": 0,
+        "cardId": 0
+      },
+      "permanentAbility": null,
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Leonardo da Vinci"
+    },
+    {
+      "playerId": null,
+      "leaderId": 11,
+      "resourceRequest": null,
+      "developmentCardRequest": {
+        "developmentCardList": [
+          {
+            "CardType": "Building",
+            "cardId": 0,
+            "cardColor": "YELLOW",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Building",
+            "cardId": 0,
+            "cardColor": "YELLOW",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Venture",
+            "cardId": 0,
+            "cardColor": "PURPLE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Venture",
+            "cardId": 0,
+            "cardColor": "PURPLE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Venture",
+            "cardId": 0,
+            "cardColor": "PURPLE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Venture",
+            "cardId": 0,
+            "cardColor": "PURPLE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          }
+        ]
+      },
+      "numberOfCardOfTheSameType": 0,
+      "abilityOneTimeForTurn": null,
+      "permanentAbility": {
+        "EffectType": "BonusAndMalusEffect",
+        "bonus": {
+          "BonusType": "CardDiscountBonus",
+          "value": 0,
+          "cardColor": null,
+          "anyColor": true,
+          "resourceListDiscount": {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": -3
+              }
+            ]
+          }
+        },
+        "cardId": 0
+      },
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Pico della Mirandola"
+    },
+    {
+      "playerId": null,
+      "leaderId": 12,
+      "resourceRequest": {
+        "resourceList": [
+          {
+            "ResourceType": "Coin",
+            "value": 6
+          },
+          {
+            "ResourceType": "Stone",
+            "value": 6
+          },
+          {
+            "ResourceType": "Wood",
+            "value": 6
+          },
+          {
+            "ResourceType": "Servant",
+            "value": 6
+          }
+        ]
+      },
+      "developmentCardRequest": null,
+      "numberOfCardOfTheSameType": 0,
+      "abilityOneTimeForTurn": null,
+      "permanentAbility": {
+        "EffectType": "BonusAndMalusEffect",
+        "bonus": {
+          "BonusType": "VaticanReportExtraVictoryPoint",
+          "extraResourceOfVaticanReport": {
+            "ResourceType": "Coin",
+            "value": 5
+          }
+        },
+        "cardId": 0
+      },
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Sisto IV"
+    },
+    {
+      "playerId": null,
+      "leaderId": 13,
+      "resourceRequest": null,
+      "developmentCardRequest": null,
+      "numberOfCardOfTheSameType": 6,
+      "abilityOneTimeForTurn": null,
+      "permanentAbility": {
+        "EffectType": "BonusAndMalusEffect",
+        "bonus": {
+          "BonusType": "ColoredFamilyMembersBonus",
+          "bonus": 2
+        },
+        "cardId": 0
+      },
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Lucrezia Borgia"
+    },
+    {
+      "playerId": null,
+      "leaderId": 14,
+      "resourceRequest": {
+        "resourceList": [
+          {
+            "ResourceType": "MilitaryStrength",
+            "valueRequest": 0,
+            "value": 7
+          },
+          {
+            "ResourceType": "FaithPoint",
+            "value": 3
+          }
+        ]
+      },
+      "developmentCardRequest": null,
+      "numberOfCardOfTheSameType": 0,
+      "abilityOneTimeForTurn": null,
+      "permanentAbility": {
+        "EffectType": "BonusAndMalusEffect",
+        "bonus": {
+          "BonusType": "NeutralFamilyMemberBonus",
+          "bonusNeutralFamilyMember": 3
+        },
+        "cardId": 0
+      },
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Sigismondo Malatesta"
+    },
+    {
+      "playerId": null,
+      "leaderId": 15,
+      "resourceRequest": {
+        "resourceList": [
+          {
+            "ResourceType": "VictoryPoint",
+            "value": 35
+          }
+        ]
+      },
+      "developmentCardRequest": null,
+      "numberOfCardOfTheSameType": 0,
+      "abilityOneTimeForTurn": null,
+      "permanentAbility": {
+        "EffectType": "BonusAndMalusEffect",
+        "bonus": {
+          "BonusType": "CopyLeaderBonus",
+          "leaderCardId": 15
+        },
+        "cardId": 0
+      },
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Lorenzo de\u0027 Medici"
+    },
+    {
+      "playerId": null,
+      "leaderId": 16,
+      "resourceRequest": null,
+      "developmentCardRequest": {
+        "developmentCardList": [
+          {
+            "CardType": "Building",
+            "cardId": 0,
+            "cardColor": "YELLOW",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Building",
+            "cardId": 0,
+            "cardColor": "YELLOW",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Venture",
+            "cardId": 0,
+            "cardColor": "PURPLE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Venture",
+            "cardId": 0,
+            "cardColor": "PURPLE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Character",
+            "cardId": 0,
+            "cardColor": "BLUE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Character",
+            "cardId": 0,
+            "cardColor": "BLUE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Territory",
+            "cardId": 0,
+            "cardColor": "GREEN",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Territory",
+            "cardId": 0,
+            "cardColor": "GREEN",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          }
+        ]
+      },
+      "numberOfCardOfTheSameType": 0,
+      "abilityOneTimeForTurn": null,
+      "permanentAbility": {
+        "EffectType": "BonusAndMalusEffect",
+        "bonus": {
+          "BonusType": "StaticFamilyMemberValueBonus",
+          "modifyValueColoredFamilyMember": 5,
+          "membersToModify": [
+            "WHITE",
+            "BLACK",
+            "ORANGE"
+          ]
+        },
+        "cardId": 0
+      },
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Ludovico il Moro"
+    },
+    {
+      "playerId": null,
+      "leaderId": 17,
+      "resourceRequest": {
+        "resourceList": [
+          {
+            "ResourceType": "Coin",
+            "value": 12
+          },
+          {
+            "ResourceType": "FaithPoint",
+            "value": 2
+          }
+        ]
+      },
+      "developmentCardRequest": {
+        "developmentCardList": [
+          {
+            "CardType": "Building",
+            "cardId": 0,
+            "cardColor": "YELLOW",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Building",
+            "cardId": 0,
+            "cardColor": "YELLOW",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Building",
+            "cardId": 0,
+            "cardColor": "YELLOW",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          }
+        ]
+      },
+      "numberOfCardOfTheSameType": 0,
+      "abilityOneTimeForTurn": null,
+      "permanentAbility": {
+        "EffectType": "BonusAndMalusEffect",
+        "bonus": {
+          "BonusType": "NoBoardRequirementControl",
+          "cardColor": "GREEN"
+        },
+        "cardId": 0
+      },
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Cesare Borgia"
+    },
+    {
+      "playerId": null,
+      "leaderId": 18,
+      "resourceRequest": {
+        "resourceList": [
+          {
+            "ResourceType": "FaithPoint",
+            "value": 8
+          }
+        ]
+      },
+      "developmentCardRequest": null,
+      "numberOfCardOfTheSameType": 0,
+      "abilityOneTimeForTurn": null,
+      "permanentAbility": {
+        "EffectType": "BonusAndMalusEffect",
+        "bonus": {
+          "BonusType": "DoubleResourceFromCardBonus"
+        },
+        "cardId": 0
+      },
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Santa Rita"
+    },
+    {
+      "playerId": null,
+      "leaderId": 19,
+      "resourceRequest": null,
+      "developmentCardRequest": {
+        "developmentCardList": [
+          {
+            "CardType": "Building",
+            "cardId": 0,
+            "cardColor": "YELLOW",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Building",
+            "cardId": 0,
+            "cardColor": "YELLOW",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Building",
+            "cardId": 0,
+            "cardColor": "YELLOW",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Building",
+            "cardId": 0,
+            "cardColor": "YELLOW",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Character",
+            "cardId": 0,
+            "cardColor": "BLUE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Character",
+            "cardId": 0,
+            "cardColor": "BLUE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          }
+        ]
+      },
+      "numberOfCardOfTheSameType": 0,
+      "abilityOneTimeForTurn": {
+        "EffectType": "GetResourceEffect",
+        "resources": {
+          "resourceList": [
+            {
+              "ResourceType": "Servant",
+              "value": 3
+            },
+            {
+              "ResourceType": "VictoryPoint",
+              "value": 1
+            }
+          ]
+        },
+        "cardId": 0
+      },
+      "permanentAbility": null,
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Cosimo de\u0027 Medici"
+    },
+    {
+      "playerId": null,
+      "leaderId": 20,
+      "resourceRequest": null,
+      "developmentCardRequest": {
+        "developmentCardList": [
+          {
+            "CardType": "Venture",
+            "cardId": 0,
+            "cardColor": "PURPLE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Venture",
+            "cardId": 0,
+            "cardColor": "PURPLE",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Territory",
+            "cardId": 0,
+            "cardColor": "GREEN",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Territory",
+            "cardId": 0,
+            "cardColor": "GREEN",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Territory",
+            "cardId": 0,
+            "cardColor": "GREEN",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          },
+          {
+            "CardType": "Territory",
+            "cardId": 0,
+            "cardColor": "GREEN",
+            "period": 0,
+            "costList": null,
+            "immediateEffectList": null,
+            "permanentEffectList": null,
+            "name": null
+          }
+        ]
+      },
+      "numberOfCardOfTheSameType": 0,
+      "abilityOneTimeForTurn": {
+        "EffectType": "GetResourceEffect",
+        "resources": {
+          "resourceList": [
+            {
+              "ResourceType": "VictoryPoint",
+              "value": 4
+            }
+          ]
+        },
+        "cardId": 0
+      },
+      "permanentAbility": null,
+      "played": false,
+      "usedEffect1": false,
+      "usedEffect2": false,
+      "name": "Bartolomeo Colleoni"
+    }
+  ],
+  "towerActionSpaceEffectList": [
+    [
+      null,
+      null,
+      {
+        "effectList": [
+          {
+            "EffectType": "GetResourceEffect",
+            "resources": {
+              "resourceList": [
+                {
+                  "ResourceType": "Wood",
+                  "value": 1
+                }
+              ]
+            },
+            "cardId": 0
+          }
+        ]
+      },
+      {
+        "effectList": [
+          {
+            "EffectType": "GetResourceEffect",
+            "resources": {
+              "resourceList": [
+                {
+                  "ResourceType": "Wood",
+                  "value": 2
+                }
+              ]
+            },
+            "cardId": 0
+          }
+        ]
+      }
+    ],
+    [
+      null,
+      null,
+      {
+        "effectList": [
+          {
+            "EffectType": "GetResourceEffect",
+            "resources": {
+              "resourceList": [
+                {
+                  "ResourceType": "Stone",
+                  "value": 1
+                }
+              ]
+            },
+            "cardId": 0
+          }
+        ]
+      },
+      {
+        "effectList": [
+          {
+            "EffectType": "GetResourceEffect",
+            "resources": {
+              "resourceList": [
+                {
+                  "ResourceType": "Stone",
+                  "value": 2
+                }
+              ]
+            },
+            "cardId": 0
+          }
+        ]
+      }
+    ],
+    [
+      null,
+      null,
+      {
+        "effectList": [
+          {
+            "EffectType": "GetResourceEffect",
+            "resources": {
+              "resourceList": [
+                {
+                  "ResourceType": "MilitaryStrength",
+                  "valueRequest": 0,
+                  "value": 1
+                }
+              ]
+            },
+            "cardId": 0
+          }
+        ]
+      },
+      {
+        "effectList": [
+          {
+            "EffectType": "GetResourceEffect",
+            "resources": {
+              "resourceList": [
+                {
+                  "ResourceType": "MilitaryStrength",
+                  "valueRequest": 0,
+                  "value": 2
+                }
+              ]
+            },
+            "cardId": 0
+          }
+        ]
+      }
+    ],
+    [
+      null,
+      null,
+      {
+        "effectList": [
+          {
+            "EffectType": "GetResourceEffect",
+            "resources": {
+              "resourceList": [
+                {
+                  "ResourceType": "Coin",
+                  "value": 1
+                }
+              ]
+            },
+            "cardId": 0
+          }
+        ]
+      },
+      {
+        "effectList": [
+          {
+            "EffectType": "GetResourceEffect",
+            "resources": {
+              "resourceList": [
+                {
+                  "ResourceType": "Coin",
+                  "value": 2
+                }
+              ]
+            },
+            "cardId": 0
+          }
+        ]
+      }
+    ]
+  ],
+  "actionSpaceEffectList": [
+    {
+      "effectList": [
+        {
+          "EffectType": "GetResourceEffect",
+          "resources": {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 1
+              },
+              {
+                "ResourceType": "CouncilPrivilege",
+                "different": false,
+                "value": 1
+              }
+            ]
+          },
+          "cardId": 0
+        }
+      ]
+    },
+    {
+      "effectList": [
+        {
+          "EffectType": "GenericHarvestEffectActivation",
+          "basicValue": 0,
+          "cardId": 0
+        }
+      ]
+    },
+    {
+      "effectList": [
+        {
+          "EffectType": "GenericHarvestEffectActivation",
+          "basicValue": -3,
+          "cardId": 0
+        }
+      ]
+    },
+    {
+      "effectList": [
+        {
+          "EffectType": "GenericProductionEffectActivation",
+          "basicValue": 0,
+          "cardId": 0
+        }
+      ]
+    },
+    {
+      "effectList": [
+        {
+          "EffectType": "GenericProductionEffectActivation",
+          "basicValue": -3,
+          "cardId": 0
+        }
+      ]
+    },
+    {
+      "effectList": [
+        {
+          "EffectType": "GetResourceEffect",
+          "resources": {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 5
+              }
+            ]
+          },
+          "cardId": 0
+        }
+      ]
+    },
+    {
+      "effectList": [
+        {
+          "EffectType": "GetResourceEffect",
+          "resources": {
+            "resourceList": [
+              {
+                "ResourceType": "Servant",
+                "value": 5
+              }
+            ]
+          },
+          "cardId": 0
+        }
+      ]
+    },
+    {
+      "effectList": [
+        {
+          "EffectType": "GetResourceEffect",
+          "resources": {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 0,
+                "value": 3
+              },
+              {
+                "ResourceType": "Coin",
+                "value": 2
+              }
+            ]
+          },
+          "cardId": 0
+        }
+      ]
+    },
+    {
+      "effectList": [
+        {
+          "EffectType": "GetResourceEffect",
+          "resources": {
+            "resourceList": [
+              {
+                "ResourceType": "CouncilPrivilege",
+                "different": true,
+                "value": 2
+              }
+            ]
+          },
+          "cardId": 0
+        }
+      ]
+    }
+  ],
+  "faithTrackExtraValue": [
+    {
+      "value": 0
+    },
+    {
+      "value": 1
+    },
+    {
+      "value": 2
+    },
+    {
+      "value": 3
+    },
+    {
+      "value": 4
+    },
+    {
+      "value": 5
+    },
+    {
+      "value": 7
+    },
+    {
+      "value": 9
+    },
+    {
+      "value": 11
+    },
+    {
+      "value": 13
+    },
+    {
+      "value": 15
+    },
+    {
+      "value": 17
+    },
+    {
+      "value": 19
+    },
+    {
+      "value": 22
+    },
+    {
+      "value": 25
+    },
+    {
+      "value": 30
+    }
+  ],
+  "bonusVictoryPointFromCharacterCard": [
+    {
+      "value": 1
+    },
+    {
+      "value": 3
+    },
+    {
+      "value": 6
+    },
+    {
+      "value": 10
+    },
+    {
+      "value": 15
+    },
+    {
+      "value": 21
+    }
+  ],
+  "bonusVictoryPointFromTerritory": [
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 1
+    },
+    {
+      "value": 3
+    },
+    {
+      "value": 10
+    },
+    {
+      "value": 20
+    }
+  ],
+  "bonusVictoryPointFromMilitaryTrack": [
+    {
+      "value": 5
+    },
+    {
+      "value": 2
+    }
+  ],
+  "pointResourceRequired": [
+    [
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      }
+    ],
+    [
+      {
+        "PointResource": "MilitaryStrength",
+        "valueRequest": 0,
+        "value": 0
+      },
+      {
+        "PointResource": "MilitaryStrength",
+        "valueRequest": 0,
+        "value": 0
+      },
+      {
+        "PointResource": "MilitaryStrength",
+        "valueRequest": 0,
+        "value": 3
+      },
+      {
+        "PointResource": "MilitaryStrength",
+        "valueRequest": 0,
+        "value": 7
+      },
+      {
+        "PointResource": "MilitaryStrength",
+        "valueRequest": 0,
+        "value": 12
+      },
+      {
+        "PointResource": "MilitaryStrength",
+        "valueRequest": 0,
+        "value": 18
+      }
+    ],
+    [
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      }
+    ],
+    [
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      },
+      {
+        "PointResource": "VictoryPoint",
+        "value": 0
+      }
+    ]
+  ],
+  "bonusVictoryPointFromPlayerResources": {
+    "value": 1
+  },
+  "initialResourcePlayer": [
+    {
+      "resourceList": [
+        {
+          "ResourceType": "Wood",
+          "value": 2
+        },
+        {
+          "ResourceType": "Stone",
+          "value": 2
+        },
+        {
+          "ResourceType": "Servant",
+          "value": 2
+        },
+        {
+          "ResourceType": "Coin",
+          "value": 5
+        },
+        {
+          "ResourceType": "MilitaryStrength",
+          "valueRequest": 0,
+          "value": 0
+        },
+        {
+          "ResourceType": "FaithPoint",
+          "value": 0
+        },
+        {
+          "ResourceType": "VictoryPoint",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "resourceList": [
+        {
+          "ResourceType": "Wood",
+          "value": 2
+        },
+        {
+          "ResourceType": "Stone",
+          "value": 2
+        },
+        {
+          "ResourceType": "Servant",
+          "value": 2
+        },
+        {
+          "ResourceType": "Coin",
+          "value": 6
+        },
+        {
+          "ResourceType": "MilitaryStrength",
+          "valueRequest": 0,
+          "value": 0
+        },
+        {
+          "ResourceType": "FaithPoint",
+          "value": 0
+        },
+        {
+          "ResourceType": "VictoryPoint",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "resourceList": [
+        {
+          "ResourceType": "Wood",
+          "value": 2
+        },
+        {
+          "ResourceType": "Stone",
+          "value": 2
+        },
+        {
+          "ResourceType": "Servant",
+          "value": 2
+        },
+        {
+          "ResourceType": "Coin",
+          "value": 7
+        },
+        {
+          "ResourceType": "MilitaryStrength",
+          "valueRequest": 0,
+          "value": 0
+        },
+        {
+          "ResourceType": "FaithPoint",
+          "value": 0
+        },
+        {
+          "ResourceType": "VictoryPoint",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "resourceList": [
+        {
+          "ResourceType": "Wood",
+          "value": 2
+        },
+        {
+          "ResourceType": "Stone",
+          "value": 2
+        },
+        {
+          "ResourceType": "Servant",
+          "value": 2
+        },
+        {
+          "ResourceType": "Coin",
+          "value": 8
+        },
+        {
+          "ResourceType": "MilitaryStrength",
+          "valueRequest": 0,
+          "value": 0
+        },
+        {
+          "ResourceType": "FaithPoint",
+          "value": 0
+        },
+        {
+          "ResourceType": "VictoryPoint",
+          "value": 0
+        }
+      ]
+    }
+  ],
+  "excommunicationTiles": [
+    {
+      "id": 1,
+      "period": 1,
+      "permanentMalus": {
+        "BonusType": "GetResourceMalus",
+        "resourceToSub1": {
+          "resourceList": [
+            {
+              "ResourceType": "MilitaryStrength",
+              "valueRequest": 0,
+              "value": -1
+            }
+          ]
+        },
+        "resourceToSub2": null
+      },
+      "endGame": false
+    },
+    {
+      "id": 2,
+      "period": 1,
+      "permanentMalus": {
+        "BonusType": "GetResourceMalus",
+        "resourceToSub1": {
+          "resourceList": [
+            {
+              "ResourceType": "Coin",
+              "value": -1
+            }
+          ]
+        },
+        "resourceToSub2": null
+      },
+      "endGame": false
+    },
+    {
+      "id": 3,
+      "period": 1,
+      "permanentMalus": {
+        "BonusType": "GetResourceMalus",
+        "resourceToSub1": {
+          "resourceList": [
+            {
+              "ResourceType": "Servant",
+              "value": -1
+            }
+          ]
+        },
+        "resourceToSub2": null
+      },
+      "endGame": false
+    },
+    {
+      "id": 4,
+      "period": 1,
+      "permanentMalus": {
+        "BonusType": "GetResourceMalus",
+        "resourceToSub1": {
+          "resourceList": [
+            {
+              "ResourceType": "Wood",
+              "value": -1
+            }
+          ]
+        },
+        "resourceToSub2": {
+          "resourceList": [
+            {
+              "ResourceType": "Stone",
+              "value": -1
+            }
+          ]
+        }
+      },
+      "endGame": false
+    },
+    {
+      "id": 5,
+      "period": 1,
+      "permanentMalus": {
+        "BonusType": "HarvestBonus",
+        "value": -3
+      },
+      "endGame": false
+    },
+    {
+      "id": 6,
+      "period": 1,
+      "permanentMalus": {
+        "BonusType": "ProductionBonus",
+        "value": -3
+      },
+      "endGame": false
+    },
+    {
+      "id": 7,
+      "period": 1,
+      "permanentMalus": {
+        "BonusType": "ColoredFamilyMembersBonus",
+        "bonus": -1
+      },
+      "endGame": false
+    },
+    {
+      "id": 8,
+      "period": 2,
+      "permanentMalus": {
+        "BonusType": "CardDiscountBonus",
+        "value": -4,
+        "cardColor": "GREEN",
+        "anyColor": false,
+        "resourceListDiscount": null
+      },
+      "endGame": false
+    },
+    {
+      "id": 9,
+      "period": 2,
+      "permanentMalus": {
+        "BonusType": "CardDiscountBonus",
+        "value": -4,
+        "cardColor": "YELLOW",
+        "anyColor": false,
+        "resourceListDiscount": null
+      },
+      "endGame": false
+    },
+    {
+      "id": 10,
+      "period": 2,
+      "permanentMalus": {
+        "BonusType": "CardDiscountBonus",
+        "value": -4,
+        "cardColor": "BLUE",
+        "anyColor": false,
+        "resourceListDiscount": null
+      },
+      "endGame": false
+    },
+    {
+      "id": 11,
+      "period": 2,
+      "permanentMalus": {
+        "BonusType": "CardDiscountBonus",
+        "value": -4,
+        "cardColor": "PURPLE",
+        "anyColor": false,
+        "resourceListDiscount": null
+      },
+      "endGame": false
+    },
+    {
+      "id": 12,
+      "period": 2,
+      "permanentMalus": {
+        "BonusType": "CantPlaceInActionSpace",
+        "actionSpaceIdList": [
+          24,
+          25
+        ]
+      },
+      "endGame": false
+    },
+    {
+      "id": 13,
+      "period": 2,
+      "permanentMalus": {
+        "BonusType": "ModifyPayServantsBonus",
+        "servantsToPayPerUnitaryDiceValueArise": 2
+      },
+      "endGame": false
+    },
+    {
+      "id": 14,
+      "period": 2,
+      "permanentMalus": {
+        "BonusType": "NoFirstActionTurn"
+      },
+      "endGame": false
+    },
+    {
+      "id": 15,
+      "period": 3,
+      "permanentMalus": {
+        "BonusType": "LostExtraFinalVictoryPointBonus",
+        "cardColor": "BLUE"
+      },
+      "endGame": true
+    },
+    {
+      "id": 16,
+      "period": 3,
+      "permanentMalus": {
+        "BonusType": "LostExtraFinalVictoryPointBonus",
+        "cardColor": "PURPLE"
+      },
+      "endGame": true
+    },
+    {
+      "id": 17,
+      "period": 3,
+      "permanentMalus": {
+        "BonusType": "LostExtraFinalVictoryPointBonus",
+        "cardColor": "GREEN"
+      },
+      "endGame": true
+    },
+    {
+      "id": 18,
+      "period": 3,
+      "permanentMalus": {
+        "BonusType": "LostFinalVictoryPointBonus",
+        "pointResource": {
+          "PointResource": "VictoryPoint",
+          "value": 1
+        }
+      },
+      "endGame": true
+    },
+    {
+      "id": 19,
+      "period": 3,
+      "permanentMalus": {
+        "BonusType": "LostFinalVictoryPointBonus",
+        "pointResource": {
+          "PointResource": "MilitaryStrength",
+          "valueRequest": 0,
+          "value": 1
+        }
+      },
+      "endGame": true
+    },
+    {
+      "id": 20,
+      "period": 3,
+      "permanentMalus": {
+        "BonusType": "LostFinalVictoryPointFromCardCosts",
+        "resourceList": {
+          "resourceList": [
+            {
+              "ResourceType": "Wood",
+              "value": 0
+            },
+            {
+              "ResourceType": "Stone",
+              "value": 0
+            }
+          ]
+        },
+        "cardColorForCostCard": "YELLOW"
+      },
+      "endGame": true
+    },
+    {
+      "id": 21,
+      "period": 3,
+      "permanentMalus": {
+        "BonusType": "LostFinalVictoryPointFromPlayerResources",
+        "string": "LostFinalVictoryPointFromPlayerResources"
+      },
+      "endGame": true
+    }
+  ],
+  "personalBonusTilesList": [
+    {
+      "playerId": null,
+      "personalBonusTilesId": 1,
+      "harvestEffect": {
+        "harvestActionValue": 1,
+        "getResourceEffect": {
+          "resources": {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 1
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 1
+              },
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 0,
+                "value": 1
+              }
+            ]
+          },
+          "cardId": 0
+        },
+        "cardId": 0
+      },
+      "productionEffect": {
+        "productionActionValue": 1,
+        "getResourceEffect": {
+          "resources": {
+            "resourceList": [
+              {
+                "ResourceType": "Servant",
+                "value": 2
+              },
+              {
+                "ResourceType": "Coin",
+                "value": 1
+              }
+            ]
+          },
+          "cardId": 0
+        },
+        "changeResourceEffect": null,
+        "getResourceEffectFromCard": null,
+        "cardId": 0
+      }
+    },
+    {
+      "playerId": null,
+      "personalBonusTilesId": 2,
+      "harvestEffect": {
+        "harvestActionValue": 1,
+        "getResourceEffect": {
+          "resources": {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 1
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 1
+              },
+              {
+                "ResourceType": "Servant",
+                "value": 1
+              }
+            ]
+          },
+          "cardId": 0
+        },
+        "cardId": 0
+      },
+      "productionEffect": {
+        "productionActionValue": 1,
+        "getResourceEffect": {
+          "resources": {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 0,
+                "value": 2
+              },
+              {
+                "ResourceType": "Coin",
+                "value": 1
+              }
+            ]
+          },
+          "cardId": 0
+        },
+        "changeResourceEffect": null,
+        "getResourceEffectFromCard": null,
+        "cardId": 0
+      }
+    },
+    {
+      "playerId": null,
+      "personalBonusTilesId": 3,
+      "harvestEffect": {
+        "harvestActionValue": 1,
+        "getResourceEffect": {
+          "resources": {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 1
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 1
+              },
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 0,
+                "value": 1
+              }
+            ]
+          },
+          "cardId": 0
+        },
+        "cardId": 0
+      },
+      "productionEffect": {
+        "productionActionValue": 1,
+        "getResourceEffect": {
+          "resources": {
+            "resourceList": [
+              {
+                "ResourceType": "Servant",
+                "value": 1
+              },
+              {
+                "ResourceType": "Coin",
+                "value": 2
+              }
+            ]
+          },
+          "cardId": 0
+        },
+        "changeResourceEffect": null,
+        "getResourceEffectFromCard": null,
+        "cardId": 0
+      }
+    },
+    {
+      "playerId": null,
+      "personalBonusTilesId": 4,
+      "harvestEffect": {
+        "harvestActionValue": 1,
+        "getResourceEffect": {
+          "resources": {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 1
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 1
+              },
+              {
+                "ResourceType": "Coin",
+                "value": 1
+              }
+            ]
+          },
+          "cardId": 0
+        },
+        "cardId": 0
+      },
+      "productionEffect": {
+        "productionActionValue": 1,
+        "getResourceEffect": {
+          "resources": {
+            "resourceList": [
+              {
+                "ResourceType": "Servant",
+                "value": 1
+              },
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 0,
+                "value": 2
+              }
+            ]
+          },
+          "cardId": 0
+        },
+        "changeResourceEffect": null,
+        "getResourceEffectFromCard": null,
+        "cardId": 0
+      }
+    }
+  ],
+  "councilPrivilegeResChoice": [
+    {
+      "resourceList": [
+        {
+          "ResourceType": "Wood",
+          "value": 1
+        },
+        {
+          "ResourceType": "Stone",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "resourceList": [
+        {
+          "ResourceType": "Servant",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "resourceList": [
+        {
+          "ResourceType": "Coin",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "resourceList": [
+        {
+          "ResourceType": "MilitaryStrength",
+          "valueRequest": 0,
+          "value": 2
+        }
+      ]
+    },
+    {
+      "resourceList": [
+        {
+          "ResourceType": "FaithPoint",
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "playerConnectionTimer": 120000,
+  "playerActionTimer": 120000
+}
