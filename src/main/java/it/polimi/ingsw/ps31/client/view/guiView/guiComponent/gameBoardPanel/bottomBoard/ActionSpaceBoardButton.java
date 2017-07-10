@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard;
 
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewActionSpace;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
@@ -16,7 +17,7 @@ import java.util.List;
 /**
  * Created by giulia on 01/07/2017.
  */
-public class ActionSpaceBoardButton extends JButton implements ActionListener {
+public class ActionSpaceBoardButton extends ButtonCard implements ActionListener {
     private ActionListener listener;
     private PaintBackgroundPanel[] familyMember = new PaintBackgroundPanel[6];
 

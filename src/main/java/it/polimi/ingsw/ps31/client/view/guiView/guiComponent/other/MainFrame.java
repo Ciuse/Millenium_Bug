@@ -53,6 +53,16 @@ public class MainFrame extends JFrame implements ActionListener {
         backgroundMainFramePanel.setPreferredSize(new Dimension(10, 10));
         frame.add(backgroundMainFramePanel, gbc);
 
+
+        int playerMaxNumber = guiView.getStateViewGame().getPlayerMaxNumber();
+        if(playerMaxNumber<=2){
+            getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().disableBigActionSpace();
+            getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getMarketActionSpacePanel().disableMarketActionSpace();
+        }
+        if(playerMaxNumber==3){
+            getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getMarketActionSpacePanel().disableMarketActionSpace();
+        }
+
     }
 
     @Override

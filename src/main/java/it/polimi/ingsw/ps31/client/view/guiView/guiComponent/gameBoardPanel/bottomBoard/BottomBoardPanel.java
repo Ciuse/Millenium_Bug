@@ -135,6 +135,16 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
         return dicesPanel;
     }
 
+
+    public void disableBigActionSpace(){
+        actionSpaceBoardButtons[2].setEnabled(false);
+        actionSpaceBoardButtons[2].imageToReprint("/coveringtile_2_back_.png");
+        actionSpaceBoardButtons[3].setEnabled(false);
+        actionSpaceBoardButtons[3].imageToReprint("/coveringtile_2_back_.png");
+
+    }
+
+
     public void changeButtonBoardState(boolean state){
         actionSpaceBoardButtons[0].setEnabled(state);
         actionSpaceBoardButtons[1].setEnabled(state);

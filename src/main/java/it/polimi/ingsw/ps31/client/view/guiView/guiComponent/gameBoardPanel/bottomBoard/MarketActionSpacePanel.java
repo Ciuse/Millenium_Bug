@@ -90,6 +90,14 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
 
     }
 
+    public void disableMarketActionSpace(){
+        marketActionSpace[2].setEnabled(false);
+        marketActionSpace[2].imageToReprint("/coveringtile_1_back_.png");
+        marketActionSpace[3].setEnabled(false);
+        marketActionSpace[3].imageToReprint("/coveringtile_1_back_.png");
+
+    }
+
     public ActionSpaceBoardButton[] getMarketActionSpace() {
         return marketActionSpace;
     }

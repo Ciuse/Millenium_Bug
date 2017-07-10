@@ -242,7 +242,7 @@ public class ModelChoices {
 
         boolean timerStarted=false;
         setStateConnection();
-        while(informationFromNetworking.getPlayerNameList().size()<1 && stateModelChoices.equals("StateConnection")){     //continuo a ciclare finchè non si connettono 4 player o il tempo scade
+        while(informationFromNetworking.getPlayerNameList().size()<2 && stateModelChoices.equals("StateConnection")){     //continuo a ciclare finchè non si connettono 4 player o il tempo scade
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
