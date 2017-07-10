@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard;
 
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 
@@ -17,7 +18,7 @@ import static java.lang.String.valueOf;
  */
 public class DicesPanel extends JPanel implements ActionListener {
     private ActionListener listener;
-    private SingleDicePanel[] diceLabel = new SingleDicePanel[3];
+    private PaintBackgroundPanel[] diceLabel = new PaintBackgroundPanel[3];
 
     public void attach (ActionListener listener){
         this.listener=listener;
@@ -30,69 +31,60 @@ public class DicesPanel extends JPanel implements ActionListener {
     public void addComponentsToPane(Container pane) {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
-        gbl.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0};
-        gbl.rowHeights = new int[]{0, 0,0,0};
+        gbl.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
+        gbl.rowHeights = new int[]{0, 0};
 
-        gbl.columnWeights = new double[]{0.06666,0.06666,0.06666, 0.034, 0.06666,0.06666,0.06666, 0.02, 0.06666,0.06666,0.06666, 0.35, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.3333,0.3333,0.3333, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.18, 0.06, 0.18, 0.06, 0.18, 0.25, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.99999, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        diceLabel[0] = new SingleDicePanel();
-        gbc.gridx = 1;
-        gbc.gridy = 1;
+        diceLabel[0] = new PaintBackgroundPanel();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        diceLabel[0].setName("DiceColor.BLACK.name");
-        diceLabel[0].setBackground(Color.black);
+        diceLabel[0].setName(DiceColor.BLACK.name());
+        diceLabel[0].setOpaque(false);
+        //diceLabel[0].setBackground(Color.black);
         pane.add(diceLabel[0], gbc);
 
-        diceLabel[1] = new SingleDicePanel();
-        gbc.gridx = 5;
-        gbc.gridy = 1;
+        diceLabel[1] = new PaintBackgroundPanel();
+        gbc.gridx = 2;
+        gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        diceLabel[1].setName("DiceColor.WHITE.name");
-        diceLabel[1].setBackground(Color.white);
+        diceLabel[1].setName(DiceColor.WHITE.name());
+        diceLabel[1].setOpaque(false);
+        //diceLabel[1].setBackground(Color.white);
         pane.add(diceLabel[1], gbc);
 
-        diceLabel[2] = new SingleDicePanel();
-        gbc.gridx = 10;
-        gbc.gridy = 1;
+        diceLabel[2] = new PaintBackgroundPanel();
+        gbc.gridx = 4;
+        gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        diceLabel[2].setName("DiceColor.ORANGE.name");
-        diceLabel[2].setBackground(Color.orange);
+        diceLabel[2].setName(DiceColor.ORANGE.name());
+        diceLabel[2].setOpaque(false);
+        //diceLabel[2].setBackground(Color.orange);
         pane.add(diceLabel[2], gbc);
     }
 
 
-    //public void setString(List<StateViewFamilyMember> stateViewFamilyMemberList){
-      //  for(int i=0;i<3;i++){
-        //    for (StateViewFamilyMember stateViewFamilyMember : stateViewFamilyMemberList
-          //          ) {
-            //    if(stateViewFamilyMember.getDiceColor().equals(diceLabel[i].getName())){
-              //      diceLabel[i].getDiceLabel().getLabel().setText(valueOf(stateViewFamilyMember.getDiceValue()));
-                //}
-            //}
-       // }
-   // }
 
-    public void setString(List<StateViewFamilyMember> list){
+    public void printDice(List<StateViewFamilyMember> stateViewFamilyMemberList){
         for(int i=0;i<3;i++){
-            Color diceColor = diceLabel[i].getBackground();
-            for (StateViewFamilyMember familyMember :list
+            for (StateViewFamilyMember stateViewFamilyMember : stateViewFamilyMemberList
                     ) {
-                if(familyMember.getDiceColor().equals(getDiceColor( diceColor))){
-                    diceLabel[i].getDiceLabel().getLabel().
-                            setText(valueOf(familyMember.getDiceValue()));
+                if(stateViewFamilyMember.getDiceColor().name().equals(diceLabel[i].getName())){
+                    diceLabel[i].setOpaque(true);
+                    diceLabel[i].imageToReprint("/dices/dice_"+diceLabel[i].getName()+"_"+stateViewFamilyMember.getDiceValue()+".png");
                 }
             }
-
         }
     }
 

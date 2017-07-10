@@ -263,7 +263,7 @@ public class GuiView extends View implements ActionListener {
     }
 
     public void printDiceValue(){
-        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getDicesPanel().setString(getMyStateViewPlayer().getStateViewFamilyMemberList());
+        mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().getDicesPanel().printDice(getMyStateViewPlayer().getStateViewFamilyMemberList());
     }
 
     @Override
