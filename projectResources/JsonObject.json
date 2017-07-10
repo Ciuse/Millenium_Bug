@@ -1,0 +1,2576 @@
+{
+  "developementCardList": {
+    "developmentCardList": [
+      {
+        "CardType": "Territory",
+        "cardId": 1,
+        "cardColor": "GREEN",
+        "period": 1,
+        "costList": [],
+        "immediateEffectList": {
+          "effectList": [
+            null
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "HarvestEffect",
+              "harvestActionValue": 1,
+              "getResourceEffect": {
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Coin",
+                      "value": 1
+                    }
+                  ]
+                },
+                "cardId": 1
+              },
+              "cardId": 1
+            }
+          ]
+        },
+        "name": "Avamposto Commerciale"
+      },
+      {
+        "CardType": "Building",
+        "cardId": 25,
+        "cardColor": "YELLOW",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 1
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 3
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 5
+                  }
+                ]
+              },
+              "cardId": 25
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ProductionEffect",
+              "productionActionValue": 5,
+              "getResourceEffect": null,
+              "changeResourceEffect": null,
+              "getResourceEffectFromCard": {
+                "cardColor": "YELLOW",
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Coin",
+                      "value": 1
+                    }
+                  ]
+                },
+                "cardId": 25
+              },
+              "cardId": 25
+            }
+          ]
+        },
+        "name": "Zecca"
+      },
+      {
+        "CardType": "Character",
+        "cardId": 49,
+        "cardColor": "BLUE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "MilitaryStrength",
+                    "valueRequest": 0,
+                    "value": 3
+                  }
+                ]
+              },
+              "cardId": 49
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "BonusAndMalusEffect",
+              "bonus": {
+                "BonusType": "CardDiscountBonus",
+                "value": 2,
+                "cardColor": "GREEN",
+                "anyColor": false,
+                "resourceListDiscount": null
+              },
+              "cardId": 49
+            }
+          ]
+        },
+        "name": "Condottiero"
+      },
+      {
+        "CardType": "Venture",
+        "cardId": 73,
+        "cardColor": "PURPLE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "MilitaryStrength",
+                    "valueRequest": 0,
+                    "value": 5
+                  }
+                ]
+              },
+              "cardId": 73
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourcesAtTheEndEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 4
+                  }
+                ]
+              },
+              "cardId": 73
+            }
+          ]
+        },
+        "name": "Ingaggiare Reclute"
+      },
+      {
+        "CardType": "Territory",
+        "cardId": 2,
+        "cardColor": "GREEN",
+        "period": 1,
+        "costList": [],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "Wood",
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 2
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "HarvestEffect",
+              "harvestActionValue": 2,
+              "getResourceEffect": {
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Wood",
+                      "value": 1
+                    }
+                  ]
+                },
+                "cardId": 2
+              },
+              "cardId": 2
+            }
+          ]
+        },
+        "name": "Bosco"
+      },
+      {
+        "CardType": "Building",
+        "cardId": 26,
+        "cardColor": "YELLOW",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 3
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 1
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 5
+                  }
+                ]
+              },
+              "cardId": 26
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ProductionEffect",
+              "productionActionValue": 5,
+              "getResourceEffect": null,
+              "changeResourceEffect": null,
+              "getResourceEffectFromCard": {
+                "cardColor": "GREEN",
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Coin",
+                      "value": 1
+                    }
+                  ]
+                },
+                "cardId": 26
+              },
+              "cardId": 26
+            }
+          ]
+        },
+        "name": "Esattoria"
+      },
+      {
+        "CardType": "Character",
+        "cardId": 50,
+        "cardColor": "BLUE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            null
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "BonusAndMalusEffect",
+              "bonus": {
+                "BonusType": "CardDiscountBonus",
+                "value": 2,
+                "cardColor": "YELLOW",
+                "anyColor": false,
+                "resourceListDiscount": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Wood",
+                      "value": 1
+                    },
+                    {
+                      "ResourceType": "Stone",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              "cardId": 50
+            }
+          ]
+        },
+        "name": "Costruttore"
+      },
+      {
+        "CardType": "Venture",
+        "cardId": 74,
+        "cardColor": "PURPLE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 1
+              },
+              {
+                "ResourceType": "Wood",
+                "value": 1
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 1
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "FaithPoint",
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 74
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourcesAtTheEndEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 5
+                  }
+                ]
+              },
+              "cardId": 74
+            }
+          ]
+        },
+        "name": "Riparare la Chiesa"
+      },
+      {
+        "CardType": "Territory",
+        "cardId": 3,
+        "cardColor": "GREEN",
+        "period": 1,
+        "costList": [],
+        "immediateEffectList": {
+          "effectList": [
+            null
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "HarvestEffect",
+              "harvestActionValue": 3,
+              "getResourceEffect": {
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Coin",
+                      "value": 1
+                    },
+                    {
+                      "ResourceType": "Servant",
+                      "value": 1
+                    }
+                  ]
+                },
+                "cardId": 3
+              },
+              "cardId": 3
+            }
+          ]
+        },
+        "name": "Borgo"
+      },
+      {
+        "CardType": "Building",
+        "cardId": 27,
+        "cardColor": "YELLOW",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 2
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 6
+                  }
+                ]
+              },
+              "cardId": 27
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ProductionEffect",
+              "productionActionValue": 6,
+              "getResourceEffect": null,
+              "changeResourceEffect": null,
+              "getResourceEffectFromCard": {
+                "cardColor": "PURPLE",
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "VictoryPoint",
+                      "value": 1
+                    }
+                  ]
+                },
+                "cardId": 27
+              },
+              "cardId": 27
+            }
+          ]
+        },
+        "name": "Arco di Trionfo"
+      },
+      {
+        "CardType": "Character",
+        "cardId": 51,
+        "cardColor": "BLUE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            null
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "BonusAndMalusEffect",
+              "bonus": {
+                "BonusType": "CardDiscountBonus",
+                "value": 2,
+                "cardColor": "BLUE",
+                "anyColor": false,
+                "resourceListDiscount": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Coin",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              "cardId": 51
+            }
+          ]
+        },
+        "name": "Dama"
+      },
+      {
+        "CardType": "Venture",
+        "cardId": 75,
+        "cardColor": "PURPLE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Stone",
+                "value": 3
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "MilitaryStrength",
+                    "valueRequest": 0,
+                    "value": 2
+                  },
+                  {
+                    "ResourceType": "CouncilPrivilege",
+                    "different": false,
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 75
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourcesAtTheEndEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 3
+                  }
+                ]
+              },
+              "cardId": 75
+            }
+          ]
+        },
+        "name": "Costruire le Mura"
+      },
+      {
+        "CardType": "Territory",
+        "cardId": 4,
+        "cardColor": "GREEN",
+        "period": 1,
+        "costList": [],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "Stone",
+                    "value": 2
+                  }
+                ]
+              },
+              "cardId": 4
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "HarvestEffect",
+              "harvestActionValue": 4,
+              "getResourceEffect": {
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Stone",
+                      "value": 2
+                    }
+                  ]
+                },
+                "cardId": 4
+              },
+              "cardId": 4
+            }
+          ]
+        },
+        "name": "Cava di Ghiaia"
+      },
+      {
+        "CardType": "Building",
+        "cardId": 28,
+        "cardColor": "YELLOW",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 2
+              },
+              {
+                "ResourceType": "Wood",
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 6
+                  }
+                ]
+              },
+              "cardId": 28
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ProductionEffect",
+              "productionActionValue": 6,
+              "getResourceEffect": null,
+              "changeResourceEffect": null,
+              "getResourceEffectFromCard": {
+                "cardColor": "BLUE",
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "VictoryPoint",
+                      "value": 1
+                    }
+                  ]
+                },
+                "cardId": 28
+              },
+              "cardId": 28
+            }
+          ]
+        },
+        "name": "Teatro"
+      },
+      {
+        "CardType": "Character",
+        "cardId": 52,
+        "cardColor": "BLUE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "CouncilPrivilege",
+                    "different": false,
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 52
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "BonusAndMalusEffect",
+              "bonus": {
+                "BonusType": "CardDiscountBonus",
+                "value": 2,
+                "cardColor": "PURPLE",
+                "anyColor": false,
+                "resourceListDiscount": null
+              },
+              "cardId": 52
+            }
+          ]
+        },
+        "name": "Cavalliere"
+      },
+      {
+        "CardType": "Venture",
+        "cardId": 76,
+        "cardColor": "PURPLE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 2
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "CouncilPrivilege",
+                    "different": true,
+                    "value": 2
+                  }
+                ]
+              },
+              "cardId": 76
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourcesAtTheEndEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 4
+                  }
+                ]
+              },
+              "cardId": 76
+            }
+          ]
+        },
+        "name": "Innalzare una Statua"
+      },
+      {
+        "CardType": "Territory",
+        "cardId": 5,
+        "cardColor": "GREEN",
+        "period": 1,
+        "costList": [],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "Wood",
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 5
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "HarvestEffect",
+              "harvestActionValue": 5,
+              "getResourceEffect": {
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Wood",
+                      "value": 3
+                    }
+                  ]
+                },
+                "cardId": 5
+              },
+              "cardId": 5
+            }
+          ]
+        },
+        "name": "Foresta"
+      },
+      {
+        "CardType": "Building",
+        "cardId": 29,
+        "cardColor": "YELLOW",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 1
+              },
+              {
+                "ResourceType": "Wood",
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 3
+                  }
+                ]
+              },
+              "cardId": 29
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ProductionEffect",
+              "productionActionValue": 4,
+              "getResourceEffect": null,
+              "changeResourceEffect": {
+                "resourceToPayList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Wood",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Wood",
+                        "value": 2
+                      }
+                    ]
+                  }
+                ],
+                "resourceToGainList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 3
+                      }
+                    ]
+                  },
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 5
+                      }
+                    ]
+                  }
+                ],
+                "cardId": 29
+              },
+              "getResourceEffectFromCard": null,
+              "cardId": 29
+            }
+          ]
+        },
+        "name": "Falegnameria"
+      },
+      {
+        "CardType": "Character",
+        "cardId": 53,
+        "cardColor": "BLUE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 3
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            null
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "BonusAndMalusEffect",
+              "bonus": {
+                "BonusType": "HarvestBonus",
+                "value": 2
+              },
+              "cardId": 53
+            }
+          ]
+        },
+        "name": "Contadino"
+      },
+      {
+        "CardType": "Venture",
+        "cardId": 77,
+        "cardColor": "PURPLE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 3,
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "Coin",
+                    "value": 3
+                  }
+                ]
+              },
+              "cardId": 77
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourcesAtTheEndEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 5
+                  }
+                ]
+              },
+              "cardId": 77
+            }
+          ]
+        },
+        "name": "Campagna Militare"
+      },
+      {
+        "CardType": "Territory",
+        "cardId": 6,
+        "cardColor": "GREEN",
+        "period": 1,
+        "costList": [],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "MilitaryStrength",
+                    "valueRequest": 0,
+                    "value": 2
+                  },
+                  {
+                    "ResourceType": "Servant",
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 6
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "HarvestEffect",
+              "harvestActionValue": 6,
+              "getResourceEffect": {
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Stone",
+                      "value": 1
+                    },
+                    {
+                      "ResourceType": "FaithPoint",
+                      "value": 1
+                    }
+                  ]
+                },
+                "cardId": 6
+              },
+              "cardId": 6
+            }
+          ]
+        },
+        "name": "Monastero"
+      },
+      {
+        "CardType": "Building",
+        "cardId": 30,
+        "cardColor": "YELLOW",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 1
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 2
+                  }
+                ]
+              },
+              "cardId": 30
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ProductionEffect",
+              "productionActionValue": 3,
+              "getResourceEffect": null,
+              "changeResourceEffect": {
+                "resourceToPayList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Stone",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Stone",
+                        "value": 2
+                      }
+                    ]
+                  }
+                ],
+                "resourceToGainList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 3
+                      }
+                    ]
+                  },
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 5
+                      }
+                    ]
+                  }
+                ],
+                "cardId": 30
+              },
+              "getResourceEffectFromCard": null,
+              "cardId": 30
+            }
+          ]
+        },
+        "name": "Tagliapietre"
+      },
+      {
+        "CardType": "Character",
+        "cardId": 54,
+        "cardColor": "BLUE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 3
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            null
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "BonusAndMalusEffect",
+              "bonus": {
+                "BonusType": "ProductionBonus",
+                "value": 2
+              },
+              "cardId": 54
+            }
+          ]
+        },
+        "name": "Artigiano"
+      },
+      {
+        "CardType": "Venture",
+        "cardId": 78,
+        "cardColor": "PURPLE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 3
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "Servant",
+                    "value": 4
+                  }
+                ]
+              },
+              "cardId": 78
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourcesAtTheEndEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 4
+                  }
+                ]
+              },
+              "cardId": 78
+            }
+          ]
+        },
+        "name": "Ospitare i Mendicanti"
+      },
+      {
+        "CardType": "Territory",
+        "cardId": 7,
+        "cardColor": "GREEN",
+        "period": 1,
+        "costList": [],
+        "immediateEffectList": {
+          "effectList": [
+            null
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "HarvestEffect",
+              "harvestActionValue": 5,
+              "getResourceEffect": {
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Stone",
+                      "value": 1
+                    },
+                    {
+                      "ResourceType": "MilitaryStrength",
+                      "valueRequest": 0,
+                      "value": 2
+                    }
+                  ]
+                },
+                "cardId": 7
+              },
+              "cardId": 7
+            }
+          ]
+        },
+        "name": "Rocca"
+      },
+      {
+        "CardType": "Building",
+        "cardId": 31,
+        "cardColor": "YELLOW",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "FaithPoint",
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 31
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ProductionEffect",
+              "productionActionValue": 2,
+              "getResourceEffect": null,
+              "changeResourceEffect": {
+                "resourceToPayList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 1
+                      }
+                    ]
+                  }
+                ],
+                "resourceToGainList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "FaithPoint",
+                        "value": 1
+                      }
+                    ]
+                  }
+                ],
+                "cardId": 31
+              },
+              "getResourceEffectFromCard": null,
+              "cardId": 31
+            }
+          ]
+        },
+        "name": "Cappella"
+      },
+      {
+        "CardType": "Character",
+        "cardId": 55,
+        "cardColor": "BLUE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "FaithPoint",
+                    "value": 4
+                  }
+                ]
+              },
+              "cardId": 55
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "BonusAndMalusEffect",
+              "bonus": {
+                "BonusType": "NoImmediateEffectBonus"
+              },
+              "cardId": 55
+            }
+          ]
+        },
+        "name": "Predicatore"
+      },
+      {
+        "CardType": "Venture",
+        "cardId": 79,
+        "cardColor": "PURPLE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 5,
+                "value": 3
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "FaithPoint",
+                    "value": 2
+                  }
+                ]
+              },
+              "cardId": 79
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourcesAtTheEndEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 5
+                  }
+                ]
+              },
+              "cardId": 79
+            }
+          ]
+        },
+        "name": "Combattere le Eresie"
+      },
+      {
+        "CardType": "Territory",
+        "cardId": 8,
+        "cardColor": "GREEN",
+        "period": 1,
+        "costList": [],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "Coin",
+                    "value": 3
+                  }
+                ]
+              },
+              "cardId": 8
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "HarvestEffect",
+              "harvestActionValue": 6,
+              "getResourceEffect": {
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "CouncilPrivilege",
+                      "different": false,
+                      "value": 1
+                    }
+                  ]
+                },
+                "cardId": 8
+              },
+              "cardId": 8
+            }
+          ]
+        },
+        "name": "Città"
+      },
+      {
+        "CardType": "Building",
+        "cardId": 32,
+        "cardColor": "YELLOW",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Stone",
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 32
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ProductionEffect",
+              "productionActionValue": 1,
+              "getResourceEffect": null,
+              "changeResourceEffect": {
+                "resourceToPayList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 1
+                      }
+                    ]
+                  }
+                ],
+                "resourceToGainList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "CouncilPrivilege",
+                        "different": false,
+                        "value": 1
+                      }
+                    ]
+                  }
+                ],
+                "cardId": 32
+              },
+              "getResourceEffectFromCard": null,
+              "cardId": 32
+            }
+          ]
+        },
+        "name": "Residenza"
+      },
+      {
+        "CardType": "Character",
+        "cardId": 56,
+        "cardColor": "BLUE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 3
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "FaithPoint",
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 56
+            },
+            {
+              "EffectType": "ChooseCardEffect",
+              "cardColor": null,
+              "anyColor": true,
+              "diceValue": 4,
+              "cardId": 56
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            null
+          ]
+        },
+        "name": "Badessa"
+      },
+      {
+        "CardType": "Venture",
+        "cardId": 80,
+        "cardColor": "PURPLE",
+        "period": 1,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 4,
+                "value": 2
+              }
+            ]
+          },
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 1
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 1
+              },
+              {
+                "ResourceType": "Coin",
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "FaithPoint",
+                    "value": 3
+                  }
+                ]
+              },
+              "cardId": 80
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourcesAtTheEndEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 80
+            }
+          ]
+        },
+        "name": "Sostegno al Vescovo"
+      },
+      {
+        "CardType": "Territory",
+        "cardId": 9,
+        "cardColor": "GREEN",
+        "period": 2,
+        "costList": [],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "Coin",
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 9
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "HarvestEffect",
+              "harvestActionValue": 1,
+              "getResourceEffect": {
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Coin",
+                      "value": 2
+                    }
+                  ]
+                },
+                "cardId": 9
+              },
+              "cardId": 9
+            }
+          ]
+        },
+        "name": "Miniera d\u0027Oro"
+      },
+      {
+        "CardType": "Building",
+        "cardId": 33,
+        "cardColor": "YELLOW",
+        "period": 2,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 2
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 1
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 3
+                  }
+                ]
+              },
+              "cardId": 33
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ProductionEffect",
+              "productionActionValue": 3,
+              "getResourceEffect": null,
+              "changeResourceEffect": {
+                "resourceToPayList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 3
+                      }
+                    ]
+                  }
+                ],
+                "resourceToGainList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Wood",
+                        "value": 2
+                      },
+                      {
+                        "ResourceType": "Stone",
+                        "value": 2
+                      }
+                    ]
+                  }
+                ],
+                "cardId": 33
+              },
+              "getResourceEffectFromCard": null,
+              "cardId": 33
+            }
+          ]
+        },
+        "name": "Mercato"
+      },
+      {
+        "CardType": "Character",
+        "cardId": 57,
+        "cardColor": "BLUE",
+        "period": 2,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "MilitaryStrength",
+                    "valueRequest": 0,
+                    "value": 2
+                  }
+                ]
+              },
+              "cardId": 57
+            },
+            {
+              "EffectType": "ChooseCardEffect",
+              "cardColor": "GREEN",
+              "anyColor": false,
+              "diceValue": 6,
+              "cardId": 57
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            null
+          ]
+        },
+        "name": "Capitano"
+      },
+      {
+        "CardType": "Venture",
+        "cardId": 81,
+        "cardColor": "PURPLE",
+        "period": 2,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 6
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "MilitaryStrength",
+                    "valueRequest": 0,
+                    "value": 6
+                  }
+                ]
+              },
+              "cardId": 81
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourcesAtTheEndEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 5
+                  }
+                ]
+              },
+              "cardId": 81
+            }
+          ]
+        },
+        "name": "Ingaggiare Soldati"
+      },
+      {
+        "CardType": "Territory",
+        "cardId": 10,
+        "cardColor": "GREEN",
+        "period": 2,
+        "costList": [],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "Servant",
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 10
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "HarvestEffect",
+              "harvestActionValue": 3,
+              "getResourceEffect": {
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Wood",
+                      "value": 2
+                    },
+                    {
+                      "ResourceType": "MilitaryStrength",
+                      "valueRequest": 0,
+                      "value": 1
+                    }
+                  ]
+                },
+                "cardId": 10
+              },
+              "cardId": 10
+            }
+          ]
+        },
+        "name": "Villaggio Montanaro"
+      },
+      {
+        "CardType": "Building",
+        "cardId": 34,
+        "cardColor": "YELLOW",
+        "period": 2,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 3
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 4
+                  }
+                ]
+              },
+              "cardId": 34
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ProductionEffect",
+              "productionActionValue": 3,
+              "getResourceEffect": null,
+              "changeResourceEffect": {
+                "resourceToPayList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 2
+                      }
+                    ]
+                  }
+                ],
+                "resourceToGainList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "VictoryPoint",
+                        "value": 3
+                      }
+                    ]
+                  },
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "VictoryPoint",
+                        "value": 5
+                      }
+                    ]
+                  }
+                ],
+                "cardId": 34
+              },
+              "getResourceEffectFromCard": null,
+              "cardId": 34
+            }
+          ]
+        },
+        "name": "Tesoreria"
+      },
+      {
+        "CardType": "Character",
+        "cardId": 58,
+        "cardColor": "BLUE",
+        "period": 2,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ChooseCardEffectWithDiscount",
+              "resourcesDiscount": {
+                "resourceList": [
+                  {
+                    "ResourceType": "Wood",
+                    "value": 1
+                  },
+                  {
+                    "ResourceType": "Stone",
+                    "value": 1
+                  }
+                ]
+              },
+              "cardColor": "YELLOW",
+              "anyColor": false,
+              "diceValue": 6,
+              "cardId": 58
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            null
+          ]
+        },
+        "name": "Architetto"
+      },
+      {
+        "CardType": "Venture",
+        "cardId": 82,
+        "cardColor": "PURPLE",
+        "period": 2,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 2
+              },
+              {
+                "ResourceType": "Wood",
+                "value": 2
+              },
+              {
+                "ResourceType": "Stone",
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "FaithPoint",
+                    "value": 2
+                  }
+                ]
+              },
+              "cardId": 82
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourcesAtTheEndEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 6
+                  }
+                ]
+              },
+              "cardId": 82
+            }
+          ]
+        },
+        "name": "Riparare l\u0027Abbazia"
+      },
+      {
+        "CardType": "Territory",
+        "cardId": 11,
+        "cardColor": "GREEN",
+        "period": 2,
+        "costList": [],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "Servant",
+                    "value": 2
+                  },
+                  {
+                    "ResourceType": "Stone",
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 11
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "HarvestEffect",
+              "harvestActionValue": 2,
+              "getResourceEffect": {
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Wood",
+                      "value": 1
+                    }
+                  ]
+                },
+                "cardId": 2
+              },
+              "cardId": 2
+            }
+          ]
+        },
+        "name": "Villaggio Minerario"
+      },
+      {
+        "CardType": "Building",
+        "cardId": 35,
+        "cardColor": "YELLOW",
+        "period": 2,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Wood",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 5
+                  }
+                ]
+              },
+              "cardId": 35
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ProductionEffect",
+              "productionActionValue": 4,
+              "getResourceEffect": null,
+              "changeResourceEffect": {
+                "resourceToPayList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 2
+                      }
+                    ]
+                  }
+                ],
+                "resourceToGainList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "VictoryPoint",
+                        "value": 3
+                      }
+                    ]
+                  },
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "VictoryPoint",
+                        "value": 5
+                      }
+                    ]
+                  }
+                ],
+                "cardId": 35
+              },
+              "getResourceEffectFromCard": null,
+              "cardId": 35
+            }
+          ]
+        },
+        "name": "Gilda dei Pittori"
+      },
+      {
+        "CardType": "Character",
+        "cardId": 59,
+        "cardColor": "BLUE",
+        "period": 2,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 3
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ChooseCardEffectWithDiscount",
+              "resourcesDiscount": {
+                "resourceList": [
+                  {
+                    "ResourceType": "Coin",
+                    "value": 2
+                  }
+                ]
+              },
+              "cardColor": "BLUE",
+              "anyColor": false,
+              "diceValue": 6,
+              "cardId": 59
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            null
+          ]
+        },
+        "name": "Mecenate"
+      },
+      {
+        "CardType": "Venture",
+        "cardId": 83,
+        "cardColor": "PURPLE",
+        "period": 2,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Stone",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "MilitaryStrength",
+                    "valueRequest": 0,
+                    "value": 3
+                  },
+                  {
+                    "ResourceType": "CouncilPrivilege",
+                    "different": false,
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 83
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourcesAtTheEndEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 2
+                  }
+                ]
+              },
+              "cardId": 83
+            }
+          ]
+        },
+        "name": "Costruire i Bastioni"
+      },
+      {
+        "CardType": "Territory",
+        "cardId": 12,
+        "cardColor": "GREEN",
+        "period": 2,
+        "costList": [],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "Wood",
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 12
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "HarvestEffect",
+              "harvestActionValue": 3,
+              "getResourceEffect": {
+                "resources": {
+                  "resourceList": [
+                    {
+                      "ResourceType": "Stone",
+                      "value": 3
+                    }
+                  ]
+                },
+                "cardId": 12
+              },
+              "cardId": 12
+            }
+          ]
+        },
+        "name": "Cava di Pietra"
+      },
+      {
+        "CardType": "Building",
+        "cardId": 36,
+        "cardColor": "YELLOW",
+        "period": 2,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Stone",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 6
+                  }
+                ]
+              },
+              "cardId": 36
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ProductionEffect",
+              "productionActionValue": 5,
+              "getResourceEffect": null,
+              "changeResourceEffect": {
+                "resourceToPayList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 2
+                      }
+                    ]
+                  }
+                ],
+                "resourceToGainList": [
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  {
+                    "resourceList": [
+                      {
+                        "ResourceType": "Coin",
+                        "value": 2
+                      }
+                    ]
+                  }
+                ],
+                "cardId": 36
+              },
+              "getResourceEffectFromCard": null,
+              "cardId": 36
+            }
+          ]
+        },
+        "name": "Gilda degli Scultori"
+      },
+      {
+        "CardType": "Character",
+        "cardId": 60,
+        "cardColor": "BLUE",
+        "period": 2,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "Coin",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "ChooseCardEffectWithDiscount",
+              "resourcesDiscount": {
+                "resourceList": [
+                  {
+                    "ResourceType": "CouncilPrivilege",
+                    "different": false,
+                    "value": 1
+                  }
+                ]
+              },
+              "cardColor": "PURPLE",
+              "anyColor": false,
+              "diceValue": 6,
+              "cardId": 60
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            null
+          ]
+        },
+        "name": "Eroe"
+      },
+      {
+        "CardType": "Venture",
+        "cardId": 84,
+        "cardColor": "PURPLE",
+        "period": 2,
+        "costList": [
+          {
+            "resourceList": [
+              {
+                "ResourceType": "MilitaryStrength",
+                "valueRequest": 6,
+                "value": 3
+              }
+            ]
+          }
+        ],
+        "immediateEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourceEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "Coin",
+                    "value": 5
+                  },
+                  {
+                    "ResourceType": "CouncilPrivilege",
+                    "different": false,
+                    "value": 1
+                  }
+                ]
+              },
+              "cardId": 84
+            }
+          ]
+        },
+        "permanentEffectList": {
+          "effectList": [
+            {
+              "EffectType": "GetResourcesAtTheEndEffect",
+              "resources": {
+                "resourceList": [
+                  {
+                    "ResourceType": "VictoryPoint",
+                    "value": 3
+                  }
+                ]
+              },
+              "cardId": 84
+            }
+          ]
+        },
+        "name": "Scavare Canalizzazioni"
+      },
+      {
+        "CardType": "Territory",
+        "cardId": 13,
+        "cardColor": "GREEN",
+        "period": 2,
+        "costList": [],
+        "immediateEffectList": {
+          "effectList": [
