@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 /**
  * Created by giulia on 14/06/2017.
+ *
+ * Messaggio che parte dal model e diretto alla view contenente una scelta
  */
 public class MVAskChoice extends MVVisitable {
     private String stringToPrint;

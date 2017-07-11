@@ -17,6 +17,12 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by giulia on 25/06/2017.
+ * rappresenta la classe della game board che contiene tutti i pannelli principali
+ * @see TopBoardPanel
+ * @see FaithPointTrackPanel
+ * @see BottomBoardPanel
+ * @see MilitaryTrackPanel
+ *
  */
 public class GameBoardPanel extends PaintBackgroundPanel implements ActionListener {
     private TopBoardPanel topBoardPanel;
@@ -24,20 +30,34 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
     private BottomBoardPanel bottomBoardPanel;
     private MilitaryTrackPanel militaryTrackPanel;
     private GuiView guiView;
+
+    /**
+     *booleano che in base a come è settato mi permette di interpretare il click di un bottone e di inviare un messaggio
+     */
     private boolean sendClickBoard=false;
 
+
+    /**
+     *metodo che mi permette di caricare un'immagine come sfondo al pannello della game board
+     * tramite il metodo della classe PaintBackGroundPanel creata appositamente per caricare ad un Jpanel un'immagine
+     */
     public void paintComponent(Graphics g) {
         super.imageToLoad("/gameboard1_f_c.png");
         super.paintComponent(g);
     }
 
+
+    /* Constructor */
     public GameBoardPanel(GuiView guiView) {
         this.guiView = guiView;
         addComponentsToPane(this);
     }
 
+
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
-        //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{ 0, 0, 0,};
         gbl.rowHeights = new int[]{0, 0, 0, 0,};
@@ -54,8 +74,7 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridy = 0;
         c.gridheight = 1;
         c.gridwidth = 1;
-        c.fill = GridBagConstraints.BOTH; //toglierlo edopo
-        //topBoardPanel.setBackground(Color.YELLOW);
+        c.fill = GridBagConstraints.BOTH;
         topBoardPanel.setOpaque(false);
         topBoardPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(topBoardPanel, c);
@@ -67,7 +86,6 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridheight = 1;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        //faithPointTrackPanel.setBackground(Color.red);
         faithPointTrackPanel.setOpaque(false);
         faithPointTrackPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(faithPointTrackPanel, c);
@@ -79,7 +97,6 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridheight = 1;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        //bottomBoardPanel.setBackground(Color.YELLOW);
         bottomBoardPanel.setOpaque(false);
         bottomBoardPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(bottomBoardPanel, c);
@@ -91,7 +108,6 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         c.gridheight = 3;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        //militaryTrackPanel.setBackground(Color.black);
         militaryTrackPanel.setOpaque(false);
         militaryTrackPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(militaryTrackPanel, c);
@@ -128,6 +144,17 @@ public class GameBoardPanel extends PaintBackgroundPanel implements ActionListen
         return militaryTrackPanel;
     }
 
+
+
+
+
+    /**
+     * questo metodo serve per gestire l'evento scatenatosi dopo il click del bottone premuto durante il proprio turno
+     * .Vengo interpretati due click diversi :
+     * il primo click è quello del bottone della tower panel contenuta nella topBoard(uno dei pannelli della gameboard) che viene
+     * interpretato e poi si invierà un messaggio al controller per l'avvenuta scelta del card space.
+     * il secondo click è quello dei bottoni della bottom board contenuti in suoi altri sottopannelli.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 

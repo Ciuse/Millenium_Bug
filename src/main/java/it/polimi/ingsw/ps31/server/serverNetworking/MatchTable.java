@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.server.serverNetworking;
 
 import it.polimi.ingsw.ps31.DebugUtility;
 import it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage;
+import it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.server.Match;
 
@@ -191,26 +192,41 @@ public class MatchTable {
 
         //Controllo se la connessione corrisponde a un client disconnesso in precedenza
         boolean found = false;
+        boolean wrongPsw = false;
         int i = 0;
         DisconnectedClient currentDisconnection = null;
         while( i < disconnections.size() && !found)
         {
             currentDisconnection = disconnections.get(i);
+            if (currentDisconnection.getConnectionMessage().wrongPassword(connection.getConnectionMessage()))
+            {
+                found = true;
+                wrongPsw = true;
+                DebugUtility.simpleDebugMessage("trovata password errata");
+            }
+            else
             if (currentDisconnection.getConnectionMessage().equals(connection.getConnectionMessage()))
             {
                 found = true;
+                wrongPsw = false;
                 disconnections.remove(i);
             }
             else
                 i++;
         }
-        if( found )
+        if( found && !wrongPsw )
         {
             DebugUtility.simpleUserMessage(/*"MatchTable" : addPlayer>*/"riconnessione in corso al match "+currentDisconnection.getMatch().getMatchId());
             PlayerId disconnectedPlayerId = currentDisconnection.getPlayerId();
             currentDisconnection.getMatch().reconnectPlayer(connection, disconnectedPlayerId, isMatchStarted(currentDisconnection.getMatch()));
             currentDisconnection.getMatch().printPlayerTable();
 
+            return;
+        }
+        if( found && wrongPsw )
+        {
+            DebugUtility.simpleDebugMessage("invio messaggio wrongPsw");
+            connection.send(new ViewMessage(null, 0));
             return;
         }
 

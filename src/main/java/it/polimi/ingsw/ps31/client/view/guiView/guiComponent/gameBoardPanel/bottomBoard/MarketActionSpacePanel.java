@@ -9,20 +9,31 @@ import static java.lang.String.valueOf;
 
 /**
  * Created by giulia on 01/07/2017.
+ * classe che mi rappresenta il pannello contenente a sua volta 4 pannelli che mi rappresentano gli action space
+ * del mercato
+ * @see ActionListener
  */
 public class MarketActionSpacePanel extends JPanel implements ActionListener {
     private ActionListener listener;
+    private ActionSpaceBoardButton[] marketActionSpace = new ActionSpaceBoardButton[4];
 
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
-    private ActionSpaceBoardButton[] marketActionSpace = new ActionSpaceBoardButton[4];
 
+    /* Constructor */
     public MarketActionSpacePanel() {
         addComponentsTopane(this);
     }
 
+
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsTopane(Container pane){
 
 
@@ -40,7 +51,6 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
         gbc.gridy = 1;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
-        //marketActionSpace[0].setBackground(Color.BLUE);
         marketActionSpace[0].setName(valueOf(6));
         marketActionSpace[0].setPreferredSize(new Dimension(10,10));
         marketActionSpace[0].setContentAreaFilled(false);
@@ -53,7 +63,6 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
         gbc.gridy = 1;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
-        //marketActionSpace[1].setBackground(Color.RED);
         marketActionSpace[1].setName(valueOf(7));
         marketActionSpace[1].setPreferredSize(new Dimension(10,10));
         marketActionSpace[1].setContentAreaFilled(false);
@@ -66,7 +75,6 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
         gbc.gridy = 2;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
-        //marketActionSpace[2].setBackground(Color.YELLOW);
         marketActionSpace[2].setName(valueOf(8));
         marketActionSpace[2].setPreferredSize(new Dimension(10,10));
         marketActionSpace[2].setContentAreaFilled(false);
@@ -79,7 +87,6 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
         gbc.gridy = 5;
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
-        //marketActionSpace[3].setBackground(Color.PINK);
         marketActionSpace[3].setName(valueOf(9));
         marketActionSpace[3].setPreferredSize(new Dimension(10,10));
         marketActionSpace[3].setContentAreaFilled(false);
@@ -90,6 +97,11 @@ public class MarketActionSpacePanel extends JPanel implements ActionListener {
 
     }
 
+
+    /**
+     * Metodo che mi permette di disabilitare i bottoni che rappresentano gli ultimi due actionSpace del mercato se si
+     * gioca meno di 4 persone
+     */
     public void disableMarketActionSpace(){
         marketActionSpace[2].setEnabled(false);
         marketActionSpace[2].imageToReprint("/coveringtile_1_back_.png");

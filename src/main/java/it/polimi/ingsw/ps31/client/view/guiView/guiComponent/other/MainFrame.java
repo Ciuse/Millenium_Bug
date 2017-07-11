@@ -9,27 +9,42 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by giulia on 25/06/2017.
+ * rappresenta il JFrame principale che si apre quando i vari client si sono collegati al server
+ * contiene il Pannello backgroundMainFramePanel
+ * @see BackgroundMainFramePanel
+ *
  */
 public class MainFrame extends JFrame implements ActionListener {
     private GuiView guiView;
     private BackgroundMainFramePanel backgroundMainFramePanel;
 
-
+    /* Constructor */
     public MainFrame(GuiView guiView) {
         this.guiView=guiView;
     }
 
+    /**
+     *metodo che viene invocato dalla guiView per poter far partire il pannello principale del gioco
+     */
     public void startMainFrame() {
 
         backgroundMainFramePanel= new BackgroundMainFramePanel(guiView);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
+
+        /**
+         *creazione del frame principale
+         */
         JFrame frame = new JFrame("LORENZO IL MAGNIFICO ");
+//        try {
+//            frame.setIconImage(ImageIO.read(new File("/icon.png")));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         frame.setSize(screenSize);
         frame.setResizable(false);
         frame.setVisible(true);
-//        frame.setAlwaysOnTop(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 
@@ -54,6 +69,9 @@ public class MainFrame extends JFrame implements ActionListener {
         frame.add(backgroundMainFramePanel, gbc);
 
 
+
+        //music();
+
         int playerMaxNumber = guiView.getStateViewGame().getPlayerMaxNumber();
         if(playerMaxNumber<=2){
             getBackgroundMainFramePanel().getGameBoardPanel().getBottomBoardPanel().disableBigActionSpace();
@@ -64,6 +82,25 @@ public class MainFrame extends JFrame implements ActionListener {
         }
 
     }
+
+
+    //public static void music()
+   // {
+        //AudioPlayer MGP= AudioPlayer.player;
+        //AudioStream BGM;
+        //AudioData MD;
+        //ContinuousAudioDataStream loop= null;
+        //try
+       // {
+            //BGM= new AudioStream(new FileInputStream("/Il Trono di Spade 1 - Game of Thrones 1 -- Sigla iniziale - Main theme.wav"));
+            //MD= BGM.getData();
+            //loop= new ContinuousAudioDataStream(MD);
+        //}
+        //catch(IOException error)
+        //{}
+       // MGP.start(loop);
+    //}
+
 
     @Override
     public void actionPerformed(ActionEvent e) {

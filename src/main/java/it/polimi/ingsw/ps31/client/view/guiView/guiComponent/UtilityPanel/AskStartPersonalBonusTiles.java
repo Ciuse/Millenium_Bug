@@ -23,11 +23,15 @@ public class AskStartPersonalBonusTiles extends JFrame implements ActionListener
     private GuiView guiView;
     private JFrame frame = new JFrame();
 
+    /* Constructor */
     public AskStartPersonalBonusTiles(ChoicePersonalBonusTiles choicePersonalBonusTiles, GuiView guiView){
         this.choicePersonalBonusTiles = choicePersonalBonusTiles;
         this.guiView = guiView;
     }
 
+    /**
+     * Metodo che mi permette di aprire un frame contenente un layout  in modo da gestire meglio lo spazio
+     */
     public void startFrame() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setUndecorated(true);

@@ -4,6 +4,10 @@ import java.util.List;
 
 /**
  * Created by Giuseppe on 19/06/2017.
+ *
+ * Scelta di quale leader iniziale tenersi
+ *
+ * @see it.polimi.ingsw.ps31.client.view.View
  */
 public class ChoiceStartLeaderCard extends ChoiceType {
     private List<Integer> leaderId;

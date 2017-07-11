@@ -284,7 +284,7 @@ public class GameUtility {
      * Fase cnclusiva delle azioni, può essere invocata dallo scadere del timer o dalla decisione del player di finire il turno
      * @param player
      */
-    public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
+    public void endActionTurn(Player player) {
 
         String string1 = player.getNickname() + ": FINE FASE AZIONE";
         model.notifyViews(new MVStringToPrint(null, true, string1));

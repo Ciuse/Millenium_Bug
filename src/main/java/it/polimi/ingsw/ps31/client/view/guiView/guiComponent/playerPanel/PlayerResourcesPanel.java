@@ -11,6 +11,8 @@ import static java.lang.String.valueOf;
 
 /**
  * Created by giulia on 29/06/2017.
+ * classe che mi rappresenta il pannello contenente tutti valori delle risorse del giocatore
+ * @see JLabel
  */
 public class PlayerResourcesPanel extends JPanel implements ActionListener{
     ActionListener listener;
@@ -18,17 +20,23 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
     private JLabel[] pointResources = new JLabel[3];
 
 
-
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
+
+    /* Constructor */
     public PlayerResourcesPanel() {
         addComponentsToPane(this);
     }
 
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
-        //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0, 0,0,0,0,0,0,0};
         gbl.rowHeights = new int[]{0,0};
@@ -48,7 +56,6 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
         gbc.fill = GridBagConstraints.BOTH;
         physicalResources[0].setOpaque(false);
         physicalResources[0].setHorizontalAlignment( JLabel.CENTER );
-        // physicalResources[i].setBackground(Color.BLUE);
         pane.add( physicalResources[0], gbc);
 
         physicalResources[1] = new JLabel();
@@ -121,7 +128,9 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
         }
 
 
-
+    /**
+     * Metodo che mi permette di visualizzare il valore delle physical resources nello spazio apposita creato
+     */
     public void setStringPhysicalResources(ResourceList list){
         for(int i=0;i<4;i++){
             for (Resource resource :list.getListOfResource()
@@ -133,6 +142,9 @@ public class PlayerResourcesPanel extends JPanel implements ActionListener{
         }
     }
 
+    /**
+     * Metodo che mi permette di visualizzare il valore delle point resources nello spazio apposita creato
+     */
     public void setStringPointResources(ResourceList list){
         for(int i=0;i<3;i++){
             for (Resource resource :list.getListOfResource()

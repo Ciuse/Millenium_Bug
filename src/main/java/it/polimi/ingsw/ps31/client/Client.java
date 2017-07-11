@@ -33,123 +33,133 @@ public class Client extends Thread {
         String username;
         String password;
         boolean error = false;
+        boolean redo = false;
 
-        //chiedo username
-        DebugUtility.debuggedUserMessage("Inserisci nome utente: ", false);
-        username = console.readLine();
-
-        //chiedo password
-        DebugUtility.debuggedUserMessage("Inserisci password: ", false);
-        password = console.readLine();
-
-        boolean exitDoWhile;
-
-        //chiedo per view
-        TypeOfView typeOfView = null;
         do {
-            exitDoWhile = true;
+            //chiedo username
+            do {
+                DebugUtility.debuggedUserMessage("Inserisci nome utente: ", false);
+                username = console.readLine();
+            } while (username.trim().equals(""));
 
-            DebugUtility.debuggedUserMessage("Vuoi giocare con la CLI o con la GUI? [c/g] ", false);
-            chosenView = console.readLine();
+            //chiedo password
+            DebugUtility.debuggedUserMessage("Inserisci password: ", false);
+            password = console.readLine();
 
-            if (chosenView.equalsIgnoreCase("c")) {
-                typeOfView = TypeOfView.CLI;
-                DebugUtility.debuggedUserMessage("Il gioco partirà con la CLI");
-            } else if (chosenView.equalsIgnoreCase("g")) {
-                typeOfView = TypeOfView.GUI;
-                DebugUtility.debuggedUserMessage("Il gioco partirà con la GUI");
-            } else {
-                System.out.println("Risposta non valida");
-                exitDoWhile = false;
-            }
+            boolean exitDoWhile;
 
+            //chiedo per view
+            TypeOfView typeOfView = null;
+            do {
+                exitDoWhile = true;
 
-        } while (!exitDoWhile);
+                DebugUtility.debuggedUserMessage("Vuoi giocare con la CLI o con la GUI? [c/g] ", false);
+                chosenView = console.readLine();
 
-        //Creo il thread che deve contenere la view
-//        clientViewThread = new ClientViewThread(typeOfView);
-
-        //Preparo il messaggio contenente le informazioni di connessione
-        ConnectionMessage connectionMessage = new ConnectionMessage(username, password, typeOfView);
-
-        //chiedo per connessione
-        do {
-            exitDoWhile = true;
-
-            DebugUtility.debuggedUserMessage("Vuoi connetterti con le SOCKET o con RMI? [s/r] ", false);
-            chosenConnection = console.readLine();
-
-            try {
-                if (chosenConnection.equalsIgnoreCase("s"))
-                    clientNetworkInterface = new ClientSocketConnection(PORT, connectionMessage);
-                else if (chosenConnection.equalsIgnoreCase("r")) {
-                    ///clientNetworkInterface = new ClientReadingThread(new clientRMIConnection());
-                    DebugUtility.debuggedUserMessage("RMI non disponibile in questa versione. Mi connetto con le socket :) ");
-                    clientNetworkInterface = new ClientSocketConnection(PORT, connectionMessage);
+                if (chosenView.equalsIgnoreCase("c")) {
+                    typeOfView = TypeOfView.CLI;
+                    DebugUtility.debuggedUserMessage("Il gioco partirà con la CLI");
+                } else if (chosenView.equalsIgnoreCase("g")) {
+                    typeOfView = TypeOfView.GUI;
+                    DebugUtility.debuggedUserMessage("Il gioco partirà con la GUI");
                 } else {
-                    DebugUtility.debuggedUserMessage("Risposta non valida");
+                    System.out.println("Risposta non valida");
                     exitDoWhile = false;
                 }
-            }catch(ConnectException e){
-                DebugUtility.debuggedUserMessage("Il server è offline. Impossibile connettersi.");
-                error = true;
-            }catch(IOException e){
-                e.printStackTrace();
-                DebugUtility.debuggedUserMessage("Errore di rete. Controllare la connessione a internet e riprovare");
-                error = true;
-            }
 
-        } while (!exitDoWhile);
 
-        if( !error ) {
-            //invio al server il messaggio di connessione
-            //try {sleep(10000);} catch (InterruptedException e) {e.printStackTrace();}
-            clientNetworkInterface.sendConnectionMessage();
+            } while (!exitDoWhile);
 
-            DebugUtility.debuggedUserMessage("In attesa di altri giocatori. Un po' di pazienza...");
+            //Creo il thread che deve contenere la view
+//        clientViewThread = new ClientViewThread(typeOfView);
 
-            //Rimango in attesa della view dal server
-            ViewMessage viewMessage = null;
-            try {
-                viewMessage = clientNetworkInterface.readViewMessageFromServer();
-            } catch (IOException e) {
-                DebugUtility.simpleUserMessage("La connessione è stata interrotta. " +
-                        "Controllare i collegamenti alla rete e riavviare il gioco.");
-                error = true;
-            }
-            //DebugUtility.simpleDebugMessage("VIEW RICEVUTA!!!");
+            //Preparo il messaggio contenente le informazioni di connessione
+            ConnectionMessage connectionMessage = new ConnectionMessage(username, password, typeOfView);
 
-            if ( !error ) {
-                View view;
-                switch (typeOfView) {
-                    case CLI:
-                        view = new CmdLineView(viewMessage.getPlayerId(), viewMessage.getMaxPlayerNumber());
-                        DebugUtility.debuggedUserMessage("Creata CLI");
-                        break;
+            //chiedo per connessione
+            do {
+                exitDoWhile = true;
 
-                    case GUI:
-                        view = new GuiView(viewMessage.getPlayerId(), viewMessage.getMaxPlayerNumber());
-                        DebugUtility.debuggedUserMessage("Creata GUI");
-                        break;
+                DebugUtility.debuggedUserMessage("Vuoi connetterti con le SOCKET o con RMI? [s/r] ", false);
+                chosenConnection = console.readLine();
 
-                    default:
-                        view = new CmdLineView(viewMessage.getPlayerId(), viewMessage.getMaxPlayerNumber());
-
+                try {
+                    if (chosenConnection.equalsIgnoreCase("s"))
+                        clientNetworkInterface = new ClientSocketConnection(PORT, connectionMessage);
+                    else if (chosenConnection.equalsIgnoreCase("r")) {
+                        ///clientNetworkInterface = new ClientReadingThread(new clientRMIConnection());
+                        DebugUtility.debuggedUserMessage("RMI non disponibile in questa versione. Mi connetto con le socket :) ");
+                        clientNetworkInterface = new ClientSocketConnection(PORT, connectionMessage);
+                    } else {
+                        DebugUtility.debuggedUserMessage("Risposta non valida");
+                        exitDoWhile = false;
+                    }
+                } catch (ConnectException e) {
+                    DebugUtility.debuggedUserMessage("Il server è offline. Impossibile connettersi.");
+                    error = true;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    DebugUtility.debuggedUserMessage("Errore di rete. Controllare la connessione a internet e riprovare");
+                    error = true;
                 }
 
-                //Creo e interfaccio la cronologia di messaggi
-                ClientMessageHistory clientMessageHistory = new ClientMessageHistory(clientNetworkInterface);
-                clientNetworkInterface.setClientMessageHistory(clientMessageHistory);
-                clientMessageHistory.addView(view);
-                view.addController(clientMessageHistory);
+            } while (!exitDoWhile);
 
-                //Faccio partire la view
-                // view.runTerminal();
+            if (!error) {
+                //invio al server il messaggio di connessione
+                //try {sleep(10000);} catch (InterruptedException e) {e.printStackTrace();}
+                clientNetworkInterface.sendConnectionMessage();
 
-                //Inizio l'ascolto da socket
-                clientNetworkInterface.startReading();
+                //Rimango in attesa della view dal server
+                ViewMessage viewMessage = null;
+                try {
+                    viewMessage = clientNetworkInterface.readViewMessageFromServer();
+                } catch (IOException e) {
+                    DebugUtility.simpleUserMessage("La connessione è stata interrotta. " +
+                            "Controllare i collegamenti alla rete e riavviare il gioco.");
+                    error = true;
+                }
+                //DebugUtility.simpleDebugMessage("VIEW RICEVUTA!!!");
+
+                if( viewMessage.getPlayerId() == null )
+                    redo = true;
+                else
+                if (!error) {
+                    View view;
+                    switch (typeOfView) {
+                        case CLI:
+                            view = new CmdLineView(viewMessage.getPlayerId(), viewMessage.getMaxPlayerNumber());
+                            DebugUtility.debuggedUserMessage("Creata CLI");
+                            break;
+
+                        case GUI:
+                            view = new GuiView(viewMessage.getPlayerId(), viewMessage.getMaxPlayerNumber());
+                            DebugUtility.debuggedUserMessage("Creata GUI");
+                            break;
+
+                        default:
+                            view = new CmdLineView(viewMessage.getPlayerId(), viewMessage.getMaxPlayerNumber());
+
+                    }
+
+                    DebugUtility.debuggedUserMessage("In attesa di altri giocatori. Un po' di pazienza...");
+
+                    //Creo e interfaccio la cronologia di messaggi
+                    ClientMessageHistory clientMessageHistory = new ClientMessageHistory(clientNetworkInterface);
+                    clientNetworkInterface.setClientMessageHistory(clientMessageHistory);
+                    clientMessageHistory.addView(view);
+                    view.addController(clientMessageHistory);
+
+                    //Faccio partire la view
+                    // view.runTerminal();
+
+                    //Inizio l'ascolto da socket
+                    clientNetworkInterface.startReading();
+                }
             }
-        }
+            if ( redo && !error )
+                DebugUtility.debuggedUserMessage("Password errata. Riprovare\n", true);
+        } while ( redo && !error);
         if( error )
             DebugUtility.debuggedUserMessage("Arrivederci!");
     }

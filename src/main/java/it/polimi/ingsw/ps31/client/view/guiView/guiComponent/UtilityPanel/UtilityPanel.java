@@ -15,13 +15,16 @@ public class UtilityPanel extends JPanel implements ActionListener {
     private QuestionsToPlayerPanel questionsToPlayerPanel;
     private OtherChosenPlayerPanel otherChosenPlayerPanel;
 
+    /* Constructor */
     public UtilityPanel(GuiView guiView) {
         this.guiView=guiView;
         addComponentsToPane(this);
 
     }
 
-
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();

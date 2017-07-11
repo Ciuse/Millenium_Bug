@@ -1,0 +1,1130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>it.polimi.ingsw.ps31</OriginalElement>
+  <nodes>
+    <node x="2026.0" y="6734.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderToActive</node>
+    <node x="2875.0" y="4570.0">it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage</node>
+    <node x="8103.0" y="1753.0">it.polimi.ingsw.ps31.model.actionControls.TowerCardCostPlacementControl</node>
+    <node x="5245.0" y="8076.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.LeaderCardsOpenedPanel</node>
+    <node x="4208.0" y="7590.0">it.polimi.ingsw.ps31.model.player.PersonalBoardCardCell</node>
+    <node x="4921.0" y="7142.0">it.polimi.ingsw.ps31.model.gameResource.ResourceList</node>
+    <node x="6168.0" y="8076.0">it.polimi.ingsw.ps31.model.player.FamilyMember</node>
+    <node x="6278.0" y="8955.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.TowerActionSpacePanel</node>
+    <node x="2275.0" y="5936.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceListToPay</node>
+    <node x="4636.0" y="6501.0">it.polimi.ingsw.ps31.model.gameResource.PhysicalResource</node>
+    <node x="3910.0" y="575.0">it.polimi.ingsw.ps31.model.actions.ActionGetResources</node>
+    <node x="1869.0" y="6056.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerCardSpace</node>
+    <node x="2571.0" y="6339.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderToDiscard</node>
+    <node x="567.0" y="6752.0">it.polimi.ingsw.ps31.model.bonus.NoFirstActionTurn</node>
+    <node x="7197.0" y="9207.0">it.polimi.ingsw.ps31.AppTest</node>
+    <node x="8051.0" y="8615.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard</node>
+    <node x="5808.0" y="1847.0">it.polimi.ingsw.ps31.model.effect.ProductionEffectActivationFromCard</node>
+    <node x="9335.0" y="8615.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.BottomBoardPanel</node>
+    <node x="8608.0" y="1067.0">it.polimi.ingsw.ps31.model.actionControls.PayCardControl</node>
+    <node x="1582.0" y="7142.0">it.polimi.ingsw.ps31.messages.messageVC.VCMessageVisitor</node>
+    <node x="1008.0" y="9393.0">it.polimi.ingsw.ps31.App</node>
+    <node x="1219.0" y="5069.0">it.polimi.ingsw.ps31.model.stateModel.StateAllDevelopmentCard</node>
+    <node x="2294.0" y="7142.0">it.polimi.ingsw.ps31.server.serverNetworking.SocketServerConnection</node>
+    <node x="4830.0" y="4257.0">it.polimi.ingsw.ps31.model.board.Production</node>
+    <node x="941.0" y="909.0">it.polimi.ingsw.ps31.client.view.View</node>
+    <node x="2402.0" y="6202.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceNumberOfServantsToPay</node>
+    <node x="7327.0" y="1200.0">it.polimi.ingsw.ps31.model.actionControls.LeaderCardRequirementControl</node>
+    <node x="9136.0" y="8076.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.TowerPanel</node>
+    <node x="5244.0" y="8615.0">it.polimi.ingsw.ps31.server.serverNetworking.ServerInputBuffer</node>
+    <node x="8191.0" y="878.0">it.polimi.ingsw.ps31.model.actionControls.Control</node>
+    <node x="4768.0" y="5353.0">it.polimi.ingsw.ps31.model.card.Building</node>
+    <node x="2321.0" y="6846.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceActionSpace</node>
+    <node x="3149.0" y="5441.0">it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState</node>
+    <node x="916.0" y="8615.0">it.polimi.ingsw.ps31.model.gameResource.ResourceTest</node>
+    <node x="3762.0" y="8955.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.FamilyMemberPanel</node>
+    <node x="1165.0" y="4579.0">it.polimi.ingsw.ps31.model.stateModel.StateGame</node>
+    <node x="4892.0" y="4397.0">it.polimi.ingsw.ps31.model.board.ActionSpace</node>
+    <node x="1320.0" y="8615.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard</node>
+    <node x="7963.0" y="5275.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceTowerCardSpace</node>
+    <node x="576.0" y="4259.0">it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard</node>
+    <node x="0.0" y="8615.0">it.polimi.ingsw.ps31.server.serverNetworking.SocketAccepter</node>
+    <node x="157.0" y="9393.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.MarketActionSpacePanel</node>
+    <node x="3819.0" y="1995.0">it.polimi.ingsw.ps31.model.actions.ActionActivateProduction</node>
+    <node x="595.0" y="4552.0">it.polimi.ingsw.ps31.model.stateModel.StateCardBox</node>
+    <node x="950.0" y="6331.0">it.polimi.ingsw.ps31.model.bonus.NeutralFamilyMemberBonus</node>
+    <node x="7362.0" y="6148.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel</node>
+    <node x="2958.0" y="5065.0">it.polimi.ingsw.ps31.messages.messageMV.MVVisitable</node>
+    <node x="4408.0" y="634.0">it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMember</node>
+    <node x="0.0" y="4689.0">it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember</node>
+    <node x="5058.0" y="408.0">it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMemberInBoard</node>
+    <node x="3959.0" y="4389.0">it.polimi.ingsw.ps31.messages.messageVC.VCCouncilPrivilegeChoice</node>
+    <node x="4366.0" y="7442.0">it.polimi.ingsw.ps31.model.board.PhysicalCardBox</node>
+    <node x="8951.0" y="4192.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceStartLeader</node>
+    <node x="4531.0" y="8955.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskServantsToPay</node>
+    <node x="6139.0" y="0.0">it.polimi.ingsw.ps31.model.card.ExcommunicationTiles</node>
+    <node x="3408.0" y="974.0">it.polimi.ingsw.ps31.model.actions.ActionEndTurn</node>
+    <node x="9552.0" y="9207.0">it.polimi.ingsw.ps31.networking.NetworkingThread</node>
+    <node x="5415.0" y="1296.0">it.polimi.ingsw.ps31.model.effect.ChangeResourceEffect</node>
+    <node x="5691.0" y="366.0">it.polimi.ingsw.ps31.model.effect.GetResourceEffectFromCard</node>
+    <node x="3113.0" y="4329.0">it.polimi.ingsw.ps31.messages.messageVC.VCFamilyMemberChoice</node>
+    <node x="340.0" y="6518.0">it.polimi.ingsw.ps31.model.bonus.BonusActivation</node>
+    <node x="760.0" y="8076.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer</node>
+    <node x="8028.0" y="4678.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceFamilyMember</node>
+    <node x="3261.0" y="5798.0">it.polimi.ingsw.ps31.model.player.Player</node>
+    <node x="8151.0" y="8955.0">it.polimi.ingsw.ps31.model.player.PersonalBonusTiles</node>
+    <node x="7839.0" y="8955.0">it.polimi.ingsw.ps31.model.board.MarkerDisc</node>
+    <node x="4565.0" y="1514.0">it.polimi.ingsw.ps31.model.actions.PlayerActions</node>
+    <node x="4621.0" y="6721.0">it.polimi.ingsw.ps31.model.gameResource.Coin</node>
+    <node x="8511.0" y="9207.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.VictoryPointTrackSecondRowPanel</node>
+    <node x="7677.0" y="9207.0">it.polimi.ingsw.ps31.networking.DeliverableMessageType</node>
+    <node x="8852.0" y="4963.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoicePlayerAction</node>
+    <node x="4084.0" y="8955.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox</node>
+    <node x="1154.0" y="5355.0">it.polimi.ingsw.ps31.model.stateModel.StateTower</node>
+    <node x="671.0" y="5798.0">it.polimi.ingsw.ps31.model.bonus.CardDiscountBonus</node>
+    <node x="8079.0" y="631.0">it.polimi.ingsw.ps31.model.actionControls.ResourceRequirementsControl</node>
+    <node x="2813.0" y="6484.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard</node>
+    <node x="3277.0" y="8615.0">it.polimi.ingsw.ps31.model.json.RuntimeTypeAdapterFactory</node>
+    <node x="8258.0" y="5019.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceServantToPay</node>
+    <node x="6609.0" y="8955.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewActionSpace</node>
+    <node x="612.0" y="6064.0">it.polimi.ingsw.ps31.model.bonus.ProductionBonus</node>
+    <node x="2473.0" y="5049.0">it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint</node>
+    <node x="3672.0" y="8615.0">it.polimi.ingsw.ps31.client.clientNetworking.ClientMessageHistory</node>
+    <node x="2191.0" y="0.0">it.polimi.ingsw.ps31.client.view.guiView.GuiView</node>
+    <node x="8538.0" y="171.0">it.polimi.ingsw.ps31.model.actionControls.DevelopmentCardRequirementsControl</node>
+    <node x="5615.0" y="680.0">it.polimi.ingsw.ps31.model.effect.GetResourceEffect</node>
+    <node x="2658.0" y="8076.0">it.polimi.ingsw.ps31.model.json.JsonGameObject</node>
+    <node x="2652.0" y="5471.0">it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice</node>
+    <node x="8796.0" y="4405.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceListToPay</node>
+    <node x="8590.0" y="5391.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrLeaderToDiscard</node>
+    <node x="3661.0" y="1530.0">it.polimi.ingsw.ps31.model.actions.ActionDiscardLeaderCard</node>
+    <node x="7134.0" y="6420.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PersonalBoardPanel</node>
+    <node x="696.0" y="7023.0">it.polimi.ingsw.ps31.model.bonus.NoImmediateEffectBonus</node>
+    <node x="8635.0" y="1381.0">it.polimi.ingsw.ps31.model.actionControls.PayResourceControl</node>
+    <node x="7070.0" y="7142.0">it.polimi.ingsw.ps31.controller.Controller</node>
+    <node x="181.0" y="5546.0">it.polimi.ingsw.ps31.model.stateModel.StateDevelopmentCard</node>
+    <node x="5469.0" y="6007.0">it.polimi.ingsw.ps31.model.gameResource.MilitaryStrength</node>
+    <node x="4429.0" y="6574.0">it.polimi.ingsw.ps31.model.gameResource.Wood</node>
+    <node x="2583.0" y="4023.0">it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage</node>
+    <node x="7727.0" y="6109.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskActionPanel</node>
+    <node x="6.0" y="7142.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceVisitor</node>
+    <node x="1930.0" y="8955.0">it.polimi.ingsw.ps31.model.board.TrackCell</node>
+    <node x="1145.0" y="9207.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.MainFrame</node>
+    <node x="4756.0" y="8076.0">it.polimi.ingsw.ps31.model.effect.EffectList</node>
+    <node x="5584.0" y="8955.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskStartPersonalBonusTiles</node>
+    <node x="3168.0" y="1548.0">it.polimi.ingsw.ps31.model.actions.ActionChooseCard</node>
+    <node x="7489.0" y="713.0">it.polimi.ingsw.ps31.model.actionControls.PlayerCardNumberControl</node>
+    <node x="879.0" y="6185.0">it.polimi.ingsw.ps31.model.bonus.ColoredFamilyMembersBonus</node>
+    <node x="3407.0" y="8422.0">it.polimi.ingsw.ps31.model.board.VictoryPointTrack</node>
+    <node x="346.0" y="8955.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard</node>
+    <node x="6113.0" y="9207.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.StateGameOtherPlayersPanel</node>
+    <node x="9038.0" y="5151.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceIfSupportChurch</node>
+    <node x="1558.0" y="5349.0">it.polimi.ingsw.ps31.model.stateModel.StatePlayerResources</node>
+    <node x="6262.0" y="4023.0">it.polimi.ingsw.ps31.model.game.GameUtility</node>
+    <node x="5682.0" y="8615.0">it.polimi.ingsw.ps31.server.VirtualView</node>
+    <node x="0.0" y="7627.0">it.polimi.ingsw.ps31.model.choiceType.MVChoiceInfoVisitor</node>
+    <node x="5097.0" y="9207.0">it.polimi.ingsw.ps31.server.serverNetworking.SentMessageEntry</node>
+    <node x="6951.0" y="1097.0">it.polimi.ingsw.ps31.model.effect.HarvestEffectActivationFromCard</node>
+    <node x="5432.0" y="884.0">it.polimi.ingsw.ps31.model.effect.GetResourceFromResourceEffect</node>
+    <node x="4882.0" y="8955.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.SmallActionSpace</node>
+    <node x="6552.0" y="1029.0">it.polimi.ingsw.ps31.model.effect.GenericHarvestEffectActivation</node>
+    <node x="7085.0" y="8615.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember</node>
+    <node x="3501.0" y="20.0">it.polimi.ingsw.ps31.model.actions.ActionGetFinalResources</node>
+    <node x="4880.0" y="1157.0">it.polimi.ingsw.ps31.model.actions.ActionAddFinalBonus</node>
+    <node x="458.0" y="9393.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.DicePanel</node>
+    <node x="4701.0" y="9207.0">it.polimi.ingsw.ps31.model.stateModel.PlayerPossibleChoice</node>
+    <node x="4728.0" y="1857.0">it.polimi.ingsw.ps31.model.actions.ActionChooseDifferentPrivilege</node>
+    <node x="2709.0" y="8955.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.FamilyMemberButton</node>
+    <node x="8078.0" y="5798.0">it.polimi.ingsw.ps31.model.ModelChoices</node>
+    <node x="8480.0" y="4023.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceIfActiveEffect</node>
+    <node x="2418.0" y="6482.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceFamilyMember</node>
+    <node x="6198.0" y="377.0">it.polimi.ingsw.ps31.model.bonus.ActiveBonus</node>
+    <node x="8485.0" y="8615.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewDevelopmentCard</node>
+    <node x="944.0" y="6923.0">it.polimi.ingsw.ps31.model.bonus.DoubleResourceFromCardBonus</node>
+    <node x="630.0" y="6353.0">it.polimi.ingsw.ps31.model.bonus.Bonus</node>
+    <node x="6019.0" y="579.0">it.polimi.ingsw.ps31.model.effect.BonusAndMalusEffect</node>
+    <node x="2173.0" y="9207.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewTower</node>
+    <node x="8551.0" y="7542.0">it.polimi.ingsw.ps31.model.player.ProductionList</node>
+    <node x="5400.0" y="5378.0">it.polimi.ingsw.ps31.model.card.Venture</node>
+    <node x="3336.0" y="5061.0">it.polimi.ingsw.ps31.messages.messageVC.VCListToPayChoice</node>
+    <node x="1951.0" y="6344.0">it.polimi.ingsw.ps31.model.choiceType.ChoicePrivilegeResource</node>
+    <node x="210.0" y="5885.0">it.polimi.ingsw.ps31.model.bonus.GetResourceMalus</node>
+    <node x="8911.0" y="8615.0">it.polimi.ingsw.ps31.server.InputBufferReader</node>
+    <node x="4585.0" y="839.0">it.polimi.ingsw.ps31.model.actions.ActionActiveLeaderCard</node>
+    <node x="8976.0" y="4735.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceLeaderToActive</node>
+    <node x="5464.0" y="9207.0">it.polimi.ingsw.ps31.server.Server</node>
+    <node x="7777.0" y="0.0">it.polimi.ingsw.ps31.model.actionControls.TakeDevelopmentCardControl</node>
+    <node x="8230.0" y="9207.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.VictoryPointTrackFirstColumnPanel</node>
+    <node x="5810.0" y="9207.0">it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl</node>
+    <node x="1740.0" y="9207.0">it.polimi.ingsw.ps31.model.json.JsonFile</node>
+    <node x="394.0" y="9207.0">it.polimi.ingsw.ps31.model.stateModel.TempModelStateForLeaderChoice</node>
+    <node x="790.0" y="6614.0">it.polimi.ingsw.ps31.model.bonus.LostFinalVictoryPointFromPlayerResources</node>
+    <node x="946.0" y="6025.0">it.polimi.ingsw.ps31.model.bonus.CopyLeaderBonus</node>
+    <node x="4739.0" y="4902.0">it.polimi.ingsw.ps31.model.card.Character</node>
+    <node x="2446.0" y="4568.0">it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage</node>
+    <node x="7984.0" y="1104.0">it.polimi.ingsw.ps31.model.actionControls.OccupiedActionSpaceControl</node>
+    <node x="6384.0" y="9207.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PlayerResourcesPanel</node>
+    <node x="6051.0" y="776.0">it.polimi.ingsw.ps31.model.effect.EffectActivation</node>
+    <node x="4489.0" y="6352.0">it.polimi.ingsw.ps31.model.gameResource.Servant</node>
+    <node x="2349.0" y="6373.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceType</node>
+    <node x="4537.0" y="9207.0">it.polimi.ingsw.ps31.model.constants.PlayerColor</node>
+    <node x="3556.0" y="8087.0">it.polimi.ingsw.ps31.model.board.MilitaryPointTrack</node>
+    <node x="1018.0" y="5528.0">it.polimi.ingsw.ps31.model.stateModel.StatePlayer</node>
+    <node x="1390.0" y="8076.0">it.polimi.ingsw.ps31.model.json.CreationJson</node>
+    <node x="8275.0" y="427.0">it.polimi.ingsw.ps31.model.actionControls.PlacedFamilyMemberControl</node>
+    <node x="2337.0" y="8955.0">it.polimi.ingsw.ps31.model.board.Market</node>
+    <node x="4124.0" y="1924.0">it.polimi.ingsw.ps31.model.actions.ActionActivateHarvest</node>
+    <node x="3591.0" y="4564.0">it.polimi.ingsw.ps31.messages.messageVC.VCVisitable</node>
+    <node x="4382.0" y="7142.0">it.polimi.ingsw.ps31.model.board.TowerCardSpace</node>
+    <node x="6119.0" y="8615.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.TowerCardAndActionSpacePanel</node>
+    <node x="3561.0" y="4267.0">it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToDiscardChoice</node>
+    <node x="0.0" y="8955.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskStartPlayerColor</node>
+    <node x="1447.0" y="8955.0">it.polimi.ingsw.ps31.server.serverNetworking.MatchRow</node>
+    <node x="6001.0" y="908.0">it.polimi.ingsw.ps31.model.effect.Effect</node>
+    <node x="2876.0" y="8615.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewGame</node>
+    <node x="9050.0" y="9207.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.FaithPointTrackPanel</node>
+    <node x="2829.0" y="7142.0">it.polimi.ingsw.ps31.model.actions.ActionControlSet</node>
+    <node x="6490.0" y="8615.0">it.polimi.ingsw.ps31.server.serverNetworking.PlayerConnectionRow</node>
+    <node x="379.0" y="7001.0">it.polimi.ingsw.ps31.model.bonus.CanPlaceInOccupiedActionSpace</node>
+    <node x="5837.0" y="1522.0">it.polimi.ingsw.ps31.model.effect.GenericProductionEffectActivation</node>
+    <node x="9744.0" y="9207.0">it.polimi.ingsw.ps31.networking.ConnectionType</node>
+    <node x="4179.0" y="9207.0">it.polimi.ingsw.ps31.model.constants.DiceColor</node>
+    <node x="7715.0" y="7142.0">it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface</node>
+    <node x="3850.0" y="978.0">it.polimi.ingsw.ps31.model.actions.ActionPayCard</node>
+    <node x="4569.0" y="5798.0">it.polimi.ingsw.ps31.model.gameResource.CouncilPrivilege</node>
+    <node x="5161.0" y="4221.0">it.polimi.ingsw.ps31.model.board.Harvest</node>
+    <node x="5233.0" y="8955.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.BigActionSpacePanel</node>
+    <node x="2372.0" y="6597.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceIfActiveEffect</node>
+    <node x="8663.0" y="8955.0">it.polimi.ingsw.ps31.model.game.InformationFromNetworking</node>
+    <node x="8793.0" y="7142.0">it.polimi.ingsw.ps31.model.player.HarvestList</node>
+    <node x="8909.0" y="8955.0">it.polimi.ingsw.ps31.server.serverNetworking.ServerListeningThread</node>
+    <node x="2653.0" y="5863.0">it.polimi.ingsw.ps31.model.choiceType.ChoicePersonalBonusTiles</node>
+    <node x="9122.0" y="7142.0">it.polimi.ingsw.ps31.server.Match</node>
+    <node x="8172.0" y="8076.0">it.polimi.ingsw.ps31.model.player.PersonalBoardCardList</node>
+    <node x="2091.0" y="5798.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderEffectToCopy</node>
+    <node x="0.0" y="8076.0">it.polimi.ingsw.ps31.model.card.DevelopmentCardList</node>
+    <node x="5678.0" y="1067.0">it.polimi.ingsw.ps31.model.effect.ChangeFamilyValueEffect</node>
+    <node x="4442.0" y="0.0">it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMemberInTower</node>
+    <node x="5336.0" y="4129.0">it.polimi.ingsw.ps31.model.board.SmallHarvest</node>
+    <node x="3153.0" y="4467.0">it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToCopyChoice</node>
+    <node x="481.0" y="8615.0">it.polimi.ingsw.ps31.model.board.Tower</node>
+    <node x="4565.0" y="4247.0">it.polimi.ingsw.ps31.model.board.BigProduction</node>
+    <node x="6873.0" y="6001.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.ChoosenButtonPanel</node>
+    <node x="1915.0" y="4599.0">it.polimi.ingsw.ps31.model.stateModel.StateEffect</node>
+    <node x="7590.0" y="8615.0">it.polimi.ingsw.ps31.model.card.DevelopmentCardDeck</node>
+    <node x="0.0" y="9393.0">it.polimi.ingsw.ps31.client.view.TypeOfView</node>
+    <node x="7842.0" y="4814.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceCopyLeader</node>
+    <node x="3752.0" y="4756.0">it.polimi.ingsw.ps31.messages.messageVC.VCPlayerAction</node>
+    <node x="3941.0" y="9207.0">it.polimi.ingsw.ps31.model.json.JsonFileTest</node>
+    <node x="8685.0" y="8076.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.ButtonsFamilyMemberPanel</node>
+    <node x="8535.0" y="5163.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceColor</node>
+    <node x="1731.0" y="8615.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.QuestionsToPlayerPanel</node>
+    <node x="182.0" y="6773.0">it.polimi.ingsw.ps31.model.bonus.LostExtraFinalVictoryPointBonus</node>
+    <node x="2078.0" y="6642.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceVisitable</node>
+    <node x="7728.0" y="1308.0">it.polimi.ingsw.ps31.model.actionControls.DiceValueCardSpaceControl</node>
+    <node x="257.0" y="6353.0">it.polimi.ingsw.ps31.model.bonus.VaticanReportExtraVictoryPoint</node>
+    <node x="415.0" y="6637.0">it.polimi.ingsw.ps31.model.bonus.NoTowerPayment</node>
+    <node x="4260.0" y="8076.0">it.polimi.ingsw.ps31.model.gameResource.ResourceListTest</node>
+    <node x="8789.0" y="9207.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.VictoryPointTrackFirstRowPanel</node>
+    <node x="7273.0" y="5841.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PersonalBonusTilesPanel</node>
+    <node x="0.0" y="6620.0">it.polimi.ingsw.ps31.model.bonus.LostFinalVictoryPointBonus</node>
+    <node x="3982.0" y="1138.0">it.polimi.ingsw.ps31.model.actions.ActionPayServants</node>
+    <node x="7051.0" y="8076.0">it.polimi.ingsw.ps31.server.serverNetworking.MatchTable</node>
+    <node x="1618.0" y="7641.0">it.polimi.ingsw.ps31.messages.messageVC.VCVisitor</node>
+    <node x="7562.0" y="8076.0">it.polimi.ingsw.ps31.server.serverNetworking.PlayerTable</node>
+    <node x="4787.0" y="1412.0">it.polimi.ingsw.ps31.model.actions.ActionGetTempResourcesFromAllEffect</node>
+    <node x="4283.0" y="1733.0">it.polimi.ingsw.ps31.model.actions.ActionPayTowerMoney</node>
+    <node x="2496.0" y="9207.0">it.polimi.ingsw.ps31.model.Model</node>
+    <node x="3662.0" y="5145.0">it.polimi.ingsw.ps31.messages.messageVC.VCSupportTheChurchChoice</node>
+    <node x="5415.0" y="536.0">it.polimi.ingsw.ps31.model.effect.GetResourcesAtTheEndEffect</node>
+    <node x="9218.0" y="4577.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrVisualization</node>
+    <node x="2079.0" y="6206.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceColor</node>
+    <node x="5072.0" y="5503.0">it.polimi.ingsw.ps31.model.card.Territory</node>
+    <node x="4358.0" y="9207.0">it.polimi.ingsw.ps31.model.constants.CardColor</node>
+    <node x="3236.0" y="9207.0">it.polimi.ingsw.ps31.server.serverNetworking.DisconnectedClient</node>
+    <node x="3060.0" y="8955.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.CouncilPanel</node>
+    <node x="1104.0" y="8955.0">it.polimi.ingsw.ps31.DebugUtility</node>
+    <node x="4129.0" y="8615.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.LeaderCardPanel</node>
+    <node x="3354.0" y="4724.0">it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToActiveChoice</node>
+    <node x="3354.0" y="4064.0">it.polimi.ingsw.ps31.messages.messageVC.VCColorChoice</node>
+    <node x="2113.0" y="8615.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.ExtraCardPanel</node>
+    <node x="0.0" y="9207.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewMarkerDisc</node>
+    <node x="3375.0" y="4862.0">it.polimi.ingsw.ps31.messages.messageVC.VCServantToPayChoice</node>
+    <node x="1986.0" y="9207.0">it.polimi.ingsw.ps31.model.constants.PlayerId</node>
+    <node x="8214.0" y="4420.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoicePersonalTiles</node>
+    <node x="5198.0" y="6110.0">it.polimi.ingsw.ps31.model.gameResource.PointResource</node>
+    <node x="7560.0" y="5798.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.BackgroundMainFramePanel</node>
+    <node x="4089.0" y="4826.0">it.polimi.ingsw.ps31.messages.messageVC.VCTowerCardSpaceChoice</node>
+    <node x="1087.0" y="4844.0">it.polimi.ingsw.ps31.model.stateModel.StateType</node>
+    <node x="32.0" y="6215.0">it.polimi.ingsw.ps31.model.bonus.ModifyPayServantsBonus</node>
+    <node x="7987.0" y="4267.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceCouncilPrivilege</node>
+    <node x="9385.0" y="8955.0">it.polimi.ingsw.ps31.client.ClientReadingThread</node>
+    <node x="3224.0" y="8076.0">it.polimi.ingsw.ps31.model.board.FaithPointTrack</node>
+    <node x="681.0" y="6844.0">it.polimi.ingsw.ps31.model.bonus.HarvestBonus</node>
+    <node x="5317.0" y="6322.0">it.polimi.ingsw.ps31.model.gameResource.VictoryPoint</node>
+    <node x="3778.0" y="8076.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.DevelopmentCardsOpenedPanel</node>
+    <node x="7544.0" y="6433.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.GameBoardPanel</node>
+    <node x="0.0" y="2516.0">it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView</node>
+    <node x="6371.0" y="7142.0">it.polimi.ingsw.ps31.model.board.GameBoard</node>
+    <node x="6734.0" y="8076.0">it.polimi.ingsw.ps31.messages.messageMV.MVMessageVisitor</node>
+    <node x="3584.0" y="4405.0">it.polimi.ingsw.ps31.messages.messageVC.VCPersonalTilesChoice</node>
+    <node x="6390.0" y="546.0">it.polimi.ingsw.ps31.model.effect.ProductionEffect</node>
+    <node x="5245.0" y="4826.0">it.polimi.ingsw.ps31.model.effect.ActiveEffect</node>
+    <node x="2178.0" y="7491.0">it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionInterface</node>
+    <node x="3091.0" y="4748.0">it.polimi.ingsw.ps31.messages.GenericMessage</node>
+    <node x="5180.0" y="5879.0">it.polimi.ingsw.ps31.model.gameResource.FaithPoint</node>
+    <node x="4826.0" y="6638.0">it.polimi.ingsw.ps31.model.gameResource.Stone</node>
+    <node x="8492.0" y="4701.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView</node>
+    <node x="1222.0" y="9393.0">it.polimi.ingsw.ps31.networking.MessageTranslator</node>
+    <node x="577.0" y="7142.0">it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation</node>
+    <node x="7072.0" y="8955.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalCardBox</node>
+    <node x="9301.0" y="9207.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.MilitaryTrackPanel</node>
+    <node x="5632.0" y="7142.0">it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface</node>
+    <node x="4133.0" y="1383.0">it.polimi.ingsw.ps31.model.actions.Action</node>
+    <node x="6553.0" y="1340.0">it.polimi.ingsw.ps31.model.effect.ChooseCardEffect</node>
+    <node x="1161.0" y="6164.0">it.polimi.ingsw.ps31.model.bonus.LostFinalVictoryPointFromCardCosts</node>
+    <node x="1528.0" y="4909.0">it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction</node>
+    <node x="7437.0" y="9207.0">it.polimi.ingsw.ps31.model.board.Dice</node>
+    <node x="9144.0" y="5798.0">it.polimi.ingsw.ps31.model.stateModel.MVStateInfoVisitor</node>
+    <node x="1570.0" y="4400.0">it.polimi.ingsw.ps31.model.stateModel.StatePersonalBoard</node>
+    <node x="2498.0" y="6087.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceIfSupportTheChurch</node>
+    <node x="5931.0" y="8955.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskStartLeaderCard</node>
+    <node x="725.0" y="5162.0">it.polimi.ingsw.ps31.model.stateModel.StateMarkerDisc</node>
+    <node x="2618.0" y="6735.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceActionToDo</node>
+    <node x="8464.0" y="4269.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceActionSpace</node>
+    <node x="4715.0" y="6076.0">it.polimi.ingsw.ps31.model.gameResource.Resource</node>
+    <node x="5422.0" y="4380.0">it.polimi.ingsw.ps31.model.card.LeaderCard</node>
+    <node x="8920.0" y="708.0">it.polimi.ingsw.ps31.model.actionControls.DiceValueActionSpaceControl</node>
+    <node x="6739.0" y="1637.0">it.polimi.ingsw.ps31.model.effect.ChooseCardEffectWithDiscount</node>
+    <node x="1176.0" y="6585.0">it.polimi.ingsw.ps31.model.bonus.CantPlaceInActionSpace</node>
+    <node x="7511.0" y="8955.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.UtilityPanel</node>
+    <node x="2715.0" y="9207.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBonusTiles</node>
+    <node x="6723.0" y="8309.0">it.polimi.ingsw.ps31.messages.messageMV.MVVisitor</node>
+    <node x="7544.0" y="487.0">it.polimi.ingsw.ps31.model.actionControls.SelfOccupiedTowerControl</node>
+    <node x="931.0" y="6752.0">it.polimi.ingsw.ps31.model.bonus.StaticFamilyMemberValueBonus</node>
+    <node x="3950.0" y="4527.0">it.polimi.ingsw.ps31.messages.messageVC.VCActionSpace</node>
+    <node x="9131.0" y="6319.0">it.polimi.ingsw.ps31.model.stateModel.StateVisitor</node>
+    <node x="8735.0" y="7335.0">it.polimi.ingsw.ps31.model.player.HarvestProductionList</node>
+    <node x="6655.0" y="9207.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskActionSpace</node>
+    <node x="1206.0" y="4218.0">it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles</node>
+    <node x="785.0" y="4936.0">it.polimi.ingsw.ps31.model.stateModel.StateExcommunication</node>
+    <node x="5793.0" y="5798.0">it.polimi.ingsw.ps31.model.player.PlayerActionSet</node>
+    <node x="1041.0" y="4023.0">it.polimi.ingsw.ps31.model.stateModel.StateActionSpace</node>
+    <node x="5562.0" y="5015.0">it.polimi.ingsw.ps31.model.card.Card</node>
+    <node x="4370.0" y="1354.0">it.polimi.ingsw.ps31.model.actions.ActionPayResources</node>
+    <node x="4537.0" y="4558.0">it.polimi.ingsw.ps31.model.board.CouncilPalace</node>
+    <node x="779.0" y="9207.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewExcommunication</node>
+    <node x="3817.0" y="4115.0">it.polimi.ingsw.ps31.messages.messageVC.VCStartLeaderChoice</node>
+    <node x="3758.0" y="7142.0">it.polimi.ingsw.ps31.client.clientNetworking.ClientSocketConnection</node>
+    <node x="4778.0" y="4055.0">it.polimi.ingsw.ps31.model.board.SmallProduction</node>
+    <node x="3411.0" y="8955.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.TopBoardPanel</node>
+    <node x="6926.0" y="9207.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.SingleBigActionSpace</node>
+    <node x="4491.0" y="8615.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PlayerPanel</node>
+    <node x="3720.0" y="9207.0">it.polimi.ingsw.ps31.client.Client</node>
+    <node x="5121.0" y="4023.0">it.polimi.ingsw.ps31.model.board.BigHarvest</node>
+    <node x="1666.0" y="6490.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceFamilyMemberToChangeValue</node>
+    <node x="1403.0" y="4764.0">it.polimi.ingsw.ps31.model.stateModel.StateVisitable</node>
+    <node x="2495.0" y="8615.0">it.polimi.ingsw.ps31.model.player.PersonalBoard</node>
+    <node x="4853.0" y="8615.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.ExcommunicationPanel</node>
+    <node x="759.0" y="9393.0">it.polimi.ingsw.ps31.networking.JsonNetworking</node>
+    <node x="455.0" y="6202.0">it.polimi.ingsw.ps31.model.bonus.NoBoardRequirementControl</node>
+    <node x="3722.0" y="4894.0">it.polimi.ingsw.ps31.messages.messageVC.VCActiveEffectChoice</node>
+    <node x="3657.0" y="7393.0">it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface</node>
+    <node x="2044.0" y="8076.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewEffect</node>
+    <node x="7932.0" y="9207.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.VictoryPointTrackSecondColumnPanel</node>
+    <node x="1453.0" y="9207.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard</node>
+    <node x="9097.0" y="1729.0">it.polimi.ingsw.ps31.model.actionControls.PayResourceListControl</node>
+    <node x="681.0" y="8955.0">it.polimi.ingsw.ps31.messages.ConcreteEnvelope</node>
+    <node x="5723.0" y="8076.0">it.polimi.ingsw.ps31.model.game.GameLogic</node>
+    <node x="6255.0" y="1544.0">it.polimi.ingsw.ps31.model.effect.HarvestEffect</node>
+    <node x="3349.0" y="8191.0">it.polimi.ingsw.ps31.model.board.Track</node>
+    <node x="5089.0" y="5016.0">it.polimi.ingsw.ps31.model.card.DevelopmentCard</node>
+    <node x="600.0" y="4098.0">it.polimi.ingsw.ps31.model.stateModel.StateAllFamilyMember</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.LostFinalVictoryPointFromCardCosts" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.SelfOccupiedTowerControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.LostFinalVictoryPointBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageMV.MVMessageVisitor" target="it.polimi.ingsw.ps31.messages.messageMV.MVVisitor">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.GetResourceEffect" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.StaticFamilyMemberValueBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrVisualization" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.GetResourceMalus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoicePersonalBonusTiles" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.guiView.GuiView" target="it.polimi.ingsw.ps31.client.view.View">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.PointResource" target="it.polimi.ingsw.ps31.model.gameResource.Resource">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.VictoryPoint" target="it.polimi.ingsw.ps31.model.gameResource.PointResource">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceLeaderToActive" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.CouncilPrivilege" target="it.polimi.ingsw.ps31.model.gameResource.Resource">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.TowerCardSpace" target="it.polimi.ingsw.ps31.model.board.PhysicalCardBox">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.Stone" target="it.polimi.ingsw.ps31.model.gameResource.PhysicalResource">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.GetResourceFromResourceEffect" target="it.polimi.ingsw.ps31.model.effect.GetResourceEffect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceIfSupportTheChurch" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.ProductionEffect" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.player.ProductionList" target="it.polimi.ingsw.ps31.model.player.HarvestProductionList">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoicePersonalTiles" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.LeaderCard" target="it.polimi.ingsw.ps31.model.card.Card">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.ChoosenButtonPanel" target="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.GenericHarvestEffectActivation" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.MilitaryStrength" target="it.polimi.ingsw.ps31.model.gameResource.PointResource">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionDiscardLeaderCard" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.DevelopmentCardRequirementsControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.LeaderCard" target="it.polimi.ingsw.ps31.model.effect.ActiveEffect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceType" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceIfSupportChurch" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.ChangeResourceEffect" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceFamilyMember" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.ExcommunicationTiles" target="it.polimi.ingsw.ps31.model.bonus.ActiveBonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.MVChoiceInfoVisitor" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceVisitor">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCPlayerAction" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionPayCard" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceIfActiveEffect" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.BackgroundMainFramePanel" target="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.OccupiedActionSpaceControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint" target="it.polimi.ingsw.ps31.messages.messageMV.MVVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.Venture" target="it.polimi.ingsw.ps31.model.card.DevelopmentCard">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.SmallHarvest" target="it.polimi.ingsw.ps31.model.board.Harvest">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.NoImmediateEffectBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMemberInBoard" target="it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMember">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.CanPlaceInOccupiedActionSpace" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.HarvestEffect" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.Servant" target="it.polimi.ingsw.ps31.model.gameResource.PhysicalResource">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceFamilyMember" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateActionSpace" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceTowerCardSpace" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.BigHarvest" target="it.polimi.ingsw.ps31.model.board.Harvest">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderToDiscard" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionGetTempResourcesFromAllEffect" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.CouncilPalace" target="it.polimi.ingsw.ps31.model.board.ActionSpace">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskActionPanel" target="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.TakeDevelopmentCardControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.MilitaryPointTrack" target="it.polimi.ingsw.ps31.model.board.Track">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCStartLeaderChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceFamilyMemberToChangeValue" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage" target="it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.VaticanReportExtraVictoryPoint" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.ModifyPayServantsBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.BonusAndMalusEffect" target="it.polimi.ingsw.ps31.model.bonus.ActiveBonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.CantPlaceInActionSpace" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.BonusAndMalusEffect" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCPersonalTilesChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.SmallProduction" target="it.polimi.ingsw.ps31.model.board.Production">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.BigProduction" target="it.polimi.ingsw.ps31.model.board.Production">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.Coin" target="it.polimi.ingsw.ps31.model.gameResource.PhysicalResource">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.FaithPoint" target="it.polimi.ingsw.ps31.model.gameResource.PointResource">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StatePersonalBoard" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceListToPay" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.PayCardControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToActiveChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionPayTowerMoney" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.NoFirstActionTurn" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerCardSpace" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView" target="it.polimi.ingsw.ps31.client.view.View">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.CardDiscountBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.SocketServerConnection" target="it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionInterface">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCTowerCardSpaceChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCMessageVisitor" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitor">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCFamilyMemberChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.DiceValueCardSpaceControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.LostExtraFinalVictoryPointBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionChooseDifferentPrivilege" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState" target="it.polimi.ingsw.ps31.messages.messageMV.MVVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateEffect" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.PlayerCardNumberControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageMV.MVVisitable" target="it.polimi.ingsw.ps31.messages.GenericMessage">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.PhysicalResource" target="it.polimi.ingsw.ps31.model.gameResource.Resource">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.TowerCardCostPlacementControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateExcommunication" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.Production" target="it.polimi.ingsw.ps31.model.board.ActionSpace">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderEffectToCopy" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.Building" target="it.polimi.ingsw.ps31.model.card.DevelopmentCard">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCServantToPayChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.Wood" target="it.polimi.ingsw.ps31.model.gameResource.PhysicalResource">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceColor" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceActionSpace" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.NeutralFamilyMemberBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.ColoredFamilyMembersBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateMarkerDisc" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceCopyLeader" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMember" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateType" target="it.polimi.ingsw.ps31.model.stateModel.StateVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.ChooseCardEffectWithDiscount" target="it.polimi.ingsw.ps31.model.effect.ChooseCardEffect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.LostFinalVictoryPointFromPlayerResources" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionGetResources" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.Harvest" target="it.polimi.ingsw.ps31.model.board.ActionSpace">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.Character" target="it.polimi.ingsw.ps31.model.card.DevelopmentCard">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.Action" target="it.polimi.ingsw.ps31.model.actions.PlayerActions">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.FaithPointTrack" target="it.polimi.ingsw.ps31.model.board.Track">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderToActive" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.VictoryPointTrack" target="it.polimi.ingsw.ps31.model.board.Track">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.GameBoardPanel" target="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateTower" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.ChooseCardEffect" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionAddFinalBonus" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.PayResourceControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.ProductionBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.Territory" target="it.polimi.ingsw.ps31.model.card.DevelopmentCard">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.DoubleResourceFromCardBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StatePlayer" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrLeaderToDiscard" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionEndTurn" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCListToPayChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.Bonus" target="it.polimi.ingsw.ps31.model.bonus.BonusActivation">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice" target="it.polimi.ingsw.ps31.messages.messageMV.MVVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateAllDevelopmentCard" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMemberInTower" target="it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMember">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionChooseCard" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceCouncilPrivilege" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCActionSpace" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceActionSpace" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionActivateHarvest" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceIfActiveEffect" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCActiveEffectChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateAllFamilyMember" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCCouncilPrivilegeChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.LeaderCardRequirementControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.ChangeFamilyValueEffect" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionGetFinalResources" target="it.polimi.ingsw.ps31.model.actions.ActionGetResources">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.NoTowerPayment" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoicePrivilegeResource" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.clientNetworking.ClientSocketConnection" target="it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.DevelopmentCard" target="it.polimi.ingsw.ps31.model.card.Card">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionPayResources" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.Effect" target="it.polimi.ingsw.ps31.model.effect.EffectActivation">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PersonalBoardPanel" target="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.GetResourcesAtTheEndEffect" target="it.polimi.ingsw.ps31.model.effect.GetResourceEffect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.ActionSpace" target="it.polimi.ingsw.ps31.model.effect.ActiveEffect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.GenericProductionEffectActivation" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateCardBox" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.PlacedFamilyMemberControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.HarvestEffectActivationFromCard" target="it.polimi.ingsw.ps31.model.effect.GenericHarvestEffectActivation">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceColor" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PersonalBonusTilesPanel" target="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.HarvestBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceNumberOfServantsToPay" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.PayResourceListControl" target="it.polimi.ingsw.ps31.model.actionControls.PayResourceControl">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.GetResourceEffectFromCard" target="it.polimi.ingsw.ps31.model.effect.GetResourceEffect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.ProductionEffectActivationFromCard" target="it.polimi.ingsw.ps31.model.effect.GenericProductionEffectActivation">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCColorChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCSupportTheChurchChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.player.PersonalBoardCardCell" target="it.polimi.ingsw.ps31.model.board.PhysicalCardBox">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.NoBoardRequirementControl" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StatePlayerResources" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceStartLeader" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.DiceValueActionSpaceControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.DevelopmentCard" target="it.polimi.ingsw.ps31.model.effect.ActiveEffect">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoicePlayerAction" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionActiveLeaderCard" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionActivateProduction" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage" target="it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.ResourceRequirementsControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceActionToDo" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceServantToPay" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToCopyChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionPayServants" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToDiscardChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateGame" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceListToPay" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.player.HarvestList" target="it.polimi.ingsw.ps31.model.player.HarvestProductionList">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable" target="it.polimi.ingsw.ps31.messages.GenericMessage">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.MVStateInfoVisitor" target="it.polimi.ingsw.ps31.model.stateModel.StateVisitor">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateDevelopmentCard" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage" target="it.polimi.ingsw.ps31.messages.GenericMessage">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.CopyLeaderBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.05903436643474594" x="4940.996428571429" y="4733.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

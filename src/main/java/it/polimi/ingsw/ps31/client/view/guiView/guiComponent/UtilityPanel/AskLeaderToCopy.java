@@ -13,11 +13,14 @@ public class AskLeaderToCopy extends JOptionPane implements ActionListener {
     private ActionListener listener;
     private JFrame father;
 
+    /* Constructor */
     public AskLeaderToCopy(JFrame father) {
         this.father=father;
     }
 
-
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }

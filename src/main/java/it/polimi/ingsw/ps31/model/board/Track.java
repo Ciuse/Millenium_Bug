@@ -7,6 +7,8 @@ import java.util.List;
 
 /**
  * Created by Giuseppe on 18/05/2017.
+ *
+ * Classe che rappresenta il generico tracciato, che si crea con un numero prestabilito di celle
  */
 public abstract class Track {
    private List<TrackCell> trackCell=new ArrayList<>();

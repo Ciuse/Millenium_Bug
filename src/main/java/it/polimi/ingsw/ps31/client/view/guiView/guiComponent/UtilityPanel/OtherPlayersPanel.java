@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
 
 import javax.swing.*;
@@ -11,16 +13,21 @@ import java.awt.event.ActionListener;
 /**
  * Created by giulia on 10/07/2017.
  */
-public class OtherPlayersPanel extends JPanel implements ActionListener {
+public class OtherPlayersPanel extends PaintBackgroundPanel implements ActionListener {
     private JFrame father = null;
     private GuiView guiView;
     private SingleOtherPlayersPanel[] singleOtherPlayersPanel = new SingleOtherPlayersPanel[3];
+    private GridBagLayout gbl;
 
+    /* Constructor */
     public OtherPlayersPanel(GuiView guiView) {
         this.guiView = guiView;
         addComponentsToPane(this);
     }
 
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
 
 
@@ -40,6 +47,7 @@ public class OtherPlayersPanel extends JPanel implements ActionListener {
                 ) {
             if (player.getPlayerId() != guiView.getMyStateViewPlayer().getPlayerId()) {
                 singleOtherPlayersPanel[i] = new SingleOtherPlayersPanel(this.guiView, player.getPlayerId());
+                singleOtherPlayersPanel[i].setOpaque(false);
                 gbc.gridx = i * 2;
                 gbc.gridy = 0;
                 gbc.gridheight = 1;
@@ -50,7 +58,35 @@ public class OtherPlayersPanel extends JPanel implements ActionListener {
                 i++;
             }
         }
+
+
+
     }
+
+    public void fillOtherPlayers(StateViewPersonalBoard stateViewPersonalBoard){
+        int i = 0;
+        for (StateViewPlayer player : guiView.getStateViewPlayerList()
+                ) {
+            if (player.getPlayerId() != guiView.getMyStateViewPlayer().getPlayerId()) {
+                singleOtherPlayersPanel[i].getjPersonalBoardPanel().getCardYellow().setStateViewPersonalCardBoxList(stateViewPersonalBoard.getStateViewPersonalCardBoxListYellow());
+                singleOtherPlayersPanel[i].getjPersonalBoardPanel().getCardYellow().fillDevelopmentCardPanel();
+                singleOtherPlayersPanel[i].getjPersonalBoardPanel().getCardGreen().setStateViewPersonalCardBoxList(stateViewPersonalBoard.getStateViewPersonalCardBoxListGreen());
+                singleOtherPlayersPanel[i].getjPersonalBoardPanel().getCardGreen().fillDevelopmentCardPanel();
+                singleOtherPlayersPanel[i].getExtraCardPanel().getPurpleCardPanel().setStateViewPersonalCardBoxList(stateViewPersonalBoard.getStateViewPersonalCardBoxListPurple());
+                singleOtherPlayersPanel[i].getExtraCardPanel().getPurpleCardPanel().fillDevelopmentCardPanel();
+                singleOtherPlayersPanel[i].getExtraCardPanel().getBlueCardPanel().setStateViewPersonalCardBoxList(stateViewPersonalBoard.getStateViewPersonalCardBoxListBlue());
+                singleOtherPlayersPanel[i].getExtraCardPanel().getBlueCardPanel().fillDevelopmentCardPanel();
+                singleOtherPlayersPanel[i].getjLeaderCardPanel().getLeaderCardsOpenedPanel().setStateViewLeaderCardList(player.getStateViewLeaderCardList());
+                singleOtherPlayersPanel[i].getjLeaderCardPanel().getLeaderCardsOpenedPanel().fillLeaderPanel();
+                singleOtherPlayersPanel[i].getjPersonalBonusTilesPanel().printTiles(player.getStateViewPersonalBonusTiles());
+                singleOtherPlayersPanel[i].getjPersonalBoardPanel().getPlayerResourcesPanel().setStringPhysicalResources(player.getPlayerResources());
+                singleOtherPlayersPanel[i].getjPersonalBoardPanel().getPlayerResourcesPanel().setStringPointResources(player.getPlayerResources());
+                i++;
+            }
+        }
+    }
+
+
 
     public void setFather(JFrame father) {
         this.father = father;

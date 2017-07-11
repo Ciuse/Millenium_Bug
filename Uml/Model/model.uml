@@ -1,0 +1,1029 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>it.polimi.ingsw.ps31.model</OriginalElement>
+  <nodes>
+    <node x="1283.0" y="7469.5">it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderToActive</node>
+    <node x="358.0" y="7952.0">it.polimi.ingsw.ps31.model.constants.PlayerColor</node>
+    <node x="2239.0" y="7813.5">it.polimi.ingsw.ps31.model.board.MilitaryPointTrack</node>
+    <node x="2022.0" y="5592.0">it.polimi.ingsw.ps31.model.stateModel.StatePlayer</node>
+    <node x="1459.0" y="6580.0">it.polimi.ingsw.ps31.model.json.CreationJson</node>
+    <node x="4308.0" y="7611.0">it.polimi.ingsw.ps31.model.board.Market</node>
+    <node x="2965.0" y="4744.0">it.polimi.ingsw.ps31.model.actionControls.PlacedFamilyMemberControl</node>
+    <node x="3024.5" y="3037.0">it.polimi.ingsw.ps31.model.actions.ActionActivateHarvest</node>
+    <node x="2010.0" y="4743.5">it.polimi.ingsw.ps31.model.actionControls.TowerCardCostPlacementControl</node>
+    <node x="4944.0" y="7354.0">it.polimi.ingsw.ps31.model.board.TowerCardSpace</node>
+    <node x="4648.0" y="7365.0">it.polimi.ingsw.ps31.model.player.PersonalBoardCardCell</node>
+    <node x="6417.0" y="7207.0">it.polimi.ingsw.ps31.model.player.FamilyMember</node>
+    <node x="0.0" y="5910.0">it.polimi.ingsw.ps31.model.gameResource.ResourceList</node>
+    <node x="1041.0" y="7458.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceListToPay</node>
+    <node x="3982.0000000000005" y="101.0">it.polimi.ingsw.ps31.model.effect.Effect</node>
+    <node x="1020.75" y="4069.5">it.polimi.ingsw.ps31.model.gameResource.PhysicalResource</node>
+    <node x="2.5" y="3081.5">it.polimi.ingsw.ps31.model.actions.ActionGetResources</node>
+    <node x="2844.0" y="7469.5">it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerCardSpace</node>
+    <node x="355.0" y="7469.5">it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderToDiscard</node>
+    <node x="2256.75" y="3581.0">it.polimi.ingsw.ps31.model.actions.ActionControlSet</node>
+    <node x="6079.0" y="6414.5">it.polimi.ingsw.ps31.model.bonus.NoFirstActionTurn</node>
+    <node x="6016.982456140351" y="965.5">it.polimi.ingsw.ps31.model.effect.ProductionEffectActivationFromCard</node>
+    <node x="3241.0" y="6403.0">it.polimi.ingsw.ps31.model.bonus.CanPlaceInOccupiedActionSpace</node>
+    <node x="1594.0" y="4689.0">it.polimi.ingsw.ps31.model.actionControls.PayCardControl</node>
+    <node x="6003.482456140351" y="708.0">it.polimi.ingsw.ps31.model.effect.GenericProductionEffectActivation</node>
+    <node x="0.0" y="7952.0">it.polimi.ingsw.ps31.model.constants.DiceColor</node>
+    <node x="1267.5000000000002" y="3081.5">it.polimi.ingsw.ps31.model.actions.ActionPayCard</node>
+    <node x="420.0" y="5614.0">it.polimi.ingsw.ps31.model.stateModel.StateAllDevelopmentCard</node>
+    <node x="1265.75" y="4014.0">it.polimi.ingsw.ps31.model.gameResource.CouncilPrivilege</node>
+    <node x="3421.0" y="2275.5">it.polimi.ingsw.ps31.model.board.Harvest</node>
+    <node x="3886.5" y="2275.5">it.polimi.ingsw.ps31.model.board.Production</node>
+    <node x="5504.0" y="7611.0">it.polimi.ingsw.ps31.model.game.InformationFromNetworking</node>
+    <node x="3381.0" y="7458.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceIfActiveEffect</node>
+    <node x="3090.0" y="7469.5">it.polimi.ingsw.ps31.model.choiceType.ChoiceNumberOfServantsToPay</node>
+    <node x="877.0" y="7780.0">it.polimi.ingsw.ps31.model.player.HarvestList</node>
+    <node x="4094.0" y="4755.0">it.polimi.ingsw.ps31.model.actionControls.LeaderCardRequirementControl</node>
+    <node x="600.0" y="7458.0">it.polimi.ingsw.ps31.model.choiceType.ChoicePersonalBonusTiles</node>
+    <node x="0.0" y="7611.0">it.polimi.ingsw.ps31.model.player.PersonalBoardCardList</node>
+    <node x="2617.5" y="4479.0">it.polimi.ingsw.ps31.model.actionControls.Control</node>
+    <node x="4467.5" y="2264.5">it.polimi.ingsw.ps31.model.card.Building</node>
+    <node x="2044.0" y="7458.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderEffectToCopy</node>
+    <node x="4400.0" y="7469.5">it.polimi.ingsw.ps31.model.choiceType.ChoiceActionSpace</node>
+    <node x="2412.0000000000005" y="730.0">it.polimi.ingsw.ps31.model.effect.ChangeFamilyValueEffect</node>
+    <node x="699.0" y="6580.0">it.polimi.ingsw.ps31.model.card.DevelopmentCardList</node>
+    <node x="3301.0" y="2433.0">it.polimi.ingsw.ps31.model.board.SmallHarvest</node>
+    <node x="1063.5000000000002" y="3350.0">it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMemberInTower</node>
+    <node x="1206.0" y="7611.0">it.polimi.ingsw.ps31.model.board.Tower</node>
+    <node x="3763.0" y="2433.0">it.polimi.ingsw.ps31.model.board.BigProduction</node>
+    <node x="5864.0" y="5460.0">it.polimi.ingsw.ps31.model.stateModel.StateEffect</node>
+    <node x="1641.0" y="7611.0">it.polimi.ingsw.ps31.model.gameResource.ResourceTest</node>
+    <node x="3440.0" y="7611.0">it.polimi.ingsw.ps31.model.card.DevelopmentCardDeck</node>
+    <node x="6787.0" y="7611.0">it.polimi.ingsw.ps31.model.json.JsonFileTest</node>
+    <node x="1237.0" y="5592.0">it.polimi.ingsw.ps31.model.stateModel.StateGame</node>
+    <node x="1984.0" y="6391.5">it.polimi.ingsw.ps31.model.bonus.LostExtraFinalVictoryPointBonus</node>
+    <node x="3747.25" y="1818.5">it.polimi.ingsw.ps31.model.board.ActionSpace</node>
+    <node x="2201.25" y="7207.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceVisitable</node>
+    <node x="2348.0" y="6391.5">it.polimi.ingsw.ps31.model.bonus.VaticanReportExtraVictoryPoint</node>
+    <node x="2486.0" y="4710.5">it.polimi.ingsw.ps31.model.actionControls.DiceValueCardSpaceControl</node>
+    <node x="2406.0" y="5536.5">it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard</node>
+    <node x="2679.0" y="6580.0">it.polimi.ingsw.ps31.model.gameResource.ResourceListTest</node>
+    <node x="4319.0" y="6403.0">it.polimi.ingsw.ps31.model.bonus.NoTowerPayment</node>
+    <node x="4928.5" y="3059.0">it.polimi.ingsw.ps31.model.actions.ActionActivateProduction</node>
+    <node x="6943.0" y="5537.0">it.polimi.ingsw.ps31.model.stateModel.StateCardBox</node>
+    <node x="4021.0" y="6391.5">it.polimi.ingsw.ps31.model.bonus.NeutralFamilyMemberBonus</node>
+    <node x="3720.5" y="3059.5">it.polimi.ingsw.ps31.model.actions.ActionPayServants</node>
+    <node x="6275.0" y="6391.5">it.polimi.ingsw.ps31.model.bonus.LostFinalVictoryPointBonus</node>
+    <node x="869.5000000000002" y="3059.0">it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMember</node>
+    <node x="6370.0" y="5559.0">it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember</node>
+    <node x="731.5000000000002" y="3361.0">it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMemberInBoard</node>
+    <node x="4885.0" y="7207.0">it.polimi.ingsw.ps31.model.board.PhysicalCardBox</node>
+    <node x="2231.5" y="3070.5">it.polimi.ingsw.ps31.model.actions.ActionEndTurn</node>
+    <node x="1580.0000000000005" y="675.0">it.polimi.ingsw.ps31.model.card.ExcommunicationTiles</node>
+    <node x="2689.0000000000005" y="686.0">it.polimi.ingsw.ps31.model.effect.ChangeResourceEffect</node>
+    <node x="4019.5000000000005" y="954.5">it.polimi.ingsw.ps31.model.effect.GetResourceEffectFromCard</node>
+    <node x="3553.0" y="5910.0">it.polimi.ingsw.ps31.model.bonus.BonusActivation</node>
+    <node x="4479.5" y="3015.0">it.polimi.ingsw.ps31.model.actions.ActionGetTempResourcesFromAllEffect</node>
+    <node x="6568.0" y="7611.0">it.polimi.ingsw.ps31.model.Model</node>
+    <node x="1967.5000000000002" y="3070.0">it.polimi.ingsw.ps31.model.actions.ActionPayTowerMoney</node>
+    <node x="0.0" y="1573.0">it.polimi.ingsw.ps31.model.player.Player</node>
+    <node x="2740.5" y="2662.0">it.polimi.ingsw.ps31.model.actions.PlayerActions</node>
+    <node x="4680.0" y="7611.0">it.polimi.ingsw.ps31.model.board.MarkerDisc</node>
+    <node x="4992.0" y="7611.0">it.polimi.ingsw.ps31.model.player.PersonalBonusTiles</node>
+    <node x="1145.0" y="4304.5">it.polimi.ingsw.ps31.model.gameResource.Coin</node>
+    <node x="3640.5000000000005" y="965.5">it.polimi.ingsw.ps31.model.effect.GetResourcesAtTheEndEffect</node>
+    <node x="4703.0" y="5603.0">it.polimi.ingsw.ps31.model.stateModel.StateTower</node>
+    <node x="5776.0" y="6347.0">it.polimi.ingsw.ps31.model.bonus.CardDiscountBonus</node>
+    <node x="1522.0" y="7458.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceColor</node>
+    <node x="179.0" y="7952.0">it.polimi.ingsw.ps31.model.constants.CardColor</node>
+    <node x="4916.5" y="2264.5">it.polimi.ingsw.ps31.model.card.Territory</node>
+    <node x="4863.0" y="4755.0">it.polimi.ingsw.ps31.model.actionControls.ResourceRequirementsControl</node>
+    <node x="3642.0" y="7447.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard</node>
+    <node x="3045.0" y="7611.0">it.polimi.ingsw.ps31.model.json.RuntimeTypeAdapterFactory</node>
+    <node x="2700.0" y="6391.5">it.polimi.ingsw.ps31.model.bonus.ProductionBonus</node>
+    <node x="3673.0" y="4755.0">it.polimi.ingsw.ps31.model.actionControls.DevelopmentCardRequirementsControl</node>
+    <node x="4052.4824561403516" y="697.0">it.polimi.ingsw.ps31.model.effect.GetResourceEffect</node>
+    <node x="2113.0" y="6580.0">it.polimi.ingsw.ps31.model.json.JsonGameObject</node>
+    <node x="6381.0" y="7611.0">it.polimi.ingsw.ps31.model.constants.PlayerId</node>
+    <node x="1635.5000000000002" y="3059.0">it.polimi.ingsw.ps31.model.actions.ActionDiscardLeaderCard</node>
+    <node x="252.5" y="4058.5">it.polimi.ingsw.ps31.model.gameResource.PointResource</node>
+    <node x="3207.0" y="5299.0">it.polimi.ingsw.ps31.model.stateModel.StateType</node>
+    <node x="1189.0" y="6391.5">it.polimi.ingsw.ps31.model.bonus.ModifyPayServantsBonus</node>
+    <node x="3765.0" y="6403.0">it.polimi.ingsw.ps31.model.bonus.NoImmediateEffectBonus</node>
+    <node x="9.0" y="4755.0">it.polimi.ingsw.ps31.model.actionControls.PayResourceControl</node>
+    <node x="2436.0" y="7802.0">it.polimi.ingsw.ps31.model.board.FaithPointTrack</node>
+    <node x="3535.0" y="5559.0">it.polimi.ingsw.ps31.model.stateModel.StateDevelopmentCard</node>
+    <node x="1757.0" y="6391.5">it.polimi.ingsw.ps31.model.bonus.HarvestBonus</node>
+    <node x="527.0" y="4293.0">it.polimi.ingsw.ps31.model.gameResource.VictoryPoint</node>
+    <node x="228.0" y="4271.0">it.polimi.ingsw.ps31.model.gameResource.MilitaryStrength</node>
+    <node x="959.0" y="4304.5">it.polimi.ingsw.ps31.model.gameResource.Wood</node>
+    <node x="0.0" y="6580.0">it.polimi.ingsw.ps31.model.board.GameBoard</node>
+    <node x="1689.75" y="3581.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceVisitor</node>
+    <node x="3901.0" y="7611.0">it.polimi.ingsw.ps31.model.board.TrackCell</node>
+    <node x="4434.482456140351" y="664.0">it.polimi.ingsw.ps31.model.effect.ProductionEffect</node>
+    <node x="5140.5" y="1618.0">it.polimi.ingsw.ps31.model.effect.ActiveEffect</node>
+    <node x="5483.0" y="7207.0">it.polimi.ingsw.ps31.model.effect.EffectList</node>
+    <node x="0.0" y="4293.0">it.polimi.ingsw.ps31.model.gameResource.FaithPoint</node>
+    <node x="1324.0" y="4304.5">it.polimi.ingsw.ps31.model.gameResource.Stone</node>
+    <node x="397.5" y="2982.0">it.polimi.ingsw.ps31.model.actions.ActionChooseCard</node>
+    <node x="3352.0" y="4743.5">it.polimi.ingsw.ps31.model.actionControls.PlayerCardNumberControl</node>
+    <node x="3537.0" y="6391.5">it.polimi.ingsw.ps31.model.bonus.ColoredFamilyMembersBonus</node>
+    <node x="2045.0" y="7813.5">it.polimi.ingsw.ps31.model.board.VictoryPointTrack</node>
+    <node x="2714.5" y="2763.0">it.polimi.ingsw.ps31.model.actions.Action</node>
+    <node x="3254.0000000000005" y="697.0">it.polimi.ingsw.ps31.model.effect.ChooseCardEffect</node>
+    <node x="5296.0" y="6380.5">it.polimi.ingsw.ps31.model.bonus.LostFinalVictoryPointFromCardCosts</node>
+    <node x="2756.0" y="5603.0">it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction</node>
+    <node x="1221.0" y="7952.0">it.polimi.ingsw.ps31.model.board.Dice</node>
+    <node x="6431.5" y="2026.0">it.polimi.ingsw.ps31.model.stateModel.MVStateInfoVisitor</node>
+    <node x="5450.0" y="5603.0">it.polimi.ingsw.ps31.model.stateModel.StatePersonalBoard</node>
+    <node x="2342.0" y="7469.5">it.polimi.ingsw.ps31.model.choiceType.ChoiceIfSupportTheChurch</node>
+    <node x="852.0" y="5603.0">it.polimi.ingsw.ps31.model.stateModel.StatePlayerResources</node>
+    <node x="0.0" y="0.0">it.polimi.ingsw.ps31.model.game.GameUtility</node>
+    <node x="5086.0" y="5592.0">it.polimi.ingsw.ps31.model.stateModel.StateMarkerDisc</node>
+    <node x="1823.0" y="7469.5">it.polimi.ingsw.ps31.model.choiceType.ChoiceActionToDo</node>
+    <node x="1679.75" y="4012.0">it.polimi.ingsw.ps31.model.choiceType.MVChoiceInfoVisitor</node>
+    <node x="5591.5" y="1764.0">it.polimi.ingsw.ps31.model.card.LeaderCard</node>
+    <node x="912.25" y="3581.0">it.polimi.ingsw.ps31.model.gameResource.Resource</node>
+    <node x="5638.982456140351" y="965.5">it.polimi.ingsw.ps31.model.effect.HarvestEffectActivationFromCard</node>
+    <node x="328.0" y="4733.0">it.polimi.ingsw.ps31.model.actionControls.DiceValueActionSpaceControl</node>
+    <node x="4647.289473684211" y="943.0">it.polimi.ingsw.ps31.model.effect.GetResourceFromResourceEffect</node>
+    <node x="3305.5000000000005" y="943.0">it.polimi.ingsw.ps31.model.effect.ChooseCardEffectWithDiscount</node>
+    <node x="2946.0" y="6391.5">it.polimi.ingsw.ps31.model.bonus.CantPlaceInActionSpace</node>
+    <node x="6636.0" y="6380.5">it.polimi.ingsw.ps31.model.bonus.StaticFamilyMemberValueBonus</node>
+    <node x="1199.0" y="4733.0">it.polimi.ingsw.ps31.model.actionControls.SelfOccupiedTowerControl</node>
+    <node x="5625.482456140351" y="708.0">it.polimi.ingsw.ps31.model.effect.GenericHarvestEffectActivation</node>
+    <node x="0.0" y="3394.5">it.polimi.ingsw.ps31.model.actions.ActionGetFinalResources</node>
+    <node x="2620.5" y="3081.5">it.polimi.ingsw.ps31.model.actions.ActionAddFinalBonus</node>
+    <node x="6441.5" y="1573.0">it.polimi.ingsw.ps31.model.stateModel.StateVisitor</node>
+    <node x="754.0" y="7611.0">it.polimi.ingsw.ps31.model.player.HarvestProductionList</node>
+    <node x="522.0" y="7952.0">it.polimi.ingsw.ps31.model.stateModel.PlayerPossibleChoice</node>
+    <node x="3348.5" y="3037.0">it.polimi.ingsw.ps31.model.actions.ActionChooseDifferentPrivilege</node>
+    <node x="1556.0" y="5592.0">it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles</node>
+    <node x="3122.0" y="5570.0">it.polimi.ingsw.ps31.model.stateModel.StateExcommunication</node>
+    <node x="6025.75" y="1573.0">it.polimi.ingsw.ps31.model.card.Card</node>
+    <node x="1168.0" y="1573.0">it.polimi.ingsw.ps31.model.player.PlayerActionSet</node>
+    <node x="4271.0" y="5592.0">it.polimi.ingsw.ps31.model.stateModel.StateActionSpace</node>
+    <node x="5212.5" y="3081.5">it.polimi.ingsw.ps31.model.actions.ActionPayResources</node>
+    <node x="2248.0" y="1573.0">it.polimi.ingsw.ps31.model.ModelChoices</node>
+    <node x="2607.0" y="7469.5">it.polimi.ingsw.ps31.model.choiceType.ChoiceFamilyMember</node>
+    <node x="1878.2500000000005" y="322.0">it.polimi.ingsw.ps31.model.bonus.ActiveBonus</node>
+    <node x="3514.5" y="6011.0">it.polimi.ingsw.ps31.model.bonus.Bonus</node>
+    <node x="949.0" y="6414.5">it.polimi.ingsw.ps31.model.bonus.DoubleResourceFromCardBonus</node>
+    <node x="2062.0000000000005" y="708.0">it.polimi.ingsw.ps31.model.effect.BonusAndMalusEffect</node>
+    <node x="4133.5" y="2219.0">it.polimi.ingsw.ps31.model.board.CouncilPalace</node>
+    <node x="513.0" y="7780.0">it.polimi.ingsw.ps31.model.player.ProductionList</node>
+    <node x="5366.5" y="2264.5">it.polimi.ingsw.ps31.model.card.Venture</node>
+    <node x="4065.0" y="7458.0">it.polimi.ingsw.ps31.model.choiceType.ChoicePrivilegeResource</node>
+    <node x="4007.0" y="2433.0">it.polimi.ingsw.ps31.model.board.SmallProduction</node>
+    <node x="4900.0" y="6380.5">it.polimi.ingsw.ps31.model.bonus.GetResourceMalus</node>
+    <node x="4147.5" y="3059.0">it.polimi.ingsw.ps31.model.actions.ActionActiveLeaderCard</node>
+    <node x="738.0" y="4732.5">it.polimi.ingsw.ps31.model.actionControls.TakeDevelopmentCardControl</node>
+    <node x="918.0" y="7952.0">it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl</node>
+    <node x="5750.0" y="7611.0">it.polimi.ingsw.ps31.model.stateModel.TempModelStateForLeaderChoice</node>
+    <node x="6135.0" y="7611.0">it.polimi.ingsw.ps31.model.json.JsonFile</node>
+    <node x="3538.0" y="2433.0">it.polimi.ingsw.ps31.model.board.BigHarvest</node>
+    <node x="0.0" y="7458.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceFamilyMemberToChangeValue</node>
+    <node x="4535.0" y="6391.5">it.polimi.ingsw.ps31.model.bonus.LostFinalVictoryPointFromPlayerResources</node>
+    <node x="3207.0" y="5198.0">it.polimi.ingsw.ps31.model.stateModel.StateVisitable</node>
+    <node x="1544.0" y="6391.5">it.polimi.ingsw.ps31.model.bonus.CopyLeaderBonus</node>
+    <node x="2664.0" y="7611.0">it.polimi.ingsw.ps31.model.player.PersonalBoard</node>
+    <node x="5812.5" y="2264.5">it.polimi.ingsw.ps31.model.card.Character</node>
+    <node x="711.0" y="6391.5">it.polimi.ingsw.ps31.model.bonus.NoBoardRequirementControl</node>
+    <node x="4474.0" y="4744.0">it.polimi.ingsw.ps31.model.actionControls.OccupiedActionSpaceControl</node>
+    <node x="4149.0" y="0.0">it.polimi.ingsw.ps31.model.effect.EffectActivation</node>
+    <node x="0.0" y="5012.0">it.polimi.ingsw.ps31.model.actionControls.PayResourceListControl</node>
+    <node x="5972.0" y="7207.0">it.polimi.ingsw.ps31.model.game.GameLogic</node>
+    <node x="5199.482456140351" y="686.0">it.polimi.ingsw.ps31.model.effect.HarvestEffect</node>
+    <node x="766.0" y="4304.5">it.polimi.ingsw.ps31.model.gameResource.Servant</node>
+    <node x="2268.25" y="7308.0">it.polimi.ingsw.ps31.model.choiceType.ChoiceType</node>
+    <node x="2187.0" y="7611.0">it.polimi.ingsw.ps31.model.board.Track</node>
+    <node x="5139.5" y="1818.5">it.polimi.ingsw.ps31.model.card.DevelopmentCard</node>
+    <node x="0.0" y="5603.0">it.polimi.ingsw.ps31.model.stateModel.StateAllFamilyMember</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StatePlayerAction" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-59.5" />
+      <point x="2929.0" y="5440.0" />
+      <point x="3305.3823529411766" y="5440.0" />
+      <point x="-13.117647058823422" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.SelfOccupiedTowerControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="-92.5" />
+      <point x="1386.5" y="4649.0" />
+      <point x="2670.269230769231" y="4649.0" />
+      <point x="-45.230769230769056" y="60.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.GetResourceEffect" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="-81.5" />
+      <point x="4233.482456140351" y="644.0" />
+      <point x="4237.0" y="644.0" />
+      <point x="0.0" y="246.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoicePersonalBonusTiles" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-48.5" />
+      <point x="810.5" y="7377.0" />
+      <point x="2285.59375" y="7377.0" />
+      <point x="-38.15625" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.VictoryPoint" target="it.polimi.ingsw.ps31.model.gameResource.PointResource">
+      <point x="0.0" y="-59.5" />
+      <point x="636.5" y="4251.0" />
+      <point x="444.1666666666667" y="4251.0" />
+      <point x="76.66666666666669" y="59.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.CouncilPrivilege" target="it.polimi.ingsw.ps31.model.gameResource.Resource">
+      <point x="0.0" y="-103.5" />
+      <point x="1450.25" y="3989.0" />
+      <point x="1280.5833333333335" y="3989.0" />
+      <point x="147.33333333333348" y="191.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.TowerCardSpace" target="it.polimi.ingsw.ps31.model.board.PhysicalCardBox">
+      <point x="0.0" y="-103.5" />
+      <point x="5191.0" y="7329.0" />
+      <point x="5040.25" y="7329.0" />
+      <point x="51.75" y="48.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceIfSupportTheChurch" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-37.0" />
+      <point x="2464.5" y="7427.0" />
+      <point x="2327.21875" y="7427.0" />
+      <point x="3.46875" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.ProductionEffect" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="-114.5" />
+      <point x="4806.982456140351" y="644.0" />
+      <point x="4293.666666666668" y="644.0" />
+      <point x="56.66666666666697" y="246.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.player.ProductionList" target="it.polimi.ingsw.ps31.model.player.HarvestProductionList">
+      <point x="0.0" y="-59.5" />
+      <point x="685.0" y="7755.0" />
+      <point x="803.0" y="7755.0" />
+      <point x="-49.0" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.MilitaryStrength" target="it.polimi.ingsw.ps31.model.gameResource.PointResource">
+      <point x="0.0" y="-81.5" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionDiscardLeaderCard" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-82.0" />
+      <point x="1791.5000000000002" y="2942.0" />
+      <point x="2773.3" y="2942.0" />
+      <point x="-39.19999999999982" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.DevelopmentCardRequirementsControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="-70.5" />
+      <point x="3873.5" y="4649.0" />
+      <point x="2760.730769230769" y="4649.0" />
+      <point x="45.230769230769056" y="60.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceType" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceVisitable">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.LeaderCard" target="it.polimi.ingsw.ps31.model.effect.ActiveEffect">
+      <point x="-198.75" y="-202.5" />
+      <point x="5790.25" y="1734.0" />
+      <point x="5318.833333333333" y="1734.0" />
+      <point x="71.33333333333303" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceFamilyMember" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-37.0" />
+      <point x="2715.5" y="7417.0" />
+      <point x="2334.15625" y="7417.0" />
+      <point x="10.40625" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.OccupiedActionSpaceControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="-81.5" />
+      <point x="4658.5" y="4629.0" />
+      <point x="2790.8846153846152" y="4629.0" />
+      <point x="75.38461538461524" y="60.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.Venture" target="it.polimi.ingsw.ps31.model.card.DevelopmentCard">
+      <point x="0.0" y="-36.5" />
+      <point x="5579.5" y="2199.0" />
+      <point x="5409.5" y="2199.0" />
+      <point x="54.0" y="148.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMemberInBoard" target="it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMember">
+      <point x="0.0" y="-82.0" />
+      <point x="887.5000000000002" y="3325.0" />
+      <point x="964.0000000000002" y="3325.0" />
+      <point x="-94.5" y="82.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.CanPlaceInOccupiedActionSpace" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-37.0" />
+      <point x="3379.0" y="6327.0" />
+      <point x="3628.9523809523807" y="6327.0" />
+      <point x="-12.047619047619264" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.HarvestEffect" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="-92.5" />
+      <point x="5402.482456140351" y="634.0" />
+      <point x="4350.333333333334" y="634.0" />
+      <point x="113.33333333333303" y="246.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.Servant" target="it.polimi.ingsw.ps31.model.gameResource.PhysicalResource">
+      <point x="0.0" y="-48.0" />
+      <point x="852.5" y="4241.0" />
+      <point x="1048.875" y="4241.0" />
+      <point x="-84.375" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.BigHarvest" target="it.polimi.ingsw.ps31.model.board.Harvest">
+      <point x="0.0" y="-25.5" />
+      <point x="3640.5" y="2408.0" />
+      <point x="3577.0" y="2408.0" />
+      <point x="52.0" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderToDiscard" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-37.0" />
+      <point x="467.5" y="7367.0" />
+      <point x="2278.65625" y="7367.0" />
+      <point x="-45.09375" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionGetTempResourcesFromAllEffect" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-126.0" />
+      <point x="4694.0" y="2922.0" />
+      <point x="2877.833333333334" y="2922.0" />
+      <point x="65.33333333333348" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.CouncilPalace" target="it.polimi.ingsw.ps31.model.board.ActionSpace">
+      <point x="0.0" y="-82.0" />
+      <point x="4290.5" y="2199.0" />
+      <point x="4154.75" y="2199.0" />
+      <point x="163.0" y="148.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.MilitaryPointTrack" target="it.polimi.ingsw.ps31.model.board.Track">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="70.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceFamilyMemberToChangeValue" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-48.5" />
+      <point x="167.5" y="7357.0" />
+      <point x="2271.71875" y="7357.0" />
+      <point x="-52.03125" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.VaticanReportExtraVictoryPoint" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-48.5" />
+      <point x="2514.0" y="6297.0" />
+      <point x="3592.809523809524" y="6297.0" />
+      <point x="-48.19047619047615" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.ModifyPayServantsBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-48.5" />
+      <point x="1356.5" y="6257.0" />
+      <point x="3544.6190476190477" y="6257.0" />
+      <point x="-96.3809523809523" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.BonusAndMalusEffect" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="82.5" y="-70.5" />
+      <point x="2309.5000000000005" y="614.0" />
+      <point x="4010.333333333334" y="614.0" />
+      <point x="-226.66666666666652" y="246.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.BonusAndMalusEffect" target="it.polimi.ingsw.ps31.model.bonus.ActiveBonus">
+      <point x="-82.5" y="-70.5" />
+      <point x="2144.5000000000005" y="644.0" />
+      <point x="2027.5000000000005" y="644.0" />
+      <point x="49.75" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.SmallProduction" target="it.polimi.ingsw.ps31.model.board.Production">
+      <point x="0.0" y="-25.5" />
+      <point x="4125.0" y="2408.0" />
+      <point x="4056.75" y="2408.0" />
+      <point x="56.75" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.BigProduction" target="it.polimi.ingsw.ps31.model.board.Production">
+      <point x="0.0" y="-25.5" />
+      <point x="3875.0" y="2408.0" />
+      <point x="3943.25" y="2408.0" />
+      <point x="-56.75" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.FaithPoint" target="it.polimi.ingsw.ps31.model.gameResource.PointResource">
+      <point x="0.0" y="-59.5" />
+      <point x="104.0" y="4251.0" />
+      <point x="290.83333333333337" y="4251.0" />
+      <point x="-76.66666666666669" y="59.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StatePersonalBonusTiles" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-70.5" />
+      <point x="1779.0" y="5410.0" />
+      <point x="3266.029411764706" y="5410.0" />
+      <point x="-52.470588235294144" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionPayTowerMoney" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-71.0" />
+      <point x="2089.5" y="2952.0" />
+      <point x="2786.366666666667" y="2952.0" />
+      <point x="-26.133333333333212" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceTowerCardSpace" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-37.0" />
+      <point x="2957.0" y="7407.0" />
+      <point x="2341.09375" y="7407.0" />
+      <point x="17.34375" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.DiceValueCardSpaceControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="-115.0" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.LostExtraFinalVictoryPointBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-48.5" />
+      <point x="2156.0" y="6287.0" />
+      <point x="3580.7619047619046" y="6287.0" />
+      <point x="-60.23809523809541" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionChooseDifferentPrivilege" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-104.0" />
+      <point x="3524.5" y="2952.0" />
+      <point x="2838.633333333333" y="2952.0" />
+      <point x="26.133333333333212" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateEffect" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-202.5" />
+      <point x="6107.0" y="5390.0" />
+      <point x="3397.2058823529414" y="5390.0" />
+      <point x="78.70588235294144" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.PhysicalResource" target="it.polimi.ingsw.ps31.model.gameResource.Resource">
+      <point x="0.0" y="-48.0" />
+      <point x="0.0" y="191.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-103.5" />
+      <point x="6646.5" y="5380.0" />
+      <point x="3410.323529411765" y="5380.0" />
+      <point x="91.82352941176487" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.TowerCardCostPlacementControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="-82.0" />
+      <point x="2238.0" y="4669.0" />
+      <point x="2700.423076923077" y="4669.0" />
+      <point x="-15.076923076922867" y="60.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.Production" target="it.polimi.ingsw.ps31.model.board.ActionSpace">
+      <point x="0.0" y="-25.5" />
+      <point x="4000.0" y="2199.0" />
+      <point x="3991.75" y="2199.0" />
+      <point x="0.0" y="148.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-126.0" />
+      <point x="2571.0" y="5430.0" />
+      <point x="3292.264705882353" y="5430.0" />
+      <point x="-26.235294117646845" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.Building" target="it.polimi.ingsw.ps31.model.card.DevelopmentCard">
+      <point x="0.0" y="-36.5" />
+      <point x="4682.0" y="2189.0" />
+      <point x="5193.5" y="2189.0" />
+      <point x="-162.0" y="148.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.Wood" target="it.polimi.ingsw.ps31.model.gameResource.PhysicalResource">
+      <point x="0.0" y="-48.0" />
+      <point x="1042.0" y="4251.0" />
+      <point x="1105.125" y="4251.0" />
+      <point x="-28.125" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateMarkerDisc" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-70.5" />
+      <point x="5258.0" y="5410.0" />
+      <point x="3370.970588235294" y="5410.0" />
+      <point x="52.470588235294144" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMember" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-82.0" />
+      <point x="1058.5000000000002" y="2922.0" />
+      <point x="2747.166666666667" y="2922.0" />
+      <point x="-65.33333333333348" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateType" target="it.polimi.ingsw.ps31.model.stateModel.StateVisitable">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionGetResources" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-59.5" />
+      <point x="190.0" y="2902.0" />
+      <point x="2721.0333333333338" y="2902.0" />
+      <point x="-91.4666666666667" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.Action" target="it.polimi.ingsw.ps31.model.actions.PlayerActions">
+      <point x="0.0" y="-59.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.FaithPointTrack" target="it.polimi.ingsw.ps31.model.board.Track">
+      <point x="0.0" y="-37.0" />
+      <point x="2527.5" y="7777.0" />
+      <point x="2421.1666666666665" y="7777.0" />
+      <point x="93.66666666666652" y="70.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderToActive" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-37.0" />
+      <point x="1392.5" y="7397.0" />
+      <point x="2299.46875" y="7397.0" />
+      <point x="-24.28125" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionAddFinalBonus" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-59.5" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.ProductionBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-48.5" />
+      <point x="2813.0" y="6307.0" />
+      <point x="3604.8571428571427" y="6307.0" />
+      <point x="-36.14285714285734" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.Territory" target="it.polimi.ingsw.ps31.model.card.DevelopmentCard">
+      <point x="0.0" y="-36.5" />
+      <point x="5131.5" y="2199.0" />
+      <point x="5301.5" y="2199.0" />
+      <point x="-54.0" y="148.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StatePlayer" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-70.5" />
+      <point x="2204.0" y="5420.0" />
+      <point x="3279.1470588235293" y="5420.0" />
+      <point x="-39.35294117647072" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.Bonus" target="it.polimi.ingsw.ps31.model.bonus.BonusActivation">
+      <point x="0.0" y="-103.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateAllDevelopmentCard" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-48.5" />
+      <point x="626.0" y="5380.0" />
+      <point x="3226.676470588235" y="5380.0" />
+      <point x="-91.82352941176487" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionChooseCard" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-159.0" />
+      <point x="623.5" y="2912.0" />
+      <point x="2734.1000000000004" y="2912.0" />
+      <point x="-78.40000000000009" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceActionSpace" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-37.0" />
+      <point x="4501.5" y="7357.0" />
+      <point x="2375.78125" y="7357.0" />
+      <point x="52.03125" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.LeaderCardRequirementControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="-70.5" />
+      <point x="4274.0" y="4639.0" />
+      <point x="2775.8076923076924" y="4639.0" />
+      <point x="60.30769230769238" y="60.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.ChangeFamilyValueEffect" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="-48.5" />
+      <point x="2540.5000000000005" y="624.0" />
+      <point x="4067.0000000000005" y="624.0" />
+      <point x="-170.0" y="246.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoicePrivilegeResource" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-48.5" />
+      <point x="4222.5" y="7367.0" />
+      <point x="2368.84375" y="7367.0" />
+      <point x="45.09375" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.DevelopmentCard" target="it.polimi.ingsw.ps31.model.card.Card">
+      <point x="108.0" y="-148.0" />
+      <point x="5463.5" y="1744.0" />
+      <point x="6079.75" y="1744.0" />
+      <point x="-54.0" y="70.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.ActionSpace" target="it.polimi.ingsw.ps31.model.effect.ActiveEffect">
+      <point x="0.0" y="-148.0" />
+      <point x="3991.75" y="1744.0" />
+      <point x="5176.166666666667" y="1744.0" />
+      <point x="-71.33333333333303" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.GenericProductionEffectActivation" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="-70.5" />
+      <point x="6191.982456140351" y="614.0" />
+      <point x="4463.666666666666" y="614.0" />
+      <point x="226.66666666666606" y="246.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateCardBox" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-125.5" />
+      <point x="7207.5" y="5370.0" />
+      <point x="3423.4411764705883" y="5370.0" />
+      <point x="104.94117647058829" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceColor" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-48.5" />
+      <point x="1662.5" y="7407.0" />
+      <point x="2306.40625" y="7407.0" />
+      <point x="-17.34375" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.HarvestBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-48.5" />
+      <point x="1860.5" y="6277.0" />
+      <point x="3568.714285714286" y="6277.0" />
+      <point x="-72.28571428571422" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.ProductionEffectActivationFromCard" target="it.polimi.ingsw.ps31.model.effect.GenericProductionEffectActivation">
+      <point x="0.0" y="-48.5" />
+      <point x="0.0" y="70.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.NoBoardRequirementControl" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-48.5" />
+      <point x="820.0" y="6237.0" />
+      <point x="3520.5238095238096" y="6237.0" />
+      <point x="-120.47619047619037" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.DevelopmentCard" target="it.polimi.ingsw.ps31.model.effect.ActiveEffect">
+      <point x="-108.0" y="-148.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionActiveLeaderCard" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-82.0" />
+      <point x="4303.5" y="2932.0" />
+      <point x="2864.7666666666664" y="2932.0" />
+      <point x="52.266666666666424" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionActivateProduction" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-82.0" />
+      <point x="5060.5" y="2912.0" />
+      <point x="2890.9000000000005" y="2912.0" />
+      <point x="78.40000000000009" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceActionToDo" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-37.0" />
+      <point x="1923.5" y="7417.0" />
+      <point x="2313.34375" y="7417.0" />
+      <point x="-10.40625" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionPayServants" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-81.5" />
+      <point x="3924.0" y="2942.0" />
+      <point x="2851.7" y="2942.0" />
+      <point x="39.19999999999982" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateDevelopmentCard" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-103.5" />
+      <point x="3893.0" y="5440.0" />
+      <point x="3331.6176470588234" y="5440.0" />
+      <point x="13.117647058823422" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.LostFinalVictoryPointFromCardCosts" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-59.5" />
+      <point x="5526.0" y="6277.0" />
+      <point x="3713.285714285714" y="6277.0" />
+      <point x="72.28571428571422" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.LostFinalVictoryPointBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-48.5" />
+      <point x="6445.5" y="6247.0" />
+      <point x="3749.4285714285716" y="6247.0" />
+      <point x="108.42857142857156" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.StaticFamilyMemberValueBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-59.5" />
+      <point x="6803.5" y="6237.0" />
+      <point x="3761.4761904761904" y="6237.0" />
+      <point x="120.47619047619037" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.GetResourceMalus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-59.5" />
+      <point x="5088.0" y="6287.0" />
+      <point x="3701.2380952380954" y="6287.0" />
+      <point x="60.23809523809541" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.PointResource" target="it.polimi.ingsw.ps31.model.gameResource.Resource">
+      <point x="0.0" y="-59.0" />
+      <point x="367.5" y="3989.0" />
+      <point x="985.9166666666666" y="3989.0" />
+      <point x="-147.33333333333337" y="191.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.Stone" target="it.polimi.ingsw.ps31.model.gameResource.PhysicalResource">
+      <point x="0.0" y="-48.0" />
+      <point x="1406.0" y="4241.0" />
+      <point x="1217.625" y="4241.0" />
+      <point x="84.375" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.GetResourceFromResourceEffect" target="it.polimi.ingsw.ps31.model.effect.GetResourceEffect">
+      <point x="0.0" y="-71.0" />
+      <point x="4793.289473684211" y="918.0" />
+      <point x="4354.149122807018" y="918.0" />
+      <point x="120.66666666666697" y="81.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.LeaderCard" target="it.polimi.ingsw.ps31.model.card.Card">
+      <point x="198.75" y="-202.5" />
+      <point x="54.0" y="70.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.GenericHarvestEffectActivation" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="-70.5" />
+      <point x="5804.482456140351" y="624.0" />
+      <point x="4407.0" y="624.0" />
+      <point x="170.0" y="246.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.ChangeResourceEffect" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="-92.5" />
+      <point x="2961.5000000000005" y="634.0" />
+      <point x="4123.666666666668" y="634.0" />
+      <point x="-113.33333333333303" y="246.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.ExcommunicationTiles" target="it.polimi.ingsw.ps31.model.bonus.ActiveBonus">
+      <point x="0.0" y="-103.5" />
+      <point x="1811.0000000000005" y="644.0" />
+      <point x="1928.0000000000005" y="644.0" />
+      <point x="-49.75" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.MVChoiceInfoVisitor" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceVisitor">
+      <point x="0.0" y="-202.0" />
+      <point x="0.0" y="190.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionPayCard" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-59.5" />
+      <point x="1441.5000000000002" y="2932.0" />
+      <point x="2760.2333333333336" y="2932.0" />
+      <point x="-52.26666666666688" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.SmallHarvest" target="it.polimi.ingsw.ps31.model.board.Harvest">
+      <point x="0.0" y="-25.5" />
+      <point x="3409.5" y="2408.0" />
+      <point x="3473.0" y="2408.0" />
+      <point x="-52.0" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.NoImmediateEffectBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-37.0" />
+      <point x="3883.0" y="6327.0" />
+      <point x="3653.0476190476193" y="6327.0" />
+      <point x="12.047619047619264" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateActionSpace" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-70.5" />
+      <point x="4477.0" y="5430.0" />
+      <point x="3344.7352941176473" y="5430.0" />
+      <point x="26.2352941176473" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.TakeDevelopmentCardControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="-93.0" />
+      <point x="958.5" y="4639.0" />
+      <point x="2655.1923076923076" y="4639.0" />
+      <point x="-60.30769230769238" y="60.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.CantPlaceInActionSpace" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-48.5" />
+      <point x="3083.5" y="6317.0" />
+      <point x="3616.904761904762" y="6317.0" />
+      <point x="-24.095238095238074" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.gameResource.Coin" target="it.polimi.ingsw.ps31.model.gameResource.PhysicalResource">
+      <point x="0.0" y="-48.0" />
+      <point x="1224.5" y="4251.0" />
+      <point x="1161.375" y="4251.0" />
+      <point x="28.125" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StatePersonalBoard" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-59.5" />
+      <point x="5647.0" y="5400.0" />
+      <point x="3384.0882352941176" y="5400.0" />
+      <point x="65.58823529411757" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.PayCardControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="-136.5" />
+      <point x="1792.0" y="4659.0" />
+      <point x="2685.346153846154" y="4659.0" />
+      <point x="-30.15384615384619" y="60.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.NoFirstActionTurn" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-25.5" />
+      <point x="6167.0" y="6257.0" />
+      <point x="3737.3809523809523" y="6257.0" />
+      <point x="96.3809523809523" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.CardDiscountBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-93.0" />
+      <point x="5917.5" y="6267.0" />
+      <point x="3725.3333333333335" y="6267.0" />
+      <point x="84.33333333333348" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.PlayerCardNumberControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="-82.0" />
+      <point x="3502.5" y="4659.0" />
+      <point x="2745.653846153846" y="4659.0" />
+      <point x="30.15384615384619" y="60.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateExcommunication" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-92.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceLeaderEffectToCopy" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-48.5" />
+      <point x="2183.0" y="7427.0" />
+      <point x="2320.28125" y="7427.0" />
+      <point x="-3.46875" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.NeutralFamilyMemberBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-48.5" />
+      <point x="4160.0" y="6317.0" />
+      <point x="3665.095238095238" y="6317.0" />
+      <point x="24.095238095238074" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.ColoredFamilyMembersBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-48.5" />
+      <point x="0.0" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.ChooseCardEffectWithDiscount" target="it.polimi.ingsw.ps31.model.effect.ChooseCardEffect">
+      <point x="0.0" y="-71.0" />
+      <point x="0.0" y="81.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.LostFinalVictoryPointFromPlayerResources" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-48.5" />
+      <point x="4707.5" y="6297.0" />
+      <point x="3689.190476190476" y="6297.0" />
+      <point x="48.19047619047615" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.Harvest" target="it.polimi.ingsw.ps31.model.board.ActionSpace">
+      <point x="0.0" y="-25.5" />
+      <point x="3525.0" y="2199.0" />
+      <point x="3828.75" y="2199.0" />
+      <point x="-163.0" y="148.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.card.Character" target="it.polimi.ingsw.ps31.model.card.DevelopmentCard">
+      <point x="0.0" y="-36.5" />
+      <point x="6030.5" y="2189.0" />
+      <point x="5517.5" y="2189.0" />
+      <point x="162.0" y="148.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.board.VictoryPointTrack" target="it.polimi.ingsw.ps31.model.board.Track">
+      <point x="0.0" y="-25.5" />
+      <point x="2132.0" y="7777.0" />
+      <point x="2233.8333333333335" y="7777.0" />
+      <point x="-93.66666666666652" y="70.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateTower" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-59.5" />
+      <point x="4884.5" y="5420.0" />
+      <point x="3357.8529411764707" y="5420.0" />
+      <point x="39.35294117647072" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.ChooseCardEffect" target="it.polimi.ingsw.ps31.model.effect.Effect">
+      <point x="0.0" y="-81.5" />
+      <point x="3463.0000000000005" y="644.0" />
+      <point x="4180.333333333334" y="644.0" />
+      <point x="-56.66666666666697" y="246.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.PayResourceControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="-70.5" />
+      <point x="158.5" y="4619.0" />
+      <point x="2625.0384615384614" y="4619.0" />
+      <point x="-90.46153846153857" y="60.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceStartLeaderCard" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-59.5" />
+      <point x="3843.5" y="7377.0" />
+      <point x="2361.90625" y="7377.0" />
+      <point x="38.15625" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.DoubleResourceFromCardBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-25.5" />
+      <point x="1059.0" y="6247.0" />
+      <point x="3532.5714285714284" y="6247.0" />
+      <point x="-108.42857142857156" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionEndTurn" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-70.5" />
+      <point x="2416.0" y="2962.0" />
+      <point x="2799.4333333333334" y="2962.0" />
+      <point x="-13.066666666666606" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMemberInTower" target="it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMember">
+      <point x="0.0" y="-93.0" />
+      <point x="1229.5000000000002" y="3325.0" />
+      <point x="1153.0000000000002" y="3325.0" />
+      <point x="94.5" y="82.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionActivateHarvest" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-104.0" />
+      <point x="3176.5" y="2962.0" />
+      <point x="2825.5666666666666" y="2962.0" />
+      <point x="13.066666666666606" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceIfActiveEffect" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-48.5" />
+      <point x="3501.5" y="7387.0" />
+      <point x="2354.96875" y="7387.0" />
+      <point x="31.21875" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateAllFamilyMember" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-59.5" />
+      <point x="200.0" y="5370.0" />
+      <point x="3213.5588235294117" y="5370.0" />
+      <point x="-104.94117647058829" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionGetFinalResources" target="it.polimi.ingsw.ps31.model.actions.ActionGetResources">
+      <point x="0.0" y="-48.5" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.NoTowerPayment" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-37.0" />
+      <point x="4417.0" y="6307.0" />
+      <point x="3677.1428571428573" y="6307.0" />
+      <point x="36.14285714285734" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actions.ActionPayResources" target="it.polimi.ingsw.ps31.model.actions.Action">
+      <point x="0.0" y="-59.5" />
+      <point x="5400.5" y="2902.0" />
+      <point x="2903.966666666667" y="2902.0" />
+      <point x="91.4666666666667" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.Effect" target="it.polimi.ingsw.ps31.model.effect.EffectActivation">
+      <point x="0.0" y="-246.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.GetResourcesAtTheEndEffect" target="it.polimi.ingsw.ps31.model.effect.GetResourceEffect">
+      <point x="0.0" y="-48.5" />
+      <point x="3820.0000000000005" y="918.0" />
+      <point x="4112.815789473684" y="918.0" />
+      <point x="-120.66666666666697" y="81.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.PlacedFamilyMemberControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="-81.5" />
+      <point x="3148.5" y="4669.0" />
+      <point x="2730.576923076923" y="4669.0" />
+      <point x="15.076923076922867" y="60.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.HarvestEffectActivationFromCard" target="it.polimi.ingsw.ps31.model.effect.GenericHarvestEffectActivation">
+      <point x="0.0" y="-48.5" />
+      <point x="0.0" y="70.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceNumberOfServantsToPay" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-37.0" />
+      <point x="3225.5" y="7397.0" />
+      <point x="2348.03125" y="7397.0" />
+      <point x="24.28125" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.PayResourceListControl" target="it.polimi.ingsw.ps31.model.actionControls.PayResourceControl">
+      <point x="0.0" y="-70.5" />
+      <point x="0.0" y="70.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.effect.GetResourceEffectFromCard" target="it.polimi.ingsw.ps31.model.effect.GetResourceEffect">
+      <point x="0.0" y="-59.5" />
+      <point x="4237.0" y="918.0" />
+      <point x="4233.482456140351" y="918.0" />
+      <point x="0.0" y="81.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.player.PersonalBoardCardCell" target="it.polimi.ingsw.ps31.model.board.PhysicalCardBox">
+      <point x="0.0" y="-92.5" />
+      <point x="4786.0" y="7329.0" />
+      <point x="4936.75" y="7329.0" />
+      <point x="-51.75" y="48.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StatePlayerResources" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-59.5" />
+      <point x="1034.5" y="5390.0" />
+      <point x="3239.794117647059" y="5390.0" />
+      <point x="-78.70588235294099" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.DiceValueActionSpaceControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="-92.5" />
+      <point x="523.0" y="4629.0" />
+      <point x="2640.1153846153848" y="4629.0" />
+      <point x="-75.38461538461524" y="60.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.actionControls.ResourceRequirementsControl" target="it.polimi.ingsw.ps31.model.actionControls.Control">
+      <point x="0.0" y="-70.5" />
+      <point x="5039.5" y="4619.0" />
+      <point x="2805.9615384615386" y="4619.0" />
+      <point x="90.46153846153857" y="60.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.StateGame" target="it.polimi.ingsw.ps31.model.stateModel.StateType">
+      <point x="0.0" y="-70.5" />
+      <point x="1386.5" y="5400.0" />
+      <point x="3252.9117647058824" y="5400.0" />
+      <point x="-65.58823529411757" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.choiceType.ChoiceListToPay" target="it.polimi.ingsw.ps31.model.choiceType.ChoiceType">
+      <point x="0.0" y="-48.5" />
+      <point x="1152.0" y="7387.0" />
+      <point x="2292.53125" y="7387.0" />
+      <point x="-31.21875" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.player.HarvestList" target="it.polimi.ingsw.ps31.model.player.HarvestProductionList">
+      <point x="0.0" y="-59.5" />
+      <point x="1019.0" y="7755.0" />
+      <point x="901.0" y="7755.0" />
+      <point x="49.0" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.stateModel.MVStateInfoVisitor" target="it.polimi.ingsw.ps31.model.stateModel.StateVisitor">
+      <point x="0.0" y="-213.0" />
+      <point x="0.0" y="201.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.model.bonus.CopyLeaderBonus" target="it.polimi.ingsw.ps31.model.bonus.Bonus">
+      <point x="0.0" y="-48.5" />
+      <point x="1640.5" y="6267.0" />
+      <point x="3556.6666666666665" y="6267.0" />
+      <point x="-84.33333333333348" y="103.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.1" x="5551.863674337359" y="3712.4997378352637" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

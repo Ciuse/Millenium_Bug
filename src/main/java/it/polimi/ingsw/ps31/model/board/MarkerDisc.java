@@ -6,6 +6,8 @@ import it.polimi.ingsw.ps31.model.stateModel.StateMarkerDisc;
 
 /**
  * Created by Giuseppe on 18/05/2017.
+ *
+ * Elemento che si muove lungo le caselle dei tracciati per segnare i punti
  */
 public class MarkerDisc {
     private final Class<? extends PointResource> resourceType;
@@ -30,7 +32,6 @@ public class MarkerDisc {
             trackCell.setMarkerDisc(this);
         }
     }
-    //TODO FINIRE ANCORA LA CLASSE CON I SET PER LE TRACK CELL
 
     public StateMarkerDisc getStateMarkerDisc(){
         StateMarkerDisc stateMarkerDisc = new StateMarkerDisc(player.getPlayerId(),resourceType.getTypeName(),trackCell.getValue());

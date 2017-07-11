@@ -10,6 +10,14 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 18/05/2017.
+ *
+ * Azione di piazzamento di un famigliare nella torre (verrà chiesto al giocatore di scegliere lo spazio contenente
+ * la carta e non l'action space associato)
+ *
+ * @see it.polimi.ingsw.ps31.model.actionControls.OccupiedActionSpaceControl
+ * @see it.polimi.ingsw.ps31.model.actionControls.TowerCardCostPlacementControl
+ * @see it.polimi.ingsw.ps31.model.actionControls.DiceValueCardSpaceControl
+ * @see it.polimi.ingsw.ps31.model.actionControls.TakeDevelopmentCardControl
  */
 public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
     private TowerCardSpace towerCardSpace;
@@ -36,7 +44,12 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
         this.towerCardSpace = null;
     }
 
-    /* Class Methods */
+    /**
+     * Viene chiesto al giocatore quale famigliare usare e successivamente dopo aver anche chiesto di pagare servitori
+     * viene chiesto dove vuole posizionarlo, successivamente verranno eseguiti i controlli in merito.
+     * Verrà pagata la torre, la carta, e attivati gli effetti degli action space se presenti, oltrea ad aggiungere
+     * la carta a quelle del player e attivarne gli effetti
+     */
     @Override
     public void activate() {
         boolean askAgain = true;
@@ -66,14 +79,10 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
 
                             if (actionControlSet.towerCostPlacementControl(towerCardSpace)) {
 
-//                                if (actionControlSet.payCardControl(towerCardSpace.getCard(), null)) {
-
                                 if (actionControlSet.takeDevelopmentCardControl(towerCardSpace.getCard())) {
 
-                                    //TODO SIMULARE L ATTIVAZIONE IN CATENA DEGLI EFFETI
-                                    //pago la torre
-
                                     if (towerCardSpace.getTower().isOccupied()) {
+                                        //pago la torre
                                         player.getPlayerActionSet().payTowerMoney();
                                     }
                                     //metto il famigliare
@@ -92,12 +101,9 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
 
                                     //metto la torre come occupata
                                     towerCardSpace.getTower().setOccupied(true);
-                                } else {      //TODO FARE OVERRIDE DEI GET CONTROL ERROR SPECIFICI
+                                } else {
                                     player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTakeDevelopmentCardControl().getControlStringError()));
                                 }
-//                                } else {
-//                                    player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPayCardControl().getControlStringError()));
-//                                }
                             } else {
                                 player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTowerCardCostPlacementControl().getControlStringError()));
                             }

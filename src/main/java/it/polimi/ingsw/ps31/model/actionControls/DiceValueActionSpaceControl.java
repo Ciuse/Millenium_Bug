@@ -5,6 +5,9 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 24/05/2017.
+ *
+ * Controllo del valore del dado con cui si sta piazzando il famigliare rispetto
+ * al valore del dado dell'action space
  */
 public class DiceValueActionSpaceControl extends Control {
     private Integer diceValue = null;
@@ -46,10 +49,7 @@ public class DiceValueActionSpaceControl extends Control {
     /* Class Methods */
     @Override
     public boolean execute() {
-        if (this.diceValue == null || this.diceColor == null) {
-            //TODO: gestire
-            return false;
-        }
+
         boolean ret = player.getSpecificFamilyMember(diceColor).getTotalValue() >= this.diceValue;
         resetDiceColor();
         resetDiceValue();

@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 25/05/2017.
+ *
+ * Controllo se il giocatore ha ancora spazione della personal board
  */
 public class PlayerCardNumberControl extends Control {
     private final static int MAX_CARD_NUMBER = 6;
@@ -36,7 +38,6 @@ public class PlayerCardNumberControl extends Control {
     public boolean execute() {
         if (this.cardColor == null)
         {
-            //TODO: gestire
             return false;
         }
 

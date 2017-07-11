@@ -26,17 +26,22 @@ public class ChosenActionButtonPanel extends PaintBackgroundPanel implements Act
     private ButtonCard button6;
     private ButtonCard[] buttonsAction = new ButtonCard[6];
 
-
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
+    /* Constructor */
     public ChosenActionButtonPanel(GuiView guiView) {
 
         this.guiView = guiView;
         addComponentsToPane(this);
     }
-
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
 
 

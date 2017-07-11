@@ -9,6 +9,9 @@ import java.util.List;
 
 /**
  * Created by Giuseppe on 18/05/2017.
+ *
+ * Cella di un tracciato, la quale ha una risorsa come identificativo e può
+ * conenetere una serie di marker disc
  */
 public class TrackCell {
     private List<MarkerDisc> markerDiscList= new ArrayList<>();

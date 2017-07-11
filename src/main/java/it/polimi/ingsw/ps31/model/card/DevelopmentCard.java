@@ -14,6 +14,14 @@ import java.util.List;
 
 /**
  * Created by Giuseppe on 09/05/2017.
+ *
+ * Classe astratta che rappresenta una carta sviluppo.
+ * Le carte sono dotate oltre di un colore e un id, di una lista contentente più risorse di costi e
+ * di due liste per gli effetti.
+ *
+ * @see ResourceList
+ * @see EffectList
+ * @see ActiveEffect
  */
 public abstract class DevelopmentCard extends Card implements ActiveEffect {
     private final int cardId;
@@ -87,6 +95,10 @@ public abstract class DevelopmentCard extends Card implements ActiveEffect {
         return result;
     }
 
+    /**
+     * Alle carte quando viene richiesto attivano i propri effetti sul player
+     * @param player
+     */
     @Override
     public void activeEffectList(Player player) {
         if (this.immediateEffectList != null) {
@@ -100,7 +112,7 @@ public abstract class DevelopmentCard extends Card implements ActiveEffect {
 
         if (this.permanentEffectList != null) {
             if (permanentEffectList.isNotNull()) {
-                for (int i = 0; i < this.permanentEffectList.size(); i++) {        //TODO VERIFICARE SE SI ATTIVANO IN MODO DIVERSO
+                for (int i = 0; i < this.permanentEffectList.size(); i++) {
                     this.permanentEffectList.get(i).activate(player);
                 }
             }

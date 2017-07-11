@@ -9,6 +9,7 @@ import java.io.IOException;
 
 /**
  * Created by giulia on 28/06/2017.
+ * classe che mi permette di creare un JButton in cui si possa caricare un'immagine come sfondo
  */
 public class ButtonCard extends JButton {
     private ActionListener listener;
@@ -16,6 +17,19 @@ public class ButtonCard extends JButton {
     private BufferedImage backgroundPanel;
     private String nameButton;
 
+    /* Constructor */
+    public ButtonCard(String nameButton) {
+        super(nameButton);
+    }
+    /* Constructor */
+    public ButtonCard() {
+        this.stringImage = stringImage;
+    }
+
+    /**
+     * Metodo che mi permette di disegnare il JButton con un'immagine che gli passo tramite i due possibili metodi
+     * imageToLoad o reprintImage
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -25,6 +39,9 @@ public class ButtonCard extends JButton {
         }
     }
 
+    /**
+     * Metodo che mi permette di caricare un'immagine che verrà poi utilizzata dal paintComponent
+     */
     public void imageToLoad(String stringPath){
         BufferedImage resizedImage = null;
         try{
@@ -34,15 +51,10 @@ public class ButtonCard extends JButton {
         } backgroundPanel=resizedImage;
     }
 
-    public ButtonCard(String nameButton) {
-        super(nameButton);
-        this.stringImage = stringImage;
-    }
 
-    public ButtonCard() {
-        this.stringImage = stringImage;
-    }
-
+    /**
+     * Metodo che mi permette di caricare un'immagine che verrà poi utilizzata dal paintComponent
+     */
     public void imageToReprint(String stringImage) {
         this.stringImage = stringImage;
         imageToLoad(stringImage);

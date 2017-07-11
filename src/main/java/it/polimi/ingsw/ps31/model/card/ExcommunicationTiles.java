@@ -27,7 +27,7 @@ public class ExcommunicationTiles implements ActiveBonus{
     }
 
     public void setExcommunicationToPlayer(Player player){
-        player.addExcommunication(this);        //TODO: VERIFICARE
+        player.addExcommunication(this);
     }
 
     public int getPeriod() {

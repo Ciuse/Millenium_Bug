@@ -6,6 +6,11 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by giulia on 16/06/2017.
+ *
+ * Malus che influenza il conteggio finale dei punti del giocatore, non facendoti contare i punti derivanti
+ * dal costo di una specifica lista di risorse delle carte di un certo colore
+ *
+ * @see it.polimi.ingsw.ps31.model.game.GameUtility
  */
 public class LostFinalVictoryPointFromCardCosts extends Bonus {
     private  final ResourceList resourceList;

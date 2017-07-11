@@ -9,6 +9,10 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by giulia on 27/06/2017.
+ * rappresenta il pannello della personal board contenente le carte gialle ,verdi e le risorse del giocatore
+ * questo pannello ha un'immagine di sfondo che gli viene caricata non appena si crea
+ * @see DevelopmentCardsOpenedPanel
+ * @see PlayerResourcesPanel
  */
 public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionListener{
     private ActionListener listener;
@@ -18,23 +22,31 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
     private PlayerResourcesPanel playerResourcesPanel;
 
 
+    /**
+     * Metodo che mi permette di disegnare il pannello con uno sfondo
+     */
     public void paintComponent(Graphics g) {
         super.imageToLoad("/player/personalBoard.png");
         super.paintComponent(g);
     }
 
-
+    /* Constructor */
     public PersonalBoardPanel(GuiView guiView) {
         this.guiView = guiView;
         addComponentsToPane(this);
     }
 
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
-        //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0, 0,0,0};
         gbl.rowHeights = new int[]{0,0, 0, 0, 0, 0,0,0,0};
@@ -52,7 +64,6 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
         gbc.gridheight = 1;
         gbc.gridwidth = 3;
         gbc.fill = GridBagConstraints.BOTH;
-        //cardYellow.setBackground(Color.CYAN);
         cardYellow.setOpaque(false);
         cardYellow.setPreferredSize(new Dimension(10,10));
         pane.add(cardYellow, gbc);
@@ -64,7 +75,6 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
         gbc.gridheight = 1;
         gbc.gridwidth = 3;
         gbc.fill = GridBagConstraints.BOTH;
-        //cardGreen.setBackground(Color.red);
         cardGreen.setOpaque(false);
         cardGreen.setPreferredSize(new Dimension(10,10));
         pane.add(cardGreen, gbc);
@@ -76,7 +86,6 @@ public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionLi
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //playerResourcesPanel.setBackground(Color.green);
         playerResourcesPanel.setOpaque(false);
         playerResourcesPanel.setPreferredSize(new Dimension(10,10));
         pane.add(playerResourcesPanel, gbc);

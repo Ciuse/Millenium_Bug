@@ -8,6 +8,9 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 26/05/2017.
+ *
+ * Controllo se è già occupata o no da uno dei tuoi famigliari (non neutri) la torre
+ * in cui ti stai piazzando
  */
 public class SelfOccupiedTowerControl extends Control {
     private Tower tower = null;

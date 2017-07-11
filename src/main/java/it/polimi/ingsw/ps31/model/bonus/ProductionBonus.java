@@ -4,6 +4,10 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Giuseppe on 27/05/2017.
+ *
+ * Bonus(o Malus) riguardante il valore con cui si attiva una Produzione
+ *
+ * @see it.polimi.ingsw.ps31.model.actions.ActionActivateProduction
  */
 public class ProductionBonus extends Bonus {
     private final int value;

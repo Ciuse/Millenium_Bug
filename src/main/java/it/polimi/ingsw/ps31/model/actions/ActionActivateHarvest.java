@@ -6,7 +6,9 @@ import it.polimi.ingsw.ps31.model.player.Player;
 /**
  * Created by Francesco on 18/05/2017.
  *
- * Azione che attiva le carte raccolto del player. Necessita di un intero che rappresenta il costo
+ * Azione che attiva le carte raccolto del player. Necessita di un intero che rappresenta il valore dell'attivazione
+ *
+ * @see it.polimi.ingsw.ps31.model.player.HarvestList
  */
 public class ActionActivateHarvest extends Action {
     private Integer diceValue = null;
@@ -33,16 +35,15 @@ public class ActionActivateHarvest extends Action {
         this.diceValue = null;
     }
 
-    /* Activation Method */
+    /**
+     * l'attivazione consiste nell'attivare la lista di raccolti del player con un valore
+     * che è dato dai vari bonus che il player ha più il valore base con cui è stata invocata
+     * l'azione
+     */
     @Override
     public void activate() {
-        System.out.println("PLAYER RES BEFORE " +(player.getPlayerResources()));
-
-        System.out.println(">HARV ACT: ATTIVAZIONE HARVEST: " +(this.diceValue + this.diceBonus));
 
         player.getHarvestList().activate(this.diceValue + this.diceBonus);
-
-        System.out.println("PLAYER RES AFTER " +(player.getPlayerResources()));
 
         player.getModel().notifyViews(new MVUpdateState("Aggiornato stato PlayerResources", player.getStatePlayerResources()));
 

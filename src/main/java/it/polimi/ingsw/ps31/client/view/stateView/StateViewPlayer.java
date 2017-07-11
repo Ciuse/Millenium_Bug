@@ -12,6 +12,8 @@ import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.*
 
 /**
  * Created by giulia on 07/06/2017.
+ *
+ * Stato
  */
 public class StateViewPlayer {
     private final PlayerId playerId;

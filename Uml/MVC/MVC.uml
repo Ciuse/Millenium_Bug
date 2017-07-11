@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>it.polimi.ingsw.ps31.controller</OriginalElement>
+  <nodes>
+    <node x="1343.031944444444" y="3143.0">it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage</node>
+    <node x="4322.5" y="3109.0">it.polimi.ingsw.ps31.messages.messageVC.VCVisitable</node>
+    <node x="0.0" y="4991.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.LeaderCardsOpenedPanel</node>
+    <node x="391.0" y="5376.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.TowerCardAndActionSpacePanel</node>
+    <node x="4968.0" y="3394.0">it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToDiscardChoice</node>
+    <node x="2867.0" y="5650.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.TowerActionSpacePanel</node>
+    <node x="2498.0" y="5376.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskStartPlayerColor</node>
+    <node x="2872.0" y="4991.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewGame</node>
+    <node x="539.0" y="6089.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.FaithPointTrackPanel</node>
+    <node x="1267.0" y="5376.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard</node>
+    <node x="2127.0" y="5376.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.BottomBoardPanel</node>
+    <node x="3601.0" y="409.0">it.polimi.ingsw.ps31.messages.messageVC.VCMessageVisitor</node>
+    <node x="1471.0" y="5650.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.BigActionSpacePanel</node>
+    <node x="738.75" y="0.0">it.polimi.ingsw.ps31.client.view.View</node>
+    <node x="929.0" y="4991.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.TowerPanel</node>
+    <node x="0.0" y="3383.0">it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState</node>
+    <node x="3204.0" y="3383.0">it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToCopyChoice</node>
+    <node x="1328.0" y="3791.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.ChoosenButtonPanel</node>
+    <node x="1041.0" y="6089.0">it.polimi.ingsw.ps31.client.view.TypeOfView</node>
+    <node x="3224.0" y="4840.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceCopyLeader</node>
+    <node x="6342.0" y="3394.0">it.polimi.ingsw.ps31.messages.messageVC.VCPlayerAction</node>
+    <node x="478.0" y="4991.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.ButtonsFamilyMemberPanel</node>
+    <node x="4110.0" y="4829.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceColor</node>
+    <node x="2108.0" y="4991.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.QuestionsToPlayerPanel</node>
+    <node x="351.0" y="5650.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.FamilyMemberPanel</node>
+    <node x="1697.0" y="4991.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard</node>
+    <node x="2235.0" y="4840.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceTowerCardSpace</node>
+    <node x="278.0" y="6089.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.VictoryPointTrackFirstRowPanel</node>
+    <node x="1499.0" y="6089.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.MarketActionSpacePanel</node>
+    <node x="1565.75" y="3591.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel</node>
+    <node x="645.0" y="3901.5">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PersonalBonusTilesPanel</node>
+    <node x="365.3423611111107" y="3098.0">it.polimi.ingsw.ps31.messages.messageMV.MVVisitable</node>
+    <node x="6643.0" y="3394.0">it.polimi.ingsw.ps31.messages.messageVC.VCCouncilPrivilegeChoice</node>
+    <node x="3667.0" y="4840.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceStartLeader</node>
+    <node x="1120.0" y="5650.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskServantsToPay</node>
+    <node x="3611.0" y="0.0">it.polimi.ingsw.ps31.messages.messageVC.VCVisitor</node>
+    <node x="2832.0" y="3394.0">it.polimi.ingsw.ps31.messages.messageVC.VCFamilyMemberChoice</node>
+    <node x="2799.0" y="3591.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer</node>
+    <node x="906.0" y="4840.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceFamilyMember</node>
+    <node x="4261.0" y="3394.0">it.polimi.ingsw.ps31.messages.messageVC.VCSupportTheChurchChoice</node>
+    <node x="0.0" y="6089.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.VictoryPointTrackSecondRowPanel</node>
+    <node x="5459.0" y="4840.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoicePlayerAction</node>
+    <node x="673.0" y="5650.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox</node>
+    <node x="443.0" y="4829.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrVisualization</node>
+    <node x="1349.0" y="4840.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceServantToPay</node>
+    <node x="3198.0" y="5650.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewActionSpace</node>
+    <node x="331.0" y="3394.0">it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint</node>
+    <node x="0.0" y="5650.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.CouncilPanel</node>
+    <node x="1619.0" y="1764.0">it.polimi.ingsw.ps31.client.view.guiView.GuiView</node>
+    <node x="3635.0" y="4991.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.LeaderCardPanel</node>
+    <node x="3575.0" y="3383.0">it.polimi.ingsw.ps31.messages.messageVC.VCColorChoice</node>
+    <node x="3925.0" y="3394.0">it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToActiveChoice</node>
+    <node x="687.0" y="3383.0">it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice</node>
+    <node x="2490.0" y="4991.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.ExtraCardPanel</node>
+    <node x="328.0" y="5881.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewMarkerDisc</node>
+    <node x="0.0" y="4840.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceListToPay</node>
+    <node x="6016.0" y="3394.0">it.polimi.ingsw.ps31.messages.messageVC.VCServantToPayChoice</node>
+    <node x="5902.0" y="4840.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoicePersonalTiles</node>
+    <node x="4573.0" y="4840.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrLeaderToDiscard</node>
+    <node x="2457.0" y="3857.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.BackgroundMainFramePanel</node>
+    <node x="5310.0" y="3383.0">it.polimi.ingsw.ps31.messages.messageVC.VCTowerCardSpaceChoice</node>
+    <node x="6345.0" y="4840.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceCouncilPrivilege</node>
+    <node x="2091.0" y="3846.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PersonalBoardPanel</node>
+    <node x="0.0" y="3591.0">it.polimi.ingsw.ps31.controller.Controller</node>
+    <node x="0.0" y="4195.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.DevelopmentCardsOpenedPanel</node>
+    <node x="1069.0" y="3339.0">it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage</node>
+    <node x="911.0" y="3802.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.GameBoardPanel</node>
+    <node x="0.0" y="1467.0">it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView</node>
+    <node x="1765.0" y="3868.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskActionPanel</node>
+    <node x="1380.0" y="5136.0">it.polimi.ingsw.ps31.messages.messageMV.MVMessageVisitor</node>
+    <node x="4645.0" y="3394.0">it.polimi.ingsw.ps31.messages.messageVC.VCPersonalTilesChoice</node>
+    <node x="1088.0" y="5881.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.MainFrame</node>
+    <node x="1390.7499999999998" y="2974.0">it.polimi.ingsw.ps31.messages.GenericMessage</node>
+    <node x="3435.5" y="4602.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView</node>
+    <node x="2173.0" y="5650.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskStartPersonalBonusTiles</node>
+    <node x="3661.0" y="5650.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalCardBox</node>
+    <node x="2596.0" y="0.0">it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation</node>
+    <node x="790.0" y="6089.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.MilitaryTrackPanel</node>
+    <node x="2844.0" y="5376.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewLeaderCard</node>
+    <node x="2527.0" y="5881.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.StateGameOtherPlayersPanel</node>
+    <node x="1792.0" y="4840.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceIfSupportChurch</node>
+    <node x="2520.0" y="5650.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskStartLeaderCard</node>
+    <node x="2781.0" y="4840.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceActionSpace</node>
+    <node x="1822.0" y="5650.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.SmallActionSpace</node>
+    <node x="2006.0" y="5881.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBonusTiles</node>
+    <node x="1390.0" y="4991.0">it.polimi.ingsw.ps31.messages.messageMV.MVVisitor</node>
+    <node x="0.0" y="5881.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.UtilityPanel</node>
+    <node x="762.0" y="5376.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember</node>
+    <node x="5733.0" y="3394.0">it.polimi.ingsw.ps31.messages.messageVC.VCActionSpace</node>
+    <node x="1198.0" y="6089.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.DicePanel</node>
+    <node x="2798.0" y="5881.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskActionSpace</node>
+    <node x="3602.0" y="5376.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.FamilyMemberButton</node>
+    <node x="6788.0" y="4840.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceIfActiveEffect</node>
+    <node x="1701.0" y="5376.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewDevelopmentCard</node>
+    <node x="1683.0" y="5881.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewTower</node>
+    <node x="722.0" y="5881.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewExcommunication</node>
+    <node x="2214.0" y="3394.0">it.polimi.ingsw.ps31.messages.messageVC.VCStartLeaderChoice</node>
+    <node x="2527.0" y="3394.0">it.polimi.ingsw.ps31.messages.messageVC.VCListToPayChoice</node>
+    <node x="3953.0" y="5376.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.TopBoardPanel</node>
+    <node x="5016.0" y="4840.0">it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceLeaderToActive</node>
+    <node x="3340.0" y="5881.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard.SingleBigActionSpace</node>
+    <node x="3273.0" y="4991.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PlayerPanel</node>
+    <node x="3909.0" y="5881.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.VictoryPointTrackFirstColumnPanel</node>
+    <node x="0.0" y="5376.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.ExcommunicationPanel</node>
+    <node x="1554.9999999999998" y="3372.0">it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage</node>
+    <node x="1867.9999999999998" y="3394.0">it.polimi.ingsw.ps31.messages.messageVC.VCActiveEffectChoice</node>
+    <node x="3069.0" y="5881.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PlayerResourcesPanel</node>
+    <node x="3429.0" y="3591.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewEffect</node>
+    <node x="1396.0" y="5881.0">it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard</node>
+    <node x="3179.0" y="5376.0">it.polimi.ingsw.ps31.messages.ConcreteEnvelope</node>
+    <node x="3611.0" y="5881.0">it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.VictoryPointTrackSecondColumnPanel</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCActiveEffectChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="2.2737367544323206E-13" y="-48.5" />
+      <point x="2031.0" y="3259.0" />
+      <point x="4330.533333333334" y="3259.0" />
+      <point x="-112.46666666666624" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCCouncilPrivilegeChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="-48.5" />
+      <point x="6829.0" y="3259.0" />
+      <point x="4555.466666666666" y="3259.0" />
+      <point x="112.46666666666624" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceTowerCardSpace" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-47.5" />
+      <point x="2498.0" y="4789.0" />
+      <point x="3587.78125" y="4789.0" />
+      <point x="-69.21875" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageMV.MVMessageVisitor" target="it.polimi.ingsw.ps31.messages.messageMV.MVVisitor">
+      <point x="0.0" y="-59.0" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrVisualization" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-58.5" />
+      <point x="664.5" y="4749.0" />
+      <point x="3477.03125" y="4749.0" />
+      <point x="-179.96875" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCServantToPayChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="-48.5" />
+      <point x="6169.0" y="3279.0" />
+      <point x="4523.333333333333" y="3279.0" />
+      <point x="80.33333333333303" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.guiView.GuiView" target="it.polimi.ingsw.ps31.client.view.View">
+      <point x="0.0" y="-434.0" />
+      <point x="2085.0" y="1442.0" />
+      <point x="1794.0" y="1442.0" />
+      <point x="351.75" y="708.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceColor" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-58.5" />
+      <point x="4331.5" y="4799.0" />
+      <point x="3698.53125" y="4799.0" />
+      <point x="41.53125" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceActionSpace" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-47.5" />
+      <point x="2992.5" y="4799.0" />
+      <point x="3615.46875" y="4799.0" />
+      <point x="-41.53125" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceLeaderToActive" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-47.5" />
+      <point x="5227.5" y="4779.0" />
+      <point x="3753.90625" y="4779.0" />
+      <point x="96.90625" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PersonalBoardPanel" target="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel">
+      <point x="0.0" y="-115.0" />
+      <point x="2264.0" y="3761.0" />
+      <point x="1808.0" y="3761.0" />
+      <point x="80.75" y="70.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.AskActionPanel" target="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel">
+      <point x="0.0" y="-93.0" />
+      <point x="1918.0" y="3771.0" />
+      <point x="1754.1666666666667" y="3771.0" />
+      <point x="26.916666666666742" y="70.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceCopyLeader" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-47.5" />
+      <point x="3435.5" y="4809.0" />
+      <point x="3643.15625" y="4809.0" />
+      <point x="-13.84375" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel.PersonalBonusTilesPanel" target="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel">
+      <point x="0.0" y="-59.5" />
+      <point x="768.0" y="3751.0" />
+      <point x="1592.6666666666667" y="3751.0" />
+      <point x="-134.58333333333326" y="70.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCStartLeaderChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="-48.5" />
+      <point x="2360.5" y="3269.0" />
+      <point x="4346.6" y="3269.0" />
+      <point x="-96.39999999999964" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageNetworking.ViewMessage" target="it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage">
+      <point x="0.0" y="-70.5" />
+      <point x="1701.4999999999998" y="3319.0" />
+      <point x="1484.031944444444" y="3319.0" />
+      <point x="47.0" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCColorChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="-59.5" />
+      <point x="3740.0" y="3309.0" />
+      <point x="4410.866666666667" y="3309.0" />
+      <point x="-32.13333333333321" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCSupportTheChurchChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="-48.5" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCPersonalTilesChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="-48.5" />
+      <point x="4796.5" y="3319.0" />
+      <point x="4459.066666666667" y="3319.0" />
+      <point x="16.066666666666606" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceStartLeader" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-47.5" />
+      <point x="3878.5" y="4809.0" />
+      <point x="3670.84375" y="4809.0" />
+      <point x="13.84375" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoicePersonalTiles" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-47.5" />
+      <point x="6113.5" y="4759.0" />
+      <point x="3809.28125" y="4759.0" />
+      <point x="152.28125" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceListToPay" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-47.5" />
+      <point x="211.5" y="4739.0" />
+      <point x="3449.34375" y="4739.0" />
+      <point x="-207.65625" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.ChoosenButtonPanel" target="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel">
+      <point x="0.0" y="-170.0" />
+      <point x="1536.5" y="3771.0" />
+      <point x="1700.3333333333333" y="3771.0" />
+      <point x="-26.916666666666742" y="70.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToActiveChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="-48.5" />
+      <point x="4083.0" y="3319.0" />
+      <point x="4426.933333333333" y="3319.0" />
+      <point x="-16.066666666666606" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoicePlayerAction" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-47.5" />
+      <point x="5670.5" y="4769.0" />
+      <point x="3781.59375" y="4769.0" />
+      <point x="124.59375" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.GameBoardPanel" target="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel">
+      <point x="0.0" y="-159.0" />
+      <point x="1109.5" y="3761.0" />
+      <point x="1646.5" y="3761.0" />
+      <point x="-80.75" y="70.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.CmdLineView" target="it.polimi.ingsw.ps31.client.view.View">
+      <point x="0.0" y="-731.0" />
+      <point x="799.5" y="1442.0" />
+      <point x="1090.5" y="1442.0" />
+      <point x="-351.75" y="708.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceIfSupportChurch" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-47.5" />
+      <point x="2003.5" y="4779.0" />
+      <point x="3560.09375" y="4779.0" />
+      <point x="-96.90625" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCTowerCardSpaceChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="-59.5" />
+      <point x="5511.5" y="3299.0" />
+      <point x="4491.2" y="3299.0" />
+      <point x="48.19999999999982" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceIfActiveEffect" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-47.5" />
+      <point x="6999.5" y="4739.0" />
+      <point x="3864.65625" y="4739.0" />
+      <point x="207.65625" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCPlayerAction" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="-48.5" />
+      <point x="6482.5" y="3269.0" />
+      <point x="4539.4" y="3269.0" />
+      <point x="96.39999999999964" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageNetworking.ConnectionMessage" target="it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage">
+      <point x="0.0" y="-103.5" />
+      <point x="1302.0" y="3319.0" />
+      <point x="1390.031944444444" y="3319.0" />
+      <point x="-47.0" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCMessageVisitor" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitor">
+      <point x="0.0" y="-191.0" />
+      <point x="0.0" y="179.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.BackgroundMainFramePanel" target="it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel">
+      <point x="0.0" y="-104.0" />
+      <point x="2605.5" y="3751.0" />
+      <point x="1861.8333333333335" y="3751.0" />
+      <point x="134.58333333333348" y="70.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCFamilyMemberChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="-48.5" />
+      <point x="3008.0" y="3289.0" />
+      <point x="4378.733333333334" y="3289.0" />
+      <point x="-64.26666666666642" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint" target="it.polimi.ingsw.ps31.messages.messageMV.MVVisitable">
+      <point x="0.0" y="-48.5" />
+      <point x="499.0" y="3319.0" />
+      <point x="476.3423611111107" y="3319.0" />
+      <point x="0.0" y="70.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceServantToPay" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-47.5" />
+      <point x="1560.5" y="4769.0" />
+      <point x="3532.40625" y="4769.0" />
+      <point x="-124.59375" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrLeaderToDiscard" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-47.5" />
+      <point x="4784.5" y="4789.0" />
+      <point x="3726.21875" y="4789.0" />
+      <point x="69.21875" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToCopyChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="-59.5" />
+      <point x="3379.5" y="3299.0" />
+      <point x="4394.8" y="3299.0" />
+      <point x="-48.19999999999982" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCListToPayChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="-48.5" />
+      <point x="2669.5" y="3279.0" />
+      <point x="4362.666666666667" y="3279.0" />
+      <point x="-80.33333333333303" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCLeaderToDiscardChoice" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="-48.5" />
+      <point x="5129.0" y="3309.0" />
+      <point x="4475.133333333333" y="3309.0" />
+      <point x="32.13333333333321" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageMV.MVUpdateState" target="it.polimi.ingsw.ps31.messages.messageMV.MVVisitable">
+      <point x="0.0" y="-59.5" />
+      <point x="155.5" y="3319.0" />
+      <point x="402.3423611111107" y="3319.0" />
+      <point x="-74.0" y="70.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageMV.MVAskChoice" target="it.polimi.ingsw.ps31.messages.messageMV.MVVisitable">
+      <point x="0.0" y="-59.5" />
+      <point x="868.0" y="3319.0" />
+      <point x="550.3423611111107" y="3319.0" />
+      <point x="74.0" y="70.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageMV.MVVisitable" target="it.polimi.ingsw.ps31.messages.GenericMessage">
+      <point x="0.0" y="-70.5" />
+      <point x="476.3423611111107" y="3073.0" />
+      <point x="1427.7499999999998" y="3073.0" />
+      <point x="-74.0" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable" target="it.polimi.ingsw.ps31.messages.GenericMessage">
+      <point x="0.0" y="-59.5" />
+      <point x="4443.0" y="3073.0" />
+      <point x="1575.7499999999998" y="3073.0" />
+      <point x="74.0" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceFamilyMember" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-47.5" />
+      <point x="1117.5" y="4759.0" />
+      <point x="3504.71875" y="4759.0" />
+      <point x="-152.28125" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage" target="it.polimi.ingsw.ps31.messages.GenericMessage">
+      <point x="0.0" y="-25.5" />
+      <point x="1437.031944444444" y="3073.0" />
+      <point x="1501.7499999999998" y="3073.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.messages.messageVC.VCActionSpace" target="it.polimi.ingsw.ps31.messages.messageVC.VCVisitable">
+      <point x="0.0" y="-48.5" />
+      <point x="5864.5" y="3289.0" />
+      <point x="4507.266666666666" y="3289.0" />
+      <point x="64.26666666666642" y="59.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.IntrChoiceCouncilPrivilege" target="it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView">
+      <point x="0.0" y="-47.5" />
+      <point x="6556.5" y="4749.0" />
+      <point x="3836.96875" y="4749.0" />
+      <point x="179.96875" y="58.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.1" x="2510.0" y="3881.499999999999" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

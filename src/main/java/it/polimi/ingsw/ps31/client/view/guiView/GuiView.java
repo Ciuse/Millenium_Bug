@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpre
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.*;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.MainFrame;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
 import it.polimi.ingsw.ps31.messages.messageVC.*;
 import it.polimi.ingsw.ps31.model.choiceType.*;
@@ -175,7 +176,6 @@ public class GuiView extends View implements ActionListener {
     @Override
     public void runTerminal() {
         mainFrame.startMainFrame();
-
     }
 
     @Override
@@ -244,7 +244,15 @@ public class GuiView extends View implements ActionListener {
 
     @Override
     public void printAllPersonalBoard() {
-
+        if(!firstTime) {
+            int i = 0;
+            for (StateViewPersonalBoard stateViewPersonalBoard : super.getStateViewPersonalBoardList()
+                    ) {
+                if (!super.getStateViewGame().getPlayerIdInAction().equals(stateViewPersonalBoard.getPlayerId())) {
+                    mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getOtherChosenPlayerPanel().getOtherPlayersPanel().fillOtherPlayers(stateViewPersonalBoard);
+                }
+            }
+        }
     }
 
     public void printMyPhysicalResource() {

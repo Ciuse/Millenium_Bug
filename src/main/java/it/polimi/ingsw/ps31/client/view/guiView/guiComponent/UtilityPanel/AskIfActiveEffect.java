@@ -8,16 +8,20 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by Giuseppe on 08/07/2017.
+ * classe
  */
 public class AskIfActiveEffect  extends JOptionPane implements ActionListener {
     private ActionListener listener;
     private JFrame father;
 
+    /* Constructor */
     public AskIfActiveEffect(JFrame father) {
         this.father=father;
     }
 
-
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }

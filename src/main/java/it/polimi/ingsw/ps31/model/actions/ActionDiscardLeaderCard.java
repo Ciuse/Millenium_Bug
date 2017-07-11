@@ -11,6 +11,8 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 30/05/2017.
+ *
+ * Azione per scartare un leader non ancora attivato. Necessita di una carta leader
  */
 public class ActionDiscardLeaderCard extends Action {
     private LeaderCard leaderCard = null;
@@ -35,7 +37,11 @@ public class ActionDiscardLeaderCard extends Action {
         this.leaderCard = null;
     }
 
-    /* Activation Method*/
+
+    /**
+     * Dopo aver ricevuto la risposta della scelta al giocatore, rimuovo il leader dalla lista dei leader del player
+     * e chiedo al giocatore quale consiglio del privilegio vuole
+     */
     @Override
     public void activate() {
         player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "Quale leader non giocato vuoi scartare?", new ChoiceLeaderToDiscard()));

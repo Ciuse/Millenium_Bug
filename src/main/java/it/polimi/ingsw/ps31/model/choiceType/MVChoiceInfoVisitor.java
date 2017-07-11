@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.*;
 
 /**
  * Created by Giuseppe on 15/06/2017.
+ * Implementazione del pattern visitor all'interno della logica delle scelte.
+ * Ogni scelta sa quale metodo di "ASK" deve invocare sulla view.
  */
 public class MVChoiceInfoVisitor implements ChoiceVisitor {
     View view;

@@ -6,6 +6,9 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 23/05/2017.
+ *
+ * Azione per poter pagare una lista di risorse.
+ * Necessita di una lista di risorse
  */
 public class ActionPayResources extends Action {
     private ResourceList resourceToPay = null;
@@ -24,28 +27,21 @@ public class ActionPayResources extends Action {
         this.resourceToPay = null;
     }
 
+    /**
+     * sottraggo al player le risorse
+     */
     @Override
     public void activate() {
-        if (this.resourceToPay == null) {
-            //TODO: fare cose
-        } else {
-//            //Eseguo il controllo
-            if ( super.actionControlSet.payResourceControl(this.resourceToPay) ) {
-//           //Eseguo l'azione
-                for (Resource currentResource : resourceToPay.getListOfResource())
-                    player.subResources(currentResource);
 
-            }
-
-            resetResourceToPay();
-//            } else
-//            {
-//                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPayResourceControl().getControlStringError()));
-//            }
-//
-//            resetResourceToPay();
-//            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato player resource",player.getStatePlayerResources()));
-//        }
+        //Eseguo il controllo
+        if (super.actionControlSet.payResourceControl(this.resourceToPay)) {
+            //Eseguo l'azione
+            for (Resource currentResource : resourceToPay.getListOfResource())
+                player.subResources(currentResource);
         }
+
+        resetResourceToPay();
+
     }
+
 }

@@ -10,6 +10,7 @@ import it.polimi.ingsw.ps31.model.board.GameBoard;
 import it.polimi.ingsw.ps31.model.json.CreationJson;
 import it.polimi.ingsw.ps31.model.json.JsonFile;
 import it.polimi.ingsw.ps31.model.json.JsonGameObject;
+import it.polimi.ingsw.ps31.model.player.Player;
 import it.polimi.ingsw.ps31.server.Match;
 import it.polimi.ingsw.ps31.server.VirtualView;
 
@@ -179,11 +180,26 @@ public class GameLogic {
         //gioco finito e calcolo punteggio finale
         gameUtility.getFinalVictoryPoint();
         gameUtility.militaryTrackWinnerPoint();
+
+        //riodino i giocatori in base ai punti vittoria
         gameUtility.orderVictoryPoint();
 
-        gameUtility.getModel().notifyViews(new MVStringToPrint(null,true,"GRAZIE PER AVER GIOCATO, ALLA PROSSIMA PARTITA"));
+        //Mando i messaggi per stampare la classifica
+        int i=0;
+        for (Player player:gameUtility.getPlayerList()
+             ) {
+            if (i==0) {
+                gameUtility.getModel().notifyViews(new MVStringToPrint(null, true,
+                        player.getNickname() + ": HAI VINTO!!!!!"));
+            }
+            else{
+                gameUtility.getModel().notifyViews(new MVStringToPrint(null,true,
+                        player.getNickname()+": SEI ARRIVATO: "+ i));
+            }
+            i++;
+        }
 
-        //TODO metodo per stampare a video il vincitore
+        gameUtility.getModel().notifyViews(new MVStringToPrint(null,true,"GRAZIE PER AVER GIOCATO, ALLA PROSSIMA PARTITA!!"));
     }
 
     public GameUtility getGameUtility() {

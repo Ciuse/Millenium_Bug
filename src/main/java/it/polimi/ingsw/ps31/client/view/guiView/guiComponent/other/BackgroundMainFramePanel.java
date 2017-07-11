@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by giulia on 30/06/2017.
+ * rappresenta la classe che riempie tutto il main frame
+ * estende la PaintBackGrounPanel 
  */
 public class BackgroundMainFramePanel extends PaintBackgroundPanel implements ActionListener{
     private GameBoardPanel gameBoardPanel;

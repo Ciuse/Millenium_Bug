@@ -12,6 +12,9 @@ import java.util.List;
 
 /**
  * Created by Francesco on 12/05/2017.
+ *
+ * Classe che rappresenta la gameBoard nel suo intero e i metodi per gestire gli elementi al suo interno
+ * Possiede tutti i riferimenti agli action space, alle torri, e ai tracciati, oltre a un riferimento al model
  */
 public class GameBoard{
 
@@ -48,7 +51,7 @@ public class GameBoard{
             dice.get(i).setValue(0);
         }
 
-        //creazione del resto
+        //creazione action Space e tracciati
         this.councilPalace = new CouncilPalace(otherEffectList.get(0));
         this.councilPalace.setActionSpaceId(17);
         this.smallHarvest = new SmallHarvest(1, otherEffectList.get(1));
@@ -63,6 +66,10 @@ public class GameBoard{
         this.victoryPointTrack = new VictoryPointTrack();
     }
 
+    /**
+     * Funzione per abilitare gli action space da 3 giocatori
+     * @param otherEffectList lista di effetti per crearli
+     */
     public void add3PlayerActionSpace(List<EffectList> otherEffectList){
         this.bigHarvest = new BigHarvest(-1, otherEffectList.get(2));
         this.bigHarvest.setActionSpaceId(19);
@@ -70,10 +77,17 @@ public class GameBoard{
         this.bigProduction.setActionSpaceId(21);
     }
 
+    /**
+     * Funzione per abilitare gli action space da 4 giocatori
+     * @param otherEffectList lista di effetti per crearli
+     */
     public void add4PlayerMarketSpace(List<EffectList> otherEffectList) {
         this.market.add4PlayerMarketSpace(otherEffectList.get(7), otherEffectList.get(8));
     }
 
+    /**
+     * Funzione per rimuovere gli action space da 4 giocatori
+     */
     public void remove4PlayerMarketSpace() {
         this.market.remove4PlayerActionSpace();
     }
@@ -98,6 +112,10 @@ public class GameBoard{
             i++;
         }
     }
+
+    /**
+     * Funzione per tirare i dadi in modo casuale
+     */
     public void rollTheDice() {
         for (Dice aDice : dice) {
             if (!aDice.getColor().equals(DiceColor.NEUTRAL)) {

@@ -4,6 +4,8 @@ import it.polimi.ingsw.ps31.model.stateModel.StateType;
 
 /**
  * Created by Giuseppe on 06/06/2017.
+ *
+ * Messaggio che parte dal model e diretto alla view che contiene un aggiornamento di stato
  */
 public class MVUpdateState extends MVVisitable {
     private String stringToPrint;

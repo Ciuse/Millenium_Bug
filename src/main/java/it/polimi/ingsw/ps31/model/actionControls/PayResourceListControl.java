@@ -8,6 +8,8 @@ import java.util.List;
 
 /**
  * Created by Francesco on 28/05/2017.
+ *
+ * Controllo se è possibile pagare Almeno una delle resource List presente nella lista di costi
  */
 public class  PayResourceListControl extends PayResourceControl{
     private List<ResourceList> resourceLists = null;
@@ -46,7 +48,6 @@ public class  PayResourceListControl extends PayResourceControl{
         //Controllo che i parametri siano settati
         if ( this.resourceLists == null )
         {
-            //TODO: gestire;
             result = false;
         } else
         {

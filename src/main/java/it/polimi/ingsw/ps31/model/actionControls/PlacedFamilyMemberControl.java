@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 25/05/2017.
+ *
+ * Controllo se è possibile utilizzare il famigliare scelto (se non è già stato piazzato)
  */
 public class PlacedFamilyMemberControl extends Control {
     private FamilyMember familyMember = null;
@@ -39,7 +41,6 @@ public class PlacedFamilyMemberControl extends Control {
     public boolean execute() {
         if ( this.familyMember == null )
         {
-            //TODO: gestire
             return false;
         }
 

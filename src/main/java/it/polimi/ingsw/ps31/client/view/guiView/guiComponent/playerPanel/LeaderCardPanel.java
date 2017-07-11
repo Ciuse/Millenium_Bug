@@ -10,6 +10,11 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by giulia on 27/06/2017.
+ * rappresenta il pannello contenente il bottone dei leader che una volta cliccato mi apre un frame che contiene le quattro
+ * carte leader di ciascun giocatore
+ * @see ButtonCard
+ * @see LeaderCardsOpenedPanel
+ * @see GuiView
  */
 public class LeaderCardPanel extends JPanel implements  ActionListener {
     private ActionListener listener;
@@ -17,15 +22,22 @@ public class LeaderCardPanel extends JPanel implements  ActionListener {
     private LeaderCardsOpenedPanel leaderCardsOpenedPanel;
     private GuiView guiView;
 
+    /* Constructor */
     public LeaderCardPanel(GuiView guiView) {
         this.guiView=guiView;
         addComponentsToPane(this);
     }
-
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
+
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
@@ -46,8 +58,6 @@ public class LeaderCardPanel extends JPanel implements  ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //buttonOpenLeaderCard.setOpaque(false);
-       // buttonOpenLeaderCard.setBackground(Color.red);
         buttonOpenLeaderCard.addActionListener(this);
         pane.add(buttonOpenLeaderCard,gbc);
 
@@ -63,6 +73,10 @@ public class LeaderCardPanel extends JPanel implements  ActionListener {
         return buttonOpenLeaderCard;
     }
 
+    /**
+     * Metodo che mi permette di interpretare l'evento associato al click del bottone dei leader,infatti se viene
+     * cliccato si aprirà un frame contenente i 4 leader di ciascun giocatore
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton jButton = (JButton) e.getSource();
@@ -78,7 +92,6 @@ public class LeaderCardPanel extends JPanel implements  ActionListener {
             Container c = frame.getContentPane();
             leaderCardsOpenedPanel.setBackground(Color.black);
             leaderCardsOpenedPanel.setFather(frame);
-            //leaderCardsOpenedPanel.setOpaque(false);
             c.add(leaderCardsOpenedPanel);
         }
     }

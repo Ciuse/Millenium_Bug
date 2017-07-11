@@ -8,6 +8,10 @@ import static it.polimi.ingsw.ps31.client.view.stateView.ViewStaticInformation.g
 
 /**
  * Created by Giuseppe on 25/06/2017.
+ *
+ *  Interprete dei comandi relativo alla scelta del privilegio da scegliere
+ *
+ *  @see VCCouncilPrivilegeChoice
  */
 public class IntrChoiceCouncilPrivilege implements CmdInterpreterView {
     @Override

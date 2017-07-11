@@ -7,6 +7,10 @@ import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
  * Created by Giuseppe on 08/06/2017.
+ *
+ * Interprete dei comandi relativo alla scelta del colore iniziale
+ *
+ * @see VCColorChoice
  */
 public class IntrChoiceColor implements CmdInterpreterView {
     @Override

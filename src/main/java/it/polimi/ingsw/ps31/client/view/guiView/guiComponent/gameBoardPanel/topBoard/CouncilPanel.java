@@ -11,23 +11,33 @@ import static java.lang.String.valueOf;
 
 /**
  * Created by giulia on 26/06/2017.
+ * classe che mi rappresenta la parte intermedia della board contenente sia il pannello delle scomuniche che il bottone
+ * per l'action space del consiglio
+ * @see ExcommunicationPanel
+ * @see ActionSpaceBoardButton
  */
 public class CouncilPanel extends JPanel implements ActionListener{
     private ActionListener listener;
     private ExcommunicationPanel excommunicationPanel;
     private ActionSpaceBoardButton actionSpaceCouncilPanel;
 
-
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
+    /* Constructor */
     public CouncilPanel() {
         addComponentsToPane(this);
     }
 
+
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
-        //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0, 0,0,0,0,0};
         gbl.rowHeights = new int[]{0, 0, 0, 0};
@@ -46,7 +56,6 @@ public class CouncilPanel extends JPanel implements ActionListener{
         gbc.fill = GridBagConstraints.BOTH;
         excommunicationPanel.setPreferredSize(new Dimension(10,10));
         excommunicationPanel.setOpaque(false);
-        //excommunicationPanel.setBackground(Color.RED);
         pane.add(excommunicationPanel,gbc);
 
         actionSpaceCouncilPanel = new ActionSpaceBoardButton();
@@ -58,9 +67,7 @@ public class CouncilPanel extends JPanel implements ActionListener{
         actionSpaceCouncilPanel.setName(valueOf(1));
         actionSpaceCouncilPanel.setPreferredSize(new Dimension(10,10));
         actionSpaceCouncilPanel.setContentAreaFilled(false);
-        //actionSpaceCouncilPanel.setOpaque(false);
         actionSpaceCouncilPanel.addActionListener(this);
-        //actionSpaceCouncilPanel.setBackground(Color.green);
         pane.add(actionSpaceCouncilPanel,gbc);
 
     }

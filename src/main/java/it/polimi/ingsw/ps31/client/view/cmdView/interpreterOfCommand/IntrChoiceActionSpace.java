@@ -6,6 +6,10 @@ import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
  * Created by Giuseppe on 22/06/2017.
+ *
+ * Interprete dei comandi relativo alla scelta dell' action space
+ *
+ * @see VCActionSpace
  */
 public class IntrChoiceActionSpace implements CmdInterpreterView{
     @Override

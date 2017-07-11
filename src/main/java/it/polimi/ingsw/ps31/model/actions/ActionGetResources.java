@@ -8,6 +8,10 @@ import java.util.List;
 
 /**
  * Created by Francesco on 18/05/2017.
+ *
+ * Azione generica per poter aggiungere risorse alla lista principale del player
+ *
+ * @see Player
  */
 public class ActionGetResources extends Action {
     private ResourceList resourcesToGet = null;
@@ -37,21 +41,12 @@ public class ActionGetResources extends Action {
 
     /* Class Methods */
     @Override
-    public void activate()
-    {
-        //Controllo che i parametri siano settati
-        if (resourcesToGet == null)
-        {
-            //TODO: fare qualcosa (eccezione?)
-        } else
-        {
-            //Eseguo l'azione
-            List<Resource> resourcesToGetList = this.resourcesToGet.getListOfResource();
-            for(Resource currentResource : resourcesToGetList)
-            {
-                currentResource.addResource(super.player);
-            }
-            resetResourcesToGet();
+    public void activate() {
+        //Eseguo l'azione
+        List<Resource> resourcesToGetList = this.resourcesToGet.getListOfResource();
+        for (Resource currentResource : resourcesToGetList) {
+            currentResource.addResource(super.player);
         }
+        resetResourcesToGet();
     }
 }
