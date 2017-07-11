@@ -81,7 +81,9 @@ public class AskStartPlayerColor extends JFrame implements ActionListener {
         }
 
     }
-
+    /**
+     *metodo che mi permette di aprire il frame dei colori non appena viene richiesto al giocatore quale scegliere
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton colorButton = (JButton) e.getSource();

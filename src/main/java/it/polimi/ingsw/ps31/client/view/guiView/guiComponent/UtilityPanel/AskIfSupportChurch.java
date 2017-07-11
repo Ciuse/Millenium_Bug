@@ -24,7 +24,9 @@ public class AskIfSupportChurch extends JOptionPane implements ActionListener {
     }
 
 
-
+    /**
+     *metodo che mi permette di ottenere la risposta data dal giocatore
+     */
     public Boolean getInput() {
         // uso finestra di dialogo in lettura
 

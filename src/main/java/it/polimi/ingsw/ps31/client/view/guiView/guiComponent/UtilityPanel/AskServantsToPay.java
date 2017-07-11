@@ -30,7 +30,9 @@ public class AskServantsToPay extends JOptionPane implements ActionListener {
     }
 
 
-
+    /**
+     *metodo che mi permette di ottenere la risposta data dal giocatore  alla domanda
+     */
     public String getInput(StateViewPlayer stateViewPlayer) {
     // uso finestra di dialogo in lettura
         int numberOfChoice = stateViewPlayer.getPlayerResources().getSpecificResource(Servant.class).getValue();

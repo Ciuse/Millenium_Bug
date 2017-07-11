@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackGroundPanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
  * @see DevelopmentCardsOpenedPanel
  * @see PlayerResourcesPanel
  */
-public class PersonalBoardPanel extends PaintBackgroundPanel implements ActionListener{
+public class PersonalBoardPanel extends PaintBackGroundPanel implements ActionListener{
     private ActionListener listener;
     private  GuiView guiView;
     private DevelopmentCardsOpenedPanel cardYellow;

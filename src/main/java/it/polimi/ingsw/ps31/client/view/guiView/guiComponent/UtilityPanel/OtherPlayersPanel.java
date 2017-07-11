@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackGroundPanel;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
 
@@ -12,8 +12,10 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by giulia on 10/07/2017.
+ * in base a quanti giocatori stanno giocando , questo frame si crea con tanti pannelli quanti sono i giocatori in modo
+ * tale da mostrare la personal board degli altri giocatori
  */
-public class OtherPlayersPanel extends PaintBackgroundPanel implements ActionListener {
+public class OtherPlayersPanel extends PaintBackGroundPanel implements ActionListener {
     private JFrame father = null;
     private GuiView guiView;
     private SingleOtherPlayersPanel[] singleOtherPlayersPanel = new SingleOtherPlayersPanel[3];
@@ -62,7 +64,9 @@ public class OtherPlayersPanel extends PaintBackgroundPanel implements ActionLis
 
 
     }
-
+    /**
+     *metodo che mi permette di riempire la personal board degli altri giocatori
+     */
     public void fillOtherPlayers(StateViewPersonalBoard stateViewPersonalBoard){
         int i = 0;
         for (StateViewPlayer player : guiView.getStateViewPlayerList()

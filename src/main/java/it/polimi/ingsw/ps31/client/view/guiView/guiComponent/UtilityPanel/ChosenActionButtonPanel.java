@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackGroundPanel;
 import it.polimi.ingsw.ps31.messages.messageVC.VCPlayerAction;
 import it.polimi.ingsw.ps31.messages.messageVC.VCTowerCardSpaceChoice;
 
@@ -14,8 +14,10 @@ import java.util.List;
 
 /**
  * Created by giulia on 04/07/2017.
+ * rappresenta il pannello contenente tutti i possibili bottoni delle azioni che un giocatore può fare durante il suo turno
+ * @see ButtonCard
  */
-public class ChosenActionButtonPanel extends PaintBackgroundPanel implements ActionListener {
+public class ChosenActionButtonPanel extends PaintBackGroundPanel implements ActionListener {
     private GuiView guiView;
     private ActionListener listener;
     private ButtonCard button1;
@@ -188,6 +190,11 @@ public class ChosenActionButtonPanel extends PaintBackgroundPanel implements Act
         }
     }
 
+    /**
+     *metodo che mi permette di  interpretare il click di uno dei bottoni delle azioni
+     * se un giocatore clicca uno dei bottoni di questo pannelllo si invierà un messaggio di notifica al controller
+     * per l'avvenuta scelta dell'azione da eseguire
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         ButtonCard buttonCard = (ButtonCard) e.getSource();

@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard;
 
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackGroundPanel;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
@@ -16,11 +16,11 @@ import static it.polimi.ingsw.ps31.model.constants.PlayerColor.*;
 /**
  * Created by giulia on 29/06/2017.
  * classe che mi rappresenta l'action space delle torri dove possono essere posizionati i family member
- * @see PaintBackgroundPanel
+ * @see PaintBackGroundPanel
  */
 public class SingleSmallActionSpacePanel extends JPanel implements ActionListener {
     private ActionListener listener;
-    private PaintBackgroundPanel[] familyMemberPanel = new PaintBackgroundPanel[3];
+    private PaintBackGroundPanel[] familyMemberPanel = new PaintBackGroundPanel[3];
 
     /* Constructor */
     public SingleSmallActionSpacePanel() {
@@ -51,7 +51,7 @@ public class SingleSmallActionSpacePanel extends JPanel implements ActionListene
         GridBagConstraints gbc = new GridBagConstraints();
 
 
-        familyMemberPanel[0] = new PaintBackgroundPanel();
+        familyMemberPanel[0] = new PaintBackGroundPanel();
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridheight = 1;
@@ -62,7 +62,7 @@ public class SingleSmallActionSpacePanel extends JPanel implements ActionListene
         pane.add(familyMemberPanel[0], gbc);
 
 
-        familyMemberPanel[1] = new PaintBackgroundPanel();
+        familyMemberPanel[1] = new PaintBackGroundPanel();
         gbc.gridx = 2;
         gbc.gridy = 1;
         gbc.gridheight = 1;
@@ -72,7 +72,7 @@ public class SingleSmallActionSpacePanel extends JPanel implements ActionListene
         familyMemberPanel[1].setPreferredSize(new Dimension(10, 10));
         pane.add(familyMemberPanel[1], gbc);
 
-        familyMemberPanel[2] = new PaintBackgroundPanel();
+        familyMemberPanel[2] = new PaintBackGroundPanel();
         gbc.gridx = 3;
         gbc.gridy = 1;
         gbc.gridheight = 1;
