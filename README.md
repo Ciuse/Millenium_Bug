@@ -84,7 +84,7 @@ Per lanciare l'applicazione è necessario seguire i seguenti passi
  * ricompilare il progetto;
  * settare nuovamente le due directory come cartelle di risorse;
  * Eseguire nuovamente il server e i client.
-
+* **La risoluzione minima consigliata per giocare con la CLI è di 1366x768**
 ![settaggio cartelle di risorse](setResourceFolder.jpg)
 
 
@@ -114,7 +114,7 @@ Per completezza, esiste anche una versione completa del class diagram, contenent
 
 ## 4. Info aggiuntive
 
-### 4.1. Design Pattern
+*### 4.1. Design Pattern
 Durante lo sviluppo del software si è reso necessario il ricorso a più design pattern. In particolare:
 
 * pattern Singleton per alcune classi del server che non devono essere instanziabili più volte (SocketAccepter, MatchTable,...)
