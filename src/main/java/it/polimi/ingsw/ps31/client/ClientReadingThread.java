@@ -9,6 +9,8 @@ import java.io.IOException;
 
 /**
  * Created by Francesco on 11/06/2017.
+ *
+ * Thread di ascolto da rete. Cicla in attesa di messaggi dal server e li manda alla clientMesageHistory
  */
 //Thread creato con il compito di ascoltare eventuali messaggi da server
 public class ClientReadingThread extends Thread {
@@ -41,8 +43,6 @@ public class ClientReadingThread extends Thread {
             }
             DebugUtility.simpleDebugMessage("Esco dal ciclo di lettura.");
         }
-
-        // TODO: Istruzioni per la disconnessione
     }
 
 }

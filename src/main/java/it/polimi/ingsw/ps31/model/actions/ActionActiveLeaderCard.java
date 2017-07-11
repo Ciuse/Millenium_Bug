@@ -10,7 +10,7 @@ import it.polimi.ingsw.ps31.model.player.Player;
 /**
  * Created by Giuseppe on 23/05/2017.
  *
- * Azione per giocaare e/o attivare una carta leader in tuo possesso. Necessita di una carta leader
+ * Azione per giocare e/o attivare una carta leader in tuo possesso. Necessita di una carta leader
  *
  * @see it.polimi.ingsw.ps31.model.actionControls.LeaderCardRequirementControl
  */
@@ -22,8 +22,8 @@ public class ActionActiveLeaderCard extends Action {
     }
 
     /**
-     * Dopo aver ricevuto la risposta della scelta al giocatore, attivo i controlli se soddisfa i requisiti
-     * e nel caso attivo gli effetti del leader.
+     * Dopo aver ricevuto la risposta della scelta al giocatore, attivo i controlli per vedere
+     * se il giocatore soddisfa i requisiti e nel caso attivo gli effetti del leader.
      */
     @Override
     public void activate() {

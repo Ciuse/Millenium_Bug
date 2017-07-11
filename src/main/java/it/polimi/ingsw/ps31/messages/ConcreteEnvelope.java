@@ -7,6 +7,12 @@ import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
 
 /**
  * Created by Francesco on 29/06/2017.
+ *
+ * Classe che permette di incapsulare un messaggio astratto genericMessage in un oggetto concreto
+ * per consentire la serializzazione del messaggio prima dell'invio (gson non serializza direttamente classi astratte).
+ *
+ * Può contenere un MVVisitable, un VCVisitable, un ViewMessage e un ConnectionMessage. In genere ne contiene solo
+ * uno alla volta. Fornisce metodi di get per recuperare i messaggi contenuti.
  */
 public class ConcreteEnvelope {
     private MVVisitable mvVisitable = null;

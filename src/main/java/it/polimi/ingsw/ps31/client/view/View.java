@@ -16,6 +16,15 @@ import java.util.Observer;
 
 /**
  * Created by giulia in 01/06/2017.
+ *
+ * Classe Generica di una View. Presenta un id e degli stati prestabiliti.
+ * Alal creazione la view ha bisogno di sapere il proprio identificati e in quanti si giocherà
+ * per poter creare dei contenitori vuoti degli stati di ogni player e di ogni board che saranno
+ * presenti durante la partite per essere in grado poi di aggiornare tutte le informazioni in modo
+ * ottimale.
+ * I metodi di aggiornamento di stati sono stati implementati in modo Final in questa classe poichè
+ * gli stati e il modo in cui si aggiornano non dipende dalla loro rappresentazione grafica, i quali metodi
+ * sono astratti poichè i quali figli dovranno implementarli in magnera specifica alle loro esigenze
  */
 public abstract class View extends Observable implements Observer {
     private final PlayerId viewId;

@@ -14,6 +14,17 @@ import java.util.Map;
 
 /**
  * Created by Giuseppe on 06/07/2017.
+ *
+ * Controllo che verifica se una carta è possibile pagarla una volta simulato l ottenere
+ * le risorse di un action space,e il pagare la torre.
+ * Nel caso vi siano più possibili costi prima viene chiesto al giocatore quale lista pagare
+ * e viene anche simulato l'aggiungere o sottrarre dei vari bonus inerenti al pagamento di una carta
+ * derivante da bonus o effetti permanenti.
+ *
+ * Alla fine dei controlli se vengono superata, viene settato il costo della carta con tutti i bonus
+ * e sconti applicati all' attributo dell azione "payCard"
+ *
+ * @see it.polimi.ingsw.ps31.model.actions.ActionPayCard
  */
 public class PayCardControl extends Control {
     private DevelopmentCard cardToPay;

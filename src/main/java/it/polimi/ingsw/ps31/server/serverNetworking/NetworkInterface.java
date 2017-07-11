@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.server.serverNetworking;
 
 import it.polimi.ingsw.ps31.DebugUtility;
 import it.polimi.ingsw.ps31.messages.GenericMessage;
+import it.polimi.ingsw.ps31.messages.messageMV.MVStringToPrint;
 import it.polimi.ingsw.ps31.messages.messageMV.MVVisitable;
 import it.polimi.ingsw.ps31.messages.messageNetworking.NetworkingMessage;
 import it.polimi.ingsw.ps31.messages.messageVC.VCVisitable;
@@ -276,22 +277,25 @@ public class NetworkInterface {
     }
 
     /**
-     * segnala alla playerTable la disconnessione di un client
+     * segnala alla playerTable e agli altri giocatori la disconnessione di un client
      * @param playerId player disconnesso
      */
     public void notifyPlayerDisconnection(PlayerId playerId)
     {
         playerTable.disconnectPlayer(playerId);
+        sendToAll(new MVStringToPrint(null, true, "Il player "+playerId+" si è disconnesso"));
     }
 
     /**
-     * Segnala alla playerTable la riconnessione di un player
+     * Segnala alla playerTable e agli altri player la riconnessione di un player
      * @param communicationInterface nuova CommunicationInterface per raggiungere l'utente
      * @param playerId playerId del player che sis ta riconnesttendo
      */
     public void notifyPlayerReconnection(PlayerCommunicationInterface communicationInterface, PlayerId playerId)
     {
         playerTable.reconnectPlayer(communicationInterface, playerId);
+        sendToAll(new MVStringToPrint(null, true, "Il player "+playerId+" si è riconnesso"));
+
     }
 
     public boolean isDisconncted(PlayerId playerId)

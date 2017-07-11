@@ -7,6 +7,10 @@ import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
  * Created by Giuseppe on 07/07/2017.
+ *
+ * Interprete dei comandi relativo alla scelta del leader da copiare
+ *
+ * @see VCLeaderToCopyChoice
  */
 public class IntrChoiceCopyLeader implements CmdInterpreterView {
     @Override

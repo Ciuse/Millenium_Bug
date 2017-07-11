@@ -112,7 +112,7 @@ public class PlayerTable {
     {
         if ( nextPlayerIdIndex == PlayerId.values().length )
         {
-            //todo: eccezione
+            //sarebbe opportuno lanciare un'eccezione
         }
 
         PlayerId playerId = PlayerId.values()[nextPlayerIdIndex];

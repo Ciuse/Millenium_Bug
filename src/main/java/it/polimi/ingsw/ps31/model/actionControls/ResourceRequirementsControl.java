@@ -5,6 +5,9 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 24/05/2017.
+ *
+ * Controllo se il giocatore ha soddisfatto i requisiti di tipo risorsa
+ * scritti su una carta (leader)
  */
 public class ResourceRequirementsControl extends Control {
     private ResourceList requirement = null;
