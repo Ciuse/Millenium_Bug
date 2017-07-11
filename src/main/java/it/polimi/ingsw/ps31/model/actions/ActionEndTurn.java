@@ -4,6 +4,10 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Giuseppe on 07/06/2017.
+ *
+ * Azione che permette al giocatore di finire il turno dopo aver piazzato un famigliare, o nel caso gli
+ * rimanga solo il famigliare neutro.
+ *
  */
 public class ActionEndTurn extends Action {
     private boolean active =false;
@@ -25,6 +29,9 @@ public class ActionEndTurn extends Action {
         this.used = used;
     }
 
+    /**
+     * L'attivazione setta il booleano del player che indica che vuole finire il turno
+     */
     @Override
     public void activate() {
         player.setWannaEndTurn(true);

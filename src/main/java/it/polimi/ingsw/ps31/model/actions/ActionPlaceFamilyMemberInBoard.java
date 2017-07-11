@@ -11,6 +11,10 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 26/05/2017.
+ *
+ * Azione di piazzamento di un famigliare negli action space della board
+ *
+ * @see it.polimi.ingsw.ps31.model.actionControls.DiceValueActionSpaceControl
  */
 public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
     private ActionSpace actionSpace = null;
@@ -36,7 +40,11 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
         this.actionSpace = null;
     }
 
-    /* Class Methods */
+    /**
+     * Viene chiesto al giocatore quale famigliare usare e successivamente dopo aver anche chiesto di pagare servitori
+     * viene chiesto dove vuole posizionarlo, successivamente verranno eseguiti i controlli in merito.
+     * Verranno anche attivati gli effetti dell' action space se presenti
+     */
     @Override
     public void activate() {
         boolean askAgain = true;
@@ -54,19 +62,18 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
                 this.actionSpace = player.getModel().getModelChoices().waitActionSpaceChosen();
 
                 if (this.actionSpace != null) {        //TIMER NON SCADUTO
-
+                    boolean found = false;
                     //controllo i parametri extra dell azione settati dalle scomuniche
-                    if (super.defaultDenyActionSpaces != null){
-                        boolean found=false;
-                        for (Integer integer:super.defaultDenyActionSpaces
-                             ) {
-                            if(integer==actionSpace.getActionSpaceId()){
-                               found=true;
+                    if (super.defaultDenyActionSpaces != null) {
+                        for (Integer integer : super.defaultDenyActionSpaces
+                                ) {
+                            if (integer == actionSpace.getActionSpaceId()) {
+                                found = true;
                             }
                         }
-                        if (found) {
-                            player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, "Non puoi piazzare il family member qui perchè hai la scomunica"));
-                        }
+                    }
+                    if (found) {
+                        player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, "Non puoi piazzare il family member qui perchè hai la scomunica"));
                     } else {
 
                         //Eseguo i controlli
@@ -96,7 +103,7 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
         } else
             player.getModel().notifyViews(new MVStringToPrint(null, true, "Timer vecchio giocatore scaduto"));
 
-        actionTimerEnded=false;
+        actionTimerEnded = false;
         resetActionSpace();
         resetFamilyMember();
     }

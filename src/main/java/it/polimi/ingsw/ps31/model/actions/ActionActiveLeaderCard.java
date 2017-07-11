@@ -9,6 +9,10 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Giuseppe on 23/05/2017.
+ *
+ * Azione per giocaare e/o attivare una carta leader in tuo possesso. Necessita di una carta leader
+ *
+ * @see it.polimi.ingsw.ps31.model.actionControls.LeaderCardRequirementControl
  */
 public class ActionActiveLeaderCard extends Action {
     private LeaderCard leaderCard= null;
@@ -17,6 +21,10 @@ public class ActionActiveLeaderCard extends Action {
         super(player, actionControlSet);
     }
 
+    /**
+     * Dopo aver ricevuto la risposta della scelta al giocatore, attivo i controlli se soddisfa i requisiti
+     * e nel caso attivo gli effetti del leader.
+     */
     @Override
     public void activate() {
         player.getModel().notifyViews(new MVAskChoice(player.getPlayerId(), "Quale leader vuoi attivare?", new ChoiceLeaderToActive()));

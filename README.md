@@ -91,20 +91,23 @@ Per lanciare l'applicazione è necessario seguire i seguenti passi
 
 ## 3. Diagramma UML
 Di seguito vengono mostrati i class diagram del progetto. Quello iniziale, da cui si è partiti per lo sviluppo del model, e quelli finali, divisi tra le funzionalità principali in modo da ridurne la complessità. In questa seconda parte sono disponibili due documenti per ogni funzionalità: uno con le classi estese e indicati le sole relazioni di ereditarietà; l'altro con i soli nomi delle classi e indicate ache le relazioni di dipendenza
+
+**Tutti i file sono disponibili nella directory _Uml/_ in due formati: .svg e .uml (il diagrama iniziale solo in .svg)**
+
 ### 3.1. UML iniziale
 Questo documento contiene la prima bozza di class diagram sviluppato per il progetto. Le classi in esso contenute corrispondono a quelle del Model.
 [Documento disponibile qui](/UML/UML_Draft.svg)
 
 ### 3.2. UML finali
 * UML Model
- * [versione semplificata](/Uml/Model/model.svg)
- * [verisone estesa](/Uml/Model/model_dependencies.svg)
+  * [versione semplificata](/Uml/Model/model.svg)
+  * [verisone estesa](/Uml/Model/model_dependencies.svg)
 * UML Architettura MVC
- * [versione semplificata](/Uml/MVC/MVC.svg)
- * [versione estesa](/Uml/MVC/MVC.svg)
+  * [versione semplificata](/Uml/MVC/MVC.svg)
+  * [versione estesa](/Uml/MVC/MVC.svg)
 * UML Networking
- * [versione semplificata](/Uml/Networking/netowriking.svg)
- * [versione estesa](/Uml/Networking/networking.svg)
+  * [versione semplificata](/Uml/Networking/netowriking.svg)
+  * [versione estesa](/Uml/Networking/networking.svg)
 
 Per completezza, esiste anche una versione completa del class diagram, contenente tutte le classi. Anche questo documento è disponibile in versione [ridotta](/Uml/ProgettoCompleto/complete.svg) o [estesa](/Uml/ProgettoCompleto/complete_dependencies.svg)
 
@@ -122,8 +125,9 @@ Durante lo sviluppo del software si è reso necessario il ricorso a più design 
 
 ### 4.2. Librerie esterne
 Per una migliore gestione di alcuni aspetti specifici del progetto, si è fatto ricorso a librerie e framework esterni:
+
 * Gson: per la serializzazione e deserializzazione dei messaggi tra client e server
-* Lanterna: per la realizzazione della CLI
+* Lanterna: per la realizzazione della CLI (solo parte di command line)
 
 ### 4.3. Sviluppi futuri
 Molteplici sono i possibili miglioramenti applicabili al software nelle prossime versioni. Si annotano, in ordine di fattibilità e tempo di sviluppo previsto:
@@ -142,5 +146,5 @@ Molteplici sono i possibili miglioramenti applicabili al software nelle prossime
 ### 4.5. Ulteriori note
 * sebbene non sia stata implementata, la connessione RMI è facilmente inseribile tramite estensione di apposite classi.
 * già in questa versione, il giocatore ha facoltà di _"scegliere"_ quale tecnologia usare per la connessione al server. Tuttavia, in ogni caso, verrà istanziata una comunicazione tramite socket.
-* il file di configurazione è in formato json e, oltre ad essere fornito con la presente release, è creato runtime all'avvio di una partita in caso non dia già presente nella directory projectResources.
+* il file di configurazione è in formato json e, oltre ad essere fornito con la presente release, è creato runtime all'avvio di una partita in caso non sia già presente nella directory projectResources.
 * Lo sviluppo è avvenuto esclusivamente attraverso il software Intellij IDEA 2017.1.1

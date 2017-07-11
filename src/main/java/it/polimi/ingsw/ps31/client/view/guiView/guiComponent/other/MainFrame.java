@@ -3,10 +3,12 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other;
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 
 import javax.sound.sampled.Clip;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -42,6 +44,11 @@ public class MainFrame extends JFrame implements ActionListener {
          *creazione del frame principale
          */
         JFrame frame = new JFrame("LORENZO IL MAGNIFICO ");
+//        try {
+//            frame.setIconImage(ImageIO.read(new File("/icon.png")));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         frame.setSize(screenSize);
         frame.setResizable(false);
         frame.setVisible(true);
