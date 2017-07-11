@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>it.polimi.ingsw.ps31.client</OriginalElement>
+  <nodes>
+    <node x="610.0" y="1380.0">it.polimi.ingsw.ps31.server.serverNetworking.SocketAccepter</node>
+    <node x="1456.0" y="1721.0">it.polimi.ingsw.ps31.server.serverNetworking.MatchRow</node>
+    <node x="476.0" y="1974.0">it.polimi.ingsw.ps31.client.ClientReadingThread</node>
+    <node x="1512.0" y="797.0">it.polimi.ingsw.ps31.server.serverNetworking.MatchTable</node>
+    <node x="255.0" y="2160.0">it.polimi.ingsw.ps31.networking.NetworkingThread</node>
+    <node x="437.0" y="1721.0">it.polimi.ingsw.ps31.server.serverNetworking.PlayerConnectionRow</node>
+    <node x="0.0" y="1380.0">it.polimi.ingsw.ps31.server.serverNetworking.PlayerTable</node>
+    <node x="447.0" y="2160.0">it.polimi.ingsw.ps31.networking.ConnectionType</node>
+    <node x="773.5" y="456.0">it.polimi.ingsw.ps31.client.clientNetworking.ClientSocketConnection</node>
+    <node x="0.0" y="797.0">it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface</node>
+    <node x="1032.0" y="1721.0">it.polimi.ingsw.ps31.server.InputBufferReader</node>
+    <node x="0.0" y="0.0">it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionInterface</node>
+    <node x="142.5" y="500.0">it.polimi.ingsw.ps31.server.serverNetworking.SocketServerConnection</node>
+    <node x="1987.0" y="1974.0">it.polimi.ingsw.ps31.server.Server</node>
+    <node x="877.0" y="2160.0">it.polimi.ingsw.ps31.networking.MessageTranslator</node>
+    <node x="0.0" y="2160.0">it.polimi.ingsw.ps31.networking.DeliverableMessageType</node>
+    <node x="1399.0" y="1974.0">it.polimi.ingsw.ps31.client.Client</node>
+    <node x="1202.0" y="0.0">it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface</node>
+    <node x="0.0" y="1974.0">it.polimi.ingsw.ps31.server.serverNetworking.ServerListeningThread</node>
+    <node x="836.0" y="797.0">it.polimi.ingsw.ps31.server.Match</node>
+    <node x="628.0" y="2160.0">it.polimi.ingsw.ps31.networking.JsonNetworking</node>
+    <node x="915.0" y="1974.0">it.polimi.ingsw.ps31.server.serverNetworking.DisconnectedClient</node>
+    <node x="1548.0" y="1380.0">it.polimi.ingsw.ps31.server.serverNetworking.ServerInputBuffer</node>
+    <node x="1091.0" y="1380.0">it.polimi.ingsw.ps31.client.clientNetworking.ClientMessageHistory</node>
+    <node x="651.0" y="0.0">it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface</node>
+    <node x="0.0" y="1721.0">it.polimi.ingsw.ps31.server.VirtualView</node>
+    <node x="1620.0" y="1974.0">it.polimi.ingsw.ps31.server.serverNetworking.SentMessageEntry</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.polimi.ingsw.ps31.client.clientNetworking.ClientSocketConnection" target="it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface">
+      <point x="0.0" y="-92.5" />
+      <point x="0.0" y="203.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.SocketServerConnection" target="it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionInterface">
+      <point x="0.0" y="-126.0" />
+      <point x="0.0" y="225.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.30000000000000016" x="1364.6666666666656" y="1016.3333333333328" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
