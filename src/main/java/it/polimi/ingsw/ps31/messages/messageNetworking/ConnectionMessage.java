@@ -5,11 +5,19 @@ import it.polimi.ingsw.ps31.messages.ConcreteEnvelope;
 
 /**
  * Created by Francesco on 21/06/2017.
+ *
+ * Messaggio che contiene le informazioni scelte dall'utente all'avvio del client.
+ * Serve a gestire la creazione del Player lato server
  */
 public class
 ConnectionMessage extends NetworkingMessage {
+    /** Username del giocatore*/
     private final String username;
+
+    /** Password del giocatore */
     private final String password;
+
+    /** Tipo di view scelta dal giocatore */
     private final TypeOfView typeOfView;
 
     /* Constructor */
@@ -34,6 +42,11 @@ ConnectionMessage extends NetworkingMessage {
         return this.typeOfView;
     }
 
+    /**
+     * Confronta un'altro ConnectionMessage e restituisce true sse lo username coincide ma la password no
+     * @param otherCM il connectionMessage da confrontare con this
+     * @return true sse username coincide ma la password no
+     */
     public boolean wrongPassword(ConnectionMessage otherCM){
         if ( this.getUsername().equals(otherCM.getUsername()) &&
             !this.getPassword().equals(otherCM.getPassword()) )

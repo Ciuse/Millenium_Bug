@@ -8,6 +8,9 @@ import java.net.Socket;
 
 /**
  * Created by Francesco on 10/06/2017.
+ *
+ * Classe che implementa la connessione via socket. Contiene reader e writer ed espone metodi di
+ * lettura e scrittura di stringhe
  */
 public class ClientSocketConnection extends ClientNetworkInterface {
     private Socket socket;
@@ -54,6 +57,10 @@ public class ClientSocketConnection extends ClientNetworkInterface {
         DebugUtility.simpleDebugMessage("Message from server: "+s);
     }
 
+    /**
+     * Metodo di scrittura su rete
+     * @param msgStr stringa da scrivere
+     */
     @Override
     protected void writeOnNetwork(String msgStr) {
 
@@ -66,6 +73,13 @@ public class ClientSocketConnection extends ClientNetworkInterface {
         }
     }
 
+    /**
+     * Metodo di lettura da rete
+     * @param returnIfNull indica se bisogna restare in attesa(false) di un messaggio o
+     *                     ritornare subito(true) in caso non ci siano messaggi da leggere
+     * @return stringa letta
+     * @throws IOException
+     */
     @Override
     protected String readFromNetwork(boolean returnIfNull) throws IOException {
         String msg = null;

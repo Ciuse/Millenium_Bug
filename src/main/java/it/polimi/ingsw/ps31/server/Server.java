@@ -9,11 +9,16 @@ import java.net.BindException;
 
 /**
  * Created by Giuseppe on 05/06/2017.
+ *
+ * Classe contenente il main() lato server. Istanzia le classi SocketAccepter e MatchTable, a cui delega la
+ * gestione delle future connessioni.
+ * Se lanciata più di una volta, viene rilevato un errore (tramite gestione delle eccezioni durante la creazione
+ * del ServerSocket) el'esecuzione termina immediatamente con un messaggio a console.
+ *
+ * @see SocketAccepter
+ * @see MatchTable
  */
 public class Server {
-//    static final int PORT = 2727;
-//    protected static final int MAXCONNECTION=4;
-//    protected static int connection=0;
     private static SocketAccepter connectionAccepter;
     private static MatchTable matchTable;
 
