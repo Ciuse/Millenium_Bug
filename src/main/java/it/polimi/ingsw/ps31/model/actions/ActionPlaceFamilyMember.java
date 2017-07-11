@@ -8,6 +8,13 @@ import java.util.List;
 
 /**
  * Created by Francesco on 26/05/2017.
+ *
+ * Azione generica di piazzamento di un famigliare
+ * Contiene una lista di spazi azioni proibiti al giocatore derivanti da
+ * malus vari (all' inizio sarà vuota)
+ *
+ * Le due azioni di piazzamento sono state divise per gestire meglio i controlli in quanto
+ * le due azioni se pur simili avranno controlli diversi.
  */
 public abstract class ActionPlaceFamilyMember extends Action{
     private boolean used = false;

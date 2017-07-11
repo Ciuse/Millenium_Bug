@@ -5,6 +5,11 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 18/05/2017.
+ *
+ * Azione che attiva le carte produzione del player. Necessita di un intero che rappresenta il valore dell'attivazione
+ *
+ * @see it.polimi.ingsw.ps31.model.player.ProductionList
+
  */
 public class ActionActivateProduction extends Action {
     private Integer diceValue = null;
@@ -31,7 +36,11 @@ public class ActionActivateProduction extends Action {
         this.diceValue = null;
     }
 
-    /* Activation Method */
+    /**
+     * l'attivazione consiste nell'attivare la lista di produzioni del player con un valore
+     * che è dato dai vari bonus che il player ha più il valore base con cui è stata invocata
+     * l'azione
+     */
     @Override
     public void activate() {
 

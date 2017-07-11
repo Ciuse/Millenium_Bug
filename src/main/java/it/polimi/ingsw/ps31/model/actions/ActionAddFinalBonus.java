@@ -10,9 +10,14 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 31/05/2017.
+ *
+ * Azione che permette di aggiungere una risorsa alla lista delle risorse finali del player.
+ * Necessita di una lista ri risorse
+ *
+ * @see Player
  */
 public class ActionAddFinalBonus extends Action {
-    private ResourceList resourceList = null; //effetto permanente carte viola
+    private ResourceList resourceList = null;
 
     /* Constructor */
     public ActionAddFinalBonus(Player player, ActionControlSet actionControlSet) {
@@ -36,7 +41,9 @@ public class ActionAddFinalBonus extends Action {
         this.resourceList = null;
     }
 
-    /* Activation Method */
+    /**
+     * l'attivazione va ad aggiungere le risorse alla lista delle risorse finali del player
+     */
     @Override
     public void activate()
     {
