@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackGroundPanel;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewExcommunication;
 
 import javax.swing.*;
@@ -15,12 +15,13 @@ import static java.lang.String.valueOf;
 
 /**
  * Created by Giuseppe on 08/07/2017.
+ * rappresenta il pannello delle scomuniche di un giocatore
  */
 public class ExcommunicationPlayerPanel extends JPanel implements ActionListener {
     private ActionListener listener;
     private JFrame father = null;
     private GuiView guiView;
-    private PaintBackgroundPanel[] excomm = new PaintBackgroundPanel[3];
+    private PaintBackGroundPanel[] excomm = new PaintBackGroundPanel[3];
 
     /* Constructor */
     public ExcommunicationPlayerPanel(GuiView guiView) {
@@ -50,7 +51,7 @@ public class ExcommunicationPlayerPanel extends JPanel implements ActionListener
 
             GridBagConstraints gbc = new GridBagConstraints();
             for (int i = 0; i < getMax_number_of_Excommunication(); i++) {
-                excomm[i] = new PaintBackgroundPanel();
+                excomm[i] = new PaintBackGroundPanel();
                 excomm[i].setName(valueOf(i));
                 excomm[i].imageToLoad("/excommunications/excomm_back_"+(i+1)+".png");
                 gbc.gridx = (2 * i) + 1;
@@ -64,7 +65,9 @@ public class ExcommunicationPlayerPanel extends JPanel implements ActionListener
 
         }
 
-
+    /**
+     *metodo che mi permette di riempire le scomuniche con quelle che il giocatore potrebbe prendere durante la partita
+     */
     public void fillExcomm(List<StateViewExcommunication> stateViewExcommunicationList) {
         if (!stateViewExcommunicationList.isEmpty()) {
             for (StateViewExcommunication excommunication : stateViewExcommunicationList

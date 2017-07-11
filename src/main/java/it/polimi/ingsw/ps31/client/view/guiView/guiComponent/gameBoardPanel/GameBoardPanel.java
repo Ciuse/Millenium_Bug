@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bott
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard.TopBoardPanel;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.FaithPointTrackPanel;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.trackPanel.MilitaryTrackPanel;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackGroundPanel;
 import it.polimi.ingsw.ps31.messages.messageVC.VCActionSpace;
 import it.polimi.ingsw.ps31.messages.messageVC.VCTowerCardSpaceChoice;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
@@ -24,7 +24,7 @@ import java.awt.event.ActionListener;
  * @see MilitaryTrackPanel
  *
  */
-public class GameBoardPanel extends PaintBackgroundPanel implements ActionListener {
+public class GameBoardPanel extends PaintBackGroundPanel implements ActionListener {
     private TopBoardPanel topBoardPanel;
     private FaithPointTrackPanel faithPointTrackPanel;
     private BottomBoardPanel bottomBoardPanel;

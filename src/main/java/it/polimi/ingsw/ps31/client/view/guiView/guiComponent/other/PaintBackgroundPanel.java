@@ -10,7 +10,7 @@ import java.io.IOException;
  * Created by giulia on 27/06/2017.
  * classe che mi permette di creare un JPanel in cui si possa caricare un'immagine come sfondo
  */
-public class PaintBackgroundPanel extends JPanel {
+public class PaintBackGroundPanel extends JPanel {
     private BufferedImage backgroundPanel;
     private String stringImage;
 

@@ -2,28 +2,21 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 
-import javax.sound.sampled.Clip;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-
-import sun.audio.*;
 
 /**
  * Created by giulia on 25/06/2017.
  * rappresenta il JFrame principale che si apre quando i vari client si sono collegati al server
  * contiene il Pannello backgroundMainFramePanel
- * @see BackgroundMainFramePanel
+ * @see BackGroundMainFramePanel
  *
  */
 public class MainFrame extends JFrame implements ActionListener {
     private GuiView guiView;
-    private BackgroundMainFramePanel backgroundMainFramePanel;
+    private BackGroundMainFramePanel backgroundMainFramePanel;
 
     /* Constructor */
     public MainFrame(GuiView guiView) {
@@ -35,7 +28,7 @@ public class MainFrame extends JFrame implements ActionListener {
      */
     public void startMainFrame() {
 
-        backgroundMainFramePanel= new BackgroundMainFramePanel(guiView);
+        backgroundMainFramePanel= new BackGroundMainFramePanel(guiView);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -113,7 +106,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
     }
 
-    public BackgroundMainFramePanel getBackgroundMainFramePanel() {
+    public BackGroundMainFramePanel getBackgroundMainFramePanel() {
         return backgroundMainFramePanel;
     }
 

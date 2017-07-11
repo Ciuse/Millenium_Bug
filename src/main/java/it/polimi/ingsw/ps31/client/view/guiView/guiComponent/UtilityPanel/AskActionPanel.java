@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackGroundPanel;
 
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  * classe che rappresenta il pannello contenente la text area dove verranno stampate tutte le domande da fare al giocatore
  * durante la sua fase di gioco
  */
-public class AskActionPanel extends PaintBackgroundPanel implements ActionListener {
+public class AskActionPanel extends PaintBackGroundPanel implements ActionListener {
     private ActionListener listener;
     private PaintTextArea textArea;
     private JScrollPane scroll;

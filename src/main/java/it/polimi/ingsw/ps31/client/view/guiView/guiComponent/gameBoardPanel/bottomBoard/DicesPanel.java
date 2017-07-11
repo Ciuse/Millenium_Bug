@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard;
 
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackGroundPanel;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 
@@ -16,12 +16,12 @@ import java.util.List;
  * diverso
  * a seconda del numero uscito con il tiro del dado
  *  @see ActionListener
- *   @see PaintBackgroundPanel
+ *   @see PaintBackGroundPanel
  *
  */
 public class DicesPanel extends JPanel implements ActionListener {
     private ActionListener listener;
-    private PaintBackgroundPanel[] dice = new PaintBackgroundPanel[3];
+    private PaintBackGroundPanel[] dice = new PaintBackGroundPanel[3];
 
     /**
      *metodo che mi permette di attaccare questa classe al suo listener
@@ -50,7 +50,7 @@ public class DicesPanel extends JPanel implements ActionListener {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        dice[0] = new PaintBackgroundPanel();
+        dice[0] = new PaintBackGroundPanel();
         gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.gridheight = 1;
@@ -60,7 +60,7 @@ public class DicesPanel extends JPanel implements ActionListener {
         dice[0].setOpaque(false);
         pane.add(dice[0], gbc);
 
-        dice[1] = new PaintBackgroundPanel();
+        dice[1] = new PaintBackGroundPanel();
         gbc.gridx = 3;
         gbc.gridy = 0;
         gbc.gridheight = 1;
@@ -70,7 +70,7 @@ public class DicesPanel extends JPanel implements ActionListener {
         dice[1].setOpaque(false);
         pane.add(dice[1], gbc);
 
-        dice[2] = new PaintBackgroundPanel();
+        dice[2] = new PaintBackGroundPanel();
         gbc.gridx = 5;
         gbc.gridy = 0;
         gbc.gridheight = 1;
