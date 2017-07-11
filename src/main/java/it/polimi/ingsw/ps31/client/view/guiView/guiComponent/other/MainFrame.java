@@ -11,12 +11,12 @@ import java.awt.event.ActionListener;
  * Created by giulia on 25/06/2017.
  * rappresenta il JFrame principale che si apre quando i vari client si sono collegati al server
  * contiene il Pannello backgroundMainFramePanel
- * @see BackgroundMainFramePanel
+ * @see BackGroundMainFramePanel
  *
  */
 public class MainFrame extends JFrame implements ActionListener {
     private GuiView guiView;
-    private BackgroundMainFramePanel backgroundMainFramePanel;
+    private BackGroundMainFramePanel backgroundMainFramePanel;
 
     /* Constructor */
     public MainFrame(GuiView guiView) {
@@ -28,7 +28,7 @@ public class MainFrame extends JFrame implements ActionListener {
      */
     public void startMainFrame() {
 
-        backgroundMainFramePanel= new BackgroundMainFramePanel(guiView);
+        backgroundMainFramePanel= new BackGroundMainFramePanel(guiView);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -107,7 +107,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
     }
 
-    public BackgroundMainFramePanel getBackgroundMainFramePanel() {
+    public BackGroundMainFramePanel getBackgroundMainFramePanel() {
         return backgroundMainFramePanel;
     }
 

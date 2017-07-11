@@ -87,6 +87,10 @@ public class AskStartLeaderCard extends JFrame implements ActionListener {
         frame.revalidate();
     }
 
+
+    /**
+     *metodo che mi permette di aprire il frame dei leader non appena viene richiesto al giocatore quali leader vuole
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         ButtonCard tilesButton = (ButtonCard) e.getSource();

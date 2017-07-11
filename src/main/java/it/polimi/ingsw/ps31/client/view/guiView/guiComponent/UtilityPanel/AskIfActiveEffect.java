@@ -28,6 +28,9 @@ public class AskIfActiveEffect  extends JOptionPane implements ActionListener {
 
 
 
+    /**
+     *metodo che mi permette di ottenere la risposta data dal giocatore
+     */
     public Boolean getInput(ChoiceIfActiveEffect choiceIfActiveEffect) {
         // uso finestra di dialogo in lettura
 

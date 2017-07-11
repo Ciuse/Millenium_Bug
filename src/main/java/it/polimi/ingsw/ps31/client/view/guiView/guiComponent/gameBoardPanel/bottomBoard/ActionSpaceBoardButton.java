@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bottomBoard;
 
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackGroundPanel;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
@@ -18,7 +18,7 @@ import static it.polimi.ingsw.ps31.model.constants.PlayerColor.*;
  * * Rappresenta il bottone che contiene un massimo di 6 JPanel che verranno riempiti ogni volta che un family member
  * si posizionerà nell' action Space associato.
  * @see ActionListener
- * @see PaintBackgroundPanel
+ * @see PaintBackGroundPanel
  */
 public class ActionSpaceBoardButton extends ButtonCard implements ActionListener {
     /**
@@ -29,7 +29,7 @@ public class ActionSpaceBoardButton extends ButtonCard implements ActionListener
     /**
      * array di 6 pannelli che mi permette di stampare un family member
      */
-    private PaintBackgroundPanel[] familyMember = new PaintBackgroundPanel[6];
+    private PaintBackGroundPanel[] familyMember = new PaintBackGroundPanel[6];
 
 
     /**
@@ -60,7 +60,7 @@ public class ActionSpaceBoardButton extends ButtonCard implements ActionListener
         GridBagConstraints gbc = new GridBagConstraints();
 
 
-        familyMember[0] = new PaintBackgroundPanel();
+        familyMember[0] = new PaintBackGroundPanel();
         gbc.gridx = 2;
         gbc.gridy = 1;
         gbc.gridheight = 1;
@@ -70,7 +70,7 @@ public class ActionSpaceBoardButton extends ButtonCard implements ActionListener
         familyMember[0].setPreferredSize(new Dimension(10,10));
         pane.add(familyMember[0], gbc);
 
-        familyMember[1] = new PaintBackgroundPanel();
+        familyMember[1] = new PaintBackGroundPanel();
         gbc.gridx = 2;
         gbc.gridy = 3;
         gbc.gridheight = 1;
@@ -80,7 +80,7 @@ public class ActionSpaceBoardButton extends ButtonCard implements ActionListener
         familyMember[1].setPreferredSize(new Dimension(10,10));
         pane.add(familyMember[1], gbc);
 
-        familyMember[2] = new PaintBackgroundPanel();
+        familyMember[2] = new PaintBackGroundPanel();
         gbc.gridx = 4;
         gbc.gridy = 1;
         gbc.gridheight = 1;
@@ -90,7 +90,7 @@ public class ActionSpaceBoardButton extends ButtonCard implements ActionListener
         familyMember[2].setPreferredSize(new Dimension(10,10));
         pane.add(familyMember[2], gbc);
 
-        familyMember[3] = new PaintBackgroundPanel();
+        familyMember[3] = new PaintBackGroundPanel();
         gbc.gridx = 4;
         gbc.gridy = 3;
         gbc.gridheight = 1;
@@ -100,7 +100,7 @@ public class ActionSpaceBoardButton extends ButtonCard implements ActionListener
         familyMember[3].setPreferredSize(new Dimension(10,10));
         pane.add(familyMember[3], gbc);
 
-        familyMember[4] = new PaintBackgroundPanel();
+        familyMember[4] = new PaintBackGroundPanel();
         gbc.gridx = 6;
         gbc.gridy = 1;
         gbc.gridheight = 1;
@@ -110,7 +110,7 @@ public class ActionSpaceBoardButton extends ButtonCard implements ActionListener
         familyMember[4].setPreferredSize(new Dimension(10,10));
         pane.add(familyMember[4], gbc);
 
-        familyMember[5] = new PaintBackgroundPanel();
+        familyMember[5] = new PaintBackGroundPanel();
         gbc.gridx = 6;
         gbc.gridy = 3;
         gbc.gridheight = 1;

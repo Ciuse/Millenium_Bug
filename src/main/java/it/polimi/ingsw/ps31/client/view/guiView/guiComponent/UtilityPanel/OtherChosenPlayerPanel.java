@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
-import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackGroundPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,8 +11,9 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by giulia on 02/07/2017.
+ * rappresenta il bottone per poter aprire le personal board degli altri giocatori
  */
-public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements ActionListener {
+public class OtherChosenPlayerPanel extends PaintBackGroundPanel implements ActionListener {
     private GuiView guiView;
     private ActionListener listener;
     private ButtonCard otherBoard;
@@ -78,6 +79,11 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
         return otherPlayersPanel;
     }
 
+
+    /**
+     *metodo che mi permette di interpretare l'evento associato al click del bottone
+     * se viene cliccato mi apre il frame contenente le personal board degli altri giocatori
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         ButtonCard buttonCard = (ButtonCard) e.getSource();

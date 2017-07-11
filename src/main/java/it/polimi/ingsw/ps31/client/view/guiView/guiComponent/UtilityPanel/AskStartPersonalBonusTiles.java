@@ -89,6 +89,9 @@ public class AskStartPersonalBonusTiles extends JFrame implements ActionListener
         frame.revalidate();
     }
 
+    /**
+     *metodo che mi permette di aprire il frame dei personal bonus tiles non appena viene richiesto al giocatore quale scegliere
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         ButtonCard tilesButton = (ButtonCard) e.getSource();

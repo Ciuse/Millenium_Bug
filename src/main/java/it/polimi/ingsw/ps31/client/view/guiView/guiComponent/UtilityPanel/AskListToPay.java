@@ -26,7 +26,9 @@ public class AskListToPay extends JOptionPane implements ActionListener{
     }
 
 
-
+    /**
+     *metodo che mi permette di ottenere la risposta data dal giocatore  alla domanda
+     */
     public int getInput(int cardID) {
         // uso finestra di dialogo in lettura
         int numberOfChoice = 2 ;

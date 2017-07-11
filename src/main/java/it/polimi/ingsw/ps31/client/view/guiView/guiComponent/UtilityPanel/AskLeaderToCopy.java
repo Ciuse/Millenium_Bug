@@ -25,7 +25,9 @@ public class AskLeaderToCopy extends JOptionPane implements ActionListener {
         this.listener=listener;
     }
 
-
+    /**
+     *metodo che mi permette di ottenere la risposta data dal giocatore
+     */
     public String getInput() {
         // uso finestra di dialogo in lettura
         int numberOfChoice = 20;
