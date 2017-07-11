@@ -8,6 +8,10 @@ import it.polimi.ingsw.ps31.model.constants.CardColor;
 
 /**
  * Created by Giuseppe on 25/06/2017.
+ *
+ *  Interprete dei comandi relativo alla scelta di quale piano di una specifica torre occupare
+ *
+ *  @see VCTowerCardSpaceChoice
  */
 public class IntrChoiceTowerCardSpace implements CmdInterpreterView{
     @Override

@@ -33,6 +33,17 @@ import java.util.Observer;
 
 /**
  * Created by Giuseppe on 05/06/2017.
+ *
+ * Classe che rappresenta il controller del pattern MVC.
+ * Il suo compito è quello di tradurre e verificare i messaggi provenienti dalle View, in
+ * azioni che andranno a dare al Model le risposte di cui ha bisogno per poter proseguire
+ * il suo corso.
+ * Il controller verificherà anche che non vi sia alcun tipo di imbroglio da parte della view,
+ * in quanto andrà a verificare sempre i dati ricevuto con i veri stati del model, quindi non ci sarà
+ * modo di imbrogliare.
+ * Inoltre in caso di errore da parte del messaggio inviato dalla view il controller dirà alla Virtual View
+ * di reinviare l' ultimo messaggio con dentro la domanda da rifare al giocatore, e una stringa contentennte
+ * il perchp il giocatore dovrà rieseguire l'azione.
  */
 public class Controller extends Thread implements Observer {
     private Model model;
@@ -64,6 +75,14 @@ public class Controller extends Thread implements Observer {
 
     }
 
+    /**
+     * Metodo per gestire e controllare il draft iniziale dei leader di ogni player.
+     * Verifica se il leader scelto di ogni player era tra le sue possibili scelte
+     * e quindi se la view oltre ad aver risposto giusto non ha mentito
+     *
+     * @param leaderIdToCreate id del leader che la view ha mandato
+     * @param viewId id del player che ha scelto
+     */
     public void selectStartLeader(int leaderIdToCreate, PlayerId viewId) {
         boolean found = false;
         boolean found1 = false;
@@ -113,6 +132,15 @@ public class Controller extends Thread implements Observer {
         }
 
     }
+
+    /**
+     * Metodo per gestire e controllare il draft iniziale dei personal tiles di ogni player.
+     * Verifica se il tiles scelto di ogni player era tra le sue possibili scelte
+     * e quindi se la view oltre ad aver risposto giusto non ha mentito
+     *
+     * @param tilesId id del tiles scelto
+     * @param viewId id del player che ha scelto
+     */
     public void selectStartPersonalBonusTiles(int tilesId, PlayerId viewId) {
         boolean found = false;
         for (PersonalBonusTiles personalBonusTiles : gameUtility.getPersonalBonusTilesList()
@@ -133,6 +161,14 @@ public class Controller extends Thread implements Observer {
             modelChoices.setActiveEffect(isToActive);
     }
 
+    /**
+     * verifica che l'azione scelta del player sia tra le possibili azioni che il player può
+     * fare anche rispetto agli stati del model, e nel caso dice al model di proseguire sfruttando
+     * l'informazione ricevuta dalla view.
+     *
+     * @param string nome dell' azione scelta
+     * @param viewId id del player che ha scelto
+     */
     public void selectPlayerAction(String string, PlayerId viewId) {
         boolean legitAnswer = false;
         boolean found = false;
@@ -161,6 +197,13 @@ public class Controller extends Thread implements Observer {
         }
     }
 
+    /**
+     * Verifica che l'action space scelto dalla view sia giusto, e che non sia occupato, e/o non
+     * disponibile.
+     *
+     * @param actionSpaceId id action space scelto
+     * @param viewId id player che ha scelto
+     */
     public void selectActionSpace(int actionSpaceId, PlayerId viewId) {
         boolean found = false;
         boolean canPlace = true;

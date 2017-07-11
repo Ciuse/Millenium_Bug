@@ -9,6 +9,9 @@ import java.util.Map;
 
 /**
  * Created by Francesco on 28/05/2017.
+ *
+ * Controllo del valore del dado con cui si sta piazzando il famigliare più i rispettivi
+ * bonus relati al colore di una carte, rispetto al valore dell action space associato alla carta
  */
 public class DiceValueCardSpaceControl extends Control {
     private Integer diceValue = null;

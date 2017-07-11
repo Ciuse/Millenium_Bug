@@ -8,6 +8,10 @@ import it.polimi.ingsw.ps31.model.gameResource.Servant;
 
 /**
  * Created by Giuseppe on 24/06/2017.
+ *
+ *  Interprete dei comandi relativo alla scelta di quanti servitori si vogliono pagare
+ *
+ *  @see VCServantToPayChoice
  */
 public class IntrChoiceServantToPay implements CmdInterpreterView {
     @Override

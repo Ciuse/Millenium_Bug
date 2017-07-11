@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 24/05/2017.
+ *
+ * Controllo sulla passibilità di pagare una ResourceList specifica
  */
 public class PayResourceControl extends Control {
     private ResourceList resourceList = null;

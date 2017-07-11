@@ -5,6 +5,12 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 /**
  * Created by Francesco on 24/06/2017.
+ *
+ * Messaggio iniziale che parte dal Match contenente le informazioni per permettere alla view
+ * destinataria di crearsi in modo dinamico in base all id del player della view e al numero
+ * di giocatori presente in una partita
+ *
+ * @see NetworkingMessage
  */
 public class ViewMessage extends NetworkingMessage{
     private PlayerId playerId;

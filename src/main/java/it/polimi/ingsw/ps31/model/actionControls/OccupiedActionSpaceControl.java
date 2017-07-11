@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 24/05/2017.
+ *
+ * Controllo per verificare se un action space è già occupato o no
  */
 public class OccupiedActionSpaceControl extends Control {
     private ActionSpace actionSpace = null;

@@ -7,14 +7,19 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 /**
  * Created by giulia on 01/06/2017.
+ *
+ * Classe astratta del pattern Visitor (dei messaggi),per definire la struttura dei messaggi e a chi sono
+ * indirizzati e del sapere come accettarsi
+ *
  */
 public abstract class MVVisitable extends GenericMessage{
-    PlayerId notifySinglePlayer=null;
-    boolean notifyAll =false;
+    private PlayerId notifySinglePlayer=null;
+    private boolean notifyAll =false;
 
     public MVVisitable() {
-//        super(DeliverableMessageType.MV_VISITABLE);
     }
+
+    public abstract void accept(MVVisitor mvVisitor);
 
     public void setNotifySinglePlayer(PlayerId notifySinglePlayer) {
         this.notifySinglePlayer = notifySinglePlayer;
@@ -32,7 +37,6 @@ public abstract class MVVisitable extends GenericMessage{
         return notifyAll;
     }
 
-    public abstract void accept(MVVisitor mvVisitor);
 
     public final ConcreteEnvelope wrap()
     {

@@ -9,7 +9,6 @@ import it.polimi.ingsw.ps31.model.player.Player;
  * controllo lungo il corso del gioco potrà subire delle modifiche per mezzo di Bonus, Malus,
  * Carte Leader, o Effetti Permanenti di Carte Sviuppo.
  *
- *
  * @see it.polimi.ingsw.ps31.model.player.PlayerActionSet
  * @see Player
  */

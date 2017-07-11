@@ -6,6 +6,10 @@ import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
  * Created by Giuseppe on 18/06/2017.
+ *
+ *  Interprete dei comandi relativo alla scelta di quale azione si vuole eseguire
+ *
+ * @see VCPlayerAction
  */
 public class IntrChoicePlayerAction implements CmdInterpreterView {
     @Override

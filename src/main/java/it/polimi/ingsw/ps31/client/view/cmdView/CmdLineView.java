@@ -29,6 +29,18 @@ import static java.lang.Thread.sleep;
 
 /**
  * Created by Giuseppe on 07/06/2017.
+ *
+ * Interfaccia Command Line sviluppata attraverso l'utilizzo della libreria Lanterna (senza la parte di swing)
+ * é caratterizzata da uno screen di dimensioni statiche( risoluzione minina per giocarci 1366x768)
+ * La caratteristica di Lanterna è che è possibile dire dove stampare i vari comandi ricevuti e quindi in questo
+ * modo è possibile avere una command line di tipo statico, che avrà un impatto visivo molto simile ad una interfaccia
+ * grafica stilizzata.
+ * Inoltre è stata dotata di due aree di stampa dei messaggi: una dedicata a tutti i messaggi riguardanti il procedimento
+ * del gioco e una dedicata a tutti i messaggi di aggiornamento degli stati della view inerenti al gioco.
+ * La Command Line è stata dotata anche di un pattern state per gestire l interprete dei comandi, il quale saprà come interpretare
+ * ogni comando in base allo stato in cui si trova la view.
+ *
+ * @see CmdInterpreterView
  */
 public class CmdLineView extends View {
     private DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
@@ -39,7 +51,16 @@ public class CmdLineView extends View {
     private KeyStroke keyStroke1 = null;
     private KeyStroke keyStroke2 = null;
     private KeyStroke keyStroke3 = null;
+    /**
+     * Pattern state che rappresenta lo stato in cui si trova la command line, ogni messaggio quando arriva cambia lo stato
+     * della View in base alla scelta che poi la view dovrà analizzare.
+     */
     private CmdInterpreterView cmdInterpreterView = new IntrVisualization();
+    /**
+     * se durante una scelta si preme "H" la view settere il proprio stato di interpretazione a
+     * un comando speciale di visualizzazione di informazioni per poi tornare allo stato
+     * di interpretazione della domanda salvato in questa variabile;
+     */
     private CmdInterpreterView lastInterpreterView = null;
     private TerminalPosition consolePosition = new TerminalPosition(2, 31);
     private TerminalPosition consolePosition2 = new TerminalPosition(105, 31);
@@ -355,41 +376,20 @@ public class CmdLineView extends View {
     @Override
     public void askVisualizationCommand() {
         printVisualizationMenu();
-//        Thread t = new Thread() {
-//            public void run() {
 
         try {
             keyStroke3 = null;
             keyStroke3 = screen.readInput();
-//                    while(cmdInterpreterView.toString().equals("IntrVisualization")) {
-//                        try {
-//                            Thread.sleep(200);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                        if(keyStroke3 !=null && (keyStroke3.getKeyType() == KeyType.Escape || keyStroke3.getKeyType() == KeyType.EOF)){
-//                            break;
-//                        }
+
 
             if (keyStroke3 != null && keyStroke3.getKeyType() != KeyType.Escape && keyStroke3.getKeyType() != KeyType.EOF) {
                 terminal.flush();
                 cmdInterpreterView.notGameMessageInterpreter(CmdLineView.this, keyStroke3.getCharacter());
                 screen.refresh();
             }
-//                        keyStroke3 = screen.pollInput();
-//                    }
-//                    if(keyStroke3 != null){
-//                        screen.close();
-//                    }
         } catch (IOException e) {
             e.printStackTrace();
         }
-//            }
-//        };
-//        t.start();
-
-
     }
 
     public void printVisualizationMenu() {
@@ -421,14 +421,17 @@ public class CmdLineView extends View {
             e.printStackTrace();
         }
         if (keyStroke != null) {
-//            printLastEvent( "Input>: "+ keyStroke.getCharacter().toString());
             return keyStroke.getCharacter();
         }
-//        printLastEvent( "Input>: null");
         return null;
     }
 
 
+    /* Di seguito tutti i metodi per stampare ogni cosa nello screen di lanterna utilizzando i metodi per stampare caratteri/ stringe/ colori
+    * in deterinati spazi prestabiliti dello screen
+    * è sconsigliata la visione dei metodi seguenti poichè molto specifici per essere in grado di stampare ogni singolo oggetto del gioco in un modo
+    * diveso dall' altro e in un luogo diverso dall' altro scelto sia in modo dinamico (nel caso di oggetti simili a più player) sia in modo statico
+    * */
     @Override
     public void printLastEvent(String string) {
         if (string != null) {
@@ -502,7 +505,6 @@ public class CmdLineView extends View {
             for (StateViewTowerCardBox stateViewTowerCardBox : tower.getStateViewTowerCardBox()
                     ) {
                 printTowerCardBox(stateViewTowerCardBox);
-//                    printTowerActionSpace(i);
                 i++;
             }
         }
@@ -1430,53 +1432,12 @@ public class CmdLineView extends View {
         return characterInBackBuffer;
     }
 
-
-    public KeyStroke getKeyStroke1() {
-        return keyStroke1;
-    }
-
-    public KeyStroke getKeyStroke2() {
-        return keyStroke2;
-    }
-
-    public Screen getScreen() {
-        return screen;
-    }
-
-    public TextGraphics getTextGraphics() {
-        return textGraphics;
-    }
-
-    public CmdInterpreterView getCmdInterpreterView() {
-        return cmdInterpreterView;
-    }
-
-    public Terminal getTerminal() {
-        return terminal;
-    }
-
     public void setLastInterpreterView(CmdInterpreterView lastInterpreterView) {
         this.lastInterpreterView = lastInterpreterView;
     }
 
     public CmdInterpreterView getLastInterpreterView() {
         return lastInterpreterView;
-    }
-
-    public String getLastAsk() {
-        return lastAsk;
-    }
-
-    public void setLastAsk(String lastAsk) {
-        this.lastAsk = lastAsk;
-    }
-
-    public void setKeyStroke1(KeyStroke keyStroke1) {
-        this.keyStroke1 = keyStroke1;
-    }
-
-    public void setKeyStroke2(KeyStroke keyStroke2) {
-        this.keyStroke2 = keyStroke2;
     }
 
 }

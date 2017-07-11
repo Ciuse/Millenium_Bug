@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps31.model.card;
 
 
 import it.polimi.ingsw.ps31.model.constants.CardColor;
-import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.stateModel.StateAllDevelopmentCard;
 import it.polimi.ingsw.ps31.model.stateModel.StateDevelopmentCard;
 

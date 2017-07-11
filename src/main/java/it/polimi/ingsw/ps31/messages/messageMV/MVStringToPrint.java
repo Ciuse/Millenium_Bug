@@ -4,9 +4,10 @@ import it.polimi.ingsw.ps31.model.constants.PlayerId;
 
 /**
  * Created by Giuseppe on 12/06/2017.
+ * Messaggio ceh parte dal model e diretto alla view contenente una stringa
  */
 public class MVStringToPrint extends MVVisitable {
-    String stringToPrint;
+    private String stringToPrint;
 
     public MVStringToPrint(PlayerId playerToNotify, boolean notifyAll,String stringToPrint) {
         this.stringToPrint = stringToPrint;

@@ -5,6 +5,9 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 24/05/2017.
+ *
+ * Controllo del valore del dado con cui si sta piazzando il famigliare rispetto
+ * al valore del dado dell'action space
  */
 public class DiceValueActionSpaceControl extends Control {
     private Integer diceValue = null;
