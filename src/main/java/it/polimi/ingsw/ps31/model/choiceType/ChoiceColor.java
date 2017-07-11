@@ -6,6 +6,10 @@ import java.util.List;
 
 /**
  * Created by giulia on 20/06/2017.
+ *
+ * Scelta su quale colore scegliere tra quelli rimanenti nella lista di colori
+ *
+ * @see it.polimi.ingsw.ps31.client.view.View
  */
 public class ChoiceColor extends ChoiceType {
     private List<PlayerColor> playerColorList;

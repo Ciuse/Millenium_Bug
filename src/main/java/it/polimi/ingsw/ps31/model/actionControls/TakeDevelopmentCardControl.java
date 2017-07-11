@@ -44,7 +44,6 @@ public class TakeDevelopmentCardControl extends Control {
         //Controllo che i parametri siano settati
         if( this.developmentCard == null )
         {
-            //todo eccezione
             return false;
         }
 

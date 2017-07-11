@@ -53,23 +53,17 @@ public class DiceValueCardSpaceControl extends Control {
 
     /* Class Methods */
     @Override
-    public boolean execute()
-    {
+    public boolean execute() {
         boolean result;
 
         //Controllo che i parametri siano settati
-        if ( this.diceValue == null || this.towerCardSpace == null )
-        {
-            //TODO: gestire
-            result = false; //Altrimenti non compila
-        } else
-        {
-            //Controllo che il valore dell azione più i vari bonus sia maggiore al costro del dado dell action space associato al tower card space
-            if ( diceValue+cardDiceBonuses.get(towerCardSpace.getTowerColor())>=towerCardSpace.getActionSpace().getDiceCost())
-                result = true;
-            else
-                result = false;
-        }
+
+        //Controllo che il valore dell azione più i vari bonus sia maggiore al costro del dado dell action space associato al tower card space
+        if (diceValue + cardDiceBonuses.get(towerCardSpace.getTowerColor()) >= towerCardSpace.getActionSpace().getDiceCost())
+            result = true;
+        else
+            result = false;
+
 
         resetDiceValue();
         resetTowerCardSpace();

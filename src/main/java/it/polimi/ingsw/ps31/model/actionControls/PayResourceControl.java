@@ -39,7 +39,6 @@ public class PayResourceControl extends Control {
     public boolean execute() {
         if(this.resourceList == null)
         {
-            //TODO: gestire
             return false;
         }
 

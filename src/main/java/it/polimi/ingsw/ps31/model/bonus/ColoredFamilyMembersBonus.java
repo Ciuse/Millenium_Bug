@@ -6,10 +6,16 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by giulia on 16/06/2017.
+ *
+ * Bonus (e Malus) che va ad alterare il valore di TUTTI i family member colorati del giocatore
+ *
+ * @see FamilyMember
  */
 public class ColoredFamilyMembersBonus extends Bonus {
-    private final int bonus; //riduzione del valore dei familiari colorati quando li piazzo su uno spazio azione(scomunica (-1)) ma anche leader
-                                //lucrezia borgia ,che da +2 sul valore dei familiari colorati
+    /**
+     * Valore (positivo o negativo) del valore da aggiungere al famigliare
+     */
+    private final int bonus;
 
     public ColoredFamilyMembersBonus(int bonus) {
         super();

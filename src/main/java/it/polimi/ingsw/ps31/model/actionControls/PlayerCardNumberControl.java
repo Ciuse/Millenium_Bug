@@ -36,7 +36,6 @@ public class PlayerCardNumberControl extends Control {
     public boolean execute() {
         if (this.cardColor == null)
         {
-            //TODO: gestire
             return false;
         }
 

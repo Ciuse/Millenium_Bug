@@ -12,6 +12,9 @@ import java.util.List;
 
 /**
  * Created by Francesco on 12/05/2017.
+ *
+ * Classe che rappresenta una torre.
+ * Avrà una lista di spazi per le carte, e un deck di carte associata da cui pescerà le carte
  */
 public class Tower {
 
@@ -62,6 +65,11 @@ public class Tower {
         return model;
     }
 
+    /**
+     * metodo per settare il deck alla torre
+     * @param deckList Lista di deck tra cui prendere quello giusto
+     * @param period Periodo in cui si trova il gioco
+     */
     public void setDeck(List<DevelopmentCardDeck> deckList, int period) {
         for(int i=0; i<deckList.size();i++){
             if(deckList.get(i).getPeriod()==period&&deckList.get(i).getColor().equals(this.color))
@@ -69,6 +77,9 @@ public class Tower {
         }
     }
 
+    /**
+     * metodo per pescare le carte dal deck
+     */
     public void drawCardFromDeck(){
         for(int cardSpaceNum=0;cardSpaceNum<TOWERDIMENSION;cardSpaceNum++) {
             towerCardSpaceList.get(cardSpaceNum).setCard(deck.draw());

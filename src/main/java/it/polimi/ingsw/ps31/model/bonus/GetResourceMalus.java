@@ -5,6 +5,12 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by giulia on 16/06/2017.
+ *
+ * Malus che ti fa ottenere meno risorse ogni volta che si ottengono risorse del tipo indicato nell'effetto
+ * L' effetto può avere una o due risorse a cui applciare il malus (in caso ce ne siano due viene richiesto
+ * al giocatore quale delle due risorse non vuole ottenere
+ *
+ * @see it.polimi.ingsw.ps31.model.actions.ActionGetTempResourcesFromAllEffect
  */
 public class GetResourceMalus extends Bonus{
     private final ResourceList resourceToSub1;

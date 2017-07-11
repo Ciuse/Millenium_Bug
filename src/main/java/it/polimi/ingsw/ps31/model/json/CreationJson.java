@@ -1643,7 +1643,7 @@ public class CreationJson {
         }
 
         return new DevelopmentCardList(cardList);
-    }           //TODO FINIRE DI SCRIVERE LE CARTE
+    }
     private List<LeaderCard> createLeaderCardList() {
         List<LeaderCard> leaderCardList = new ArrayList<>();
 

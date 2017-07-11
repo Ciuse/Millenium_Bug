@@ -9,6 +9,11 @@ import static java.lang.String.valueOf;
 
 /**
  * Created by giulia on 26/06/2017.
+ * classe che rappresenta il JPanel della bottom board(Market , actionSpace production/harvest and dices)
+ *  @see ActionListener
+ *   @see MarketActionSpacePanel
+ *    @see ActionSpaceBoardButton
+ *     @see DicesPanel
  */
 public class BottomBoardPanel extends JPanel implements ActionListener  {
     private ActionListener listener;
@@ -17,16 +22,26 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
     private DicesPanel dicesPanel;
 
 
+
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
+
+    /* Constructor */
     public BottomBoardPanel() {
         addComponentsToPane(this);
 
     }
+
+
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
-        //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0, 0, 0, 0, 0,0,0};
         gbl.rowHeights = new int[]{0, 0, 0, 0,0,0,0};
@@ -46,9 +61,7 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
         gbc.fill = GridBagConstraints.BOTH;
         actionSpaceBoardButtons[2].setName(valueOf(4));
         actionSpaceBoardButtons[2].setPreferredSize(new Dimension(10,10));
-//        actionSpaceBoardButtons[0].setOpaque(false);
         actionSpaceBoardButtons[2].setContentAreaFilled(false);
-        //actionSpaceBoardButtons[0].setBackground(Color.green);
         actionSpaceBoardButtons[2].addActionListener(this);
         pane.add(actionSpaceBoardButtons[2],gbc);
 
@@ -62,8 +75,6 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
         actionSpaceBoardButtons[0].setName(valueOf(2));
         actionSpaceBoardButtons[0].setContentAreaFilled(false);
         actionSpaceBoardButtons[0].setPreferredSize(new Dimension(10,10));
-//        actionSpaceBoardButtons[1].setOpaque(false);
-        //actionSpaceBoardButtons[1].setBackground(Color.green);
         actionSpaceBoardButtons[0].addActionListener(this);
         pane.add(actionSpaceBoardButtons[0],gbc);
 
@@ -77,8 +88,6 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
         actionSpaceBoardButtons[3].setName(valueOf(5));
         actionSpaceBoardButtons[3].setContentAreaFilled(false);
         actionSpaceBoardButtons[3].setPreferredSize(new Dimension(10,10));
-//        actionSpaceBoardButtons[2].setOpaque(false);
-        //actionSpaceBoardButtons[2].setBackground(Color.RED);
         actionSpaceBoardButtons[3].addActionListener(this);
         pane.add(actionSpaceBoardButtons[3],gbc);
 
@@ -93,7 +102,6 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
         actionSpaceBoardButtons[1].setContentAreaFilled(false);
         actionSpaceBoardButtons[1].setPreferredSize(new Dimension(10,10));
         actionSpaceBoardButtons[1].setOpaque(false);
-        //actionSpaceBoardButtons[3].setBackground(Color.RED);
         actionSpaceBoardButtons[1].addActionListener(this);
         pane.add(actionSpaceBoardButtons[1],gbc);
 
@@ -105,7 +113,6 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
         gbc.fill = GridBagConstraints.BOTH;
         marketActionSpacePanel.setPreferredSize(new Dimension(10,10));
         marketActionSpacePanel.setOpaque(false);
-        //marketActionSpacePanel.setBackground(Color.pink);
         marketActionSpacePanel.attach(this);
         pane.add(marketActionSpacePanel,gbc);
 
@@ -117,7 +124,6 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
         gbc.fill = GridBagConstraints.BOTH;
         dicesPanel.setPreferredSize(new Dimension(10,10));
         dicesPanel.setOpaque(false);
-        //dicesPanel.setBackground(Color.black);
         dicesPanel.attach(this);
         pane.add(dicesPanel,gbc);
 
@@ -136,15 +142,21 @@ public class BottomBoardPanel extends JPanel implements ActionListener  {
     }
 
 
+    /**
+     * metodo che mi permette di disabilitare i bottoni che rappresentano i big action space (production/harvest)
+     * se si sta giocando solo in due giocatori
+     */
     public void disableBigActionSpace(){
         actionSpaceBoardButtons[1].setEnabled(false);
-        actionSpaceBoardButtons[1].imageToReprint("/coveringtile_2_back_.png");
+        actionSpaceBoardButtons[1].imageToReprint("/coveringtile_3_back_.png");
         actionSpaceBoardButtons[3].setEnabled(false);
         actionSpaceBoardButtons[3].imageToReprint("/coveringtile_2_back_.png");
 
     }
 
-
+    /**
+     * metodo che mi permette di cambiare lo stato di un bottone da abilitato a non cliccabile
+     */
     public void changeButtonBoardState(boolean state){
         actionSpaceBoardButtons[0].setEnabled(state);
         actionSpaceBoardButtons[1].setEnabled(state);

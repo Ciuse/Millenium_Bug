@@ -10,6 +10,16 @@ import it.polimi.ingsw.ps31.model.stateModel.StateLeaderCard;
 
 /**
  * Created by Giuseppe on 22/05/2017.
+ *
+ * Cara Leader
+ *
+ * I leader sono dotati di una lista di costi risorse, una lista di costi carte, due effetti, e 3 flag per sapere
+ * se sono stati giocati, e se i loro effetti sono stati attivati o no.
+ *
+ * @see it.polimi.ingsw.ps31.model.actionControls.LeaderCardRequirementControl
+ * @see it.polimi.ingsw.ps31.model.effect.EffectList
+ * @see ResourceList
+ * @see ActiveEffect
  */
 public class LeaderCard extends Card implements ActiveEffect {
     private PlayerId playerId;
@@ -32,13 +42,6 @@ public class LeaderCard extends Card implements ActiveEffect {
         this.abilityOneTimeForTurn = abilityOneTimeForTurn;
         this.permanentAbility = permanentAbility;
     }
-//
-//    public List<Object> getRequirements(){          //ritorna una lista di due oggetti diversi (poi andranno castati in appositi oggetti del loro tipo)
-//        List<Object> requirementsList = new ArrayList<>();
-//        requirementsList.add(this.resourceRequest);
-//        requirementsList.add(this.developmentCardRequest);
-//        return requirementsList;
-//    }
 
     public ResourceList getResourceRequest()
     {

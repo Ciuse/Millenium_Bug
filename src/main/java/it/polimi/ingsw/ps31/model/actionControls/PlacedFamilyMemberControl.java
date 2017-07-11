@@ -39,7 +39,6 @@ public class PlacedFamilyMemberControl extends Control {
     public boolean execute() {
         if ( this.familyMember == null )
         {
-            //TODO: gestire
             return false;
         }
 

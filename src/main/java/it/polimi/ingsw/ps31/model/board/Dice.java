@@ -4,6 +4,8 @@ import it.polimi.ingsw.ps31.model.constants.DiceColor;
 
 /**
  * Created by Francesco on 15/05/2017.
+ *
+ * Classe che rapprenseta un dado con un valore e un colore
  */
 public class Dice {
 

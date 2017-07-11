@@ -27,7 +27,7 @@ public class AskStartPlayerColor extends JFrame implements ActionListener {
 
     public void startFrame() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setUndecorated(true);
+//        frame.setUndecorated(true);
         frame.getContentPane().setBackground(new Color(176, 228, 234));
         frame.setSize(screenSize.width / (6), screenSize.height / 7);
         frame.setResizable(false);

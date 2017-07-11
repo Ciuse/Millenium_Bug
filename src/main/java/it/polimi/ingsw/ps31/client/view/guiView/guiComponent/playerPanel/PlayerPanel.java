@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.ExcommunicationPlayerPanel;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,6 +19,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
     private ExtraCardPanel extraCardPanel;
     private LeaderCardPanel jLeaderCardPanel;
     private FamilyMemberPanel jFamilyMemberPanel;
+    private ExcommunicationPlayerPanel jExcommunication;
 
 
     public PlayerPanel(GuiView guiView) {
@@ -31,7 +34,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         gbl.rowHeights = new int[]{0, 0, 0, 0, 0};
 
         gbl.columnWeights = new double[]{0.06, 0.44, 0.25, 0.115, 0.13, 0.00999, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.00999, 0.39, 0.41, 0.19, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.00999, 0.39, 0.40, 0.20, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -103,13 +106,20 @@ public class PlayerPanel extends JPanel implements ActionListener {
         pane.add(jFamilyMemberPanel, gbc);
         jFamilyMemberPanel.attach(this);
 
+        jExcommunication = new ExcommunicationPlayerPanel(guiView);
 
-
-
+        gbc.gridx = 3;
+        gbc.gridy = 3;
+        gbc.gridheight = 1;
+        gbc.gridwidth = 2;
+        gbc.fill = GridBagConstraints.BOTH;
+//        jExcommunication.setBackground(Color.red);
+        jExcommunication.setOpaque(false);
+        jExcommunication.setPreferredSize(new Dimension(10, 10));
+        pane.add(jExcommunication, gbc);
+        jExcommunication.attach(this);
 
     }
-
-
 
     public PersonalBonusTilesPanel getjPersonalBonusTilesPanel() {
         return jPersonalBonusTilesPanel;
@@ -125,6 +135,10 @@ public class PlayerPanel extends JPanel implements ActionListener {
 
     public LeaderCardPanel getjLeaderCardPanel() {
         return jLeaderCardPanel;
+    }
+
+    public ExcommunicationPlayerPanel getjExcommunication() {
+        return jExcommunication;
     }
 
     public FamilyMemberPanel getjFamilyMemberPanel() {

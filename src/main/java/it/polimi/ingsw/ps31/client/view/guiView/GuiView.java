@@ -4,14 +4,13 @@ import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.*;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.MainFrame;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewActionSpace;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
 import it.polimi.ingsw.ps31.messages.messageVC.*;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
-import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -196,7 +195,7 @@ public class GuiView extends View implements ActionListener {
         if (!firstTime) {
             string = string.toUpperCase();
             mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString(string);
-            mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("-----------------------------------------------------------------------------------------------------------------------------------------------------");
+            mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getQuestionsToPlayerPanel().getAskActionPanel().setString("-------------------------------------------------------------------------------------------------------------------------------------------------------");
 
         }
     }
@@ -228,7 +227,7 @@ public class GuiView extends View implements ActionListener {
     @Override
     public void printExcommunications() {
         mainFrame.getBackgroundMainFramePanel().getGameBoardPanel().getTopBoardPanel().getCouncilPanel().getExcommunicationPanel().printExcommunication(getStateViewGame().getStateViewExcommunicationList());
-        mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getOtherChosenPlayerPanel().getExcommunicationPlayerPanel().fillExcomm(getMyStateViewPlayer().getStateViewExcommunicationList());
+        mainFrame.getBackgroundMainFramePanel().getPlayerPanel().getjExcommunication().fillExcomm(getMyStateViewPlayer().getStateViewExcommunicationList());
     }
 
     @Override
@@ -246,7 +245,15 @@ public class GuiView extends View implements ActionListener {
 
     @Override
     public void printAllPersonalBoard() {
-
+        if(!firstTime) {
+            int i = 0;
+            for (StateViewPersonalBoard stateViewPersonalBoard : super.getStateViewPersonalBoardList()
+                    ) {
+                if (!super.getStateViewGame().getPlayerIdInAction().equals(stateViewPersonalBoard.getPlayerId())) {
+                    mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getOtherChosenPlayerPanel().getOtherPlayersPanel().fillOtherPlayers(stateViewPersonalBoard);
+                }
+            }
+        }
     }
 
     public void printMyPhysicalResource() {

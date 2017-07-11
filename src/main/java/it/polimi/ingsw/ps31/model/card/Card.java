@@ -2,6 +2,8 @@ package it.polimi.ingsw.ps31.model.card;
 
 /**
  * Created by Giuseppe on 09/05/2017.
+ *
+ * Classe astratta che rappresenta una generica carta la quale ha un nome
  */
 public abstract class Card {
     private final String name;

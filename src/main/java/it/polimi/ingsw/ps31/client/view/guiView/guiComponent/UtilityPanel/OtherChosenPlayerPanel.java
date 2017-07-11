@@ -16,8 +16,7 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
     private GuiView guiView;
     private ActionListener listener;
     private ButtonCard otherBoard;
-    private ButtonCard playerExcomm;
-    private ExcommunicationPlayerPanel excommunicationPlayerPanel;
+    private OtherPlayersPanel otherPlayersPanel;
 
 
     public void attach (ActionListener listener){
@@ -34,11 +33,11 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
 
 
         GridBagLayout gbl = new GridBagLayout();
-        gbl.columnWidths = new int[]{0,0,0,0,0,0,0,0};
+        gbl.columnWidths = new int[]{0,0,0,0};
         gbl.rowHeights = new int[]{0,0,0,0};
 
-        gbl.columnWeights = new double[]{0.08,0.28,0.02,0.28,0.02,0.28,0.04, Double.MIN_VALUE};
-        gbl.rowWeights = new double[]{0.35,0.2999,0.35, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.35,0.30,0.35, Double.MIN_VALUE};
+        gbl.rowWeights = new double[]{0.15,0.7499,0.10, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
 
@@ -52,58 +51,42 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         otherBoard.setName("Other player board");
-        otherBoard.setEnabled(false);
+//        otherBoard.setContentAreaFilled(false);
+        otherBoard.setOpaque(false);
+        otherBoard.setEnabled(true);
+        otherBoard.imageToReprint("/button/buttonOtherPlayer.png");
         otherBoard.setPreferredSize(new Dimension(10, 10));
         pane.add(otherBoard, gbc);
         otherBoard.addActionListener(this);
 
-        playerExcomm = new ButtonCard("Stato tue scomuniche");
-        gbc.gridx = 3;
-        gbc.gridy = 1;
-        gbc.gridheight = 1;
-        gbc.gridwidth = 1;
-        playerExcomm.setEnabled(true);
-        gbc.fill = GridBagConstraints.BOTH;
-        playerExcomm.setName("Your excommunications");
-        playerExcomm.setPreferredSize(new Dimension(10, 10));
-        pane.add(playerExcomm, gbc);
-        playerExcomm.addActionListener(this);
+        otherPlayersPanel = new OtherPlayersPanel(guiView);
+        otherPlayersPanel.imageToReprint("/background2.jpg");
 
-        excommunicationPlayerPanel=new ExcommunicationPlayerPanel(guiView);
-
-    }
-
-    public ExcommunicationPlayerPanel getExcommunicationPlayerPanel() {
-        return excommunicationPlayerPanel;
     }
 
     public ButtonCard getOtherBoard() {
         return otherBoard;
     }
 
-    public ButtonCard getPlayerExcomm() {
-        return playerExcomm;
+    public OtherPlayersPanel getOtherPlayersPanel() {
+        return otherPlayersPanel;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         ButtonCard buttonCard = (ButtonCard) e.getSource();
         String nameButton = buttonCard.getName();
         if (nameButton.equals("Other player board")) {
-
-        }
-
-        if (nameButton.equals("Your excommunications")) {
-            JFrame frame = new JFrame(nameButton);
+            JFrame otherPlayersFrame = new JFrame();
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-            frame.setLocation((int) screenSize.getHeight() /2 +300, (int) screenSize.getWidth() / 6);
-            frame.setAlwaysOnTop(true);
-            frame.setSize(screenSize.width / 4, screenSize.height / 5);
-            frame.setVisible(true);
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            Container c = frame.getContentPane();
-            excommunicationPlayerPanel.setBackground(Color.black);
-            excommunicationPlayerPanel.setFather(frame);
-            c.add(excommunicationPlayerPanel);
+            otherPlayersFrame.setLocation(25,50);
+            otherPlayersFrame.setAlwaysOnTop(true);
+            otherPlayersFrame.setSize(screenSize.width-60, (screenSize.height/2)-50);
+            otherPlayersFrame.setVisible(true);
+            otherPlayersFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            Container c = otherPlayersFrame.getContentPane();
+            otherPlayersPanel.setFather(otherPlayersFrame);
+            c.add(otherPlayersPanel);
         }
     }
 

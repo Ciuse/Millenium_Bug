@@ -46,10 +46,7 @@ public class DiceValueActionSpaceControl extends Control {
     /* Class Methods */
     @Override
     public boolean execute() {
-        if (this.diceValue == null || this.diceColor == null) {
-            //TODO: gestire
-            return false;
-        }
+
         boolean ret = player.getSpecificFamilyMember(diceColor).getTotalValue() >= this.diceValue;
         resetDiceColor();
         resetDiceValue();

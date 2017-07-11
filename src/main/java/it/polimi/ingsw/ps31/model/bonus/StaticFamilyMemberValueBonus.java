@@ -7,9 +7,11 @@ import java.util.List;
 
 /**
  * Created by Francesco on 19/06/2017.
+ *
+ * Bonus che setta il valore dei famigliari colorati a un valore standard, indipendentemente da quale sia il valore del dado associato
  */
 public class StaticFamilyMemberValueBonus extends Bonus {
-    private final int modifyValueColoredFamilyMember;//(carta leader Ludovico il Moro)i familiari colorati assumeranno un nuovo valore indipendentemente dal valore dei dadi
+    private final int modifyValueColoredFamilyMember;
     private List<DiceColor> membersToModify;
 
     /* Constructor */

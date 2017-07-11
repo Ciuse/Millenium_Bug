@@ -7,6 +7,10 @@ import java.util.List;
 
 /**
  * Created by Giuseppe on 13/05/2017.
+ *
+ * Classe che rappresenta un deck di un periodo dotato di 8 carte un colore e appunto un periodo
+ *
+ * @see DevelopmentCardList
  */
 public class DevelopmentCardDeck {
     private final CardColor cardColor;

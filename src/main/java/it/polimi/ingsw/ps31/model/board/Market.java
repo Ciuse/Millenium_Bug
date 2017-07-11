@@ -7,25 +7,22 @@ import java.util.List;
 
 /**
  * Created by Francesco on 12/05/2017.
+ *
+ * Classe che raccoglie tutti gli action space della zone del mercato
  */
 public class Market {
 
     private List<ActionSpace> actionSpaceList = new ArrayList<>();
     private int numberOfActionSpace=0;
 
-    public Market()
-    {
-        //Aggiungo i primi due activate box del mercato (che sono sempre disponibili)           io gli metterei nel main della creazione del gioco e lascerei questo costruttore vuoto
-        //this.actionSpaceList.add(new ActionSpace(1, 1, null));    //TODO: specificare effetto immediato
-        //this.actionSpaceList.add(new ActionSpace(1, 1, null));    //TODO: specificare effetto immediato
-        //TODO: creazione degli altri spazi in base al numero di giocatori
+    public Market(){
     }
 
     public Market(List<ActionSpace> actionSpaceList){   //lo creo già con tutta la lista pronta e setto il numero degli spazi in base a quanto era grande la lista
         this.actionSpaceList = actionSpaceList;
         numberOfActionSpace=actionSpaceList.size();
     }
-    public void add2PlayerMarketSpace(EffectList effectList1, EffectList effectList2){     // TODO fare tutto ciò nella creazione del file aggiunge i primi 2 spazi del mercato
+    public void add2PlayerMarketSpace(EffectList effectList1, EffectList effectList2){
         if(numberOfActionSpace==0) {
 
             this.actionSpaceList.add(numberOfActionSpace,new ActionSpace(1, 1, effectList1 ));

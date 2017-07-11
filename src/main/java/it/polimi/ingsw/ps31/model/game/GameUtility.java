@@ -226,6 +226,12 @@ public class GameUtility {
         resetPlayerAction();            //riattivo le azioni che i player hanno usato il turno prima
         setPlayerInAction(player);
         player.setWannaEndTurn(false);
+        for (PlayerId playerIdDisc: match.getDisconnectedPlayers()
+             ) {
+            if(playerIdDisc.equals(player.getPlayerId())){
+                player.setWannaEndTurn(true);
+            }
+        }
         String string1 = player.getNickname() + ": INIZIO FASE AZIONE";
         model.notifyViews(new MVStringToPrint(null, true, string1));
         String string2 = player.getPlayerId().toString() + ": Aggiornato Stato Azioni";
@@ -278,7 +284,7 @@ public class GameUtility {
      * Fase cnclusiva delle azioni, può essere invocata dallo scadere del timer o dalla decisione del player di finire il turno
      * @param player
      */
-    public void endActionTurn(Player player) {//TODO IMPLEMENTARLO
+    public void endActionTurn(Player player) {
 
         String string1 = player.getNickname() + ": FINE FASE AZIONE";
         model.notifyViews(new MVStringToPrint(null, true, string1));

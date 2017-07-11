@@ -250,7 +250,7 @@ public abstract class View extends Observable implements Observer {
                 viewPlayer.updateState(statePlayerAction);
         }
         if (firstTime) {
-            setFirstTime(false);        //TODO PROBABILMENTE é DA SPOSTATE ( CMQ LE AZIONI PER ORA DEVONO ESSERE STAMPATE PER ULTIME)
+            setFirstTime(false);
             printTower();
             printPlayerInAction();
             printPersonalBoardInAction();

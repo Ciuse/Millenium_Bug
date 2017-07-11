@@ -26,18 +26,16 @@ public class ActionPayResources extends Action {
 
     @Override
     public void activate() {
-        if (this.resourceToPay == null) {
-            //TODO: fare cose
-        } else {
+
 //            //Eseguo il controllo
-            if ( super.actionControlSet.payResourceControl(this.resourceToPay) ) {
+        if (super.actionControlSet.payResourceControl(this.resourceToPay)) {
 //           //Eseguo l'azione
-                for (Resource currentResource : resourceToPay.getListOfResource())
-                    player.subResources(currentResource);
+            for (Resource currentResource : resourceToPay.getListOfResource())
+                player.subResources(currentResource);
 
-            }
+        }
 
-            resetResourceToPay();
+        resetResourceToPay();
 //            } else
 //            {
 //                player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getPayResourceControl().getControlStringError()));
@@ -46,6 +44,6 @@ public class ActionPayResources extends Action {
 //            resetResourceToPay();
 //            player.getModel().notifyViews(new MVUpdateState("Aggiornato stato player resource",player.getStatePlayerResources()));
 //        }
-        }
     }
+
 }

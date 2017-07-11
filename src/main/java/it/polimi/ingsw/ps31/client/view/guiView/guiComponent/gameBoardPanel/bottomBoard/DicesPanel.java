@@ -8,87 +8,98 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
 import java.util.List;
-
-import static java.lang.String.valueOf;
 
 /**
  * Created by giulia on 01/07/2017.
+ * * classe che rappresenta il pannello contenente a sua volta tre pannelli per i dadi a cui viene caricato uno sfondo
+ * diverso
+ * a seconda del numero uscito con il tiro del dado
+ *  @see ActionListener
+ *   @see PaintBackgroundPanel
+ *
  */
 public class DicesPanel extends JPanel implements ActionListener {
     private ActionListener listener;
-    private PaintBackgroundPanel[] diceLabel = new PaintBackgroundPanel[3];
+    private PaintBackgroundPanel[] dice = new PaintBackgroundPanel[3];
 
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
+    /* Constructor */
     public DicesPanel() {
         addComponentsToPane(this);
     }
 
+
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio dei 3 dadi
+     */
     public void addComponentsToPane(Container pane) {
-        //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0,0, 0, 0, 0, 0, 0, 0};
         gbl.rowHeights = new int[]{0, 0, 0};
 
-        gbl.columnWeights = new double[]{0.03,0.18, 0.06, 0.17, 0.06, 0.18, 0.23, Double.MIN_VALUE};
+        gbl.columnWeights = new double[]{0.03,0.17, 0.06, 0.17, 0.06, 0.17, 0.25, Double.MIN_VALUE};
         gbl.rowWeights = new double[]{0.91999,0.08, Double.MIN_VALUE};
         pane.setLayout(gbl);
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        diceLabel[0] = new PaintBackgroundPanel();
+        dice[0] = new PaintBackgroundPanel();
         gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        diceLabel[0].setName(DiceColor.BLACK.name());
-//        diceLabel[0].setOpaque(false);
-        diceLabel[0].setBackground(Color.black);
-        pane.add(diceLabel[0], gbc);
+        dice[0].setName(DiceColor.BLACK.name());
+        dice[0].setOpaque(false);
+        pane.add(dice[0], gbc);
 
-        diceLabel[1] = new PaintBackgroundPanel();
+        dice[1] = new PaintBackgroundPanel();
         gbc.gridx = 3;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        diceLabel[1].setName(DiceColor.WHITE.name());
-//        diceLabel[1].setOpaque(false);
-        diceLabel[1].setBackground(Color.white);
-        pane.add(diceLabel[1], gbc);
+        dice[1].setName(DiceColor.WHITE.name());
+        dice[1].setOpaque(false);
+        pane.add(dice[1], gbc);
 
-        diceLabel[2] = new PaintBackgroundPanel();
+        dice[2] = new PaintBackgroundPanel();
         gbc.gridx = 5;
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        diceLabel[2].setName(DiceColor.ORANGE.name());
-//        diceLabel[2].setOpaque(false);
-        diceLabel[2].setBackground(Color.orange);
-        pane.add(diceLabel[2], gbc);
+        dice[2].setName(DiceColor.ORANGE.name());
+        dice[2].setOpaque(false);
+        pane.add(dice[2], gbc);
     }
 
 
-
+    /**
+     * Metodo che mi permette di stampare il dado ogni volta che il suo valore cambia cioè ogni volta che viene tirato
+     */
     public void printDice(List<StateViewFamilyMember> stateViewFamilyMemberList){
         for(int i=0;i<3;i++){
             for (StateViewFamilyMember stateViewFamilyMember : stateViewFamilyMemberList
                     ) {
-                if(stateViewFamilyMember.getDiceColor().name().equals(diceLabel[i].getName())){
-                    diceLabel[i].setOpaque(true);
-                    diceLabel[i].imageToReprint("/dices/dice_"+diceLabel[i].getName()+"_"+stateViewFamilyMember.getDiceValue()+".png");
+                if(stateViewFamilyMember.getDiceColor().name().equals(dice[i].getName())){
+                    dice[i].setOpaque(false);
+                    dice[i].imageToReprint("/dices/dice_"+ dice[i].getName()+"_"+stateViewFamilyMember.getDiceValue()+".png");
                 }
             }
         }
     }
 
-
+    /**
+     * Metodo che mi permette di sostituire un Color con un diceColor
+     */
     public DiceColor getDiceColor(Color color){
         if(color==Color.BLACK){
             return DiceColor.BLACK;
