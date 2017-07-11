@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
  * rappresenta la classe che riempie tutto il main frame
  * estende la PaintBackGrounPanel 
  */
-public class BackGroundMainFramePanel extends PaintBackGroundPanel implements ActionListener{
+public class BackroundMainFramePanel extends PaintBackGroundPanel implements ActionListener{
     private GameBoardPanel gameBoardPanel;
     private PlayerPanel playerPanel;
     private UtilityPanel utilityPanel;
@@ -25,7 +25,7 @@ public class BackGroundMainFramePanel extends PaintBackGroundPanel implements Ac
         super.paintComponent(g);
     }
 
-    public BackGroundMainFramePanel(GuiView guiView) {
+    public BackroundMainFramePanel(GuiView guiView) {
         this.guiView=guiView;
         addComponentsToPane(this);
     }
