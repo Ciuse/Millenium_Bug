@@ -9,21 +9,31 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by giulia on 27/06/2017.
+ * rappresenta la classe che mi contiene il pannello che a sua volta contiene il ButtonFamilyMemberpanel(contiene i 4 bottoni
+ * dei family member di ciascun giocatore)
  */
 public class FamilyMemberPanel extends JPanel implements ActionListener {
     private ActionListener listener;
     private GuiView guiView;
     private ButtonsFamilyMemberPanel buttonsFamilyMemberPanel;
 
-    public void attach(ActionListener listener) {
-        this.listener = listener;
-    }
-
+    /* Constructor */
     public FamilyMemberPanel(GuiView guiView) {
         this.guiView = guiView;
         addComponentsToPane(this);
     }
 
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
+    public void attach(ActionListener listener) {
+        this.listener = listener;
+    }
+
+
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
@@ -42,8 +52,7 @@ public class FamilyMemberPanel extends JPanel implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //buttonsFamilyMemberPanel.setOpaque(false);
-        //buttonsFamilyMemberPanel.setBackground(Color.green);
+        buttonsFamilyMemberPanel.setOpaque(false);
         pane.add(buttonsFamilyMemberPanel,gbc);
 
     }

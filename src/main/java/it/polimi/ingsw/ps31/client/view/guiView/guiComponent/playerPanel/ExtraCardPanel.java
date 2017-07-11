@@ -10,6 +10,10 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by giulia on 30/06/2017.
+ * rappresenta il pannello presente nel player panel contenente il bottone delle carte blu e delle carte viola che una volta
+ * cliccato mi apre un frame contenente le mie carte di quel colore
+ * @see DevelopmentCardsOpenedPanel
+ * @see ButtonCard
  */
 public class ExtraCardPanel extends JPanel implements ActionListener {
     private ActionListener listener;
@@ -19,16 +23,21 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
     private DevelopmentCardsOpenedPanel purpleCardPanel ;
     private DevelopmentCardsOpenedPanel blueCardPanel ;
 
-
-    public void attach (ActionListener listener){
-        this.listener=listener;
-    }
-
+    /* Constructor */
     public ExtraCardPanel(GuiView guiView) {
         this.guiView = guiView;
         addComponentsToPane(this);
 
     }
+
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
+    public void attach (ActionListener listener){
+        this.listener=listener;
+    }
+
+
 
     public ActionListener getListener() {
         return listener;
@@ -36,6 +45,9 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
 
 
 
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane){
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
@@ -89,6 +101,13 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
         return buttonCardBluePanel;
     }
 
+
+
+    /**
+     * Metodo che mi permette di interpretare l'evento causato dal click del bottone
+     * in base a quale dei due bottoni io clicco(blu/viola) mi si apre il frame contenente le carte di quel colore
+     * che possiedo
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton jButton = (JButton) e.getSource();

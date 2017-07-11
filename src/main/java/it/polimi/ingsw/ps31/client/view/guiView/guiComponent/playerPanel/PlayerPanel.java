@@ -11,6 +11,13 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by giulia on 25/06/2017.
+ * classe che mi rappresenta il pannello del giocatore contenente tutti i pannelli con le sue informazioni
+ * @see PersonalBonusTilesPanel
+ * @see PersonalBoardPanel
+ * @see ExtraCardPanel
+ * @see LeaderCardPanel
+ * @see FamilyMemberPanel
+ * @see ExcommunicationPlayerPanel
  */
 public class PlayerPanel extends JPanel implements ActionListener {
     private GuiView guiView;
@@ -21,14 +28,15 @@ public class PlayerPanel extends JPanel implements ActionListener {
     private FamilyMemberPanel jFamilyMemberPanel;
     private ExcommunicationPlayerPanel jExcommunication;
 
-
+    /* Constructor */
     public PlayerPanel(GuiView guiView) {
         this.guiView = guiView;
         addComponentsToPane(this);
     }
-
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
-        //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
         gbl.rowHeights = new int[]{0, 0, 0, 0, 0};
@@ -45,7 +53,6 @@ public class PlayerPanel extends JPanel implements ActionListener {
         gbc.gridheight = 3;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //jPersonalBonusTilesPanel.setBackground(Color.RED);
         jPersonalBonusTilesPanel.setOpaque(false);
         jPersonalBonusTilesPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(jPersonalBonusTilesPanel, gbc);
@@ -59,7 +66,6 @@ public class PlayerPanel extends JPanel implements ActionListener {
         gbc.gridheight = 3;
         gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.BOTH;
-        //jPersonalBoardPanel.setBackground(Color.BLUE);
         jPersonalBoardPanel.setOpaque(false);
         jPersonalBoardPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(jPersonalBoardPanel, gbc);
@@ -72,7 +78,6 @@ public class PlayerPanel extends JPanel implements ActionListener {
         gbc.gridheight = 2;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //extraCardPanel.setBackground(Color.green);
         extraCardPanel.setOpaque(false);
         extraCardPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(extraCardPanel, gbc);
@@ -86,7 +91,6 @@ public class PlayerPanel extends JPanel implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //jLeaderCardPanel.setBackground(Color.pink);
         jLeaderCardPanel.setOpaque(false);
         jLeaderCardPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(jLeaderCardPanel, gbc);
@@ -100,7 +104,6 @@ public class PlayerPanel extends JPanel implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //jFamilyMemberPanel.setBackground(Color.red);
         jFamilyMemberPanel.setOpaque(false);
         jFamilyMemberPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(jFamilyMemberPanel, gbc);
@@ -113,7 +116,6 @@ public class PlayerPanel extends JPanel implements ActionListener {
         gbc.gridheight = 1;
         gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.BOTH;
-//        jExcommunication.setBackground(Color.red);
         jExcommunication.setOpaque(false);
         jExcommunication.setPreferredSize(new Dimension(10, 10));
         pane.add(jExcommunication, gbc);

@@ -4,6 +4,7 @@ import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.*;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.MainFrame;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.Music;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
@@ -176,7 +177,6 @@ public class GuiView extends View implements ActionListener {
     @Override
     public void runTerminal() {
         mainFrame.startMainFrame();
-
     }
 
     @Override

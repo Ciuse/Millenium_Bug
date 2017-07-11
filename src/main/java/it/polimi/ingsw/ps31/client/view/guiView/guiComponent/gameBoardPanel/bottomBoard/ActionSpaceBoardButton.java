@@ -18,7 +18,7 @@ import static it.polimi.ingsw.ps31.model.constants.PlayerColor.*;
  * * Rappresenta il bottone che contiene un massimo di 6 JPanel che verranno riempiti ogni volta che un family member
  * si posizionerà nell' action Space associato.
  * @see ActionListener
- * @see FamilyMember
+ * @see PaintBackgroundPanel
  */
 public class ActionSpaceBoardButton extends ButtonCard implements ActionListener {
     /**

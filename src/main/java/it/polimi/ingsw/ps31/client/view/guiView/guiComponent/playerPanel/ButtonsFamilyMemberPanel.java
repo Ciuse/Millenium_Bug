@@ -15,22 +15,33 @@ import static java.lang.String.valueOf;
 
 /**
  * Created by giulia on 30/06/2017.
+ * classe che contiene i quattro bottoni che rappresentano i quattro familiari
+ *
  */
 public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
     private ActionListener listener;
     private GuiView guiView;
-    private FamilyMemberButton[] buttonFamilyMember = new FamilyMemberButton[4];
+    private FamilyMemberLabel[] buttonFamilyMember = new FamilyMemberLabel[4];
 
-
-    public void attach (ActionListener listener){
-        this.listener=listener;
-    }
-
+    /* Constructor */
     public ButtonsFamilyMemberPanel(GuiView guiView) {
         this.guiView = guiView;
         addComponentsToPane(this);
     }
 
+
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
+    public void attach (ActionListener listener){
+        this.listener=listener;
+    }
+
+
+
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane){
 
         GridBagLayout gbl = new GridBagLayout();
@@ -45,7 +56,7 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
 
 
 
-        buttonFamilyMember[0] = new FamilyMemberButton(guiView);
+        buttonFamilyMember[0] = new FamilyMemberLabel(guiView);
         buttonFamilyMember[0].setName("1");
         buttonFamilyMember[0].addActionListener(this);
         buttonFamilyMember[0].setBackground(Color.white);
@@ -58,7 +69,7 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
         pane.add(buttonFamilyMember[0], gbc);
 
 
-        buttonFamilyMember[1] = new FamilyMemberButton(guiView);
+        buttonFamilyMember[1] = new FamilyMemberLabel(guiView);
         buttonFamilyMember[1].setName("2");
         buttonFamilyMember[1].addActionListener(this);
         buttonFamilyMember[1].setBackground(Color.orange);
@@ -70,7 +81,7 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(buttonFamilyMember[1], gbc);
 
-        buttonFamilyMember[2] = new FamilyMemberButton(guiView);
+        buttonFamilyMember[2] = new FamilyMemberLabel(guiView);
         buttonFamilyMember[2].setName("3");
         buttonFamilyMember[2].addActionListener(this);
         buttonFamilyMember[2].setBackground(Color.black);
@@ -82,7 +93,7 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         pane.add(buttonFamilyMember[2], gbc);
 
-        buttonFamilyMember[3] = new FamilyMemberButton(guiView);
+        buttonFamilyMember[3] = new FamilyMemberLabel(guiView);
         buttonFamilyMember[3].setName("4");
         buttonFamilyMember[3].addActionListener(this);
         buttonFamilyMember[3].setBackground(Color.cyan);
@@ -97,6 +108,10 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
 
     }
 
+
+    /**
+     * Metodo che mi permette di stampare i family member
+     */
     public void printMyFamilyMembersOnPlayerPanel(StateViewFamilyMember stateViewFamilyMember) {
         if (stateViewFamilyMember.getActionSpaceId() != -1) {
             DiceColor colorFamilyMember = stateViewFamilyMember.getDiceColor();
@@ -109,7 +124,10 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
         }
     }
 
-
+    /**
+     * Metodo che mi permette di  rendere attivi o inattivi i family member in base alla fase del gioco
+     * se sono stati piazzati in un action space diventano invisibili e non cliccabili
+     */
     public void setEnabledFamilyMember() {
         for (int i = 0; i < 4; i++) {
             Color colorFamilyMember = buttonFamilyMember[i].getBackground();
@@ -120,12 +138,8 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
                         buttonFamilyMember[i].setEnabled(true);
                     }
                     else {
-                        //TODO VEDERE SE SI RIESCE A FARLO TRASPARENTE
-//                        buttonFamilyMember[i].getFamilyMemberLabel().setOpaque(false);
-//                        buttonFamilyMember[i].getFamilyMemberLabel().setVisible(false);
-//                        buttonFamilyMember[i].setEnabled(false);
-//                        buttonFamilyMember[i].setOpaque(false);
-//                        buttonFamilyMember[i].setContentAreaFilled(false);
+                        buttonFamilyMember[i].setContentAreaFilled(false);
+                        buttonFamilyMember[i].setEnabled(false);
                     }
                 }
             }

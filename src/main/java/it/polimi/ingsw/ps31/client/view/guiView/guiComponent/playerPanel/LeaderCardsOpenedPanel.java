@@ -18,6 +18,12 @@ import static java.lang.String.valueOf;
 
 /**
  * Created by giulia on 30/06/2017.
+ * rappresenta il pannello che è contenuto nel frame che si apre una volta cliccato il bottone dei leader.
+ * Questo pannello contiene 4 bottoni i quali rappresentano le carte dei leader di ciascun giocatore
+ * @see ButtonCard
+ * @see StateViewLeaderCard
+ * @see JFrame
+ * @see GuiView
  */
 public class LeaderCardsOpenedPanel extends JPanel implements ActionListener {
     private ActionListener listener;
@@ -28,7 +34,7 @@ public class LeaderCardsOpenedPanel extends JPanel implements ActionListener {
     private boolean activeLeader = false;
     private boolean discardLeader = false;
 
-
+    /* Constructor */
     public LeaderCardsOpenedPanel(GuiView guiView) {
         this.guiView = guiView;
         addComponentsToPane(this);
@@ -37,12 +43,16 @@ public class LeaderCardsOpenedPanel extends JPanel implements ActionListener {
     public ActionListener getListener() {
         return listener;
     }
-
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach(ActionListener listener) {
         this.listener = listener;
     }
 
-
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
 
         GridBagLayout gbl = new GridBagLayout();
@@ -68,7 +78,10 @@ public class LeaderCardsOpenedPanel extends JPanel implements ActionListener {
         disableLeader();
     }
 
-
+    /**
+     * Metodo che mi permette di riempire il pannello con le 4 carte di ogni giocatore non appena vengono scelte
+     * dal giocatore stesso
+     */
     public void fillLeaderPanel() {
         for (int i = 0; i < getMax_number_of_LeaderCard(); i++) {
         }
@@ -95,7 +108,9 @@ public class LeaderCardsOpenedPanel extends JPanel implements ActionListener {
             }
         }
     }
-
+    /**
+     * Metodo che mi permette di abilitare  i bottoni dei leader se il leader non è stato ancora giocato
+     */
     public void enableLeader() {
         if (!stateViewLeaderCardList.isEmpty()) {
             int i = 0;
@@ -108,7 +123,9 @@ public class LeaderCardsOpenedPanel extends JPanel implements ActionListener {
             }
         }
     }
-
+    /**
+     * Metodo che mi permette di disabilitare tutte le carte dei leader
+     */
     public void disableLeader() {
         for (int i = 0; i < getMax_number_of_LeaderCard(); i++) {
             leader[i].setEnabled(false);
@@ -135,6 +152,11 @@ public class LeaderCardsOpenedPanel extends JPanel implements ActionListener {
         return father;
     }
 
+    /**
+     * Metodo che mi permette di interpretare l'evento associato al click di uno dei 4 bottoni
+     * se i bottoni del leader vengono cliccati quando si richiede di attivare o scartare un leader, viene inviato un
+     * messaggio di notifica di avvenuta scelta al controller in base ad uno dei due casi
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (activeLeader) {

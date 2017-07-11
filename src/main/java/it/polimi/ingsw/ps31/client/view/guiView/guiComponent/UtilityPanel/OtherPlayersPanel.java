@@ -3,14 +3,12 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalCardBox;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 /**
  * Created by giulia on 10/07/2017.
@@ -21,11 +19,15 @@ public class OtherPlayersPanel extends PaintBackgroundPanel implements ActionLis
     private SingleOtherPlayersPanel[] singleOtherPlayersPanel = new SingleOtherPlayersPanel[3];
     private GridBagLayout gbl;
 
+    /* Constructor */
     public OtherPlayersPanel(GuiView guiView) {
         this.guiView = guiView;
         addComponentsToPane(this);
     }
 
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
 
 

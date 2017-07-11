@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,27 +14,37 @@ import sun.audio.*;
 
 /**
  * Created by giulia on 25/06/2017.
+ * rappresenta il JFrame principale che si apre quando i vari client si sono collegati al server
+ * contiene il Pannello backgroundMainFramePanel
+ * @see BackgroundMainFramePanel
+ *
  */
 public class MainFrame extends JFrame implements ActionListener {
     private GuiView guiView;
     private BackgroundMainFramePanel backgroundMainFramePanel;
 
-
+    /* Constructor */
     public MainFrame(GuiView guiView) {
         this.guiView=guiView;
     }
 
+    /**
+     *metodo che viene invocato dalla guiView per poter far partire il pannello principale del gioco
+     */
     public void startMainFrame() {
 
         backgroundMainFramePanel= new BackgroundMainFramePanel(guiView);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
+
+        /**
+         *creazione del frame principale
+         */
         JFrame frame = new JFrame("LORENZO IL MAGNIFICO ");
         frame.setSize(screenSize);
         frame.setResizable(false);
         frame.setVisible(true);
-//        frame.setAlwaysOnTop(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 
@@ -56,6 +67,8 @@ public class MainFrame extends JFrame implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         backgroundMainFramePanel.setPreferredSize(new Dimension(10, 10));
         frame.add(backgroundMainFramePanel, gbc);
+
+
 
         //music();
 

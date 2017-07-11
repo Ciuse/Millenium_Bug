@@ -16,6 +16,10 @@ import static java.lang.String.valueOf;
 
 /**
  * Created by giulia on 07/07/2017.
+ * classe  contenente 6 JButton che rappresentano le carte sulla personalBoard
+ * @see ButtonCard
+ * @see List<StateViewPersonalCardBox>
+ *
  */
 public class DevelopmentCardsOpenedPanel extends JPanel implements ActionListener {
         private GuiView guiView;
@@ -29,16 +33,23 @@ public class DevelopmentCardsOpenedPanel extends JPanel implements ActionListene
         private ButtonCard[] buttonCards = new ButtonCard[6];
         private List<StateViewPersonalCardBox> stateViewPersonalCardBoxList;
 
-
+    /* Constructor */
         public DevelopmentCardsOpenedPanel(GuiView guiView) {
             this.guiView = guiView;
             addComponentsToPane(this);
         }
 
+        /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
         public void attach (ActionListener listener){
             this.listener=listener;
         }
 
+
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
         public void addComponentsToPane(Container pane){
             //griglia 4*5
             GridBagLayout gbl = new GridBagLayout();
@@ -131,6 +142,12 @@ public class DevelopmentCardsOpenedPanel extends JPanel implements ActionListene
 
         }
 
+
+    /**
+     * Metodo che mi permette di interpretare l'evento causato dal click di uno dei 6 bottoni presenti in questo pannello
+     * ogni volta che clicco uno dei 6 bottoni mi si apre un frame contenente l'immagine della carta più grande per poterla
+     * visualizzare meglio
+     */
         @Override
         public void actionPerformed(ActionEvent e) {
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -160,6 +177,11 @@ public class DevelopmentCardsOpenedPanel extends JPanel implements ActionListene
             }
         }
 
+
+    /**
+     * Metodo che mi permette di riempire lo spazio di questi bottoni con l'immagine della carta che ho scelto di prendere
+     * dalla torre
+     */
         public void fillDevelopmentCardPanel() {
             int i = 0;
             if (!stateViewPersonalCardBoxList.isEmpty()) {
@@ -172,7 +194,10 @@ public class DevelopmentCardsOpenedPanel extends JPanel implements ActionListene
                 }
             }
         }
-
+    /**
+     * Metodo che mi permette di settare la lista degli stati della view del personal card box che verrà poi usata
+     * nel metodo di riempimento
+     */
         public void setStateViewPersonalCardBoxList(List<StateViewPersonalCardBox> stateViewPersonalCardBoxList) {
             this.stateViewPersonalCardBoxList=stateViewPersonalCardBoxList;
         }

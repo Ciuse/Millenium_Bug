@@ -23,13 +23,16 @@ public class SingleOtherPlayersPanel extends JPanel implements ActionListener {
     private ExtraCardPanel extraCardPanel;
     private LeaderCardPanel jLeaderCardPanel;
 
-
+    /* Constructor */
     public SingleOtherPlayersPanel(GuiView guiView, PlayerId numberOfPlayer) {
         this.numberOfPlayer = numberOfPlayer;
         this.guiView = guiView;
         addComponentsToPane(this);
     }
 
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
         //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();

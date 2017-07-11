@@ -18,17 +18,23 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
     private ButtonCard otherBoard;
     private OtherPlayersPanel otherPlayersPanel;
 
-
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
+    /* Constructor */
     public OtherChosenPlayerPanel(GuiView guiView) {
 
         this.guiView = guiView;
         addComponentsToPane(this);
     }
 
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
 
 

@@ -13,22 +13,41 @@ import java.awt.event.WindowEvent;
 
 import static java.lang.String.valueOf;
 
+/**
+ * Created by giulia on 28/06/2017.
+ * rappresenta il pannello usato nella top board per contenere a sua volta il pannello con la carta e l'action space
+ * associato
+ * @see TowerCardAndActionSpacePanel
+ */
+
 public class TowerPanel extends JPanel implements ActionListener {
     private ActionListener listener;
     private TowerCardAndActionSpacePanel[][] towerCardAndActionSpacePanels = new TowerCardAndActionSpacePanel[4][4];
+
+
+    /**
+     *booleano che in base a come è settato mi permette di interpretare il click di un bottone e di inviare un messaggio
+     */
     private boolean sendNextClick=false;
 
+    /* Constructor */
     public TowerPanel() {
         addComponentsToPane(this);
     }
 
+
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach(ActionListener listener) {
         this.listener = listener;
 
     }
 
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
-        //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
         gbl.rowHeights = new int[]{ 0, 0, 0, 0, 0, 0};
@@ -50,7 +69,6 @@ public class TowerPanel extends JPanel implements ActionListener {
                 gbc.gridheight = 1;
                 gbc.gridwidth = 1;
                 towerCardAndActionSpacePanels[i][j].setPreferredSize(new Dimension(10,10));
-//                towerCardAndActionSpacePanels[i][j].setBackground(Color.RED);
                 gbc.fill = gbc.BOTH;
                 towerCardAndActionSpacePanels[i][j].setOpaque(false);
                 pane.add(towerCardAndActionSpacePanels[i][j], gbc);
@@ -75,6 +93,10 @@ public class TowerPanel extends JPanel implements ActionListener {
 //        }
     }
 
+
+    /**
+     * Metodo che mi permette di stampare un singolo card box confrontando gli stati della view
+     */
     public void printSingleCardBox(StateViewTowerCardBox stateViewTowerCardBox) {
 
 
@@ -103,7 +125,12 @@ public class TowerPanel extends JPanel implements ActionListener {
         }
     }
 
-
+    /**
+     * questo metodo serve per gestire l'evento scatenatosi dopo il click del bottone premuto durante il turno degli altri giocatori o quando non si
+     * è ancora scelta l'azione da eseguire .L'evento fa aprire un frame
+     * in cui si possa visualizzare meglio la carta premuta; se siamo nella propria fase di turno e si deve scegliere l'action
+     * space in cui posizionare il proprio family member,l'evento viene inoltrato alla topboard che a sua volta lo inoltrerà.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -145,6 +172,9 @@ public class TowerPanel extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * Metodo che mi permette di ottenere il colore della carta associato ad uno specifico bottone
+     */
     public CardColor getCardColorFromButtonNumber(int i){
         if(i!=0) {
             i = i - 1;
@@ -165,6 +195,10 @@ public class TowerPanel extends JPanel implements ActionListener {
     }
 
 
+    /**
+     * Metodo che mi permette di ottenere il numero del piano della torre
+     * associato ad un bottone
+     * */
     public int getFloorNumberFromButtonName(int i){
         i=i-1;
         return ((i+4)%4);

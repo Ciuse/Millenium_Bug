@@ -7,24 +7,35 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by giulia on 26/06/2017.
+ * questa classe rappresenta la parte superiore della board e comprende sia le torri che il palazzo del consiglio
+ * @see TowerPanel
+ * @see CouncilPanel
  */
 public class TopBoardPanel extends JPanel implements ActionListener {
     private ActionListener listener;
     private TowerPanel towerPanel;
     private CouncilPanel councilPanel;
 
+
+    /* Constructor */
     public TopBoardPanel() {
         addComponentsToPane(this);
     }
 
 
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach(ActionListener listener) {
         this.listener = listener;
     }
 
 
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     * lo invoco all'interno del costruttore del pannello così quando si crea si crea con il layout
+     */
     public void addComponentsToPane(Container pane) {
-        //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0,0};
         gbl.rowHeights = new int[]{0,0,0};
@@ -42,7 +53,6 @@ public class TopBoardPanel extends JPanel implements ActionListener {
         c.gridheight = 1;
         c.gridwidth = 1;
         towerPanel.setOpaque(false);
-       //towerPanel.setBackground(Color.RED);
         c.fill = GridBagConstraints.BOTH;
         towerPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(towerPanel, c);
@@ -57,8 +67,6 @@ public class TopBoardPanel extends JPanel implements ActionListener {
         c.gridwidth = 1;
         councilPanel.setOpaque(false);
         c.fill = GridBagConstraints.BOTH;
-        //councilPanel.setBackground(Color.green);
-        //councilPanel.setOpaque(true);
         councilPanel.setPreferredSize(new Dimension(10, 10));
         pane.add(councilPanel, c);
         councilPanel.attach(this);

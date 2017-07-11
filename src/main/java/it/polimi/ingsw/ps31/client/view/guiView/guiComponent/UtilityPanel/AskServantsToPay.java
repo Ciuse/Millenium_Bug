@@ -16,11 +16,15 @@ public class AskServantsToPay extends JOptionPane implements ActionListener {
     private ActionListener listener;
     private JFrame father;
 
+
+    /* Constructor */
     public AskServantsToPay(JFrame father) {
         this.father=father;
     }
 
-
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }

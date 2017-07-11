@@ -10,20 +10,29 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by giulia on 07/07/2017.
+ * classe che rappresenta il pannello contenente la text area dove verranno stampate tutte le domande da fare al giocatore
+ * durante la sua fase di gioco
  */
 public class AskActionPanel extends PaintBackgroundPanel implements ActionListener {
     private ActionListener listener;
     private PaintTextArea textArea;
     private JScrollPane scroll;
 
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
+    /* Constructor */
     public AskActionPanel() {
         addComponentsToPane(this);
     }
 
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane) {
 
 
@@ -51,7 +60,6 @@ public class AskActionPanel extends PaintBackgroundPanel implements ActionListen
         scroll.setOpaque(false);
         gbc.fill = GridBagConstraints.BOTH;
         scroll.setPreferredSize(new Dimension(10, 10));
-        //textArea.setBackground(Color.RED);
         pane.add(scroll, gbc);
 
 

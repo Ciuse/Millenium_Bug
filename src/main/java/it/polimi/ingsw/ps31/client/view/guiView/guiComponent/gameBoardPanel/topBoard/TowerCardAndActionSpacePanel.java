@@ -9,6 +9,10 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by giulia on 28/06/2017.
+ * rappresenta il pannello usato nella top board per contenere sia un bottone qualsiasi per la carta che l'actionSpace
+ * associato a quella carta
+ * @see ButtonCard
+ * @see SingleSmallActionSpacePanel
  */
 public class TowerCardAndActionSpacePanel extends JPanel implements ActionListener{
     private ActionListener listener;
@@ -17,15 +21,23 @@ public class TowerCardAndActionSpacePanel extends JPanel implements ActionListen
     private SingleSmallActionSpacePanel singleSmallActionSpacePanel = new SingleSmallActionSpacePanel();
 
 
+    /* Constructor */
     public TowerCardAndActionSpacePanel(String numberOfActionSpace) {
         this.numberOfActionSpace = numberOfActionSpace;
         addComponentsToPane();
     }
 
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
+
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(){
         Container pane=this;
         //griglia 4*5
@@ -56,7 +68,6 @@ public class TowerCardAndActionSpacePanel extends JPanel implements ActionListen
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
-        //singleSmallActionSpacePanel.setBackground(Color.green);
         singleSmallActionSpacePanel.setOpaque(false);
         singleSmallActionSpacePanel.setPreferredSize(new Dimension(10,10));
         pane.add(singleSmallActionSpacePanel,gbc);

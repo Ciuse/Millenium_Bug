@@ -22,16 +22,22 @@ public class ExcommunicationPlayerPanel extends JPanel implements ActionListener
     private GuiView guiView;
     private PaintBackgroundPanel[] excomm = new PaintBackgroundPanel[3];
 
+    /* Constructor */
     public ExcommunicationPlayerPanel(GuiView guiView) {
         this.guiView = guiView;
         addComponentsToPane(this);
     }
 
-
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach(ActionListener listener) {
         this.listener = listener;
     }
 
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
         public void addComponentsToPane(Container pane) {
 
             GridBagLayout gbl = new GridBagLayout();
