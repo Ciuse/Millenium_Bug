@@ -4,14 +4,14 @@ Prova finale di Ingengneria Informatica - Politecnico di Milano - a.a. 2016/17<b
 
 
 
-### 1. Requisiti sviluppati
+## 1. Requisiti sviluppati
 Con riferimento alla documentazione fornita, si indicano qui i requisiti sviluppati nel corso del progetto.
 
-#### 1.1 Requisiti game-specific
+### 1.1 Requisiti game-specific
 Sono state implementate le regole **complete**, comprensive quindi di Effetti Permanenti, Scomuniche e Carte Leader
 
-#### 1.2. Requisiti game-agnostic
-##### 1.2.1. Architettura client-server
+### 1.2. Requisiti game-agnostic
+#### 1.2.1. Architettura client-server
 Il sistema è progettato per poter funzionare online sulla base della architettua client-server. Le specifiche relative a questo aspetto sono le seguenti:
 
 * Il server è istanziabile una sola volta e comunica con più client contemporaneamente.
@@ -22,7 +22,7 @@ Il sistema è progettato per poter funzionare online sulla base della architettu
 * La GUI è stata sviluppata utilizzando **Swing**.
 * L'intero sistema funziona sfruttando il pattern architetturale **MVC**.
 
-##### 1.2.2. Configurazione da file
+#### 1.2.2. Configurazione da file
 Il gioco è configurabile da file e all'avvio del server vengono caricate tutte le impostazioni seguenti:
 
 * Bonus associati a Spazi Azione, Plancia Giocatore e Tracciato Punti Fede;
@@ -32,7 +32,7 @@ Il gioco è configurabile da file e all'avvio del server vengono caricate tutte 
 * Timeout attesa giocatori;
 * Timeout attesa mossa player.
 
-##### 1.2.3. Avvio della partita
+#### 1.2.3. Avvio della partita
 La connessione di un client avviene secondo le seguanti fasi:
 
 * Il server controlla se c'è una partita in attesa di altri giocatori;
@@ -41,10 +41,10 @@ La connessione di un client avviene secondo le seguanti fasi:
 * Allo scadere del timeout la partita inizia con i giocatori collegati;
 * Quando una partita raggiunge i 4 giocatori connessi, parte **immediatamente**.
 
-##### 1.2.4. Timeout
+#### 1.2.4. Timeout
 Se durante una partita un giocatore impiega troppo tempo ad eseguire le sue azioni, il timeout associato scadrà e il giocatore perderà il turno, con le eventuali risorse fino ad allora spese.
 
-##### 1.2.5. Disconnessioni
+#### 1.2.5. Disconnessioni
 Durante una partita è possibile che un giocatore si disconnetta. In questo caso vengono applicate le seguenti regole:
 
 * Il giocatore perde tutti i turni da quel momento fino alla sua riconnessione;
@@ -55,10 +55,10 @@ Durante una partita è possibile che un giocatore si disconnetta. In questo caso
 	* Si assume che gli username siano stati registrati in precedenza e che non possano esistere due player con lo stesso username
 * Tutti i player vengono notificati della disconnessione di un avversario
 
-#### 1.3. Funzionalità avanzate
+### 1.3. Funzionalità avanzate
 Nessuna delle due funzionalità avanzate richieste è stata implementata.
 
-#### 1.4. Riepilogo
+### 1.4. Riepilogo
 Riepilogando, i requisiti implementati sono stati i seguenti:
 
 * Regole semplificate
@@ -70,7 +70,7 @@ Riepilogando, i requisiti implementati sono stati i seguenti:
 * Gestione disconnessioni
 
 
-### 2. Istruzioni per il lancio dell'applicazione
+## 2. Istruzioni per il lancio dell'applicazione
 Per lanciare l'applicazione è necessario seguire i seguenti passi
 
 * Aprire il progetto in un ambiente di sviluppo java (Eclipse, Intellij,...)
@@ -89,13 +89,13 @@ Per lanciare l'applicazione è necessario seguire i seguenti passi
 
 
 
-### 3. Diagramma UML
+## 3. Diagramma UML
 Di seguito vengono mostrati i class diagram del progetto. Quello iniziale, da cui si è partiti per lo sviluppo del model, e quelli finali, divisi tra le funzionalità principali in modo da ridurne la complessità. In questa seconda parte sono disponibili due documenti per ogni funzionalità: uno con le classi estese e indicati le sole relazioni di ereditarietà; l'altro con i soli nomi delle classi e indicate ache le relazioni di dipendenza
-#### 3.1. UML iniziale
+### 3.1. UML iniziale
 Questo documento contiene la prima bozza di class diagram sviluppato per il progetto. Le classi in esso contenute corrispondono a quelle del Model.
 [Documento disponibile qui](/UML/UML_Draft.svg)
 
-#### 3.2. UML finali
+### 3.2. UML finali
 * UML Model
  * [versione semplificata](/Uml/Model/model.svg)
  * [verisone estesa](/Uml/Model/model_dependencies.svg)
@@ -109,9 +109,9 @@ Questo documento contiene la prima bozza di class diagram sviluppato per il prog
 Per completezza, esiste anche una versione completa del class diagram, contenente tutte le classi. Anche questo documento è disponibile in versione [ridotta](/Uml/ProgettoCompleto/complete.svg) o [estesa](/Uml/ProgettoCompleto/complete_dependencies.svg)
 
 
-### 4. Info aggiuntive
+## 4. Info aggiuntive
 
-#### 4.1. Design Pattern
+### 4.1. Design Pattern
 Durante lo sviluppo del software si è reso necessario il ricorso a più design pattern. In particolare:
 
 * pattern Singleton per alcune classi del server che non devono essere instanziabili più volte (SocketAccepter, MatchTable,...)
@@ -120,13 +120,12 @@ Durante lo sviluppo del software si è reso necessario il ricorso a più design 
 * pattern Facade per gestire la complessità di certe strutture logiche (es. networking)
 * pattern Observer per la gestione della architettura MVC
 
-#### 4.2. Librerie esterne
+### 4.2. Librerie esterne
 Per una migliore gestione di alcuni aspetti specifici del progetto, si è fatto ricorso a librerie e framework esterni:
-
 * Gson: per la serializzazione e deserializzazione dei messaggi tra client e server
 * Lanterna: per la realizzazione della CLI
 
-#### 4.3. Sviluppi futuri
+### 4.3. Sviluppi futuri
 Molteplici sono i possibili miglioramenti applicabili al software nelle prossime versioni. Si annotano, in ordine di fattibilità e tempo di sviluppo previsto:
 
 * pulizia dei messaggi di debug e di controllo stampati nelle console di client e server;
@@ -136,11 +135,11 @@ Molteplici sono i possibili miglioramenti applicabili al software nelle prossime
 * sviluppo di un tool user-friendly per la gestione del file di configurazione;
 * introduzione di bot per partite single player;
 
-#### 4.4. Note sui test
+### 4.4. Note sui test
 * La copertura dei test di unità sul package _model_, aggiornata al 11/07/2017, è pari a: 57% delle classi, 21% dei metodi e 16% delle linee. Valori così bassi sono giustificabili dalla forte interazione tra le varie classi e i loro metodi, che rendono difficoltosa la ricerca di una copertura maggiore senza l'uso di test di intergrazione o di sistema.
 * Per alcuni metodi non sono stati definiti dei casi di test negativi, in quanto essi si sarebbero ridotti ad una mera negazione logica di quelli positivi.
 
-#### 4.5. Ulteriori note
+### 4.5. Ulteriori note
 * sebbene non sia stata implementata, la connessione RMI è facilmente inseribile tramite estensione di apposite classi.
 * già in questa versione, il giocatore ha facoltà di _"scegliere"_ quale tecnologia usare per la connessione al server. Tuttavia, in ogni caso, verrà istanziata una comunicazione tramite socket.
 * il file di configurazione è in formato json e, oltre ad essere fornito con la presente release, è creato runtime all'avvio di una partita in caso non dia già presente nella directory projectResources.
