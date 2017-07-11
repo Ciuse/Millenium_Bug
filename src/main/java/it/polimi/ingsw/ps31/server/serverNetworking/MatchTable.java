@@ -172,7 +172,6 @@ public class MatchTable {
         //Aggiungo il match alla tabella
         this.matchTable.add(new MatchRow(match, playerCommunicationInterface));
 
-        //TODO: istruzione di test da cancellare
         DebugUtility.simpleUserMessage(/*"MatchTable:newMatch>*/" Creata nuova partita #"+match.getMatchId()+". Client associato.");
 
     }
@@ -333,7 +332,6 @@ public class MatchTable {
                 return currentRow.isStarted();
             }
         }
-        //TODO eccezione
         return true;
     }
 

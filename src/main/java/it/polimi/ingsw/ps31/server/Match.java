@@ -18,11 +18,29 @@ import java.util.List;
 
 /**
  * Created by Francesco on 08/06/2017.
+ *
+ * Classe che crea e gestisce una partita. Implementa un thread in modo che possa essere attivato in parallelo
+ * al resto del sistema. Contiene un secondo thread che, indipendentemente dal primo, rimane in ascolto di messaggi
+ * sugli input buffer e li notifica al controller tramite la virtual view.
+ *
+ * @see it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface
+ * @see it.polimi.ingsw.ps31.server.serverNetworking.ServerInputBuffer
+ * @see Controller
+ * @see VirtualView
+ * @see Thread
+ */
+
+/**
+ * Thread che legge gli input buffer dei player connessi alla partita
  */
 class InputBufferReader extends Thread{
+    /** Booleano che indica se continuare ad ascoltare*/
     private boolean listenNetworkInterfaces = true;
+
     private NetworkInterface networkInterface;
     private VirtualView virtualView;
+
+    /** Numero di player connessi alla partita*/
     private int connectedPlayers;
 
     public InputBufferReader(NetworkInterface networkInterface, VirtualView virtualView, int initialNumberOfConnections)
@@ -32,6 +50,10 @@ class InputBufferReader extends Thread{
         this.connectedPlayers = initialNumberOfConnections;
     }
 
+    /**
+     * Cicla sugl InputBuffer dei player connessi in ascolto di messaggi provenienti dai client.
+     * Quando ne riceve, li notifica al controller tramite la virtualView
+     */
     public void run() {
         //System.out.println("Match:run> Entro nel run");
         //Ciclo in attesa di messaggi sulle socket
@@ -62,15 +84,32 @@ class InputBufferReader extends Thread{
     }
 }
 
+/**
+ * Thread che gestisce la creazione della partita e le connessioni ad essa.
+ */
 public class Match extends Thread{
     private final int MAX_PLAYER_NUMBER = PlayerId.values().length;
     private final NetworkInterface networkInterface;
+
+    /** Classe che gestisce la logica di gioco */
     private final GameLogic gameLogic; //Partita vera e propria
+
+    /** Classe da "riempire" con le informazioni sui client man mano che si connettono. Serve a
+     * gameLogic per sapere quando iniziare la partita */
     private InformationFromNetworking informationFromNetworking;
+
+    /** CommunicationInterface del client che crea la partita*/
     private PlayerCommunicationInterface hostConnection; //primo client che si collega alla partita
+
+    /** Id univoco del match*/
     private int id;
+
+    /** Thread di lettura degli input buffer dei player*/
     private InputBufferReader inputBufferReader;
+
+    /** Lista di player che si sono disconnessi */
     private List<PlayerId> disconnectedPlayers;
+
     private Model model;
     private VirtualView virtualView;
     private int connectedPlayers;
@@ -95,6 +134,7 @@ public class Match extends Thread{
 
     }
 
+    /** metodo che gestisce l'inizializzazione della partita */
     public void initializeGame()
     {
         //System.out.println("Match:run> entrato nello start");
@@ -107,6 +147,7 @@ public class Match extends Thread{
         gameLogic.startConnection(virtualView);
 
     }
+
     public void run()
     {
         initializeGame();
@@ -125,8 +166,11 @@ public class Match extends Thread{
         return model;
     }
 
-    /* Run() Method*/
-
+    /**
+     * Metodo che invia ai client le informazioni necessarie per creare istanziare la view.
+     * Viene richiamato appena la partita inizia.
+     * @param playerNumber numero di giocatori connessi
+     */
     public void sendViews(int playerNumber)
     {
         DebugUtility.simpleDebugMessage("Inizio invio view");
@@ -147,12 +191,15 @@ public class Match extends Thread{
 
     }
 
+    /**
+     * Aggiunge un giocatore alla partita, inserisce le sue informazioni in informationFromNetworking
+     * @param clientConnection PlayerCommunicationInterface del clientche si sta connettendo
+     */
     public void addConnection(PlayerCommunicationInterface clientConnection)
     {
         if ( this.networkInterface.getConnectionListSize() == MAX_PLAYER_NUMBER )
         {
-            //TODO: eccezione
-            return; //ma sarebbe meglio gestire la cosa in modo diverso: si è tentato di aggiungere un player ad una partita già completa
+            return; //sarebbe meglio gestire la cosa in modo diverso: si è tentato di aggiungere un player ad una partita già completa
         }
 
         this.networkInterface.addConnection(clientConnection);
@@ -171,6 +218,11 @@ public class Match extends Thread{
         networkInterface.printPlayerTable();
     }
 
+    /**
+     * Disconnette un player dal match, aggiungendo una nuovo elemento alla lista di disconnessioni e
+     * notificando la networkInterface
+     * @param playerId playerId del player da disconnettere
+     */
     public void disconnectPlayer(PlayerId playerId)
     {
         DebugUtility.simpleDebugMessage("disconnessione in corso del player "+playerId);
@@ -178,6 +230,14 @@ public class Match extends Thread{
         networkInterface.notifyPlayerDisconnection(playerId);
     }
 
+    /**
+     * Riconnette un giocatore precedentemente disconnesso.
+     * @param newCommunicationInterface nuova PlayerCommunicationInterface per la comunicazione con il client
+     * @param playerId playerId del giocatore
+     * @param sendViews indica se si devono inviare al client le informazioni per creare la view. Durante la partita
+     *                  è a true, se il match è ancora in attesa di player è a false (le info verranno inviate alla
+     *                  partenza del match)
+     */
     public void reconnectPlayer(PlayerCommunicationInterface newCommunicationInterface, PlayerId playerId, boolean sendViews)
     {
         disconnectedPlayers.remove(playerId);

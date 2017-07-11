@@ -158,7 +158,7 @@ public class PlayerCommunicationInterface {
     public void setConnectionMessage(ConnectionMessage connectionMessage)
     {
         if( connectionMessage == null )
-            return; //todo: significa che il client si è disconnesso nel momento peggiore
+            return; //significa che il client si è disconnesso nel momento peggiore
         this.connectionMessage = connectionMessage;
     }
 

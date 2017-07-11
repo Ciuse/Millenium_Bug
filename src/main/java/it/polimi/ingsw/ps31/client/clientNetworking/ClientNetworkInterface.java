@@ -15,8 +15,11 @@ import java.io.IOException;
 
 /**
  * Created by Francesco on 10/06/2017.
+ *
+ * Classe astratta che rappresenta la connessione del client con la rete. Cotiene metodi protected per
+ * la serializzazione e la deserializzazione di messaggi ed espone all'esterno metodi di I/O.
+ * Unifica connessioni che sfruttano diverse tecnologia sotto un'unica interfaccia di funzionamento.
  */
-//Classe che unifica le connessioni Socket e RMI sotto un'unica interfaccia di funzionamento
 public abstract class ClientNetworkInterface {
     protected boolean viewReceived = false;
     protected final ConnectionMessage connectionMessage;
@@ -29,36 +32,69 @@ public abstract class ClientNetworkInterface {
         this.connectionMessage = connectionMessage;
     }
 
+    /**
+     * Imposta il riferimento alla classe di notifica della view
+     */
     public void setClientMessageHistory(ClientMessageHistory clientMessageHistory)
     {
         this.clientMessageHistory = clientMessageHistory;
     }
 
+    /**
+     * Avvia il thread di lettura da rete
+     */
     public void startReading()
     {
         this.clientReadingThread = new ClientReadingThread(this, clientMessageHistory);
         clientReadingThread.start();
     }
 
-    //invia un messaggio in un oggetto, serializzandolo
+    /**
+     *  Invia un messaggio di tipo NetworkingMessage
+     * @param msg NetworkingMessage da inviare
+     */
     public final void sendToServer(NetworkingMessage msg){
         writeOnNetwork(serialize(msg));
     }
 
-    //invia un messaggio di tipo VCVisitable
+    /**
+     *  Invia un messaggio di tipo VCVisitable
+     * @param msg messaggio VCVisitable da inviare
+     */
     public final void sendToServer(VCVisitable msg){
         writeOnNetwork(serialize(msg));
     }
 
-    //legge un messaggio proveninete dal server, lo deserializza e lo restituisce
+
+    /**
+     *  Legge un messaggio proveninete dal server, lo deserializza e lo restituisce
+     *
+     * @param returnIfNull indica se bisogna restare in attesa(false) di un messaggio o
+     *                     ritornare subito(true) in caso non ci siano messaggi da leggere
+     * @return messaggio letto
+     * @throws IOException
+     */
     public final MVVisitable readFromServer(boolean returnIfNull) throws IOException {
         return deserialize(readFromNetwork(returnIfNull));
     }
 
+    /**
+     * Aspetta un messaggio di tipo ViewMessage dal server.
+     * Si suppone che il primo messaggio ricevuto dal server dopo l'invocazione di questo metodo
+     * sia esattamente di tipo ViewMessage
+     * @return  il messaggio ViewMessage ricevuto
+     * @throws IOException
+     */
     public final ViewMessage readViewMessageFromServer() throws IOException {
         return deserializeVM(readFromNetwork(false));
     }
 
+    /**
+     * Sfrutta gson per serializzare un messaggio di tipo GenericMessage per
+     * poterlo inviare sulla rete, dopo averlo inserito in una ConcreteEnvelope
+     * @param genericMessage il messaggio da inviare
+     * @return il messaggio serializzato
+     */
     private String serialize(GenericMessage genericMessage)
     {
         //Creo gson
@@ -73,6 +109,12 @@ public abstract class ClientNetworkInterface {
         return strEnv;
     }
 
+    /**
+     * Deserializza, tramite gson, una stringa ricevuta dalla rete e restituise la ConcreteEnvelope che
+     * contiene il messaggio inviato dal server
+     * @param msg la stinga da deserializzare
+     * @return la ConcreteEnvelope contenente il messaggio ricevuto
+     */
     private ConcreteEnvelope deserializeEnvelope(String msg)
     {
         if ( msg == null )
@@ -109,6 +151,19 @@ public abstract class ClientNetworkInterface {
     }
 
     /* Abstract Methods */
+
+    /**
+     * Metodo astratto di output sulla rete
+     * @param msgStr stringa da scrivere
+     */
     protected abstract void writeOnNetwork(String msgStr);
+
+    /**
+     * Metodo astratto di input da rete
+     * @param returnIfNull indica se bisogna restare in attesa(false) di un messaggio o
+     *                     ritornare subito(true) in caso non ci siano messaggi da leggere
+     * @return la stringa letta
+     * @throws IOException
+     */
     protected abstract String readFromNetwork(boolean returnIfNull) throws IOException;
 }

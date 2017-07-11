@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>it.polimi.ingsw.ps31.client</OriginalElement>
+  <nodes>
+    <node x="122.3703114807569" y="1018.0">it.polimi.ingsw.ps31.server.serverNetworking.SocketAccepter</node>
+    <node x="197.8703114807569" y="850.0">it.polimi.ingsw.ps31.server.serverNetworking.MatchRow</node>
+    <node x="685.4139758643184" y="79.0">it.polimi.ingsw.ps31.client.ClientReadingThread</node>
+    <node x="378.0397912589695" y="939.0">it.polimi.ingsw.ps31.server.serverNetworking.MatchTable</node>
+    <node x="192.0" y="1171.0">it.polimi.ingsw.ps31.networking.NetworkingThread</node>
+    <node x="299.35229125896944" y="346.0">it.polimi.ingsw.ps31.server.serverNetworking.PlayerConnectionRow</node>
+    <node x="301.2869781474235" y="425.0">it.polimi.ingsw.ps31.server.serverNetworking.PlayerTable</node>
+    <node x="102.97635355512082" y="0.0">it.polimi.ingsw.ps31.networking.ConnectionType</node>
+    <node x="766.7510970764397" y="237.0">it.polimi.ingsw.ps31.client.clientNetworking.ClientSocketConnection</node>
+    <node x="201.37500000000003" y="247.0">it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface</node>
+    <node x="298.2888535551208" y="672.0">it.polimi.ingsw.ps31.server.InputBufferReader</node>
+    <node x="76.97635355512082" y="79.0">it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionInterface</node>
+    <node x="0.0" y="158.0">it.polimi.ingsw.ps31.server.serverNetworking.SocketServerConnection</node>
+    <node x="271.7481245923028" y="1097.0">it.polimi.ingsw.ps31.server.Server</node>
+    <node x="0.0" y="1171.0">it.polimi.ingsw.ps31.networking.MessageTranslator</node>
+    <node x="814.7510970764397" y="316.0">it.polimi.ingsw.ps31.client.Client</node>
+    <node x="1024.2510970764397" y="0.0">it.polimi.ingsw.ps31.networking.DeliverableMessageType</node>
+    <node x="393.1855022831051" y="504.0">it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface</node>
+    <node x="198.00000000000003" y="158.0">it.polimi.ingsw.ps31.server.serverNetworking.ServerListeningThread</node>
+    <node x="373.6231245923028" y="771.0">it.polimi.ingsw.ps31.server.Match</node>
+    <node x="384.0" y="1171.0">it.polimi.ingsw.ps31.networking.JsonNetworking</node>
+    <node x="395.7897912589695" y="850.0">it.polimi.ingsw.ps31.server.serverNetworking.DisconnectedClient</node>
+    <node x="312.625" y="79.0">it.polimi.ingsw.ps31.server.serverNetworking.ServerInputBuffer</node>
+    <node x="783.1298849552276" y="0.0">it.polimi.ingsw.ps31.client.clientNetworking.ClientMessageHistory</node>
+    <node x="720.5010970764397" y="158.0">it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface</node>
+    <node x="399.2888535551208" y="593.0">it.polimi.ingsw.ps31.server.VirtualView</node>
+    <node x="430.2869781474235" y="425.0">it.polimi.ingsw.ps31.server.serverNetworking.SentMessageEntry</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface" target="it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionInterface">
+      <point x="-88.75" y="-14.5" />
+      <point x="219.12500000000003" y="227.0" />
+      <point x="187.50000000000003" y="227.0" />
+      <point x="187.50000000000003" y="138.0" />
+      <point x="170.97635355512082" y="138.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionInterface" target="it.polimi.ingsw.ps31.networking.ConnectionType">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.MatchTable" target="it.polimi.ingsw.ps31.server.serverNetworking.MatchRow">
+      <point x="-31.714285714285722" y="-14.5" />
+      <point x="401.8255055446838" y="909.0" />
+      <point x="276.62031148075687" y="909.0" />
+      <point x="26.25" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.InputBufferReader" target="it.polimi.ingsw.ps31.server.VirtualView">
+      <point x="36.0" y="-14.5" />
+      <point x="406.2888535551208" y="647.0" />
+      <point x="417.12218688845417" y="647.0" />
+      <point x="-35.66666666666663" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.InputBufferReader" target="it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface">
+      <point x="-36.0" y="-14.5" />
+      <point x="334.2888535551208" y="573.0" />
+      <point x="427.9355022831051" y="573.0" />
+      <point x="-34.75" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.SocketAccepter" target="it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface">
+      <point x="0.0" y="-14.5" />
+      <point x="187.3703114807569" y="296.0" />
+      <point x="219.12500000000003" y="296.0" />
+      <point x="-88.75" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface" target="it.polimi.ingsw.ps31.server.serverNetworking.ServerListeningThread">
+      <point x="-53.25" y="-14.5" />
+      <point x="254.62500000000003" y="227.0" />
+      <point x="239.25000000000003" y="227.0" />
+      <point x="-41.25" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface" target="it.polimi.ingsw.ps31.client.clientNetworking.ClientMessageHistory">
+      <point x="34.0" y="-14.5" />
+      <point x="839.5010970764397" y="133.0" />
+      <point x="862.0010970764397" y="133.0" />
+      <point x="862.0010970764397" y="54.0" />
+      <point x="844.2548849552276" y="54.0" />
+      <point x="-20.375" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.PlayerTable" target="it.polimi.ingsw.ps31.server.serverNetworking.PlayerConnectionRow">
+      <point x="0.0" y="-14.5" />
+      <point x="355.7869781474235" y="400.0" />
+      <point x="340.60229125896944" y="400.0" />
+      <point x="-41.25" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface" target="it.polimi.ingsw.ps31.server.serverNetworking.PlayerTable">
+      <point x="-17.375" y="-14.5" />
+      <point x="445.3105022831051" y="474.0" />
+      <point x="383.0369781474235" y="474.0" />
+      <point x="27.25" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.ServerListeningThread" target="it.polimi.ingsw.ps31.server.serverNetworking.ServerInputBuffer">
+      <point x="41.25" y="-14.5" />
+      <point x="321.75" y="138.0" />
+      <point x="330.125" y="138.0" />
+      <point x="-52.5" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.clientNetworking.ClientMessageHistory" target="it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface">
+      <point x="20.375" y="14.5" />
+      <point x="885.0048849552276" y="54.0" />
+      <point x="873.0010970764397" y="54.0" />
+      <point x="68.0" y="-14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface" target="it.polimi.ingsw.ps31.server.serverNetworking.ServerInputBuffer">
+      <point x="17.75" y="-14.5" />
+      <point x="325.625" y="217.0" />
+      <point x="373.5" y="217.0" />
+      <point x="373.5" y="138.0" />
+      <point x="365.125" y="138.0" />
+      <point x="-17.5" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.clientNetworking.ClientSocketConnection" target="it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface">
+      <point x="0.0" y="-14.5" />
+      <point x="854.7510970764397" y="212.0" />
+      <point x="848.0010970764397" y="212.0" />
+      <point x="42.5" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.Client" target="it.polimi.ingsw.ps31.client.clientNetworking.ClientSocketConnection">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.MatchTable" target="it.polimi.ingsw.ps31.server.serverNetworking.DisconnectedClient">
+      <point x="0.0" y="-14.5" />
+      <point x="-37.75" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.Match" target="it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface">
+      <point x="25.625" y="-14.5" />
+      <point x="440.2481245923028" y="741.0" />
+      <point x="516.7888535551208" y="741.0" />
+      <point x="516.7888535551208" y="573.0" />
+      <point x="474.2688356164385" y="573.0" />
+      <point x="11.583333333333371" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.ServerInputBuffer" target="it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface">
+      <point x="52.5" y="14.5" />
+      <point x="435.125" y="138.0" />
+      <point x="395.5" y="138.0" />
+      <point x="395.5" y="227.0" />
+      <point x="396.625" y="227.0" />
+      <point x="88.75" y="-14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.SocketServerConnection" target="it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionInterface">
+      <point x="0.0" y="-14.5" />
+      <point x="88.5" y="138.0" />
+      <point x="108.30968688845417" y="138.0" />
+      <point x="-62.66666666666666" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.ServerListeningThread" target="it.polimi.ingsw.ps31.server.serverNetworking.ServerConnectionInterface">
+      <point x="-41.25" y="-14.5" />
+      <point x="239.25000000000003" y="138.0" />
+      <point x="233.64302022178745" y="138.0" />
+      <point x="62.66666666666663" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.MatchRow" target="it.polimi.ingsw.ps31.server.Match">
+      <point x="26.25" y="-14.5" />
+      <point x="276.62031148075687" y="820.0" />
+      <point x="387.28979125896944" y="820.0" />
+      <point x="-27.33333333333337" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.SocketAccepter" target="it.polimi.ingsw.ps31.server.serverNetworking.SocketServerConnection">
+      <point x="-43.33333333333334" y="-14.5" />
+      <point x="144.03697814742355" y="993.0" />
+      <point x="88.50000000000003" y="993.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.Match" target="it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface">
+      <point x="-35.875" y="-14.5" />
+      <point x="378.7481245923028" y="751.0" />
+      <point x="257.1223091976518" y="751.0" />
+      <point x="257.1223091976518" y="316.0" />
+      <point x="290.125" y="316.0" />
+      <point x="-17.75" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface" target="it.polimi.ingsw.ps31.server.serverNetworking.SentMessageEntry">
+      <point x="52.125" y="-14.5" />
+      <point x="514.810502283105" y="484.0" />
+      <point x="538.2869781474235" y="484.0" />
+      <point x="36.0" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.MatchRow" target="it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface">
+      <point x="-26.25" y="-14.5" />
+      <point x="224.1203114807569" y="306.0" />
+      <point x="254.62500000000003" y="306.0" />
+      <point x="-53.25" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface" target="it.polimi.ingsw.ps31.server.serverNetworking.PlayerTable">
+      <point x="17.75" y="14.5" />
+      <point x="325.625" y="326.0" />
+      <point x="287.72729125896944" y="326.0" />
+      <point x="287.72729125896944" y="400.0" />
+      <point x="319.4536448140901" y="400.0" />
+      <point x="-36.33333333333337" y="-14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.PlayerConnectionRow" target="it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface">
+      <point x="0.0" y="-14.5" />
+      <point x="381.85229125896944" y="326.0" />
+      <point x="361.125" y="326.0" />
+      <point x="53.25" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.DisconnectedClient" target="it.polimi.ingsw.ps31.server.Match">
+      <point x="0.0" y="-14.5" />
+      <point x="471.2897912589695" y="830.0" />
+      <point x="441.9564579256362" y="830.0" />
+      <point x="27.33333333333337" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.Server" target="it.polimi.ingsw.ps31.server.serverNetworking.SocketAccepter">
+      <point x="-20.0" y="-14.5" />
+      <point x="291.7481245923028" y="1072.0" />
+      <point x="187.3703114807569" y="1072.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.MatchTable" target="it.polimi.ingsw.ps31.server.Match">
+      <point x="-15.857142857142833" y="-14.5" />
+      <point x="417.68264840182667" y="899.0" />
+      <point x="385.2897912589695" y="899.0" />
+      <point x="385.2897912589695" y="830.0" />
+      <point x="414.6231245923028" y="830.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface" target="it.polimi.ingsw.ps31.client.ClientReadingThread">
+      <point x="-34.0" y="-14.5" />
+      <point x="771.5010970764397" y="133.0" />
+      <point x="764.9139758643184" y="133.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.VirtualView" target="it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface">
+      <point x="0.0" y="-14.5" />
+      <point x="452.7888535551208" y="573.0" />
+      <point x="451.10216894977174" y="573.0" />
+      <point x="-11.583333333333371" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.ClientReadingThread" target="it.polimi.ingsw.ps31.client.clientNetworking.ClientMessageHistory">
+      <point x="0.0" y="-14.5" />
+      <point x="764.9139758643184" y="54.0" />
+      <point x="803.5048849552276" y="54.0" />
+      <point x="-61.125" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface" target="it.polimi.ingsw.ps31.server.Match">
+      <point x="-57.91666666666663" y="14.5" />
+      <point x="404.7688356164385" y="563.0" />
+      <point x="287.7888535551208" y="563.0" />
+      <point x="287.7888535551208" y="741.0" />
+      <point x="388.9981245923028" y="741.0" />
+      <point x="-25.625" y="-14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.ClientReadingThread" target="it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface">
+      <point x="53.0" y="14.5" />
+      <point x="817.9139758643184" y="133.0" />
+      <point x="805.5010970764397" y="133.0" />
+      <point x="0.0" y="-14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.Client" target="it.polimi.ingsw.ps31.client.clientNetworking.ClientMessageHistory">
+      <point x="26.333333333333343" y="-14.5" />
+      <point x="880.5844304097731" y="291.0" />
+      <point x="953.2510970764397" y="291.0" />
+      <point x="953.2510970764397" y="54.0" />
+      <point x="925.7548849552276" y="54.0" />
+      <point x="61.125" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.client.Client" target="it.polimi.ingsw.ps31.client.clientNetworking.ClientNetworkInterface">
+      <point x="-26.33333333333333" y="-14.5" />
+      <point x="827.9177637431063" y="291.0" />
+      <point x="756.2510970764397" y="291.0" />
+      <point x="756.2510970764397" y="212.0" />
+      <point x="763.0010970764397" y="212.0" />
+      <point x="-42.5" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.NetworkInterface" target="it.polimi.ingsw.ps31.server.serverNetworking.MatchTable">
+      <point x="57.91666666666674" y="14.5" />
+      <point x="520.6021689497718" y="553.0" />
+      <point x="582.4166666666667" y="553.0" />
+      <point x="582.4166666666667" y="909.0" />
+      <point x="465.2540769732552" y="909.0" />
+      <point x="31.714285714285737" y="-14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.Match" target="it.polimi.ingsw.ps31.server.InputBufferReader">
+      <point x="-5.125" y="-14.5" />
+      <point x="409.4981245923028" y="751.0" />
+      <point x="406.2888535551208" y="751.0" />
+      <point x="36.0" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.Match" target="it.polimi.ingsw.ps31.server.VirtualView">
+      <point x="15.375" y="-14.5" />
+      <point x="429.9981245923028" y="731.0" />
+      <point x="484.72916666666674" y="731.0" />
+      <point x="484.72916666666674" y="647.0" />
+      <point x="488.4555202217874" y="647.0" />
+      <point x="35.666666666666615" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.SocketAccepter" target="it.polimi.ingsw.ps31.server.serverNetworking.MatchTable">
+      <point x="43.333333333333314" y="-14.5" />
+      <point x="230.7036448140902" y="993.0" />
+      <point x="405.7897912589695" y="993.0" />
+      <point x="-27.75" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.Server" target="it.polimi.ingsw.ps31.server.serverNetworking.MatchTable">
+      <point x="20.0" y="-14.5" />
+      <point x="331.7481245923028" y="1072.0" />
+      <point x="461.2897912589695" y="1072.0" />
+      <point x="27.750000000000014" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps31.server.serverNetworking.PlayerCommunicationInterface" target="it.polimi.ingsw.ps31.server.serverNetworking.MatchTable">
+      <point x="88.75" y="14.5" />
+      <point x="396.625" y="326.0" />
+      <point x="640.4139758643184" y="326.0" />
+      <point x="640.4139758643184" y="919.0" />
+      <point x="481.11121983039806" y="919.0" />
+      <point x="47.57142857142857" y="-14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.3999999999999998" x="284.5000000000007" y="607.0000000000003" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

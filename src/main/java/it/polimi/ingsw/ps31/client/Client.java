@@ -18,11 +18,19 @@ import java.net.ConnectException;
 
 /**
  * Created by Giuseppe on 05/06/2017.
+ *
+ * Classe main del client. Chiede all'utente le informazioni per poter istanziare la connessione e il gioco
+ * e gestisce tutta la fase di connessione al server e di creazione della view e della infrastruttura di
+ * comunicazione.
  */
 public class Client extends Thread {
+    /** Porta sulla quale il server è in ascolto */
     private static final int PORT = 2727;
+
+    /** riferimento alla networkInterface */
     private static ClientNetworkInterface clientNetworkInterface;
 
+    /** reader da console */
     private static BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
 
 
