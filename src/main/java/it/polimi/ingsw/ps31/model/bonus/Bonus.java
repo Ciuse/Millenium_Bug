@@ -7,6 +7,14 @@ import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 
 /**
  * Created by Giuseppe on 27/05/2017.
+ *
+ * Classe che rappresenta il generico bonus e le interfacce che implementa
+ * I bonus (o Malus) generalmente vanno ad influenzare parametri di uno specifico controllo o di
+ * una specifica azione; le quali di conseguenza si comporteranno in modo diverso
+ * e ritorneranno risultati diversi
+ *
+ * @see it.polimi.ingsw.ps31.model.player.PlayerActionSet
+ * @see it.polimi.ingsw.ps31.model.actions.ActionControlSet
  */
 public abstract class Bonus implements BonusActivation  {
 

@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.playerPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.ExcommunicationPlayerPanel;
+import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
 
 import javax.swing.*;
 import java.awt.*;
@@ -118,11 +119,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         pane.add(jExcommunication, gbc);
         jExcommunication.attach(this);
 
-
-
     }
-
-
 
     public PersonalBonusTilesPanel getjPersonalBonusTilesPanel() {
         return jPersonalBonusTilesPanel;

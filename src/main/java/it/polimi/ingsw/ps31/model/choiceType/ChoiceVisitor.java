@@ -1,7 +1,12 @@
 package it.polimi.ingsw.ps31.model.choiceType;
 
+import it.polimi.ingsw.ps31.model.stateModel.MVStateInfoVisitor;
+
 /**
  * Created by Giuseppe on 15/06/2017.
+ *
+ * Interfaccia del pattern Visitor (delle scelte), implementata dall'oggetto visitatore che sa come visitare i vari oggetti diversi
+ * @see MVChoiceInfoVisitor
  */
 public interface ChoiceVisitor {
     void visit(ChoiceListToPay choiceListToPay);

@@ -10,6 +10,8 @@ import java.util.List;
 
 /**
  * Created by Francesco on 12/05/2017.
+ *
+ * Spazio azione del consiglio, il quale non ha un limite di pedine
  */
 public class CouncilPalace extends ActionSpace {
 

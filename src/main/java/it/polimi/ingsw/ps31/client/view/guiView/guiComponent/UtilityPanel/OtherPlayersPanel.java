@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
+import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalCardBox;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPlayer;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * Created by giulia on 10/07/2017.
  */
-public class OtherPlayersPanel extends JPanel implements ActionListener {
+public class OtherPlayersPanel extends PaintBackgroundPanel implements ActionListener {
     private JFrame father = null;
     private GuiView guiView;
     private SingleOtherPlayersPanel[] singleOtherPlayersPanel = new SingleOtherPlayersPanel[3];
@@ -44,6 +45,7 @@ public class OtherPlayersPanel extends JPanel implements ActionListener {
                 ) {
             if (player.getPlayerId() != guiView.getMyStateViewPlayer().getPlayerId()) {
                 singleOtherPlayersPanel[i] = new SingleOtherPlayersPanel(this.guiView, player.getPlayerId());
+                singleOtherPlayersPanel[i].setOpaque(false);
                 gbc.gridx = i * 2;
                 gbc.gridy = 0;
                 gbc.gridheight = 1;
@@ -77,9 +79,8 @@ public class OtherPlayersPanel extends JPanel implements ActionListener {
                 singleOtherPlayersPanel[i].getjPersonalBonusTilesPanel().printTiles(player.getStateViewPersonalBonusTiles());
                 singleOtherPlayersPanel[i].getjPersonalBoardPanel().getPlayerResourcesPanel().setStringPhysicalResources(player.getPlayerResources());
                 singleOtherPlayersPanel[i].getjPersonalBoardPanel().getPlayerResourcesPanel().setStringPointResources(player.getPlayerResources());
-
-
-            }i++;
+                i++;
+            }
         }
     }
 

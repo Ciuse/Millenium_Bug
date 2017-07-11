@@ -14,6 +14,8 @@ import java.util.List;
 
 /**
  * Created by Francesco on 12/05/2017.
+ *
+ * Classe che rappresenta il generico spazio azione
  */
 public class ActionSpace implements ActiveEffect {
     private int actionSpaceId; //utile per la stampa

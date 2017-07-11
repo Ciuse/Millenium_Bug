@@ -46,7 +46,6 @@ public class  PayResourceListControl extends PayResourceControl{
         //Controllo che i parametri siano settati
         if ( this.resourceLists == null )
         {
-            //TODO: gestire;
             result = false;
         } else
         {

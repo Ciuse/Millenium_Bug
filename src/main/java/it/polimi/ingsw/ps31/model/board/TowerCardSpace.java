@@ -8,6 +8,11 @@ import it.polimi.ingsw.ps31.model.stateModel.StateCardBox;
 
 /**
  * Created by Francesco on 12/05/2017.
+ *
+ * Casella della torre la quale ha associata anche uno spazio azione oltre a contenere una carta
+ *
+ * @see it.polimi.ingsw.ps31.model.actions.Action
+ * @see PhysicalCardBox
  */
 public class TowerCardSpace extends PhysicalCardBox {
     private final ActionSpace actionSpace;

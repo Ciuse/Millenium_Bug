@@ -4,6 +4,10 @@ import java.util.List;
 
 /**
  * Created by giulia on 21/06/2017.
+ *
+ * Scelta di quale privilegio del consiglio ottenere in base a quelli possibili
+ *
+ * @see it.polimi.ingsw.ps31.client.view.View
  */
 public class ChoicePrivilegeResource extends ChoiceType {
     private List<String> resourceListToChoice;

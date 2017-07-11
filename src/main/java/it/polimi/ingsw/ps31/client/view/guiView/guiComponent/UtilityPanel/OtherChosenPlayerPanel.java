@@ -60,6 +60,7 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
         otherBoard.addActionListener(this);
 
         otherPlayersPanel = new OtherPlayersPanel(guiView);
+        otherPlayersPanel.imageToReprint("/background2.jpg");
 
     }
 
@@ -78,9 +79,9 @@ public class OtherChosenPlayerPanel extends PaintBackgroundPanel implements Acti
         if (nameButton.equals("Other player board")) {
             JFrame otherPlayersFrame = new JFrame();
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-            //otherPlayersFrame.setLocation((int) screenSize.getHeight() /2 +300, (int) screenSize.getWidth() / 6);
+            otherPlayersFrame.setLocation(25,50);
             otherPlayersFrame.setAlwaysOnTop(true);
-            otherPlayersFrame.setSize(screenSize.width, screenSize.height/2);
+            otherPlayersFrame.setSize(screenSize.width-60, (screenSize.height/2)-50);
             otherPlayersFrame.setVisible(true);
             otherPlayersFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             Container c = otherPlayersFrame.getContentPane();

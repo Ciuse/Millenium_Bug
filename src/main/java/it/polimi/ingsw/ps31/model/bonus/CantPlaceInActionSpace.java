@@ -6,8 +6,14 @@ import java.util.List;
 
 /**
  * Created by giulia on 16/06/2017.
+ *
+ * Malus che impedisce al giocatore di posizionarsi in determinati action space
+ * @see it.polimi.ingsw.ps31.model.actions.ActionPlaceFamilyMemberInBoard
  */
 public class CantPlaceInActionSpace extends Bonus{
+    /**
+     * Lista contenente gli id degl iaction space in cui il giocatore non può mettersi
+     */
     private List<Integer> actionSpaceIdList;
 
     /* Constructor */

@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps31.model.card;
 
 
 import it.polimi.ingsw.ps31.model.constants.CardColor;
+import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.stateModel.StateAllDevelopmentCard;
 import it.polimi.ingsw.ps31.model.stateModel.StateDevelopmentCard;
 
@@ -11,6 +12,10 @@ import java.util.List;
 
 /**
  * Created by Giuseppe on 22/05/2017.
+ *
+ * Contiene una generica lista di Carte e i metodi per gestirla e crearla in modo ottimale
+ * @see DevelopmentCard
+ * @see List
  */
 public class DevelopmentCardList {
     private List<DevelopmentCard> developmentCardList = new ArrayList<>();
@@ -42,6 +47,8 @@ public class DevelopmentCardList {
         return new ArrayList<>(this.developmentCardList);
     }
 
+
+    /* Metodoi per contare le carte di un certo colore della lista */
     public int countCardGreen() {
         int contatore = 0;
         for (DevelopmentCard developmentCard : this.developmentCardList) {
@@ -84,7 +91,12 @@ public class DevelopmentCardList {
         }
         return contatore;
     }
-    //in base al colore conto le carte di quel colore
+
+    /**
+     * Conto le carte di un certo colore
+     * @param cardColor colore delle carte che voglio contare
+     * @return numero di carte contate
+     */
     public int countSpecificCardColor(CardColor cardColor) {
         int contatore = 0;
         for (DevelopmentCard developmentCard : this.developmentCardList) {
@@ -96,6 +108,12 @@ public class DevelopmentCardList {
         }
         return contatore;
     }
+
+    /**
+     * Metodo che crea una sottolista di un solo colore partendo dalla lista principale
+     * @param cardColor colore delle carte sottolista che voglio creare
+     * @return ritorna la nuova lista con un solo colore di carte
+     */
     public List<DevelopmentCard> getSpecificCardList(CardColor cardColor){
             List<DevelopmentCard> specificCardList = new ArrayList<>();
             for (DevelopmentCard developmentCard : this.developmentCardList) {
@@ -116,11 +134,17 @@ public class DevelopmentCardList {
         }return new StateAllDevelopmentCard(stateDevelopmentCardList);
     }
 
-
+    /**
+     * Metodo per mischiare la lista di carte
+     */
     public void shuffleCardList(){
         Collections.shuffle(developmentCardList);
     }
 
+    /**
+     * Metodo per sapere qual'è il numero (più grande) di carte dello stesso colore
+     * @return
+     */
     public int maxNumberOfCardOfTheSameType() {
         int maxNumber1 = 0;
         int maxNumber2 = 0;

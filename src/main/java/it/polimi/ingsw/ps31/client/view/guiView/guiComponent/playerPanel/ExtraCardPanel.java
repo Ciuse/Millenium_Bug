@@ -95,9 +95,9 @@ public class ExtraCardPanel extends JPanel implements ActionListener {
         String nameButton = jButton.getName();
         JFrame frame = new JFrame(nameButton);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setLocation((int) screenSize.getHeight() / (18 / 6), (int) screenSize.getWidth() / 10);
+        frame.setLocation((int) screenSize.getHeight() / 3, (int) screenSize.getWidth() / 10);
         frame.setAlwaysOnTop(true);
-        frame.setSize(screenSize.width / 2, screenSize.height / (12 / 4));
+        frame.setSize(screenSize.width / 2 +170, screenSize.height / 3);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container c = frame.getContentPane();

@@ -37,21 +37,12 @@ public class ActionGetResources extends Action {
 
     /* Class Methods */
     @Override
-    public void activate()
-    {
-        //Controllo che i parametri siano settati
-        if (resourcesToGet == null)
-        {
-            //TODO: fare qualcosa (eccezione?)
-        } else
-        {
-            //Eseguo l'azione
-            List<Resource> resourcesToGetList = this.resourcesToGet.getListOfResource();
-            for(Resource currentResource : resourcesToGetList)
-            {
-                currentResource.addResource(super.player);
-            }
-            resetResourcesToGet();
+    public void activate() {
+        //Eseguo l'azione
+        List<Resource> resourcesToGetList = this.resourcesToGet.getListOfResource();
+        for (Resource currentResource : resourcesToGetList) {
+            currentResource.addResource(super.player);
         }
+        resetResourcesToGet();
     }
 }

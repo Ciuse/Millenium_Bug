@@ -8,7 +8,6 @@ import it.polimi.ingsw.ps31.model.player.Player;
 public class ActionEndTurn extends Action {
     private boolean active =false;
     private boolean used = false;
-    //TODO IMPLEMENTARE
 
     public ActionEndTurn(Player player, ActionControlSet actionControlSet) {
         super(player, actionControlSet);

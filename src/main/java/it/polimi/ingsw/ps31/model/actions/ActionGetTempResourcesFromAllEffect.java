@@ -69,7 +69,6 @@ public class ActionGetTempResourcesFromAllEffect extends Action {
 
                     }
                 for (Resource currentResource : resourcesTempToGetList) {
-                    //todo: da attivare sse le risorse provengono da carte sviluppo o spazi azione
                     for (Resource resource : resourceMalus.get(listToPay).getListOfResource()
                             ) {
                         currentResource.addValue(resource.getValue());
@@ -78,7 +77,6 @@ public class ActionGetTempResourcesFromAllEffect extends Action {
                 }
             } else {
                 for (Resource currentResource : resourcesTempToGetList) {
-                    //todo: da attivare sse le risorse provengono da carte sviluppo o spazi azione
                     currentResource.addTempResource(super.player);
                 }
             }

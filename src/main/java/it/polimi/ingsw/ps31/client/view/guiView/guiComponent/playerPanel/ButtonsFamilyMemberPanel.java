@@ -120,7 +120,12 @@ public class ButtonsFamilyMemberPanel extends JPanel implements ActionListener {
                         buttonFamilyMember[i].setEnabled(true);
                     }
                     else {
-                        //TODO BHO METTERE UNO SFONDO NEUTRO PER OSCURARLO
+                        //TODO VEDERE SE SI RIESCE A FARLO TRASPARENTE
+//                        buttonFamilyMember[i].getFamilyMemberLabel().setOpaque(false);
+//                        buttonFamilyMember[i].getFamilyMemberLabel().setVisible(false);
+//                        buttonFamilyMember[i].setEnabled(false);
+//                        buttonFamilyMember[i].setOpaque(false);
+//                        buttonFamilyMember[i].setContentAreaFilled(false);
                     }
                 }
             }

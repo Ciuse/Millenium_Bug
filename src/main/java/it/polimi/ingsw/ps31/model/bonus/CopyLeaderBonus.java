@@ -7,10 +7,13 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by giulia on 20/06/2017.
+ *
+ * Bonus speciale unico della carta leader "Lorenzo De Medici" il quale ti permette
+ * di copiare l'abilità di un altro leader già giocato da un altro player
+ * @see it.polimi.ingsw.ps31.controller.Controller
  */
 public class CopyLeaderBonus extends Bonus {
-    private final int leaderCardId; //carta leader Lorenzo De' Medici ,copia l'abilità di un altro leader che è stato giocato da un altro
-    //giocatore e che può essere o un'abilità per turno oppure un'abilità permanente
+    private final int leaderCardId;
 
 
 
@@ -19,7 +22,9 @@ public class CopyLeaderBonus extends Bonus {
     }
 
 
-
+    /**
+     * Sostituisco la mia carta Leader con quella copiata che il controller mi ritornerà (avrà lo stesso nome e id della carta originale che possiede questo bonus)
+     */
     @Override
     public void activate(Player player) {
         LeaderCard leaderCardToAdd=null;

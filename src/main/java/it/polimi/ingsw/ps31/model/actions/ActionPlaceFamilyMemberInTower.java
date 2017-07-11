@@ -70,10 +70,8 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
 
                                 if (actionControlSet.takeDevelopmentCardControl(towerCardSpace.getCard())) {
 
-                                    //TODO SIMULARE L ATTIVAZIONE IN CATENA DEGLI EFFETI
-                                    //pago la torre
-
                                     if (towerCardSpace.getTower().isOccupied()) {
+                                        //pago la torre
                                         player.getPlayerActionSet().payTowerMoney();
                                     }
                                     //metto il famigliare
@@ -92,7 +90,7 @@ public class ActionPlaceFamilyMemberInTower extends ActionPlaceFamilyMember {
 
                                     //metto la torre come occupata
                                     towerCardSpace.getTower().setOccupied(true);
-                                } else {      //TODO FARE OVERRIDE DEI GET CONTROL ERROR SPECIFICI
+                                } else {
                                     player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, super.actionControlSet.getTakeDevelopmentCardControl().getControlStringError()));
                                 }
 //                                } else {

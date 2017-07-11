@@ -245,11 +245,13 @@ public class GuiView extends View implements ActionListener {
 
     @Override
     public void printAllPersonalBoard() {
-        int i=0;
-        for (StateViewPersonalBoard stateViewPersonalBoard: super.getStateViewPersonalBoardList()
-             ) {
-            if(!super.getStateViewGame().getPlayerIdInAction().equals(stateViewPersonalBoard.getPlayerId())){
-                mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getOtherChosenPlayerPanel().getOtherPlayersPanel().fillOtherPlayers(stateViewPersonalBoard);
+        if(!firstTime) {
+            int i = 0;
+            for (StateViewPersonalBoard stateViewPersonalBoard : super.getStateViewPersonalBoardList()
+                    ) {
+                if (!super.getStateViewGame().getPlayerIdInAction().equals(stateViewPersonalBoard.getPlayerId())) {
+                    mainFrame.getBackgroundMainFramePanel().getUtilityPanel().getOtherChosenPlayerPanel().getOtherPlayersPanel().fillOtherPlayers(stateViewPersonalBoard);
+                }
             }
         }
     }

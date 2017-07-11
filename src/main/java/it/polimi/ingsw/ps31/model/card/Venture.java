@@ -8,6 +8,8 @@ import java.util.List;
 
 /**
  * Created by Giuseppe on 09/05/2017.
+ *
+ * Carta Viola
  */
 public final class Venture extends DevelopmentCard{
 

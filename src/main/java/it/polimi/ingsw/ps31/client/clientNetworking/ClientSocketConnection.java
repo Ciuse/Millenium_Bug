@@ -56,8 +56,6 @@ public class ClientSocketConnection extends ClientNetworkInterface {
 
     @Override
     protected void writeOnNetwork(String msgStr) {
-        //TODO: istruzione di test da cancellare
-        //System.out.println("ClientSocketConnection : writeOnNetwork> sto per inviare il messaggio: " + msgStr);
 
         try {
             socketWriter.write(msgStr + "\n");

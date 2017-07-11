@@ -6,9 +6,13 @@ import java.util.List;
 
 /**
  * Created by giulia on 20/06/2017.
+ *
+ * Scelta iniziale di quale personal bonus tiles tenersi
+ *
+ * @see it.polimi.ingsw.ps31.client.view.View
  */
 public class ChoicePersonalBonusTiles extends ChoiceType {
-    List<StatePersonalBonusTiles> statePersonalBonusTilesList;
+    private List<StatePersonalBonusTiles> statePersonalBonusTilesList;
 
     public ChoicePersonalBonusTiles(List<StatePersonalBonusTiles> statePersonalBonusTilesList) {
         this.statePersonalBonusTilesList = statePersonalBonusTilesList;

@@ -56,8 +56,17 @@ public class ActionPlaceFamilyMemberInBoard extends ActionPlaceFamilyMember {
                 if (this.actionSpace != null) {        //TIMER NON SCADUTO
 
                     //controllo i parametri extra dell azione settati dalle scomuniche
-                    if (super.defaultDenyActionSpaces != null && super.defaultDenyActionSpaces.contains(actionSpace.getActionSpaceId())) { //TODO VERIFICARE STO CONTAIN CHE SENZA NULL MI DA ERRORE
-                        player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, "Non puoi piazzare il family member qui perchè hai la scomunica"));
+                    if (super.defaultDenyActionSpaces != null){
+                        boolean found=false;
+                        for (Integer integer:super.defaultDenyActionSpaces
+                             ) {
+                            if(integer==actionSpace.getActionSpaceId()){
+                               found=true;
+                            }
+                        }
+                        if (found) {
+                            player.getModel().notifyViews(new MVStringToPrint(player.getPlayerId(), false, "Non puoi piazzare il family member qui perchè hai la scomunica"));
+                        }
                     } else {
 
                         //Eseguo i controlli

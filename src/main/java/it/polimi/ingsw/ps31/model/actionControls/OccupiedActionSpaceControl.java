@@ -35,7 +35,6 @@ public class OccupiedActionSpaceControl extends Control {
     @Override
     public boolean execute() {
         if (this.actionSpace == null) {
-            //TODO: gestire
             return false;
         }
         //Ritorna true se hai attivato il leader
