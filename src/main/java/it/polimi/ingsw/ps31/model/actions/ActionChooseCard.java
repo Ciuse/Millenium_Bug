@@ -15,6 +15,16 @@ import java.util.List;
 
 /**
  * Created by Francesco on 23/05/2017.
+ *
+ * Azione che viene attivata principalmente da effetti immediati delle carte sviluppo che ti permette di
+ * scegliere una carta di un certo colore(o qualsiasi) e di un certo valore dalla torre, senza piazzare
+ * il famigliare.
+ * Necessita di un valore e di un colore (o del booleano che indica tutti i colori)
+ *
+ *  @see it.polimi.ingsw.ps31.model.actionControls.PayCardControl
+ *  @see it.polimi.ingsw.ps31.model.actionControls.TakeDevelopmentCardControl
+ *  @see it.polimi.ingsw.ps31.model.actionControls.DevelopmentCardRequirementsControl
+ *  @see it.polimi.ingsw.ps31.model.actionControls.DiceValueCardSpaceControl
  */
 public class ActionChooseCard extends Action {
     private Integer diceCost = null;
@@ -55,22 +65,10 @@ public class ActionChooseCard extends Action {
         this.anyCardColor = anyCardColor;
     }
 
-    public Integer getDiceCost()
-    {
-        return this.diceCost;
-    }
 
-    public ResourceList getResourceDiscount()
-    {
-        return this.resourceDiscount;
-    }
     public CardColor getCardColor()
     {
         return this.cardColor;
-    }
-    public boolean getAnyCardColor()
-    {
-        return this.anyCardColor;
     }
 
     /* Resetters */
@@ -94,7 +92,13 @@ public class ActionChooseCard extends Action {
         this.anyCardColor = false;
     }
 
-    /* Activation method*/
+
+    /**
+     * Dopo aver chiesto al giocatore quale carta vuole si controlla se il player può pagare quella carta
+     * e successivamente eseguo gli altri controlli sul valore del dado, colore, requisiti mia board
+     * e se è piena o no.
+     *
+     */
     @Override
     public void activate() {
         TowerCardSpace chosenCardSpace;
@@ -118,7 +122,7 @@ public class ActionChooseCard extends Action {
 
         if (!actionTimerEnded) {      //TIMER NON SCADUTO
 
-//            pago la carta
+            //pago la carta
             super.player.getPlayerActionSet().payCard();
 
             //prendo la carta

@@ -6,6 +6,10 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 22/05/2017.
+ *
+ * Azione per pagare la torre
+ * Di dafault se l'azione viene richiamata il player dovrà pagare (è possibile evitarlo
+ * se il giocatore ha attivato il Leader che setta il booleano a false)
  */
 public class ActionPayTowerMoney extends Action {
     private static final Coin COINTOPAY= new Coin(3); //Valore di default delle monete da pagare

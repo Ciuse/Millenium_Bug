@@ -6,9 +6,15 @@ import it.polimi.ingsw.ps31.model.player.Player;
 import java.util.List;
 
 /**
- * Created by Francesco on 30/05/2017.
+ * Created by Francesco on 30/05/2017
+ *
+ * Azione per poter aggiungere la lista delle risorse finali del player alle risorse
+ * principali del player.
+ * Viene usata solo alla fine del gioco (in automatico)
+ *
+ * @see Player
  */
-public class ActionGetFinalResources extends ActionGetResources {   //Attivato solo alla fine della partita
+public class ActionGetFinalResources extends ActionGetResources {
 
     public ActionGetFinalResources(Player player, ActionControlSet actionControlSet) {
         super(player, actionControlSet);

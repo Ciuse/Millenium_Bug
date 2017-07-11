@@ -18,6 +18,11 @@ import java.util.List;
 
 /**
  * Created by Francesco on 25/05/2017.
+ *
+ * Set di controlli di un player. I controlli vengono eseguiti all' interno delle azioni
+ * o dei metodi del controller, e ritorneranno un booleano in base all' esito del controllo.
+ * I controlli sono propri di ogni player e possono subire modifiche lungo il corso del gioco
+ * per mezzo di scomuniche, leader, ed effetti permanenti delle carte sviluppo
  */
 public class ActionControlSet {
     private final DevelopmentCardRequirementsControl developmentCardRequirementsControl;

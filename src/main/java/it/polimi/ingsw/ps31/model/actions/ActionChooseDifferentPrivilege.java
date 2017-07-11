@@ -12,6 +12,12 @@ import java.util.List;
 
 /**
  * Created by Francesco on 18/05/2017.
+ *
+ * Azione che viene attivata ogni volta che si ottiene un privilegio del consiglio.
+ * Necessita un numero dei privilegi e un booleano: se differenti o no
+ *
+ * @see ActionGetTempResourcesFromAllEffect
+ * @see it.polimi.ingsw.ps31.model.stateModel.LastModelStateForControl
  */
 public class ActionChooseDifferentPrivilege extends Action {
     private int numberOfDifferentPrivileges;
@@ -50,7 +56,13 @@ public class ActionChooseDifferentPrivilege extends Action {
         this.numberOfDifferentPrivileges = 0;
     }
 
-    /* Class Methods */
+    /**
+     * Viene creata una lista con i possibili privilegi rimasti da poter scegliere, e si invia la richiesta al player
+     * contenente la lista delle risorse che potrà ottenere. Se vi sono più privilegi differenti tra di loro ad ogni
+     * ciclio la lista sarà composta dalla lista base meno la lista scelta dal giocatore. E verrà aggiornato anche uno
+     * stato apposito dal quale il controller potrà ottenere le informazioni per vedere se il player ha scelto giusto
+     * o no.
+     */
     @Override
     public void activate() {
         List<ResourceList> tempResourceChoices = new ArrayList<>(choices);

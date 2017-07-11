@@ -8,6 +8,10 @@ import java.util.List;
 
 /**
  * Created by Francesco on 18/05/2017.
+ *
+ * Azione generica per poter aggiungere risorse alla lista principale del player
+ *
+ * @see Player
  */
 public class ActionGetResources extends Action {
     private ResourceList resourcesToGet = null;

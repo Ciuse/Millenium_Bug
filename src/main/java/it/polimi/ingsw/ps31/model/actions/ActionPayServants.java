@@ -11,6 +11,9 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 18/05/2017.
+ *
+ * Azione per pagare i servitori
+ * Necessita di un famigliare a cui aggiungere il valore scelto
  */
 public class ActionPayServants extends Action {
     private FamilyMember familyMember = null;
@@ -36,6 +39,9 @@ public class ActionPayServants extends Action {
         this.servantsAmount = null;
     }
 
+    /**
+     * Viene chiesto al giocatore quanti servitori vuole pagare.
+     */
     @Override
     public void activate()
     {
