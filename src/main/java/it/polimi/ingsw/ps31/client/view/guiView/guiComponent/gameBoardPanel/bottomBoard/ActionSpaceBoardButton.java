@@ -2,13 +2,10 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.bot
 
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.PaintBackgroundPanel;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewActionSpace;
 import it.polimi.ingsw.ps31.model.constants.DiceColor;
 import it.polimi.ingsw.ps31.model.constants.PlayerColor;
-import it.polimi.ingsw.ps31.model.player.FamilyMember;
 import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

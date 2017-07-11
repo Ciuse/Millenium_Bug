@@ -4,7 +4,6 @@ import it.polimi.ingsw.ps31.client.view.View;
 import it.polimi.ingsw.ps31.client.view.cmdView.interpreterOfCommand.CmdInterpreterView;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.UtilityPanel.*;
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.MainFrame;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewActionSpace;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewFamilyMember;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewPersonalBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
@@ -12,7 +11,6 @@ import it.polimi.ingsw.ps31.messages.messageVC.*;
 import it.polimi.ingsw.ps31.model.choiceType.*;
 import it.polimi.ingsw.ps31.model.constants.PlayerId;
 import it.polimi.ingsw.ps31.model.stateModel.StateActionSpace;
-import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -1,11 +1,9 @@
 package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.gameBoardPanel.topBoard;
 
 import it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other.ButtonCard;
-import it.polimi.ingsw.ps31.client.view.stateView.StateViewActionSpace;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewBoard;
 import it.polimi.ingsw.ps31.client.view.stateView.StateViewTowerCardBox;
 import it.polimi.ingsw.ps31.model.constants.CardColor;
-import it.polimi.ingsw.ps31.model.constants.PlayerColor;
 
 import javax.swing.*;
 import java.awt.*;
