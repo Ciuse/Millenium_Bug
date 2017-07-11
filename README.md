@@ -112,6 +112,8 @@ Questo documento contiene la prima bozza di class diagram sviluppato per il prog
 
 Per completezza, esiste anche una versione completa del class diagram, contenente tutte le classi. Anche questo documento è disponibile in versione [ridotta](/Uml/ProgettoCompleto/complete.svg) o [estesa](/Uml/ProgettoCompleto/complete_dependencies.svg)
 
+### 3.3. Nota sugli uml
+In seguito a modifiche dell'ultimo minuto ad alcune parti del codice, i class diagram non contengono alcune classi e alcuni metodi presenti nel codice sorgente fornito.
 
 ## 4. Info aggiuntive
 
