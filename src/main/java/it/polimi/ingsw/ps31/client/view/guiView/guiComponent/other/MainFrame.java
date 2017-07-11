@@ -6,6 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import sun.audio.*;
 
 /**
  * Created by giulia on 25/06/2017.
@@ -53,6 +57,7 @@ public class MainFrame extends JFrame implements ActionListener {
         backgroundMainFramePanel.setPreferredSize(new Dimension(10, 10));
         frame.add(backgroundMainFramePanel, gbc);
 
+        //music();
 
         int playerMaxNumber = guiView.getStateViewGame().getPlayerMaxNumber();
         if(playerMaxNumber<=2){
@@ -64,6 +69,24 @@ public class MainFrame extends JFrame implements ActionListener {
         }
 
     }
+
+    //public static void music()
+   // {
+        //AudioPlayer MGP= AudioPlayer.player;
+        //AudioStream BGM;
+        //AudioData MD;
+        //ContinuousAudioDataStream loop= null;
+        //try
+       // {
+            //BGM= new AudioStream(new FileInputStream("/Il Trono di Spade 1 - Game of Thrones 1 -- Sigla iniziale - Main theme.wav"));
+            //MD= BGM.getData();
+            //loop= new ContinuousAudioDataStream(MD);
+        //}
+        //catch(IOException error)
+        //{}
+       // MGP.start(loop);
+    //}
+
 
     @Override
     public void actionPerformed(ActionEvent e) {

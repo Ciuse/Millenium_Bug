@@ -97,6 +97,22 @@ public class SingleOtherPlayersPanel extends JPanel implements ActionListener {
         return numberOfPlayer;
     }
 
+    public PersonalBonusTilesPanel getjPersonalBonusTilesPanel() {
+        return jPersonalBonusTilesPanel;
+    }
+
+    public PersonalBoardPanel getjPersonalBoardPanel() {
+        return jPersonalBoardPanel;
+    }
+
+    public ExtraCardPanel getExtraCardPanel() {
+        return extraCardPanel;
+    }
+
+    public LeaderCardPanel getjLeaderCardPanel() {
+        return jLeaderCardPanel;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 

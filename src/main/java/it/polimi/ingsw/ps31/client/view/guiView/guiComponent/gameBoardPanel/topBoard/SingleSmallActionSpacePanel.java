@@ -8,27 +8,39 @@ import it.polimi.ingsw.ps31.model.stateModel.StateFamilyMember;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import static it.polimi.ingsw.ps31.model.constants.PlayerColor.*;
+
 /**
  * Created by giulia on 29/06/2017.
+ * classe che mi rappresenta l'action space delle torri dove possono essere posizionati i family member
+ * @see PaintBackgroundPanel
  */
-public class SingleSmallActionSpacePanel extends JPanel  {
+public class SingleSmallActionSpacePanel extends JPanel implements ActionListener {
     private ActionListener listener;
     private PaintBackgroundPanel[] familyMemberPanel = new PaintBackgroundPanel[3];
 
-
+    /* Constructor */
     public SingleSmallActionSpacePanel() {
         addComponentsToPane(this);
     }
 
+
+    /**
+     *metodo che mi permette di attaccare questa classe al suo listener
+     */
     public void attach (ActionListener listener){
         this.listener=listener;
     }
 
+
+    /**
+     * Metodo che mi permette di costruire un layout al JPanel in modo da gestire meglio lo spazio
+     */
     public void addComponentsToPane(Container pane){
-        //griglia 4*5
         GridBagLayout gbl = new GridBagLayout();
         gbl.columnWidths = new int[]{0,0,0,0,0,0};
         gbl.rowHeights = new int[]{0,0,0,0};
@@ -47,7 +59,6 @@ public class SingleSmallActionSpacePanel extends JPanel  {
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         familyMemberPanel[0].setOpaque(false);
-        //familyMemberPanel[0].setBackground(Color.BLUE);
         familyMemberPanel[0].setPreferredSize(new Dimension(10, 10));
         pane.add(familyMemberPanel[0], gbc);
 
@@ -73,7 +84,9 @@ public class SingleSmallActionSpacePanel extends JPanel  {
         pane.add(familyMemberPanel[2], gbc);
         }
 
-
+    /**
+     * Metodo che mi permette di stampare i family member negli action space delle torri
+     */
     public void printFamilyMemberOnTopBoard(List<StateFamilyMember> stateFamilyMemberList) {
         if (stateFamilyMemberList.size() != 0) {
             int i = 0;
@@ -90,35 +103,26 @@ public class SingleSmallActionSpacePanel extends JPanel  {
             }
         }
 
-
+    /**
+     * metodo che mi converte un player color in un color
+     */
     public Color getFamilyMemberColor(PlayerColor playerColor){
-        if(playerColor==playerColor.RED){
+        if(playerColor.equals(RED)){
             return Color.RED;
-        }if(playerColor==playerColor.GREEN){
+        }if(playerColor.equals(GREEN)){
             return Color.GREEN;
-        }if(playerColor==playerColor.BLUE){
+        }if(playerColor.equals(BLUE)){
             return Color.BLUE;
-        }if(playerColor==playerColor.YELLOW){
+        }if(playerColor.equals(YELLOW)){
             return Color.YELLOW;
         } else return null;
     }
 
-    public JPanel[] getFamilyMemberPanel() {
-        return familyMemberPanel;
-    }
-
-    public void printFamilyMember(int elementNumber, PlayerColor playerColor){
-        if(playerColor.equals(PlayerColor.BLUE)){
-            familyMemberPanel[elementNumber].setBackground(Color.BLUE);
-        }if(playerColor.equals(PlayerColor.YELLOW)){
-            familyMemberPanel[elementNumber].setBackground(Color.YELLOW);
-        }if(playerColor.equals(PlayerColor.RED)){
-            familyMemberPanel[elementNumber].setBackground(Color.RED);
-        }if(playerColor.equals(PlayerColor.GREEN)){
-            familyMemberPanel[elementNumber].setBackground(Color.GREEN);
-        }
 
 
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
     }
 }
