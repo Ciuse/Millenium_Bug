@@ -34,6 +34,13 @@ ConnectionMessage extends NetworkingMessage {
         return this.typeOfView;
     }
 
+    public boolean wrongPassword(ConnectionMessage otherCM){
+        if ( this.getUsername().equals(otherCM.getUsername()) &&
+            !this.getPassword().equals(otherCM.getPassword()) )
+            return true;
+        return false;
+    }
+
     /* Abstract methods implementation */
     public ConcreteEnvelope wrap()
     {
