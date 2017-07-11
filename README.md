@@ -79,12 +79,13 @@ Per lanciare l'applicazione è necessario seguire i seguenti passi
 * Lanciare due o più istanze della classe Client nel package client
 * Allo scadere del timeout, o al raggiungimento di 4 player collegati, si apriranno le finestre contenenti le interfacce di gioco, pronte per essere utilizzate.
 * NB: se con interfaccia GUI dovessero presentarsi dei problemi di caricamento delle immagini, seguire i seguenti passi:
- * terminare tutte le esecuzioni in corso;
- * togliere il flag di _cartelle di risorsa_ dalle directory **projectResources** e **Images**;
- * ricompilare il progetto;
- * settare nuovamente le due directory come cartelle di risorse;
- * Eseguire nuovamente il server e i client.
+	* terminare tutte le esecuzioni in corso;
+  	* togliere il flag di _cartelle di risorsa_ dalle directory **projectResources** e **Images**;
+  	* ricompilare il progetto;
+  	* settare nuovamente le due directory come cartelle di risorse;
+ 	* Eseguire nuovamente il server e i client.
 * **La risoluzione minima consigliata per giocare con la CLI è di 1366x768**
+
 ![settaggio cartelle di risorse](setResourceFolder.jpg)
 
 
@@ -100,21 +101,21 @@ Questo documento contiene la prima bozza di class diagram sviluppato per il prog
 
 ### 3.2. UML finali
 * UML Model
-  * [versione semplificata](/Uml/Model/model.svg)
-  * [verisone estesa](/Uml/Model/model_dependencies.svg)
+  	* [versione semplificata](/Uml/Model/model.svg)
+  	* [verisone estesa](/Uml/Model/model_dependencies.svg)
 * UML Architettura MVC
-  * [versione semplificata](/Uml/MVC/MVC.svg)
-  * [versione estesa](/Uml/MVC/MVC.svg)
+  	* [versione semplificata](/Uml/MVC/MVC.svg)
+  	* [versione estesa](/Uml/MVC/MVC.svg)
 * UML Networking
-  * [versione semplificata](/Uml/Networking/netowriking.svg)
-  * [versione estesa](/Uml/Networking/networking.svg)
+  	* [versione semplificata](/Uml/Networking/netowriking.svg)
+  	* [versione estesa](/Uml/Networking/networking.svg)
 
 Per completezza, esiste anche una versione completa del class diagram, contenente tutte le classi. Anche questo documento è disponibile in versione [ridotta](/Uml/ProgettoCompleto/complete.svg) o [estesa](/Uml/ProgettoCompleto/complete_dependencies.svg)
 
 
 ## 4. Info aggiuntive
 
-*### 4.1. Design Pattern
+### 4.1. Design Pattern
 Durante lo sviluppo del software si è reso necessario il ricorso a più design pattern. In particolare:
 
 * pattern Singleton per alcune classi del server che non devono essere instanziabili più volte (SocketAccepter, MatchTable,...)
