@@ -4,6 +4,9 @@ import it.polimi.ingsw.ps31.controller.Controller;
 
 /**
  * Created by Giuseppe on 12/06/2017.
+ *
+ * Implementazione del pattern visitor all'interno della logica dei messaggi di tipo scelta.
+ * Ogni messaggio sa quale metodo di selezione del controller deve invocare
  */
 public class VCMessageVisitor implements VCVisitor {
     private Controller controller;

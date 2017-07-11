@@ -1,20 +1,20 @@
 package it.polimi.ingsw.ps31.model.actionControls;
 
 import it.polimi.ingsw.ps31.model.board.TowerCardSpace;
-import it.polimi.ingsw.ps31.model.constants.CardColor;
 import it.polimi.ingsw.ps31.model.effect.GetResourceEffect;
 import it.polimi.ingsw.ps31.model.gameResource.Resource;
 import it.polimi.ingsw.ps31.model.gameResource.ResourceList;
 import it.polimi.ingsw.ps31.model.player.Player;
 
-import java.util.Map;
-
 /**
  * Created by Francesco on 26/05/2017.
+ *
+ * Controllo che simula tutti i costi del dover piazzare un famigliare nella torre.
+ * Pagare la torre (se previsto), attivare l'effetto immediato dell action space,
+ * e dopo verificare se è possibile o meno pagare la carta.
  */
 public class TowerCardCostPlacementControl extends Control {
     private TowerCardSpace towerCardSpace = null;
-    private Map<CardColor, ResourceList> cardResourceDiscount;
 
     /* Constructor */
     public TowerCardCostPlacementControl(Player player) {

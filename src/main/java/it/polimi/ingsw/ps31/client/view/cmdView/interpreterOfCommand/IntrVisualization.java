@@ -10,6 +10,9 @@ import static java.lang.String.valueOf;
 
 /**
  * Created by Giuseppe on 08/06/2017.
+ *
+ *  Interprete dei comandi "speciale" che ha lo scopo di interpretare dei comandi di visualizzazione
+ *  interrogando la propria view in locale, senza mandare la richiesta al controller
  */
 public class IntrVisualization implements CmdInterpreterView {
     @Override

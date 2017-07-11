@@ -13,8 +13,7 @@ import java.util.List;
 /**
  * Created by giulia on 01/07/2017.
  * * classe che rappresenta il pannello contenente a sua volta tre pannelli per i dadi a cui viene caricato uno sfondo
- * diverso
- * a seconda del numero uscito con il tiro del dado
+ * diverso a seconda del numero uscito con il tiro del dado
  *  @see ActionListener
  *   @see PaintBackgroundPanel
  *

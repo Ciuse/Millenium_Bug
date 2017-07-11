@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps31.model.player.Player;
 
 /**
  * Created by Francesco on 31/05/2017.
+ *
+ * Controllo riguardante i requisiti della personal board per poterci mettere una carta
  */
 public class DevelopmentCardRequirementsControl extends Control{
     private DevelopmentCardList requirement = null;

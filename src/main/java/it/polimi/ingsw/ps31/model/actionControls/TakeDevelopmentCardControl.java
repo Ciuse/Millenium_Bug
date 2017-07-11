@@ -10,6 +10,9 @@ import java.util.List;
 
 /**
  * Created by Francesco on 31/05/2017.
+ *
+ * Controllo per verificare i requisiti per poter mettere una
+ * carta in una specifica casella della propria personal board
  */
 public class TakeDevelopmentCardControl extends Control {
     private DevelopmentCard developmentCard = null;

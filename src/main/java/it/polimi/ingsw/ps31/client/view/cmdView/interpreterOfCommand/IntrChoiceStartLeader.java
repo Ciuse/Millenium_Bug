@@ -7,6 +7,10 @@ import it.polimi.ingsw.ps31.model.choiceType.ChoiceType;
 
 /**
  * Created by Giuseppe on 20/06/2017.
+ *
+ *  Interprete dei comandi relativo alla scelta iniziale di quale leader tenersi
+ *
+ *  @see VCStartLeaderChoice
  */
 public class IntrChoiceStartLeader implements CmdInterpreterView {
     @Override

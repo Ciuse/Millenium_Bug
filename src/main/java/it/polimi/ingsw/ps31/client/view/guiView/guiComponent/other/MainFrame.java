@@ -2,17 +2,10 @@ package it.polimi.ingsw.ps31.client.view.guiView.guiComponent.other;
 
 import it.polimi.ingsw.ps31.client.view.guiView.GuiView;
 
-import javax.sound.sampled.Clip;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-
-import sun.audio.*;
 
 /**
  * Created by giulia on 25/06/2017.
@@ -89,6 +82,7 @@ public class MainFrame extends JFrame implements ActionListener {
         }
 
     }
+
 
     //public static void music()
    // {
