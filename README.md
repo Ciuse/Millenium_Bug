@@ -127,7 +127,7 @@ Durante lo sviluppo del software si è reso necessario il ricorso a più design 
 Per una migliore gestione di alcuni aspetti specifici del progetto, si è fatto ricorso a librerie e framework esterni:
 
 * Gson: per la serializzazione e deserializzazione dei messaggi tra client e server
-* Lanterna: per la realizzazione della CLI
+* Lanterna: per la realizzazione della CLI (solo parte di command line)
 
 ### 4.3. Sviluppi futuri
 Molteplici sono i possibili miglioramenti applicabili al software nelle prossime versioni. Si annotano, in ordine di fattibilità e tempo di sviluppo previsto:
@@ -146,5 +146,5 @@ Molteplici sono i possibili miglioramenti applicabili al software nelle prossime
 ### 4.5. Ulteriori note
 * sebbene non sia stata implementata, la connessione RMI è facilmente inseribile tramite estensione di apposite classi.
 * già in questa versione, il giocatore ha facoltà di _"scegliere"_ quale tecnologia usare per la connessione al server. Tuttavia, in ogni caso, verrà istanziata una comunicazione tramite socket.
-* il file di configurazione è in formato json e, oltre ad essere fornito con la presente release, è creato runtime all'avvio di una partita in caso non dia già presente nella directory projectResources.
+* il file di configurazione è in formato json e, oltre ad essere fornito con la presente release, è creato runtime all'avvio di una partita in caso non sia già presente nella directory projectResources.
 * Lo sviluppo è avvenuto esclusivamente attraverso il software Intellij IDEA 2017.1.1
